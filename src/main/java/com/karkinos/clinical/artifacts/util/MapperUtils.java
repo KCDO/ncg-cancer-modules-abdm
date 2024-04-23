@@ -22,7 +22,8 @@ public class MapperUtils {
 
 	public ClinicalData mapClinicalArtifactsJsonToClinicalDataObject()
 			throws StreamReadException, DatabindException, IOException {
-		File jsonFile = new File("/clinical-artifacts.json");
+		String sourceJSONFileName = "clinical-artifacts.json";
+		File jsonFile = new File(sourceJSONFileName);
 
 		return objectMapper.readValue(jsonFile, ClinicalData.class);
 	}

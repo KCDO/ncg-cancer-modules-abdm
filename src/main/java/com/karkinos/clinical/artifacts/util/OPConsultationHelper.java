@@ -50,7 +50,7 @@ public class OPConsultationHelper {
 			Patient patientResource = FHIRUtils.addPatientResourceToComposition(clinicalData, bundle, opDoc);
 
 			// add sections entry
-			generateSections(hipPrefix, jsonParser, bundle, opDoc, clinicalData, patientResource);
+			createCancerModuleSections(hipPrefix, jsonParser, bundle, opDoc, clinicalData, patientResource);
 		}
 
 		return bundle;
@@ -60,7 +60,7 @@ public class OPConsultationHelper {
 		return "OP Consultation Record";
 	}
 
-	protected void generateSections(String hipPrefix, IParser jsonParser, Bundle bundle, Composition opDoc,
+	protected void createCancerModuleSections(String hipPrefix, IParser jsonParser, Bundle bundle, Composition opDoc,
 			ClinicalData clinicalData, Patient patientResource) {
 
 		// allergies
