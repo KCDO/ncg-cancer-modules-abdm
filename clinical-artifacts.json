@@ -1,0 +1,42 @@
+{
+    "clinicalArtifacts": [
+        "DiagnosticReport",
+        "DischargeSummary",
+        "OpConsultRecord",
+        "Prescription",
+        "WellnessRecord",
+        "HealthDocument",
+        "Immunization"
+    ],
+    "patient": {
+        "firstName": "Testing",
+        "middleName": "POC",
+        "lastName": "1",
+        "age": 24,
+        "gender": "male",
+        "dob": "1999-08-14"
+    },
+    "clinical": {
+        "allergies": [
+            {
+                "name": "dust",
+                "type": "environmental"
+            },
+            {
+                "name": "groundnut",
+                "type": "food"
+            }
+        ]
+    },
+    "diagnostic": {
+        "cbc": {
+            "hemoglobin": 4.5
+        }
+    },
+    "lungCancer": {
+        "MRI brain": "<report_file_path>"
+    },
+    "oralCancer": {
+        "FNAC report": "<report_file_path>"
+    }
+}
