@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.intranet.karkinos.in/kumarianamika001/onco-abdm-profile-sample-generator.git
+git remote add origin https://gitlab.intranet.karkinos.in/kumarianamika001/ncg-cancer-modules-abdm.git
 git branch -M master
 git push -uf origin master
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.intranet.karkinos.in/kumarianamika001/onco-abdm-profile-sample-generator/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.intranet.karkinos.in/kumarianamika001/ncg-cancer-modules-abdm/-/settings/integrations)
 
 ## Collaborate with your team
 
