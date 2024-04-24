@@ -249,11 +249,6 @@ public class OPConsultationHelper {
 				Constants.FHIR_CONDITION_CLINICAL_STATUS_SYSTEM, Constants.ACTIVE.toLowerCase(), Constants.ACTIVE);
 	}
 
-	private CodeableConcept getConditionCode() {
-		return FHIRUtils.getCodeableConcept(Constants.ORAL_CANCER_CODE, Constants.LOINC_SYSTEM, Constants.ORAL_CANCER,
-				Constants.ORAL_CANCER);
-	}
-
 	private Observation createObservation(Date compositionDate, Patient patient) {
 		Observation observation = new Observation();
 		observation.setId(UUID.randomUUID().toString());
