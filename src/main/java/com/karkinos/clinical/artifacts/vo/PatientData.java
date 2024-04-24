@@ -27,4 +27,6 @@ public class PatientData {
 	private int age;
 
 	private Date dob;
+
+	private String gender;
 }

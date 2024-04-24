@@ -1,9 +1,8 @@
 package com.karkinos.clinical.artifacts.service;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import org.hl7.fhir.r4.model.Bundle;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,18 +41,20 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			List<String> clinicalArtifacts = clinicalData.getClinicalArtifacts();
 
 			Bundle bundle = new Bundle();
-			if (!CollectionUtils.isEmpty(clinicalArtifacts)) {
-				for (String clinicalArtifact : clinicalArtifacts) {
-					// Create a new OPConsultation resource
-					if (clinicalArtifact.equals(Constants.OP_CONSULT_RECORD)) {
+			if (!Objects.isNull(clinicalData)) {
+				if (!CollectionUtils.isEmpty(clinicalArtifacts)) {
+					for (String clinicalArtifact : clinicalArtifacts) {
 						Date docDate = new Date();
-						String hipPrefix = "";
-						bundle = opconsultationHelper.createOPConsultationBundle(docDate, hipPrefix,
-								fhirContext.newJsonParser(), clinicalData);
+						// Create a new OPConsultation resource
+						if (clinicalArtifact.equals(Constants.OP_CONSULT_RECORD)) {
+							String hipPrefix = "";
+							bundle = opconsultationHelper.createOPConsultationBundle(docDate, clinicalArtifact,
+									hipPrefix, fhirContext.newJsonParser(), clinicalData);
+						}
 					}
+				} else {
+					// generate clinical-data for rest of fields
 				}
-			} else {
-				// generate clinical-data for rest of fields
 			}
 
 			String encodedString = fhirContext.newJsonParser().setPrettyPrint(true).encodeResourceToString(bundle);
