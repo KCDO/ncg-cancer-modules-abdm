@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
+import org.hl7.fhir.r4.model.AllergyIntolerance;
+import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
@@ -17,14 +19,15 @@ import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.DiagnosticReport;
 import org.hl7.fhir.r4.model.DocumentReference;
 import org.hl7.fhir.r4.model.Enumerations;
+import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Type;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
+import com.karkinos.clinical.artifacts.vo.AllergyIntoleranceRequest;
 import com.karkinos.clinical.artifacts.vo.ClinicalData;
 import com.karkinos.clinical.artifacts.vo.Diagnostic;
 
@@ -65,10 +68,12 @@ public class OPConsultationHelper {
 
 		List<Composition.SectionComponent> sections = new ArrayList<>();
 
-		// allergies
-		if (Objects.nonNull(clinicalData.getClinical())
-				&& !CollectionUtils.isEmpty(clinicalData.getClinical().getAllergies())) {
-			createAllergiesSection(bundle, opDoc, patientResource, jsonParser);
+		// allergyIntolerance
+		List<AllergyIntoleranceRequest> allergiesDetail = clinicalData.getAllergyIntolerance();
+		if (Objects.nonNull(clinicalData.getAllergyIntolerance())) {
+			for (AllergyIntoleranceRequest allergyDetail : allergiesDetail) {
+				sections.add(createAllergiesSection(allergyDetail, bundle, opDoc, patientResource, jsonParser));
+			}
 		}
 
 		// diagnostic
@@ -269,6 +274,11 @@ public class OPConsultationHelper {
 		return report;
 	}
 
+	private CodeableConcept getAllergyIntoleranceCode() {
+		return FHIRUtils.getCodeableConcept(Constants.ALLERGY_INTOLERANCE_CODE, Constants.SNOMED_SYSTEM_SCT,
+				Constants.ALLERGY_INTOLERANCE_SECTION, Constants.ALLERGY_INTOLERANCE_SECTION);
+	}
+
 	protected CodeableConcept getObservationCode() {
 		return FHIRUtils.getCodeableConcept(Constants.DR_LOINC_CODE, Constants.LOINC_SYSTEM, Constants.DR_CBC,
 				Constants.DR_CBC);
@@ -290,17 +300,74 @@ public class OPConsultationHelper {
 		return dateTimeType;
 	}
 
-	protected void createAllergiesSection(Bundle bundle, Composition composition, Patient patient, IParser parser) {
-//		Composition.SectionComponent section = composition.addSection();
-//		section.setTitle("Allergy Section");
-//		section.setCode(FHIRUtils.getAllergySectionType());
-//		AllergyIntolerance foodAllergy = SimpleAllergy.getFoodAllergy(parser, composition.getSubject(),
-//				composition.getAuthorFirstRep());
-//		AllergyIntolerance medicationAllergy = SimpleAllergy.getMedicationAllergy(parser, composition.getSubject(),
-//				composition.getAuthorFirstRep());
-//		FHIRUtils.addToBundleEntry(bundle, foodAllergy, true);
-//		FHIRUtils.addToBundleEntry(bundle, medicationAllergy, true);
-//		section.getEntry().add(FHIRUtils.getReferenceToResource(foodAllergy));
-//		section.getEntry().add(FHIRUtils.getReferenceToResource(medicationAllergy));
+	private Composition.SectionComponent createAllergiesSection(AllergyIntoleranceRequest allergyDetail, Bundle bundle,
+			Composition composition, Patient patient, IParser parser) throws IOException {
+
+		// Create a new AllergyIntolerance resource
+		AllergyIntolerance allergyIntolerance = new AllergyIntolerance();
+
+		// Set resource type and ID
+		allergyIntolerance.setId(UUID.randomUUID().toString());
+
+		// Set profile
+		allergyIntolerance.getMeta().addProfile(Constants.STRUCTURE_DEFINITION_ALLERGY_INTOLERANCE);
+
+		// Set text
+		Narrative narrative = new Narrative();
+		narrative.setStatusAsString("generated");
+		narrative.setDivAsString("<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>" + allergyDetail.getName()
+				+ "</p><p>recordedDate:2015-08-06</p></div>");
+		allergyIntolerance.setText(narrative);
+
+		// Set clinicalStatus
+		CodeableConcept clinicalStatus = new CodeableConcept();
+		clinicalStatus = FHIRUtils.getCodeableConcept(Constants.FHIR_ALLERGY_INTOLERANCE_CLINICAL_STATUS_SYSTEM,
+				Constants.SNOMED_SYSTEM_SCT, Constants.ACTIVE.toLowerCase(),
+				Constants.ACTIVE);
+		allergyIntolerance.setClinicalStatus(clinicalStatus);
+
+		// Set verificationStatus
+		CodeableConcept verificationStatus = new CodeableConcept();
+		verificationStatus = FHIRUtils.getCodeableConcept(Constants.FHIR_ALLERGY_INTOLERANCE_VERIFICATION_STATUS_SYSTEM,
+				Constants.SNOMED_SYSTEM_SCT, Constants.CONFIRMED.toLowerCase(), Constants.CONFIRMED);
+		allergyIntolerance.setVerificationStatus(verificationStatus);
+
+		// Set code
+		CodeableConcept code = new CodeableConcept();
+		code = FHIRUtils.getCodeableConcept(Constants.ALLERGY_INTOLERANCE_CODE, Constants.SNOMED_SYSTEM_SCT,
+				allergyDetail.getName(), allergyDetail.getName() + allergyDetail.getType());
+
+		// Set patient reference
+		Reference patientRef = new Reference();
+		patientRef.setReference(patient.getName().toString());
+		allergyIntolerance.setPatient(patientRef);
+
+		// Set recorded date
+		DateTimeType currentTime = new DateTimeType(new Date());
+		allergyIntolerance.setRecordedDateElement(new DateTimeType(currentTime.getValueAsString()));
+
+		// Set recorder reference
+		Reference recorderRef = new Reference();
+		recorderRef.setReference(UUID.randomUUID().toString());
+		allergyIntolerance.setRecorder(recorderRef);
+
+		// Set note
+		Annotation note = new Annotation();
+		note.setText("The patient reports of: " + allergyDetail.getName() + " allergy which is of type: "
+				+ allergyDetail.getType());
+		allergyIntolerance.addNote(note);
+
+		Composition.SectionComponent section = new Composition.SectionComponent();
+		section.setTitle(Constants.ALLERGY_INTOLERANCE_SECTION);
+		section.setCode(getAllergyIntoleranceCode());
+
+		// Create a new Condition resource for the complaint
+		Condition condition = createConditionResource(code);
+		FHIRUtils.addToBundleEntry(bundle, allergyIntolerance, true);
+
+		// Add the condition to the Chief complaint section
+		section.addEntry(new Reference(condition));
+
+		return section;
 	}
 }
