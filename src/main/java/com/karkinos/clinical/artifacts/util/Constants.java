@@ -11,10 +11,13 @@ public class Constants {
 	public static final String STRUCTURE_DEFINITION_OP_CONSULT_RECORD = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord";
 	public static final String STRUCTURE_DEFINITION_PATIENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient";
 	public static final String STRUCTURE_DEFINITION_CONDITION = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition";
+	public static final String STRUCTURE_DEFINITION_ALLERGY_INTOLERANCE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance";
 	public static final String CLINICAL_CONSULTATION_REPORT = "Clinical consultation report";
 	public static final String HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203 = "http://terminology.hl7.org/CodeSystem/v2-0203";
 	public static final String FHIR_CONDITION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-category";
 	public static final String FHIR_CONDITION_CLINICAL_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-clinical";
+	public static final String FHIR_ALLERGY_INTOLERANCE_CLINICAL_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical";
+	public static final String FHIR_ALLERGY_INTOLERANCE_VERIFICATION_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification";
 	public static final String MEDICAL_RECORD_NUMBER = "Medical record number";
 	public static final String OP_CONSULT_RECORD = "OpConsultRecord";
 	public static final String DIAGNOSTIC_REPORT = "Diagnostic Report";
@@ -26,6 +29,9 @@ public class Constants {
 	public static final String LUNG_CANCER = "Lung Cancer";
 	public static final String CHIEF_COMPLAINTS = "Chief complaints";
 	public static final String CHIEF_COMPLAINTS_SECTION = "Chief complaint section";
+	public static final String ALLERGY_INTOLERANCE_SECTION = "Allergy Intolerance section";
+	public static final String CO_MORBIDITIES = "Co-Morbidities";
+	public static final String CO_MORBIDITIES_SECTION = "Co-Morbidities section";
 	public static final String FNAC = "Fine Needle Aspiration Cytology";
 	public static final String MRI = "MRI brain";
 	public static final String FNAC_REPORT = "FNAC report";
@@ -40,8 +46,13 @@ public class Constants {
 	public static final String LUNG_CANCER_CODE = "59015-0";
 	public static final String ORAL_CANCER_FNAC_CODE = "87179-8";
 	public static final String LUNG_CANCER_MRI_CODE = "24590-2";
+	public static final String ALLERGY_INTOLERANCE_CODE = "235719002";
+	public static final String ALLERGY_INTOLERANCE_LOINC_CODE = "60984-3";
 	public static final String GRAM_PER_DECILITER = "g/dL";
 	public static final String CANNOT_BE_EMPTY = " cannot be empty";
 	public static final String EN_IN = "en-IN";
 	public static final String ACTIVE = "Active";
+	public static final String CONFIRMED = "Confirmed";
+	public static final String EKA_SCT_SYSTEM = "https://projecteka.in/sct";
+	public static final String ALLERGY_INTOLERANCE = "Allergy Intolerance";
 }
