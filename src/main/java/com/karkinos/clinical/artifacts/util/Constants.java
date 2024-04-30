@@ -7,6 +7,10 @@ public class Constants {
 	public static final String SNOMED_SYSTEM_SCT = "http://snomed.info/sct";
 	public static final String HTTPS_HEALTHID_NDHM_GOV_IN = "https://healthid.ndhm.gov.in";
 	public static final String INITIAL_VERSION_NUMBER = "0";
+	public static final String STRUCTURE_DEFINITION_PATIENT_HEIGHT = "http://hl7.org/fhir/StructureDefinition/patient-height";
+	public static final String STRUCTURE_DEFINITION_PATIENT_WEIGHT = "http://hl7.org/fhir/StructureDefinition/patient-weight";
+	public static final String STRUCTURE_DEFINITION_PATIENT_BMI = "http://hl7.org/fhir/StructureDefinition/patient-bmi";
+	public static final String STRUCTURE_DEFINITION_PATIENT_BLOOD_GROUP = "http://example.com/fhir/StructureDefinition/patient-blood-group";
 	public static final String STRUCTURE_DEFINITION_DOCUMENT_BUNDLE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle";
 	public static final String STRUCTURE_DEFINITION_OP_CONSULT_RECORD = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord";
 	public static final String STRUCTURE_DEFINITION_PATIENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient";
@@ -55,4 +59,5 @@ public class Constants {
 	public static final String CONFIRMED = "Confirmed";
 	public static final String EKA_SCT_SYSTEM = "https://projecteka.in/sct";
 	public static final String ALLERGY_INTOLERANCE = "Allergy Intolerance";
+	public static final String ABHA = "ABHAAddress";
 }

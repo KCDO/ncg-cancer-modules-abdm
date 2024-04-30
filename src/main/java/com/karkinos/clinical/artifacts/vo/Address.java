@@ -9,8 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Diagnostic {
-	private CBC cbc;
-	private BioChemistry bioChemistry;
-	private String biopsyHistopathologyReport;
+public class Address {
+	private String type;
+	private String houseName;
+	private String district;
+	private String state;
+	private String city;
+	private String pinCode;
+	private String country;
 }

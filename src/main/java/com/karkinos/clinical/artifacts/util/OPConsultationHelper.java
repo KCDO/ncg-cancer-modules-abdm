@@ -88,27 +88,17 @@ public class OPConsultationHelper {
 		List<Composition.SectionComponent> sections = new ArrayList<>();
 
 		// diagnostic
-		if (Objects.nonNull(clinicalData.getDiagnostic()) && Objects.nonNull(clinicalData.getDiagnostic().getCbc())
-				&& Objects.nonNull(clinicalData.getDiagnostic().getCbc().getHemoglobin())) {
+		if (Objects.nonNull(clinicalData.getDiagnostic())) {
 			sections.add(createDiagnosticReportSection(bundle, opDoc, clinicalData.getDiagnostic(), patientResource,
 					jsonParser, hipPrefix));
 		}
 
 		// oralCancer
 		if (Objects.nonNull(clinicalData.getOralCancer())) {
-			Composition.SectionComponent oralCancerSection = new Composition.SectionComponent();
-			oralCancerSection.setTitle(Constants.CHIEF_COMPLAINTS);
-			oralCancerSection.setCode(getChiefComplaintsCode());
+			// create chiefComplaints section and add condition resource
+			Composition.SectionComponent oralCancerSection = createChiefComplaintsSection(bundle, patientResource,
+					Constants.ORAL_CANCER_CODE, Constants.ORAL_CANCER);
 
-			// Create a new Condition resource for the complaint
-			CodeableConcept oralCancerCode = FHIRUtils.getCodeableConcept(Constants.ORAL_CANCER_CODE, Constants.LOINC_SYSTEM,
-					Constants.ORAL_CANCER, Constants.ORAL_CANCER);
-			Condition condition = createConditionResource(oralCancerCode);
-			FHIRUtils.addToBundleEntry(bundle, condition, true);
-
-			// Add the condition to the Chief complaint section
-			oralCancerSection.addEntry(new Reference(condition));
-			
 			for (Map.Entry<String, String> oralCancerDetail : clinicalData.getOralCancer().entrySet()) {
 				DiagnosticReport report = getOralCancerReports(bundle, patientResource, oralCancerDetail);
 				// Add reports as reference to the Chief complaint section
@@ -119,19 +109,10 @@ public class OPConsultationHelper {
 
 		// lungCancer
 		if (Objects.nonNull(clinicalData.getLungCancer())) {
-			Composition.SectionComponent lungCancerSection = new Composition.SectionComponent();
-			lungCancerSection.setTitle(Constants.CHIEF_COMPLAINTS);
-			lungCancerSection.setCode(getChiefComplaintsCode());
+			// create chiefComplaints section and add condition resource
+			Composition.SectionComponent lungCancerSection = createChiefComplaintsSection(bundle, patientResource,
+					Constants.LUNG_CANCER_CODE, Constants.LUNG_CANCER);
 
-			// Create a new Condition resource for the complaint
-			CodeableConcept lungCancerCode = FHIRUtils.getCodeableConcept(Constants.LUNG_CANCER_CODE, Constants.LOINC_SYSTEM,
-					Constants.LUNG_CANCER, Constants.LUNG_CANCER);
-			Condition condition = createConditionResource(lungCancerCode);
-			FHIRUtils.addToBundleEntry(bundle, condition, true);
-
-			// Add the condition to the Chief complaint section
-			lungCancerSection.addEntry(new Reference(condition));
-			
 			for (Map.Entry<String, String> lungCancerDetail : clinicalData.getLungCancer().entrySet()) {
 				DiagnosticReport report = getLungCancerReports(bundle, patientResource, lungCancerDetail);
 				// Add the condition to the Chief complaint section
@@ -151,61 +132,71 @@ public class OPConsultationHelper {
 		return sections;
 	}
 
+	private Composition.SectionComponent createChiefComplaintsSection(Bundle bundle, Patient patient, String loincCode,
+			String cancerType) {
+		// create chiefComplaints section
+		Composition.SectionComponent oralCancerSection = new Composition.SectionComponent();
+		oralCancerSection.setTitle(Constants.CHIEF_COMPLAINTS);
+		oralCancerSection.setCode(getChiefComplaintsCode());
+
+		// Create a new Condition resource for the complaint
+		CodeableConcept code = FHIRUtils.getCodeableConcept(loincCode, Constants.LOINC_SYSTEM, cancerType, cancerType);
+		Condition condition = createConditionResource(code);
+		FHIRUtils.addToBundleEntry(bundle, condition, true);
+
+		// Add the condition to the Chief complaint section
+		oralCancerSection.addEntry(new Reference(condition));
+		return oralCancerSection;
+	}
+
 	private DiagnosticReport getLungCancerReports(Bundle bundle, Patient patient,
 			Map.Entry<String, String> lungCancerDetail) throws IOException {
-
 		String lungCancerIndicator = lungCancerDetail.getKey().toLowerCase();
 		switch (lungCancerIndicator) {
 		case "2 d echo with pasp":
-			return createDiagnosticReport(bundle, patient, lungCancerDetail, indicatorLoincCodeMap,
-					lungCancerIndicator);
 		case "fdg petct":
-			return createDiagnosticReport(bundle, patient, lungCancerDetail, indicatorLoincCodeMap,
-					lungCancerIndicator);
 		case "mri brain":
-			return createDiagnosticReport(bundle, patient, lungCancerDetail, indicatorLoincCodeMap,
-					lungCancerIndicator);
 		case "fiber optic bronchoscopy":
-			return createDiagnosticReport(bundle, patient, lungCancerDetail, indicatorLoincCodeMap,
-					lungCancerIndicator);
 		case "endobronchial ultrasound with rose reports":
-			return createDiagnosticReport(bundle, patient, lungCancerDetail, indicatorLoincCodeMap,
-					lungCancerIndicator);
+		case "pulmonary function tests with dlco":
+		case "v/q scan in pneumonectomy":
+		case "6mwt":
+		case "molecular markers/nsg as needed":
+			return createDiagnosticReport(bundle, patient, lungCancerDetail.getKey(), lungCancerDetail.getValue(),
+					indicatorLoincCodeMap, lungCancerIndicator);
 		default:
 			return null;
 		}
 	}
-	
+
 	private DiagnosticReport getOralCancerReports(Bundle bundle, Patient patient,
 			Map.Entry<String, String> oralCancerDetail) throws IOException {
 		String oralCancerIndicator = oralCancerDetail.getKey().toLowerCase();
 		switch (oralCancerIndicator) {
 		case "fnac report":
-			return createDiagnosticReport(bundle, patient, oralCancerDetail, indicatorLoincCodeMap,
-					oralCancerIndicator);
 		case "cect head neck thorax report/ pet ct/ mri":
-			return createDiagnosticReport(bundle, patient, oralCancerDetail, indicatorLoincCodeMap,
-					oralCancerIndicator);
+			return createDiagnosticReport(bundle, patient, oralCancerDetail.getKey(), oralCancerDetail.getValue(),
+					indicatorLoincCodeMap, oralCancerIndicator);
 		default:
 			return null;
 		}
 	}
 
-	private DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient,
-			Map.Entry<String, String> lungCancerDetail, Map<String, String> indicatorLoincCodeMap,
-			String lungCancerIndicator) throws IOException {
+	private DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient, String reportType,
+			String reportValue, Map<String, String> indicatorLoincCodeMap, String lungCancerIndicator)
+			throws IOException {
 		// Create a new CodeableConcept
 		CodeableConcept code = new CodeableConcept();
 		if (indicatorLoincCodeMap.containsKey(lungCancerIndicator)) {
-			code = FHIRUtils.getCodeableConcept(indicatorLoincCodeMap.get(lungCancerIndicator),
-					Constants.LOINC_SYSTEM, lungCancerDetail.getKey(), lungCancerDetail.getKey());
+			code = FHIRUtils.getCodeableConcept(indicatorLoincCodeMap.get(lungCancerIndicator), Constants.LOINC_SYSTEM,
+					reportType, reportType);
 		}
 		// Create a new DiagnosticReport resource
 		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code);
 
 		// Create a new DocumentReference resource
-		DocumentReference documentReference = createDocumentReferenceResource(lungCancerDetail, patient,
-				lungCancerDetail.getKey() + " report");
+		DocumentReference documentReference = createDocumentReferenceResource(reportType, reportValue, patient,
+				reportType + " report");
 
 		report.addResult(FHIRUtils.getReferenceToResource(documentReference));
 
@@ -213,7 +204,7 @@ public class OPConsultationHelper {
 	}
 
 	private Composition.SectionComponent createDiagnosticReportSection(Bundle bundle, Composition composition,
-			Diagnostic diagnostic, Patient patient, IParser jsonParser, String hipPrefix) {
+			Diagnostic diagnostic, Patient patient, IParser jsonParser, String hipPrefix) throws IOException {
 		if (Utils.randomBool())
 			return null;
 
@@ -223,28 +214,40 @@ public class OPConsultationHelper {
 				Constants.DIAGNOSTIC_REPORT, Constants.DIAGNOSTIC_REPORT);
 		section.setCode(codeDR);
 
-		// Create a new DiagnosticReport
-		DiagnosticReport report = new DiagnosticReport();
-		report.setId(Utils.generateId());
-		report.setStatus(DiagnosticReport.DiagnosticReportStatus.FINAL);
-		CodeableConcept codeCBC = FHIRUtils.getCodeableConcept(Constants.DR_CBC_SNOMED_CODE,
-				Constants.SNOMED_SYSTEM_SCT, Constants.DR_CBC, Constants.DR_CBC);
-		report.setCode(codeCBC);
-		report.setSubject(FHIRUtils.getReferenceToPatient(patient));
-		report.setIssued(new Date());
-		FHIRUtils.addToBundleEntry(bundle, report, true);
+		if (Objects.nonNull(diagnostic.getCbc()) && Objects.nonNull(diagnostic.getCbc().getHemoglobin())) {
+			// Create a new DiagnosticReport resource
+			CodeableConcept codeCBC = FHIRUtils.getCodeableConcept(Constants.DR_CBC_SNOMED_CODE,
+					Constants.SNOMED_SYSTEM_SCT, Constants.DR_CBC, Constants.DR_CBC);
+			DiagnosticReport report = createDiagnosticReportResource(bundle, patient, codeCBC);
 
-		// Create an Observation for hemoglobin
-		Observation hemoglobinObservation = createObservation(composition.getDate(), patient);
-		hemoglobinObservation.setCode(getDiagnosticReportHemoGlobinCode());
-		hemoglobinObservation.setValue(
-				new Quantity().setValue(diagnostic.getCbc().getHemoglobin()).setUnit(Constants.GRAM_PER_DECILITER));
-		FHIRUtils.addToBundleEntry(bundle, hemoglobinObservation, true);
+			// Create an Observation for hemoglobin
+			Observation hemoglobinObservation = createObservation(composition.getDate(), patient);
+			hemoglobinObservation.setCode(getDiagnosticReportHemoGlobinCode());
+			hemoglobinObservation.setValue(
+					new Quantity().setValue(diagnostic.getCbc().getHemoglobin()).setUnit(Constants.GRAM_PER_DECILITER));
+			FHIRUtils.addToBundleEntry(bundle, hemoglobinObservation, true);
 
-		// Add the hemoglobin Observation to the DiagnosticReport
-		report.addResult(FHIRUtils.getReferenceToResource(hemoglobinObservation));
+			// Add the hemoglobin Observation to the DiagnosticReport
+			report.addResult(FHIRUtils.getReferenceToResource(hemoglobinObservation));
 
-		section.getEntry().add(FHIRUtils.getReferenceToResource(report));
+			section.getEntry().add(FHIRUtils.getReferenceToResource(report));
+		}
+
+		if (Objects.nonNull(diagnostic.getBiopsyHistopathologyReport())) {
+			// Create a new DiagnosticReport resource
+			CodeableConcept code = FHIRUtils.getCodeableConcept("4241000179101", Constants.SNOMED_SYSTEM_SCT,
+					"Biopsy Histopathology Report", "Biopsy Histopathology Report");
+			// Create a new DiagnosticReport resource
+			DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code);
+
+			// Create a new DocumentReference resource
+			DocumentReference documentReference = createDocumentReferenceResource("Biopsy Histopathology",
+					diagnostic.getBiopsyHistopathologyReport(), patient, "Biopsy Histopathology");
+
+			report.addResult(FHIRUtils.getReferenceToResource(documentReference));
+
+			section.getEntry().add(FHIRUtils.getReferenceToResource(report));
+		}
 
 		return section;
 	}
@@ -258,11 +261,13 @@ public class OPConsultationHelper {
 		return "OP Consultation Record";
 	}
 
-	private DocumentReference createDocumentReferenceResource(Map.Entry<String, String> oralCancerDetail,
-			Patient patient, String reportName) throws IOException {
-		CodeableConcept type = FHIRUtils.getCodeableConcept(indicatorLoincCodeMap.get(oralCancerDetail.getKey()),
-				Constants.LOINC_SYSTEM, oralCancerDetail.getKey() + " report", oralCancerDetail.getKey() + " report");
+	private DocumentReference createDocumentReferenceResource(String reportType, String reportValue, Patient patient,
+			String reportName) throws IOException {
+		// create CodeableConcept type
+		CodeableConcept type = FHIRUtils.getCodeableConcept(indicatorLoincCodeMap.get(reportType),
+				Constants.LOINC_SYSTEM, reportType + " report", reportType + " report");
 
+		// create documentReference resource
 		DocumentReference documentReference = new DocumentReference();
 		documentReference.setType(type);
 		documentReference.setSubject(new Reference(patient));
@@ -270,7 +275,7 @@ public class OPConsultationHelper {
 
 		// Set the content (attachment) of the document
 		DocumentReference.DocumentReferenceContentComponent content = new DocumentReference.DocumentReferenceContentComponent();
-		Attachment attachment = FHIRUtils.getAttachment(reportName, oralCancerDetail.getValue());
+		Attachment attachment = FHIRUtils.getAttachment(reportName, reportValue);
 		content.setAttachment(attachment);
 
 		documentReference.addContent(content);

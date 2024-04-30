@@ -3,21 +3,28 @@ package com.karkinos.clinical.artifacts.util;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hl7.fhir.r4.model.Address;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Composition;
+import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
+import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
+import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
@@ -91,7 +98,7 @@ public class FHIRUtils {
 		return bundle;
 	}
 
-	static Patient patientBuilder(PatientData patientData) throws Exception {
+	static Patient patientBuilder(PatientData patientData, Bundle bundle) throws Exception {
 		try {
 			Patient fhirPatient = new Patient();
 
@@ -114,12 +121,60 @@ public class FHIRUtils {
 			// set gender
 			getFHIRGender(patientData.getGender(), fhirPatient);
 
+			// set phone number
+			if (StringUtils.isNotBlank(patientData.getPhoneNumber())) {
+				fhirPatient.addTelecom(getPhoneNumber(patientData.getPhoneNumber()));
+			}
+
+			// Add primary address
+			if (Objects.nonNull(patientData.getAddress())) {
+				fhirPatient.addAddress(getAddress(patientData.getAddress()));
+			}
+
+			// Add ABHA address
+			if (Objects.nonNull(patientData.getABHAAddress())) {
+				fhirPatient.addAddress(getABHAAddress(patientData.getABHAAddress()));
+			}
+
+			// Set the patient's height in cm
+			if (Objects.nonNull(patientData.getHeight())) {
+				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_HEIGHT,
+						getHeight(patientData.getHeight())));
+			}
+
+			// Set the patient's weight (e.g., 70 kilograms)
+			if (Objects.nonNull(patientData.getWeight())) {
+				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_WEIGHT,
+						getWeight(patientData.getWeight())));
+			}
+
+			// Calculate BMI in kg/m^2
+			if (Objects.nonNull(patientData.getHeight()) && Objects.nonNull(patientData.getHeight())) {
+				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_BMI,
+						getBMI(patientData.getHeight(), patientData.getWeight())));
+			}
+
+			// set bloodGroup in Observations
+			if (Objects.nonNull(patientData.getBloodGroup())) {
+				Observation observation = new Observation();
+				observation = getBloodGroup(patientData.getBloodGroup());
+				fhirPatient.addExtension(new Extension().setUrl(Constants.STRUCTURE_DEFINITION_PATIENT_BLOOD_GROUP)
+						.setValue(new Reference(observation)));
+				FHIRUtils.addToBundleEntry(bundle, observation, true);
+			}
+
 			// add meta
 			Date date = new Date();
 			fhirPatient.setMeta(Utils.getMeta(date, Constants.STRUCTURE_DEFINITION_PATIENT));
 
 			// add identifier
-			Identifier identifier = getIdentifier(fhirPatient.getId(), Constants.HTTPS_HEALTHID_NDHM_GOV_IN);
+			Identifier identifier = new Identifier();
+			if (Objects.nonNull(patientData.getIdentifier())) {
+				identifier = getIdentifier(patientData.getIdentifier().getHipId(),
+						patientData.getIdentifier().getDomain());
+			}
+			// identifier = getIdentifier(fhirPatient.getId(),
+			// Constants.HTTPS_HEALTHID_NDHM_GOV_IN);
 			identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
 					Constants.MEDICAL_RECORD_NUMBER, Constants.MEDICAL_RECORD_NUMBER));
 			fhirPatient.addIdentifier(identifier);
@@ -131,11 +186,139 @@ public class FHIRUtils {
 		}
 	}
 
+	public static ContactPoint getPhoneNumber(String mobile) {
+		ContactPoint contactPoint = new ContactPoint();
+		contactPoint.setSystem(ContactPoint.ContactPointSystem.PHONE);
+		contactPoint.setValue(mobile);
+
+		return contactPoint;
+	}
+
+	private static Address getAddress(com.karkinos.clinical.artifacts.vo.Address patientAddress) {
+		Address address = new Address();
+		address.setType(Address.AddressType.BOTH);// Set the address type as both postal and physical
+		address.setText("House Name: " + patientAddress.getHouseName()); // Set the complete address as
+
+		// Add address components
+		setAddressComponents(patientAddress, address);
+
+		return address;
+	}
+
+	private static void setAddressComponents(com.karkinos.clinical.artifacts.vo.Address patientAddress,
+			Address address) {
+		address.setCity(patientAddress.getCity());
+		address.setDistrict(patientAddress.getDistrict());
+		address.setState(patientAddress.getState());
+		address.setPostalCode(patientAddress.getPinCode());
+		address.setCountry(patientAddress.getCountry());
+	}
+
+	private static Address getABHAAddress(String abhaAddress) {
+		Address address = new Address();
+		address.setType(Address.AddressType.POSTAL);// Set the address type as postal
+		address.setText(abhaAddress); // Set the complete address as
+		address.addLine(Constants.ABHA); // Street address line
+
+		return address;
+	}
+
+	private static Quantity getHeight(double patientHeight) {
+		Quantity height = new Quantity();
+		height.setValue(patientHeight); // Height in centimeters
+		height.setUnit("cm");
+		height.setSystem("http://unitsofmeasure.org"); // Standard system for units of measure
+		height.setCode("cm");
+
+		return height;
+	}
+
+	private static Quantity getWeight(double patientWeight) {
+		Quantity weight = new Quantity();
+		weight.setValue(patientWeight); // Weight value in kilograms
+		weight.setUnit("kg"); // Unit for weight (kilograms)
+
+		return weight;
+	}
+
+	private static Quantity getBMI(double patientHeight, double patientWeight) {
+		Quantity bmi = new Quantity();
+
+		if (patientHeight > 0) {
+			double heightInMeters = patientHeight / 100;
+			double weightInKg = patientWeight;
+			double bmiValue = weightInKg / (heightInMeters * heightInMeters);
+
+			// Set BMI
+			bmi.setValue(bmiValue); // BMI value
+			bmi.setUnit("kg/m2"); // BMI unit (kilogram per square meter)
+		}
+
+		return bmi;
+	}
+
+	private static Observation getBloodGroup(String bloodGroup) {
+		Observation observation = new Observation();
+		observation.setId(Utils.generateId());
+
+		// Set the code for blood group observation using LOINC system
+		observation.setCode(new CodeableConcept(
+				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("882-1").setDisplay("Blood group")));
+
+		// Set the value for blood group using a coded value (e.g., A+, O-, etc.)
+		observation.setValue(mapBloodGroup(bloodGroup));
+
+		return observation;
+	}
+
+	private static final Map<String, String> bloodGroupMap = new HashMap<>();
+	static {
+		// Define blood group aliases and their corresponding display values
+		bloodGroupMap.put("a+", "A+");
+		bloodGroupMap.put("aplus", "A+");
+		bloodGroupMap.put("a-", "A-");
+		bloodGroupMap.put("aminus", "A-");
+		bloodGroupMap.put("b+", "B+");
+		bloodGroupMap.put("bplus", "B+");
+		bloodGroupMap.put("b-", "B-");
+		bloodGroupMap.put("bminus", "B-");
+		bloodGroupMap.put("o+", "O+");
+		bloodGroupMap.put("oplus", "O+");
+		bloodGroupMap.put("o-", "O-");
+		bloodGroupMap.put("ominus", "O-");
+		bloodGroupMap.put("ab+", "AB+");
+		bloodGroupMap.put("abplus", "AB+");
+		bloodGroupMap.put("ab-", "AB-");
+		bloodGroupMap.put("abminus", "AB-");
+	}
+
+	// Method to map blood group string to FHIR codeable concept
+	public static CodeableConcept mapBloodGroup(String bloodGroup) {
+		CodeableConcept codeableConcept = new CodeableConcept();
+		Coding coding = new Coding();
+
+		// Get the display value for the blood group
+		String displayValue = bloodGroupMap.getOrDefault(bloodGroup.toLowerCase(), "Unknown");
+
+		// Set the coding system, code, and display
+		coding.setSystem(Constants.SNOMED_SYSTEM_SCT);
+		coding.setCode("365637002");
+		coding.setDisplay(displayValue);
+
+		// Add the coding to the codeable concept
+		codeableConcept.addCoding(coding);
+
+		// Set the text of the codeable concept
+		codeableConcept.setText(displayValue);
+
+		return codeableConcept;
+	}
+
 	static Patient addPatientResourceToComposition(ClinicalData clinicalData, Bundle bundle, Composition opDoc)
 			throws Exception {
 		Patient patientResource = new Patient();
 		if (Objects.nonNull(clinicalData.getPatient())) {
-			patientResource = FHIRUtils.patientBuilder(clinicalData.getPatient());
+			patientResource = FHIRUtils.patientBuilder(clinicalData.getPatient(), bundle);
 			FHIRUtils.addToBundleEntry(bundle, patientResource, false);
 			opDoc.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
 		}

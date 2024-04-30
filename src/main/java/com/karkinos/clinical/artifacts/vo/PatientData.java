@@ -3,6 +3,7 @@ package com.karkinos.clinical.artifacts.vo;
 import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.karkinos.clinical.artifacts.util.Constants;
 
@@ -17,6 +18,20 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PatientData {
 
+	public enum BLOODGROUP {
+		APLUS("A+"), AMINUS("A-"), BPLUS("B+"), BMINUS("B-"), OPLUS("O+"), OMINUS("O-"), ABPLUS("AB+"), ABMINUS("AB-");
+
+		private String val;
+
+		BLOODGROUP(String val) {
+			this.val = val;
+		}
+
+		public String getValue() {
+			return val;
+		}
+	}
+
 	@NotBlank(message = "firstName" + Constants.CANNOT_BE_EMPTY)
 	private String firstName;
 
@@ -28,5 +43,20 @@ public class PatientData {
 
 	private Date dob;
 
+	@NotNull(message = "gender" + Constants.CANNOT_BE_EMPTY)
 	private String gender;
+
+	private String phoneNumber;
+
+	private Address address;
+
+	private double height;
+
+	private double weight;
+
+	private String ABHAAddress;
+
+	private Identifier identifier;
+
+	private String bloodGroup;
 }
