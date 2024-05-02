@@ -1,17 +1,19 @@
 package com.karkinos.clinical.artifacts.util;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Objects;
-import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Composition;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Enumerations;
+import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
@@ -24,6 +26,7 @@ import com.karkinos.clinical.artifacts.vo.ClinicalData;
 import com.karkinos.clinical.artifacts.vo.PatientData;
 
 public class FHIRUtils {
+
 	public static Enumerations.AdministrativeGender getGender(String gender) {
 		return Enumerations.AdministrativeGender.fromCode(gender);
 	}
@@ -45,9 +48,30 @@ public class FHIRUtils {
 		return humanName;
 	}
 
-	public static Identifier getIdentifier(String id, String domain, String resType) {
+	static void getFHIRGender(String patientGender, Patient fhirPatient) {
+		if (StringUtils.isNotBlank(patientGender)) {
+			// converting input gender to lower case
+			String gender = patientGender.toLowerCase();
+			switch (gender) {
+			case "male":
+				fhirPatient.setGender(AdministrativeGender.MALE);
+				break;
+			case "female":
+				fhirPatient.setGender(AdministrativeGender.FEMALE);
+				break;
+			case "other":
+				fhirPatient.setGender(AdministrativeGender.OTHER);
+				break;
+			default:
+				fhirPatient.setGender(AdministrativeGender.UNKNOWN);
+				break;
+			}
+		}
+	}
+
+	public static Identifier getIdentifier(String id, String system) {
 		Identifier identifier = new Identifier();
-		identifier.setSystem(getHospitalSystemForType(domain, resType));
+		identifier.setSystem(system);
 		identifier.setValue(id);
 		return identifier;
 	}
@@ -56,12 +80,12 @@ public class FHIRUtils {
 		return String.format(Constants.HOSPITAL_SYSTEM, hospitalDomain, type);
 	}
 
-	static Bundle createBundle(Date forDate, String hipDomain) {
+	static Bundle createBundle(Date forDate, String clinicalArtifactsType, String hipDomain) {
 		Bundle bundle = new Bundle();
-		bundle.setId(UUID.randomUUID().toString());
+		bundle.setId(clinicalArtifactsType + "-" + Utils.generateId());
 		bundle.setTimestamp(forDate);
-		bundle.setIdentifier(getIdentifier(bundle.getId(), hipDomain, "bundle"));
-		Meta bundleMeta = Utils.getMeta(forDate);
+		bundle.setIdentifier(getIdentifier(bundle.getId(), Constants.HOSPITAL_SYSTEM));
+		Meta bundleMeta = Utils.getMeta(forDate, Constants.STRUCTURE_DEFINITION_DOCUMENT_BUNDLE);
 		bundle.setMeta(bundleMeta);
 		bundle.setType(Bundle.BundleType.DOCUMENT);
 		return bundle;
@@ -87,9 +111,23 @@ public class FHIRUtils {
 				}
 			}
 
+			// set gender
+			getFHIRGender(patientData.getGender(), fhirPatient);
+
+			// add meta
+			Date date = new Date();
+			fhirPatient.setMeta(Utils.getMeta(date, Constants.STRUCTURE_DEFINITION_PATIENT));
+
+			// add identifier
+			Identifier identifier = getIdentifier(fhirPatient.getId(), Constants.HTTPS_HEALTHID_NDHM_GOV_IN);
+			identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
+					Constants.MEDICAL_RECORD_NUMBER, Constants.MEDICAL_RECORD_NUMBER));
+			fhirPatient.addIdentifier(identifier);
+
 			return fhirPatient;
 		} catch (Exception exception) {
-			throw new Exception("failed to generate fhir patient object for the given patient-data object!");
+			throw new Exception(
+					"FHIRUtils::patientBuilder::failed to generate fhir patient object for the given patient-data object!");
 		}
 	}
 
@@ -102,24 +140,6 @@ public class FHIRUtils {
 			opDoc.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
 		}
 		return patientResource;
-	}
-
-	static CodeableConcept getDiagnosticReportType() {
-		CodeableConcept type = new CodeableConcept();
-		Coding coding = type.addCoding();
-		coding.setSystem(Constants.LOINC_SYSTEM);
-		coding.setCode("721981007");
-		coding.setDisplay("Diagnostic Report");
-		return type;
-	}
-
-	static CodeableConcept getAllergySectionType() {
-		CodeableConcept type = new CodeableConcept();
-		Coding coding = type.addCoding();
-		coding.setSystem(Constants.LOINC_SYSTEM);
-		coding.setCode("722446000");
-		coding.setDisplay("Allergy Record");
-		return type;
 	}
 
 	static void addToBundleEntry(Bundle bundle, Resource resource, boolean useIdPart) {
@@ -149,33 +169,24 @@ public class FHIRUtils {
 		return dateTimeType;
 	}
 
-	public static CodeableConcept getOPConsultationType() {
-		CodeableConcept type = new CodeableConcept();
-		Coding coding = type.addCoding();
-		coding.setSystem(Constants.LOINC_SYSTEM);
-		coding.setCode("371530004");
-		coding.setDisplay("OP Consultation Record");
-		return type;
-	}
-
-	public static CodeableConcept getOralCancerFNACSectionCode(String displayValue) {
-		CodeableConcept type = new CodeableConcept();
-		Coding coding = type.addCoding();
-		coding.setSystem(Constants.LOINC_SYSTEM);
-		coding.setCode("12345-6");
-		coding.setDisplay(displayValue);
-		return type;
-	}
-
-	public static CodeableConcept getCodeableConcept(String code, String display, String text) {
+	public static CodeableConcept getCodeableConcept(String code, String system, String display, String text) {
 		CodeableConcept procedureCode = new CodeableConcept();
 		Coding coding = procedureCode.addCoding();
-		coding.setSystem(Constants.LOINC_SYSTEM);
+		coding.setSystem(system);
 		coding.setCode(code);
 		coding.setDisplay(display);
 		if (!Utils.isBlank(text)) {
 			procedureCode.setText(text);
 		}
 		return procedureCode;
+	}
+
+	public static Attachment getAttachment(String title, String input) throws IOException {
+		Attachment attachment = new Attachment();
+		attachment.setTitle(title);
+		attachment.setContentType("application/pdf");
+		byte[] inputBytes = input.getBytes();
+		attachment.setData(inputBytes);
+		return attachment;
 	}
 }
