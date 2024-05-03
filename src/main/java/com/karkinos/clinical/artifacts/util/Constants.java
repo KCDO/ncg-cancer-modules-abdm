@@ -31,8 +31,8 @@ public class Constants {
 	public static final String DIAGNOSTIC_REPORTS = "Diagnostic Reports";
 	public static final String ORAL_CANCER = "Oral Cancer";
 	public static final String LUNG_CANCER = "Lung Cancer";
-	public static final String CHIEF_COMPLAINTS = "Chief complaints";
-	public static final String CHIEF_COMPLAINTS_SECTION = "Chief complaint section";
+	public static final String MEDICAL_HISTORY = "Medical History";
+	public static final String MEDICAL_HISTORY_SECTION = "Medical History section";
 	public static final String ALLERGY_INTOLERANCE_SECTION = "Allergy Intolerance section";
 	public static final String CO_MORBIDITIES = "Co-Morbidities";
 	public static final String CO_MORBIDITIES_SECTION = "Co-Morbidities section";
@@ -41,7 +41,7 @@ public class Constants {
 	public static final String FNAC_REPORT = "FNAC report";
 	public static final String MRI_BRAIN_REPORT = "MRI brain report";
 	public static final String OPCR_SNOMED_CODE = "371530004";
-	public static final String CHIEF_COMPLAINTS_SNOMED_CODE = "422843007";
+	public static final String MEDICAL_HISTORY_SNOMED_CODE = "422843007";
 	public static final String DR_SNOMED_CODE = "721981007";
 	public static final String DR_CBC_SNOMED_CODE = "43789009";
 	public static final String DR_LOINC_CODE = "58410-2";

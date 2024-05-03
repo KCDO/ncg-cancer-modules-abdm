@@ -10,19 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BioChemistry {
+	private String lipidProfile;
 	private double lipidProfileTotalCholesterol;
 	private double lipidProfileHDLCholesterol;
 	private double lipidProfileLDLCholesterol;
+	private double lipidProfileVLDLCholesterol;
 	private double lipidProfileTriglycerides;
-
-	private double renalTestSerumCreatinine;
-	private double renalTestBUN;
-	private double renalTestEGFR;
-
-	private double liverFunctionsALT;
-	private double liverFunctionsAST;
-	private double liverFunctionsALP;
-	private double liverFunctionsTotalBilirubin;
-	private double liverFunctionsAlbumin;
-	private double liverFunctionsTotalProtein;
+	private double lipidProfileTriglyceridesFasting;
+	private double fastingDuration;
+	private double fastingStatus;
 }
