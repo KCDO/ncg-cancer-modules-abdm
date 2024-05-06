@@ -30,7 +30,9 @@ import org.springframework.stereotype.Service;
 
 import com.karkinos.clinical.artifacts.vo.AllergyIntoleranceRequest;
 import com.karkinos.clinical.artifacts.vo.ClinicalData;
+import com.karkinos.clinical.artifacts.vo.CoMorbidity;
 import com.karkinos.clinical.artifacts.vo.Diagnostic;
+import com.karkinos.clinical.artifacts.vo.ObservationWomenHealth;
 
 import ca.uhn.fhir.parser.IParser;
 import jakarta.annotation.PostConstruct;
@@ -86,6 +88,103 @@ public class OPConsultationHelper {
 			Bundle bundle, Composition opDoc, ClinicalData clinicalData, Patient patientResource) throws IOException {
 
 		List<Composition.SectionComponent> sections = new ArrayList<>();
+
+		// co-morbidities
+		if (Objects.nonNull(clinicalData.getCoMorbidities())) {
+			for (CoMorbidity coMorbidityDetail : clinicalData.getCoMorbidities()) {
+				Composition.SectionComponent coMorbiditySection = new Composition.SectionComponent();
+				coMorbiditySection.setTitle(Constants.CO_MORBIDITIES);
+				coMorbiditySection.setCode(getCoMorbiditiesCode(coMorbidityDetail.getName()));
+
+				// Create a new Condition resource for the complaint
+				Condition condition = new Condition();
+				condition.setId(Utils.generateId());
+				condition.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_CONDITION));
+
+				// Set patient reference
+				Reference patientRef = new Reference();
+				patientRef.setReference("Patient/" + patientResource.getId());
+				condition.setSubject(patientRef);
+
+				// Set recorder reference
+				Reference recorderRef = new Reference();
+				recorderRef.setReference("Practitioner/" + UUID.randomUUID().toString());
+				condition.setRecorder(recorderRef);
+
+				// Set text
+				Narrative narrative = new Narrative();
+				narrative.setStatusAsString("generated");
+				narrative.setDivAsString(
+						"<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition</b><a name=\"example-02\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Condition &quot;example-02&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-Condition.html\">Condition</a></p></div><p><b>code</b>: Type 2 diabetes mellitus <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#44054006)</span></p><p><b>subject</b>: <a href=\"Patient-example-01.html\">Patient/example-01</a> &quot;&quot;</p><p><b>recorder</b>: <a href=\"Practitioner-example-01.html\">Practitioner/example-01</a> &quot;&quot;</p></div>");
+				condition.setText(narrative);
+
+				// set code
+				condition.setCode(getCoMorbiditiesCode(coMorbidityDetail.getName()));
+
+				FHIRUtils.addToBundleEntry(bundle, condition, true);
+
+				// Add the condition to the Co-Morbidity section
+				coMorbiditySection.addEntry(new Reference(condition));
+
+				sections.add(coMorbiditySection);
+				sections.add(createCoMorbiditiesSection(bundle, opDoc, coMorbidityDetail, patientResource, jsonParser,
+						hipPrefix));
+			}
+		}
+
+		// ObservationWomenHealth
+		if (Objects.nonNull(clinicalData.getObservationWomenHealth())) {
+			for (ObservationWomenHealth observationWomenHealthDetail : clinicalData.getObservationWomenHealth()) {
+				Composition.SectionComponent observationWomenHealthSection = new Composition.SectionComponent();
+				observationWomenHealthSection.setTitle(Constants.OBSERVATION_WOMEN_HEALTH);
+				observationWomenHealthSection
+						.setCode(getObservationWomenHealthCode(observationWomenHealthDetail.getName()));
+
+				// Create a new Condition resource for the complaint
+				Observation observation = new Observation();
+				observation.setId(Utils.generateId());
+				observation.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_OBSERVATION_WOMEN_HEALTH));
+				observation.setStatus(Observation.ObservationStatus.FINAL);
+
+				// Set patient reference
+				Reference patientRef = new Reference();
+				patientRef.setReference("Patient/" + patientResource.getId());
+				observation.setSubject(patientRef);
+
+				// Set performer references
+				Reference recorderRef = new Reference();
+				recorderRef.setReference("Practitioner/" + UUID.randomUUID().toString());
+
+				List<Reference> performers = new ArrayList<>();
+				performers.add(recorderRef);
+				observation.setPerformer(performers);
+
+				// Set text
+				Narrative narrative = new Narrative();
+				narrative.setStatusAsString("generated");
+				narrative.setDivAsString(
+						"<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>");
+				observation.setText(narrative);
+
+				// set code
+				observation.setCode(getObservationWomenHealthCode(observationWomenHealthDetail.getName()));
+
+				// set value
+				observation.setValue(new org.hl7.fhir.r4.model.StringType(observationWomenHealthDetail.getValue()));
+
+				// set effective date time
+				observation.setEffective(getEffectiveObservationDate(new Date()));
+
+				FHIRUtils.addToBundleEntry(bundle, observation, true);
+
+				// Add the observation to the Observation Women Health section
+				observationWomenHealthSection.addEntry(new Reference(observation));
+
+				sections.add(observationWomenHealthSection);
+				sections.add(createObservationWomenHealthSection(bundle, opDoc, observationWomenHealthDetail,
+						patientResource, jsonParser, hipPrefix));
+			}
+		}
 
 		// diagnostic
 		if (Objects.nonNull(clinicalData.getDiagnostic())) {
@@ -201,6 +300,34 @@ public class OPConsultationHelper {
 		report.addResult(FHIRUtils.getReferenceToResource(documentReference));
 
 		return report;
+	}
+
+	private Composition.SectionComponent createCoMorbiditiesSection(Bundle bundle, Composition composition,
+			CoMorbidity coMorbidity, Patient patient, IParser jsonParser, String hipPrefix) {
+		if (Utils.randomBool())
+			return null;
+
+		Composition.SectionComponent section = composition.addSection();
+		section.setTitle(Constants.CO_MORBIDITIES);
+		CodeableConcept coMorbidityCode = FHIRUtils.getCodeableConcept(coMorbidity.getName(),
+				Constants.SNOMED_SYSTEM_SCT, Constants.CO_MORBIDITIES_SECTION, Constants.CO_MORBIDITIES_SECTION);
+		section.setCode(coMorbidityCode);
+
+		return section;
+	}
+
+	private Composition.SectionComponent createObservationWomenHealthSection(Bundle bundle, Composition composition,
+			ObservationWomenHealth observationWomenHealth, Patient patient, IParser jsonParser, String hipPrefix) {
+		if (Utils.randomBool())
+			return null;
+
+		Composition.SectionComponent section = composition.addSection();
+		section.setTitle(Constants.OBSERVATION_WOMEN_HEALTH);
+		CodeableConcept observationWomenHealthCode = FHIRUtils.getCodeableConcept(observationWomenHealth.getName(),
+				Constants.LOINC_SYSTEM, Constants.OBSERVATION_WOMEN_HEALTH_SECTION,
+				Constants.OBSERVATION_WOMEN_HEALTH_SECTION);
+		section.setCode(observationWomenHealthCode);
+		return section;
 	}
 
 	private Composition.SectionComponent createDiagnosticReportSection(Bundle bundle, Composition composition,
@@ -405,9 +532,43 @@ public class OPConsultationHelper {
 		return report;
 	}
 
-	private CodeableConcept getAllergyIntoleranceCode() {
+	protected CodeableConcept getAllergyIntoleranceCode() {
 		return FHIRUtils.getCodeableConcept(Constants.ALLERGY_INTOLERANCE_CODE, Constants.SNOMED_SYSTEM_SCT,
 				Constants.ALLERGY_INTOLERANCE_SECTION, Constants.ALLERGY_INTOLERANCE_SECTION);
+	}
+
+	protected CodeableConcept getCoMorbiditiesCode(String name) {
+		switch (name.toLowerCase()) {
+		case "hypertension":
+			return FHIRUtils.getCodeableConcept(Constants.HYPERTENSION_CODE, Constants.SNOMED_SYSTEM_SCT, name, null);
+		case "coronary artery disease":
+			return FHIRUtils.getCodeableConcept(Constants.CORONARY_ARTERY_DISEASE_CODE, Constants.SNOMED_SYSTEM_SCT,
+					name, null);
+		case "chronic obstructive pulmonary disease":
+			return FHIRUtils.getCodeableConcept(Constants.CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE_CODE,
+					Constants.SNOMED_SYSTEM_SCT, name, null);
+		case "diabetes mellitus":
+			return FHIRUtils.getCodeableConcept(Constants.DIABETES_MELLITUS_CODE, Constants.SNOMED_SYSTEM_SCT, name,
+					null);
+		default:
+			return null;
+		}
+	}
+
+	// fetch ObservationWomenHealth code
+	protected CodeableConcept getObservationWomenHealthCode(String name) {
+		switch (name.toLowerCase()) {
+		case "pregnancy status":
+			return FHIRUtils.getCodeableConcept(Constants.PREGNANCY_STATUS_CODE, Constants.LOINC_SYSTEM, name, name);
+		case "menstrual cycle":
+			return FHIRUtils.getCodeableConcept(Constants.MENSTRUAL_CYCLE_CODE, Constants.LOINC_SYSTEM, name, name);
+		case "obstetric history":
+			return FHIRUtils.getCodeableConcept(Constants.OBSTETRIC_HISTORY_CODE, Constants.LOINC_SYSTEM, name, name);
+		case "breast health":
+			return FHIRUtils.getCodeableConcept(Constants.BREAST_HEALTH_CODE, Constants.LOINC_SYSTEM, name, name);
+		default:
+			return null;
+		}
 	}
 
 	protected CodeableConcept getObservationCode() {

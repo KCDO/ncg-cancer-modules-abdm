@@ -1,0 +1,1121 @@
+{
+  "resourceType": "Bundle",
+  "id": "OpConsultRecord-8e91838b-f159-4a62-89ef-4b12d60e8bc1",
+  "meta": {
+    "versionId": "0",
+    "lastUpdated": "2024-05-06T12:37:39.609+05:30",
+    "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle" ]
+  },
+  "identifier": {
+    "system": "http://hip.in",
+    "value": "OpConsultRecord-8e91838b-f159-4a62-89ef-4b12d60e8bc1"
+  },
+  "type": "document",
+  "timestamp": "2024-05-06T12:37:39.609+05:30",
+  "entry": [ {
+    "fullUrl": "Composition/7a9b1e11-3ae8-4444-a4f4-4ecef97ac03a",
+    "resource": {
+      "resourceType": "Composition",
+      "id": "7a9b1e11-3ae8-4444-a4f4-4ecef97ac03a",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-05-06T12:37:39.609+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord" ]
+      },
+      "language": "en-IN",
+      "identifier": {
+        "system": "https://ndhm.in/phr",
+        "value": "7a9b1e11-3ae8-4444-a4f4-4ecef97ac03a"
+      },
+      "status": "final",
+      "type": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "371530004",
+          "display": "Clinical consultation report"
+        } ],
+        "text": "Clinical consultation report"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "date": "2024-05-06T12:37:39+05:30",
+      "title": "OP Consultation Record",
+      "section": [ {
+        "title": "Co-Morbidities",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "38341003",
+            "display": "hypertension"
+          } ]
+        },
+        "entry": [ {
+          "reference": "Condition/4f84f997-f3b9-4638-896b-21b32dd3f9c8"
+        } ]
+      }, {
+        "title": "Co-Morbidities",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "hypertension",
+            "display": "Co-Morbidities section"
+          } ],
+          "text": "Co-Morbidities section"
+        }
+      }, {
+        "title": "Co-Morbidities",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "53741008",
+            "display": "Coronary Artery Disease"
+          } ]
+        },
+        "entry": [ {
+          "reference": "Condition/a8231b84-161c-4155-b721-4a001914b1fa"
+        } ]
+      }, {
+        "title": "Observation Women Health",
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82810-3",
+            "display": "Pregnancy status"
+          } ],
+          "text": "Pregnancy status"
+        },
+        "entry": [ {
+          "reference": "Observation/56e4abca-87dd-4997-b88d-8add6899b488"
+        } ]
+      }, {
+        "title": "Observation Women Health",
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "83318-7",
+            "display": "Menstrual cycle"
+          } ],
+          "text": "Menstrual cycle"
+        },
+        "entry": [ {
+          "reference": "Observation/7d5bcaa3-2598-4148-9260-4723e4027a54"
+        } ]
+      }, {
+        "title": "Observation Women Health",
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "Menstrual cycle",
+            "display": "Observation Women Health section"
+          } ],
+          "text": "Observation Women Health section"
+        }
+      }, {
+        "title": "Diagnostic Reports",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "721981007",
+            "display": "Diagnostic Report"
+          } ],
+          "text": "Diagnostic Report"
+        },
+        "entry": [ {
+          "reference": "DiagnosticReport/65f5aed4-13a4-475b-850c-00a77bd0a58f"
+        }, {
+          "reference": "DiagnosticReport/8259288e-eaa6-423a-a88c-864b73d252a3"
+        }, {
+          "reference": "DiagnosticReport/0d88017b-bbf1-4d0c-90ab-aab9498cdaa1"
+        } ]
+      }, {
+        "title": "Medical History",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "422843007",
+            "display": "Medical History section"
+          } ],
+          "text": "Medical History section"
+        },
+        "entry": [ {
+          "reference": "Condition/02a9c52c-1f81-412c-8fcc-fc357ba7c1d1"
+        }, {
+          "reference": "DiagnosticReport/b8aa02cc-7987-43c0-b4d3-b0315c7962e1"
+        }, {
+          "reference": "DiagnosticReport/30f2ac93-eb42-4094-b32b-1f96b5522b71"
+        } ]
+      }, {
+        "title": "Medical History",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "422843007",
+            "display": "Medical History section"
+          } ],
+          "text": "Medical History section"
+        },
+        "entry": [ {
+          "reference": "Condition/d30d9f52-b274-4ffb-80c7-c89142b07789"
+        }, {
+          "reference": "DiagnosticReport/07ed74ae-e00e-47d3-8bac-734f0b7db2a2"
+        }, {
+          "reference": "DiagnosticReport/21e0d347-566a-4d95-a845-96b51cec9f28"
+        }, {
+          "reference": "DiagnosticReport/58796e2e-401b-4d1b-bd5f-3a027123d9a3"
+        }, {
+          "reference": "DiagnosticReport/a59ff069-9a05-4a1e-bbf8-299b49ba2552"
+        }, {
+          "reference": "DiagnosticReport/231fa040-ad86-4d14-a6b5-9ca034db99ac"
+        }, {
+          "reference": "DiagnosticReport/a8fb6766-26ed-4e84-bdba-23bf650a5a99"
+        }, {
+          "reference": "DiagnosticReport/bd7a38ab-e547-41a6-9170-569ff0a44448"
+        }, {
+          "reference": "DiagnosticReport/c56fc6f5-dc03-49c1-bd4a-daa593e09ef9"
+        } ]
+      }, {
+        "title": "Allergy Intolerance section",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "235719002",
+            "display": "Allergy Intolerance section"
+          } ],
+          "text": "Allergy Intolerance section"
+        },
+        "entry": [ {
+          "reference": "Condition/34a1c063-ff24-4c35-a029-8054627e5409"
+        } ]
+      }, {
+        "title": "Allergy Intolerance section",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "235719002",
+            "display": "Allergy Intolerance section"
+          } ],
+          "text": "Allergy Intolerance section"
+        },
+        "entry": [ {
+          "reference": "Condition/08405a32-fcaa-4013-aefb-daca3465fd6b"
+        } ]
+      } ]
+    }
+  }, {
+    "fullUrl": "Observation/a2ce1f38-aede-4584-8e33-4882c3bbab80",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "a2ce1f38-aede-4584-8e33-4882c3bbab80",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "882-1",
+          "display": "Blood group"
+        } ]
+      },
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "365637002",
+          "display": "A+"
+        } ],
+        "text": "A+"
+      }
+    }
+  }, {
+    "fullUrl": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "b342eff2-79f7-46dc-b7bf-f01cf4e5da72",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-05-06T12:37:39.730+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient" ]
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-height",
+        "valueQuantity": {
+          "value": 160.0,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        }
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-weight",
+        "valueQuantity": {
+          "value": 62.0,
+          "unit": "kg"
+        }
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-bmi",
+        "valueQuantity": {
+          "value": 24.218749999999996,
+          "unit": "kg/m2"
+        }
+      }, {
+        "url": "http://example.com/fhir/StructureDefinition/patient-blood-group",
+        "valueReference": {
+          "reference": "Observation/a2ce1f38-aede-4584-8e33-4882c3bbab80"
+        }
+      } ],
+      "identifier": [ {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical record number"
+          } ],
+          "text": "Medical record number"
+        },
+        "system": "NCG",
+        "value": "123"
+      } ],
+      "name": [ {
+        "text": "Testing POC 1",
+        "given": [ "Testing POC" ]
+      } ],
+      "gender": "male",
+      "birthDate": "1999-08-14",
+      "address": [ {
+        "type": "both",
+        "text": "House Name: 123",
+        "city": "Mrj",
+        "district": "xyz",
+        "state": "UP",
+        "postalCode": "123456",
+        "country": "India"
+      } ]
+    }
+  }, {
+    "fullUrl": "Condition/4f84f997-f3b9-4638-896b-21b32dd3f9c8",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "4f84f997-f3b9-4638-896b-21b32dd3f9c8",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-05-06T12:37:39.734+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition</b><a name=\"example-02\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Condition &quot;example-02&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-Condition.html\">Condition</a></p></div><p><b>code</b>: Type 2 diabetes mellitus <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#44054006)</span></p><p><b>subject</b>: <a href=\"Patient-example-01.html\">Patient/example-01</a> &quot;&quot;</p><p><b>recorder</b>: <a href=\"Practitioner-example-01.html\">Practitioner/example-01</a> &quot;&quot;</p></div>"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "38341003",
+          "display": "hypertension"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "recorder": {
+        "reference": "Practitioner/b062b63c-b680-4430-9860-b27fbe108ed7"
+      }
+    }
+  }, {
+    "fullUrl": "Condition/a8231b84-161c-4155-b721-4a001914b1fa",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "a8231b84-161c-4155-b721-4a001914b1fa",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-05-06T12:37:39.775+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition</b><a name=\"example-02\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Condition &quot;example-02&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-Condition.html\">Condition</a></p></div><p><b>code</b>: Type 2 diabetes mellitus <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#44054006)</span></p><p><b>subject</b>: <a href=\"Patient-example-01.html\">Patient/example-01</a> &quot;&quot;</p><p><b>recorder</b>: <a href=\"Practitioner-example-01.html\">Practitioner/example-01</a> &quot;&quot;</p></div>"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "53741008",
+          "display": "Coronary Artery Disease"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "recorder": {
+        "reference": "Practitioner/f1ebbc20-f95b-4a92-a480-f73009511eee"
+      }
+    }
+  }, {
+    "fullUrl": "Observation/56e4abca-87dd-4997-b88d-8add6899b488",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "56e4abca-87dd-4997-b88d-8add6899b488",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-05-06T12:37:39.777+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
+      },
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "82810-3",
+          "display": "Pregnancy status"
+        } ],
+        "text": "Pregnancy status"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "effectiveDateTime": "2024-05-06T12:37:39+05:30",
+      "performer": [ {
+        "reference": "Practitioner/938d0789-1c7f-4536-90cb-86f1d6597678"
+      } ],
+      "valueString": "Not pregnant"
+    }
+  }, {
+    "fullUrl": "Observation/7d5bcaa3-2598-4148-9260-4723e4027a54",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "7d5bcaa3-2598-4148-9260-4723e4027a54",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-05-06T12:37:39.779+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
+      },
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "83318-7",
+          "display": "Menstrual cycle"
+        } ],
+        "text": "Menstrual cycle"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "effectiveDateTime": "2024-05-06T12:37:39+05:30",
+      "performer": [ {
+        "reference": "Practitioner/43a15351-a3a7-4ff4-8b6a-efe41cec6d72"
+      } ],
+      "valueString": "Regular"
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/65f5aed4-13a4-475b-850c-00a77bd0a58f",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "65f5aed4-13a4-475b-850c-00a77bd0a58f",
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "43789009",
+          "display": "CBC"
+        } ],
+        "text": "CBC"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72",
+        "display": "Testing POC"
+      },
+      "issued": "2024-05-06T12:37:39.779+05:30",
+      "result": [ {
+        "reference": "Observation/69aa97af-27a2-46d8-b203-7fe783cef8f2"
+      } ]
+    }
+  }, {
+    "fullUrl": "Observation/69aa97af-27a2-46d8-b203-7fe783cef8f2",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "69aa97af-27a2-46d8-b203-7fe783cef8f2",
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "718-7",
+          "display": "Hemoglobin"
+        } ],
+        "text": "Hemoglobin"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "effectiveDateTime": "2024-05-06T12:37:39+05:30",
+      "valueQuantity": {
+        "value": 4.5,
+        "unit": "g/dL"
+      }
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/8259288e-eaa6-423a-a88c-864b73d252a3",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "8259288e-eaa6-423a-a88c-864b73d252a3",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "Biopsy Histopathology report"
+          } ],
+          "text": "Biopsy Histopathology report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "Biopsy Histopathology"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "4241000179101",
+          "display": "Biopsy Histopathology Report"
+        } ],
+        "text": "Biopsy Histopathology Report"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "issued": "2024-05-06T12:37:39.779+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/0d88017b-bbf1-4d0c-90ab-aab9498cdaa1",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "0d88017b-bbf1-4d0c-90ab-aab9498cdaa1",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "Lipid profile report"
+          } ],
+          "text": "Lipid profile report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "Lipid profile"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "4241000179101",
+          "display": "Bio Chemistry"
+        } ],
+        "text": "Bio Chemistry"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72",
+        "display": "Testing POC"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "Condition/02a9c52c-1f81-412c-8fcc-fc357ba7c1d1",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "02a9c52c-1f81-412c-8fcc-fc357ba7c1d1",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-05-06T12:37:39.810+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active",
+          "display": "active"
+        } ],
+        "text": "Active"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "54014-2",
+          "display": "Oral Cancer"
+        } ],
+        "text": "Oral Cancer"
+      }
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/b8aa02cc-7987-43c0-b4d3-b0315c7962e1",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "b8aa02cc-7987-43c0-b4d3-b0315c7962e1",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "FNAC report report"
+          } ],
+          "text": "FNAC report report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "FNAC report report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "87179-8",
+          "display": "FNAC report"
+        } ],
+        "text": "FNAC report"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/30f2ac93-eb42-4094-b32b-1f96b5522b71",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "30f2ac93-eb42-4094-b32b-1f96b5522b71",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "CECT head neck thorax report/ PET Ct/ MRI report"
+          } ],
+          "text": "CECT head neck thorax report/ PET Ct/ MRI report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "CECT head neck thorax report/ PET Ct/ MRI report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "24627-2",
+          "display": "CECT head neck thorax report/ PET Ct/ MRI"
+        } ],
+        "text": "CECT head neck thorax report/ PET Ct/ MRI"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72",
+        "display": "Testing POC"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "Condition/d30d9f52-b274-4ffb-80c7-c89142b07789",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "d30d9f52-b274-4ffb-80c7-c89142b07789",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-05-06T12:37:39.810+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active",
+          "display": "active"
+        } ],
+        "text": "Active"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "59015-0",
+          "display": "Lung Cancer"
+        } ],
+        "text": "Lung Cancer"
+      }
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/07ed74ae-e00e-47d3-8bac-734f0b7db2a2",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "07ed74ae-e00e-47d3-8bac-734f0b7db2a2",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "MRI brain report"
+          } ],
+          "text": "MRI brain report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "MRI brain report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "24590-2",
+          "display": "MRI brain"
+        } ],
+        "text": "MRI brain"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/21e0d347-566a-4d95-a845-96b51cec9f28",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "21e0d347-566a-4d95-a845-96b51cec9f28",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "Endobronchial ultrasound with ROSE reports report"
+          } ],
+          "text": "Endobronchial ultrasound with ROSE reports report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "Endobronchial ultrasound with ROSE reports report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "100231-0",
+          "display": "Endobronchial ultrasound with ROSE reports"
+        } ],
+        "text": "Endobronchial ultrasound with ROSE reports"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/58796e2e-401b-4d1b-bd5f-3a027123d9a3",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "58796e2e-401b-4d1b-bd5f-3a027123d9a3",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "Fiber optic bronchoscopy report"
+          } ],
+          "text": "Fiber optic bronchoscopy report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "Fiber optic bronchoscopy report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "18744-3",
+          "display": "Fiber optic bronchoscopy"
+        } ],
+        "text": "Fiber optic bronchoscopy"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72",
+        "display": "Testing POC"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/a59ff069-9a05-4a1e-bbf8-299b49ba2552",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "a59ff069-9a05-4a1e-bbf8-299b49ba2552",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "2 D ECHO with PASP report"
+          } ],
+          "text": "2 D ECHO with PASP report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "2 D ECHO with PASP report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "34552-0",
+          "display": "2 D ECHO with PASP"
+        } ],
+        "text": "2 D ECHO with PASP"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/231fa040-ad86-4d14-a6b5-9ca034db99ac",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "231fa040-ad86-4d14-a6b5-9ca034db99ac",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "FDG PETCT report"
+          } ],
+          "text": "FDG PETCT report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "FDG PETCT report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "81553-0",
+          "display": "FDG PETCT"
+        } ],
+        "text": "FDG PETCT"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/a8fb6766-26ed-4e84-bdba-23bf650a5a99",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "a8fb6766-26ed-4e84-bdba-23bf650a5a99",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "Pulmonary function tests with DLCO report"
+          } ],
+          "text": "Pulmonary function tests with DLCO report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "Pulmonary function tests with DLCO report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "58477-1",
+          "display": "Pulmonary function tests with DLCO"
+        } ],
+        "text": "Pulmonary function tests with DLCO"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/bd7a38ab-e547-41a6-9170-569ff0a44448",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "bd7a38ab-e547-41a6-9170-569ff0a44448",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "V/Q scan in pneumonectomy report"
+          } ],
+          "text": "V/Q scan in pneumonectomy report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "V/Q scan in pneumonectomy report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "39942-8",
+          "display": "V/Q scan in pneumonectomy"
+        } ],
+        "text": "V/Q scan in pneumonectomy"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "DiagnosticReport/c56fc6f5-dc03-49c1-bd4a-daa593e09ef9",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "c56fc6f5-dc03-49c1-bd4a-daa593e09ef9",
+      "contained": [ {
+        "resourceType": "DocumentReference",
+        "id": "1",
+        "status": "current",
+        "type": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "display": "6MWT report"
+          } ],
+          "text": "6MWT report"
+        },
+        "subject": {
+          "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72"
+        },
+        "content": [ {
+          "attachment": {
+            "contentType": "application/pdf",
+            "data": "bWttaw==",
+            "title": "6MWT report"
+          }
+        } ]
+      } ],
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "64098-7",
+          "display": "6MWT"
+        } ],
+        "text": "6MWT"
+      },
+      "subject": {
+        "reference": "Patient/b342eff2-79f7-46dc-b7bf-f01cf4e5da72",
+        "display": "Testing POC"
+      },
+      "issued": "2024-05-06T12:37:39.810+05:30",
+      "result": [ {
+        "reference": "#1"
+      } ]
+    }
+  }, {
+    "fullUrl": "AllergyIntolerance/be7a79fe-88da-43f7-a0b9-55cc17c1f2f6",
+    "resource": {
+      "resourceType": "AllergyIntolerance",
+      "id": "be7a79fe-88da-43f7-a0b9-55cc17c1f2f6",
+      "meta": {
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>groundnut</p><p>recordedDate:2015-08-06</p></div>"
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+          "display": "active"
+        } ],
+        "text": "Active"
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+          "display": "confirmed"
+        } ],
+        "text": "Confirmed"
+      },
+      "patient": {
+        "reference": "[org.hl7.fhir.r4.model.HumanName@318a1e2f]"
+      },
+      "recordedDate": "2024-05-06T12:37:39+05:30",
+      "recorder": {
+        "reference": "5303e6a1-ab38-4c8c-93f5-2e76cec8a654"
+      },
+      "note": [ {
+        "text": "The patient reports of: groundnut allergy which is of type: food"
+      } ]
+    }
+  }, {
+    "fullUrl": "AllergyIntolerance/64993a59-a944-41fd-8660-d1add6f7b1ba",
+    "resource": {
+      "resourceType": "AllergyIntolerance",
+      "id": "64993a59-a944-41fd-8660-d1add6f7b1ba",
+      "meta": {
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>dust</p><p>recordedDate:2015-08-06</p></div>"
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+          "display": "active"
+        } ],
+        "text": "Active"
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+          "display": "confirmed"
+        } ],
+        "text": "Confirmed"
+      },
+      "patient": {
+        "reference": "[org.hl7.fhir.r4.model.HumanName@318a1e2f]"
+      },
+      "recordedDate": "2024-05-06T12:37:39+05:30",
+      "recorder": {
+        "reference": "101e49b3-9251-4f1b-a130-3d279480feb5"
+      },
+      "note": [ {
+        "text": "The patient reports of: dust allergy which is of type: environmental"
+      } ]
+    }
+  } ]
+}
