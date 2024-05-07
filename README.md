@@ -1,8 +1,7 @@
 # Cancer modules Abdm Profile Generator
 
 ## Intention
-provide useful utilities like fhir data generator and validation
-provide example code snippets
+Provide useful utilities like fhir data generator and validation.
 
 ## Before you begin, ensure you have met the following requirements:
 
