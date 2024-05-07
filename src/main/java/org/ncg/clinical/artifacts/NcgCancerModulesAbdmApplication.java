@@ -1,4 +1,4 @@
-package com.karkinos.clinical.artifacts;
+package org.ncg.clinical.artifacts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

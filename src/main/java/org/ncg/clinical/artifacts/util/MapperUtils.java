@@ -1,14 +1,14 @@
-package com.karkinos.clinical.artifacts.util;
+package org.ncg.clinical.artifacts.util;
 
 import java.io.File;
 import java.io.IOException;
 
+import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.karkinos.clinical.artifacts.vo.ClinicalData;
 
 /**
  * All mappings are handled by this class.

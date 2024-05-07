@@ -1,4 +1,4 @@
-package com.karkinos.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Allergy {
-	private String name;
-	private String type;
+public class Diagnostic {
+	private CBC cbc;
+	private BioChemistry bioChemistry;
+	private String biopsyHistopathologyReport;
 }

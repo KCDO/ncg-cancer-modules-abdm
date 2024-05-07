@@ -1,7 +1,9 @@
-package com.karkinos.clinical.artifacts.controller;
+package org.ncg.clinical.artifacts.controller;
 
 import javax.validation.Valid;
 
+import org.ncg.clinical.artifacts.service.ClinicalDataService;
+import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +11,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.karkinos.clinical.artifacts.service.ClinicalDataService;
-import com.karkinos.clinical.artifacts.vo.ClinicalData;
 
 /**
  * This class provides the business logic related to the OPConsultation.

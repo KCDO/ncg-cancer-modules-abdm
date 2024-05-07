@@ -1,6 +1,6 @@
-package com.karkinos.clinical.artifacts.service;
+package org.ncg.clinical.artifacts.service;
 
-import com.karkinos.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.vo.ClinicalData;
 
 /**
  * This interface exposes the endpoints related to the fhir clinical resource.

@@ -1,10 +1,9 @@
-package com.karkinos.clinical.artifacts.controller;
+package org.ncg.clinical.artifacts.controller;
 
 import javax.validation.Valid;
 
+import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.springframework.http.ResponseEntity;
-
-import com.karkinos.clinical.artifacts.vo.ClinicalData;
 
 /**
  * This interface exposes the endpoints related to the fhir clinical resource.

@@ -1,4 +1,4 @@
-package com.karkinos.clinical.artifacts.util;
+package org.ncg.clinical.artifacts.util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,13 +26,12 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Type;
+import org.ncg.clinical.artifacts.vo.AllergyIntoleranceRequest;
+import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.vo.CoMorbidity;
+import org.ncg.clinical.artifacts.vo.Diagnostic;
+import org.ncg.clinical.artifacts.vo.ObservationWomenHealth;
 import org.springframework.stereotype.Service;
-
-import com.karkinos.clinical.artifacts.vo.AllergyIntoleranceRequest;
-import com.karkinos.clinical.artifacts.vo.ClinicalData;
-import com.karkinos.clinical.artifacts.vo.CoMorbidity;
-import com.karkinos.clinical.artifacts.vo.Diagnostic;
-import com.karkinos.clinical.artifacts.vo.ObservationWomenHealth;
 
 import ca.uhn.fhir.parser.IParser;
 import jakarta.annotation.PostConstruct;

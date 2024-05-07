@@ -1,6 +1,4 @@
-package com.karkinos.clinical.artifacts.vo;
-
-import java.util.List;
+package org.ncg.clinical.artifacts.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Clinical {
-	private List<Allergy> allergies;
+public class ObservationWomenHealth {
+	private String name;
+	private String value;
 }

@@ -1,15 +1,15 @@
-package com.karkinos.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
-@Builder
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AllergyIntoleranceRequest {
+public class Allergy {
 	private String name;
 	private String type;
 }

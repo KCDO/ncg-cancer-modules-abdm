@@ -1,11 +1,11 @@
-package com.karkinos.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo;
 
 import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.karkinos.clinical.artifacts.util.Constants;
+import org.ncg.clinical.artifacts.util.Constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

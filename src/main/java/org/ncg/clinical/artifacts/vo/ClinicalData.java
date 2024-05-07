@@ -1,4 +1,4 @@
-package com.karkinos.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo;
 
 import java.util.List;
 import java.util.Map;

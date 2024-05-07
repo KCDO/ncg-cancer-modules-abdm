@@ -1,4 +1,4 @@
-package com.karkinos.clinical.artifacts.util;
+package org.ncg.clinical.artifacts.util;
 
 public class Constants {
 	static final String HOSPITAL_SYSTEM = "http://hip.in";

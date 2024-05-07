@@ -1,4 +1,4 @@
-package com.karkinos.clinical.artifacts.util;
+package org.ncg.clinical.artifacts.util;
 
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -1,4 +1,4 @@
-package com.karkinos.clinical.artifacts.util;
+package org.ncg.clinical.artifacts.util;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -18,6 +18,8 @@ import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
+import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.vo.PatientData;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
@@ -28,9 +30,6 @@ import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
-
-import com.karkinos.clinical.artifacts.vo.ClinicalData;
-import com.karkinos.clinical.artifacts.vo.PatientData;
 
 public class FHIRUtils {
 
@@ -194,7 +193,7 @@ public class FHIRUtils {
 		return contactPoint;
 	}
 
-	private static Address getAddress(com.karkinos.clinical.artifacts.vo.Address patientAddress) {
+	private static Address getAddress(org.ncg.clinical.artifacts.vo.Address patientAddress) {
 		Address address = new Address();
 		address.setType(Address.AddressType.BOTH);// Set the address type as both postal and physical
 		address.setText("House Name: " + patientAddress.getHouseName()); // Set the complete address as
@@ -205,7 +204,7 @@ public class FHIRUtils {
 		return address;
 	}
 
-	private static void setAddressComponents(com.karkinos.clinical.artifacts.vo.Address patientAddress,
+	private static void setAddressComponents(org.ncg.clinical.artifacts.vo.Address patientAddress,
 			Address address) {
 		address.setCity(patientAddress.getCity());
 		address.setDistrict(patientAddress.getDistrict());
