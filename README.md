@@ -10,9 +10,9 @@ Maven 4.0.0
 ## Build
 To build the project, follow these steps:
 1. Clone the repository:
-git clone https://github.com/yourusername/yourproject.git
+git clone https://github.com/yourusername/KCDO/ncg-cancer-modules-abdm.git
 2. Navigate to the project directory:
-cd yourproject
+cd https://github.com/KCDO/ncg-cancer-modules-abdm.git
 3. Build the project using Maven:
 mvn clean install
 
