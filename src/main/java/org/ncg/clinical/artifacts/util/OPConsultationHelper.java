@@ -464,27 +464,27 @@ public class OPConsultationHelper {
 			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
 					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
 		}
-		if (testName.startsWith(Constants.TRIGLYCERIDES)) {
+		if (testName.equals(Constants.TRIGLYCERIDES)) {
 			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.TRIGLYCERIDE_LOINC_CODE,
 					Constants.LOINC_SYSTEM, Constants.TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA,
 					Constants.TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA);
 			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
 					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
 		}
-		if (testName.startsWith(Constants.TRIGLYCERIDES_FASTING)) {
+		if (testName.equals(Constants.TRIGLYCERIDES_FASTING)) {
 			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.TRIGLYCERIDE_FASTING_LOINC_CODE,
 					Constants.LOINC_SYSTEM, Constants.TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA_FASTING,
 					Constants.TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA_FASTING);
 			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
 					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
 		}
-		if (testName.startsWith(Constants.FASTING_DURATION.toLowerCase())) {
+		if (testName.equals(Constants.FASTING_DURATION.toLowerCase())) {
 			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.FASTING_DURATION_LOINC_CODE,
 					Constants.LOINC_SYSTEM, Constants.FASTING_DURATION, Constants.FASTING_DURATION);
 			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
 					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
 		}
-		if (testName.startsWith(Constants.FASTING_STATUS.toLowerCase())) {
+		if (testName.equals(Constants.FASTING_STATUS.toLowerCase())) {
 			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.FASTING_STATUS_LOINC_CODE,
 					Constants.LOINC_SYSTEM, Constants.FASTING_STATUS, Constants.FASTING_STATUS);
 			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
