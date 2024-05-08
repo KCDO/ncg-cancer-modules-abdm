@@ -9,7 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BioChemistry {
-	private LipidProfile lipidProfile;
-	private RenalFunction renalFunction;
+public class Test {
+	private String testName;
+	// private String testCode;
+	private String unitOfMeasurement;
+	private double result;
 }
