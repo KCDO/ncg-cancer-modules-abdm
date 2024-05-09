@@ -72,20 +72,10 @@ public class Constants {
 	public static final String ABHA = "ABHAAddress";
 	public static final String RENAL_TEST_LOINC_CODE = "LP31398-8";
 	public static final String RENAL_TEST = "Renal Test";
-	public static final String TRIGLYCERIDES_FASTING = "triglycerides fasting";
-	public static final String TRIGLYCERIDES = "triglycerides";
 	public static final String VLDL = "vldl";
 	public static final String LDL = "ldl";
 	public static final String HDL = "hdl";
 	public static final String TOTAL = "total";
-	public static final String CHOLESTEROL_TOTAL_CHOLESTEROL_IN_HDL_MASS_RATIO_IN_SERUM_OR_PLASMA = "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma";
-	public static final String CHOLESTEROL_IN_HDL_MASS_VOLUME_IN_SERUM_OR_PLASMA = "Cholesterol in HDL [Mass/volume] in Serum or Plasma";
-	public static final String CHOLESTEROL_IN_LDL_MASS_VOLUME_IN_SERUM_OR_PLASMA_BY_CALCULATION = "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation";
-	public static final String CHOLESTEROL_IN_VLDL_MASS_VOLUME_IN_SERUM_OR_PLASMA_BY_CALCULATION = "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation";
-	public static final String TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA = "Triglyceride [Mass/volume] in Serum or Plasma";
-	public static final String TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA_FASTING = "Triglyceride [Mass/volume] in Serum or Plasma --fasting";
-	public static final String FASTING_STATUS = "Fasting status";
-	public static final String FASTING_DURATION = "Fasting duration";
 	public static final String FASTING_STATUS_LOINC_CODE = "49541-6";
 	public static final String FASTING_DURATION_LOINC_CODE = "87527-8";
 	public static final String TRIGLYCERIDE_FASTING_LOINC_CODE = "3048-6";
@@ -100,4 +90,8 @@ public class Constants {
 	public static final String BIOPSY_HISTOPATHOLOGY = "Biopsy Histopathology";
 	public static final String BIOPSY_HISTOPATHOLOGY_SNOMED_CODE = "721967005";
 	public static final String BIOPSY_HISTOPATHOLOGY_REPORT = "Biopsy Histopathology Report";
+	public static final String DOCUMENT_REFERENCE = "DocumentReference/";
+	public static final String DIAGNOSTICREPORT = "DiagnosticReport";
+	public static final String URN_UUID = "urn:uuid:";
+	public static final String LIPID_PANEL_SERUM_OR_PLASMA = "Lipid panel - Serum or Plasma";
 }

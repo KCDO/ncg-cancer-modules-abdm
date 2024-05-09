@@ -2,6 +2,7 @@ package org.ncg.clinical.artifacts.util;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
 import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Attachment;
@@ -42,22 +44,40 @@ import jakarta.annotation.PostConstruct;
 @Service
 public class OPConsultationHelper {
 
-	private Map<String, String> indicatorLoincCodeMap = new HashMap<>();
+	public static Map<String, String> testWithLoincCodeMap = new HashMap<>();
+	public static Map<String, Pair<String, String>> loincCodeWithDescriptionMap = new HashMap<>();
 
 	@PostConstruct
 	public void init() throws Exception {
-		// Initialize the map in the constructor
-		indicatorLoincCodeMap.put("2 D ECHO with PASP".toLowerCase(), "34552-0");
-		indicatorLoincCodeMap.put("FDG PETCT".toLowerCase(), "81553-0");
-		indicatorLoincCodeMap.put("MRI brain".toLowerCase(), "24590-2");
-		indicatorLoincCodeMap.put("Fiber optic bronchoscopy".toLowerCase(), "18744-3");
-		indicatorLoincCodeMap.put("Endobronchial ultrasound with ROSE reports".toLowerCase(), "100231-0");
-		indicatorLoincCodeMap.put("Pulmonary function tests with DLCO".toLowerCase(), "58477-1");
-		indicatorLoincCodeMap.put("V/Q scan in pneumonectomy".toLowerCase(), "39942-8");
-		indicatorLoincCodeMap.put("6MWT".toLowerCase(), "64098-7");
-		indicatorLoincCodeMap.put("Molecular markers/NGS as needed".toLowerCase(), "73977-1");
-		indicatorLoincCodeMap.put("FNAC report".toLowerCase(), "87179-8");
-		indicatorLoincCodeMap.put("CECT head neck thorax report/ PET Ct/ MRI".toLowerCase(), "24627-2");
+		testWithLoincCodeMap.put("2 D ECHO with PASP".toLowerCase(), "34552-0");
+		testWithLoincCodeMap.put("FDG PETCT".toLowerCase(), "81553-0");
+		testWithLoincCodeMap.put("MRI brain".toLowerCase(), "24590-2");
+		testWithLoincCodeMap.put("Fiber optic bronchoscopy".toLowerCase(), "18744-3");
+		testWithLoincCodeMap.put("Endobronchial ultrasound with ROSE reports".toLowerCase(), "100231-0");
+		testWithLoincCodeMap.put("Pulmonary function tests with DLCO".toLowerCase(), "58477-1");
+		testWithLoincCodeMap.put("V/Q scan in pneumonectomy".toLowerCase(), "39942-8");
+		testWithLoincCodeMap.put("6MWT".toLowerCase(), "64098-7");
+		testWithLoincCodeMap.put("Molecular markers/NGS as needed".toLowerCase(), "73977-1");
+		testWithLoincCodeMap.put("FNAC report".toLowerCase(), "87179-8");
+		testWithLoincCodeMap.put("CECT head neck thorax report/ PET Ct/ MRI".toLowerCase(), "24627-2");
+
+		// lipid profile
+		loincCodeWithDescriptionMap.put("lipid panel", Pair.of("100898-6", "Lipid panel - Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("total cholesterol",
+				Pair.of("9830-1", "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("hdl cholesterol",
+				Pair.of("2085-9", "Cholesterol in HDL [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("ldl cholesterol",
+				Pair.of("13457-7", "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"));
+		loincCodeWithDescriptionMap.put("vldl cholesterol",
+				Pair.of("13458-5", "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"));
+		loincCodeWithDescriptionMap.put("triglycerides",
+				Pair.of("2571-8", "Triglyceride [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("triglycerides fasting",
+				Pair.of("3048-6", "Triglyceride [Mass/volume] in Serum or Plasma --fasting"));
+		loincCodeWithDescriptionMap.put("fasting duration", Pair.of("87527-8", "Fasting status"));
+		loincCodeWithDescriptionMap.put("fasting status", Pair.of("49541-6", "Fasting duration"));
+
 	}
 
 	public Bundle createOPConsultationBundle(Date docDate, String clinicalArtifactsType, String hipPrefix,
@@ -274,7 +294,7 @@ public class OPConsultationHelper {
 		case "6mwt":
 		case "molecular markers/nsg as needed":
 			return createDiagnosticReport(bundle, patient, lungCancerDetail.getKey(), lungCancerDetail.getValue(),
-					indicatorLoincCodeMap, lungCancerIndicator);
+					testWithLoincCodeMap, lungCancerIndicator);
 		default:
 			return null;
 		}
@@ -287,7 +307,7 @@ public class OPConsultationHelper {
 		case "fnac report":
 		case "cect head neck thorax report/ pet ct/ mri":
 			return createDiagnosticReport(bundle, patient, oralCancerDetail.getKey(), oralCancerDetail.getValue(),
-					indicatorLoincCodeMap, oralCancerIndicator);
+					testWithLoincCodeMap, oralCancerIndicator);
 		default:
 			return null;
 		}
@@ -302,12 +322,13 @@ public class OPConsultationHelper {
 			code = FHIRUtils.getCodeableConcept(indicatorLoincCodeMap.get(lungCancerIndicator), Constants.LOINC_SYSTEM,
 					reportType, reportType);
 		}
+
 		// Create a new DiagnosticReport resource
-		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code);
+		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, null);
 
 		// Create a new DocumentReference resource
 		DocumentReference documentReference = createDocumentReferenceResource(reportType, reportValue, patient,
-				reportType + " report");
+				reportType + " report", testWithLoincCodeMap.get(reportType));
 
 		report.addResult(FHIRUtils.getReferenceToResource(documentReference));
 
@@ -352,61 +373,88 @@ public class OPConsultationHelper {
 		Composition.SectionComponent diagnosticReportSection = createSectionComponent(Constants.DIAGNOSTIC_REPORTS,
 				diagnosticReportCode);
 
-		if (Objects.nonNull(diagnostic.getCbc()) && Objects.nonNull(diagnostic.getCbc().getHemoglobin())) {
-			// Create a new DiagnosticReport resource
-			CodeableConcept codeCBC = FHIRUtils.getCodeableConcept(Constants.DR_CBC_SNOMED_CODE,
-					Constants.SNOMED_SYSTEM_SCT, Constants.DR_CBC, Constants.DR_CBC);
+		if (Objects.nonNull(diagnostic.getCbc())) {
+			if (Objects.nonNull(diagnostic.getCbc().getHemoglobin())) {
+				// Create a new DiagnosticReport resource
+				CodeableConcept category = FHIRUtils.getCodeableConcept(Constants.DR_CBC_SNOMED_CODE,
+						Constants.SNOMED_SYSTEM_SCT, Constants.DR_CBC, Constants.DR_CBC);
+				CodeableConcept haemoglobinCode = FHIRUtils.getCodeableConcept(Constants.DR_HAEMOGLOBIN_CODE,
+						Constants.LOINC_SYSTEM, Constants.DR_HAEMOGLOBIN, Constants.DR_HAEMOGLOBIN);
+				DiagnosticReport report = createDiagnosticReportResource(bundle, patient, haemoglobinCode,
+						Arrays.asList(category));
 
-			// Create an Observation for haemoglobin
-			CodeableConcept haemoglobinCode = FHIRUtils.getCodeableConcept(Constants.DR_HAEMOGLOBIN_CODE,
-					Constants.LOINC_SYSTEM, Constants.DR_HAEMOGLOBIN, Constants.DR_HAEMOGLOBIN);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					codeCBC, Constants.GRAM_PER_DECILITER, diagnostic.getCbc().getHemoglobin(), haemoglobinCode);
+				// make entry for report
+				Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+				entryReference.setType(Constants.DIAGNOSTICREPORT);
+				diagnosticReportSection.getEntry().add(entryReference);
+
+				// Create an Observation for haemoglobin
+				addObservationToDiagnosticReport(bundle, composition, patient, diagnosticReportSection,
+						Constants.GRAM_PER_DECILITER, diagnostic.getCbc().getHemoglobin(), haemoglobinCode, report);
+			}
 		}
 
 		if (Objects.nonNull(diagnostic.getBiopsyHistopathologyReport())) {
 			// Create a new DiagnosticReport resource
+			CodeableConcept category = FHIRUtils.getCodeableConcept(Constants.BIOPSY_HISTOPATHOLOGY_SNOMED_CODE,
+					Constants.SNOMED_SYSTEM_SCT, Constants.BIOPSY_HISTOPATHOLOGY_REPORT,
+					Constants.BIOPSY_HISTOPATHOLOGY_REPORT);
 			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.BIOPSY_HISTOPATHOLOGY_SNOMED_CODE,
 					Constants.SNOMED_SYSTEM_SCT, Constants.BIOPSY_HISTOPATHOLOGY_REPORT,
 					Constants.BIOPSY_HISTOPATHOLOGY_REPORT);
-			// Create a new DiagnosticReport resource
-			DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code);
+			DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, Arrays.asList(category));
+
+			// make entry for report
+			Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+			entryReference.setType(Constants.DIAGNOSTICREPORT);
+			diagnosticReportSection.getEntry().add(entryReference);
 
 			// Create a new DocumentReference resource
 			DocumentReference documentReference = createDocumentReferenceResource(Constants.BIOPSY_HISTOPATHOLOGY,
-					diagnostic.getBiopsyHistopathologyReport(), patient, Constants.BIOPSY_HISTOPATHOLOGY);
+					diagnostic.getBiopsyHistopathologyReport(), patient, Constants.BIOPSY_HISTOPATHOLOGY,
+					Constants.BIOPSY_HISTOPATHOLOGY_SNOMED_CODE);
 
 			report.addResult(FHIRUtils.getReferenceToResource(documentReference));
-
-			diagnosticReportSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
 		}
 
 		if (Objects.nonNull(diagnostic.getBioChemistry())) {
+			CodeableConcept category = FHIRUtils.getCodeableConcept(Constants.BIO_CHEMISTRY_SNOMED_CODE,
+					Constants.SNOMED_SYSTEM_SCT, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
 			if (Objects.nonNull(diagnostic.getBioChemistry().getLipidProfile())) {
+				// Create a new DiagnosticReport resource
+				Pair<String, String> pair = null;
+				if (loincCodeWithDescriptionMap.containsKey("lipid panel")) {
+					pair = loincCodeWithDescriptionMap.get("lipid panel");
+				}
+				CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
+						pair.getRight(), pair.getRight());
+				DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
+						Arrays.asList(category));
+
 				if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getLipidProfile().getAttachment())) {
-					// Create a new DiagnosticReport resource
-					CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.BIO_CHEMISTRY_SNOMED_CODE,
-							Constants.SNOMED_SYSTEM_SCT, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
-					// Create a new DiagnosticReport resource
-					DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code);
-
 					// Create a new DocumentReference resource
-					DocumentReference documentReference = createDocumentReferenceResource(Constants.LIPID_PROFILE,
-							diagnostic.getBioChemistry().getLipidProfile().getAttachment(), patient,
-							Constants.LIPID_PROFILE);
+					DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
+							diagnostic.getBioChemistry().getLipidProfile().getAttachment(), patient, pair.getRight(),
+							pair.getLeft());
 
-					report.addResult(FHIRUtils.getReferenceToResource(documentReference));
+					// Add documentReference to the DiagnosticReport
+					Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
+					resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
+					report.addResult(resultReference);
 
-					diagnosticReportSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
-				} else {
-					if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getLipidProfile().getLipidTests())) {
-						for (Test lipidTest : diagnostic.getBioChemistry().getLipidProfile().getLipidTests()) {
-							String testName = lipidTest.getTestName().toLowerCase();
-							createLipidProfileObservation(bundle, composition, diagnostic, patient,
-									diagnosticReportSection, lipidTest, testName);
-						}
+					// Add documentReference to the bundle
+					FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+				}
+				if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getLipidProfile().getLipidTests())) {
+					for (Test lipidTest : diagnostic.getBioChemistry().getLipidProfile().getLipidTests()) {
+						createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection, lipidTest,
+								report);
 					}
 				}
+				// make entry for report
+				Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+				entryReference.setType(Constants.DIAGNOSTICREPORT);
+				diagnosticReportSection.getEntry().add(entryReference);
 			}
 
 			if (Objects.nonNull(diagnostic.getBioChemistry().getRenalFunction())) {
@@ -415,17 +463,20 @@ public class OPConsultationHelper {
 					CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.RENAL_TEST_LOINC_CODE,
 							Constants.LOINC_SYSTEM, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
 					// Create a new DiagnosticReport resource
-					DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code);
+					DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
+							Arrays.asList(category));
+
+					// make entry for report
+					Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+					entryReference.setType(Constants.DIAGNOSTICREPORT);
+					diagnosticReportSection.getEntry().add(entryReference);
 
 					// Create a new DocumentReference resource
 					DocumentReference documentReference = createDocumentReferenceResource(Constants.RENAL_TEST,
 							diagnostic.getBioChemistry().getRenalFunction().getAttachment(), patient,
-							Constants.RENAL_TEST);
+							Constants.RENAL_TEST, Constants.RENAL_TEST_LOINC_CODE);
 
 					report.addResult(FHIRUtils.getReferenceToResource(documentReference));
-
-					diagnosticReportSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
-				} else {
 				}
 			}
 		}
@@ -433,81 +484,33 @@ public class OPConsultationHelper {
 		return diagnosticReportSection;
 	}
 
-	private void createLipidProfileObservation(Bundle bundle, Composition composition, Diagnostic diagnostic,
-			Patient patient, Composition.SectionComponent diagnosticReportSection, Test lipidTest, String testName) {
-		if (testName.startsWith(Constants.TOTAL)) {
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.CHOLESTEROL_TOTAL_LOINC_CODE,
-					Constants.LOINC_SYSTEM,
-					Constants.CHOLESTEROL_TOTAL_CHOLESTEROL_IN_HDL_MASS_RATIO_IN_SERUM_OR_PLASMA,
-					Constants.CHOLESTEROL_TOTAL_CHOLESTEROL_IN_HDL_MASS_RATIO_IN_SERUM_OR_PLASMA);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
-		}
-		if (testName.startsWith(Constants.HDL)) {
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.CHOLESTEROL_HDL_LOINC_CODE,
-					Constants.LOINC_SYSTEM, Constants.CHOLESTEROL_IN_HDL_MASS_VOLUME_IN_SERUM_OR_PLASMA,
-					Constants.CHOLESTEROL_IN_HDL_MASS_VOLUME_IN_SERUM_OR_PLASMA);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
-		}
-		if (testName.startsWith(Constants.LDL)) {
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.CHOLESTEROL_LDL_LOINC_CODE,
-					Constants.LOINC_SYSTEM, Constants.CHOLESTEROL_IN_LDL_MASS_VOLUME_IN_SERUM_OR_PLASMA_BY_CALCULATION,
-					Constants.CHOLESTEROL_IN_LDL_MASS_VOLUME_IN_SERUM_OR_PLASMA_BY_CALCULATION);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
-		}
-		if (testName.startsWith(Constants.VLDL)) {
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.CHOLESTEROL_VLDL_LOINC_CODE,
-					Constants.LOINC_SYSTEM, Constants.CHOLESTEROL_IN_VLDL_MASS_VOLUME_IN_SERUM_OR_PLASMA_BY_CALCULATION,
-					Constants.CHOLESTEROL_IN_VLDL_MASS_VOLUME_IN_SERUM_OR_PLASMA_BY_CALCULATION);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
-		}
-		if (testName.equals(Constants.TRIGLYCERIDES)) {
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.TRIGLYCERIDE_LOINC_CODE,
-					Constants.LOINC_SYSTEM, Constants.TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA,
-					Constants.TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
-		}
-		if (testName.equals(Constants.TRIGLYCERIDES_FASTING)) {
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.TRIGLYCERIDE_FASTING_LOINC_CODE,
-					Constants.LOINC_SYSTEM, Constants.TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA_FASTING,
-					Constants.TRIGLYCERIDE_MASS_VOLUME_IN_SERUM_OR_PLASMA_FASTING);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
-		}
-		if (testName.equals(Constants.FASTING_DURATION.toLowerCase())) {
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.FASTING_DURATION_LOINC_CODE,
-					Constants.LOINC_SYSTEM, Constants.FASTING_DURATION, Constants.FASTING_DURATION);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
-		}
-		if (testName.equals(Constants.FASTING_STATUS.toLowerCase())) {
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.FASTING_STATUS_LOINC_CODE,
-					Constants.LOINC_SYSTEM, Constants.FASTING_STATUS, Constants.FASTING_STATUS);
-			createDiagnosticReportAndObservation(bundle, composition, diagnostic, patient, diagnosticReportSection,
-					code, lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), code);
+	private void createLipidProfileObservation(Bundle bundle, Composition composition, Patient patient,
+			Composition.SectionComponent diagnosticReportSection, Test lipidTest, DiagnosticReport report) {
+		String testName = lipidTest.getTestName().toLowerCase();
+		if (loincCodeWithDescriptionMap.containsKey(testName)) {
+			Pair<String, String> pair = loincCodeWithDescriptionMap.get(testName);
+			String loincCode = StringUtils.isEmpty(lipidTest.getLoincCode()) ? pair.getLeft()
+					: lipidTest.getLoincCode();
+			CodeableConcept observationCode = FHIRUtils.getCodeableConcept(loincCode, Constants.LOINC_SYSTEM,
+					pair.getRight(), pair.getRight());
+			addObservationToDiagnosticReport(bundle, composition, patient, diagnosticReportSection,
+					lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), observationCode, report);
 		}
 	}
 
-	private void createDiagnosticReportAndObservation(Bundle bundle, Composition composition, Diagnostic diagnostic,
-			Patient patient, Composition.SectionComponent section, CodeableConcept diagnosticReportCode, String unit,
-			double value, CodeableConcept observationCode) {
-		// Create a new DiagnosticReport resource
-		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, diagnosticReportCode);
-
+	private void addObservationToDiagnosticReport(Bundle bundle, Composition composition, Patient patient,
+			Composition.SectionComponent section, String unitOfMeasurement, double observationCodevalue,
+			CodeableConcept observationCode, DiagnosticReport report) {
 		// Create an Observation
 		Observation observation = createObservation(composition.getDate(), patient);
 		observation.setCode(observationCode);
-		observation.setValue(new Quantity().setValue(value).setUnit(unit));
+		observation.setValue(new Quantity().setValue(observationCodevalue).setUnit(unitOfMeasurement));
 		FHIRUtils.addToBundleEntry(bundle, observation, true);
 
 		// Add Observation to the DiagnosticReport
-		report.addResult(FHIRUtils.getReferenceToResource(observation));
-
-		section.getEntry().add(FHIRUtils.getReferenceToResource(report));
+		Reference resultReference = new Reference(Constants.URN_UUID + observation.getId());
+		resultReference.setDisplay("Observation/" + observationCode.getText());
+		report.addResult(resultReference);
 	}
 
 	private CodeableConcept getOPConsultationType() {
@@ -520,13 +523,14 @@ public class OPConsultationHelper {
 	}
 
 	private DocumentReference createDocumentReferenceResource(String reportType, String reportValue, Patient patient,
-			String reportName) throws IOException {
+			String reportName, String loincCode) throws IOException {
 		// create CodeableConcept type
-		CodeableConcept type = FHIRUtils.getCodeableConcept(indicatorLoincCodeMap.get(reportType),
-				Constants.LOINC_SYSTEM, reportType + " report", reportType + " report");
+		CodeableConcept type = FHIRUtils.getCodeableConcept(loincCode, Constants.LOINC_SYSTEM, reportType + " report",
+				reportType + " report");
 
 		// create documentReference resource
 		DocumentReference documentReference = new DocumentReference();
+		documentReference.setId(Utils.generateId());
 		documentReference.setType(type);
 		documentReference.setSubject(new Reference(patient));
 		documentReference.setStatus(Enumerations.DocumentReferenceStatus.CURRENT);
@@ -564,11 +568,13 @@ public class OPConsultationHelper {
 		return observation;
 	}
 
-	private DiagnosticReport createDiagnosticReportResource(Bundle bundle, Patient patient, CodeableConcept code) {
+	private DiagnosticReport createDiagnosticReportResource(Bundle bundle, Patient patient, CodeableConcept code,
+			List<CodeableConcept> categories) {
 		DiagnosticReport report = new DiagnosticReport();
 		report.setId(Utils.generateId());
 		report.setStatus(DiagnosticReport.DiagnosticReportStatus.FINAL);
 		report.setCode(code);
+		report.setCategory(categories);
 		report.setSubject(FHIRUtils.getReferenceToPatient(patient));
 		report.setIssued(new Date());
 		FHIRUtils.addToBundleEntry(bundle, report, true);

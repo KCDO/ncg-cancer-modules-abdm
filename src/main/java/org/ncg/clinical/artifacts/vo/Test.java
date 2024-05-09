@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Test {
 	private String testName;
-	// private String testCode;
+	private String loincCode;
 	private String unitOfMeasurement;
 	private double result;
 }
