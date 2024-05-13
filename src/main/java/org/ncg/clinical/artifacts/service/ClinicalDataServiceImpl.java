@@ -4,12 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
-import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.Bundle;
-import org.hl7.fhir.r4.model.Observation;
-import org.hl7.fhir.r4.model.Patient;
-import org.hl7.fhir.r4.model.StringType;
 import org.ncg.clinical.artifacts.util.Constants;
 import org.ncg.clinical.artifacts.util.OPConsultationHelper;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
@@ -18,11 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.validation.FhirValidator;
-import ca.uhn.fhir.validation.IValidatorModule;
-import ca.uhn.fhir.validation.SingleValidationMessage;
-import ca.uhn.fhir.validation.ValidationOptions;
-import ca.uhn.fhir.validation.ValidationResult;
 import lombok.extern.slf4j.Slf4j;
 
 /**

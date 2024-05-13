@@ -18,6 +18,7 @@ public class ClinicalData {
 	private Clinical clinical;
 	private List<AllergyIntoleranceRequest> allergyIntolerance;
 	private List<CoMorbidity> coMorbidities;
+	private List<AdverseEvent> adverseEvents;
 	private List<ObservationWomenHealth> observationWomenHealth;
 	private Diagnostic diagnostic;
 	private Map<String, String> lungCancer;

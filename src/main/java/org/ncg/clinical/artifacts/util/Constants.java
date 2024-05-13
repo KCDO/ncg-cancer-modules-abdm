@@ -23,6 +23,7 @@ public class Constants {
 	public static final String FHIR_CONDITION_CLINICAL_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-clinical";
 	public static final String FHIR_ALLERGY_INTOLERANCE_CLINICAL_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical";
 	public static final String FHIR_ALLERGY_INTOLERANCE_VERIFICATION_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification";
+	public static final String FHIR_CONDITION_VERIFICATION_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-ver-status";
 	public static final String MEDICAL_RECORD_NUMBER = "Medical record number";
 	public static final String OP_CONSULT_RECORD = "OpConsultRecord";
 	public static final String DIAGNOSTIC_REPORT = "Diagnostic Report";
@@ -37,6 +38,8 @@ public class Constants {
 	public static final String ALLERGY_INTOLERANCE_SECTION = "Allergy Intolerance section";
 	public static final String CO_MORBIDITIES = "Co-Morbidities";
 	public static final String CO_MORBIDITIES_SECTION = "Co-Morbidities section";
+	public static final String ADVERSE_EVENTS = "Adverse Events";
+	public static final String ADVERSE_EVENTS_SECTION = "Adverse Events section";
 	public static final String OBSERVATION_WOMEN_HEALTH = "Observation Women Health";
 	public static final String OBSERVATION_WOMEN_HEALTH_SECTION = "Observation Women Health section";
 	public static final String FNAC = "Fine Needle Aspiration Cytology";
@@ -58,6 +61,7 @@ public class Constants {
 	public static final String CORONARY_ARTERY_DISEASE_CODE = "53741008";
 	public static final String CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE_CODE = "13645005";
 	public static final String DIABETES_MELLITUS_CODE = "73211009";
+	public static final String ASTHMA_CODE = "195967001 ";
 	public static final String PREGNANCY_STATUS_CODE = "82810-3";
 	public static final String MENSTRUAL_CYCLE_CODE = "83318-7";
 	public static final String OBSTETRIC_HISTORY_CODE = "10187-3";
