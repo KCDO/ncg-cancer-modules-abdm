@@ -78,6 +78,36 @@ public class OPConsultationHelper {
 		loincCodeWithDescriptionMap.put("fasting duration", Pair.of("87527-8", "Fasting status"));
 		loincCodeWithDescriptionMap.put("fasting status", Pair.of("49541-6", "Fasting duration"));
 
+		// renal function
+		loincCodeWithDescriptionMap.put("renal function",
+				Pair.of("24362-6", "Renal function 2000 panel - Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("glucose", Pair.of("2345-7", "Glucose [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("urea nitrogen",
+				Pair.of("3094-0", "Urea nitrogen [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("creatinine", Pair.of("2160-0", "Creatinine [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("urea nitrogen/creatinine ratio",
+				Pair.of("3097-3", "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("gfr mdrd", Pair.of("33914-3",
+				"Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"));
+		loincCodeWithDescriptionMap.put("gfr mdrd females", Pair.of("50044-7",
+				"Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"));
+		loincCodeWithDescriptionMap.put("gfr mdrd non-blacks", Pair.of("48642-3",
+				"Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"));
+		loincCodeWithDescriptionMap.put("gfr mdrd blacks", Pair.of("48643-1",
+				"Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"));
+		loincCodeWithDescriptionMap.put("calcium", Pair.of("17861-6", "Calcium [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("phosphate", Pair.of("2777-1", "Phosphate [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("albumin", Pair.of("1751-7", "Albumin [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("electrolytes panel",
+				Pair.of("24326-1", "Electrolytes 1998 panel - Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("sodium", Pair.of("2951-2", "Sodium [Moles/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("potassium", Pair.of("2823-3", "Potassium [Moles/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("chloride", Pair.of("2075-0", "Chloride [Moles/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("bicarbonate",
+				Pair.of("1963-8", "Bicarbonate [Moles/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("carbon dioxide",
+				Pair.of("2028-9", "Carbon dioxide, total [Moles/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("anion gap", Pair.of("33037-3", "Anion gap in Serum or Plasma"));
 	}
 
 	public Bundle createOPConsultationBundle(Date docDate, String clinicalArtifactsType, String hipPrefix,
@@ -457,27 +487,63 @@ public class OPConsultationHelper {
 				diagnosticReportSection.getEntry().add(entryReference);
 			}
 
+//			if (Objects.nonNull(diagnostic.getBioChemistry().getRenalFunction())) {
+//				if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getRenalFunction().getAttachment())) {
+//					// Create a new DiagnosticReport resource
+//					CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.RENAL_TEST_LOINC_CODE,
+//							Constants.LOINC_SYSTEM, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
+//					// Create a new DiagnosticReport resource
+//					DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
+//							Arrays.asList(category));
+//
+//					// make entry for report
+//					Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+//					entryReference.setType(Constants.DIAGNOSTICREPORT);
+//					diagnosticReportSection.getEntry().add(entryReference);
+//
+//					// Create a new DocumentReference resource
+//					DocumentReference documentReference = createDocumentReferenceResource(Constants.RENAL_TEST,
+//							diagnostic.getBioChemistry().getRenalFunction().getAttachment(), patient,
+//							Constants.RENAL_TEST, Constants.RENAL_TEST_LOINC_CODE);
+//
+//					report.addResult(FHIRUtils.getReferenceToResource(documentReference));
+//				}
+//			}
 			if (Objects.nonNull(diagnostic.getBioChemistry().getRenalFunction())) {
-				if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getRenalFunction().getAttachment())) {
-					// Create a new DiagnosticReport resource
-					CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.RENAL_TEST_LOINC_CODE,
-							Constants.LOINC_SYSTEM, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
-					// Create a new DiagnosticReport resource
-					DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
-							Arrays.asList(category));
-
-					// make entry for report
-					Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
-					entryReference.setType(Constants.DIAGNOSTICREPORT);
-					diagnosticReportSection.getEntry().add(entryReference);
-
-					// Create a new DocumentReference resource
-					DocumentReference documentReference = createDocumentReferenceResource(Constants.RENAL_TEST,
-							diagnostic.getBioChemistry().getRenalFunction().getAttachment(), patient,
-							Constants.RENAL_TEST, Constants.RENAL_TEST_LOINC_CODE);
-
-					report.addResult(FHIRUtils.getReferenceToResource(documentReference));
+				// Create a new DiagnosticReport resource
+				Pair<String, String> pair = null;
+				if (loincCodeWithDescriptionMap.containsKey("renal function")) {
+					pair = loincCodeWithDescriptionMap.get("renal function");
 				}
+				CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
+						pair.getRight(), pair.getRight());
+				DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
+						Arrays.asList(category));
+
+				if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getRenalFunction().getAttachment())) {
+					// Create a new DocumentReference resource
+					DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
+							diagnostic.getBioChemistry().getRenalFunction().getAttachment(), patient, pair.getRight(),
+							pair.getLeft());
+
+					// Add documentReference to the DiagnosticReport
+					Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
+					resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
+					report.addResult(resultReference);
+
+					// Add documentReference to the bundle
+					FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+				}
+				if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getRenalFunction().getRenalTests())) {
+					for (Test renalTest : diagnostic.getBioChemistry().getRenalFunction().getRenalTests()) {
+						createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection, renalTest,
+								report);
+					}
+				}
+				// make entry for report
+				Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+				entryReference.setType(Constants.DIAGNOSTICREPORT);
+				diagnosticReportSection.getEntry().add(entryReference);
 			}
 		}
 
