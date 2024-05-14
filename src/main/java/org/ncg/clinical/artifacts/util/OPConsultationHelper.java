@@ -583,28 +583,6 @@ public class OPConsultationHelper {
 				diagnosticReportSection.getEntry().add(entryReference);
 			}
 
-//			if (Objects.nonNull(diagnostic.getBioChemistry().getRenalFunction())) {
-//				if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getRenalFunction().getAttachment())) {
-//					// Create a new DiagnosticReport resource
-//					CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.RENAL_TEST_LOINC_CODE,
-//							Constants.LOINC_SYSTEM, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
-//					// Create a new DiagnosticReport resource
-//					DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
-//							Arrays.asList(category));
-//
-//					// make entry for report
-//					Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
-//					entryReference.setType(Constants.DIAGNOSTICREPORT);
-//					diagnosticReportSection.getEntry().add(entryReference);
-//
-//					// Create a new DocumentReference resource
-//					DocumentReference documentReference = createDocumentReferenceResource(Constants.RENAL_TEST,
-//							diagnostic.getBioChemistry().getRenalFunction().getAttachment(), patient,
-//							Constants.RENAL_TEST, Constants.RENAL_TEST_LOINC_CODE);
-//
-//					report.addResult(FHIRUtils.getReferenceToResource(documentReference));
-//				}
-//			}
 			if (Objects.nonNull(diagnostic.getBioChemistry().getRenalFunction())) {
 				// Create a new DiagnosticReport resource
 				Pair<String, String> pair = null;
