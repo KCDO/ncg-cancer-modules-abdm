@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CoMorbidity {
+public class AdverseEvent {
 	private String name;
 	private String category;
 }

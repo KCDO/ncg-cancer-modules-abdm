@@ -11,6 +11,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.hl7.fhir.r4.model.AdverseEvent;
+import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
 import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Attachment;
@@ -22,6 +24,7 @@ import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.DiagnosticReport;
 import org.hl7.fhir.r4.model.DocumentReference;
 import org.hl7.fhir.r4.model.Enumerations;
+import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Patient;
@@ -146,7 +149,7 @@ public class OPConsultationHelper {
 			sections.add(lungCancerSection);
 		}
 
-		// co-morbidities
+		// co-morbidities section
 		if (Objects.nonNull(clinicalData.getCoMorbidities())) {
 			for (CoMorbidity coMorbidityDetail : clinicalData.getCoMorbidities()) {
 				Composition.SectionComponent coMorbiditySection = new Composition.SectionComponent();
@@ -178,6 +181,20 @@ public class OPConsultationHelper {
 				// set code
 				condition.setCode(getCoMorbiditiesCode(coMorbidityDetail.getName()));
 
+				// set category
+				if (org.apache.commons.lang3.StringUtils.equals(coMorbidityDetail.getCategory(), "problem-list-item")) {
+					condition.addCategory(FHIRUtils.getCodeableConcept("11493005", Constants.SNOMED_SYSTEM_SCT,
+							"Problem List Item", null));
+				} else
+					condition.addCategory(FHIRUtils.getCodeableConcept("191415000", Constants.SNOMED_SYSTEM_SCT,
+							"Encounter Diagnosis", null));
+
+				// Set verificationStatus
+				CodeableConcept verificationStatus = new CodeableConcept();
+				verificationStatus = FHIRUtils.getCodeableConcept(Constants.CONFIRMED.toLowerCase(),
+						Constants.FHIR_CONDITION_VERIFICATION_STATUS_SYSTEM, Constants.CONFIRMED, null);
+				condition.setVerificationStatus(verificationStatus);
+
 				FHIRUtils.addToBundleEntry(bundle, condition, true);
 
 				// Add the condition to the Co-Morbidity section
@@ -189,7 +206,71 @@ public class OPConsultationHelper {
 			}
 		}
 
-		// ObservationWomenHealth
+		// adverseEvent section
+		if (Objects.nonNull(clinicalData.getAdverseEvents())) {
+			for (org.ncg.clinical.artifacts.vo.AdverseEvent adverseEventDetail : clinicalData.getAdverseEvents()) {
+
+				Composition.SectionComponent adverseEventsSection = new Composition.SectionComponent();
+				adverseEventsSection.setTitle(Constants.ADVERSE_EVENTS);
+				adverseEventsSection.setCode(getAdverseEventsCode(adverseEventDetail.getName()));
+
+				// Create a new AdverseEvent resource
+				AdverseEvent adverseEvent = new AdverseEvent();
+
+				// set id
+				adverseEvent.setId(Utils.generateId());
+
+				// set actuality
+				adverseEvent.setActuality(AdverseEventActuality.ACTUAL);
+
+				// set identifier
+				Identifier adverseEventIdentifier = new Identifier();
+				adverseEventIdentifier.setSystem("http://example.com/adverseEvent");
+				adverseEventIdentifier.setValue("123456");
+				adverseEvent.setIdentifier(adverseEventIdentifier);
+
+				// set category
+				adverseEvent.addCategory(FHIRUtils.getAdverseEventCategory(adverseEventDetail.getCategory()));
+
+				// Set patient reference
+				Reference patientRef = new Reference();
+				patientRef.setReference("Patient/" + patientResource.getId());
+				adverseEvent.setSubject(patientRef);
+
+				// Set recorder reference
+				Reference recorderRef = new Reference();
+				recorderRef.setReference("Practitioner/" + UUID.randomUUID().toString());
+				adverseEvent.setRecorder(recorderRef);
+
+				// Set date
+				adverseEvent.setDate(new Date());
+
+				// set detected date
+				adverseEvent.setDetected(new Date());
+
+				// set recorded date
+				adverseEvent.setRecordedDate(new Date());
+
+				// Set seriousness
+				adverseEvent.setSeriousness(FHIRUtils.getCodeableConcept("255604002",
+						"http://terminology.hl7.org/CodeSystem/adverse-event-seriousness", "serious", "Serious"));
+
+				// Set outcome
+				adverseEvent.setOutcome(FHIRUtils.getCodeableConcept("resolved",
+						"http://terminology.hl7.org/CodeSystem/adverse-event-outcome", "Resolved", "Resolved"));
+
+				FHIRUtils.addToBundleEntry(bundle, adverseEvent, true);
+
+				// Add the condition to the Adverse Event section
+				adverseEventsSection.addEntry(new Reference(adverseEvent));
+
+				sections.add(adverseEventsSection);
+				sections.add(createAdverseEventSection(bundle, opDoc, adverseEventDetail, patientResource, jsonParser,
+						hipPrefix));
+			}
+		}
+
+		// ObservationWomenHealth section
 		if (Objects.nonNull(clinicalData.getObservationWomenHealth())) {
 			for (ObservationWomenHealth observationWomenHealthDetail : clinicalData.getObservationWomenHealth()) {
 				Composition.SectionComponent observationWomenHealthSection = new Composition.SectionComponent();
@@ -345,6 +426,21 @@ public class OPConsultationHelper {
 		CodeableConcept coMorbidityCode = FHIRUtils.getCodeableConcept(coMorbidity.getName(),
 				Constants.SNOMED_SYSTEM_SCT, Constants.CO_MORBIDITIES_SECTION, Constants.CO_MORBIDITIES_SECTION);
 		section.setCode(coMorbidityCode);
+
+		return section;
+	}
+
+	private Composition.SectionComponent createAdverseEventSection(Bundle bundle, Composition composition,
+			org.ncg.clinical.artifacts.vo.AdverseEvent adverseEventDetail, Patient patient, IParser jsonParser,
+			String hipPrefix) {
+		if (Utils.randomBool())
+			return null;
+
+		Composition.SectionComponent section = composition.addSection();
+		section.setTitle(Constants.ADVERSE_EVENTS);
+		CodeableConcept adverseEventCode = FHIRUtils.getCodeableConcept("62014003", Constants.SNOMED_SYSTEM_SCT,
+				Constants.ADVERSE_EVENTS_SECTION, Constants.ADVERSE_EVENTS_SECTION);
+		section.setCode(adverseEventCode);
 
 		return section;
 	}
@@ -586,7 +682,44 @@ public class OPConsultationHelper {
 				Constants.ALLERGY_INTOLERANCE_SECTION, Constants.ALLERGY_INTOLERANCE_SECTION);
 	}
 
+	// fetch CodeableConcept for Co-Morbidities condition
 	protected CodeableConcept getCoMorbiditiesCode(String name) {
+		switch (name.toLowerCase()) {
+		case "hypertension":
+			return FHIRUtils.getCodeableConcept(Constants.HYPERTENSION_CODE, Constants.SNOMED_SYSTEM_SCT, name, null);
+		case "coronary artery disease":
+			return FHIRUtils.getCodeableConcept(Constants.CORONARY_ARTERY_DISEASE_CODE, Constants.SNOMED_SYSTEM_SCT,
+					name, null);
+		case "chronic obstructive pulmonary disease":
+			return FHIRUtils.getCodeableConcept(Constants.CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE_CODE,
+					Constants.SNOMED_SYSTEM_SCT, name, null);
+		case "diabetes mellitus":
+			return FHIRUtils.getCodeableConcept(Constants.DIABETES_MELLITUS_CODE, Constants.SNOMED_SYSTEM_SCT, name,
+					null);
+		default:
+			return null;
+		}
+	}
+
+	// fetch CodeableConcept for Co-Morbidities condition category
+	protected CodeableConcept getCoMorbiditiesCategoryCode(CoMorbidity coMorbidityDetail) {
+		switch (coMorbidityDetail.getName().toLowerCase()) {
+		case "hypertension":
+			return FHIRUtils.getCodeableConcept(Constants.HYPERTENSION_CODE, Constants.SNOMED_SYSTEM_SCT,
+					coMorbidityDetail.getName(), coMorbidityDetail.getName());
+		case "diabetes mellitus":
+			return FHIRUtils.getCodeableConcept(Constants.DIABETES_MELLITUS_CODE, Constants.SNOMED_SYSTEM_SCT,
+					coMorbidityDetail.getName(), coMorbidityDetail.getName());
+		case "asthma":
+			return FHIRUtils.getCodeableConcept(Constants.ASTHMA_CODE, Constants.SNOMED_SYSTEM_SCT,
+					coMorbidityDetail.getName(), coMorbidityDetail.getName());
+		default:
+			return null;
+		}
+	}
+
+	// fetch CodeableConcept for Adverse Events resource
+	protected CodeableConcept getAdverseEventsCode(String name) {
 		switch (name.toLowerCase()) {
 		case "hypertension":
 			return FHIRUtils.getCodeableConcept(Constants.HYPERTENSION_CODE, Constants.SNOMED_SYSTEM_SCT, name, null);
