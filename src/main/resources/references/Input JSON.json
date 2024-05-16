@@ -1,0 +1,99 @@
+{
+    "clinicalArtifacts": [
+        "DiagnosticReport",
+        "DischargeSummary",
+        "OpConsultRecord",
+        "Prescription",
+        "WellnessRecord",
+        "HealthDocument",
+        "Immunization"
+    ],
+    "patient": {
+        "firstName": "Testing",
+        "middleName": "POC",
+        "lastName": "1",
+        "age": 24,
+        "gender": "male",
+        "dob": "1999-08-14",
+        "mobile": "9898989898",
+        "address": {
+            "type": "",
+            "houseName": "123",
+            "district": "xyz",
+            "state": "UP",
+            "city": "Mrj",
+            "pinCode": "123456",
+            "country": "India"
+        },
+        "height": "160",
+        "weight": "62",
+        "ABHAAddress": "abha addr",
+        "identifier": {
+            "hipId": "123",
+            "domain": "NCG"
+        },
+        "bloodGroup": "APLUS"
+    },
+    "coMorbidities": [
+        {
+            "name": "hypertension",
+            "status": "present"
+        },
+        {
+            "name": "Coronary Artery Disease",
+            "status": "present"
+        }
+    ],
+    "observationWomenHealth": [
+        {
+            "name": "Pregnancy status",
+            "value": "Not pregnant"
+        },
+        {
+            "name": "Menstrual cycle",
+            "value": "Regular"
+        }
+    ],
+    "allergyIntolerance": [
+        {
+            "name": "groundnut",
+            "type": "food"
+        },
+        {
+            "name": "dust",
+            "type": "environmental"
+        }
+    ],
+    "diagnostic": {
+        "cbc": {
+            "hemoglobin": 4.5
+        },
+        "bioChemistry": {
+            "lipidProfile": "mkmkmkm",
+            "lipidProfileTotalCholesterol": 35.6,
+            "lipidProfileHDLCholesterol": 35.6,
+            "lipidProfileLDLCholesterol": 35.6,
+            "lipidProfileVLDLCholesterol": 35.6,
+            "lipidProfileTriglycerides": 35.6,
+            "lipidProfileTriglyceridesFasting": 35.6,
+            "fastingDuration": 35.6,
+            "fastingStatus": 35.6
+        },
+        "biopsyHistopathologyReport": "mkmk"
+    },
+    "lungCancer": {
+        "MRI brain": "mkmk",
+        "Endobronchial ultrasound with ROSE reports": "mkmk",
+        "Fiber optic bronchoscopy": "mkmk",
+        "2 D ECHO with PASP": "mkmk",
+        "FDG PETCT": "mkmk",
+        "Pulmonary function tests with DLCO": "mkmk",
+        "V/Q scan in pneumonectomy": "mkmk",
+        "6MWT": "mkmk",
+        "Molecular markers/NGS as needed": "mkmk"
+    },
+    "oralCancer": {
+        "FNAC report": "mkmk",
+        "CECT head neck thorax report/ PET Ct/ MRI": "mkmk"
+    }
+}
