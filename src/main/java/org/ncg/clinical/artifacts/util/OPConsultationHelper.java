@@ -64,7 +64,7 @@ public class OPConsultationHelper {
 		testWithLoincCodeMap.put("FNAC report".toLowerCase(), "87179-8");
 		testWithLoincCodeMap.put("CECT head neck thorax report/ PET Ct/ MRI".toLowerCase(), "24627-2");
 
-		// lipid profile
+		// lipid profile panel
 		loincCodeWithDescriptionMap.put("lipid panel", Pair.of("100898-6", "Lipid panel - Serum or Plasma"));
 		loincCodeWithDescriptionMap.put("total cholesterol",
 				Pair.of("9830-1", "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"));
@@ -81,7 +81,7 @@ public class OPConsultationHelper {
 		loincCodeWithDescriptionMap.put("fasting duration", Pair.of("87527-8", "Fasting status"));
 		loincCodeWithDescriptionMap.put("fasting status", Pair.of("49541-6", "Fasting duration"));
 
-		// renal function
+		// renal function panel
 		loincCodeWithDescriptionMap.put("renal function",
 				Pair.of("24362-6", "Renal function 2000 panel - Serum or Plasma"));
 		loincCodeWithDescriptionMap.put("glucose", Pair.of("2345-7", "Glucose [Mass/volume] in Serum or Plasma"));
@@ -111,6 +111,22 @@ public class OPConsultationHelper {
 		loincCodeWithDescriptionMap.put("carbon dioxide",
 				Pair.of("2028-9", "Carbon dioxide, total [Moles/volume] in Serum or Plasma"));
 		loincCodeWithDescriptionMap.put("anion gap", Pair.of("33037-3", "Anion gap in Serum or Plasma"));
+
+		// Hepatic function panel
+		loincCodeWithDescriptionMap.put("hepatic function",
+				Pair.of("24325-3", "Hepatic function 2000 panel - Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("protein", Pair.of("2885-2", "Protein [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("albumin", Pair.of("1751-7", "Albumin [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("bilirubin total",
+				Pair.of("1975-2", "Bilirubin.total [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("bilirubin direct",
+				Pair.of("1968-7", "Bilirubin.direct [Mass/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("alkaline phosphatase",
+				Pair.of("6768-6", "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("aspartate aminotransferase",
+				Pair.of("1920-8", "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"));
+		loincCodeWithDescriptionMap.put("alanine aminotransferase",
+				Pair.of("1742-6", "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"));
 	}
 
 	public Bundle createOPConsultationBundle(Date docDate, String clinicalArtifactsType, String hipPrefix,
@@ -547,81 +563,137 @@ public class OPConsultationHelper {
 			CodeableConcept category = FHIRUtils.getCodeableConcept(Constants.BIO_CHEMISTRY_SNOMED_CODE,
 					Constants.SNOMED_SYSTEM_SCT, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
 			if (Objects.nonNull(diagnostic.getBioChemistry().getLipidProfile())) {
-				// Create a new DiagnosticReport resource
-				Pair<String, String> pair = null;
-				if (loincCodeWithDescriptionMap.containsKey("lipid panel")) {
-					pair = loincCodeWithDescriptionMap.get("lipid panel");
-				}
-				CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
-						pair.getRight(), pair.getRight());
-				DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
-						Arrays.asList(category));
-
-				if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getLipidProfile().getAttachment())) {
-					// Create a new DocumentReference resource
-					DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
-							diagnostic.getBioChemistry().getLipidProfile().getAttachment(), patient, pair.getRight(),
-							pair.getLeft());
-
-					// Add documentReference to the DiagnosticReport
-					Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
-					resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
-					report.addResult(resultReference);
-
-					// Add documentReference to the bundle
-					FHIRUtils.addToBundleEntry(bundle, documentReference, true);
-				}
-				if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getLipidProfile().getLipidTests())) {
-					for (Test lipidTest : diagnostic.getBioChemistry().getLipidProfile().getLipidTests()) {
-						createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection, lipidTest,
-								report);
-					}
-				}
-				// make entry for report
-				Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
-				entryReference.setType(Constants.DIAGNOSTICREPORT);
-				diagnosticReportSection.getEntry().add(entryReference);
+				createBioChemistryLipidProfilePanel(bundle, composition, diagnostic, patient, diagnosticReportSection, category);
 			}
 
 			if (Objects.nonNull(diagnostic.getBioChemistry().getRenalFunction())) {
-				// Create a new DiagnosticReport resource
-				Pair<String, String> pair = null;
-				if (loincCodeWithDescriptionMap.containsKey("renal function")) {
-					pair = loincCodeWithDescriptionMap.get("renal function");
-				}
-				CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
-						pair.getRight(), pair.getRight());
-				DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
-						Arrays.asList(category));
+				createBioChemistryRenalFunctionPanel(bundle, composition, diagnostic, patient, diagnosticReportSection,
+						category);
+			}
 
-				if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getRenalFunction().getAttachment())) {
-					// Create a new DocumentReference resource
-					DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
-							diagnostic.getBioChemistry().getRenalFunction().getAttachment(), patient, pair.getRight(),
-							pair.getLeft());
-
-					// Add documentReference to the DiagnosticReport
-					Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
-					resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
-					report.addResult(resultReference);
-
-					// Add documentReference to the bundle
-					FHIRUtils.addToBundleEntry(bundle, documentReference, true);
-				}
-				if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getRenalFunction().getRenalTests())) {
-					for (Test renalTest : diagnostic.getBioChemistry().getRenalFunction().getRenalTests()) {
-						createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection, renalTest,
-								report);
-					}
-				}
-				// make entry for report
-				Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
-				entryReference.setType(Constants.DIAGNOSTICREPORT);
-				diagnosticReportSection.getEntry().add(entryReference);
+			if (Objects.nonNull(diagnostic.getBioChemistry().getHepaticFunction())) {
+				createBioChemistryHepaticFunctionPanel(bundle, composition, diagnostic, patient,
+						diagnosticReportSection, category);
 			}
 		}
 
 		return diagnosticReportSection;
+	}
+
+	private void createBioChemistryHepaticFunctionPanel(Bundle bundle, Composition composition, Diagnostic diagnostic,
+			Patient patient, Composition.SectionComponent diagnosticReportSection, CodeableConcept category)
+			throws IOException {
+		// Create a new DiagnosticReport resource
+		Pair<String, String> pair = null;
+		if (loincCodeWithDescriptionMap.containsKey("hepatic function")) {
+			pair = loincCodeWithDescriptionMap.get("hepatic function");
+		}
+		CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
+				pair.getRight(), pair.getRight());
+		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
+				Arrays.asList(category));
+
+		if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getHepaticFunction().getAttachment())) {
+			// Create a new DocumentReference resource
+			DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
+					diagnostic.getBioChemistry().getHepaticFunction().getAttachment(), patient, pair.getRight(),
+					pair.getLeft());
+
+			// Add documentReference to the DiagnosticReport
+			Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
+			resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
+			report.addResult(resultReference);
+
+			// Add documentReference to the bundle
+			FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+		}
+		if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getHepaticFunction().getHepaticTests())) {
+			for (Test hepaticTest : diagnostic.getBioChemistry().getHepaticFunction().getHepaticTests()) {
+				createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection,
+						hepaticTest, report);
+			}
+		}
+		// make entry for report
+		Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+		entryReference.setType(Constants.DIAGNOSTICREPORT);
+		diagnosticReportSection.getEntry().add(entryReference);
+	}
+
+	private void createBioChemistryRenalFunctionPanel(Bundle bundle, Composition composition, Diagnostic diagnostic,
+			Patient patient, Composition.SectionComponent diagnosticReportSection, CodeableConcept category)
+			throws IOException {
+		// Create a new DiagnosticReport resource
+		Pair<String, String> pair = null;
+		if (loincCodeWithDescriptionMap.containsKey("renal function")) {
+			pair = loincCodeWithDescriptionMap.get("renal function");
+		}
+		CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
+				pair.getRight(), pair.getRight());
+		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
+				Arrays.asList(category));
+
+		if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getRenalFunction().getAttachment())) {
+			// Create a new DocumentReference resource
+			DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
+					diagnostic.getBioChemistry().getRenalFunction().getAttachment(), patient, pair.getRight(),
+					pair.getLeft());
+
+			// Add documentReference to the DiagnosticReport
+			Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
+			resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
+			report.addResult(resultReference);
+
+			// Add documentReference to the bundle
+			FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+		}
+		if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getRenalFunction().getRenalTests())) {
+			for (Test renalTest : diagnostic.getBioChemistry().getRenalFunction().getRenalTests()) {
+				createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection, renalTest,
+						report);
+			}
+		}
+		// make entry for report
+		Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+		entryReference.setType(Constants.DIAGNOSTICREPORT);
+		diagnosticReportSection.getEntry().add(entryReference);
+	}
+
+	private void createBioChemistryLipidProfilePanel(Bundle bundle, Composition composition, Diagnostic diagnostic, Patient patient,
+			Composition.SectionComponent diagnosticReportSection, CodeableConcept category) throws IOException {
+		// Create a new DiagnosticReport resource
+		Pair<String, String> pair = null;
+		if (loincCodeWithDescriptionMap.containsKey("lipid panel")) {
+			pair = loincCodeWithDescriptionMap.get("lipid panel");
+		}
+		CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
+				pair.getRight(), pair.getRight());
+		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
+				Arrays.asList(category));
+
+		if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getLipidProfile().getAttachment())) {
+			// Create a new DocumentReference resource
+			DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
+					diagnostic.getBioChemistry().getLipidProfile().getAttachment(), patient, pair.getRight(),
+					pair.getLeft());
+
+			// Add documentReference to the DiagnosticReport
+			Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
+			resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
+			report.addResult(resultReference);
+
+			// Add documentReference to the bundle
+			FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+		}
+		if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getLipidProfile().getLipidTests())) {
+			for (Test lipidTest : diagnostic.getBioChemistry().getLipidProfile().getLipidTests()) {
+				createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection, lipidTest,
+						report);
+			}
+		}
+		// make entry for report
+		Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
+		entryReference.setType(Constants.DIAGNOSTICREPORT);
+		diagnosticReportSection.getEntry().add(entryReference);
 	}
 
 	private void createLipidProfileObservation(Bundle bundle, Composition composition, Patient patient,
