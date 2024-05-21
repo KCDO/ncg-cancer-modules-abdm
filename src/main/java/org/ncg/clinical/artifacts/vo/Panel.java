@@ -11,6 +11,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BioChemistry {
-	private List<PanelDetail> panels;
+public class Panel {
+	private String name;
+	private String code;
+	private String description;
+	private List<String> members;
 }

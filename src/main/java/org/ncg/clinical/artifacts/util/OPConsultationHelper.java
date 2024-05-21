@@ -1,6 +1,8 @@
 package org.ncg.clinical.artifacts.util;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -8,9 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.commons.lang3.tuple.Pair;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
@@ -31,16 +33,24 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Type;
+import org.ncg.clinical.artifacts.vo.AllLabTests;
 import org.ncg.clinical.artifacts.vo.AllergyIntoleranceRequest;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.ncg.clinical.artifacts.vo.CoMorbidity;
 import org.ncg.clinical.artifacts.vo.Diagnostic;
 import org.ncg.clinical.artifacts.vo.ObservationWomenHealth;
-import org.ncg.clinical.artifacts.vo.Test;
+import org.ncg.clinical.artifacts.vo.Panel;
+import org.ncg.clinical.artifacts.vo.PanelDetail;
+import org.ncg.clinical.artifacts.vo.PanelTest;
+import org.ncg.clinical.artifacts.vo.TestDetail;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import ca.uhn.fhir.parser.IParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.PostConstruct;
 
@@ -48,10 +58,23 @@ import jakarta.annotation.PostConstruct;
 public class OPConsultationHelper {
 
 	public static Map<String, String> testWithLoincCodeMap = new HashMap<>();
-	public static Map<String, Pair<String, String>> loincCodeWithDescriptionMap = new HashMap<>();
+
+	private AllLabTests allLabTests;
+
+	@Autowired
+	private ResourceLoader resourceLoader;
 
 	@PostConstruct
 	public void init() throws Exception {
+		// Load the resource using ResourceLoader
+		Resource resource = resourceLoader.getResource("classpath:allTestsAndPanels.json");
+		Path path = resource.getFile().toPath();
+		String content = new String(Files.readAllBytes(path));
+
+		// Deserialize JSON content to AllLabTests object
+		allLabTests = new ObjectMapper().readValue(content, AllLabTests.class);
+		System.out.println("Successfully loaded AllLabTests from JSON.");
+
 		testWithLoincCodeMap.put("2 D ECHO with PASP".toLowerCase(), "34552-0");
 		testWithLoincCodeMap.put("FDG PETCT".toLowerCase(), "81553-0");
 		testWithLoincCodeMap.put("MRI brain".toLowerCase(), "24590-2");
@@ -63,74 +86,18 @@ public class OPConsultationHelper {
 		testWithLoincCodeMap.put("Molecular markers/NGS as needed".toLowerCase(), "73977-1");
 		testWithLoincCodeMap.put("FNAC report".toLowerCase(), "87179-8");
 		testWithLoincCodeMap.put("CECT head neck thorax report/ PET Ct/ MRI".toLowerCase(), "24627-2");
-
-		// lipid profile panel
-		loincCodeWithDescriptionMap.put("lipid panel", Pair.of("100898-6", "Lipid panel - Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("total cholesterol",
-				Pair.of("9830-1", "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("hdl cholesterol",
-				Pair.of("2085-9", "Cholesterol in HDL [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("ldl cholesterol",
-				Pair.of("13457-7", "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"));
-		loincCodeWithDescriptionMap.put("vldl cholesterol",
-				Pair.of("13458-5", "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"));
-		loincCodeWithDescriptionMap.put("triglycerides",
-				Pair.of("2571-8", "Triglyceride [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("triglycerides fasting",
-				Pair.of("3048-6", "Triglyceride [Mass/volume] in Serum or Plasma --fasting"));
-		loincCodeWithDescriptionMap.put("fasting duration", Pair.of("87527-8", "Fasting status"));
-		loincCodeWithDescriptionMap.put("fasting status", Pair.of("49541-6", "Fasting duration"));
-
-		// renal function panel
-		loincCodeWithDescriptionMap.put("renal function",
-				Pair.of("24362-6", "Renal function 2000 panel - Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("glucose", Pair.of("2345-7", "Glucose [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("urea nitrogen",
-				Pair.of("3094-0", "Urea nitrogen [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("creatinine", Pair.of("2160-0", "Creatinine [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("urea nitrogen/creatinine ratio",
-				Pair.of("3097-3", "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("gfr mdrd", Pair.of("33914-3",
-				"Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"));
-		loincCodeWithDescriptionMap.put("gfr mdrd females", Pair.of("50044-7",
-				"Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"));
-		loincCodeWithDescriptionMap.put("gfr mdrd non-blacks", Pair.of("48642-3",
-				"Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"));
-		loincCodeWithDescriptionMap.put("gfr mdrd blacks", Pair.of("48643-1",
-				"Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"));
-		loincCodeWithDescriptionMap.put("calcium", Pair.of("17861-6", "Calcium [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("phosphate", Pair.of("2777-1", "Phosphate [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("albumin", Pair.of("1751-7", "Albumin [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("electrolytes panel",
-				Pair.of("24326-1", "Electrolytes 1998 panel - Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("sodium", Pair.of("2951-2", "Sodium [Moles/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("potassium", Pair.of("2823-3", "Potassium [Moles/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("chloride", Pair.of("2075-0", "Chloride [Moles/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("bicarbonate",
-				Pair.of("1963-8", "Bicarbonate [Moles/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("carbon dioxide",
-				Pair.of("2028-9", "Carbon dioxide, total [Moles/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("anion gap", Pair.of("33037-3", "Anion gap in Serum or Plasma"));
-
-		// Hepatic function panel
-		loincCodeWithDescriptionMap.put("hepatic function",
-				Pair.of("24325-3", "Hepatic function 2000 panel - Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("protein", Pair.of("2885-2", "Protein [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("albumin", Pair.of("1751-7", "Albumin [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("bilirubin total",
-				Pair.of("1975-2", "Bilirubin.total [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("bilirubin direct",
-				Pair.of("1968-7", "Bilirubin.direct [Mass/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("alkaline phosphatase",
-				Pair.of("6768-6", "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("aspartate aminotransferase",
-				Pair.of("1920-8", "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"));
-		loincCodeWithDescriptionMap.put("alanine aminotransferase",
-				Pair.of("1742-6", "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"));
 	}
 
-	public Bundle createOPConsultationBundle(Date docDate, String clinicalArtifactsType, String hipPrefix,
-			IParser jsonParser, ClinicalData clinicalData) throws Exception {
+	public Optional<PanelTest> getTestByName(String name) {
+		return allLabTests.getTests().stream().filter(test -> test.getName().equalsIgnoreCase(name)).findFirst();
+	}
+
+	public Optional<Panel> getPanelByName(String name) {
+		return allLabTests.getPanels().stream().filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
+	}
+
+	public Bundle createOPConsultationBundle(Date docDate, String clinicalArtifactsType, ClinicalData clinicalData)
+			throws Exception {
 		Bundle bundle = FHIRUtils.createBundle(docDate, clinicalArtifactsType, null);
 
 		Composition opDoc = new Composition();
@@ -144,27 +111,23 @@ public class OPConsultationHelper {
 		opDoc.setTitle(getCompositionDocumentTitle());
 		FHIRUtils.addToBundleEntry(bundle, opDoc, false);
 
-		if (Objects.nonNull(clinicalData)) {
-			// add patient entry
-			Patient patientResource = FHIRUtils.addPatientResourceToComposition(clinicalData, bundle, opDoc);
+		// add patient entry
+		Patient patientResource = FHIRUtils.addPatientResourceToComposition(clinicalData, bundle, opDoc);
 
-			// add sections entry
-			opDoc.setSection(
-					createCancerModuleSections(hipPrefix, jsonParser, bundle, opDoc, clinicalData, patientResource));
-		}
+		// add sections entry
+		opDoc.setSection(createCancerModuleSections(bundle, opDoc, clinicalData, patientResource));
 
 		return bundle;
 	}
 
-	protected List<Composition.SectionComponent> createCancerModuleSections(String hipPrefix, IParser jsonParser,
-			Bundle bundle, Composition opDoc, ClinicalData clinicalData, Patient patientResource) throws IOException {
+	protected List<Composition.SectionComponent> createCancerModuleSections(Bundle bundle, Composition opDoc,
+			ClinicalData clinicalData, Patient patientResource) throws IOException {
 
 		List<Composition.SectionComponent> sections = new ArrayList<>();
 
 		// diagnostic
 		if (Objects.nonNull(clinicalData.getDiagnostic())) {
-			sections.add(createDiagnosticReportSection(bundle, opDoc, clinicalData.getDiagnostic(), patientResource,
-					jsonParser, hipPrefix));
+			sections.add(createDiagnosticReportSection(bundle, opDoc, clinicalData.getDiagnostic(), patientResource));
 		}
 
 		// oralCancer
@@ -247,8 +210,7 @@ public class OPConsultationHelper {
 				coMorbiditySection.addEntry(new Reference(condition));
 
 				sections.add(coMorbiditySection);
-				sections.add(createCoMorbiditiesSection(bundle, opDoc, coMorbidityDetail, patientResource, jsonParser,
-						hipPrefix));
+				sections.add(createCoMorbiditiesSection(bundle, opDoc, coMorbidityDetail, patientResource));
 			}
 		}
 
@@ -311,8 +273,7 @@ public class OPConsultationHelper {
 				adverseEventsSection.addEntry(new Reference(adverseEvent));
 
 				sections.add(adverseEventsSection);
-				sections.add(createAdverseEventSection(bundle, opDoc, adverseEventDetail, patientResource, jsonParser,
-						hipPrefix));
+				sections.add(createAdverseEventSection(bundle, opDoc, adverseEventDetail, patientResource));
 			}
 		}
 
@@ -366,7 +327,7 @@ public class OPConsultationHelper {
 
 				sections.add(observationWomenHealthSection);
 				sections.add(createObservationWomenHealthSection(bundle, opDoc, observationWomenHealthDetail,
-						patientResource, jsonParser, hipPrefix));
+						patientResource));
 			}
 		}
 
@@ -374,7 +335,7 @@ public class OPConsultationHelper {
 		List<AllergyIntoleranceRequest> allergiesDetail = clinicalData.getAllergyIntolerance();
 		if (Objects.nonNull(clinicalData.getAllergyIntolerance())) {
 			for (AllergyIntoleranceRequest allergyDetail : allergiesDetail) {
-				sections.add(createAllergiesSection(allergyDetail, bundle, opDoc, patientResource, jsonParser));
+				sections.add(createAllergiesSection(allergyDetail, bundle, opDoc, patientResource));
 			}
 		}
 
@@ -463,7 +424,7 @@ public class OPConsultationHelper {
 	}
 
 	private Composition.SectionComponent createCoMorbiditiesSection(Bundle bundle, Composition composition,
-			CoMorbidity coMorbidity, Patient patient, IParser jsonParser, String hipPrefix) {
+			CoMorbidity coMorbidity, Patient patient) {
 		if (Utils.randomBool())
 			return null;
 
@@ -477,8 +438,7 @@ public class OPConsultationHelper {
 	}
 
 	private Composition.SectionComponent createAdverseEventSection(Bundle bundle, Composition composition,
-			org.ncg.clinical.artifacts.vo.AdverseEvent adverseEventDetail, Patient patient, IParser jsonParser,
-			String hipPrefix) {
+			org.ncg.clinical.artifacts.vo.AdverseEvent adverseEventDetail, Patient patient) {
 		if (Utils.randomBool())
 			return null;
 
@@ -492,7 +452,7 @@ public class OPConsultationHelper {
 	}
 
 	private Composition.SectionComponent createObservationWomenHealthSection(Bundle bundle, Composition composition,
-			ObservationWomenHealth observationWomenHealth, Patient patient, IParser jsonParser, String hipPrefix) {
+			ObservationWomenHealth observationWomenHealth, Patient patient) {
 		if (Utils.randomBool())
 			return null;
 
@@ -506,7 +466,7 @@ public class OPConsultationHelper {
 	}
 
 	private Composition.SectionComponent createDiagnosticReportSection(Bundle bundle, Composition composition,
-			Diagnostic diagnostic, Patient patient, IParser jsonParser, String hipPrefix) throws IOException {
+			Diagnostic diagnostic, Patient patient) throws IOException {
 		if (Utils.randomBool())
 			return null;
 
@@ -531,8 +491,11 @@ public class OPConsultationHelper {
 				diagnosticReportSection.getEntry().add(entryReference);
 
 				// Create an Observation for haemoglobin
-				addObservationToDiagnosticReport(bundle, composition, patient, diagnosticReportSection,
-						Constants.GRAM_PER_DECILITER, diagnostic.getCbc().getHemoglobin(), haemoglobinCode, report);
+//				addObservationToDiagnosticReport(bundle, composition, patient, diagnosticReportSection,
+//						Constants.GRAM_PER_DECILITER, diagnostic.getCbc().getHemoglobin(), haemoglobinCode, report);
+//				
+//				Bundle bundle, Composition composition, Patient patient,
+//				Composition.SectionComponent diagnosticReportSection, TestDetail testDetail, DiagnosticReport report
 			}
 		}
 
@@ -562,93 +525,46 @@ public class OPConsultationHelper {
 		if (Objects.nonNull(diagnostic.getBioChemistry())) {
 			CodeableConcept category = FHIRUtils.getCodeableConcept(Constants.BIO_CHEMISTRY_SNOMED_CODE,
 					Constants.SNOMED_SYSTEM_SCT, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
-			if (Objects.nonNull(diagnostic.getBioChemistry().getLipidProfile())) {
-				createBioChemistryLipidProfilePanel(bundle, composition, diagnostic, patient, diagnosticReportSection, category);
-			}
-
-			if (Objects.nonNull(diagnostic.getBioChemistry().getRenalFunction())) {
-				createBioChemistryRenalFunctionPanel(bundle, composition, diagnostic, patient, diagnosticReportSection,
-						category);
-			}
-
-			if (Objects.nonNull(diagnostic.getBioChemistry().getHepaticFunction())) {
-				createBioChemistryHepaticFunctionPanel(bundle, composition, diagnostic, patient,
-						diagnosticReportSection, category);
+			// panels for bioChemistry
+			List<PanelDetail> bioChemistryPanels = diagnostic.getBioChemistry().getPanels();
+			if (!CollectionUtils.isEmpty(bioChemistryPanels)) {
+				for (PanelDetail panelDetail : bioChemistryPanels) {
+					Optional<Panel> panelWithLoincCode = getPanelByName(panelDetail.getName());
+					if (panelWithLoincCode.isPresent()) {
+						createBioChemistryPanel(bundle, composition, patient, diagnosticReportSection, category,
+								panelWithLoincCode.get(), panelDetail);
+					}
+				}
 			}
 		}
 
 		return diagnosticReportSection;
 	}
 
-	private void createBioChemistryHepaticFunctionPanel(Bundle bundle, Composition composition, Diagnostic diagnostic,
-			Patient patient, Composition.SectionComponent diagnosticReportSection, CodeableConcept category)
-			throws IOException {
+	private void createBioChemistryPanel(Bundle bundle, Composition composition, Patient patient,
+			Composition.SectionComponent diagnosticReportSection, CodeableConcept category, Panel panelWithLoincCode,
+			PanelDetail panelDetail) throws IOException {
 		// Create a new DiagnosticReport resource
-		Pair<String, String> pair = null;
-		if (loincCodeWithDescriptionMap.containsKey("hepatic function")) {
-			pair = loincCodeWithDescriptionMap.get("hepatic function");
-		}
-		CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
-				pair.getRight(), pair.getRight());
-		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
-				Arrays.asList(category));
+		CodeableConcept code = FHIRUtils.getCodeableConcept(panelWithLoincCode.getCode(), Constants.LOINC_SYSTEM,
+				panelWithLoincCode.getDescription(), panelWithLoincCode.getDescription());
+		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, Arrays.asList(category));
 
-		if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getHepaticFunction().getAttachment())) {
-			// Create a new DocumentReference resource
-			DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
-					diagnostic.getBioChemistry().getHepaticFunction().getAttachment(), patient, pair.getRight(),
-					pair.getLeft());
+		// Create a new DocumentReference resource
+		DocumentReference documentReference = createDocumentReferenceResource(panelWithLoincCode.getDescription(),
+				panelDetail.getAttachment(), patient, panelWithLoincCode.getDescription(),
+				panelWithLoincCode.getCode());
 
-			// Add documentReference to the DiagnosticReport
-			Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
-			resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
-			report.addResult(resultReference);
+		// Add documentReference to the DiagnosticReport
+		Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
+		resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
+		report.addResult(resultReference);
 
-			// Add documentReference to the bundle
-			FHIRUtils.addToBundleEntry(bundle, documentReference, true);
-		}
-		if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getHepaticFunction().getHepaticTests())) {
-			for (Test hepaticTest : diagnostic.getBioChemistry().getHepaticFunction().getHepaticTests()) {
-				createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection,
-						hepaticTest, report);
-			}
-		}
-		// make entry for report
-		Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
-		entryReference.setType(Constants.DIAGNOSTICREPORT);
-		diagnosticReportSection.getEntry().add(entryReference);
-	}
+		// Add documentReference to the bundle
+		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 
-	private void createBioChemistryRenalFunctionPanel(Bundle bundle, Composition composition, Diagnostic diagnostic,
-			Patient patient, Composition.SectionComponent diagnosticReportSection, CodeableConcept category)
-			throws IOException {
-		// Create a new DiagnosticReport resource
-		Pair<String, String> pair = null;
-		if (loincCodeWithDescriptionMap.containsKey("renal function")) {
-			pair = loincCodeWithDescriptionMap.get("renal function");
-		}
-		CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
-				pair.getRight(), pair.getRight());
-		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
-				Arrays.asList(category));
-
-		if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getRenalFunction().getAttachment())) {
-			// Create a new DocumentReference resource
-			DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
-					diagnostic.getBioChemistry().getRenalFunction().getAttachment(), patient, pair.getRight(),
-					pair.getLeft());
-
-			// Add documentReference to the DiagnosticReport
-			Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
-			resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
-			report.addResult(resultReference);
-
-			// Add documentReference to the bundle
-			FHIRUtils.addToBundleEntry(bundle, documentReference, true);
-		}
-		if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getRenalFunction().getRenalTests())) {
-			for (Test renalTest : diagnostic.getBioChemistry().getRenalFunction().getRenalTests()) {
-				createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection, renalTest,
+		if (!CollectionUtils.isEmpty(panelDetail.getTests())) {
+			for (TestDetail testDetail : panelDetail.getTests()) {
+				addObservationToDiagnosticReport(bundle, composition, patient, diagnosticReportSection, testDetail,
 						report);
 			}
 		}
@@ -656,73 +572,29 @@ public class OPConsultationHelper {
 		Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
 		entryReference.setType(Constants.DIAGNOSTICREPORT);
 		diagnosticReportSection.getEntry().add(entryReference);
-	}
-
-	private void createBioChemistryLipidProfilePanel(Bundle bundle, Composition composition, Diagnostic diagnostic, Patient patient,
-			Composition.SectionComponent diagnosticReportSection, CodeableConcept category) throws IOException {
-		// Create a new DiagnosticReport resource
-		Pair<String, String> pair = null;
-		if (loincCodeWithDescriptionMap.containsKey("lipid panel")) {
-			pair = loincCodeWithDescriptionMap.get("lipid panel");
-		}
-		CodeableConcept code = FHIRUtils.getCodeableConcept(pair.getLeft(), Constants.LOINC_SYSTEM,
-				pair.getRight(), pair.getRight());
-		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
-				Arrays.asList(category));
-
-		if (StringUtils.isNotBlank(diagnostic.getBioChemistry().getLipidProfile().getAttachment())) {
-			// Create a new DocumentReference resource
-			DocumentReference documentReference = createDocumentReferenceResource(pair.getRight(),
-					diagnostic.getBioChemistry().getLipidProfile().getAttachment(), patient, pair.getRight(),
-					pair.getLeft());
-
-			// Add documentReference to the DiagnosticReport
-			Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
-			resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
-			report.addResult(resultReference);
-
-			// Add documentReference to the bundle
-			FHIRUtils.addToBundleEntry(bundle, documentReference, true);
-		}
-		if (!CollectionUtils.isEmpty(diagnostic.getBioChemistry().getLipidProfile().getLipidTests())) {
-			for (Test lipidTest : diagnostic.getBioChemistry().getLipidProfile().getLipidTests()) {
-				createLipidProfileObservation(bundle, composition, patient, diagnosticReportSection, lipidTest,
-						report);
-			}
-		}
-		// make entry for report
-		Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
-		entryReference.setType(Constants.DIAGNOSTICREPORT);
-		diagnosticReportSection.getEntry().add(entryReference);
-	}
-
-	private void createLipidProfileObservation(Bundle bundle, Composition composition, Patient patient,
-			Composition.SectionComponent diagnosticReportSection, Test lipidTest, DiagnosticReport report) {
-		String testName = lipidTest.getTestName().toLowerCase();
-		if (loincCodeWithDescriptionMap.containsKey(testName)) {
-			Pair<String, String> pair = loincCodeWithDescriptionMap.get(testName);
-			String loincCode = StringUtils.isEmpty(lipidTest.getLoincCode()) ? pair.getLeft()
-					: lipidTest.getLoincCode();
-			CodeableConcept observationCode = FHIRUtils.getCodeableConcept(loincCode, Constants.LOINC_SYSTEM,
-					pair.getRight(), pair.getRight());
-			addObservationToDiagnosticReport(bundle, composition, patient, diagnosticReportSection,
-					lipidTest.getUnitOfMeasurement(), lipidTest.getResult(), observationCode, report);
-		}
 	}
 
 	private void addObservationToDiagnosticReport(Bundle bundle, Composition composition, Patient patient,
-			Composition.SectionComponent section, String unitOfMeasurement, double observationCodevalue,
-			CodeableConcept observationCode, DiagnosticReport report) {
-		// Create an Observation
-		Observation observation = createObservation(composition.getDate(), patient);
-		observation.setCode(observationCode);
-		observation.setValue(new Quantity().setValue(observationCodevalue).setUnit(unitOfMeasurement));
-		FHIRUtils.addToBundleEntry(bundle, observation, true);
+			Composition.SectionComponent diagnosticReportSection, TestDetail testDetail, DiagnosticReport report) {
+		Optional<PanelTest> panelTest = getTestByName(testDetail.getTestName());
+		if (panelTest.isPresent()) {
+			String loincCode = StringUtils.isEmpty(testDetail.getLoincCode()) ? panelTest.get().getCode()
+					: testDetail.getLoincCode();
+			CodeableConcept observationCode = FHIRUtils.getCodeableConcept(loincCode, Constants.LOINC_SYSTEM,
+					panelTest.get().getDescription(), panelTest.get().getDescription());
 
-		// Add Observation to the DiagnosticReport
-		Reference resultReference = new Reference(Constants.URN_UUID + observation.getId());
-		resultReference.setDisplay("Observation/" + observationCode.getText());
-		report.addResult(resultReference);
+			// Create an Observation
+			Observation observation = createObservation(composition.getDate(), patient);
+			observation.setCode(observationCode);
+			observation.setValue(
+					new Quantity().setValue(testDetail.getResult()).setUnit(testDetail.getUnitOfMeasurement()));
+			FHIRUtils.addToBundleEntry(bundle, observation, true);
+
+			// Add Observation to the DiagnosticReport
+			Reference resultReference = new Reference(Constants.URN_UUID + observation.getId());
+			resultReference.setDisplay("Observation/" + observationCode.getText());
+			report.addResult(resultReference);
+		}
 	}
 
 	private CodeableConcept getOPConsultationType() {
@@ -881,7 +753,7 @@ public class OPConsultationHelper {
 	}
 
 	private Composition.SectionComponent createAllergiesSection(AllergyIntoleranceRequest allergyDetail, Bundle bundle,
-			Composition composition, Patient patient, IParser parser) throws IOException {
+			Composition composition, Patient patient) throws IOException {
 
 		// Create a new AllergyIntolerance resource
 		AllergyIntolerance allergyIntolerance = new AllergyIntolerance();

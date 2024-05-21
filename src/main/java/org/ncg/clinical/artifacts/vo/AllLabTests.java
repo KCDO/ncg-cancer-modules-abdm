@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RenalFunction {
-	private String attachment;
-	private List<Test> renalTests;
+public class AllLabTests {
+	private List<Panel> panels;
+	private List<PanelTest> tests;
 }

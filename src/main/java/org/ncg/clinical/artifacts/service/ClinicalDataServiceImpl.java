@@ -1,7 +1,9 @@
 package org.ncg.clinical.artifacts.service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.hl7.fhir.r4.model.Bundle;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import ca.uhn.fhir.context.FhirContext;
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -29,7 +32,14 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 	private FhirContext fhirContext = FhirContext.forR4();
 
 	@Autowired
-	private OPConsultationHelper opconsultationHelper;
+	private OPConsultationHelper opConsultationHelper;
+
+	private final Map<String, AbdmHITypeGenerator> generators = new HashMap<>();
+
+	@PostConstruct
+	public void init() {
+		generators.put(Constants.OP_CONSULT_RECORD, new AbdmArtifactGenerator(opConsultationHelper));
+	}
 
 	@Override
 	public String clinicalDataGenerator(ClinicalData clinicalData) throws Exception {
@@ -40,20 +50,22 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			List<String> clinicalArtifacts = clinicalData.getClinicalArtifacts();
 
 			Bundle bundle = new Bundle();
+
 			if (!Objects.isNull(clinicalData)) {
 				if (!CollectionUtils.isEmpty(clinicalArtifacts)) {
 					for (String clinicalArtifact : clinicalArtifacts) {
 						Date docDate = new Date();
-						// Create a new OPConsultation resource
-						if (clinicalArtifact.equals(Constants.OP_CONSULT_RECORD)) {
-							String hipPrefix = "";
-							bundle = opconsultationHelper.createOPConsultationBundle(docDate, clinicalArtifact,
-									hipPrefix, fhirContext.newJsonParser(), clinicalData);
+						AbdmHITypeGenerator generator = generators.get(clinicalArtifact);
+						if (!Objects.isNull(generator)) {
+							bundle = generator.create(clinicalData, docDate);
 						}
 					}
 				} else {
 					// generate clinical-data for rest of fields
 				}
+			} else {
+				throw new IllegalArgumentException(
+						"ClinicalDataServiceImpl::clinicalDataGenerator::Clinical data or artifacts are empty!");
 			}
 
 			String encodedString = fhirContext.newJsonParser().setPrettyPrint(true).encodeResourceToString(bundle);

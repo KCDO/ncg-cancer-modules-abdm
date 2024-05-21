@@ -1,0 +1,297 @@
+{
+	"panels": [
+		{
+			"name": "CBC Blood by Automated count",
+			"code": "LOINC:58410-2",
+			"description": "CBC panel - Blood by Automated count",
+			"members": []
+		},
+		{
+			"name": "CBC Auto Differential",
+			"code": "LOINC:57023-4",
+			"description": "Auto Differential panel - Blood",
+			"members": []
+		},
+		{
+			"name": "Lipid Panel",
+			"code": "LOINC:100898-6",
+			"description": "Lipid panel - Serum or Plasma",
+			"members": []
+		},
+		{
+			"name": "Renal Function",
+			"code": "LOINC:24362-6",
+			"description": "Renal function 2000 panel - Serum or Plasma",
+			"members": []
+		},
+		{
+			"name": "Hepatic Function",
+			"code": "LOINC:24325-3",
+			"description": "Hepatic function 2000 panel - Serum or Plasma",
+			"members": []
+		},
+		{
+			"name": "Histopathology Report",
+			"code": "LOINC:60567-2",
+			"description": "Histopathology Report",
+			"members": []
+		}
+	],
+	"tests": [
+		{
+			"name": "Hemoglobin",
+			"code": "LOINC:718-7",
+			"description": " Hemoglobin [Mass/volume] in Blood"
+		},
+		{
+			"name": "Hematocrit",
+			"code": "LOINC:4544-3",
+			"description": " Hematocrit [Volume Fraction] of Blood"
+		},
+		{
+			"name": "White Blood Cell Count",
+			"code": "LOINC:6690-2",
+			"description": " Leukocytes [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Total Cholesterol",
+			"code": "LOINC:2093-3",
+			"description": " Cholesterol [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "HDL Cholesterol",
+			"code": "LOINC:2085-9",
+			"description": " Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "LDL Cholesterol",
+			"code": "LOINC:13457-7",
+			"description": " Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
+		},
+		{
+			"name": "Triglycerides",
+			"code": "LOINC:2571-8",
+			"description": " Triglyceride [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Creatinine",
+			"code": "LOINC:2160-0",
+			"description": " Creatinine [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Urea Nitrogen",
+			"code": "LOINC:3097-3",
+			"description": " Urea nitrogen [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Glomerular Filtration Rate (MDRD)",
+			"code": "LOINC:33914-3",
+			"description": " Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
+		},
+		{
+			"name": "Total Protein",
+			"code": "LOINC:2885-2",
+			"description": " Protein [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Albumin",
+			"code": "LOINC:1751-7",
+			"description": " Albumin [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Total Bilirubin",
+			"code": "LOINC:1975-2",
+			"description": " Bilirubin.total [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Direct Bilirubin",
+			"code": "LOINC:1968-7",
+			"description": " Bilirubin.direct [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Alkaline Phosphatase",
+			"code": "LOINC:6768-6",
+			"description": " Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Aspartate Aminotransferase (AST)",
+			"code": "LOINC:1920-8",
+			"description": " Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Alanine Aminotransferase (ALT)",
+			"code": "LOINC:1742-6",
+			"description": " Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Histopathology",
+			"code": "LOINC:60567-2",
+			"description": " Histopathology report"
+		},
+		{
+			"name": "total cholesterol",
+			"code": "LOINC:9830-1",
+			"description": "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"
+		},
+		{
+			"name": "hdl cholesterol",
+			"code": "LOINC:2085-9",
+			"description": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "ldl cholesterol",
+			"code": "LOINC:13457-7",
+			"description": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
+		},
+		{
+			"name": "vldl cholesterol",
+			"code": "LOINC:13458-5",
+			"description": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"
+		},
+		{
+			"name": "triglycerides",
+			"code": "LOINC:2571-8",
+			"description": "Triglyceride [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "triglycerides fasting",
+			"code": "LOINC:3048-6",
+			"description": "Triglyceride [Mass/volume] in Serum or Plasma --fasting"
+		},
+		{
+			"name": "fasting duration",
+			"code": "LOINC:87527-8",
+			"description": "Fasting status"
+		},
+		{
+			"name": "fasting status",
+			"code": "LOINC:49541-6",
+			"description": "Fasting duration"
+		},
+		{
+			"name": "glucose",
+			"code": "LOINC:2345-7",
+			"description": "Glucose [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "urea nitrogen",
+			"code": "LOINC:3094-0",
+			"description": "Urea nitrogen [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "creatinine",
+			"code": "LOINC:2160-0",
+			"description": "Creatinine [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "urea nitrogen/creatinine ratio",
+			"code": "LOINC:3097-3",
+			"description": "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"
+		},
+		{
+			"name": "gfr mdrd",
+			"code": "LOINC:33914-3",
+			"description": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
+		},
+		{
+			"name": "gfr mdrd females",
+			"code": "LOINC:50044-7",
+			"description": " Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+		},
+		{
+			"name": "gfr mdrd non-blacks",
+			"code": "LOINC:48642-3",
+			"description": " Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+		},
+		{
+			"name": "gfr mdrd blacks",
+			"code": "LOINC:48643-1",
+			"description": " Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+		},
+		{
+			"name": "calcium",
+			"code": "LOINC:17861-6",
+			"description": "Calcium [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "phosphate",
+			"code": "LOINC:2777-1",
+			"description": "Phosphate [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "albumin",
+			"code": "LOINC:1751-7",
+			"description": "Albumin [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "electrolytes panel",
+			"code": "LOINC:24326-1",
+			"description": "Electrolytes 1998 panel - Serum or Plasma"
+		},
+		{
+			"name": "sodium",
+			"code": "LOINC:2951-2",
+			"description": "Sodium [Moles/volume] in Serum or Plasma"
+		},
+		{
+			"name": "potassium",
+			"code": "LOINC:2823-3",
+			"description": "Potassium [Moles/volume] in Serum or Plasma"
+		},
+		{
+			"name": "chloride",
+			"code": "LOINC:2075-0",
+			"description": "Chloride [Moles/volume] in Serum or Plasma"
+		},
+		{
+			"name": "bicarbonate",
+			"code": "LOINC:1963-8",
+			"description": "Bicarbonate [Moles/volume] in Serum or Plasma"
+		},
+		{
+			"name": "carbon dioxide",
+			"code": "LOINC:2028-9",
+			"description": "Carbon dioxide, total [Moles/volume] in Serum or Plasma"
+		},
+		{
+			"name": "anion gap",
+			"code": "LOINC:33037-3",
+			"description": "Anion gap in Serum or Plasma"
+		},
+		{
+			"name": "protein",
+			"code": "LOINC:2885-2",
+			"description": "Protein [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "albumin",
+			"code": "LOINC:1751-7",
+			"description": "Albumin [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "bilirubin total",
+			"code": "LOINC:1975-2",
+			"description": "Bilirubin.total [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "bilirubin direct",
+			"code": "LOINC:1968-7",
+			"description": "Bilirubin.direct [Mass/volume] in Serum or Plasma"
+		},
+		{
+			"name": "alkaline phosphatase",
+			"code": "LOINC:6768-6",
+			"description": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
+		},
+		{
+			"name": "aspartate aminotransferase",
+			"code": "LOINC:1920-8",
+			"description": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+		},
+		{
+			"name": "alanine aminotransferase",
+			"code": "LOINC:1742-6",
+			"description": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+		}
+	]
+}

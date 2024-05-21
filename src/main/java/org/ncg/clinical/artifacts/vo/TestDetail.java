@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Test {
+public class TestDetail {
 	private String testName;
 	private String loincCode;
 	private String unitOfMeasurement;
