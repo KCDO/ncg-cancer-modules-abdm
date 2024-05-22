@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.labtest;
 
 import java.util.List;
 
@@ -11,8 +11,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PanelDetail {
+public class Panel {
 	private String name;
-	private String attachment;
-	private List<TestDetail> tests;
+	private String code;
+	private String description;
+	private List<String> members;
 }

@@ -29,7 +29,7 @@ import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
-import org.ncg.clinical.artifacts.vo.PatientData;
+import org.ncg.clinical.artifacts.vo.patient.PatientData;
 
 public class FHIRUtils {
 
@@ -193,7 +193,7 @@ public class FHIRUtils {
 		return contactPoint;
 	}
 
-	private static Address getAddress(org.ncg.clinical.artifacts.vo.Address patientAddress) {
+	private static Address getAddress(org.ncg.clinical.artifacts.vo.patient.Address patientAddress) {
 		Address address = new Address();
 		address.setType(Address.AddressType.BOTH);// Set the address type as both postal and physical
 		address.setText("House Name: " + patientAddress.getHouseName()); // Set the complete address as
@@ -204,7 +204,7 @@ public class FHIRUtils {
 		return address;
 	}
 
-	private static void setAddressComponents(org.ncg.clinical.artifacts.vo.Address patientAddress, Address address) {
+	private static void setAddressComponents(org.ncg.clinical.artifacts.vo.patient.Address patientAddress, Address address) {
 		address.setCity(patientAddress.getCity());
 		address.setDistrict(patientAddress.getDistrict());
 		address.setState(patientAddress.getState());

@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.diagnostic;
 
 import java.util.List;
 
@@ -11,9 +11,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Panel {
-	private String name;
-	private String code;
-	private String description;
-	private List<String> members;
+public class BioChemistry {
+	private List<PanelDetail> panels;
 }

@@ -3,6 +3,9 @@ package org.ncg.clinical.artifacts.vo;
 import java.util.List;
 import java.util.Map;
 
+import org.ncg.clinical.artifacts.vo.diagnostic.Diagnostic;
+import org.ncg.clinical.artifacts.vo.patient.PatientData;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

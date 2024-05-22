@@ -31,8 +31,6 @@ public class Constants {
 	public static final String DR_CBC = "CBC";
 	public static final String DR_HAEMOGLOBIN = "Haemoglobin";
 	public static final String DIAGNOSTIC_REPORTS = "Diagnostic Reports";
-	public static final String ORAL_CANCER = "Oral Cancer";
-	public static final String LUNG_CANCER = "Lung Cancer";
 	public static final String MEDICAL_HISTORY = "Medical History";
 	public static final String MEDICAL_HISTORY_SECTION = "Medical History section";
 	public static final String ALLERGY_INTOLERANCE_SECTION = "Allergy Intolerance section";
@@ -42,19 +40,11 @@ public class Constants {
 	public static final String ADVERSE_EVENTS_SECTION = "Adverse Events section";
 	public static final String OBSERVATION_WOMEN_HEALTH = "Observation Women Health";
 	public static final String OBSERVATION_WOMEN_HEALTH_SECTION = "Observation Women Health section";
-	public static final String FNAC = "Fine Needle Aspiration Cytology";
-	public static final String MRI = "MRI brain";
-	public static final String FNAC_REPORT = "FNAC report";
-	public static final String MRI_BRAIN_REPORT = "MRI brain report";
 	public static final String OPCR_SNOMED_CODE = "371530004";
 	public static final String MEDICAL_HISTORY_SNOMED_CODE = "422843007";
 	public static final String DR_SNOMED_CODE = "4321000179101";
 	public static final String DR_CBC_SNOMED_CODE = "26604007";
 	public static final String DR_HAEMOGLOBIN_CODE = "718-7";
-	public static final String ORAL_CANCER_CODE = "54014-2";
-	public static final String LUNG_CANCER_CODE = "59015-0";
-	public static final String ORAL_CANCER_FNAC_CODE = "87179-8";
-	public static final String LUNG_CANCER_MRI_CODE = "24590-2";
 	public static final String ALLERGY_INTOLERANCE_CODE = "235719002";
 	public static final String ALLERGY_INTOLERANCE_LOINC_CODE = "60984-3";
 	public static final String HYPERTENSION_CODE = "38341003";
@@ -74,21 +64,6 @@ public class Constants {
 	public static final String EKA_SCT_SYSTEM = "https://projecteka.in/sct";
 	public static final String ALLERGY_INTOLERANCE = "Allergy Intolerance";
 	public static final String ABHA = "ABHAAddress";
-	public static final String RENAL_TEST_LOINC_CODE = "LP31398-8";
-	public static final String RENAL_TEST = "Renal Test";
-	public static final String VLDL = "vldl";
-	public static final String LDL = "ldl";
-	public static final String HDL = "hdl";
-	public static final String TOTAL = "total";
-	public static final String FASTING_STATUS_LOINC_CODE = "49541-6";
-	public static final String FASTING_DURATION_LOINC_CODE = "87527-8";
-	public static final String TRIGLYCERIDE_FASTING_LOINC_CODE = "3048-6";
-	public static final String TRIGLYCERIDE_LOINC_CODE = "2571-8";
-	public static final String CHOLESTEROL_VLDL_LOINC_CODE = "13458-5";
-	public static final String CHOLESTEROL_LDL_LOINC_CODE = "13457-7";
-	public static final String CHOLESTEROL_HDL_LOINC_CODE = "2085-9";
-	public static final String CHOLESTEROL_TOTAL_LOINC_CODE = "9830-1";
-	public static final String LIPID_PROFILE = "Lipid profile";
 	public static final String BIO_CHEMISTRY = "Bio Chemistry";
 	public static final String BIO_CHEMISTRY_SNOMED_CODE = "4241000179101";
 	public static final String BIOPSY_HISTOPATHOLOGY = "Biopsy Histopathology";
@@ -97,5 +72,4 @@ public class Constants {
 	public static final String DOCUMENT_REFERENCE = "DocumentReference/";
 	public static final String DIAGNOSTICREPORT = "DiagnosticReport";
 	public static final String URN_UUID = "urn:uuid:";
-	public static final String LIPID_PANEL_SERUM_OR_PLASMA = "Lipid panel - Serum or Plasma";
 }

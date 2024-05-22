@@ -32,17 +32,17 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Type;
-import org.ncg.clinical.artifacts.vo.AllLabTests;
 import org.ncg.clinical.artifacts.vo.AllergyIntoleranceRequest;
 import org.ncg.clinical.artifacts.vo.CancerType;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.ncg.clinical.artifacts.vo.CoMorbidity;
-import org.ncg.clinical.artifacts.vo.Diagnostic;
 import org.ncg.clinical.artifacts.vo.ObservationWomenHealth;
-import org.ncg.clinical.artifacts.vo.Panel;
-import org.ncg.clinical.artifacts.vo.PanelDetail;
-import org.ncg.clinical.artifacts.vo.Test;
-import org.ncg.clinical.artifacts.vo.TestDetail;
+import org.ncg.clinical.artifacts.vo.diagnostic.Diagnostic;
+import org.ncg.clinical.artifacts.vo.diagnostic.PanelDetail;
+import org.ncg.clinical.artifacts.vo.diagnostic.TestDetail;
+import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
+import org.ncg.clinical.artifacts.vo.labtest.Panel;
+import org.ncg.clinical.artifacts.vo.labtest.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -691,11 +691,6 @@ public class OPConsultationHelper {
 		default:
 			return null;
 		}
-	}
-
-	protected CodeableConcept getOralCancerFNACCode() {
-		return FHIRUtils.getCodeableConcept(Constants.ORAL_CANCER_FNAC_CODE, Constants.LOINC_SYSTEM, Constants.FNAC,
-				Constants.FNAC);
 	}
 
 	protected Type getEffectiveObservationDate(Date compositionDate) {
