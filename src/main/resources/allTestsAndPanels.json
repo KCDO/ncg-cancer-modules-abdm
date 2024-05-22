@@ -292,6 +292,71 @@
 			"name": "alanine aminotransferase",
 			"code": "LOINC:1742-6",
 			"description": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+		},
+		{
+			"name": "Lung Cancer",
+			"code": "LOINC:59015-0",
+			"description": "Lung Cancer"
+		},
+		{
+			"name": "2 D ECHO with PASP",
+			"code": "LOINC:34552-0",
+			"description": "2 D ECHO with PASP"
+		},
+		{
+			"name": "FDG PETCT",
+			"code": "LOINC:81553-0",
+			"description": "FDG PETCT"
+		},
+		{
+			"name": "MRI brain",
+			"code": "LOINC:24590-2",
+			"description": "MRI brain"
+		},
+		{
+			"name": "Fiber optic bronchoscopy",
+			"code": "LOINC:18744-3",
+			"description": "Fiber optic bronchoscopy"
+		},
+		{
+			"name": "Endobronchial ultrasound with ROSE reports",
+			"code": "LOINC:100231-0",
+			"description": "Endobronchial ultrasound with ROSE reports"
+		},
+		{
+			"name": "Pulmonary function tests with DLCO",
+			"code": "LOINC:58477-1",
+			"description": "Pulmonary function tests with DLCO"
+		},
+		{
+			"name": "V/Q scan in pneumonectomy",
+			"code": "LOINC:39942-8",
+			"description": "V/Q scan in pneumonectomy"
+		},
+		{
+			"name": "6MWT",
+			"code": "LOINC:64098-7",
+			"description": "6MWT"
+		},
+		{
+			"name": "Molecular markers/NGS as needed",
+			"code": "LOINC:73977-1",
+			"description": "Molecular markers/NGS as needed"
+		},
+		{
+			"name": "Oral Cancer",
+			"code": "LOINC:54014-2",
+			"description": "Oral Cancer"
+		},
+		{
+			"name": "FNAC report",
+			"code": "LOINC:87179-8",
+			"description": "FNAC report"
+		},
+		{
+			"name": "CECT head neck thorax report/ PET Ct/ MRI",
+			"code": "LOINC:24627-2",
+			"description": "CECT head neck thorax report/ PET Ct/ MRI"
 		}
 	]
 }

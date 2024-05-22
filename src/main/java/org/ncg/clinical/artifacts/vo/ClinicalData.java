@@ -21,6 +21,5 @@ public class ClinicalData {
 	private List<AdverseEvent> adverseEvents;
 	private List<ObservationWomenHealth> observationWomenHealth;
 	private Diagnostic diagnostic;
-	private Map<String, String> lungCancer;
-	private Map<String, String> oralCancer;
+	private List<CancerType> cancerTypes;
 }

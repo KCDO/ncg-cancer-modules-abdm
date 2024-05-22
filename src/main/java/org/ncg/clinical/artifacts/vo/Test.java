@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PanelTest {
+public class Test {
 	private String name;
 	private String code;
 	private String description;

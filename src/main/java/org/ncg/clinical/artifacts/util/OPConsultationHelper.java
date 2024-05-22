@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -35,13 +34,14 @@ import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Type;
 import org.ncg.clinical.artifacts.vo.AllLabTests;
 import org.ncg.clinical.artifacts.vo.AllergyIntoleranceRequest;
+import org.ncg.clinical.artifacts.vo.CancerType;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.ncg.clinical.artifacts.vo.CoMorbidity;
 import org.ncg.clinical.artifacts.vo.Diagnostic;
 import org.ncg.clinical.artifacts.vo.ObservationWomenHealth;
 import org.ncg.clinical.artifacts.vo.Panel;
 import org.ncg.clinical.artifacts.vo.PanelDetail;
-import org.ncg.clinical.artifacts.vo.PanelTest;
+import org.ncg.clinical.artifacts.vo.Test;
 import org.ncg.clinical.artifacts.vo.TestDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -53,11 +53,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class OPConsultationHelper {
-
-	public static Map<String, String> testWithLoincCodeMap = new HashMap<>();
 
 	private AllLabTests allLabTests;
 
@@ -73,22 +73,10 @@ public class OPConsultationHelper {
 
 		// Deserialize JSON content to AllLabTests object
 		allLabTests = new ObjectMapper().readValue(content, AllLabTests.class);
-		System.out.println("Successfully loaded AllLabTests from JSON.");
-
-		testWithLoincCodeMap.put("2 D ECHO with PASP".toLowerCase(), "34552-0");
-		testWithLoincCodeMap.put("FDG PETCT".toLowerCase(), "81553-0");
-		testWithLoincCodeMap.put("MRI brain".toLowerCase(), "24590-2");
-		testWithLoincCodeMap.put("Fiber optic bronchoscopy".toLowerCase(), "18744-3");
-		testWithLoincCodeMap.put("Endobronchial ultrasound with ROSE reports".toLowerCase(), "100231-0");
-		testWithLoincCodeMap.put("Pulmonary function tests with DLCO".toLowerCase(), "58477-1");
-		testWithLoincCodeMap.put("V/Q scan in pneumonectomy".toLowerCase(), "39942-8");
-		testWithLoincCodeMap.put("6MWT".toLowerCase(), "64098-7");
-		testWithLoincCodeMap.put("Molecular markers/NGS as needed".toLowerCase(), "73977-1");
-		testWithLoincCodeMap.put("FNAC report".toLowerCase(), "87179-8");
-		testWithLoincCodeMap.put("CECT head neck thorax report/ PET Ct/ MRI".toLowerCase(), "24627-2");
+		log.info("OPConsultationHelper::init::Successfully loaded AllLabTests from JSON.");
 	}
 
-	public Optional<PanelTest> getTestByName(String name) {
+	public Optional<Test> getTestByName(String name) {
 		return allLabTests.getTests().stream().filter(test -> test.getName().equalsIgnoreCase(name)).findFirst();
 	}
 
@@ -130,32 +118,29 @@ public class OPConsultationHelper {
 			sections.add(createDiagnosticReportSection(bundle, opDoc, clinicalData.getDiagnostic(), patientResource));
 		}
 
-		// oralCancer
-		if (Objects.nonNull(clinicalData.getOralCancer())) {
-			// create Medical History section and add condition resource
-			Composition.SectionComponent oralCancerSection = createMedicalHistorySection(bundle, patientResource,
-					Constants.ORAL_CANCER_CODE, Constants.ORAL_CANCER);
+		// CancerTypes
+		if (!CollectionUtils.isEmpty(clinicalData.getCancerTypes())) {
+			for (CancerType cancerType : clinicalData.getCancerTypes()) {
+				Optional<Test> cancerTest = getTestByName(cancerType.getName());
+				Composition.SectionComponent cancerSection = new Composition.SectionComponent();
+				// create Medical History section and add condition resource
+				if (cancerTest.isPresent()) {
+					cancerSection = createMedicalHistorySection(bundle, patientResource, cancerTest.get().getCode(),
+							cancerTest.get().getDescription());
+				}
+				// create diagnostic report
+				for (Map.Entry<String, String> cancerDetail : cancerType.getTests().entrySet()) {
+					Optional<Test> cancerTestDetail = getTestByName(cancerDetail.getKey());
+					if (cancerTestDetail.isPresent()) {
+						DiagnosticReport report = createDiagnosticReport(bundle, patientResource,
+								cancerDetail.getValue(), cancerTestDetail.get());
 
-			for (Map.Entry<String, String> oralCancerDetail : clinicalData.getOralCancer().entrySet()) {
-				DiagnosticReport report = getOralCancerReports(bundle, patientResource, oralCancerDetail);
-				// Add reports as reference to the Chief complaint section
-				oralCancerSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
+						// Add the report to cancer section
+						cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
+					}
+				}
+				sections.add(cancerSection);
 			}
-			sections.add(oralCancerSection);
-		}
-
-		// lungCancer
-		if (Objects.nonNull(clinicalData.getLungCancer())) {
-			// create Medical History section and add condition resource
-			Composition.SectionComponent lungCancerSection = createMedicalHistorySection(bundle, patientResource,
-					Constants.LUNG_CANCER_CODE, Constants.LUNG_CANCER);
-
-			for (Map.Entry<String, String> lungCancerDetail : clinicalData.getLungCancer().entrySet()) {
-				DiagnosticReport report = getLungCancerReports(bundle, patientResource, lungCancerDetail);
-				// Add the condition to the Chief complaint section
-				lungCancerSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
-			}
-			sections.add(lungCancerSection);
 		}
 
 		// co-morbidities section
@@ -347,7 +332,7 @@ public class OPConsultationHelper {
 		// create Medical History section
 		CodeableConcept medicalHistoryCode = FHIRUtils.getCodeableConcept(Constants.MEDICAL_HISTORY_SNOMED_CODE,
 				Constants.SNOMED_SYSTEM_SCT, Constants.MEDICAL_HISTORY_SECTION, Constants.MEDICAL_HISTORY_SECTION);
-		Composition.SectionComponent oralCancerSection = createSectionComponent(Constants.MEDICAL_HISTORY,
+		Composition.SectionComponent cancerSection = createSectionComponent(Constants.MEDICAL_HISTORY,
 				medicalHistoryCode);
 
 		// Create a new Condition resource for the complaint
@@ -356,9 +341,10 @@ public class OPConsultationHelper {
 		Condition condition = createConditionResource(conditionCode);
 		FHIRUtils.addToBundleEntry(bundle, condition, true);
 
-		// Add the condition to the Chief complaint section
-		oralCancerSection.addEntry(new Reference(condition));
-		return oralCancerSection;
+		// Add the condition to the cancer section
+		cancerSection.addEntry(new Reference(condition));
+
+		return cancerSection;
 	}
 
 	private Composition.SectionComponent createSectionComponent(String title, CodeableConcept code) {
@@ -368,55 +354,21 @@ public class OPConsultationHelper {
 		return oralCancerSection;
 	}
 
-	private DiagnosticReport getLungCancerReports(Bundle bundle, Patient patient,
-			Map.Entry<String, String> lungCancerDetail) throws IOException {
-		String lungCancerIndicator = lungCancerDetail.getKey().toLowerCase();
-		switch (lungCancerIndicator) {
-		case "2 d echo with pasp":
-		case "fdg petct":
-		case "mri brain":
-		case "fiber optic bronchoscopy":
-		case "endobronchial ultrasound with rose reports":
-		case "pulmonary function tests with dlco":
-		case "v/q scan in pneumonectomy":
-		case "6mwt":
-		case "molecular markers/nsg as needed":
-			return createDiagnosticReport(bundle, patient, lungCancerDetail.getKey(), lungCancerDetail.getValue(),
-					testWithLoincCodeMap, lungCancerIndicator);
-		default:
-			return null;
-		}
-	}
-
-	private DiagnosticReport getOralCancerReports(Bundle bundle, Patient patient,
-			Map.Entry<String, String> oralCancerDetail) throws IOException {
-		String oralCancerIndicator = oralCancerDetail.getKey().toLowerCase();
-		switch (oralCancerIndicator) {
-		case "fnac report":
-		case "cect head neck thorax report/ pet ct/ mri":
-			return createDiagnosticReport(bundle, patient, oralCancerDetail.getKey(), oralCancerDetail.getValue(),
-					testWithLoincCodeMap, oralCancerIndicator);
-		default:
-			return null;
-		}
-	}
-
-	private DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient, String reportType,
-			String reportValue, Map<String, String> indicatorLoincCodeMap, String lungCancerIndicator)
+	private DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient, String reportValue, Test test)
 			throws IOException {
 		// Create a new CodeableConcept
-		CodeableConcept code = new CodeableConcept();
-		if (indicatorLoincCodeMap.containsKey(lungCancerIndicator)) {
-			code = FHIRUtils.getCodeableConcept(indicatorLoincCodeMap.get(lungCancerIndicator), Constants.LOINC_SYSTEM,
-					reportType, reportType);
-		}
+		CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+				test.getDescription(), test.getDescription());
 
 		// Create a new DiagnosticReport resource
 		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, null);
 
 		// Create a new DocumentReference resource
-		DocumentReference documentReference = createDocumentReferenceResource(reportType, reportValue, patient,
-				reportType + " report", testWithLoincCodeMap.get(reportType));
+		DocumentReference documentReference = createDocumentReferenceResource(test.getDescription(), reportValue,
+				patient, test.getDescription() + " report", test.getCode());
+		
+		// Add documentReference to the bundle
+		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 
 		report.addResult(FHIRUtils.getReferenceToResource(documentReference));
 
@@ -576,7 +528,7 @@ public class OPConsultationHelper {
 
 	private void addObservationToDiagnosticReport(Bundle bundle, Composition composition, Patient patient,
 			Composition.SectionComponent diagnosticReportSection, TestDetail testDetail, DiagnosticReport report) {
-		Optional<PanelTest> panelTest = getTestByName(testDetail.getTestName());
+		Optional<Test> panelTest = getTestByName(testDetail.getTestName());
 		if (panelTest.isPresent()) {
 			String loincCode = StringUtils.isEmpty(testDetail.getLoincCode()) ? panelTest.get().getCode()
 					: testDetail.getLoincCode();
