@@ -29,104 +29,23 @@
 			"code": "LOINC:24325-3",
 			"description": "Hepatic function 2000 panel - Serum or Plasma",
 			"members": []
-		},
-		{
-			"name": "Histopathology Report",
-			"code": "LOINC:60567-2",
-			"description": "Histopathology Report",
-			"members": []
 		}
 	],
 	"tests": [
 		{
-			"name": "Hemoglobin",
-			"code": "LOINC:718-7",
-			"description": " Hemoglobin [Mass/volume] in Blood"
+			"name": "Diagnostic Report",
+			"code": "SNOMED:4321000179101",
+			"description": "Diagnostic Report"
 		},
 		{
-			"name": "Hematocrit",
-			"code": "LOINC:4544-3",
-			"description": " Hematocrit [Volume Fraction] of Blood"
+			"name": "Biopsy Histopathology Report",
+			"code": "LOINC:66121-5",
+			"description": "Biopsy Histopathology Report"
 		},
 		{
-			"name": "White Blood Cell Count",
-			"code": "LOINC:6690-2",
-			"description": " Leukocytes [#/volume] in Blood by Automated count"
-		},
-		{
-			"name": "Total Cholesterol",
-			"code": "LOINC:2093-3",
-			"description": " Cholesterol [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "HDL Cholesterol",
-			"code": "LOINC:2085-9",
-			"description": " Cholesterol in HDL [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "LDL Cholesterol",
-			"code": "LOINC:13457-7",
-			"description": " Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
-		},
-		{
-			"name": "Triglycerides",
-			"code": "LOINC:2571-8",
-			"description": " Triglyceride [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Creatinine",
-			"code": "LOINC:2160-0",
-			"description": " Creatinine [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Urea Nitrogen",
-			"code": "LOINC:3097-3",
-			"description": " Urea nitrogen [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Glomerular Filtration Rate (MDRD)",
-			"code": "LOINC:33914-3",
-			"description": " Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
-		},
-		{
-			"name": "Total Protein",
-			"code": "LOINC:2885-2",
-			"description": " Protein [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Albumin",
-			"code": "LOINC:1751-7",
-			"description": " Albumin [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Total Bilirubin",
-			"code": "LOINC:1975-2",
-			"description": " Bilirubin.total [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Direct Bilirubin",
-			"code": "LOINC:1968-7",
-			"description": " Bilirubin.direct [Mass/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Alkaline Phosphatase",
-			"code": "LOINC:6768-6",
-			"description": " Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Aspartate Aminotransferase (AST)",
-			"code": "LOINC:1920-8",
-			"description": " Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Alanine Aminotransferase (ALT)",
-			"code": "LOINC:1742-6",
-			"description": " Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
-		},
-		{
-			"name": "Histopathology",
-			"code": "LOINC:60567-2",
-			"description": " Histopathology report"
+			"name": "Bio Chemistry",
+			"code": "SNOMED:4241000179101",
+			"description": "Bio Chemistry"
 		},
 		{
 			"name": "total cholesterol",
@@ -357,6 +276,156 @@
 			"name": "CECT head neck thorax report/ PET Ct/ MRI",
 			"code": "LOINC:24627-2",
 			"description": "CECT head neck thorax report/ PET Ct/ MRI"
+		},
+		{
+			"name": "CBC",
+			"code": "LOINC:57021-8",
+			"description": "CBC"
+		},
+		{
+			"name": "Leukocytes",
+			"code": "LOINC:6690-2",
+			"description": "Leukocytes [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Erythrocytes",
+			"code": "LOINC:789-8",
+			"description": "Erythrocytes"
+		},
+		{
+			"name": "Hemoglobin",
+			"code": "LOINC:718-7",
+			"description": "Hemoglobin [Mass/volume] in Blood"
+		},
+		{
+			"name": "Hematocrit",
+			"code": "LOINC:4544-3",
+			"description": "Hematocrit [Volume Fraction] of Blood by Automated count"
+		},
+		{
+			"name": "MCV",
+			"code": "LOINC:787-2",
+			"description": "MCV [Entitic volume] by Automated count"
+		},
+		{
+			"name": "MCH",
+			"code": "LOINC:785-6",
+			"description": "MCH [Entitic mass] by Automated count"
+		},
+		{
+			"name": "MCHC",
+			"code": "LOINC:786-4",
+			"description": "MCHC [Mass/volume] by Automated count"
+		},
+		{
+			"name": "Erythrocyte entitic volume",
+			"code": "LOINC:21000-5",
+			"description": "Erythrocyte distribution width [Entitic volume] by Automated count"
+		},
+		{
+			"name": "Erythrocyte Ratio",
+			"code": "LOINC:788-0",
+			"description": "Erythrocyte distribution width [Ratio] by Automated count"
+		},
+		{
+			"name": "Platelets volume",
+			"code": "LOINC:777-3",
+			"description": "Platelets [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Platelet distribution width",
+			"code": "LOINC:32207-3",
+			"description": "Platelet distribution width [Entitic volume] in Blood by Automated count"
+		},
+		{
+			"name": "Platelet mean volume",
+			"code": "LOINC:32623-1",
+			"description": "Platelet mean volume [Entitic volume] in Blood by Automated count"
+		},
+		{
+			"name": "Neutrophils",
+			"code": "LOINC:770-8",
+			"description": "Neutrophils/100 leukocytes in Blood by Automated count"
+		},
+		{
+			"name": "Band form neutrophils",
+			"code": "LOINC:35332-6",
+			"description": "Band form neutrophils/100 leukocytes in Blood by Automated count"
+		},
+		{
+			"name": "Granulocytes",
+			"code": "LOINC:19023-1",
+			"description": "Granulocytes/100 leukocytes in Blood by Automated count"
+		},
+		{
+			"name": "Lymphocytes",
+			"code": "LOINC:736-9",
+			"description": "Lymphocytes/100 leukocytes in Blood by Automated count"
+		},
+		{
+			"name": "Variant lymphocytes",
+			"code": "LOINC:42250-1",
+			"description": "Variant lymphocytes/100 leukocytes in Blood by Automated count"
+		},
+		{
+			"name": "Monocytes",
+			"code": "LOINC:5905-5",
+			"description": "Monocytes/100 leukocytes in Blood by Automated count"
+		},
+		{
+			"name": "Eosinophils",
+			"code": "LOINC:713-8",
+			"description": "Eosinophils/100 leukocytes in Blood by Automated count"
+		},
+		{
+			"name": "Basophils",
+			"code": "LOINC:706-2",
+			"description": "Basophils"
+		},
+		{
+			"name": "Other cells leukocytes",
+			"code": "LOINC:58409-4",
+			"description": "Other cells/100 leukocytes in Blood by Automated count"
+		},
+		{
+			"name": "Neutrophils",
+			"code": "LOINC:751-8",
+			"description": "Neutrophils [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Band form neutrophils",
+			"code": "LOINC:30229-9",
+			"description": "Band form neutrophils [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Lymphocytes ",
+			"code": "LOINC:731-0",
+			"description": "Lymphocytes [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Variant lymphocytes",
+			"code": "LOINC:43743-4",
+			"description": "Variant lymphocytes [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Monocytes",
+			"code": "LOINC:742-7",
+			"description": "Monocytes [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Eosinophils",
+			"code": "LOINC:711-2",
+			"description": "Eosinophils [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Basophils",
+			"code": "LOINC:704-7",
+			"description": "Basophils [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "Leukocytes other",
+			"code": "LOINC:51383-8",
+			"description": "Leukocytes other [#/volume] in Blood by Automated count"
 		}
 	]
 }

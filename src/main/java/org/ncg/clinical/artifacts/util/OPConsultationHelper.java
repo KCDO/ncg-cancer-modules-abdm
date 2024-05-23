@@ -366,7 +366,7 @@ public class OPConsultationHelper {
 		// Create a new DocumentReference resource
 		DocumentReference documentReference = createDocumentReferenceResource(test.getDescription(), reportValue,
 				patient, test.getDescription() + " report", test.getCode());
-		
+
 		// Add documentReference to the bundle
 		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 
@@ -422,68 +422,88 @@ public class OPConsultationHelper {
 		if (Utils.randomBool())
 			return null;
 
-		CodeableConcept diagnosticReportCode = FHIRUtils.getCodeableConcept(Constants.DR_SNOMED_CODE,
-				Constants.SNOMED_SYSTEM_SCT, Constants.DIAGNOSTIC_REPORT, Constants.DIAGNOSTIC_REPORT);
+		CodeableConcept diagnosticReportCode = new CodeableConcept();
+		Optional<Test> testWithLoincCode = getTestByName(Constants.DIAGNOSTIC_REPORT);
+		if (testWithLoincCode.isPresent()) {
+			diagnosticReportCode = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(),
+					Constants.SNOMED_SYSTEM_SCT, testWithLoincCode.get().getDescription(),
+					testWithLoincCode.get().getDescription());
+		}
 		Composition.SectionComponent diagnosticReportSection = createSectionComponent(Constants.DIAGNOSTIC_REPORTS,
 				diagnosticReportCode);
 
 		if (Objects.nonNull(diagnostic.getCbc())) {
-			if (Objects.nonNull(diagnostic.getCbc().getHemoglobin())) {
-				// Create a new DiagnosticReport resource
-				CodeableConcept category = FHIRUtils.getCodeableConcept(Constants.DR_CBC_SNOMED_CODE,
-						Constants.SNOMED_SYSTEM_SCT, Constants.DR_CBC, Constants.DR_CBC);
-				CodeableConcept haemoglobinCode = FHIRUtils.getCodeableConcept(Constants.DR_HAEMOGLOBIN_CODE,
-						Constants.LOINC_SYSTEM, Constants.DR_HAEMOGLOBIN, Constants.DR_HAEMOGLOBIN);
-				DiagnosticReport report = createDiagnosticReportResource(bundle, patient, haemoglobinCode,
+			CodeableConcept category = new CodeableConcept();
+			testWithLoincCode = getTestByName(Constants.DR_CBC);
+			if (testWithLoincCode.isPresent()) {
+				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(), Constants.LOINC_SYSTEM,
+						testWithLoincCode.get().getDescription(), testWithLoincCode.get().getDescription());
+			}
+
+			// panels for CBC
+			List<PanelDetail> cbcPanels = diagnostic.getCbc().getPanels();
+			if (!CollectionUtils.isEmpty(cbcPanels)) {
+				for (PanelDetail panelDetail : cbcPanels) {
+					Optional<Panel> panelWithLoincCode = getPanelByName(panelDetail.getName());
+					if (testWithLoincCode.isPresent()) {
+						createPanel(bundle, composition, patient, diagnosticReportSection, category,
+								panelWithLoincCode.get(), panelDetail);
+					}
+				}
+			}
+		}
+
+		if (Objects.nonNull(diagnostic.getBiopsyHistopathologyReport())) {
+			// Create a new DiagnosticReport resource
+			testWithLoincCode = getTestByName(Constants.BIOPSY_HISTOPATHOLOGY_REPORT);
+			if (testWithLoincCode.isPresent()) {
+				// Create category
+				CodeableConcept category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(),
+						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
+						testWithLoincCode.get().getDescription());
+
+				// Create code
+				CodeableConcept code = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(),
+						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
+						testWithLoincCode.get().getDescription());
+
+				DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
 						Arrays.asList(category));
+
+				// Create a new DocumentReference resource
+				DocumentReference documentReference = createDocumentReferenceResource(
+						testWithLoincCode.get().getDescription(), diagnostic.getBiopsyHistopathologyReport(), patient,
+						testWithLoincCode.get().getDescription(), testWithLoincCode.get().getCode());
+
+				// Add documentReference to the DiagnosticReport
+				Reference resultReference = new Reference(Constants.URN_UUID + documentReference.getId());
+				resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
+				report.addResult(resultReference);
 
 				// make entry for report
 				Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
 				entryReference.setType(Constants.DIAGNOSTICREPORT);
 				diagnosticReportSection.getEntry().add(entryReference);
 
-				// Create an Observation for haemoglobin
-//				addObservationToDiagnosticReport(bundle, composition, patient, diagnosticReportSection,
-//						Constants.GRAM_PER_DECILITER, diagnostic.getCbc().getHemoglobin(), haemoglobinCode, report);
-//				
-//				Bundle bundle, Composition composition, Patient patient,
-//				Composition.SectionComponent diagnosticReportSection, TestDetail testDetail, DiagnosticReport report
+				// Add documentReference to the bundle
+				FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 			}
 		}
 
-		if (Objects.nonNull(diagnostic.getBiopsyHistopathologyReport())) {
-			// Create a new DiagnosticReport resource
-			CodeableConcept category = FHIRUtils.getCodeableConcept(Constants.BIOPSY_HISTOPATHOLOGY_SNOMED_CODE,
-					Constants.SNOMED_SYSTEM_SCT, Constants.BIOPSY_HISTOPATHOLOGY_REPORT,
-					Constants.BIOPSY_HISTOPATHOLOGY_REPORT);
-			CodeableConcept code = FHIRUtils.getCodeableConcept(Constants.BIOPSY_HISTOPATHOLOGY_SNOMED_CODE,
-					Constants.SNOMED_SYSTEM_SCT, Constants.BIOPSY_HISTOPATHOLOGY_REPORT,
-					Constants.BIOPSY_HISTOPATHOLOGY_REPORT);
-			DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, Arrays.asList(category));
-
-			// make entry for report
-			Reference entryReference = new Reference(Constants.URN_UUID + report.getId());
-			entryReference.setType(Constants.DIAGNOSTICREPORT);
-			diagnosticReportSection.getEntry().add(entryReference);
-
-			// Create a new DocumentReference resource
-			DocumentReference documentReference = createDocumentReferenceResource(Constants.BIOPSY_HISTOPATHOLOGY,
-					diagnostic.getBiopsyHistopathologyReport(), patient, Constants.BIOPSY_HISTOPATHOLOGY,
-					Constants.BIOPSY_HISTOPATHOLOGY_SNOMED_CODE);
-
-			report.addResult(FHIRUtils.getReferenceToResource(documentReference));
-		}
-
 		if (Objects.nonNull(diagnostic.getBioChemistry())) {
-			CodeableConcept category = FHIRUtils.getCodeableConcept(Constants.BIO_CHEMISTRY_SNOMED_CODE,
-					Constants.SNOMED_SYSTEM_SCT, Constants.BIO_CHEMISTRY, Constants.BIO_CHEMISTRY);
+			CodeableConcept category = new CodeableConcept();
+			testWithLoincCode = getTestByName(Constants.BIO_CHEMISTRY);
+			if (testWithLoincCode.isPresent()) {
+				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(), Constants.SNOMED_SYSTEM_SCT,
+						testWithLoincCode.get().getDescription(), testWithLoincCode.get().getDescription());
+			}
 			// panels for bioChemistry
 			List<PanelDetail> bioChemistryPanels = diagnostic.getBioChemistry().getPanels();
 			if (!CollectionUtils.isEmpty(bioChemistryPanels)) {
 				for (PanelDetail panelDetail : bioChemistryPanels) {
 					Optional<Panel> panelWithLoincCode = getPanelByName(panelDetail.getName());
-					if (panelWithLoincCode.isPresent()) {
-						createBioChemistryPanel(bundle, composition, patient, diagnosticReportSection, category,
+					if (testWithLoincCode.isPresent()) {
+						createPanel(bundle, composition, patient, diagnosticReportSection, category,
 								panelWithLoincCode.get(), panelDetail);
 					}
 				}
@@ -493,7 +513,7 @@ public class OPConsultationHelper {
 		return diagnosticReportSection;
 	}
 
-	private void createBioChemistryPanel(Bundle bundle, Composition composition, Patient patient,
+	private void createPanel(Bundle bundle, Composition composition, Patient patient,
 			Composition.SectionComponent diagnosticReportSection, CodeableConcept category, Panel panelWithLoincCode,
 			PanelDetail panelDetail) throws IOException {
 		// Create a new DiagnosticReport resource

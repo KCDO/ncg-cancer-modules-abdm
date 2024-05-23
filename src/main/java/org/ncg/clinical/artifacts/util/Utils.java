@@ -1,14 +1,11 @@
 package org.ncg.clinical.artifacts.util;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 import org.hl7.fhir.r4.model.Meta;
-import org.hl7.fhir.r4.model.UriType;
 
 public class Utils {
 	public static boolean isBlank(String value) {
