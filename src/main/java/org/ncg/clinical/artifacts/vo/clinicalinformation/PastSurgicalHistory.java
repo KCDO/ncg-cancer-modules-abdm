@@ -1,4 +1,6 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.clinicalinformation;
+
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +11,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Allergy {
+public class PastSurgicalHistory {
 	private String name;
-	private String type;
+	private String note;
+	private Date onsetDateTime;
 }
