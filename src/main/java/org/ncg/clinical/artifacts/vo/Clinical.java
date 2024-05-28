@@ -2,6 +2,8 @@ package org.ncg.clinical.artifacts.vo;
 
 import java.util.List;
 
+import org.ncg.clinical.artifacts.vo.clinicalinformation.Allergy;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

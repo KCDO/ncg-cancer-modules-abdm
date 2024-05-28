@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

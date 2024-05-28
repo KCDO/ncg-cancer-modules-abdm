@@ -2,6 +2,7 @@ package org.ncg.clinical.artifacts.vo;
 
 import java.util.List;
 
+import org.ncg.clinical.artifacts.vo.clinicalinformation.ClinicalInformation;
 import org.ncg.clinical.artifacts.vo.diagnostic.Diagnostic;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
 
@@ -17,11 +18,7 @@ import lombok.NoArgsConstructor;
 public class ClinicalData {
 	private List<String> clinicalArtifacts;
 	private PatientData patient;
-	private Clinical clinical;
-	private List<AllergyIntoleranceRequest> allergyIntolerance;
-	private List<CoMorbidity> coMorbidities;
-	private List<AdverseEvent> adverseEvents;
-	private List<ObservationWomenHealth> observationWomenHealth;
+	private ClinicalInformation clinicalInformation;
 	private Diagnostic diagnostic;
 	private List<CancerType> cancerTypes;
 }
