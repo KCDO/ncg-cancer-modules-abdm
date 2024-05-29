@@ -1,4 +1,6 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.labtest;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Identifier {
-	private String hipId;
-	private String domain;
+public class AllLabTests {
+	private List<Panel> panels;
+	private List<Test> tests;
 }

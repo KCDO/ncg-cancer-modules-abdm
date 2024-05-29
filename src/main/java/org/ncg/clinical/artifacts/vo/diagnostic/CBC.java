@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.diagnostic;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RenalFunction {
-	private String attachment;
-	private List<Test> renalTests;
+public class CBC {
+	private List<PanelDetail> panels;
 }

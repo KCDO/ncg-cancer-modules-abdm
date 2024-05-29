@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.diagnostic;
 
 import java.util.List;
 
@@ -11,7 +11,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LipidProfile {
+public class PanelDetail {
+	private String name;
 	private String attachment;
-	private List<Test> lipidTests;
+	private List<TestDetail> tests;
 }

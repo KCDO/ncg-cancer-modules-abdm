@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CBC {
-	private double hemoglobin;
+public class AdverseEvent {
+	private String name;
+	private String category;
 }

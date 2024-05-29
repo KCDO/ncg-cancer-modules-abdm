@@ -34,36 +34,136 @@
         },
         "bloodGroup": "APLUS"
     },
-    "coMorbidities": [
-        {
-            "name": "hypertension",
-            "status": "present"
+    "clinicalInformation": {
+        "coMorbidities": [
+            {
+                "name": "hypertension",
+                "category": "problem-list-item"
+            },
+            {
+                "name": "Coronary Artery Disease",
+                "category": "encounter-diagnosis"
+            }
+        ],
+        "adverseEvents": [
+            {
+                "name": "Allergic reaction",
+                "category": "medication-mishap"
+            }
+        ],
+        "pastMedicalHistory": [
+            {
+                "name": "hypertension",
+                "note": "This patient is suffering from Stage 2 Hypertension.",
+                "onsetDateTime": "2020-01-01T10:00:00+05:00"
+            },
+            {
+                "name": "Coronary Artery Disease",
+                "note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
+                "onsetDateTime": "2022-12-01T10:00:00+05:00"
+            }
+        ],
+        "pastSurgicalHistory": [
+            {
+                "name": "hypertension",
+                "note": "This patient is suffering from Stage 2 Hypertension.",
+                "onsetDateTime": "2020-01-01T10:00:00+05:00"
+            },
+            {
+                "name": "Coronary Artery Disease",
+                "note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
+                "onsetDateTime": "2022-12-01T10:00:00+05:00"
+            }
+        ],
+        "mentalHealthAssesment": [
+            {
+                "name": "Pregnancy status",
+                "value": "Not pregnant"
+            },
+            {
+                "name": "Menstrual cycle",
+                "value": "Regular"
+            }
+        ],
+        "menstruationHistory": [
+            {
+                "name": "Pregnancy status",
+                "value": "Not pregnant"
+            },
+            {
+                "name": "Menstrual cycle",
+                "value": "Regular"
+            }
+        ],
+        "examinationDetails": [
+            {
+                "name": "Chest CT",
+                "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
+                "requester": "Practitioner/example",
+                "reason": "Check for metastatic disease"
+            },
+            {
+                "name": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma",
+                "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
+                "requester": "Practitioner/example",
+                "reason": "Patient complains of Thyroid"
+            }
+        ],
+        "otNotes": {
+            "OT Initial Assessment": "Occupational therapy initial assessment note",
+            "Survey": "Yes"
         },
-        {
-            "name": "Coronary Artery Disease",
-            "status": "present"
-        }
-    ],
-    "observationWomenHealth": [
-        {
-            "name": "Pregnancy status",
-            "value": "Not pregnant"
+        "surgicalSummaryWithPostOPCourse": [
+            {
+                "name": "Heart valve replacement",
+                "startDate": "2011-06-26",
+                "endDate": "2011-06-27",
+                "reason": "Heart valve disorder",
+                "bodySite": "Heart valve structure",
+                "outcome": "improved blood circulation",
+                "followUp": "described in care plan"
+            },
+            {
+                "name": "Partial lobectomy of lung",
+                "startDate": "2013-01-28T13:31:00+01:00",
+                "endDate": "2013-01-28T14:27:00+01:00",
+                "reason": "Malignant tumor of lung",
+                "bodySite": "Lung structure",
+                "outcome": "improved blood circulation",
+                "followUp": "described in care plan"
+            }
+        ],
+        "pACNotes": {
+            "OT Initial Assessment": "Occupational therapy initial assessment note",
+            "Survey": "Yes"
         },
-        {
-            "name": "Menstrual cycle",
-            "value": "Regular"
-        }
-    ],
-    "allergyIntolerance": [
-        {
-            "name": "groundnut",
-            "type": "food"
-        },
-        {
-            "name": "dust",
-            "type": "environmental"
-        }
-    ],
+        "ongoingDrugs": [
+            {
+                "name": "Amoxicillin",
+                "effectiveDate": "2014-02-01",
+                "assertedDate": "2014-02-22",
+                "reference": "Patient/pat1",
+                "note": "Father indicates they miss the occasional dose"
+            },
+            {
+                "name": "Tylenol PM",
+                "effectiveDate": "2015-01-23",
+                "assertedDate": "2015-02-22",
+                "reference": "MedicationRequest/medrx002",
+                "note": "Patient indicates they miss the occasional dose"
+            }
+        ],
+        "allergyIntolerance": [
+            {
+                "name": "groundnut",
+                "type": "food"
+            },
+            {
+                "name": "dust",
+                "type": "environmental"
+            }
+        ]
+    },
     "diagnostic": {
         "cbc": {
             "hemoglobin": 4.5

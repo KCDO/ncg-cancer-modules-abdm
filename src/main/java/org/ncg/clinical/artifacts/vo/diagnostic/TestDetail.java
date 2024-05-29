@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.diagnostic;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Test {
+public class TestDetail {
 	private String testName;
 	private String loincCode;
 	private String unitOfMeasurement;

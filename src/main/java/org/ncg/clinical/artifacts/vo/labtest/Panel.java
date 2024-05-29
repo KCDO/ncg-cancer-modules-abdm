@@ -1,4 +1,6 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.labtest;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +11,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ObservationWomenHealth {
+public class Panel {
 	private String name;
-	private String value;
+	private String code;
+	private String description;
+	private List<String> members;
 }

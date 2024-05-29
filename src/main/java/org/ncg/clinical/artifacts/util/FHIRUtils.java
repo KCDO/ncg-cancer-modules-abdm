@@ -29,7 +29,7 @@ import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
-import org.ncg.clinical.artifacts.vo.PatientData;
+import org.ncg.clinical.artifacts.vo.patient.PatientData;
 
 public class FHIRUtils {
 
@@ -193,7 +193,7 @@ public class FHIRUtils {
 		return contactPoint;
 	}
 
-	private static Address getAddress(org.ncg.clinical.artifacts.vo.Address patientAddress) {
+	private static Address getAddress(org.ncg.clinical.artifacts.vo.patient.Address patientAddress) {
 		Address address = new Address();
 		address.setType(Address.AddressType.BOTH);// Set the address type as both postal and physical
 		address.setText("House Name: " + patientAddress.getHouseName()); // Set the complete address as
@@ -204,7 +204,8 @@ public class FHIRUtils {
 		return address;
 	}
 
-	private static void setAddressComponents(org.ncg.clinical.artifacts.vo.Address patientAddress, Address address) {
+	private static void setAddressComponents(org.ncg.clinical.artifacts.vo.patient.Address patientAddress,
+			Address address) {
 		address.setCity(patientAddress.getCity());
 		address.setDistrict(patientAddress.getDistrict());
 		address.setState(patientAddress.getState());
@@ -372,6 +373,30 @@ public class FHIRUtils {
 	}
 
 	public static CodeableConcept getAdverseEventCategory(String category) {
+		switch (category.toLowerCase()) {
+		case "wrong-patient":
+			return FHIRUtils.getCodeableConcept("386368001", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Patient");
+		case "procedure-mishap":
+			return FHIRUtils.getCodeableConcept("389227004", Constants.SNOMED_SYSTEM_SCT, category, "Procedure Mishap");
+		case "medication-mishap":
+			return FHIRUtils.getCodeableConcept("407716003", Constants.SNOMED_SYSTEM_SCT, category,
+					"Medication Mishap");
+		case "device":
+			return FHIRUtils.getCodeableConcept("125661000119109", Constants.SNOMED_SYSTEM_SCT, category, "Device");
+		case "unsafe-physical-environment":
+			return FHIRUtils.getCodeableConcept("723877005", Constants.SNOMED_SYSTEM_SCT, category,
+					"Unsafe Physical Environment");
+		case "hospital-aquired-infection":
+			return FHIRUtils.getCodeableConcept("409822003", Constants.SNOMED_SYSTEM_SCT, category,
+					"Hospital Acquired Infection");
+		case "wrong-body-site":
+			return FHIRUtils.getCodeableConcept("312889002", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Body Site");
+		default:
+			return null;
+		}
+	}
+
+	public static CodeableConcept getSurgicalSummaryWithPostOPCourseCode(String category) {
 		switch (category.toLowerCase()) {
 		case "wrong-patient":
 			return FHIRUtils.getCodeableConcept("386368001", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Patient");

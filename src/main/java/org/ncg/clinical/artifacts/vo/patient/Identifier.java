@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.patient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Allergy {
-	private String name;
-	private String type;
+public class Identifier {
+	private String hipId;
+	private String domain;
 }

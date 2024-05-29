@@ -1,6 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
-
-import java.util.List;
+package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HepaticFunction {
-	private String attachment;
-	private List<Test> hepaticTests;
+public class Allergy {
+	private String name;
+	private String type;
 }

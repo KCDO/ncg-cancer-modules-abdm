@@ -1,8 +1,6 @@
 package org.ncg.clinical.artifacts.vo;
 
-import java.util.List;
-
-import org.ncg.clinical.artifacts.vo.clinicalinformation.Allergy;
+import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Clinical {
-	private List<Allergy> allergies;
+public class CancerType {
+	private String name;
+	private Map<String, String> tests;
 }

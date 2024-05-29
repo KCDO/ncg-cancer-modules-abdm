@@ -1,4 +1,6 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.diagnostic;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +12,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BioChemistry {
-	private LipidProfile lipidProfile;
-	private RenalFunction renalFunction;
-	private HepaticFunction hepaticFunction;
+	private List<PanelDetail> panels;
 }
