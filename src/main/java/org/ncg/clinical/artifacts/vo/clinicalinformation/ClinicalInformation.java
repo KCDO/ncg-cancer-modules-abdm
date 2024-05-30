@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ClinicalInformation {
 	private List<Allergy> allergyIntolerance;
-	private List<CoMorbidity> coMorbidities;
+	private List<Comorbidity> comorbidities;
 	private List<AdverseEvent> adverseEvents;
 	private List<PastMedicalHistory> pastMedicalHistory;
 	private List<PastSurgicalHistory> pastSurgicalHistory;
