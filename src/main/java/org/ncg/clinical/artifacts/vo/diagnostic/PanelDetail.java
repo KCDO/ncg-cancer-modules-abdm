@@ -11,8 +11,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PanelDetail {
-	private String name;
-	private String attachment;
+public class PanelDetail extends AttachmentDetail {
 	private List<TestDetail> tests;
 }

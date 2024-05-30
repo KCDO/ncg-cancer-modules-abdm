@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClinicalData {
-	private List<String> clinicalArtifacts;
-	private PatientData patient;
+	private List<String> outputClinicalArtifactTypes;
+	private PatientData patientDetails;
 	private ClinicalInformation clinicalInformation;
-	private Diagnostic diagnostic;
-	private List<CancerType> cancerTypes;
+	private Diagnostic diagnostics;
+	private List<CancerDetails> cancerDetails;
 }

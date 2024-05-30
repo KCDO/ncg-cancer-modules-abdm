@@ -47,7 +47,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			// clinicalArtifacts values: "DiagnosticReport","DischargeSummary",
 			// "OpConsultRecord","Prescription","WellnessRecord","HealthDocument","Immunization"
 
-			List<String> clinicalArtifacts = clinicalData.getClinicalArtifacts();
+			List<String> clinicalArtifacts = clinicalData.getOutputClinicalArtifactTypes();
 
 			Bundle bundle = new Bundle();
 

@@ -316,8 +316,8 @@ public class FHIRUtils {
 	static Patient addPatientResourceToComposition(ClinicalData clinicalData, Bundle bundle, Composition opDoc)
 			throws Exception {
 		Patient patientResource = new Patient();
-		if (Objects.nonNull(clinicalData.getPatient())) {
-			patientResource = FHIRUtils.patientBuilder(clinicalData.getPatient(), bundle);
+		if (Objects.nonNull(clinicalData.getPatientDetails())) {
+			patientResource = FHIRUtils.patientBuilder(clinicalData.getPatientDetails(), bundle);
 			FHIRUtils.addToBundleEntry(bundle, patientResource, false);
 			opDoc.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
 		}
