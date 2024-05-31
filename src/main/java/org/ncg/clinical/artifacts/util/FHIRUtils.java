@@ -135,16 +135,22 @@ public class FHIRUtils {
 				fhirPatient.addAddress(getABHAAddress(patientData.getABHAAddress()));
 			}
 
-			// Set the patient's height in cm
+			// Set the patient's height in Observations
 			if (Objects.nonNull(patientData.getHeight())) {
-				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_HEIGHT,
-						getHeight(patientData.getHeight())));
+				Observation observation = new Observation();
+				observation = getHeight(patientData.getHeight());
+				fhirPatient.addExtension(new Extension().setUrl(Constants.STRUCTURE_DEFINITION_PATIENT_HEIGHT)
+						.setValue(new Reference(observation)));
+				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
-			// Set the patient's weight (e.g., 70 kilograms)
+			// Set the patient's weight in Observations
 			if (Objects.nonNull(patientData.getWeight())) {
-				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_WEIGHT,
-						getWeight(patientData.getWeight())));
+				Observation observation = new Observation();
+				observation = getWeight(patientData.getWeight());
+				fhirPatient.addExtension(new Extension().setUrl(Constants.STRUCTURE_DEFINITION_PATIENT_WEIGHT)
+						.setValue(new Reference(observation)));
+				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
 			// Calculate BMI in kg/m^2
@@ -222,22 +228,72 @@ public class FHIRUtils {
 		return address;
 	}
 
-	private static Quantity getHeight(double patientHeight) {
-		Quantity height = new Quantity();
-		height.setValue(patientHeight); // Height in centimeters
-		height.setUnit("cm");
-		height.setSystem("http://unitsofmeasure.org"); // Standard system for units of measure
-		height.setCode("cm");
+	private static Observation getHeight(double patientHeight) {
+		Observation observation = new Observation();
+		observation.setId(Utils.generateId());
 
-		return height;
+		// Set the code for patient height observation using LOINC system
+		observation.setCode(new CodeableConcept(
+				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("8302-2").setDisplay("Body Height")));
+
+		// Set the value for height observation
+		observation.setValue(mapHeight(patientHeight));
+
+		return observation;
 	}
 
-	private static Quantity getWeight(double patientWeight) {
-		Quantity weight = new Quantity();
-		weight.setValue(patientWeight); // Weight value in kilograms
-		weight.setUnit("kg"); // Unit for weight (kilograms)
+	// Method to map patient height to FHIR codeable concept
+	public static CodeableConcept mapHeight(double height) {
 
-		return weight;
+		CodeableConcept codeableConcept = new CodeableConcept();
+		Coding coding = new Coding();
+
+		// Set the coding system, code, and display
+		coding.setSystem(Constants.SNOMED_SYSTEM_SCT);
+		coding.setCode("50373000");
+		coding.setDisplay(String.valueOf(height));
+
+		// Add the coding to the codeable concept
+		codeableConcept.addCoding(coding);
+
+		// Set the text of the codeable concept
+		codeableConcept.setText("Height");
+
+		return codeableConcept;
+	}
+
+	private static Observation getWeight(double patientWeight) {
+		Observation observation = new Observation();
+		observation.setId(Utils.generateId());
+
+		// Set the code for patient weight observation using LOINC system
+		observation.setCode(new CodeableConcept(
+				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("29463-7").setDisplay("Body Weight")));
+
+		// Set the value for height observation
+		observation.setValue(mapWeight(patientWeight));
+
+		return observation;
+	}
+
+	// Method to map patient weight to FHIR codeable concept
+	public static CodeableConcept mapWeight(double weight) {
+
+		CodeableConcept codeableConcept = new CodeableConcept();
+		Coding coding = new Coding();
+
+		// Set the coding system, code, and display
+		coding.setSystem(Constants.SNOMED_SYSTEM_SCT);
+		coding.setCode("27113001");
+		coding.setDisplay(String.valueOf(weight));
+
+		// Add the coding to the codeable concept
+		codeableConcept.addCoding(coding);
+
+		// Set the text of the codeable concept
+		codeableConcept.setText("Weight");
+
+		return codeableConcept;
 	}
 
 	private static Quantity getBMI(double patientHeight, double patientWeight) {

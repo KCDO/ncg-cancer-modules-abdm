@@ -6,14 +6,12 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.commons.lang3.tuple.Pair;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
@@ -157,6 +155,14 @@ public class OPConsultationHelper {
 					}
 				}
 				sections.add(cancerSection);
+			}
+		}
+
+		// Drug Allergy section
+		List<Allergy> allergiesDetail = clinicalData.getClinicalInformation().getDrugAllergy();
+		if (Objects.nonNull(clinicalData.getClinicalInformation().getDrugAllergy())) {
+			for (Allergy allergyDetail : allergiesDetail) {
+				sections.add(createDrugAllergySection(allergyDetail, bundle, opDoc, patientResource));
 			}
 		}
 
@@ -512,6 +518,9 @@ public class OPConsultationHelper {
 					// Create a new ServiceRequest resource for each InvestigationAdvice
 					ServiceRequest serviceRequest = new ServiceRequest();
 
+					// set new Id for the ServiceRequest
+					serviceRequest.setId(Utils.generateId());
+
 					// Set the status of the ServiceRequest
 					serviceRequest.setStatus(ServiceRequest.ServiceRequestStatus.ACTIVE);
 
@@ -586,7 +595,6 @@ public class OPConsultationHelper {
 					// Set subject
 					Reference patientRef = new Reference();
 					patientRef.setReference("Patient/" + patientResource.getId());
-					patientRef.setDisplay(patientResource.getName().toString());
 					procedure.setSubject(patientRef);
 
 					// Set the performed period
@@ -662,7 +670,6 @@ public class OPConsultationHelper {
 					// Set subject
 					Reference patientRef = new Reference();
 					patientRef.setReference("Patient/" + patientResource.getId());
-					patientRef.setDisplay(patientResource.getName().toString());
 					medicationStatement.setSubject(patientRef);
 
 					// Set the effective date
@@ -689,14 +696,6 @@ public class OPConsultationHelper {
 
 					sections.add(ongoingDrugsSection);
 					sections.add(createOngoingDrugsSection(bundle, opDoc, ongoingDrugsDetail, patientResource));
-				}
-			}
-
-			// allergyIntolerance
-			List<Allergy> allergiesDetail = clinicalData.getClinicalInformation().getAllergyIntolerance();
-			if (Objects.nonNull(clinicalData.getClinicalInformation().getAllergyIntolerance())) {
-				for (Allergy allergyDetail : allergiesDetail) {
-					sections.add(createAllergiesSection(allergyDetail, bundle, opDoc, patientResource));
 				}
 			}
 		}
@@ -1183,9 +1182,9 @@ public class OPConsultationHelper {
 		return report;
 	}
 
-	protected CodeableConcept getAllergyIntoleranceCode() {
+	protected CodeableConcept getDrugAllergyCode() {
 		return FHIRUtils.getCodeableConcept(Constants.ALLERGY_INTOLERANCE_CODE, Constants.SNOMED_SYSTEM_SCT,
-				Constants.ALLERGY_INTOLERANCE_SECTION, Constants.ALLERGY_INTOLERANCE_SECTION);
+				Constants.DRUG_ALLERGY_SECTION, Constants.DRUG_ALLERGY_SECTION);
 	}
 
 	// fetch CodeableConcept for Co-Morbidities condition
@@ -1356,7 +1355,7 @@ public class OPConsultationHelper {
 		return dateTimeType;
 	}
 
-	private Composition.SectionComponent createAllergiesSection(Allergy allergyDetail, Bundle bundle,
+	private Composition.SectionComponent createDrugAllergySection(Allergy allergyDetail, Bundle bundle,
 			Composition composition, Patient patient) throws IOException {
 
 		// Create a new AllergyIntolerance resource
@@ -1377,14 +1376,15 @@ public class OPConsultationHelper {
 
 		// Set clinicalStatus
 		CodeableConcept clinicalStatus = new CodeableConcept();
-		clinicalStatus = FHIRUtils.getCodeableConcept(Constants.FHIR_ALLERGY_INTOLERANCE_CLINICAL_STATUS_SYSTEM,
-				Constants.SNOMED_SYSTEM_SCT, Constants.ACTIVE.toLowerCase(), Constants.ACTIVE);
+		clinicalStatus = FHIRUtils.getCodeableConcept(Constants.ACTIVE.toLowerCase(),
+				Constants.FHIR_ALLERGY_INTOLERANCE_CLINICAL_STATUS_SYSTEM, Constants.ACTIVE, Constants.ACTIVE);
 		allergyIntolerance.setClinicalStatus(clinicalStatus);
 
 		// Set verificationStatus
 		CodeableConcept verificationStatus = new CodeableConcept();
-		verificationStatus = FHIRUtils.getCodeableConcept(Constants.FHIR_ALLERGY_INTOLERANCE_VERIFICATION_STATUS_SYSTEM,
-				Constants.SNOMED_SYSTEM_SCT, Constants.CONFIRMED.toLowerCase(), Constants.CONFIRMED);
+		verificationStatus = FHIRUtils.getCodeableConcept(Constants.CONFIRMED.toLowerCase(),
+				Constants.FHIR_ALLERGY_INTOLERANCE_VERIFICATION_STATUS_SYSTEM, Constants.CONFIRMED,
+				Constants.CONFIRMED);
 		allergyIntolerance.setVerificationStatus(verificationStatus);
 
 		// Set code
@@ -1394,7 +1394,7 @@ public class OPConsultationHelper {
 
 		// Set patient reference
 		Reference patientRef = new Reference();
-		patientRef.setReference(patient.getName().toString());
+		patientRef.setReference("Patient/" + patient.getId());
 		allergyIntolerance.setPatient(patientRef);
 
 		// Set recorded date
@@ -1413,8 +1413,8 @@ public class OPConsultationHelper {
 		allergyIntolerance.addNote(note);
 
 		Composition.SectionComponent section = new Composition.SectionComponent();
-		section.setTitle(Constants.ALLERGY_INTOLERANCE_SECTION);
-		section.setCode(getAllergyIntoleranceCode());
+		section.setTitle(Constants.DRUG_ALLERGY_SECTION);
+		section.setCode(getDrugAllergyCode());
 
 		// Create a new Condition resource for the complaint
 		Condition condition = createConditionResource(code);

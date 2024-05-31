@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClinicalInformation {
-	private List<Allergy> allergyIntolerance;
+	private List<Allergy> drugAllergy;
 	private List<Comorbidity> comorbidities;
 	private List<AdverseEvent> adverseEvents;
 	private List<PastMedicalHistory> pastMedicalHistory;

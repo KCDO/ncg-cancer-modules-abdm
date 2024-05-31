@@ -1,14 +1,8 @@
 {
-    "clinicalArtifacts": [
-        "DiagnosticReport",
-        "DischargeSummary",
-        "OpConsultRecord",
-        "Prescription",
-        "WellnessRecord",
-        "HealthDocument",
-        "Immunization"
+    "outputClinicalArtifactTypes": [
+        "OpConsultRecord"
     ],
-    "patient": {
+    "patientDetails": {
         "firstName": "Testing",
         "middleName": "POC",
         "lastName": "1",
@@ -35,7 +29,17 @@
         "bloodGroup": "APLUS"
     },
     "clinicalInformation": {
-        "coMorbidities": [
+        "drugAllergy": [
+            {
+                "name": "groundnut",
+                "type": "food"
+            },
+            {
+                "name": "dust",
+                "type": "environmental"
+            }
+        ],
+        "comorbidities": [
             {
                 "name": "hypertension",
                 "category": "problem-list-item"
@@ -99,20 +103,16 @@
             {
                 "name": "Chest CT",
                 "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
-                "requester": "Practitioner/example",
+                "requester": "Practitioner/example1",
                 "reason": "Check for metastatic disease"
             },
             {
                 "name": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma",
                 "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
-                "requester": "Practitioner/example",
+                "requester": "Practitioner/example2",
                 "reason": "Patient complains of Thyroid"
             }
         ],
-        "otNotes": {
-            "OT Initial Assessment": "Occupational therapy initial assessment note",
-            "Survey": "Yes"
-        },
         "surgicalSummaryWithPostOPCourse": [
             {
                 "name": "Heart valve replacement",
@@ -133,10 +133,6 @@
                 "followUp": "described in care plan"
             }
         ],
-        "pACNotes": {
-            "OT Initial Assessment": "Occupational therapy initial assessment note",
-            "Survey": "Yes"
-        },
         "ongoingDrugs": [
             {
                 "name": "Amoxicillin",
@@ -152,48 +148,487 @@
                 "reference": "MedicationRequest/medrx002",
                 "note": "Patient indicates they miss the occasional dose"
             }
-        ],
-        "allergyIntolerance": [
-            {
-                "name": "groundnut",
-                "type": "food"
-            },
-            {
-                "name": "dust",
-                "type": "environmental"
-            }
         ]
     },
-    "diagnostic": {
+    "diagnostics": {
         "cbc": {
-            "hemoglobin": 4.5
+            "panels": [
+                {
+                    "name": "CBC Blood by Automated count",
+                    "attachment": "mkmkmkm",
+                    "tests": [
+                        {
+                            "name": "Leukocytes",
+                            "result": 35.6,
+                            "loincCode": "6690-2",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Erythrocytes",
+                            "result": 35.6,
+                            "loincCode": "789-8",
+                            "unitOfMeasurement": "10*6/uL"
+                        },
+                        {
+                            "name": "Hemoglobin",
+                            "result": 35.6,
+                            "loincCode": "718-7",
+                            "unitOfMeasurement": "g/dL"
+                        },
+                        {
+                            "name": "Hematocrit",
+                            "result": 35.6,
+                            "loincCode": "4544-3",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "MCV",
+                            "result": 35.6,
+                            "loincCode": "787-2",
+                            "unitOfMeasurement": "fL"
+                        },
+                        {
+                            "name": "MCH",
+                            "result": 35.6,
+                            "loincCode": "785-6",
+                            "unitOfMeasurement": "pg"
+                        },
+                        {
+                            "name": "MCHC",
+                            "result": 35.6,
+                            "loincCode": "786-4",
+                            "unitOfMeasurement": "g/dL"
+                        },
+                        {
+                            "name": "Erythrocyte entitic volume",
+                            "result": 35.6,
+                            "loincCode": "21000-5",
+                            "unitOfMeasurement": "fL"
+                        },
+                        {
+                            "name": "Erythrocyte Ratio",
+                            "result": 35.6,
+                            "loincCode": "788-0",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Platelets volume",
+                            "result": 35.6,
+                            "loincCode": "777-3",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Platelet distribution width",
+                            "result": 35.6,
+                            "loincCode": "32207-3",
+                            "unitOfMeasurement": "fL"
+                        },
+                        {
+                            "name": "Platelet mean volume",
+                            "result": 35.6,
+                            "loincCode": "32623-1",
+                            "unitOfMeasurement": "fL"
+                        }
+                    ]
+                },
+                {
+                    "name": "CBC Auto Differential",
+                    "attachment": "mkmkmkm",
+                    "tests": [
+                        {
+                            "name": "Neutrophils",
+                            "result": 35.6,
+                            "loincCode": "770-8",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Band form neutrophils",
+                            "result": 35.6,
+                            "loincCode": "35332-6",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Granulocytes",
+                            "result": 35.6,
+                            "loincCode": "19023-1",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Lymphocytes",
+                            "result": 35.6,
+                            "loincCode": "736-9",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Variant lymphocytes",
+                            "result": 35.6,
+                            "loincCode": "42250-1",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Monocytes",
+                            "result": 35.6,
+                            "loincCode": "5905-5",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Eosinophils",
+                            "result": 35.6,
+                            "loincCode": "713-8",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Basophils",
+                            "result": 35.6,
+                            "loincCode": "706-2",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Other cells leukocytes",
+                            "result": 35.6,
+                            "loincCode": "58409-4",
+                            "unitOfMeasurement": "%"
+                        },
+                        {
+                            "name": "Neutrophils",
+                            "result": 35.6,
+                            "loincCode": "751-8",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Band form neutrophils",
+                            "result": 35.6,
+                            "loincCode": "30229-9",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Lymphocytes",
+                            "result": 35.6,
+                            "loincCode": "731-0",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Variant lymphocytes",
+                            "result": 35.6,
+                            "loincCode": "43743-4",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Monocytes",
+                            "result": 35.6,
+                            "loincCode": "742-7",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Eosinophils",
+                            "result": 35.6,
+                            "loincCode": "711-2",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Basophils",
+                            "result": 35.6,
+                            "loincCode": "704-7",
+                            "unitOfMeasurement": "10*3/uL"
+                        },
+                        {
+                            "name": "Leukocytes other",
+                            "result": 35.6,
+                            "loincCode": "51383-8",
+                            "unitOfMeasurement": "10*3/uL"
+                        }
+                    ]
+                }
+            ]
         },
         "bioChemistry": {
-            "lipidProfile": "mkmkmkm",
-            "lipidProfileTotalCholesterol": 35.6,
-            "lipidProfileHDLCholesterol": 35.6,
-            "lipidProfileLDLCholesterol": 35.6,
-            "lipidProfileVLDLCholesterol": 35.6,
-            "lipidProfileTriglycerides": 35.6,
-            "lipidProfileTriglyceridesFasting": 35.6,
-            "fastingDuration": 35.6,
-            "fastingStatus": 35.6
+            "panels": [
+                {
+                    "name": "lipid panel",
+                    "attachment": "mkmkmkm",
+                    "tests": [
+                        {
+                            "name": "Total Cholesterol",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "HDL Cholesterol",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "LDL Cholesterol",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "VLDL Cholesterol",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "Triglycerides",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "Triglycerides Fasting",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "fasting duration",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "fasting status",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        }
+                    ]
+                },
+                {
+                    "name": "renal function",
+                    "attachment": "mkmkmkm",
+                    "tests": [
+                        {
+                            "name": "renal function",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "glucose",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "urea nitrogen",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "creatinine",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "urea nitrogen/creatinine ratio",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "gfr mdrd",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "gfr mdrd females",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "gfr mdrd non-blacks",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "gfr mdrd blacks",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "calcium",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "phosphate",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "albumin",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "electrolytes panel",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "sodium",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "potassium",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "chloride",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "bicarbonate",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "carbon dioxide",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "anion gap",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        }
+                    ]
+                },
+                {
+                    "name": "hepatic function",
+                    "attachment": "mkmkmkm",
+                    "tests": [
+                        {
+                            "name": "hepatic function",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "protein",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "albumin",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "bilirubin total",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "bilirubin direct",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "alkaline phosphatase",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "aspartate aminotransferase",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        },
+                        {
+                            "name": "alanine aminotransferase",
+                            "result": 35.6,
+                            "loincCode": "",
+                            "unitOfMeasurement": "mg/l"
+                        }
+                    ]
+                }
+            ]
         },
         "biopsyHistopathologyReport": "mkmk"
     },
-    "lungCancer": {
-        "MRI brain": "mkmk",
-        "Endobronchial ultrasound with ROSE reports": "mkmk",
-        "Fiber optic bronchoscopy": "mkmk",
-        "2 D ECHO with PASP": "mkmk",
-        "FDG PETCT": "mkmk",
-        "Pulmonary function tests with DLCO": "mkmk",
-        "V/Q scan in pneumonectomy": "mkmk",
-        "6MWT": "mkmk",
-        "Molecular markers/NGS as needed": "mkmk"
-    },
-    "oralCancer": {
-        "FNAC report": "mkmk",
-        "CECT head neck thorax report/ PET Ct/ MRI": "mkmk"
-    }
+    "cancerDetails": [
+        {
+            "name": "lung cancer",
+            "tests": [
+                {
+                    "name": "MRI brain",
+                    "attachment": "lungmri"
+                },
+                {
+                    "name": "Endobronchial ultrasound with ROSE reports",
+                    "attachment": "lungendo"
+                },
+                {
+                    "name": "Fiber optic bronchoscopy",
+                    "attachment": "lungfibre"
+                },
+                {
+                    "name": "2 D ECHO with PASP",
+                    "attachment": "lung2d"
+                },
+                {
+                    "name": "FDG PETCT",
+                    "attachment": "lungfdf"
+                },
+                {
+                    "name": "Pulmonary function tests with DLCO",
+                    "attachment": "lungpulmonary"
+                },
+                {
+                    "name": "V/Q scan in pneumonectomy",
+                    "attachment": "lungvq"
+                },
+                {
+                    "name": "6MWT",
+                    "attachment": "lung6mwt"
+                },
+                {
+                    "name": "Molecular markers/NGS as needed",
+                    "attachment": "lungMolecular markers/NGS as needed"
+                }
+            ]
+        },
+        {
+            "name": "oral cancer",
+            "tests": [
+                {
+                    "name": "FNAC report",
+                    "attachment": "oralgvq"
+                },
+                {
+                    "name": "CECT head neck thorax report/ PET Ct/ MRI",
+                    "attachment": "oral6mwt"
+                }
+            ]
+        }
+    ]
 }
