@@ -18,13 +18,11 @@ import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
-import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Patient;
-import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
@@ -139,8 +137,12 @@ public class FHIRUtils {
 			if (Objects.nonNull(patientData.getHeight())) {
 				Observation observation = new Observation();
 				observation = getHeight(patientData.getHeight());
-				fhirPatient.addExtension(new Extension().setUrl(Constants.STRUCTURE_DEFINITION_PATIENT_HEIGHT)
-						.setValue(new Reference(observation)));
+
+				// Set patient reference
+				Reference patientRef = new Reference();
+				patientRef.setReference("Patient/" + patientData.getFirstName());
+				observation.setSubject(patientRef);
+
 				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
@@ -148,23 +150,32 @@ public class FHIRUtils {
 			if (Objects.nonNull(patientData.getWeight())) {
 				Observation observation = new Observation();
 				observation = getWeight(patientData.getWeight());
-				fhirPatient.addExtension(new Extension().setUrl(Constants.STRUCTURE_DEFINITION_PATIENT_WEIGHT)
-						.setValue(new Reference(observation)));
+
+				// Set patient reference
+				Reference patientRef = new Reference();
+				patientRef.setReference("Patient/" + patientData.getFirstName());
+				observation.setSubject(patientRef);
+
 				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
-			// Calculate BMI in kg/m^2
-			if (Objects.nonNull(patientData.getHeight()) && Objects.nonNull(patientData.getHeight())) {
-				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_BMI,
-						getBMI(patientData.getHeight(), patientData.getWeight())));
+			// Set the patient's BMI in Observations
+			if (Objects.nonNull(patientData.getHeight()) && Objects.nonNull(patientData.getWeight())) {
+				Observation observation = new Observation();
+				observation = getBMI(patientData.getHeight(), patientData.getHeight());
+
+				// Set patient reference
+				Reference patientRef = new Reference();
+				patientRef.setReference("Patient/" + patientData.getFirstName());
+				observation.setSubject(patientRef);
+
+				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
 			// set bloodGroup in Observations
 			if (Objects.nonNull(patientData.getBloodGroup())) {
 				Observation observation = new Observation();
 				observation = getBloodGroup(patientData.getBloodGroup());
-				fhirPatient.addExtension(new Extension().setUrl(Constants.STRUCTURE_DEFINITION_PATIENT_BLOOD_GROUP)
-						.setValue(new Reference(observation)));
 				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
@@ -296,20 +307,46 @@ public class FHIRUtils {
 		return codeableConcept;
 	}
 
-	private static Quantity getBMI(double patientHeight, double patientWeight) {
-		Quantity bmi = new Quantity();
+	private static Observation getBMI(double height, double weight) {
+		Observation observation = new Observation();
+		observation.setId(Utils.generateId());
 
+		// Set the code for patient BMI observation using LOINC system
+		observation.setCode(new CodeableConcept(
+				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("39156-5").setDisplay("Body mass index (BMI)")));
+
+		// Set the value for height observation
+		observation.setValue(mapBMI(height, weight));
+
+		return observation;
+	}
+
+	// Method to map patient BMI to FHIR codeable concept
+	public static CodeableConcept mapBMI(double patientHeight, double patientWeight) {
+
+		double bmiValue = 0;
+		// calculate BMI
 		if (patientHeight > 0) {
 			double heightInMeters = patientHeight / 100;
 			double weightInKg = patientWeight;
-			double bmiValue = weightInKg / (heightInMeters * heightInMeters);
-
-			// Set BMI
-			bmi.setValue(bmiValue); // BMI value
-			bmi.setUnit("kg/m2"); // BMI unit (kilogram per square meter)
+			bmiValue = weightInKg / (heightInMeters * heightInMeters);
 		}
 
-		return bmi;
+		CodeableConcept codeableConcept = new CodeableConcept();
+		Coding coding = new Coding();
+
+		// Set the coding system, code, and display
+		coding.setSystem(Constants.SNOMED_SYSTEM_SCT);
+		coding.setCode("60621009");
+		coding.setDisplay(String.valueOf(bmiValue));
+
+		// Add the coding to the codeable concept
+		codeableConcept.addCoding(coding);
+
+		// Set the text of the codeable concept
+		codeableConcept.setText("Body mass index (BMI)");
+
+		return codeableConcept;
 	}
 
 	private static Observation getBloodGroup(String bloodGroup) {

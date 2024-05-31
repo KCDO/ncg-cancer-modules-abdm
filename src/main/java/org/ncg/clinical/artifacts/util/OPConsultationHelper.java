@@ -19,11 +19,14 @@ import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Composition;
 import org.hl7.fhir.r4.model.Condition;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.DiagnosticReport;
 import org.hl7.fhir.r4.model.DocumentReference;
+import org.hl7.fhir.r4.model.Dosage;
+import org.hl7.fhir.r4.model.Dosage.DosageDoseAndRateComponent;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.MedicationStatement;
@@ -533,13 +536,15 @@ public class OPConsultationHelper {
 					// Set the occurrenceDateTime
 					serviceRequest.setOccurrence(investigationAdviceDetail.getOccurrenceDateTime());
 
+					// Set subject
+					Reference patientRef = new Reference();
+					patientRef.setReference("Patient/" + patientResource.getId());
+					serviceRequest.setSubject(patientRef);
+
 					// Set the requester
 					Reference recorderRef = new Reference();
 					recorderRef.setReference(investigationAdviceDetail.getRequester());
 					serviceRequest.setRequester(recorderRef);
-
-					// Set the reasonCode (reason for the request)
-					serviceRequest.addReasonCode(getInvestigationAdviceCode(investigationAdviceDetail.getReason()));
 
 					FHIRUtils.addToBundleEntry(bundle, serviceRequest, true);
 
@@ -592,6 +597,16 @@ public class OPConsultationHelper {
 					procedure.setCode(FHIRUtils
 							.getSurgicalSummaryWithPostOPCourseCode(surgicalSummaryWithPostOPCourseDetail.getName()));
 
+					// set category
+					CodeableConcept category = FHIRUtils
+							.getSurgicalSummaryWithPostOPCourseCode(surgicalSummaryWithPostOPCourseDetail.getName());
+					procedure.setCategory(category);
+
+					// set statusReason
+					CodeableConcept statusReason = FHIRUtils
+							.getSurgicalSummaryWithPostOPCourseCode(surgicalSummaryWithPostOPCourseDetail.getName());
+					procedure.setStatusReason(statusReason);
+
 					// Set subject
 					Reference patientRef = new Reference();
 					patientRef.setReference("Patient/" + patientResource.getId());
@@ -618,6 +633,10 @@ public class OPConsultationHelper {
 					// Set the follow-up
 					procedure.addFollowUp(
 							new CodeableConcept().setText(surgicalSummaryWithPostOPCourseDetail.getFollowUp()));
+
+					// Set the usedCode
+					procedure.addUsedCode(
+							new CodeableConcept().setText(surgicalSummaryWithPostOPCourseDetail.getName()));
 
 					FHIRUtils.addToBundleEntry(bundle, procedure, true);
 
@@ -664,13 +683,42 @@ public class OPConsultationHelper {
 					// set status
 					medicationStatement.setStatus(MedicationStatementStatus.COMPLETED);
 
-					// set code
+					// set medication
 					medicationStatement.setMedication(FHIRUtils.getAdverseEventCategory(ongoingDrugsDetail.getName()));
 
 					// Set subject
 					Reference patientRef = new Reference();
 					patientRef.setReference("Patient/" + patientResource.getId());
 					medicationStatement.setSubject(patientRef);
+
+					// Set reasonCode
+					medicationStatement.addReasonCode(FHIRUtils.getAdverseEventCategory(ongoingDrugsDetail.getName()));
+
+					// Set dosage
+					Dosage dosage = new Dosage();
+
+					// Additional Instruction
+					dosage.addAdditionalInstruction(FHIRUtils.getAdverseEventCategory(ongoingDrugsDetail.getName()));
+
+					// Site
+					dosage.setSite(FHIRUtils.getAdverseEventCategory(ongoingDrugsDetail.getName()));
+
+					// Route
+					dosage.setRoute(FHIRUtils.getAdverseEventCategory(ongoingDrugsDetail.getName()));
+
+					// Method
+					dosage.setMethod(FHIRUtils.getAdverseEventCategory(ongoingDrugsDetail.getName()));
+
+					// Dose and Rate
+					DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
+					doseAndRate.setDose(new Quantity().setValue(500).setUnit("mg")
+							.setSystem("http://unitsofmeasure.org").setCode("mg"));
+					doseAndRate.setRate(new Quantity().setValue(3).setUnit("times per day")
+							.setSystem("http://unitsofmeasure.org").setCode("times/day"));
+					dosage.addDoseAndRate(doseAndRate);
+
+					// Add dosage to medication statement
+					medicationStatement.addDosage(dosage);
 
 					// Set the effective date
 					Period effectivePeriod = new Period();
@@ -1155,6 +1203,16 @@ public class OPConsultationHelper {
 		return condition;
 	}
 
+	private AllergyIntolerance createAllergyIntoleranceResource(CodeableConcept code) {
+		AllergyIntolerance allergyIntolerance = new AllergyIntolerance();
+		allergyIntolerance.setId(Utils.generateId());
+		allergyIntolerance.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_ALLERGY_INTOLERANCE));
+		allergyIntolerance.setClinicalStatus(getConditionClinicalStatus());
+		allergyIntolerance.setCode(code);
+
+		return allergyIntolerance;
+	}
+
 	private CodeableConcept getConditionClinicalStatus() {
 		return FHIRUtils.getCodeableConcept(Constants.ACTIVE.toLowerCase(),
 				Constants.FHIR_CONDITION_CLINICAL_STATUS_SYSTEM, Constants.ACTIVE.toLowerCase(), Constants.ACTIVE);
@@ -1178,6 +1236,28 @@ public class OPConsultationHelper {
 		report.setCategory(categories);
 		report.setSubject(FHIRUtils.getReferenceToPatient(patient));
 		report.setIssued(new Date());
+
+		// Set section
+		Composition.SectionComponent section = new Composition.SectionComponent();
+		section.setTitle("Diagnostic Report Section");
+		CodeableConcept sectionCode = new CodeableConcept();
+		sectionCode.addCoding(
+				new Coding().setSystem("http://loinc.org").setCode("45033-8").setDisplay("Diagnostic Report"));
+		sectionCode.setText("Diagnostic Report");
+		section.setCode(sectionCode);
+
+		// Set section author
+		Reference sectionAuthor = new Reference("Practitioner/prac1");
+		sectionAuthor.setDisplay("Dr. Hello KCDO");
+		section.addAuthor(sectionAuthor);
+
+		// Set section text
+		Narrative sectionText = new Narrative();
+		sectionText.setStatus(Narrative.NarrativeStatus.GENERATED);
+		sectionText.setDivAsString(
+				"<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>WBC: 5.5 x10^9/L, RBC: 4.8 x10^12/L, Hemoglobin: 13.5 g/dL</p></div>");
+		section.setText(sectionText);
+		
 		FHIRUtils.addToBundleEntry(bundle, report, true);
 		return report;
 	}
@@ -1390,7 +1470,8 @@ public class OPConsultationHelper {
 		// Set code
 		CodeableConcept code = new CodeableConcept();
 		code = FHIRUtils.getCodeableConcept(Constants.ALLERGY_INTOLERANCE_CODE, Constants.SNOMED_SYSTEM_SCT,
-				allergyDetail.getName(), allergyDetail.getName() + allergyDetail.getType());
+				allergyDetail.getName(), allergyDetail.getName());
+		allergyIntolerance.setCode(code);
 
 		// Set patient reference
 		Reference patientRef = new Reference();
@@ -1416,12 +1497,12 @@ public class OPConsultationHelper {
 		section.setTitle(Constants.DRUG_ALLERGY_SECTION);
 		section.setCode(getDrugAllergyCode());
 
-		// Create a new Condition resource for the complaint
-		Condition condition = createConditionResource(code);
+		// Create a new Allergy Intolerance resource for the allergy
+		AllergyIntolerance allergyIntoleranceResource = createAllergyIntoleranceResource(code);
 		FHIRUtils.addToBundleEntry(bundle, allergyIntolerance, true);
 
 		// Add the condition to the Chief complaint section
-		section.addEntry(new Reference(condition));
+		section.addEntry(new Reference(allergyIntoleranceResource));
 
 		return section;
 	}
