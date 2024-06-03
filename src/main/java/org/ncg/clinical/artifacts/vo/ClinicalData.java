@@ -21,4 +21,10 @@ public class ClinicalData {
 	private ClinicalInformation clinicalInformation;
 	private Diagnostic diagnostics;
 	private List<CancerDetails> cancerDetails;
+
+	public boolean hasEmptyFields() {
+		return (outputClinicalArtifactTypes == null || outputClinicalArtifactTypes.isEmpty()) && patientDetails == null
+				&& clinicalInformation == null && diagnostics == null
+				&& (cancerDetails == null || cancerDetails.isEmpty());
+	}
 }

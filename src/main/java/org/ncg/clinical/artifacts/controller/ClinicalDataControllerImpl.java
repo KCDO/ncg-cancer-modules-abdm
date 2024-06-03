@@ -31,7 +31,8 @@ public class ClinicalDataControllerImpl implements ClinicalDataController {
 	 */
 	@PostMapping(value = "/ncg/cancer-modules/abdm/clinical-artifacts")
 	@Override
-	public ResponseEntity<String> generateClinicalDataJSON(@Valid @RequestBody ClinicalData clinicalData)
+	public ResponseEntity<String> generateClinicalDataJSON(
+			@Valid @RequestBody ClinicalData clinicalData)
 			throws Exception {
 
 		return new ResponseEntity<>(clinicalDataService.clinicalDataGenerator(clinicalData), HttpStatus.OK);

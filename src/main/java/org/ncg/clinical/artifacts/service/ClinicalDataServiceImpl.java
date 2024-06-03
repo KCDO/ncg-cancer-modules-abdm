@@ -1,5 +1,8 @@
 package org.ncg.clinical.artifacts.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -11,8 +14,12 @@ import org.ncg.clinical.artifacts.util.Constants;
 import org.ncg.clinical.artifacts.util.OPConsultationHelper;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ca.uhn.fhir.context.FhirContext;
 import jakarta.annotation.PostConstruct;
@@ -34,11 +41,25 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 	@Autowired
 	private OPConsultationHelper opConsultationHelper;
 
+	@Autowired
+	private ResourceLoader resourceLoader;
+
+	private ClinicalData clinicalInputData = new ClinicalData();
+
 	private final Map<String, AbdmHITypeGenerator> generators = new HashMap<>();
 
 	@PostConstruct
-	public void init() {
+	public void init() throws Exception {
 		generators.put(Constants.OP_CONSULT_RECORD, new AbdmArtifactGenerator(opConsultationHelper));
+
+		// Load the resource using ResourceLoader
+		Resource resource = resourceLoader.getResource("classpath:opConsultationInput.json");
+		Path path = resource.getFile().toPath();
+		String content = new String(Files.readAllBytes(path));
+
+		// Deserialize JSON content to ClinicalData object
+		clinicalInputData = new ObjectMapper().readValue(content, ClinicalData.class);
+		log.info("ClinicalDataServiceImpl::init::Successfully loaded clinicalInputData from JSON.");
 	}
 
 	@Override
@@ -46,26 +67,20 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 		try {
 			// clinicalArtifacts values: "DiagnosticReport","DischargeSummary",
 			// "OpConsultRecord","Prescription","WellnessRecord","HealthDocument","Immunization"
-
-			List<String> clinicalArtifacts = clinicalData.getOutputClinicalArtifactTypes();
-
 			Bundle bundle = new Bundle();
 
-			if (!Objects.isNull(clinicalData)) {
-				if (!CollectionUtils.isEmpty(clinicalArtifacts)) {
-					for (String clinicalArtifact : clinicalArtifacts) {
-						Date docDate = new Date();
-						AbdmHITypeGenerator generator = generators.get(clinicalArtifact);
-						if (!Objects.isNull(generator)) {
-							bundle = generator.create(clinicalData, docDate);
-						}
-					}
+			if (!clinicalData.hasEmptyFields()) {
+				if (!CollectionUtils.isEmpty(clinicalData.getOutputClinicalArtifactTypes())) {
+					bundle = processClinicalArtifacts(clinicalData, clinicalData.getOutputClinicalArtifactTypes(),
+							bundle);
 				} else {
 					// generate clinical-data for rest of fields
 				}
 			} else {
-				throw new IllegalArgumentException(
-						"ClinicalDataServiceImpl::clinicalDataGenerator::Clinical data or artifacts are empty!");
+				// if request body is null then take the opConsultationInput.json as input and
+				// generate the data.
+				bundle = processClinicalArtifacts(clinicalInputData, clinicalInputData.getOutputClinicalArtifactTypes(),
+						bundle);
 			}
 
 			String encodedString = fhirContext.newJsonParser().setPrettyPrint(true).encodeResourceToString(bundle);
@@ -76,6 +91,18 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 			log.error("ClinicalDataServiceImpl::clinicalDataGenerator:: Exception: ", exception);
 			throw new Exception("failed to generate data for the given request!");
 		}
+	}
+
+	private Bundle processClinicalArtifacts(ClinicalData clinicalData, List<String> clinicalArtifacts, Bundle bundle)
+			throws Exception {
+		for (String clinicalArtifact : clinicalArtifacts) {
+			Date docDate = new Date();
+			AbdmHITypeGenerator generator = generators.get(clinicalArtifact);
+			if (!Objects.isNull(generator)) {
+				bundle = generator.create(clinicalData, docDate);
+			}
+		}
+		return bundle;
 	}
 
 }

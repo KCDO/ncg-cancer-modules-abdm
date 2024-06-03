@@ -42,7 +42,6 @@ import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
-import org.hl7.fhir.r4.model.Type;
 import org.ncg.clinical.artifacts.vo.CancerDetails;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.Allergy;
@@ -441,7 +440,7 @@ public class OPConsultationHelper {
 					observation.setValue(new org.hl7.fhir.r4.model.StringType(mentalHealthAssesmentDetail.getValue()));
 
 					// set effective date time
-					observation.setEffective(getEffectiveObservationDate(new Date()));
+					observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
 
 					FHIRUtils.addToBundleEntry(bundle, observation, true);
 
@@ -497,7 +496,7 @@ public class OPConsultationHelper {
 					observation.setValue(new org.hl7.fhir.r4.model.StringType(menstruationHistoryDetail.getValue()));
 
 					// set effective date time
-					observation.setEffective(getEffectiveObservationDate(new Date()));
+					observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
 
 					FHIRUtils.addToBundleEntry(bundle, observation, true);
 
@@ -1149,7 +1148,7 @@ public class OPConsultationHelper {
 					panelTest.get().getDescription(), panelTest.get().getDescription());
 
 			// Create an Observation
-			Observation observation = createObservation(composition.getDate(), patient);
+			Observation observation = FHIRUtils.createObservation(composition.getDate(), patient);
 			observation.setCode(observationCode);
 			observation.setValue(
 					new Quantity().setValue(testDetail.getResult()).setUnit(testDetail.getUnitOfMeasurement()));
@@ -1218,15 +1217,6 @@ public class OPConsultationHelper {
 				Constants.FHIR_CONDITION_CLINICAL_STATUS_SYSTEM, Constants.ACTIVE.toLowerCase(), Constants.ACTIVE);
 	}
 
-	private Observation createObservation(Date compositionDate, Patient patient) {
-		Observation observation = new Observation();
-		observation.setId(UUID.randomUUID().toString());
-		observation.setStatus(Observation.ObservationStatus.FINAL);
-		observation.setSubject(new Reference(patient));
-		observation.setEffective(getEffectiveObservationDate(compositionDate));
-		return observation;
-	}
-
 	private DiagnosticReport createDiagnosticReportResource(Bundle bundle, Patient patient, CodeableConcept code,
 			List<CodeableConcept> categories) {
 		DiagnosticReport report = new DiagnosticReport();
@@ -1257,7 +1247,7 @@ public class OPConsultationHelper {
 		sectionText.setDivAsString(
 				"<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>WBC: 5.5 x10^9/L, RBC: 4.8 x10^12/L, Hemoglobin: 13.5 g/dL</p></div>");
 		section.setText(sectionText);
-		
+
 		FHIRUtils.addToBundleEntry(bundle, report, true);
 		return report;
 	}
@@ -1427,12 +1417,6 @@ public class OPConsultationHelper {
 	protected CodeableConcept getOralCancerFNACCode() {
 		return FHIRUtils.getCodeableConcept(Constants.ORAL_CANCER_FNAC_CODE, Constants.LOINC_SYSTEM, Constants.FNAC,
 				Constants.FNAC);
-	}
-
-	protected Type getEffectiveObservationDate(Date compositionDate) {
-		DateTimeType dateTimeType = new DateTimeType();
-		dateTimeType.setValue(compositionDate);
-		return dateTimeType;
 	}
 
 	private Composition.SectionComponent createDrugAllergySection(Allergy allergyDetail, Bundle bundle,
