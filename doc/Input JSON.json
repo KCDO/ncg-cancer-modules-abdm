@@ -9,7 +9,7 @@
         "age": 24,
         "gender": "male",
         "dob": "1999-08-14",
-        "mobile": "9898989898",
+        "phoneNumber": "9898989898",
         "address": {
             "type": "",
             "houseName": "123",
@@ -21,7 +21,7 @@
         },
         "height": "160",
         "weight": "62",
-        "ABHAAddress": "abha addr",
+        "abhaAddress": "abha addr",
         "identifier": {
             "hipId": "123",
             "domain": "NCG"
@@ -101,46 +101,48 @@
         ],
         "examinationDetails": [
             {
-                "name": "obstetric history",
+                "name": "Chest CT",
                 "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
-                "requester": "Practitioner/example1"
+                "requester": "Practitioner/example1",
+                "reason": "Check for metastatic disease"
             },
             {
-                "name": "breast health",
+                "name": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma",
                 "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
-                "requester": "Practitioner/example2"
+                "requester": "Practitioner/example2",
+                "reason": "Patient complains of Thyroid"
             }
         ],
         "surgicalSummaryWithPostOPCourse": [
             {
-                "name": "device",
+                "name": "Heart valve replacement",
                 "startDate": "2011-06-26",
                 "endDate": "2011-06-27",
-                "reason": "procedure-mishap",
-                "bodySite": "wrong-body-site",
+                "reason": "Heart valve disorder",
+                "bodySite": "Heart valve structure",
                 "outcome": "improved blood circulation",
                 "followUp": "described in care plan"
             },
             {
-                "name": "wrong-patient",
+                "name": "Partial lobectomy of lung",
                 "startDate": "2013-01-28T13:31:00+01:00",
                 "endDate": "2013-01-28T14:27:00+01:00",
-                "reason": "procedure-mishap",
-                "bodySite": "wrong-body-site",
+                "reason": "Malignant tumor of lung",
+                "bodySite": "Lung structure",
                 "outcome": "improved blood circulation",
                 "followUp": "described in care plan"
             }
         ],
         "ongoingDrugs": [
             {
-                "name": "device",
+                "name": "Amoxicillin",
                 "effectiveDate": "2014-02-01",
                 "assertedDate": "2014-02-22",
                 "reference": "Patient/pat1",
                 "note": "Father indicates they miss the occasional dose"
             },
             {
-                "name": "wrong-patient",
+                "name": "Tylenol PM",
                 "effectiveDate": "2015-01-23",
                 "assertedDate": "2015-02-22",
                 "reference": "MedicationRequest/medrx002",
