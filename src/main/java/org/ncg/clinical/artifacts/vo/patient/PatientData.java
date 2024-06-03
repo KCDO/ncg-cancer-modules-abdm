@@ -54,7 +54,7 @@ public class PatientData {
 
 	private double weight;
 
-	private String ABHAAddress;
+	private String abhaAddress;
 
 	private Identifier identifier;
 

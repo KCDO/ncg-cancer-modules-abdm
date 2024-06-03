@@ -1,50 +1,31 @@
 {
   "resourceType": "Bundle",
-  "id": "OpConsultRecord-c8ce6124-2c87-4c2a-aff2-e07fd5a4ef58",
+  "id": "OpConsultRecord-0bb6c3c9-71f2-4ad6-ba14-edc20d5536d1",
   "meta": {
     "versionId": "0",
-    "lastUpdated": "2024-05-29T15:24:30.229+05:30",
+    "lastUpdated": "2024-05-31T22:10:13.049+05:30",
     "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle" ]
   },
   "identifier": {
     "system": "http://hip.in",
-    "value": "OpConsultRecord-c8ce6124-2c87-4c2a-aff2-e07fd5a4ef58"
+    "value": "OpConsultRecord-0bb6c3c9-71f2-4ad6-ba14-edc20d5536d1"
   },
   "type": "document",
-  "timestamp": "2024-05-29T15:24:30.229+05:30",
+  "timestamp": "2024-05-31T22:10:13.049+05:30",
   "entry": [ {
-    "fullUrl": "Composition/04bde628-6817-48a9-b06e-1b34f24f7a33",
+    "fullUrl": "Composition/c4eb13af-082c-4b86-9e4b-0776582d42b6",
     "resource": {
       "resourceType": "Composition",
-      "id": "04bde628-6817-48a9-b06e-1b34f24f7a33",
+      "id": "c4eb13af-082c-4b86-9e4b-0776582d42b6",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.229+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.049+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord" ]
       },
       "language": "en-IN",
-      "contained": [ {
-        "resourceType": "ServiceRequest",
-        "id": "1",
-        "status": "active",
-        "intent": "original-order",
-        "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
-        "requester": {
-          "reference": "Practitioner/example"
-        }
-      }, {
-        "resourceType": "ServiceRequest",
-        "id": "2",
-        "status": "active",
-        "intent": "original-order",
-        "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
-        "requester": {
-          "reference": "Practitioner/example"
-        }
-      } ],
       "identifier": {
         "system": "https://ndhm.in/phr",
-        "value": "04bde628-6817-48a9-b06e-1b34f24f7a33"
+        "value": "c4eb13af-082c-4b86-9e4b-0776582d42b6"
       },
       "status": "final",
       "type": {
@@ -56,38 +37,40 @@
         "text": "Clinical consultation report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "date": "2024-05-29T15:24:30+05:30",
+      "date": "2024-05-31T22:10:13+05:30",
       "title": "OP Consultation Record",
       "section": [ {
-        "title": "Diagnostic Reports",
+        "title": "Medical History",
         "code": {
           "coding": [ {
             "system": "http://snomed.info/sct",
-            "code": "SNOMED:4321000179101",
-            "display": "Diagnostic Report"
+            "code": "422843007",
+            "display": "Medical History Section"
           } ],
-          "text": "Diagnostic Report"
+          "text": "Medical History Section"
         },
         "entry": [ {
-          "reference": "urn:uuid:87a520c6-66e2-432a-8f47-2b9a95d7a69e",
-          "type": "DiagnosticReport"
+          "reference": "Condition/07af9c6a-cb96-4ca7-9b5e-9e01700b4a2a"
         }, {
-          "reference": "urn:uuid:ad5aed0d-86e5-4ef4-abd5-654d4c8a288f",
-          "type": "DiagnosticReport"
+          "reference": "DiagnosticReport/c3c9388e-9e98-4ddf-96f8-45e3a39b0abb"
         }, {
-          "reference": "urn:uuid:6e49affc-0697-440d-acd0-27cea04bb9fb",
-          "type": "DiagnosticReport"
+          "reference": "DiagnosticReport/ca0e015a-1e90-4158-8050-49a49491d712"
         }, {
-          "reference": "urn:uuid:618bbbfc-5be7-40d4-87bc-e64be06fcbe6",
-          "type": "DiagnosticReport"
+          "reference": "DiagnosticReport/b5943dfb-a4e3-4ff1-b047-0231849f0679"
         }, {
-          "reference": "urn:uuid:bae7c3b7-d913-4459-b4a2-b639cdc1784c",
-          "type": "DiagnosticReport"
+          "reference": "DiagnosticReport/026a40dd-bccd-4a2c-9e91-019cd699ee1d"
         }, {
-          "reference": "urn:uuid:772d533f-8048-4b39-8354-7ad98e872edf",
-          "type": "DiagnosticReport"
+          "reference": "DiagnosticReport/cf782f77-00e6-4609-a62b-5422fe74f32f"
+        }, {
+          "reference": "DiagnosticReport/271d5201-77cc-4523-b0de-c4b1d3733e26"
+        }, {
+          "reference": "DiagnosticReport/b0e46fbc-f0f0-4a0d-be29-ab995b130141"
+        }, {
+          "reference": "DiagnosticReport/9f140b11-f514-46eb-87f7-e4678510e865"
+        }, {
+          "reference": "DiagnosticReport/fd16f2ed-8f54-4684-a2c7-5090267770ca"
         } ]
       }, {
         "title": "Medical History",
@@ -100,40 +83,37 @@
           "text": "Medical History Section"
         },
         "entry": [ {
-          "reference": "Condition/97faf690-8aaf-4bf1-b3c7-b71c708ad06e"
+          "reference": "Condition/114c216b-b5f3-4a71-a7d2-43a7b91017d1"
         }, {
-          "reference": "DiagnosticReport/437f056e-429d-4450-8bb7-01b7f110f248"
+          "reference": "DiagnosticReport/d06004fa-cd8e-47b9-ae67-da4f15bcce18"
         }, {
-          "reference": "DiagnosticReport/f9dde260-3b4c-4dd5-a8e4-efefaf179001"
-        }, {
-          "reference": "DiagnosticReport/b40bb5af-a083-4aac-900e-7257ecffb767"
-        }, {
-          "reference": "DiagnosticReport/9659a0c1-baee-41ae-acf7-13bb04c97c87"
-        }, {
-          "reference": "DiagnosticReport/82727dce-8a1c-47ff-ad87-3a0d878dc41c"
-        }, {
-          "reference": "DiagnosticReport/683f2e2a-ca26-4b9f-a6fc-be0b0fc4c518"
-        }, {
-          "reference": "DiagnosticReport/108a0faf-2d39-4d35-aba5-0078929f2bd7"
-        }, {
-          "reference": "DiagnosticReport/628956a2-4e31-412a-b84e-c2db83562429"
+          "reference": "DiagnosticReport/e1e1bd99-b622-44c2-8045-a6b728cca7f9"
         } ]
       }, {
-        "title": "Medical History",
+        "title": "Drug Allergy Section",
         "code": {
           "coding": [ {
             "system": "http://snomed.info/sct",
-            "code": "422843007",
-            "display": "Medical History Section"
+            "code": "235719002",
+            "display": "Drug Allergy Section"
           } ],
-          "text": "Medical History Section"
+          "text": "Drug Allergy Section"
         },
         "entry": [ {
-          "reference": "Condition/f4672c8f-70f3-41d6-8789-ce098070e257"
-        }, {
-          "reference": "DiagnosticReport/f641f5c7-9146-4cb3-8ec1-754cf4341a50"
-        }, {
-          "reference": "DiagnosticReport/ce915b84-21a6-45bd-8977-b3f6bf63c661"
+          "reference": "AllergyIntolerance/b3ab3f1a-61ec-43c5-8c96-fa7eaaec019c"
+        } ]
+      }, {
+        "title": "Drug Allergy Section",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "235719002",
+            "display": "Drug Allergy Section"
+          } ],
+          "text": "Drug Allergy Section"
+        },
+        "entry": [ {
+          "reference": "AllergyIntolerance/fc382d86-0f7d-477b-a793-0280bd2c718a"
         } ]
       }, {
         "title": "Co-Morbidities",
@@ -145,114 +125,84 @@
           } ]
         },
         "entry": [ {
-          "reference": "Condition/ed9dbe50-2505-4a0f-91e5-951b90c1ccc3"
+          "reference": "Condition/ee2ac5a0-7486-45b4-b81d-4eadc083fde3"
         } ]
       }, {
         "title": "Co-Morbidities",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "53741008",
+            "display": "Coronary Artery Disease"
+          } ]
+        },
+        "entry": [ {
+          "reference": "Condition/0f58b677-6825-4835-91a3-8dfe04b3d4c4"
+        } ]
+      }, {
+        "title": "Adverse Events",
+        "entry": [ {
+          "reference": "AdverseEvent/03f38c75-8b22-4348-bae3-abedebf41c9d"
+        } ]
+      }, {
+        "title": "Past Medical History",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "38341003",
+            "display": "hypertension"
+          } ]
+        },
+        "entry": [ {
+          "reference": "Condition/ad1c7d3a-c960-4128-9995-d12ca53da231"
+        } ]
+      }, {
+        "title": "Past Medical History",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "53741008",
+            "display": "Coronary Artery Disease"
+          } ]
+        },
+        "entry": [ {
+          "reference": "Condition/58ea0dc5-b0aa-4195-8376-8cc6c7339617"
+        } ]
+      }, {
+        "title": "Past Surgical History",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "38341003",
+            "display": "hypertension"
+          } ]
+        },
+        "entry": [ {
+          "reference": "Condition/7e349876-9ed3-4b80-a492-3f5ea60d18ff"
+        } ]
+      }, {
+        "title": "Past Surgical History",
         "code": {
           "coding": [ {
             "system": "http://snomed.info/sct",
             "code": "hypertension",
-            "display": "Co-Morbidities Section"
-          } ],
-          "text": "Co-Morbidities Section"
-        }
-      }, {
-        "title": "Co-Morbidities",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "53741008",
-            "display": "Coronary Artery Disease"
-          } ]
-        },
-        "entry": [ {
-          "reference": "Condition/6b043d03-0bee-49fa-8d0b-edf2c40f7e8e"
-        } ]
-      }, {
-        "title": "Adverse Events",
-        "entry": [ {
-          "reference": "AdverseEvent/dd116670-7917-4827-a046-ad6bf51b943f"
-        } ]
-      }, {
-        "title": "Adverse Events",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "62014003",
-            "display": "Adverse Events Section"
-          } ],
-          "text": "Adverse Events Section"
-        }
-      }, {
-        "title": "Past Medical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "38341003",
-            "display": "hypertension"
-          } ]
-        },
-        "entry": [ {
-          "reference": "Condition/fe4b582c-e821-4a31-a089-77b0bac5912b"
-        } ]
-      }, {
-        "title": "Past Medical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "53741008",
-            "display": "Coronary Artery Disease"
-          } ]
-        },
-        "entry": [ {
-          "reference": "Condition/05ea4525-bc38-4e69-befc-76c74c7eea74"
-        } ]
-      }, {
-        "title": "Past Medical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "Coronary Artery Disease",
-            "display": "Past Medical History Section"
-          } ],
-          "text": "Past Medical History Section"
-        }
-      }, {
-        "title": "Past Surgical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "38341003",
-            "display": "hypertension"
-          } ]
-        },
-        "entry": [ {
-          "reference": "Condition/450bc7de-2756-4b13-9f48-45ed0ba1f7dd"
-        } ]
-      }, {
-        "title": "Past Surgical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "53741008",
-            "display": "Coronary Artery Disease"
-          } ]
-        },
-        "entry": [ {
-          "reference": "Condition/8fa23827-fe32-409b-9fe6-b7c6a7fbf6c6"
-        } ]
-      }, {
-        "title": "Past Surgical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "Coronary Artery Disease",
             "display": "Past Surgical History Section"
           } ],
           "text": "Past Surgical History Section"
         }
       }, {
+        "title": "Past Surgical History",
+        "code": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "53741008",
+            "display": "Coronary Artery Disease"
+          } ]
+        },
+        "entry": [ {
+          "reference": "Condition/25488d23-801a-452c-92e6-3952c2daef55"
+        } ]
+      }, {
         "title": "Mental Health Assesment",
         "code": {
           "coding": [ {
@@ -263,32 +213,32 @@
           "text": "Pregnancy status"
         },
         "entry": [ {
-          "reference": "Observation/5e085278-4d3b-41e7-9d26-d8ae0dab6a84"
+          "reference": "Observation/0f442276-e2d7-40ba-aa68-a50403a32f80"
         } ]
       }, {
         "title": "Mental Health Assesment",
         "code": {
           "coding": [ {
             "system": "http://loinc.org",
-            "code": "83318-7",
-            "display": "Menstrual cycle"
-          } ],
-          "text": "Menstrual cycle"
-        },
-        "entry": [ {
-          "reference": "Observation/2257daa0-679e-4ced-80fc-4d1cf01b1cf6"
-        } ]
-      }, {
-        "title": "Mental Health Assesment",
-        "code": {
-          "coding": [ {
-            "system": "http://loinc.org",
-            "code": "Menstrual cycle",
+            "code": "Pregnancy status",
             "display": "Mental Health Assesment Section"
           } ],
           "text": "Mental Health Assesment Section"
         }
       }, {
+        "title": "Mental Health Assesment",
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "83318-7",
+            "display": "Menstrual cycle"
+          } ],
+          "text": "Menstrual cycle"
+        },
+        "entry": [ {
+          "reference": "Observation/a6b864da-e41d-45f1-b9a2-b910e521676b"
+        } ]
+      }, {
         "title": "Menstruation History",
         "code": {
           "coding": [ {
@@ -299,18 +249,8 @@
           "text": "Pregnancy status"
         },
         "entry": [ {
-          "reference": "Observation/7dcf4fbb-8484-4aea-9ffc-68bf807ff6a2"
+          "reference": "Observation/cf93b34d-a34d-44b1-8c88-4ab2c0c1c6dd"
         } ]
-      }, {
-        "title": "Menstruation History",
-        "code": {
-          "coding": [ {
-            "system": "http://loinc.org",
-            "code": "Pregnancy status",
-            "display": "Menstruation History Section"
-          } ],
-          "text": "Menstruation History Section"
-        }
       }, {
         "title": "Menstruation History",
         "code": {
@@ -322,57 +262,73 @@
           "text": "Menstrual cycle"
         },
         "entry": [ {
-          "reference": "Observation/8973a466-6dc4-4c6c-8e04-aac141f3bddd"
+          "reference": "Observation/76e065d1-4942-43f3-825d-b2779d2e1880"
+        } ]
+      }, {
+        "title": "Menstruation History",
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "Menstrual cycle",
+            "display": "Menstruation History Section"
+          } ],
+          "text": "Menstruation History Section"
+        }
+      }, {
+        "title": "Investigation Advice",
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "10187-3",
+            "display": "obstetric history"
+          } ],
+          "text": "obstetric history"
+        },
+        "entry": [ {
+          "reference": "ServiceRequest/748d3321-3ca4-4118-ac9f-91436f7406f4"
         } ]
       }, {
         "title": "Investigation Advice",
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "10193-1",
+            "display": "breast health"
+          } ],
+          "text": "breast health"
+        },
         "entry": [ {
-          "reference": "#1"
+          "reference": "ServiceRequest/f70b7a52-32f5-4b78-88f9-930da707cc85"
         } ]
       }, {
         "title": "Investigation Advice",
-        "entry": [ {
-          "reference": "#2"
-        } ]
-      }, {
-        "title": "Surgical Summary With Post OP Course",
-        "entry": [ {
-          "reference": "Procedure/75807342-2768-4954-af37-b81d3eddcb76"
-        } ]
-      }, {
-        "title": "Surgical Summary With Post OP Course",
         "code": {
           "coding": [ {
             "system": "http://snomed.info/sct",
-            "code": "71388002",
-            "display": "Surgical Summary With Post OP Course Section"
+            "code": "306206005",
+            "display": "Investigation Advice Section"
           } ],
-          "text": "Surgical Summary With Post OP Course Section"
+          "text": "Investigation Advice Section"
         }
       }, {
         "title": "Surgical Summary With Post OP Course",
         "entry": [ {
-          "reference": "Procedure/956c2586-d11e-4862-8f46-4e799a1043da"
+          "reference": "Procedure/ff8cfa0d-5922-45aa-b864-14a631ac72b8"
         } ]
       }, {
         "title": "Surgical Summary With Post OP Course",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "71388002",
-            "display": "Surgical Summary With Post OP Course Section"
-          } ],
-          "text": "Surgical Summary With Post OP Course Section"
-        }
-      }, {
-        "title": "Ongoing Drugs",
         "entry": [ {
-          "reference": "MedicationStatement/892c643f-e86a-49d3-a875-747a8af51fbb"
+          "reference": "Procedure/376f0c08-049a-4330-a248-eac0f5fe484c"
         } ]
       }, {
         "title": "Ongoing Drugs",
         "entry": [ {
-          "reference": "MedicationStatement/dab2ea74-20a3-42bc-92a6-284cab81e7e2"
+          "reference": "MedicationStatement/ca0a2345-89f8-4688-af43-f3bb4e485907"
+        } ]
+      }, {
+        "title": "Ongoing Drugs",
+        "entry": [ {
+          "reference": "MedicationStatement/8c797e26-705a-4e55-8394-58dbb59cef7c"
         } ]
       }, {
         "title": "Ongoing Drugs",
@@ -384,39 +340,85 @@
           } ],
           "text": "Ongoing Drugs Section"
         }
-      }, {
-        "title": "Allergy Intolerance Section",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "235719002",
-            "display": "Allergy Intolerance Section"
-          } ],
-          "text": "Allergy Intolerance Section"
-        },
-        "entry": [ {
-          "reference": "Condition/95b13694-dfcf-4bbf-8b0b-f278d6e777b6"
-        } ]
-      }, {
-        "title": "Allergy Intolerance Section",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "235719002",
-            "display": "Allergy Intolerance Section"
-          } ],
-          "text": "Allergy Intolerance Section"
-        },
-        "entry": [ {
-          "reference": "Condition/d89f3468-4eed-4062-b672-3ef2359b59fc"
-        } ]
       } ]
     }
   }, {
-    "fullUrl": "Observation/69742b38-c6ac-4e48-a948-f90213e80659",
+    "fullUrl": "Observation/b2d5f567-264b-4878-a546-20b85813b920",
     "resource": {
       "resourceType": "Observation",
-      "id": "69742b38-c6ac-4e48-a948-f90213e80659",
+      "id": "b2d5f567-264b-4878-a546-20b85813b920",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "8302-2",
+          "display": "Body Height"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/Testing"
+      },
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "50373000",
+          "display": "160.0"
+        } ],
+        "text": "Height"
+      }
+    }
+  }, {
+    "fullUrl": "Observation/da882854-69e4-4af7-9761-cf06b8e47f95",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "da882854-69e4-4af7-9761-cf06b8e47f95",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "29463-7",
+          "display": "Body Weight"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/Testing"
+      },
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "27113001",
+          "display": "62.0"
+        } ],
+        "text": "Weight"
+      }
+    }
+  }, {
+    "fullUrl": "Observation/45803ae1-019f-4686-96a0-30bd316cfb05",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "45803ae1-019f-4686-96a0-30bd316cfb05",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "39156-5",
+          "display": "Body mass index (BMI)"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/Testing"
+      },
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "60621009",
+          "display": "62.499999999999986"
+        } ],
+        "text": "Body mass index (BMI)"
+      }
+    }
+  }, {
+    "fullUrl": "Observation/170a3b8e-9b84-42d4-b5a9-8aceddde6cc9",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "170a3b8e-9b84-42d4-b5a9-8aceddde6cc9",
       "code": {
         "coding": [ {
           "system": "http://loinc.org",
@@ -434,41 +436,15 @@
       }
     }
   }, {
-    "fullUrl": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
+    "fullUrl": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb",
     "resource": {
       "resourceType": "Patient",
-      "id": "e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
+      "id": "5f6bfd47-49c2-4423-a38b-5731af7d94cb",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.230+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.053+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient" ]
       },
-      "extension": [ {
-        "url": "http://hl7.org/fhir/StructureDefinition/patient-height",
-        "valueQuantity": {
-          "value": 160.0,
-          "unit": "cm",
-          "system": "http://unitsofmeasure.org",
-          "code": "cm"
-        }
-      }, {
-        "url": "http://hl7.org/fhir/StructureDefinition/patient-weight",
-        "valueQuantity": {
-          "value": 62.0,
-          "unit": "kg"
-        }
-      }, {
-        "url": "http://hl7.org/fhir/StructureDefinition/patient-bmi",
-        "valueQuantity": {
-          "value": 24.218749999999996,
-          "unit": "kg/m2"
-        }
-      }, {
-        "url": "http://example.com/fhir/StructureDefinition/patient-blood-group",
-        "valueReference": {
-          "reference": "Observation/69742b38-c6ac-4e48-a948-f90213e80659"
-        }
-      } ],
       "identifier": [ {
         "type": {
           "coding": [ {
@@ -498,1965 +474,13 @@
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/87a520c6-66e2-432a-8f47-2b9a95d7a69e",
-    "resource": {
-      "resourceType": "DiagnosticReport",
-      "id": "87a520c6-66e2-432a-8f47-2b9a95d7a69e",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:57021-8",
-          "display": "CBC"
-        } ],
-        "text": "CBC"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:58410-2",
-          "display": "CBC panel - Blood by Automated count"
-        } ],
-        "text": "CBC panel - Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "Testing POC"
-      },
-      "issued": "2024-05-29T15:24:30.230+05:30",
-      "result": [ {
-        "reference": "urn:uuid:bc3dbb14-aeac-44ea-9470-a9c63402345f",
-        "type": "DocumentReference/CBC panel - Blood by Automated count report"
-      }, {
-        "reference": "urn:uuid:0957c004-f517-4270-b8be-60f5bf97baf3",
-        "display": "Observation/Leukocytes [#/volume] in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:3250e2b3-2cae-4f4b-b02b-4523b0972c68",
-        "display": "Observation/Erythrocytes"
-      }, {
-        "reference": "urn:uuid:00856156-047b-449a-b47c-e3fe67af47f6",
-        "display": "Observation/Hemoglobin [Mass/volume] in Blood"
-      }, {
-        "reference": "urn:uuid:215d952b-b44b-492e-82a5-ec52d96f13c7",
-        "display": "Observation/Hematocrit [Volume Fraction] of Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:143a7405-e9a5-4217-a177-d476b34138d1",
-        "display": "Observation/MCV [Entitic volume] by Automated count"
-      }, {
-        "reference": "urn:uuid:3675cf4c-e3bc-40b9-a7ea-56a76bd6974e",
-        "display": "Observation/MCH [Entitic mass] by Automated count"
-      }, {
-        "reference": "urn:uuid:0331c3eb-0208-42eb-88a9-beaf63adc707",
-        "display": "Observation/MCHC [Mass/volume] by Automated count"
-      }, {
-        "reference": "urn:uuid:a81a4957-fbd9-42f3-ae76-b9fecf772f56",
-        "display": "Observation/Erythrocyte distribution width [Entitic volume] by Automated count"
-      }, {
-        "reference": "urn:uuid:34fdfaf9-9b5b-481b-aff9-e56c0165d3cb",
-        "display": "Observation/Erythrocyte distribution width [Ratio] by Automated count"
-      }, {
-        "reference": "urn:uuid:fd27fe0b-a3df-4436-910e-edc4ffb3b213",
-        "display": "Observation/Platelets [#/volume] in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:7de2188d-0645-44c2-9e43-7650a35319a8",
-        "display": "Observation/Platelet distribution width [Entitic volume] in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:18b50686-7966-48b7-99ab-5ceff3be9a09",
-        "display": "Observation/Platelet mean volume [Entitic volume] in Blood by Automated count"
-      } ]
-    }
-  }, {
-    "fullUrl": "DocumentReference/bc3dbb14-aeac-44ea-9470-a9c63402345f",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "bc3dbb14-aeac-44ea-9470-a9c63402345f",
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:58410-2",
-          "display": "CBC panel - Blood by Automated count report"
-        } ],
-        "text": "CBC panel - Blood by Automated count report"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bWtta21rbQ==",
-          "title": "CBC panel - Blood by Automated count"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "Observation/0957c004-f517-4270-b8be-60f5bf97baf3",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "0957c004-f517-4270-b8be-60f5bf97baf3",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "6690-2",
-          "display": "Leukocytes [#/volume] in Blood by Automated count"
-        } ],
-        "text": "Leukocytes [#/volume] in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/3250e2b3-2cae-4f4b-b02b-4523b0972c68",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "3250e2b3-2cae-4f4b-b02b-4523b0972c68",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "789-8",
-          "display": "Erythrocytes"
-        } ],
-        "text": "Erythrocytes"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*6/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/00856156-047b-449a-b47c-e3fe67af47f6",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "00856156-047b-449a-b47c-e3fe67af47f6",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "718-7",
-          "display": "Hemoglobin [Mass/volume] in Blood"
-        } ],
-        "text": "Hemoglobin [Mass/volume] in Blood"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "g/dL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/215d952b-b44b-492e-82a5-ec52d96f13c7",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "215d952b-b44b-492e-82a5-ec52d96f13c7",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "4544-3",
-          "display": "Hematocrit [Volume Fraction] of Blood by Automated count"
-        } ],
-        "text": "Hematocrit [Volume Fraction] of Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/143a7405-e9a5-4217-a177-d476b34138d1",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "143a7405-e9a5-4217-a177-d476b34138d1",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "787-2",
-          "display": "MCV [Entitic volume] by Automated count"
-        } ],
-        "text": "MCV [Entitic volume] by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "fL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/3675cf4c-e3bc-40b9-a7ea-56a76bd6974e",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "3675cf4c-e3bc-40b9-a7ea-56a76bd6974e",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "785-6",
-          "display": "MCH [Entitic mass] by Automated count"
-        } ],
-        "text": "MCH [Entitic mass] by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "pg"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/0331c3eb-0208-42eb-88a9-beaf63adc707",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "0331c3eb-0208-42eb-88a9-beaf63adc707",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "786-4",
-          "display": "MCHC [Mass/volume] by Automated count"
-        } ],
-        "text": "MCHC [Mass/volume] by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "g/dL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/a81a4957-fbd9-42f3-ae76-b9fecf772f56",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "a81a4957-fbd9-42f3-ae76-b9fecf772f56",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "21000-5",
-          "display": "Erythrocyte distribution width [Entitic volume] by Automated count"
-        } ],
-        "text": "Erythrocyte distribution width [Entitic volume] by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "fL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/34fdfaf9-9b5b-481b-aff9-e56c0165d3cb",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "34fdfaf9-9b5b-481b-aff9-e56c0165d3cb",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "788-0",
-          "display": "Erythrocyte distribution width [Ratio] by Automated count"
-        } ],
-        "text": "Erythrocyte distribution width [Ratio] by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/fd27fe0b-a3df-4436-910e-edc4ffb3b213",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "fd27fe0b-a3df-4436-910e-edc4ffb3b213",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "777-3",
-          "display": "Platelets [#/volume] in Blood by Automated count"
-        } ],
-        "text": "Platelets [#/volume] in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/7de2188d-0645-44c2-9e43-7650a35319a8",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "7de2188d-0645-44c2-9e43-7650a35319a8",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "32207-3",
-          "display": "Platelet distribution width [Entitic volume] in Blood by Automated count"
-        } ],
-        "text": "Platelet distribution width [Entitic volume] in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "fL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/18b50686-7966-48b7-99ab-5ceff3be9a09",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "18b50686-7966-48b7-99ab-5ceff3be9a09",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "32623-1",
-          "display": "Platelet mean volume [Entitic volume] in Blood by Automated count"
-        } ],
-        "text": "Platelet mean volume [Entitic volume] in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "fL"
-      }
-    }
-  }, {
-    "fullUrl": "DiagnosticReport/ad5aed0d-86e5-4ef4-abd5-654d4c8a288f",
-    "resource": {
-      "resourceType": "DiagnosticReport",
-      "id": "ad5aed0d-86e5-4ef4-abd5-654d4c8a288f",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:57021-8",
-          "display": "CBC"
-        } ],
-        "text": "CBC"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:57023-4",
-          "display": "Auto Differential panel - Blood"
-        } ],
-        "text": "Auto Differential panel - Blood"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "issued": "2024-05-29T15:24:30.233+05:30",
-      "result": [ {
-        "reference": "urn:uuid:f13c68c3-3783-4ca6-aa21-2d17ef185b85",
-        "type": "DocumentReference/Auto Differential panel - Blood report"
-      }, {
-        "reference": "urn:uuid:6db527f6-c65b-4b8f-a540-c42dc8262b86",
-        "display": "Observation/Neutrophils/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:da1e041f-e65f-42ab-bdf6-ba6583f333bd",
-        "display": "Observation/Band form neutrophils/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:9f3f0299-a373-4ef8-a97d-078c13c0e3c9",
-        "display": "Observation/Granulocytes/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:383f0404-d481-4495-b90e-68dc1e2c59bc",
-        "display": "Observation/Lymphocytes/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:130cfc39-e294-4ea7-bf29-55ced70036be",
-        "display": "Observation/Variant lymphocytes/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:3850cb23-75a4-4a5f-8575-cfd97666250b",
-        "display": "Observation/Monocytes/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:3b22b787-37c7-47bb-b5bf-d97da734ff54",
-        "display": "Observation/Eosinophils/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:5c9fccaf-d254-4508-87d5-911f9a5eb12f",
-        "display": "Observation/Basophils"
-      }, {
-        "reference": "urn:uuid:14d90e8c-f93e-4c43-8c70-952fcdf99ab5",
-        "display": "Observation/Other cells/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:6ea2736e-a918-4190-a8f9-2ea7c653069e",
-        "display": "Observation/Neutrophils/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:b2f20f82-2bbd-40d3-845c-c386dc7f714a",
-        "display": "Observation/Band form neutrophils/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:47556432-a2d5-4640-b72f-1ddf465ac268",
-        "display": "Observation/Lymphocytes/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:95da01f2-8ab0-4dc4-ba78-60e0f52d65dd",
-        "display": "Observation/Variant lymphocytes/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:707ff4bd-6d60-4fe7-8604-9a113f18f1fb",
-        "display": "Observation/Monocytes/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:ef0c86d2-44d8-43b4-8bac-cdbe88f24f30",
-        "display": "Observation/Eosinophils/100 leukocytes in Blood by Automated count"
-      }, {
-        "reference": "urn:uuid:834ffaac-2069-4dbe-a200-10f0e5e74c7e",
-        "display": "Observation/Basophils"
-      }, {
-        "reference": "urn:uuid:0c661912-c9e0-4137-a293-5133b3185ebc",
-        "display": "Observation/Leukocytes other [#/volume] in Blood by Automated count"
-      } ]
-    }
-  }, {
-    "fullUrl": "DocumentReference/f13c68c3-3783-4ca6-aa21-2d17ef185b85",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "f13c68c3-3783-4ca6-aa21-2d17ef185b85",
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:57023-4",
-          "display": "Auto Differential panel - Blood report"
-        } ],
-        "text": "Auto Differential panel - Blood report"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bWtta21rbQ==",
-          "title": "Auto Differential panel - Blood"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "Observation/6db527f6-c65b-4b8f-a540-c42dc8262b86",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "6db527f6-c65b-4b8f-a540-c42dc8262b86",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "770-8",
-          "display": "Neutrophils/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Neutrophils/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/da1e041f-e65f-42ab-bdf6-ba6583f333bd",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "da1e041f-e65f-42ab-bdf6-ba6583f333bd",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "35332-6",
-          "display": "Band form neutrophils/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Band form neutrophils/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/9f3f0299-a373-4ef8-a97d-078c13c0e3c9",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "9f3f0299-a373-4ef8-a97d-078c13c0e3c9",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "19023-1",
-          "display": "Granulocytes/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Granulocytes/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/383f0404-d481-4495-b90e-68dc1e2c59bc",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "383f0404-d481-4495-b90e-68dc1e2c59bc",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "736-9",
-          "display": "Lymphocytes/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Lymphocytes/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/130cfc39-e294-4ea7-bf29-55ced70036be",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "130cfc39-e294-4ea7-bf29-55ced70036be",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "42250-1",
-          "display": "Variant lymphocytes/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Variant lymphocytes/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/3850cb23-75a4-4a5f-8575-cfd97666250b",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "3850cb23-75a4-4a5f-8575-cfd97666250b",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "5905-5",
-          "display": "Monocytes/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Monocytes/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/3b22b787-37c7-47bb-b5bf-d97da734ff54",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "3b22b787-37c7-47bb-b5bf-d97da734ff54",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "713-8",
-          "display": "Eosinophils/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Eosinophils/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/5c9fccaf-d254-4508-87d5-911f9a5eb12f",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "5c9fccaf-d254-4508-87d5-911f9a5eb12f",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "706-2",
-          "display": "Basophils"
-        } ],
-        "text": "Basophils"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/14d90e8c-f93e-4c43-8c70-952fcdf99ab5",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "14d90e8c-f93e-4c43-8c70-952fcdf99ab5",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "58409-4",
-          "display": "Other cells/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Other cells/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "%"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/6ea2736e-a918-4190-a8f9-2ea7c653069e",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "6ea2736e-a918-4190-a8f9-2ea7c653069e",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "751-8",
-          "display": "Neutrophils/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Neutrophils/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/b2f20f82-2bbd-40d3-845c-c386dc7f714a",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "b2f20f82-2bbd-40d3-845c-c386dc7f714a",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "30229-9",
-          "display": "Band form neutrophils/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Band form neutrophils/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/47556432-a2d5-4640-b72f-1ddf465ac268",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "47556432-a2d5-4640-b72f-1ddf465ac268",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "731-0",
-          "display": "Lymphocytes/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Lymphocytes/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/95da01f2-8ab0-4dc4-ba78-60e0f52d65dd",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "95da01f2-8ab0-4dc4-ba78-60e0f52d65dd",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "43743-4",
-          "display": "Variant lymphocytes/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Variant lymphocytes/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/707ff4bd-6d60-4fe7-8604-9a113f18f1fb",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "707ff4bd-6d60-4fe7-8604-9a113f18f1fb",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "742-7",
-          "display": "Monocytes/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Monocytes/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/ef0c86d2-44d8-43b4-8bac-cdbe88f24f30",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "ef0c86d2-44d8-43b4-8bac-cdbe88f24f30",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "711-2",
-          "display": "Eosinophils/100 leukocytes in Blood by Automated count"
-        } ],
-        "text": "Eosinophils/100 leukocytes in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/834ffaac-2069-4dbe-a200-10f0e5e74c7e",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "834ffaac-2069-4dbe-a200-10f0e5e74c7e",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "704-7",
-          "display": "Basophils"
-        } ],
-        "text": "Basophils"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/0c661912-c9e0-4137-a293-5133b3185ebc",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "0c661912-c9e0-4137-a293-5133b3185ebc",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "51383-8",
-          "display": "Leukocytes other [#/volume] in Blood by Automated count"
-        } ],
-        "text": "Leukocytes other [#/volume] in Blood by Automated count"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "10*3/uL"
-      }
-    }
-  }, {
-    "fullUrl": "DiagnosticReport/6e49affc-0697-440d-acd0-27cea04bb9fb",
-    "resource": {
-      "resourceType": "DiagnosticReport",
-      "id": "6e49affc-0697-440d-acd0-27cea04bb9fb",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:66121-5",
-          "display": "Biopsy Histopathology Report"
-        } ],
-        "text": "Biopsy Histopathology Report"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:66121-5",
-          "display": "Biopsy Histopathology Report"
-        } ],
-        "text": "Biopsy Histopathology Report"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "issued": "2024-05-29T15:24:30.238+05:30",
-      "result": [ {
-        "reference": "urn:uuid:67e39ed8-69b5-4ba5-ad86-cd3881dd4713",
-        "type": "DocumentReference/Biopsy Histopathology Report report"
-      } ]
-    }
-  }, {
-    "fullUrl": "DocumentReference/67e39ed8-69b5-4ba5-ad86-cd3881dd4713",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "67e39ed8-69b5-4ba5-ad86-cd3881dd4713",
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:66121-5",
-          "display": "Biopsy Histopathology Report report"
-        } ],
-        "text": "Biopsy Histopathology Report report"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bWttaw==",
-          "title": "Biopsy Histopathology Report"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "DiagnosticReport/618bbbfc-5be7-40d4-87bc-e64be06fcbe6",
-    "resource": {
-      "resourceType": "DiagnosticReport",
-      "id": "618bbbfc-5be7-40d4-87bc-e64be06fcbe6",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "SNOMED:4241000179101",
-          "display": "Bio Chemistry"
-        } ],
-        "text": "Bio Chemistry"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:100898-6",
-          "display": "Lipid panel - Serum or Plasma"
-        } ],
-        "text": "Lipid panel - Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "Testing POC"
-      },
-      "issued": "2024-05-29T15:24:30.238+05:30",
-      "result": [ {
-        "reference": "urn:uuid:ccd1988f-b198-483c-bbbd-55cca65590a6",
-        "type": "DocumentReference/Lipid panel - Serum or Plasma report"
-      }, {
-        "reference": "urn:uuid:d238930b-f182-4036-82c1-a1eb25b7caa0",
-        "display": "Observation/Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:d9aed8a6-012d-4366-b724-6db11430b715",
-        "display": "Observation/Cholesterol in HDL [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:bba69cfd-0d7e-4a77-807a-e9abeaf9b340",
-        "display": "Observation/Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
-      }, {
-        "reference": "urn:uuid:6950592d-cc6d-4c83-9225-ab057ecb150d",
-        "display": "Observation/Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"
-      }, {
-        "reference": "urn:uuid:d5c6acc5-4072-416a-bbe4-9ae1a709ca52",
-        "display": "Observation/Triglyceride [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:b4b43130-5889-46ee-a465-a5f0fd3cd70c",
-        "display": "Observation/Triglyceride [Mass/volume] in Serum or Plasma --fasting"
-      }, {
-        "reference": "urn:uuid:2f665a35-1734-4e98-97c6-d034d59245fa",
-        "display": "Observation/Fasting status"
-      }, {
-        "reference": "urn:uuid:dc64ef8f-6040-45cc-9c21-8a1e0905e272",
-        "display": "Observation/Fasting duration"
-      } ]
-    }
-  }, {
-    "fullUrl": "DocumentReference/ccd1988f-b198-483c-bbbd-55cca65590a6",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "ccd1988f-b198-483c-bbbd-55cca65590a6",
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:100898-6",
-          "display": "Lipid panel - Serum or Plasma report"
-        } ],
-        "text": "Lipid panel - Serum or Plasma report"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bWtta21rbQ==",
-          "title": "Lipid panel - Serum or Plasma"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "Observation/d238930b-f182-4036-82c1-a1eb25b7caa0",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "d238930b-f182-4036-82c1-a1eb25b7caa0",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:9830-1",
-          "display": "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"
-        } ],
-        "text": "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/d9aed8a6-012d-4366-b724-6db11430b715",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "d9aed8a6-012d-4366-b724-6db11430b715",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2085-9",
-          "display": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/bba69cfd-0d7e-4a77-807a-e9abeaf9b340",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "bba69cfd-0d7e-4a77-807a-e9abeaf9b340",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:13457-7",
-          "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
-        } ],
-        "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/6950592d-cc6d-4c83-9225-ab057ecb150d",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "6950592d-cc6d-4c83-9225-ab057ecb150d",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:13458-5",
-          "display": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"
-        } ],
-        "text": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/d5c6acc5-4072-416a-bbe4-9ae1a709ca52",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "d5c6acc5-4072-416a-bbe4-9ae1a709ca52",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2571-8",
-          "display": "Triglyceride [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Triglyceride [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/b4b43130-5889-46ee-a465-a5f0fd3cd70c",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "b4b43130-5889-46ee-a465-a5f0fd3cd70c",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:3048-6",
-          "display": "Triglyceride [Mass/volume] in Serum or Plasma --fasting"
-        } ],
-        "text": "Triglyceride [Mass/volume] in Serum or Plasma --fasting"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/2f665a35-1734-4e98-97c6-d034d59245fa",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "2f665a35-1734-4e98-97c6-d034d59245fa",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:87527-8",
-          "display": "Fasting status"
-        } ],
-        "text": "Fasting status"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/dc64ef8f-6040-45cc-9c21-8a1e0905e272",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "dc64ef8f-6040-45cc-9c21-8a1e0905e272",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:49541-6",
-          "display": "Fasting duration"
-        } ],
-        "text": "Fasting duration"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "DiagnosticReport/bae7c3b7-d913-4459-b4a2-b639cdc1784c",
-    "resource": {
-      "resourceType": "DiagnosticReport",
-      "id": "bae7c3b7-d913-4459-b4a2-b639cdc1784c",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "SNOMED:4241000179101",
-          "display": "Bio Chemistry"
-        } ],
-        "text": "Bio Chemistry"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:24362-6",
-          "display": "Renal function 2000 panel - Serum or Plasma"
-        } ],
-        "text": "Renal function 2000 panel - Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "Testing POC"
-      },
-      "issued": "2024-05-29T15:24:30.240+05:30",
-      "result": [ {
-        "reference": "urn:uuid:0cd69a9a-0d06-471a-b723-a9a7760a0421",
-        "type": "DocumentReference/Renal function 2000 panel - Serum or Plasma report"
-      }, {
-        "reference": "urn:uuid:698a8181-de3f-402b-b154-4b701994ce06",
-        "display": "Observation/Glucose [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:6025338a-6b10-4506-a7ba-74c40c5e4fb7",
-        "display": "Observation/Urea nitrogen [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:a647996f-b8d1-4896-825d-8aaadef83a8e",
-        "display": "Observation/Creatinine [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:6a1cc410-41b0-4052-bc72-b4539fe53d0e",
-        "display": "Observation/Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:ec9620fa-7ba2-4851-96df-b6a213c22bc7",
-        "display": "Observation/Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
-      }, {
-        "reference": "urn:uuid:9a79b316-411f-49f0-9c5b-2526dba77fc2",
-        "display": "Observation/ Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-      }, {
-        "reference": "urn:uuid:2ca30dd6-d0c9-4fa3-9ab5-4d021f1aadab",
-        "display": "Observation/ Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-      }, {
-        "reference": "urn:uuid:c7424ff8-d74d-4fb5-ac6b-f4f36bb648c8",
-        "display": "Observation/ Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-      }, {
-        "reference": "urn:uuid:1cbd9bd4-b784-4827-ba77-47eedcfa50bb",
-        "display": "Observation/Calcium [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:c9272eed-a586-412b-b9bc-79aa12e95ef4",
-        "display": "Observation/Phosphate [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:083b3825-3539-4553-85cb-5d16fcbba9ba",
-        "display": "Observation/Albumin [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:79013e41-40a7-4e7d-8ba0-8e4f9fa8809f",
-        "display": "Observation/Electrolytes 1998 panel - Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:9cad0d7a-5997-4f74-88fc-a4982b6e300a",
-        "display": "Observation/Sodium [Moles/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:e0145e4a-31aa-4bca-b818-bfa469e30271",
-        "display": "Observation/Potassium [Moles/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:be79892b-fa07-4f06-93d8-7021dd101d0c",
-        "display": "Observation/Chloride [Moles/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:0ca5c6ec-2f04-4925-a284-9c1a32599004",
-        "display": "Observation/Bicarbonate [Moles/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:cbee8bb7-9347-421d-a76d-e0f7348d4941",
-        "display": "Observation/Carbon dioxide, total [Moles/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:22479afa-0670-45a3-bc18-6de6d8a76f99",
-        "display": "Observation/Anion gap in Serum or Plasma"
-      } ]
-    }
-  }, {
-    "fullUrl": "DocumentReference/0cd69a9a-0d06-471a-b723-a9a7760a0421",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "0cd69a9a-0d06-471a-b723-a9a7760a0421",
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:24362-6",
-          "display": "Renal function 2000 panel - Serum or Plasma report"
-        } ],
-        "text": "Renal function 2000 panel - Serum or Plasma report"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bWtta21rbQ==",
-          "title": "Renal function 2000 panel - Serum or Plasma"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "Observation/698a8181-de3f-402b-b154-4b701994ce06",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "698a8181-de3f-402b-b154-4b701994ce06",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2345-7",
-          "display": "Glucose [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Glucose [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/6025338a-6b10-4506-a7ba-74c40c5e4fb7",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "6025338a-6b10-4506-a7ba-74c40c5e4fb7",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:3094-0",
-          "display": "Urea nitrogen [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Urea nitrogen [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/a647996f-b8d1-4896-825d-8aaadef83a8e",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "a647996f-b8d1-4896-825d-8aaadef83a8e",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2160-0",
-          "display": "Creatinine [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Creatinine [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/6a1cc410-41b0-4052-bc72-b4539fe53d0e",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "6a1cc410-41b0-4052-bc72-b4539fe53d0e",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:3097-3",
-          "display": "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"
-        } ],
-        "text": "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/ec9620fa-7ba2-4851-96df-b6a213c22bc7",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "ec9620fa-7ba2-4851-96df-b6a213c22bc7",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:33914-3",
-          "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
-        } ],
-        "text": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/9a79b316-411f-49f0-9c5b-2526dba77fc2",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "9a79b316-411f-49f0-9c5b-2526dba77fc2",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:50044-7",
-          "display": " Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-        } ],
-        "text": " Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/2ca30dd6-d0c9-4fa3-9ab5-4d021f1aadab",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "2ca30dd6-d0c9-4fa3-9ab5-4d021f1aadab",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:48642-3",
-          "display": " Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-        } ],
-        "text": " Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/c7424ff8-d74d-4fb5-ac6b-f4f36bb648c8",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "c7424ff8-d74d-4fb5-ac6b-f4f36bb648c8",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:48643-1",
-          "display": " Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-        } ],
-        "text": " Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/1cbd9bd4-b784-4827-ba77-47eedcfa50bb",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "1cbd9bd4-b784-4827-ba77-47eedcfa50bb",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:17861-6",
-          "display": "Calcium [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Calcium [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/c9272eed-a586-412b-b9bc-79aa12e95ef4",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "c9272eed-a586-412b-b9bc-79aa12e95ef4",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2777-1",
-          "display": "Phosphate [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Phosphate [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/083b3825-3539-4553-85cb-5d16fcbba9ba",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "083b3825-3539-4553-85cb-5d16fcbba9ba",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:1751-7",
-          "display": "Albumin [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Albumin [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/79013e41-40a7-4e7d-8ba0-8e4f9fa8809f",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "79013e41-40a7-4e7d-8ba0-8e4f9fa8809f",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:24326-1",
-          "display": "Electrolytes 1998 panel - Serum or Plasma"
-        } ],
-        "text": "Electrolytes 1998 panel - Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/9cad0d7a-5997-4f74-88fc-a4982b6e300a",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "9cad0d7a-5997-4f74-88fc-a4982b6e300a",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2951-2",
-          "display": "Sodium [Moles/volume] in Serum or Plasma"
-        } ],
-        "text": "Sodium [Moles/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/e0145e4a-31aa-4bca-b818-bfa469e30271",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "e0145e4a-31aa-4bca-b818-bfa469e30271",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2823-3",
-          "display": "Potassium [Moles/volume] in Serum or Plasma"
-        } ],
-        "text": "Potassium [Moles/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/be79892b-fa07-4f06-93d8-7021dd101d0c",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "be79892b-fa07-4f06-93d8-7021dd101d0c",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2075-0",
-          "display": "Chloride [Moles/volume] in Serum or Plasma"
-        } ],
-        "text": "Chloride [Moles/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/0ca5c6ec-2f04-4925-a284-9c1a32599004",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "0ca5c6ec-2f04-4925-a284-9c1a32599004",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:1963-8",
-          "display": "Bicarbonate [Moles/volume] in Serum or Plasma"
-        } ],
-        "text": "Bicarbonate [Moles/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/cbee8bb7-9347-421d-a76d-e0f7348d4941",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "cbee8bb7-9347-421d-a76d-e0f7348d4941",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2028-9",
-          "display": "Carbon dioxide, total [Moles/volume] in Serum or Plasma"
-        } ],
-        "text": "Carbon dioxide, total [Moles/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/22479afa-0670-45a3-bc18-6de6d8a76f99",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "22479afa-0670-45a3-bc18-6de6d8a76f99",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:33037-3",
-          "display": "Anion gap in Serum or Plasma"
-        } ],
-        "text": "Anion gap in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "DiagnosticReport/772d533f-8048-4b39-8354-7ad98e872edf",
-    "resource": {
-      "resourceType": "DiagnosticReport",
-      "id": "772d533f-8048-4b39-8354-7ad98e872edf",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "SNOMED:4241000179101",
-          "display": "Bio Chemistry"
-        } ],
-        "text": "Bio Chemistry"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:24325-3",
-          "display": "Hepatic function 2000 panel - Serum or Plasma"
-        } ],
-        "text": "Hepatic function 2000 panel - Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "Testing POC"
-      },
-      "issued": "2024-05-29T15:24:30.248+05:30",
-      "result": [ {
-        "reference": "urn:uuid:48191bca-7b08-4ac6-86fb-23e1900ccba8",
-        "type": "DocumentReference/Hepatic function 2000 panel - Serum or Plasma report"
-      }, {
-        "reference": "urn:uuid:239a3dc5-05f3-46a9-b7dc-b9584e759c80",
-        "display": "Observation/Protein [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:fd3deaed-914a-411c-b764-e18ec7b12710",
-        "display": "Observation/Albumin [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:51bd9a3d-40b9-46a2-83d4-7c575098ddff",
-        "display": "Observation/Bilirubin.total [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:05b39827-184a-47c4-a8db-ca68535d9534",
-        "display": "Observation/Bilirubin.direct [Mass/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:8d7804b6-29d9-49a2-836a-c2133ce717a0",
-        "display": "Observation/Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:0d2ffbfb-66dc-4fbc-98fa-08d5ac39154b",
-        "display": "Observation/Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
-      }, {
-        "reference": "urn:uuid:0294ab85-b01d-441c-b9b3-64b254ed7553",
-        "display": "Observation/Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
-      } ]
-    }
-  }, {
-    "fullUrl": "DocumentReference/48191bca-7b08-4ac6-86fb-23e1900ccba8",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "48191bca-7b08-4ac6-86fb-23e1900ccba8",
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:24325-3",
-          "display": "Hepatic function 2000 panel - Serum or Plasma report"
-        } ],
-        "text": "Hepatic function 2000 panel - Serum or Plasma report"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bWtta21rbQ==",
-          "title": "Hepatic function 2000 panel - Serum or Plasma"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "Observation/239a3dc5-05f3-46a9-b7dc-b9584e759c80",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "239a3dc5-05f3-46a9-b7dc-b9584e759c80",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:2885-2",
-          "display": "Protein [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Protein [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/fd3deaed-914a-411c-b764-e18ec7b12710",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "fd3deaed-914a-411c-b764-e18ec7b12710",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:1751-7",
-          "display": "Albumin [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Albumin [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/51bd9a3d-40b9-46a2-83d4-7c575098ddff",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "51bd9a3d-40b9-46a2-83d4-7c575098ddff",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:1975-2",
-          "display": "Bilirubin.total [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Bilirubin.total [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/05b39827-184a-47c4-a8db-ca68535d9534",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "05b39827-184a-47c4-a8db-ca68535d9534",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:1968-7",
-          "display": "Bilirubin.direct [Mass/volume] in Serum or Plasma"
-        } ],
-        "text": "Bilirubin.direct [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/8d7804b6-29d9-49a2-836a-c2133ce717a0",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "8d7804b6-29d9-49a2-836a-c2133ce717a0",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:6768-6",
-          "display": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
-        } ],
-        "text": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/0d2ffbfb-66dc-4fbc-98fa-08d5ac39154b",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "0d2ffbfb-66dc-4fbc-98fa-08d5ac39154b",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:1920-8",
-          "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
-        } ],
-        "text": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Observation/0294ab85-b01d-441c-b9b3-64b254ed7553",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "0294ab85-b01d-441c-b9b3-64b254ed7553",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "LOINC:1742-6",
-          "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
-        } ],
-        "text": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
-      },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
-      "valueQuantity": {
-        "value": 35.6,
-        "unit": "mg/l"
-      }
-    }
-  }, {
-    "fullUrl": "Condition/97faf690-8aaf-4bf1-b3c7-b71c708ad06e",
+    "fullUrl": "Condition/07af9c6a-cb96-4ca7-9b5e-9e01700b4a2a",
     "resource": {
       "resourceType": "Condition",
-      "id": "97faf690-8aaf-4bf1-b3c7-b71c708ad06e",
+      "id": "07af9c6a-cb96-4ca7-9b5e-9e01700b4a2a",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.249+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.054+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "clinicalStatus": {
@@ -2477,10 +501,10 @@
       }
     }
   }, {
-    "fullUrl": "DiagnosticReport/437f056e-429d-4450-8bb7-01b7f110f248",
+    "fullUrl": "DiagnosticReport/c3c9388e-9e98-4ddf-96f8-45e3a39b0abb",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "437f056e-429d-4450-8bb7-01b7f110f248",
+      "id": "c3c9388e-9e98-4ddf-96f8-45e3a39b0abb",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2491,18 +515,18 @@
         "text": "MRI brain"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "issued": "2024-05-29T15:24:30.249+05:30",
+      "issued": "2024-05-31T22:10:13.054+05:30",
       "result": [ {
-        "reference": "DocumentReference/46fcad96-85e4-405e-bc2f-26b85a5fcc53"
+        "reference": "DocumentReference/19c50729-7fbf-4f9d-b701-8655a289247c"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/46fcad96-85e4-405e-bc2f-26b85a5fcc53",
+    "fullUrl": "DocumentReference/19c50729-7fbf-4f9d-b701-8655a289247c",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "46fcad96-85e4-405e-bc2f-26b85a5fcc53",
+      "id": "19c50729-7fbf-4f9d-b701-8655a289247c",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2513,7 +537,7 @@
         "text": "MRI brain report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
@@ -2524,10 +548,10 @@
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/f9dde260-3b4c-4dd5-a8e4-efefaf179001",
+    "fullUrl": "DiagnosticReport/ca0e015a-1e90-4158-8050-49a49491d712",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "f9dde260-3b4c-4dd5-a8e4-efefaf179001",
+      "id": "ca0e015a-1e90-4158-8050-49a49491d712",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2538,18 +562,18 @@
         "text": "Endobronchial ultrasound with ROSE reports"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "issued": "2024-05-29T15:24:30.249+05:30",
+      "issued": "2024-05-31T22:10:13.056+05:30",
       "result": [ {
-        "reference": "DocumentReference/181374be-d00f-4643-8c2b-dda1499f578a"
+        "reference": "DocumentReference/8fc15806-504f-4df8-8f31-dba053451d9a"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/181374be-d00f-4643-8c2b-dda1499f578a",
+    "fullUrl": "DocumentReference/8fc15806-504f-4df8-8f31-dba053451d9a",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "181374be-d00f-4643-8c2b-dda1499f578a",
+      "id": "8fc15806-504f-4df8-8f31-dba053451d9a",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2560,7 +584,7 @@
         "text": "Endobronchial ultrasound with ROSE reports report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
@@ -2571,10 +595,10 @@
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/b40bb5af-a083-4aac-900e-7257ecffb767",
+    "fullUrl": "DiagnosticReport/b5943dfb-a4e3-4ff1-b047-0231849f0679",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "b40bb5af-a083-4aac-900e-7257ecffb767",
+      "id": "b5943dfb-a4e3-4ff1-b047-0231849f0679",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2585,18 +609,18 @@
         "text": "Fiber optic bronchoscopy"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "issued": "2024-05-29T15:24:30.249+05:30",
+      "issued": "2024-05-31T22:10:13.056+05:30",
       "result": [ {
-        "reference": "DocumentReference/5a11a28c-becd-4615-80e9-84faaada6a65"
+        "reference": "DocumentReference/e970cdbe-ab57-4a5c-b3b6-5bf665deb6a9"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/5a11a28c-becd-4615-80e9-84faaada6a65",
+    "fullUrl": "DocumentReference/e970cdbe-ab57-4a5c-b3b6-5bf665deb6a9",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "5a11a28c-becd-4615-80e9-84faaada6a65",
+      "id": "e970cdbe-ab57-4a5c-b3b6-5bf665deb6a9",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2607,7 +631,7 @@
         "text": "Fiber optic bronchoscopy report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
@@ -2618,10 +642,10 @@
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/9659a0c1-baee-41ae-acf7-13bb04c97c87",
+    "fullUrl": "DiagnosticReport/026a40dd-bccd-4a2c-9e91-019cd699ee1d",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "9659a0c1-baee-41ae-acf7-13bb04c97c87",
+      "id": "026a40dd-bccd-4a2c-9e91-019cd699ee1d",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2632,19 +656,18 @@
         "text": "2 D ECHO with PASP"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "Testing POC"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "issued": "2024-05-29T15:24:30.250+05:30",
+      "issued": "2024-05-31T22:10:13.057+05:30",
       "result": [ {
-        "reference": "DocumentReference/859abf6c-d12c-423b-ac2c-481b5dc3fa9e"
+        "reference": "DocumentReference/c8dbe9a6-bbf2-4bc4-a42c-8abc7d22c975"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/859abf6c-d12c-423b-ac2c-481b5dc3fa9e",
+    "fullUrl": "DocumentReference/c8dbe9a6-bbf2-4bc4-a42c-8abc7d22c975",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "859abf6c-d12c-423b-ac2c-481b5dc3fa9e",
+      "id": "c8dbe9a6-bbf2-4bc4-a42c-8abc7d22c975",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2655,7 +678,7 @@
         "text": "2 D ECHO with PASP report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
@@ -2666,10 +689,10 @@
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/82727dce-8a1c-47ff-ad87-3a0d878dc41c",
+    "fullUrl": "DiagnosticReport/cf782f77-00e6-4609-a62b-5422fe74f32f",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "82727dce-8a1c-47ff-ad87-3a0d878dc41c",
+      "id": "cf782f77-00e6-4609-a62b-5422fe74f32f",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2680,19 +703,19 @@
         "text": "FDG PETCT"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb",
         "display": "Testing POC"
       },
-      "issued": "2024-05-29T15:24:30.250+05:30",
+      "issued": "2024-05-31T22:10:13.058+05:30",
       "result": [ {
-        "reference": "DocumentReference/2cf32e8b-a5ef-4031-81b2-29da5b513d60"
+        "reference": "DocumentReference/0cdd252e-1eff-4a7f-ac22-34b2f14eca5a"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/2cf32e8b-a5ef-4031-81b2-29da5b513d60",
+    "fullUrl": "DocumentReference/0cdd252e-1eff-4a7f-ac22-34b2f14eca5a",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "2cf32e8b-a5ef-4031-81b2-29da5b513d60",
+      "id": "0cdd252e-1eff-4a7f-ac22-34b2f14eca5a",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2703,7 +726,7 @@
         "text": "FDG PETCT report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
@@ -2714,10 +737,10 @@
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/683f2e2a-ca26-4b9f-a6fc-be0b0fc4c518",
+    "fullUrl": "DiagnosticReport/271d5201-77cc-4523-b0de-c4b1d3733e26",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "683f2e2a-ca26-4b9f-a6fc-be0b0fc4c518",
+      "id": "271d5201-77cc-4523-b0de-c4b1d3733e26",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2728,19 +751,18 @@
         "text": "Pulmonary function tests with DLCO"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "Testing POC"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "issued": "2024-05-29T15:24:30.250+05:30",
+      "issued": "2024-05-31T22:10:13.059+05:30",
       "result": [ {
-        "reference": "DocumentReference/16987ab5-7207-4775-966e-d298fa520e92"
+        "reference": "DocumentReference/f548802f-9fac-45a3-85ba-52f905fc9e71"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/16987ab5-7207-4775-966e-d298fa520e92",
+    "fullUrl": "DocumentReference/f548802f-9fac-45a3-85ba-52f905fc9e71",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "16987ab5-7207-4775-966e-d298fa520e92",
+      "id": "f548802f-9fac-45a3-85ba-52f905fc9e71",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2751,7 +773,7 @@
         "text": "Pulmonary function tests with DLCO report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
@@ -2762,10 +784,10 @@
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/108a0faf-2d39-4d35-aba5-0078929f2bd7",
+    "fullUrl": "DiagnosticReport/b0e46fbc-f0f0-4a0d-be29-ab995b130141",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "108a0faf-2d39-4d35-aba5-0078929f2bd7",
+      "id": "b0e46fbc-f0f0-4a0d-be29-ab995b130141",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2776,18 +798,19 @@
         "text": "V/Q scan in pneumonectomy"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb",
+        "display": "Testing POC"
       },
-      "issued": "2024-05-29T15:24:30.251+05:30",
+      "issued": "2024-05-31T22:10:13.059+05:30",
       "result": [ {
-        "reference": "DocumentReference/f8abd863-16e6-4c20-85c8-6c3b7beac0f0"
+        "reference": "DocumentReference/6acfe544-df75-4d2a-9d47-a5661f43f18f"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/f8abd863-16e6-4c20-85c8-6c3b7beac0f0",
+    "fullUrl": "DocumentReference/6acfe544-df75-4d2a-9d47-a5661f43f18f",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "f8abd863-16e6-4c20-85c8-6c3b7beac0f0",
+      "id": "6acfe544-df75-4d2a-9d47-a5661f43f18f",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2798,7 +821,7 @@
         "text": "V/Q scan in pneumonectomy report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
@@ -2809,10 +832,10 @@
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/628956a2-4e31-412a-b84e-c2db83562429",
+    "fullUrl": "DiagnosticReport/9f140b11-f514-46eb-87f7-e4678510e865",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "628956a2-4e31-412a-b84e-c2db83562429",
+      "id": "9f140b11-f514-46eb-87f7-e4678510e865",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2823,18 +846,19 @@
         "text": "6MWT"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb",
+        "display": "Testing POC"
       },
-      "issued": "2024-05-29T15:24:30.251+05:30",
+      "issued": "2024-05-31T22:10:13.060+05:30",
       "result": [ {
-        "reference": "DocumentReference/d71314e2-db95-4b5d-acf1-f97a7d4e8bb6"
+        "reference": "DocumentReference/0cd987be-277d-4c9d-a3fe-ae865f9e4963"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/d71314e2-db95-4b5d-acf1-f97a7d4e8bb6",
+    "fullUrl": "DocumentReference/0cd987be-277d-4c9d-a3fe-ae865f9e4963",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "d71314e2-db95-4b5d-acf1-f97a7d4e8bb6",
+      "id": "0cd987be-277d-4c9d-a3fe-ae865f9e4963",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2845,7 +869,7 @@
         "text": "6MWT report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
@@ -2856,13 +880,61 @@
       } ]
     }
   }, {
-    "fullUrl": "Condition/f4672c8f-70f3-41d6-8789-ce098070e257",
+    "fullUrl": "DiagnosticReport/fd16f2ed-8f54-4684-a2c7-5090267770ca",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "fd16f2ed-8f54-4684-a2c7-5090267770ca",
+      "status": "final",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LOINC:73977-1",
+          "display": "Molecular markers/NGS as needed"
+        } ],
+        "text": "Molecular markers/NGS as needed"
+      },
+      "subject": {
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb",
+        "display": "Testing POC"
+      },
+      "issued": "2024-05-31T22:10:13.060+05:30",
+      "result": [ {
+        "reference": "DocumentReference/4c65bb06-58de-4562-9825-ad304fba3a79"
+      } ]
+    }
+  }, {
+    "fullUrl": "DocumentReference/4c65bb06-58de-4562-9825-ad304fba3a79",
+    "resource": {
+      "resourceType": "DocumentReference",
+      "id": "4c65bb06-58de-4562-9825-ad304fba3a79",
+      "status": "current",
+      "type": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LOINC:73977-1",
+          "display": "Molecular markers/NGS as needed report"
+        } ],
+        "text": "Molecular markers/NGS as needed report"
+      },
+      "subject": {
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
+      },
+      "content": [ {
+        "attachment": {
+          "contentType": "application/pdf",
+          "data": "bHVuZ01vbGVjdWxhciBtYXJrZXJzL05HUyBhcyBuZWVkZWQ=",
+          "title": "Molecular markers/NGS as needed report"
+        }
+      } ]
+    }
+  }, {
+    "fullUrl": "Condition/114c216b-b5f3-4a71-a7d2-43a7b91017d1",
     "resource": {
       "resourceType": "Condition",
-      "id": "f4672c8f-70f3-41d6-8789-ce098070e257",
+      "id": "114c216b-b5f3-4a71-a7d2-43a7b91017d1",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.251+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.061+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "clinicalStatus": {
@@ -2883,10 +955,10 @@
       }
     }
   }, {
-    "fullUrl": "DiagnosticReport/f641f5c7-9146-4cb3-8ec1-754cf4341a50",
+    "fullUrl": "DiagnosticReport/d06004fa-cd8e-47b9-ae67-da4f15bcce18",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "f641f5c7-9146-4cb3-8ec1-754cf4341a50",
+      "id": "d06004fa-cd8e-47b9-ae67-da4f15bcce18",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2897,18 +969,18 @@
         "text": "FNAC report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "issued": "2024-05-29T15:24:30.251+05:30",
+      "issued": "2024-05-31T22:10:13.061+05:30",
       "result": [ {
-        "reference": "DocumentReference/2df3984e-42fd-4419-a9ab-d9c60e72759d"
+        "reference": "DocumentReference/e802de85-8b42-405e-a7cf-4ac3b9706a80"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/2df3984e-42fd-4419-a9ab-d9c60e72759d",
+    "fullUrl": "DocumentReference/e802de85-8b42-405e-a7cf-4ac3b9706a80",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "2df3984e-42fd-4419-a9ab-d9c60e72759d",
+      "id": "e802de85-8b42-405e-a7cf-4ac3b9706a80",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2919,21 +991,21 @@
         "text": "FNAC report report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
           "contentType": "application/pdf",
-          "data": "Zm5hY29yYWxta21r",
+          "data": "b3JhbGd2cQ==",
           "title": "FNAC report report"
         }
       } ]
     }
   }, {
-    "fullUrl": "DiagnosticReport/ce915b84-21a6-45bd-8977-b3f6bf63c661",
+    "fullUrl": "DiagnosticReport/e1e1bd99-b622-44c2-8045-a6b728cca7f9",
     "resource": {
       "resourceType": "DiagnosticReport",
-      "id": "ce915b84-21a6-45bd-8977-b3f6bf63c661",
+      "id": "e1e1bd99-b622-44c2-8045-a6b728cca7f9",
       "status": "final",
       "code": {
         "coding": [ {
@@ -2944,19 +1016,19 @@
         "text": "CECT head neck thorax report/ PET Ct/ MRI"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb",
         "display": "Testing POC"
       },
-      "issued": "2024-05-29T15:24:30.251+05:30",
+      "issued": "2024-05-31T22:10:13.061+05:30",
       "result": [ {
-        "reference": "DocumentReference/9e122d45-5128-4d90-b1fe-fa770d2be41c"
+        "reference": "DocumentReference/16866073-f2fc-426e-9c47-856991debc2a"
       } ]
     }
   }, {
-    "fullUrl": "DocumentReference/9e122d45-5128-4d90-b1fe-fa770d2be41c",
+    "fullUrl": "DocumentReference/16866073-f2fc-426e-9c47-856991debc2a",
     "resource": {
       "resourceType": "DocumentReference",
-      "id": "9e122d45-5128-4d90-b1fe-fa770d2be41c",
+      "id": "16866073-f2fc-426e-9c47-856991debc2a",
       "status": "current",
       "type": {
         "coding": [ {
@@ -2967,24 +1039,118 @@
         "text": "CECT head neck thorax report/ PET Ct/ MRI report"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "content": [ {
         "attachment": {
           "contentType": "application/pdf",
-          "data": "Y2VjdG9yYWxta21r",
+          "data": "b3JhbDZtd3Q=",
           "title": "CECT head neck thorax report/ PET Ct/ MRI report"
         }
       } ]
     }
   }, {
-    "fullUrl": "Condition/ed9dbe50-2505-4a0f-91e5-951b90c1ccc3",
+    "fullUrl": "AllergyIntolerance/02d5b560-390c-4003-9567-a187d13cc843",
+    "resource": {
+      "resourceType": "AllergyIntolerance",
+      "id": "02d5b560-390c-4003-9567-a187d13cc843",
+      "meta": {
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>groundnut</p><p>recordedDate:2015-08-06</p></div>"
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+          "code": "active",
+          "display": "Active"
+        } ],
+        "text": "Active"
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+          "code": "confirmed",
+          "display": "Confirmed"
+        } ],
+        "text": "Confirmed"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "235719002",
+          "display": "groundnut"
+        } ],
+        "text": "groundnut"
+      },
+      "patient": {
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
+      },
+      "recordedDate": "2024-05-31T22:10:13+05:30",
+      "recorder": {
+        "reference": "409c7931-4ecd-406c-b698-9f39128b536e"
+      },
+      "note": [ {
+        "text": "The patient reports of: groundnut allergy which is of type: food"
+      } ]
+    }
+  }, {
+    "fullUrl": "AllergyIntolerance/af144939-01d7-4f1c-a41b-d3e3b262fd6f",
+    "resource": {
+      "resourceType": "AllergyIntolerance",
+      "id": "af144939-01d7-4f1c-a41b-d3e3b262fd6f",
+      "meta": {
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>dust</p><p>recordedDate:2015-08-06</p></div>"
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+          "code": "active",
+          "display": "Active"
+        } ],
+        "text": "Active"
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+          "code": "confirmed",
+          "display": "Confirmed"
+        } ],
+        "text": "Confirmed"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "235719002",
+          "display": "dust"
+        } ],
+        "text": "dust"
+      },
+      "patient": {
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
+      },
+      "recordedDate": "2024-05-31T22:10:13+05:30",
+      "recorder": {
+        "reference": "816829bb-5f73-4570-a4d2-0778c211199b"
+      },
+      "note": [ {
+        "text": "The patient reports of: dust allergy which is of type: environmental"
+      } ]
+    }
+  }, {
+    "fullUrl": "Condition/ee2ac5a0-7486-45b4-b81d-4eadc083fde3",
     "resource": {
       "resourceType": "Condition",
-      "id": "ed9dbe50-2505-4a0f-91e5-951b90c1ccc3",
+      "id": "ee2ac5a0-7486-45b4-b81d-4eadc083fde3",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.251+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.065+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -3013,20 +1179,20 @@
         } ]
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "recorder": {
-        "reference": "Practitioner/2724b558-723b-4ab7-842d-4172e9142ba2"
+        "reference": "Practitioner/50901e45-1580-414b-b127-5e69ce69e30d"
       }
     }
   }, {
-    "fullUrl": "Condition/6b043d03-0bee-49fa-8d0b-edf2c40f7e8e",
+    "fullUrl": "Condition/0f58b677-6825-4835-91a3-8dfe04b3d4c4",
     "resource": {
       "resourceType": "Condition",
-      "id": "6b043d03-0bee-49fa-8d0b-edf2c40f7e8e",
+      "id": "0f58b677-6825-4835-91a3-8dfe04b3d4c4",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.253+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.065+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -3055,17 +1221,17 @@
         } ]
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "recorder": {
-        "reference": "Practitioner/a64f23af-132e-4d6a-8c7a-3e9d0a6916fe"
+        "reference": "Practitioner/79c1353e-a25b-4c13-a52a-c8d442996a79"
       }
     }
   }, {
-    "fullUrl": "AdverseEvent/dd116670-7917-4827-a046-ad6bf51b943f",
+    "fullUrl": "AdverseEvent/03f38c75-8b22-4348-bae3-abedebf41c9d",
     "resource": {
       "resourceType": "AdverseEvent",
-      "id": "dd116670-7917-4827-a046-ad6bf51b943f",
+      "id": "03f38c75-8b22-4348-bae3-abedebf41c9d",
       "identifier": {
         "system": "http://example.com/adverseEvent",
         "value": "123456"
@@ -3080,11 +1246,11 @@
         "text": "Medication Mishap"
       } ],
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "date": "2024-05-29T15:24:30+05:30",
-      "detected": "2024-05-29T15:24:30+05:30",
-      "recordedDate": "2024-05-29T15:24:30+05:30",
+      "date": "2024-05-31T22:10:13+05:30",
+      "detected": "2024-05-31T22:10:13+05:30",
+      "recordedDate": "2024-05-31T22:10:13+05:30",
       "seriousness": {
         "coding": [ {
           "system": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
@@ -3102,17 +1268,17 @@
         "text": "Resolved"
       },
       "recorder": {
-        "reference": "Practitioner/b4aa5765-9b58-4518-a940-5946396d67ed"
+        "reference": "Practitioner/8317369c-47ee-40cd-9c92-d9da61c63ab9"
       }
     }
   }, {
-    "fullUrl": "Condition/fe4b582c-e821-4a31-a089-77b0bac5912b",
+    "fullUrl": "Condition/ad1c7d3a-c960-4128-9995-d12ca53da231",
     "resource": {
       "resourceType": "Condition",
-      "id": "fe4b582c-e821-4a31-a089-77b0bac5912b",
+      "id": "ad1c7d3a-c960-4128-9995-d12ca53da231",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.255+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.066+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -3141,18 +1307,18 @@
         } ]
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "recordedDate": "2024-05-29T15:24:30+05:30"
+      "recordedDate": "2024-05-31T22:10:13+05:30"
     }
   }, {
-    "fullUrl": "Condition/05ea4525-bc38-4e69-befc-76c74c7eea74",
+    "fullUrl": "Condition/58ea0dc5-b0aa-4195-8376-8cc6c7339617",
     "resource": {
       "resourceType": "Condition",
-      "id": "05ea4525-bc38-4e69-befc-76c74c7eea74",
+      "id": "58ea0dc5-b0aa-4195-8376-8cc6c7339617",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.255+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.067+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -3181,18 +1347,18 @@
         } ]
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "recordedDate": "2024-05-29T15:24:30+05:30"
+      "recordedDate": "2024-05-31T22:10:13+05:30"
     }
   }, {
-    "fullUrl": "Condition/450bc7de-2756-4b13-9f48-45ed0ba1f7dd",
+    "fullUrl": "Condition/7e349876-9ed3-4b80-a492-3f5ea60d18ff",
     "resource": {
       "resourceType": "Condition",
-      "id": "450bc7de-2756-4b13-9f48-45ed0ba1f7dd",
+      "id": "7e349876-9ed3-4b80-a492-3f5ea60d18ff",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.257+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.067+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -3221,18 +1387,18 @@
         } ]
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "recordedDate": "2024-05-29T15:24:30+05:30"
+      "recordedDate": "2024-05-31T22:10:13+05:30"
     }
   }, {
-    "fullUrl": "Condition/8fa23827-fe32-409b-9fe6-b7c6a7fbf6c6",
+    "fullUrl": "Condition/25488d23-801a-452c-92e6-3952c2daef55",
     "resource": {
       "resourceType": "Condition",
-      "id": "8fa23827-fe32-409b-9fe6-b7c6a7fbf6c6",
+      "id": "25488d23-801a-452c-92e6-3952c2daef55",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.258+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.068+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -3261,18 +1427,18 @@
         } ]
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "recordedDate": "2024-05-29T15:24:30+05:30"
+      "recordedDate": "2024-05-31T22:10:13+05:30"
     }
   }, {
-    "fullUrl": "Observation/5e085278-4d3b-41e7-9d26-d8ae0dab6a84",
+    "fullUrl": "Observation/0f442276-e2d7-40ba-aa68-a50403a32f80",
     "resource": {
       "resourceType": "Observation",
-      "id": "5e085278-4d3b-41e7-9d26-d8ae0dab6a84",
+      "id": "0f442276-e2d7-40ba-aa68-a50403a32f80",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.258+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.068+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
       },
       "text": {
@@ -3289,22 +1455,22 @@
         "text": "Pregnancy status"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
+      "effectiveDateTime": "2024-05-31T22:10:13+05:30",
       "performer": [ {
-        "reference": "Practitioner/94b8dbc1-1ece-4b85-adc5-d6af004d2346"
+        "reference": "Practitioner/b396a96b-ad30-451b-a5bc-7cfb0b4e3fbc"
       } ],
       "valueString": "Not pregnant"
     }
   }, {
-    "fullUrl": "Observation/2257daa0-679e-4ced-80fc-4d1cf01b1cf6",
+    "fullUrl": "Observation/a6b864da-e41d-45f1-b9a2-b910e521676b",
     "resource": {
       "resourceType": "Observation",
-      "id": "2257daa0-679e-4ced-80fc-4d1cf01b1cf6",
+      "id": "a6b864da-e41d-45f1-b9a2-b910e521676b",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.259+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.069+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
       },
       "text": {
@@ -3321,22 +1487,22 @@
         "text": "Menstrual cycle"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
+      "effectiveDateTime": "2024-05-31T22:10:13+05:30",
       "performer": [ {
-        "reference": "Practitioner/41cb9107-d62e-4805-bd64-fddbdb014f49"
+        "reference": "Practitioner/5c2bf4c2-79a6-4211-8631-d17adfb44ba3"
       } ],
       "valueString": "Regular"
     }
   }, {
-    "fullUrl": "Observation/7dcf4fbb-8484-4aea-9ffc-68bf807ff6a2",
+    "fullUrl": "Observation/cf93b34d-a34d-44b1-8c88-4ab2c0c1c6dd",
     "resource": {
       "resourceType": "Observation",
-      "id": "7dcf4fbb-8484-4aea-9ffc-68bf807ff6a2",
+      "id": "cf93b34d-a34d-44b1-8c88-4ab2c0c1c6dd",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.260+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.069+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth" ]
       },
       "text": {
@@ -3353,22 +1519,22 @@
         "text": "Pregnancy status"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
+      "effectiveDateTime": "2024-05-31T22:10:13+05:30",
       "performer": [ {
-        "reference": "Practitioner/98e5f6da-2055-4635-9e06-6c0aaa806ef3"
+        "reference": "Practitioner/6f1f23e7-c61b-4004-9caf-874b1da9c915"
       } ],
       "valueString": "Not pregnant"
     }
   }, {
-    "fullUrl": "Observation/8973a466-6dc4-4c6c-8e04-aac141f3bddd",
+    "fullUrl": "Observation/76e065d1-4942-43f3-825d-b2779d2e1880",
     "resource": {
       "resourceType": "Observation",
-      "id": "8973a466-6dc4-4c6c-8e04-aac141f3bddd",
+      "id": "76e065d1-4942-43f3-825d-b2779d2e1880",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-05-29T15:24:30.260+05:30",
+        "lastUpdated": "2024-05-31T22:10:13.070+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth" ]
       },
       "text": {
@@ -3385,89 +1551,202 @@
         "text": "Menstrual cycle"
       },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
-      "effectiveDateTime": "2024-05-29T15:24:30+05:30",
+      "effectiveDateTime": "2024-05-31T22:10:13+05:30",
       "performer": [ {
-        "reference": "Practitioner/068c02c3-f4c1-4313-bf74-aac511cb66f3"
+        "reference": "Practitioner/4903ac1f-59af-411a-912f-5a1b1ba212bf"
       } ],
       "valueString": "Regular"
     }
   }, {
-    "fullUrl": "ServiceRequest/null",
+    "fullUrl": "ServiceRequest/748d3321-3ca4-4118-ac9f-91436f7406f4",
     "resource": {
       "resourceType": "ServiceRequest",
-      "id": "#1",
+      "id": "748d3321-3ca4-4118-ac9f-91436f7406f4",
       "status": "active",
       "intent": "original-order",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "10187-3",
+          "display": "obstetric history"
+        } ],
+        "text": "obstetric history"
+      },
+      "subject": {
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
+      },
       "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
       "requester": {
-        "reference": "Practitioner/example"
+        "reference": "Practitioner/example1"
       }
     }
   }, {
-    "fullUrl": "ServiceRequest/null",
+    "fullUrl": "ServiceRequest/f70b7a52-32f5-4b78-88f9-930da707cc85",
     "resource": {
       "resourceType": "ServiceRequest",
-      "id": "#2",
+      "id": "f70b7a52-32f5-4b78-88f9-930da707cc85",
       "status": "active",
       "intent": "original-order",
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "10193-1",
+          "display": "breast health"
+        } ],
+        "text": "breast health"
+      },
+      "subject": {
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
+      },
       "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
       "requester": {
-        "reference": "Practitioner/example"
+        "reference": "Practitioner/example2"
       }
     }
   }, {
-    "fullUrl": "Procedure/75807342-2768-4954-af37-b81d3eddcb76",
+    "fullUrl": "Procedure/ff8cfa0d-5922-45aa-b864-14a631ac72b8",
     "resource": {
       "resourceType": "Procedure",
-      "id": "75807342-2768-4954-af37-b81d3eddcb76",
+      "id": "ff8cfa0d-5922-45aa-b864-14a631ac72b8",
       "status": "completed",
+      "statusReason": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "125661000119109",
+          "display": "device"
+        } ],
+        "text": "Device"
+      },
+      "category": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "125661000119109",
+          "display": "device"
+        } ],
+        "text": "Device"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "125661000119109",
+          "display": "device"
+        } ],
+        "text": "Device"
+      },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "[org.hl7.fhir.r4.model.HumanName@1dab8c61]"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "performedPeriod": {
         "start": "2011-06-26",
         "end": "2011-06-27"
       },
+      "reasonCode": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "125661000119109",
+          "display": "device"
+        } ],
+        "text": "Device"
+      } ],
+      "bodySite": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "125661000119109",
+          "display": "device"
+        } ],
+        "text": "Device"
+      } ],
       "outcome": {
         "text": "improved blood circulation"
       },
       "followUp": [ {
         "text": "described in care plan"
+      } ],
+      "usedCode": [ {
+        "text": "device"
       } ]
     }
   }, {
-    "fullUrl": "Procedure/956c2586-d11e-4862-8f46-4e799a1043da",
+    "fullUrl": "Procedure/376f0c08-049a-4330-a248-eac0f5fe484c",
     "resource": {
       "resourceType": "Procedure",
-      "id": "956c2586-d11e-4862-8f46-4e799a1043da",
+      "id": "376f0c08-049a-4330-a248-eac0f5fe484c",
       "status": "completed",
+      "statusReason": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "386368001",
+          "display": "wrong-patient"
+        } ],
+        "text": "Wrong Patient"
+      },
+      "category": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "386368001",
+          "display": "wrong-patient"
+        } ],
+        "text": "Wrong Patient"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "386368001",
+          "display": "wrong-patient"
+        } ],
+        "text": "Wrong Patient"
+      },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "[org.hl7.fhir.r4.model.HumanName@1dab8c61]"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "performedPeriod": {
         "start": "2013-01-28T13:31:00+01:00",
         "end": "2013-01-28T14:27:00+01:00"
       },
+      "reasonCode": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "386368001",
+          "display": "wrong-patient"
+        } ],
+        "text": "Wrong Patient"
+      } ],
+      "bodySite": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "386368001",
+          "display": "wrong-patient"
+        } ],
+        "text": "Wrong Patient"
+      } ],
       "outcome": {
         "text": "improved blood circulation"
       },
       "followUp": [ {
         "text": "described in care plan"
+      } ],
+      "usedCode": [ {
+        "text": "wrong-patient"
       } ]
     }
   }, {
-    "fullUrl": "MedicationStatement/892c643f-e86a-49d3-a875-747a8af51fbb",
+    "fullUrl": "MedicationStatement/ca0a2345-89f8-4688-af43-f3bb4e485907",
     "resource": {
       "resourceType": "MedicationStatement",
-      "id": "892c643f-e86a-49d3-a875-747a8af51fbb",
+      "id": "ca0a2345-89f8-4688-af43-f3bb4e485907",
       "status": "completed",
+      "medicationCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "125661000119109",
+          "display": "device"
+        } ],
+        "text": "Device"
+      },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "[org.hl7.fhir.r4.model.HumanName@1dab8c61]"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "effectivePeriod": {
         "start": "2014-02-01T05:30:00+05:30"
@@ -3476,19 +1755,82 @@
       "derivedFrom": [ {
         "reference": "Patient/pat1"
       } ],
+      "reasonCode": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "125661000119109",
+          "display": "device"
+        } ],
+        "text": "Device"
+      } ],
       "note": [ {
         "text": "Father indicates they miss the occasional dose"
+      } ],
+      "dosage": [ {
+        "additionalInstruction": [ {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "125661000119109",
+            "display": "device"
+          } ],
+          "text": "Device"
+        } ],
+        "site": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "125661000119109",
+            "display": "device"
+          } ],
+          "text": "Device"
+        },
+        "route": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "125661000119109",
+            "display": "device"
+          } ],
+          "text": "Device"
+        },
+        "method": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "125661000119109",
+            "display": "device"
+          } ],
+          "text": "Device"
+        },
+        "doseAndRate": [ {
+          "doseQuantity": {
+            "value": 500,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          },
+          "rateQuantity": {
+            "value": 3,
+            "unit": "times per day",
+            "system": "http://unitsofmeasure.org",
+            "code": "times/day"
+          }
+        } ]
       } ]
     }
   }, {
-    "fullUrl": "MedicationStatement/dab2ea74-20a3-42bc-92a6-284cab81e7e2",
+    "fullUrl": "MedicationStatement/8c797e26-705a-4e55-8394-58dbb59cef7c",
     "resource": {
       "resourceType": "MedicationStatement",
-      "id": "dab2ea74-20a3-42bc-92a6-284cab81e7e2",
+      "id": "8c797e26-705a-4e55-8394-58dbb59cef7c",
       "status": "completed",
+      "medicationCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "386368001",
+          "display": "wrong-patient"
+        } ],
+        "text": "Wrong Patient"
+      },
       "subject": {
-        "reference": "Patient/e6f4e61a-1d2d-444d-bf1d-1a4ea7e3c4b2",
-        "display": "[org.hl7.fhir.r4.model.HumanName@1dab8c61]"
+        "reference": "Patient/5f6bfd47-49c2-4423-a38b-5731af7d94cb"
       },
       "effectivePeriod": {
         "start": "2015-01-23T05:30:00+05:30"
@@ -3497,86 +1839,64 @@
       "derivedFrom": [ {
         "reference": "MedicationRequest/medrx002"
       } ],
+      "reasonCode": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "386368001",
+          "display": "wrong-patient"
+        } ],
+        "text": "Wrong Patient"
+      } ],
       "note": [ {
         "text": "Patient indicates they miss the occasional dose"
-      } ]
-    }
-  }, {
-    "fullUrl": "AllergyIntolerance/4bb56d85-63c9-4fba-9639-d150b9448d0e",
-    "resource": {
-      "resourceType": "AllergyIntolerance",
-      "id": "4bb56d85-63c9-4fba-9639-d150b9448d0e",
-      "meta": {
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>groundnut</p><p>recordedDate:2015-08-06</p></div>"
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-          "display": "active"
+      } ],
+      "dosage": [ {
+        "additionalInstruction": [ {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "386368001",
+            "display": "wrong-patient"
+          } ],
+          "text": "Wrong Patient"
         } ],
-        "text": "Active"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-          "display": "confirmed"
-        } ],
-        "text": "Confirmed"
-      },
-      "patient": {
-        "reference": "[org.hl7.fhir.r4.model.HumanName@1dab8c61]"
-      },
-      "recordedDate": "2024-05-29T15:24:30+05:30",
-      "recorder": {
-        "reference": "d5ca53e4-d733-4c56-8659-ae26e8e21bbd"
-      },
-      "note": [ {
-        "text": "The patient reports of: groundnut allergy which is of type: food"
-      } ]
-    }
-  }, {
-    "fullUrl": "AllergyIntolerance/3b7e0eb3-2570-417e-89fa-e61ece8d2e5b",
-    "resource": {
-      "resourceType": "AllergyIntolerance",
-      "id": "3b7e0eb3-2570-417e-89fa-e61ece8d2e5b",
-      "meta": {
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>dust</p><p>recordedDate:2015-08-06</p></div>"
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-          "display": "active"
-        } ],
-        "text": "Active"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-          "display": "confirmed"
-        } ],
-        "text": "Confirmed"
-      },
-      "patient": {
-        "reference": "[org.hl7.fhir.r4.model.HumanName@1dab8c61]"
-      },
-      "recordedDate": "2024-05-29T15:24:30+05:30",
-      "recorder": {
-        "reference": "13ec5ff4-8d23-4954-b957-cea12a21108f"
-      },
-      "note": [ {
-        "text": "The patient reports of: dust allergy which is of type: environmental"
+        "site": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "386368001",
+            "display": "wrong-patient"
+          } ],
+          "text": "Wrong Patient"
+        },
+        "route": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "386368001",
+            "display": "wrong-patient"
+          } ],
+          "text": "Wrong Patient"
+        },
+        "method": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "386368001",
+            "display": "wrong-patient"
+          } ],
+          "text": "Wrong Patient"
+        },
+        "doseAndRate": [ {
+          "doseQuantity": {
+            "value": 500,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          },
+          "rateQuantity": {
+            "value": 3,
+            "unit": "times per day",
+            "system": "http://unitsofmeasure.org",
+            "code": "times/day"
+          }
+        } ]
       } ]
     }
   } ]

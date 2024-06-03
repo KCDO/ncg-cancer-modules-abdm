@@ -34,7 +34,7 @@ public class Constants {
 	public static final String DIAGNOSTIC_REPORTS = "Diagnostic Reports";
 	public static final String MEDICAL_HISTORY = "Medical History";
 	public static final String MEDICAL_HISTORY_SECTION = "Medical History Section";
-	public static final String ALLERGY_INTOLERANCE_SECTION = "Allergy Intolerance Section";
+	public static final String DRUG_ALLERGY_SECTION = "Drug Allergy Section";
 	public static final String CO_MORBIDITIES = "Co-Morbidities";
 	public static final String CO_MORBIDITIES_SECTION = "Co-Morbidities Section";
 	public static final String ADVERSE_EVENTS = "Adverse Events";
@@ -86,7 +86,7 @@ public class Constants {
 	public static final String ACTIVE = "Active";
 	public static final String CONFIRMED = "Confirmed";
 	public static final String EKA_SCT_SYSTEM = "https://projecteka.in/sct";
-	public static final String ALLERGY_INTOLERANCE = "Allergy Intolerance";
+	public static final String DRUG_ALLERGY = "Drug Allergy";
 	public static final String ABHA = "ABHAAddress";
 	public static final String BIO_CHEMISTRY = "Bio Chemistry";
 	public static final String BIO_CHEMISTRY_SNOMED_CODE = "4241000179101";
