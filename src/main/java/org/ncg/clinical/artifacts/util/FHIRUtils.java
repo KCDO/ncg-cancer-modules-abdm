@@ -47,6 +47,8 @@ public class FHIRUtils {
 				+ (StringUtils.isBlank(middleName) ? "" : (" " + middleName));
 		humanName.setGiven(Collections.singletonList(new StringType(givenName.trim())));
 
+		humanName.setFamily(StringUtils.isBlank(lastName) ? "" : lastName);
+
 		// create full name
 		String fullName = givenName + (StringUtils.isBlank(lastName) ? "" : (" " + lastName));
 		humanName.setText(fullName.trim());
