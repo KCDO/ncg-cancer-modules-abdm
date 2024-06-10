@@ -1,0 +1,1013 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "The APIs related to the Clinical Data",
+    "version" : "v1",
+    "title" : "Clinical Data Service REST API"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "Clinical Data APIs"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/ncg/cancer-modules/abdm/clinical-artifacts" : {
+      "post" : {
+        "tags" : [ "Clinical Data APIs" ],
+        "summary" : "This Api is used to generate fhir clinical-data.",
+        "description" : "",
+        "operationId" : "generateClinicalDataJSON",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ClinicalData"
+          }
+        }, {
+          "name" : "Content-Type",
+          "in" : "header",
+          "description" : "application/json",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successfully generated",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Address" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "houseName" : {
+          "type" : "string"
+        },
+        "district" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "pinCode" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AdverseEvent" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Allergy" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AttachmentDetail" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "attachment" : {
+          "type" : "string"
+        }
+      }
+    },
+    "BioChemistry" : {
+      "type" : "object",
+      "properties" : {
+        "panels" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PanelDetail"
+          }
+        }
+      }
+    },
+    "CBC" : {
+      "type" : "object",
+      "properties" : {
+        "panels" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PanelDetail"
+          }
+        }
+      }
+    },
+    "CancerDetails" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "tests" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttachmentDetail"
+          }
+        }
+      }
+    },
+    "ClinicalData" : {
+      "type" : "object",
+      "properties" : {
+        "outputClinicalArtifactTypes" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "patientDetails" : {
+          "$ref" : "#/definitions/PatientData"
+        },
+        "clinicalInformation" : {
+          "$ref" : "#/definitions/ClinicalInformation"
+        },
+        "diagnostics" : {
+          "$ref" : "#/definitions/Diagnostic"
+        },
+        "cancerDetails" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/CancerDetails"
+          }
+        }
+      }
+    },
+    "ClinicalInformation" : {
+      "type" : "object",
+      "properties" : {
+        "drugAllergy" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Allergy"
+          }
+        },
+        "comorbidities" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Comorbidity"
+          }
+        },
+        "adverseEvents" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AdverseEvent"
+          }
+        },
+        "pastMedicalHistory" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PastMedicalHistory"
+          }
+        },
+        "pastSurgicalHistory" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PastSurgicalHistory"
+          }
+        },
+        "mentalHealthAssesment" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MentalHealthAssesment"
+          }
+        },
+        "menstruationHistory" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MenstruationHistory"
+          }
+        },
+        "examinationDetails" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/InvestigationAdvice"
+          }
+        },
+        "surgicalSummaryWithPostOPCourse" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SurgicalSummaryWithPostOPCourse"
+          }
+        },
+        "ongoingDrugs" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/OngoingDrugs"
+          }
+        },
+        "otnotes" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        },
+        "pacnotes" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "Comorbidity" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        }
+      }
+    },
+    "DateTimeType" : {
+      "type" : "object",
+      "properties" : {
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "extension" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Extension"
+          }
+        },
+        "disallowExtensions" : {
+          "type" : "boolean"
+        },
+        "tzHour" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "tzMin" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "dateTime" : {
+          "type" : "boolean"
+        },
+        "tzSign" : {
+          "type" : "boolean"
+        },
+        "asV3" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "year" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "hour" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "minute" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "second" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "timeZone" : {
+          "$ref" : "#/definitions/TimeZone"
+        },
+        "day" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "month" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "millis" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "precision" : {
+          "type" : "string",
+          "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
+        },
+        "nanos" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "timeZoneZulu" : {
+          "type" : "boolean"
+        },
+        "valueAsCalendar" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "secondsMilli" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "today" : {
+          "type" : "boolean"
+        },
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "primitive" : {
+          "type" : "boolean"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "idElement" : {
+          "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
+        },
+        "resource" : {
+          "type" : "boolean"
+        },
+        "booleanPrimitive" : {
+          "type" : "boolean"
+        },
+        "xhtml" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        }
+      }
+    },
+    "Diagnostic" : {
+      "type" : "object",
+      "properties" : {
+        "cbc" : {
+          "$ref" : "#/definitions/CBC"
+        },
+        "bioChemistry" : {
+          "$ref" : "#/definitions/BioChemistry"
+        },
+        "biopsyHistopathologyReport" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Extension" : {
+      "type" : "object",
+      "properties" : {
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "extension" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Extension"
+          }
+        },
+        "disallowExtensions" : {
+          "type" : "boolean"
+        },
+        "url" : {
+          "type" : "string"
+        },
+        "value" : {
+          "$ref" : "#/definitions/Type"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "urlElement" : {
+          "$ref" : "#/definitions/UriType"
+        },
+        "valueAsPrimitive" : {
+          "$ref" : "#/definitions/IPrimitiveTypeObject"
+        },
+        "idElement" : {
+          "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
+        },
+        "primitive" : {
+          "type" : "boolean"
+        },
+        "resource" : {
+          "type" : "boolean"
+        },
+        "dateTime" : {
+          "type" : "boolean"
+        },
+        "booleanPrimitive" : {
+          "type" : "boolean"
+        },
+        "xhtml" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        }
+      }
+    },
+    "IPrimitiveType" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "object"
+        },
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "IPrimitiveTypeObject" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "object"
+        },
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "Identifier" : {
+      "type" : "object",
+      "properties" : {
+        "hipId" : {
+          "type" : "string"
+        },
+        "domain" : {
+          "type" : "string"
+        }
+      }
+    },
+    "InvestigationAdvice" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "occurrenceDateTime" : {
+          "$ref" : "#/definitions/DateTimeType"
+        },
+        "requester" : {
+          "type" : "string"
+        },
+        "reason" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Location" : {
+      "type" : "object",
+      "properties" : {
+        "line" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "column" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "MenstruationHistory" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "MentalHealthAssesment" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "OngoingDrugs" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "effectiveDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "assertedDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "reference" : {
+          "type" : "string"
+        },
+        "note" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PanelDetail" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "attachment" : {
+          "type" : "string"
+        },
+        "tests" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/TestDetail"
+          }
+        }
+      }
+    },
+    "PastMedicalHistory" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "onsetDateTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "PastSurgicalHistory" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "onsetDateTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "PatientData" : {
+      "type" : "object",
+      "required" : [ "gender" ],
+      "properties" : {
+        "firstName" : {
+          "type" : "string"
+        },
+        "middleName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "dob" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "gender" : {
+          "type" : "string"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "address" : {
+          "$ref" : "#/definitions/Address"
+        },
+        "height" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "weight" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "abhaAddress" : {
+          "type" : "string"
+        },
+        "identifier" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "bloodGroup" : {
+          "type" : "string"
+        }
+      }
+    },
+    "StringType" : {
+      "type" : "object",
+      "properties" : {
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "extension" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Extension"
+          }
+        },
+        "disallowExtensions" : {
+          "type" : "boolean"
+        },
+        "valueNotNull" : {
+          "type" : "string"
+        },
+        "primitive" : {
+          "type" : "boolean"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "idElement" : {
+          "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
+        },
+        "resource" : {
+          "type" : "boolean"
+        },
+        "dateTime" : {
+          "type" : "boolean"
+        },
+        "booleanPrimitive" : {
+          "type" : "boolean"
+        },
+        "xhtml" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        }
+      }
+    },
+    "SurgicalSummaryWithPostOPCourse" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "startDate" : {
+          "$ref" : "#/definitions/DateTimeType"
+        },
+        "endDate" : {
+          "$ref" : "#/definitions/DateTimeType"
+        },
+        "reason" : {
+          "type" : "string"
+        },
+        "bodySite" : {
+          "type" : "string"
+        },
+        "outcome" : {
+          "type" : "string"
+        },
+        "followUp" : {
+          "type" : "string"
+        }
+      }
+    },
+    "TestDetail" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "loincCode" : {
+          "type" : "string"
+        },
+        "unitOfMeasurement" : {
+          "type" : "string"
+        },
+        "result" : {
+          "type" : "number",
+          "format" : "double"
+        }
+      }
+    },
+    "TimeZone" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "displayName" : {
+          "type" : "string"
+        },
+        "dstsavings" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "rawOffset" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Type" : {
+      "type" : "object",
+      "properties" : {
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "extension" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Extension"
+          }
+        },
+        "disallowExtensions" : {
+          "type" : "boolean"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "idElement" : {
+          "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
+        },
+        "primitive" : {
+          "type" : "boolean"
+        },
+        "resource" : {
+          "type" : "boolean"
+        },
+        "dateTime" : {
+          "type" : "boolean"
+        },
+        "booleanPrimitive" : {
+          "type" : "boolean"
+        },
+        "xhtml" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        }
+      }
+    },
+    "UriType" : {
+      "type" : "object",
+      "properties" : {
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "extension" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Extension"
+          }
+        },
+        "disallowExtensions" : {
+          "type" : "boolean"
+        },
+        "primitive" : {
+          "type" : "boolean"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "idElement" : {
+          "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
+        },
+        "resource" : {
+          "type" : "boolean"
+        },
+        "dateTime" : {
+          "type" : "boolean"
+        },
+        "booleanPrimitive" : {
+          "type" : "boolean"
+        },
+        "xhtml" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        }
+      }
+    },
+    "XhtmlNode" : {
+      "type" : "object",
+      "properties" : {
+        "location" : {
+          "$ref" : "#/definitions/Location"
+        },
+        "nodeType" : {
+          "type" : "string",
+          "enum" : [ "Element", "Text", "Comment", "DocType", "Document", "Instruction" ]
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "attributes" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        },
+        "childNodes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/XhtmlNode"
+          }
+        },
+        "content" : {
+          "type" : "string"
+        },
+        "emptyExpanded" : {
+          "type" : "boolean"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "noPretty" : {
+          "type" : "boolean"
+        },
+        "nsDecl" : {
+          "type" : "string"
+        },
+        "firstElement" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        },
+        "para" : {
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}
