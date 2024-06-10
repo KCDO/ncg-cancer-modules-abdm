@@ -6,23 +6,34 @@ Provide useful utilities like fhir data generator and validation.
 ## Before you begin, ensure you have met the following requirements:
 
 Java Development Kit (JDK) version 17
-Maven 4.0.0
+Maven 3.2.5
 
-## Build
-To build the project, follow these steps:
-1. Clone the repository from the following link:
-git clone https://github.com/KCDO/ncg-cancer-modules-abdm
+1. **Clone the Repository**:
+    - Clone the repository from the following link:
+    ```bash
+    git clone https://github.com/KCDO/ncg-cancer-modules-abdm
+    ```
+    - Navigate into the cloned repository:
+    ```bash
+    cd ncg-cancer-modules-abdm
+    ```
 
-### Navigate to the project directory:
-cd ncg-cancer-modules-abdm
+2. **Pull the Latest Changes**:
+    - Ensure you are on the main branch and pull the latest updates:
+    ```bash
+    git checkout main
+    git pull origin main
+    ```
 
-2) Pull the Latest Changes:
-Ensure you are on the main branch and pull the latest updates:
-git checkout main
-git pull origin main
+3. **Build and Run the Project with Maven**:
+    - Clean, compile, and package the application using Maven:
+    ```bash
+    mvn clean install
+    ```
+    - Run the application:
+    ```bash
+    mvn spring-boot:run
+    ```
 
-3. Build the project using Maven:
-mvn clean install
+    The application should now be running locally, accessible through the configured port.
 
-## Run
-mvn spring-boot:run
