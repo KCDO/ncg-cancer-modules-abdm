@@ -580,47 +580,47 @@
 			{
 				"name": "2 D ECHO with PASP",
 				"code": "34552-0",
-				"description": "2 D ECHO with PASP"
+				"attachment": "lung6mowt"
 			},
 			{
 				"name": "FDG PETCT",
 				"code": "81553-0",
-				"description": "FDG PETCT"
+				"attachment": "lung6mowt"
 			},
 			{
 				"name": "MRI brain",
 				"code": "24590-2",
-				"description": "MRI brain"
+				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Fiber optic bronchoscopy",
 				"code": "18744-3",
-				"description": "Fiber optic bronchoscopy"
+				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Endobronchial ultrasound with ROSE reports",
 				"code": "100231-0",
-				"description": "Endobronchial ultrasound with ROSE reports"
+				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Pulmonary function tests with DLCO",
 				"code": "58477-1",
-				"description": "Pulmonary function tests with DLCO"
+				"attachment": "lung6mowt"
 			},
 			{
 				"name": "V/Q scan in pneumonectomy",
 				"code": "39942-8",
-				"description": "V/Q scan in pneumonectomy"
+				"attachment": "lung6mowt"
 			},
 			{
 				"name": "6MWT",
 				"code": "64098-7",
-				"description": "6MWT"
+				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Molecular markers/NGS as needed",
 				"code": "73977-1",
-				"description": "Molecular markers/NGS as needed"
+				"attachment": "lung6mowt"
 			}
 		]
 	},
