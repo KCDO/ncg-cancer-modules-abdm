@@ -32,8 +32,8 @@ Maven 3.2.5
     ```
 
 4. **Set project environment variable**
-i) all.tests.labs.json=<localpath>/ncg-cancer-modules-abdm/src/main/resources/docs-json/allTestsAndPanels.json
-ii) op.consultation.input.json=<localpath>/ncg-cancer-modules-abdm/src/main/resources/docs-json/opConsultationInput.json
+    - all.tests.labs.json=<localpath>/ncg-cancer-modules-abdm/src/main/resources/docs-json/allTestsAndPanels.json
+    - op.consultation.input.json=<localpath>/ncg-cancer-modules-abdm/src/main/resources/docs-json/opConsultationInput.json
 
 5. **Run java application**
     cd target 
