@@ -5,7 +5,7 @@ Provide useful utilities like fhir data generator and validation.
 
 ## Before you begin, ensure you have met the following requirements:
 
-Java Development Kit (JDK) version 17
+Java Development Kit (JDK) version 21
 Maven 3.2.5
 
 1. **Clone the Repository**:
