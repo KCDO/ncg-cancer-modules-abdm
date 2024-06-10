@@ -97,6 +97,9 @@
         "name" : {
           "type" : "string"
         },
+        "code" : {
+          "type" : "string"
+        },
         "attachment" : {
           "type" : "string"
         }
@@ -124,12 +127,9 @@
         }
       }
     },
-    "CancerDetails" : {
+    "CervicalCancer" : {
       "type" : "object",
       "properties" : {
-        "name" : {
-          "type" : "string"
-        },
         "tests" : {
           "type" : "array",
           "items" : {
@@ -156,11 +156,14 @@
         "diagnostics" : {
           "$ref" : "#/definitions/Diagnostic"
         },
-        "cancerDetails" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/CancerDetails"
-          }
+        "lungCancer" : {
+          "$ref" : "#/definitions/LungCancer"
+        },
+        "oralCancer" : {
+          "$ref" : "#/definitions/OralCancer"
+        },
+        "cervicalCancer" : {
+          "$ref" : "#/definitions/CervicalCancer"
         }
       }
     },
@@ -279,6 +282,9 @@
         "disallowExtensions" : {
           "type" : "boolean"
         },
+        "dateTime" : {
+          "type" : "boolean"
+        },
         "tzHour" : {
           "type" : "integer",
           "format" : "int32"
@@ -287,18 +293,18 @@
           "type" : "integer",
           "format" : "int32"
         },
-        "dateTime" : {
-          "type" : "boolean"
+        "asV3" : {
+          "type" : "string"
         },
         "tzSign" : {
           "type" : "boolean"
         },
-        "asV3" : {
-          "type" : "string"
-        },
         "value" : {
           "type" : "string",
           "format" : "date-time"
+        },
+        "timeZone" : {
+          "$ref" : "#/definitions/TimeZone"
         },
         "year" : {
           "type" : "integer",
@@ -316,8 +322,9 @@
           "type" : "integer",
           "format" : "int32"
         },
-        "timeZone" : {
-          "$ref" : "#/definitions/TimeZone"
+        "precision" : {
+          "type" : "string",
+          "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
         },
         "day" : {
           "type" : "integer",
@@ -331,13 +338,12 @@
           "type" : "integer",
           "format" : "int32"
         },
-        "precision" : {
-          "type" : "string",
-          "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
+        "today" : {
+          "type" : "boolean"
         },
-        "nanos" : {
-          "type" : "integer",
-          "format" : "int64"
+        "secondsMilli" : {
+          "type" : "number",
+          "format" : "float"
         },
         "timeZoneZulu" : {
           "type" : "boolean"
@@ -346,15 +352,12 @@
           "type" : "string",
           "format" : "date-time"
         },
-        "secondsMilli" : {
-          "type" : "number",
-          "format" : "float"
-        },
-        "today" : {
-          "type" : "boolean"
-        },
         "valueAsString" : {
           "type" : "string"
+        },
+        "nanos" : {
+          "type" : "integer",
+          "format" : "int64"
         },
         "primitive" : {
           "type" : "boolean"
@@ -476,13 +479,13 @@
         "empty" : {
           "type" : "boolean"
         },
-        "formatCommentsPre" : {
+        "formatCommentsPost" : {
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         },
-        "formatCommentsPost" : {
+        "formatCommentsPre" : {
           "type" : "array",
           "items" : {
             "type" : "string"
@@ -502,13 +505,13 @@
         "empty" : {
           "type" : "boolean"
         },
-        "formatCommentsPre" : {
+        "formatCommentsPost" : {
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         },
-        "formatCommentsPost" : {
+        "formatCommentsPre" : {
           "type" : "array",
           "items" : {
             "type" : "string"
@@ -557,6 +560,17 @@
         }
       }
     },
+    "LungCancer" : {
+      "type" : "object",
+      "properties" : {
+        "tests" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttachmentDetail"
+          }
+        }
+      }
+    },
     "MenstruationHistory" : {
       "type" : "object",
       "properties" : {
@@ -601,10 +615,24 @@
         }
       }
     },
+    "OralCancer" : {
+      "type" : "object",
+      "properties" : {
+        "tests" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttachmentDetail"
+          }
+        }
+      }
+    },
     "PanelDetail" : {
       "type" : "object",
       "properties" : {
         "name" : {
+          "type" : "string"
+        },
+        "code" : {
           "type" : "string"
         },
         "attachment" : {
@@ -809,17 +837,17 @@
     "TimeZone" : {
       "type" : "object",
       "properties" : {
-        "id" : {
-          "type" : "string"
-        },
         "displayName" : {
           "type" : "string"
         },
-        "dstsavings" : {
+        "rawOffset" : {
           "type" : "integer",
           "format" : "int32"
         },
-        "rawOffset" : {
+        "id" : {
+          "type" : "string"
+        },
+        "dstsavings" : {
           "type" : "integer",
           "format" : "int32"
         }
@@ -983,11 +1011,17 @@
         "valueAsString" : {
           "type" : "string"
         },
-        "formatCommentsPre" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
+        "firstElement" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        },
+        "noPretty" : {
+          "type" : "boolean"
+        },
+        "para" : {
+          "type" : "boolean"
+        },
+        "nsDecl" : {
+          "type" : "string"
         },
         "formatCommentsPost" : {
           "type" : "array",
@@ -995,17 +1029,11 @@
             "type" : "string"
           }
         },
-        "noPretty" : {
-          "type" : "boolean"
-        },
-        "nsDecl" : {
-          "type" : "string"
-        },
-        "firstElement" : {
-          "$ref" : "#/definitions/XhtmlNode"
-        },
-        "para" : {
-          "type" : "boolean"
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         }
       }
     }

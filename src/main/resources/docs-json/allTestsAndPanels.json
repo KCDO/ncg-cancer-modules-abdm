@@ -426,6 +426,11 @@
 			"name": "Leukocytes other",
 			"code": "LOINC:51383-8",
 			"description": "Leukocytes other [#/volume] in Blood by Automated count"
+		},
+		{
+			"name": "MRI pelvis with abdomen / CECT abdomen pelvis",
+			"code": "LOINC:36813-4",
+			"description": "MRI pelvis with abdomen / CECT abdomen pelvis"
 		}
 	]
 }

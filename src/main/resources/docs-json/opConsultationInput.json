@@ -575,60 +575,76 @@
 		},
 		"biopsyHistopathologyReport": "mkmk"
 	},
-	"cancerDetails": [
-		{
-			"name": "lung cancer",
-			"tests": [
-				{
-					"name": "MRI brain",
-					"attachment": "lungmri"
-				},
-				{
-					"name": "Endobronchial ultrasound with ROSE reports",
-					"attachment": "lungendo"
-				},
-				{
-					"name": "Fiber optic bronchoscopy",
-					"attachment": "lungfibre"
-				},
-				{
-					"name": "2 D ECHO with PASP",
-					"attachment": "lung2d"
-				},
-				{
-					"name": "FDG PETCT",
-					"attachment": "lungfdf"
-				},
-				{
-					"name": "Pulmonary function tests with DLCO",
-					"attachment": "lungpulmonary"
-				},
-				{
-					"name": "V/Q scan in pneumonectomy",
-					"attachment": "lungvq"
-				},
-				{
-					"name": "6MWT",
-					"attachment": "lung6mwt"
-				},
-				{
-					"name": "Molecular markers/NGS as needed",
-					"attachment": "lungMolecular markers/NGS as needed"
-				}
-			]
-		},
-		{
-			"name": "oral cancer",
-			"tests": [
-				{
-					"name": "FNAC report",
-					"attachment": "oralgvq"
-				},
-				{
-					"name": "CECT head neck thorax report/ PET Ct/ MRI",
-					"attachment": "oral6mwt"
-				}
-			]
-		}
-	]
+	"lungCancer": {
+		"tests": [
+			{
+				"name": "2 D ECHO with PASP",
+				"code": "34552-0",
+				"description": "2 D ECHO with PASP"
+			},
+			{
+				"name": "FDG PETCT",
+				"code": "81553-0",
+				"description": "FDG PETCT"
+			},
+			{
+				"name": "MRI brain",
+				"code": "24590-2",
+				"description": "MRI brain"
+			},
+			{
+				"name": "Fiber optic bronchoscopy",
+				"code": "18744-3",
+				"description": "Fiber optic bronchoscopy"
+			},
+			{
+				"name": "Endobronchial ultrasound with ROSE reports",
+				"code": "100231-0",
+				"description": "Endobronchial ultrasound with ROSE reports"
+			},
+			{
+				"name": "Pulmonary function tests with DLCO",
+				"code": "58477-1",
+				"description": "Pulmonary function tests with DLCO"
+			},
+			{
+				"name": "V/Q scan in pneumonectomy",
+				"code": "39942-8",
+				"description": "V/Q scan in pneumonectomy"
+			},
+			{
+				"name": "6MWT",
+				"code": "64098-7",
+				"description": "6MWT"
+			},
+			{
+				"name": "Molecular markers/NGS as needed",
+				"code": "73977-1",
+				"description": "Molecular markers/NGS as needed"
+			}
+		]
+	},
+	"oralCancer": {
+		"tests": [
+			{
+				"name": "FNAC report",
+				"code": "87179-8",
+				"attachment": "oralgvq"
+			},
+			{
+				"name": "CECT head neck thorax report/ PET Ct/ MRI",
+				"code": "24627-2",
+				"attachment": "oral6mwt"
+			}
+		]
+	},
+	"cervicalCancer": {
+		"tests": [
+			{
+				"name": "MRI pelvis with abdomen / CECT abdomen pelvis ",
+				"code": "36813-4",
+				"attachment": "cervical6mowt"
+			}
+		]
+	}
 }

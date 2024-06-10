@@ -41,7 +41,7 @@ import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
-import org.ncg.clinical.artifacts.vo.CancerDetails;
+import org.ncg.clinical.artifacts.vo.CancerType;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.Allergy;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.Comorbidity;
@@ -125,31 +125,9 @@ public class OPConsultationHelper {
 		}
 
 		// CancerTypes
-		if (!CollectionUtils.isEmpty(clinicalData.getCancerDetails())) {
-			for (CancerDetails cancerType : clinicalData.getCancerDetails()) {
-				Optional<Test> cancerTest = getTestByName(cancerType.getName());
-				Composition.SectionComponent cancerSection = new Composition.SectionComponent();
-				// create Medical History section and add condition resource
-				if (cancerTest.isPresent()) {
-					cancerSection = createMedicalHistorySection(bundle, patientResource, cancerTest.get().getCode(),
-							cancerTest.get().getDescription());
-				}
-				// create diagnostic report
-				if (!CollectionUtils.isEmpty(cancerType.getTests())) {
-					for (AttachmentDetail attachmentDetail : cancerType.getTests()) {
-						Optional<Test> cancerTestDetail = getTestByName(attachmentDetail.getName());
-						if (cancerTestDetail.isPresent()) {
-							DiagnosticReport report = createDiagnosticReport(bundle, patientResource,
-									attachmentDetail.getAttachment(), cancerTestDetail.get());
-
-							// Add the report to cancer section
-							cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
-						}
-					}
-				}
-				sections.add(cancerSection);
-			}
-		}
+		processCancerType(clinicalData.getLungCancer(), "lung cancer", bundle, patientResource, sections);
+		processCancerType(clinicalData.getOralCancer(), "oral cancer", bundle, patientResource, sections);
+		processCancerType(clinicalData.getCervicalCancer(), "cervical cancer", bundle, patientResource, sections);
 
 		// Drug Allergy section
 		List<Allergy> allergiesDetail = clinicalData.getClinicalInformation().getDrugAllergy();
@@ -739,6 +717,43 @@ public class OPConsultationHelper {
 		}
 
 		return sections;
+	}
+
+	private void processCancerType(CancerType cancerType, String cancerName, Bundle bundle, Patient patientResource,
+			List<Composition.SectionComponent> sections) throws IOException {
+		if (Objects.nonNull(cancerType)) {
+			Optional<Test> cancerTest = getTestByName(cancerName);
+			Composition.SectionComponent cancerSection = new Composition.SectionComponent();
+			// Create Medical History section and add condition resource
+			if (cancerTest.isPresent()) {
+				cancerSection = createMedicalHistorySection(bundle, patientResource, cancerTest.get().getCode(),
+						cancerTest.get().getDescription());
+			}
+			// Create diagnostic report
+			if (!CollectionUtils.isEmpty(cancerType.getTests())) {
+				for (AttachmentDetail attachmentDetail : cancerType.getTests()) {
+					Optional<Test> cancerTestDetail = getTestByName(attachmentDetail.getName());
+
+					if (cancerTestDetail.isPresent()) {
+						Test test = cancerTestDetail.get();
+
+						String code = StringUtils.isNotEmpty(attachmentDetail.getCode()) ? attachmentDetail.getCode()
+								: test.getCode();
+						String name = StringUtils.isNotEmpty(attachmentDetail.getName()) ? attachmentDetail.getName()
+								: test.getName();
+						test.setCode(code);
+						test.setName(name);
+
+						DiagnosticReport report = createDiagnosticReport(bundle, patientResource,
+								attachmentDetail.getAttachment(), test);
+
+						// Add the report to cancer section
+						cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
+					}
+				}
+			}
+			sections.add(cancerSection);
+		}
 	}
 
 	private Composition.SectionComponent createMedicalHistorySection(Bundle bundle, Patient patient, String loincCode,

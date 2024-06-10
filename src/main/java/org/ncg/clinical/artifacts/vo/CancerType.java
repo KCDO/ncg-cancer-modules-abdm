@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CancerDetails {
-	private String name;
+public abstract class CancerType {
 	private List<AttachmentDetail> tests;
 }

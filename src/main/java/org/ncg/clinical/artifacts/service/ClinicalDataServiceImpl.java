@@ -51,7 +51,6 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 
 		clinicalInputData = new ObjectMapper().readValue(new File(opConsultationInput), ClinicalData.class);
 		log.info("ClinicalDataServiceImpl::init::Successfully loaded clinicalInputData from JSON.");
-		System.out.println("Successfully loaded clinicalInputData from JSON.");
 	}
 
 	@Override
