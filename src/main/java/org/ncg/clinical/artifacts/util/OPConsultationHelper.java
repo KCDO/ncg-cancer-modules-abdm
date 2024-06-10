@@ -1,8 +1,7 @@
 package org.ncg.clinical.artifacts.util;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -60,9 +59,7 @@ import org.ncg.clinical.artifacts.vo.diagnostic.TestDetail;
 import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
 import org.ncg.clinical.artifacts.vo.labtest.Panel;
 import org.ncg.clinical.artifacts.vo.labtest.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -76,18 +73,12 @@ public class OPConsultationHelper {
 
 	private AllLabTests allLabTests;
 
-	@Autowired
-	private ResourceLoader resourceLoader;
+	@Value("${all.tests.labs.json}")
+	private String allTestsAndLabsJson;
 
 	@PostConstruct
 	public void init() throws Exception {
-		// Load the resource using ResourceLoader
-		Resource resource = resourceLoader.getResource("classpath:allTestsAndPanels.json");
-		Path path = resource.getFile().toPath();
-		String content = new String(Files.readAllBytes(path));
-
-		// Deserialize JSON content to AllLabTests object
-		allLabTests = new ObjectMapper().readValue(content, AllLabTests.class);
+		allLabTests = new ObjectMapper().readValue(new File(allTestsAndLabsJson), AllLabTests.class);
 		System.out.println("Successfully loaded AllLabTests from JSON.");
 	}
 
