@@ -11,9 +11,9 @@
 	<artifactId>ncg-cancer-modules-abdm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ncg-cancer-modules-abdm</name>
-	<description>Demo project for Spring Boot</description>
+	<description>NCG Cancer Modules ABDM</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 		<swagger-version>3.0.0</swagger-version>
 		<swagger-maven-plugin-version>3.1.7</swagger-maven-plugin-version>
 		<copy-rename-maven-plugin-version>1.0</copy-rename-maven-plugin-version>
