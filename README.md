@@ -13,7 +13,7 @@ To build the project, follow these steps:
 1. Clone the repository from the following link:
 git clone https://github.com/KCDO/ncg-cancer-modules-abdm
 
-Navigate to the project directory:
+### Navigate to the project directory:
 cd ncg-cancer-modules-abdm
 
 2) Pull the Latest Changes:
