@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 /**
  * This class provides the business logic related to the OPConsultation.
  * 
@@ -21,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Validated
+@Api(value = "Clinical Data APIs")
 public class ClinicalDataControllerImpl implements ClinicalDataController {
 
 	@Autowired
@@ -31,8 +39,10 @@ public class ClinicalDataControllerImpl implements ClinicalDataController {
 	 */
 	@PostMapping(value = "/ncg/cancer-modules/abdm/clinical-artifacts")
 	@Override
-	public ResponseEntity<String> generateClinicalDataJSON(
-			@Valid @RequestBody ClinicalData clinicalData)
+	@ApiOperation(value = "This Api is used to generate fhir clinical-data.", response = String.class)
+	@ApiImplicitParams(@ApiImplicitParam(name = "Content-Type", value = "application/json", required = true, allowEmptyValue = false, paramType = "header"))
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully generated") })
+	public ResponseEntity<String> generateClinicalDataJSON(@Valid @RequestBody ClinicalData clinicalData)
 			throws Exception {
 
 		return new ResponseEntity<>(clinicalDataService.clinicalDataGenerator(clinicalData), HttpStatus.OK);

@@ -20,11 +20,13 @@ public class ClinicalData {
 	private PatientData patientDetails;
 	private ClinicalInformation clinicalInformation;
 	private Diagnostic diagnostics;
-	private List<CancerDetails> cancerDetails;
+	private LungCancer lungCancer;
+	private OralCancer oralCancer;
+	private CervicalCancer cervicalCancer;
 
 	public boolean hasEmptyFields() {
 		return (outputClinicalArtifactTypes == null || outputClinicalArtifactTypes.isEmpty()) && patientDetails == null
-				&& clinicalInformation == null && diagnostics == null
-				&& (cancerDetails == null || cancerDetails.isEmpty());
+				&& clinicalInformation == null && diagnostics == null && lungCancer == null && oralCancer == null
+				&& cervicalCancer == null;
 	}
 }

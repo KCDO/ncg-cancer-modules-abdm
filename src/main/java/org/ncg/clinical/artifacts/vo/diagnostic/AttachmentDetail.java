@@ -11,5 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AttachmentDetail {
 	private String name;
+	private String code;
 	private String attachment;
 }
