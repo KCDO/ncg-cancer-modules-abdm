@@ -28,12 +28,45 @@ Maven 3.2.5
 3. **Build and Run the Project with Maven**:
     - Clean, compile, and package the application using Maven:
     ```bash
-    mvn clean install
+    mvnw clean install
     ```
-    - Run the application:
+
+4. **Set project environment variable**
+i) all.tests.labs.json=<localpath>/ncg-cancer-modules-abdm/src/main/resources/docs-json/allTestsAndPanels.json
+ii) op.consultation.input.json=<localpath>/ncg-cancer-modules-abdm/src/main/resources/docs-json/opConsultationInput.json
+
+5. **Run java application**
+    cd target 
     ```bash
-    mvn spring-boot:run
+    java -jar ncg-cancer-modules-abdm-0.0.1-SNAPSHOT.jar
     ```
 
-    The application should now be running locally, accessible through the configured port.
+## Method B: Using Docker Image
 
+1. **Clone the repository from the following link:**
+    ```sh
+    git clone https://github.com/KCDO/ncg-cancer-modules-abdm
+    ```
+    Navigate into the cloned repository:
+    ```sh
+    cd ncg-cancer-modules-abdm
+    ```
+
+2. **You can find the Dockerfile at the following directory:**
+    ```
+    <localpath>\ncg-cancer-modules-abdm
+    ```
+
+3. **Host the Dockerfile:**
+    ```sh
+    docker build -t ncg-cancer-modules-abdm .
+    docker run -p 8080:8080 ncg-cancer-modules-abdm
+    ```
+    This command will start the Docker container, making the KCDO API accessible on port 8080 of your host machine.
+
+4. API:
+    - **POST:** `http://localhost:8080/ncg/cancer-modules/abdm/clinical-artifacts`
+    - Request body is available under the following directory:
+    ```
+    <localpath>\ncg-cancer-modules-abdm\project\test\resources
+    ```
