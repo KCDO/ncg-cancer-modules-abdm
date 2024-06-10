@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Address;
@@ -18,16 +19,15 @@ import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
-import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Patient;
-import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
+import org.hl7.fhir.r4.model.Type;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
 
@@ -46,6 +46,8 @@ public class FHIRUtils {
 		String givenName = (StringUtils.isBlank(firstName) ? "" : (" " + firstName))
 				+ (StringUtils.isBlank(middleName) ? "" : (" " + middleName));
 		humanName.setGiven(Collections.singletonList(new StringType(givenName.trim())));
+
+		humanName.setFamily(StringUtils.isBlank(lastName) ? "" : lastName);
 
 		// create full name
 		String fullName = givenName + (StringUtils.isBlank(lastName) ? "" : (" " + lastName));
@@ -131,34 +133,34 @@ public class FHIRUtils {
 			}
 
 			// Add ABHA address
-			if (Objects.nonNull(patientData.getABHAAddress())) {
-				fhirPatient.addAddress(getABHAAddress(patientData.getABHAAddress()));
+			if (Objects.nonNull(patientData.getAbhaAddress())) {
+				fhirPatient.addAddress(getABHAAddress(patientData.getAbhaAddress()));
 			}
 
-			// Set the patient's height in cm
+			// Set the patient's height in Observations
 			if (Objects.nonNull(patientData.getHeight())) {
-				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_HEIGHT,
-						getHeight(patientData.getHeight())));
+				Observation observation = getHeight(patientData.getHeight(), fhirPatient);
+
+				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
-			// Set the patient's weight (e.g., 70 kilograms)
+			// Set the patient's weight in Observations
 			if (Objects.nonNull(patientData.getWeight())) {
-				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_WEIGHT,
-						getWeight(patientData.getWeight())));
+				Observation observation = getWeight(patientData.getWeight(), fhirPatient);
+
+				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
-			// Calculate BMI in kg/m^2
-			if (Objects.nonNull(patientData.getHeight()) && Objects.nonNull(patientData.getHeight())) {
-				fhirPatient.addExtension(new Extension(Constants.STRUCTURE_DEFINITION_PATIENT_BMI,
-						getBMI(patientData.getHeight(), patientData.getWeight())));
+			// Set the patient's BMI in Observations
+			if (Objects.nonNull(patientData.getHeight()) && Objects.nonNull(patientData.getWeight())) {
+				Observation observation = getBMI(patientData.getHeight(), patientData.getHeight(), fhirPatient);
+
+				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
 			// set bloodGroup in Observations
 			if (Objects.nonNull(patientData.getBloodGroup())) {
-				Observation observation = new Observation();
-				observation = getBloodGroup(patientData.getBloodGroup());
-				fhirPatient.addExtension(new Extension().setUrl(Constants.STRUCTURE_DEFINITION_PATIENT_BLOOD_GROUP)
-						.setValue(new Reference(observation)));
+				Observation observation = getBloodGroup(patientData.getBloodGroup(), fhirPatient);
 				FHIRUtils.addToBundleEntry(bundle, observation, true);
 			}
 
@@ -222,50 +224,82 @@ public class FHIRUtils {
 		return address;
 	}
 
-	private static Quantity getHeight(double patientHeight) {
-		Quantity height = new Quantity();
-		height.setValue(patientHeight); // Height in centimeters
-		height.setUnit("cm");
-		height.setSystem("http://unitsofmeasure.org"); // Standard system for units of measure
-		height.setCode("cm");
-
-		return height;
+	private static Observation createObservation(Patient patient) {
+		Observation observation = new Observation();
+		observation.setId(UUID.randomUUID().toString());
+		observation.setStatus(Observation.ObservationStatus.FINAL);
+		observation.setSubject(new Reference("Patient/" + patient.getId()));
+		return observation;
 	}
 
-	private static Quantity getWeight(double patientWeight) {
-		Quantity weight = new Quantity();
-		weight.setValue(patientWeight); // Weight value in kilograms
-		weight.setUnit("kg"); // Unit for weight (kilograms)
+	private static Observation getHeight(double patientHeight, Patient patient) {
+		Observation observation = createObservation(patient);
 
-		return weight;
+		// Set the code for patient height observation using LOINC system
+		observation.setCode(new CodeableConcept(
+				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("8302-2").setDisplay("Body Height")));
+
+		// Set the value for height observation
+		CodeableConcept codeableConcept = getCodeableConcept("50373000", Constants.SNOMED_SYSTEM_SCT,
+				String.valueOf(patientHeight), "Height");
+		observation.setValue(codeableConcept);
+
+		return observation;
 	}
 
-	private static Quantity getBMI(double patientHeight, double patientWeight) {
-		Quantity bmi = new Quantity();
+	private static Observation getWeight(double patientWeight, Patient patient) {
+		Observation observation = createObservation(patient);
 
-		if (patientHeight > 0) {
-			double heightInMeters = patientHeight / 100;
-			double weightInKg = patientWeight;
-			double bmiValue = weightInKg / (heightInMeters * heightInMeters);
+		// Set the code for patient weight observation using LOINC system
+		observation.setCode(new CodeableConcept(
+				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("29463-7").setDisplay("Body Weight")));
 
-			// Set BMI
-			bmi.setValue(bmiValue); // BMI value
-			bmi.setUnit("kg/m2"); // BMI unit (kilogram per square meter)
+		// Set the value for height observation
+		CodeableConcept codeableConcept = getCodeableConcept("27113001", Constants.SNOMED_SYSTEM_SCT,
+				String.valueOf(patientWeight), "Weight");
+
+		observation.setValue(codeableConcept);
+
+		return observation;
+	}
+
+	private static Observation getBMI(double height, double weight, Patient patient) {
+		Observation observation = createObservation(patient);
+
+		// Set the code for patient BMI observation using LOINC system
+		observation.setCode(new CodeableConcept(
+				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("39156-5").setDisplay("Body mass index (BMI)")));
+
+		// calculate BMI
+		double bmiValue = 0;
+		if (height > 0) {
+			double heightInMeters = height / 100;
+			double weightInKg = weight;
+			bmiValue = weightInKg / (heightInMeters * heightInMeters);
 		}
 
-		return bmi;
+		// Set the value for height observation
+		CodeableConcept codeableConcept = getCodeableConcept("60621009", Constants.SNOMED_SYSTEM_SCT,
+				String.valueOf(bmiValue), "Body mass index (BMI)");
+		observation.setValue(codeableConcept);
+
+		return observation;
 	}
 
-	private static Observation getBloodGroup(String bloodGroup) {
-		Observation observation = new Observation();
-		observation.setId(Utils.generateId());
+	private static Observation getBloodGroup(String bloodGroup, Patient patient) {
+		Observation observation = createObservation(patient);
 
 		// Set the code for blood group observation using LOINC system
 		observation.setCode(new CodeableConcept(
 				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("882-1").setDisplay("Blood group")));
 
 		// Set the value for blood group using a coded value (e.g., A+, O-, etc.)
-		observation.setValue(mapBloodGroup(bloodGroup));
+		// Get the display value for the blood group
+		String displayValue = bloodGroupMap.getOrDefault(bloodGroup.toLowerCase(), "Unknown");
+		CodeableConcept codeableConcept = getCodeableConcept("365637002", Constants.SNOMED_SYSTEM_SCT, displayValue,
+				displayValue);
+
+		observation.setValue(codeableConcept);
 
 		return observation;
 	}
@@ -291,33 +325,11 @@ public class FHIRUtils {
 		bloodGroupMap.put("abminus", "AB-");
 	}
 
-	// Method to map blood group string to FHIR codeable concept
-	public static CodeableConcept mapBloodGroup(String bloodGroup) {
-		CodeableConcept codeableConcept = new CodeableConcept();
-		Coding coding = new Coding();
-
-		// Get the display value for the blood group
-		String displayValue = bloodGroupMap.getOrDefault(bloodGroup.toLowerCase(), "Unknown");
-
-		// Set the coding system, code, and display
-		coding.setSystem(Constants.SNOMED_SYSTEM_SCT);
-		coding.setCode("365637002");
-		coding.setDisplay(displayValue);
-
-		// Add the coding to the codeable concept
-		codeableConcept.addCoding(coding);
-
-		// Set the text of the codeable concept
-		codeableConcept.setText(displayValue);
-
-		return codeableConcept;
-	}
-
 	static Patient addPatientResourceToComposition(ClinicalData clinicalData, Bundle bundle, Composition opDoc)
 			throws Exception {
 		Patient patientResource = new Patient();
-		if (Objects.nonNull(clinicalData.getPatient())) {
-			patientResource = FHIRUtils.patientBuilder(clinicalData.getPatient(), bundle);
+		if (Objects.nonNull(clinicalData.getPatientDetails())) {
+			patientResource = patientBuilder(clinicalData.getPatientDetails(), bundle);
 			FHIRUtils.addToBundleEntry(bundle, patientResource, false);
 			opDoc.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
 		}
@@ -418,5 +430,20 @@ public class FHIRUtils {
 		default:
 			return null;
 		}
+	}
+
+	public static Observation createObservation(Date compositionDate, Patient patient) {
+		Observation observation = new Observation();
+		observation.setId(UUID.randomUUID().toString());
+		observation.setStatus(Observation.ObservationStatus.FINAL);
+		observation.setSubject(new Reference(patient));
+		observation.setEffective(getEffectiveObservationDate(compositionDate));
+		return observation;
+	}
+
+	public static Type getEffectiveObservationDate(Date compositionDate) {
+		DateTimeType dateTimeType = new DateTimeType();
+		dateTimeType.setValue(compositionDate);
+		return dateTimeType;
 	}
 }

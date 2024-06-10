@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TestDetail {
-	private String testName;
+	private String name;
 	private String loincCode;
 	private String unitOfMeasurement;
 	private double result;
