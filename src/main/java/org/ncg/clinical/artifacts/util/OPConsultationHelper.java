@@ -67,8 +67,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class OPConsultationHelper {
 
 	private AllLabTests allLabTests;
@@ -79,7 +81,7 @@ public class OPConsultationHelper {
 	@PostConstruct
 	public void init() throws Exception {
 		allLabTests = new ObjectMapper().readValue(new File(allTestsAndLabsJson), AllLabTests.class);
-		System.out.println("Successfully loaded AllLabTests from JSON.");
+		log.info("Successfully loaded AllLabTests from JSON.");
 	}
 
 	public Optional<Test> getTestByName(String name) {
