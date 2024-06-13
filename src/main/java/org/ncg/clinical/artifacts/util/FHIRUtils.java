@@ -275,7 +275,7 @@ public class FHIRUtils {
 		if (height > 0) {
 			double heightInMeters = height / 100;
 			double weightInKg = weight;
-			bmiValue = weightInKg / (heightInMeters * heightInMeters);
+			bmiValue = Math.round((weightInKg / (heightInMeters * heightInMeters) * 100) / 100);
 		}
 
 		// Set the value for height observation
