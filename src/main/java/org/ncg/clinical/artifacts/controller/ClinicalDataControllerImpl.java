@@ -37,7 +37,7 @@ public class ClinicalDataControllerImpl implements ClinicalDataController {
 	/**
 	 * {@inheritDoc}
 	 */
-	@PostMapping(value = "/ncg/cancer-modules/abdm/clinical-artifacts")
+	@PostMapping(value = "/clinicalartifacts/opconsultation")
 	@Override
 	@ApiOperation(value = "This Api is used to generate fhir clinical-data.", response = String.class)
 	@ApiImplicitParams(@ApiImplicitParam(name = "Content-Type", value = "application/json", required = true, allowEmptyValue = false, paramType = "header"))
