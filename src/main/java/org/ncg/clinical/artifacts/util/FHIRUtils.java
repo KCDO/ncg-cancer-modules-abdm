@@ -1,11 +1,13 @@
 package org.ncg.clinical.artifacts.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
@@ -24,14 +26,43 @@ import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.Type;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
+import org.ncg.clinical.artifacts.vo.labtest.Panel;
+import org.ncg.clinical.artifacts.vo.labtest.Test;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.annotation.PostConstruct;
+
+@Service
 public class FHIRUtils {
+
+	private static AllLabTests allLabTests;
+
+	@Value("${all.tests.labs.json}")
+	private String allTestsAndLabsJson;
+
+	@PostConstruct
+	public void init() throws Exception {
+		allLabTests = new ObjectMapper().readValue(new File(allTestsAndLabsJson), AllLabTests.class);
+	}
+
+	public static Optional<Test> getTestByName(String name) {
+		return allLabTests.getTests().stream().filter(test -> test.getName().equalsIgnoreCase(name)).findFirst();
+	}
+
+	public static Optional<Panel> getPanelByName(String name) {
+		return allLabTests.getPanels().stream().filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
+	}
 
 	public static Enumerations.AdministrativeGender getGender(String gender) {
 		return Enumerations.AdministrativeGender.fromCode(gender);
@@ -236,53 +267,71 @@ public class FHIRUtils {
 		Observation observation = createObservation(patient);
 
 		// Set the code for patient height observation using LOINC system
-		observation.setCode(new CodeableConcept(
-				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("8302-2").setDisplay("Body Height")));
+		Optional<Test> bmiTest = getTestByName("Height");
+		if (bmiTest.isPresent()) {
+			Test test = bmiTest.get();
+			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+					test.getDescription(), test.getName());
+			observation.setCode(code);
+		}
 
 		// Set the category to vital signs
-		CodeableConcept category = new CodeableConcept();
-		Coding categoryCoding = category.addCoding();
-		categoryCoding.setSystem("http://terminology.hl7.org/CodeSystem/observation-category");
-		categoryCoding.setCode("vital-signs");
-		categoryCoding.setDisplay("Vital Signs");
-		category.setText("Vital Signs");
-		observation.addCategory(category);
+		bmiTest = getTestByName("Vital Sign");
+		if (bmiTest.isPresent()) {
+			Test test = bmiTest.get();
+			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
+					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
+					test.getDescription());
+			observation.addCategory(category);
+		}
+
+		// Set the value in the Observation
+		observation.setValue(createQuantityResource(patientHeight, "cm", "cm"));
 
 		// set effective date time
 		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
 
-		// Set the value for height observation
-		CodeableConcept codeableConcept = getCodeableConcept("50373000", Constants.SNOMED_SYSTEM_SCT,
-				String.valueOf(patientHeight), "Height");
-		observation.setValue(codeableConcept);
-
 		return observation;
+	}
+
+	private static Quantity createQuantityResource(double value, String uom, String code) {
+		Quantity quantity = new Quantity();
+		quantity.setValue(value);
+		quantity.setUnit(uom);
+		quantity.setSystem("http://unitsofmeasure.org");
+		quantity.setCode(code);
+
+		return quantity;
 	}
 
 	private static Observation getWeight(double patientWeight, Patient patient) {
 		Observation observation = createObservation(patient);
 
 		// Set the code for patient weight observation using LOINC system
-		observation.setCode(new CodeableConcept(
-				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("29463-7").setDisplay("Body Weight")));
+		Optional<Test> bmiTest = getTestByName("Weight");
+		if (bmiTest.isPresent()) {
+			Test test = bmiTest.get();
+			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+					test.getDescription(), test.getName());
+			observation.setCode(code);
+		}
+
+		// Set the value in the Observation
+		observation.setValue(createQuantityResource(patientWeight, "kg", "kg"));
+
 
 		// Set the category to vital signs
-		CodeableConcept category = new CodeableConcept();
-		Coding categoryCoding = category.addCoding();
-		categoryCoding.setSystem("http://terminology.hl7.org/CodeSystem/observation-category");
-		categoryCoding.setCode("vital-signs");
-		categoryCoding.setDisplay("Vital Signs");
-		category.setText("Vital Signs");
-		observation.addCategory(category);
+		bmiTest = getTestByName("Vital Sign");
+		if (bmiTest.isPresent()) {
+			Test test = bmiTest.get();
+			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
+					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
+					test.getDescription());
+			observation.addCategory(category);
+		}
 
 		// set effective date time
 		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
-
-		// Set the value for weight observation
-		CodeableConcept codeableConcept = getCodeableConcept("27113001", Constants.SNOMED_SYSTEM_SCT,
-				String.valueOf(patientWeight), "Weight");
-
-		observation.setValue(codeableConcept);
 
 		return observation;
 	}
@@ -291,8 +340,13 @@ public class FHIRUtils {
 		Observation observation = createObservation(patient);
 
 		// Set the code for patient BMI observation using LOINC system
-		observation.setCode(new CodeableConcept(
-				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("39156-5").setDisplay("Body mass index (BMI)")));
+		Optional<Test> bmiTest = getTestByName("Body Mass Index");
+		if (bmiTest.isPresent()) {
+			Test test = bmiTest.get();
+			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+					test.getDescription(), test.getName());
+			observation.setCode(code);
+		}
 
 		// calculate BMI
 		double bmiValue = 0;
@@ -302,22 +356,22 @@ public class FHIRUtils {
 			bmiValue = Math.round((weightInKg / (heightInMeters * heightInMeters) * 100) / 100);
 		}
 
+		// Set the value in the Observation
+		observation.setValue(createQuantityResource(bmiValue, "kg/m2", "kg/m2"));
+
+
 		// Set the category to vital signs
-		CodeableConcept category = new CodeableConcept();
-		Coding categoryCoding = category.addCoding();
-		categoryCoding.setSystem("http://terminology.hl7.org/CodeSystem/observation-category");
-		categoryCoding.setCode("vital-signs");
-		categoryCoding.setDisplay("Vital Signs");
-		category.setText("Vital Signs");
-		observation.addCategory(category);
+		bmiTest = getTestByName("Vital Sign");
+		if (bmiTest.isPresent()) {
+			Test test = bmiTest.get();
+			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
+					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
+					test.getDescription());
+			observation.addCategory(category);
+		}
 
 		// set effective date time
 		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
-
-		// Set the value for height observation
-		CodeableConcept codeableConcept = getCodeableConcept("60621009", Constants.SNOMED_SYSTEM_SCT,
-				String.valueOf(bmiValue), "Body mass index (BMI)");
-		observation.setValue(codeableConcept);
 
 		return observation;
 	}
@@ -326,8 +380,23 @@ public class FHIRUtils {
 		Observation observation = createObservation(patient);
 
 		// Set the code for blood group observation using LOINC system
-		observation.setCode(new CodeableConcept(
-				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("882-1").setDisplay("Blood group")));
+		Optional<Test> bmiTest = getTestByName("Blood Group");
+		if (bmiTest.isPresent()) {
+			Test test = bmiTest.get();
+			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+					test.getDescription(), test.getName());
+			observation.setCode(code);
+		}
+
+		// Set the category to vital signs
+		bmiTest = getTestByName("Vital Sign");
+		if (bmiTest.isPresent()) {
+			Test test = bmiTest.get();
+			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
+					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
+					test.getDescription());
+			observation.addCategory(category);
+		}
 
 		// Set the value for blood group using a coded value (e.g., A+, O-, etc.)
 		// Get the display value for the blood group
