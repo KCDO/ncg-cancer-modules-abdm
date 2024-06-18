@@ -34,7 +34,7 @@
 	"tests": [
 		{
 			"name": "Diagnostic Report",
-			"code": "SNOMED:4321000179101",
+			"code": "4321000179101",
 			"description": "Diagnostic Report"
 		},
 		{
@@ -44,7 +44,7 @@
 		},
 		{
 			"name": "Bio Chemistry",
-			"code": "SNOMED:4241000179101",
+			"code": "4241000179101",
 			"description": "Bio Chemistry"
 		},
 		{
@@ -436,6 +436,31 @@
 			"name": "MRI pelvis with abdomen / CECT abdomen pelvis",
 			"code": "36813-4",
 			"description": "MRI pelvis with abdomen / CECT abdomen pelvis"
+		},
+		{
+			"name": "Height",
+			"code": "8302-2",
+			"description": "Body height"
+		},
+		{
+			"name": "Weight",
+			"code": "29463-7",
+			"description": "Body weight"
+		},
+		{
+			"name": "Body Mass Index",
+			"code": "39156-5",
+			"description": "Body mass index (BMI) [Ratio]"
+		},
+		{
+			"name": "Vital Sign",
+			"code": "46680005",
+			"description": "Vital Sign"
+		},
+		{
+			"name": "Blood Group",
+			"code": "882-1",
+			"description": "Blood Group"
 		}
 	]
 }
