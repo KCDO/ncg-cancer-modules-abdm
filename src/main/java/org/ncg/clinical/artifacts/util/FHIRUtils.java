@@ -90,7 +90,7 @@ public class FHIRUtils {
 
 	static Bundle createBundle(Date forDate, String clinicalArtifactsType, String hipDomain) {
 		Bundle bundle = new Bundle();
-		bundle.setId(clinicalArtifactsType + "-" + Utils.generateId());
+		bundle.setId(clinicalArtifactsType + "/" + Utils.generateId());
 		bundle.setTimestamp(forDate);
 		bundle.setIdentifier(getIdentifier(bundle.getId(), Constants.HOSPITAL_SYSTEM));
 		Meta bundleMeta = Utils.getMeta(forDate, Constants.STRUCTURE_DEFINITION_DOCUMENT_BUNDLE);
@@ -239,6 +239,18 @@ public class FHIRUtils {
 		observation.setCode(new CodeableConcept(
 				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("8302-2").setDisplay("Body Height")));
 
+		// Set the category to vital signs
+		CodeableConcept category = new CodeableConcept();
+		Coding categoryCoding = category.addCoding();
+		categoryCoding.setSystem("http://terminology.hl7.org/CodeSystem/observation-category");
+		categoryCoding.setCode("vital-signs");
+		categoryCoding.setDisplay("Vital Signs");
+		category.setText("Vital Signs");
+		observation.addCategory(category);
+
+		// set effective date time
+		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
+
 		// Set the value for height observation
 		CodeableConcept codeableConcept = getCodeableConcept("50373000", Constants.SNOMED_SYSTEM_SCT,
 				String.valueOf(patientHeight), "Height");
@@ -254,7 +266,19 @@ public class FHIRUtils {
 		observation.setCode(new CodeableConcept(
 				new Coding().setSystem(Constants.LOINC_SYSTEM).setCode("29463-7").setDisplay("Body Weight")));
 
-		// Set the value for height observation
+		// Set the category to vital signs
+		CodeableConcept category = new CodeableConcept();
+		Coding categoryCoding = category.addCoding();
+		categoryCoding.setSystem("http://terminology.hl7.org/CodeSystem/observation-category");
+		categoryCoding.setCode("vital-signs");
+		categoryCoding.setDisplay("Vital Signs");
+		category.setText("Vital Signs");
+		observation.addCategory(category);
+
+		// set effective date time
+		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
+
+		// Set the value for weight observation
 		CodeableConcept codeableConcept = getCodeableConcept("27113001", Constants.SNOMED_SYSTEM_SCT,
 				String.valueOf(patientWeight), "Weight");
 
@@ -277,6 +301,18 @@ public class FHIRUtils {
 			double weightInKg = weight;
 			bmiValue = Math.round((weightInKg / (heightInMeters * heightInMeters) * 100) / 100);
 		}
+
+		// Set the category to vital signs
+		CodeableConcept category = new CodeableConcept();
+		Coding categoryCoding = category.addCoding();
+		categoryCoding.setSystem("http://terminology.hl7.org/CodeSystem/observation-category");
+		categoryCoding.setCode("vital-signs");
+		categoryCoding.setDisplay("Vital Signs");
+		category.setText("Vital Signs");
+		observation.addCategory(category);
+
+		// set effective date time
+		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
 
 		// Set the value for height observation
 		CodeableConcept codeableConcept = getCodeableConcept("60621009", Constants.SNOMED_SYSTEM_SCT,
@@ -339,7 +375,7 @@ public class FHIRUtils {
 	static void addToBundleEntry(Bundle bundle, Resource resource, boolean useIdPart) {
 		String resourceType = resource.getResourceType().toString();
 		String id = useIdPart ? resource.getIdElement().getIdPart() : resource.getId();
-		bundle.addEntry().setFullUrl(resourceType + "/" + id).setResource(resource);
+		bundle.addEntry().setFullUrl("https://fhir.example.com/" + resourceType + "/" + id).setResource(resource);
 	}
 
 	static Reference getReferenceToPatient(Patient patientResource) {

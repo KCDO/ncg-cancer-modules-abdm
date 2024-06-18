@@ -34,7 +34,7 @@
 	"tests": [
 		{
 			"name": "Diagnostic Report",
-			"code": "SNOMED:4321000179101",
+			"code": "4321000179101",
 			"description": "Diagnostic Report"
 		},
 		{
@@ -44,7 +44,7 @@
 		},
 		{
 			"name": "Bio Chemistry",
-			"code": "SNOMED:4241000179101",
+			"code": "4241000179101",
 			"description": "Bio Chemistry"
 		},
 		{

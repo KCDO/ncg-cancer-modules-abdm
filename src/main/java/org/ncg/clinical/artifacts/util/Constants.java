@@ -35,6 +35,7 @@ public class Constants {
 	public static final String MEDICAL_HISTORY = "Medical History";
 	public static final String MEDICAL_HISTORY_SECTION = "Medical History Section";
 	public static final String DRUG_ALLERGY_SECTION = "Drug Allergy Section";
+	public static final String ALLERGY_RECORD_SECTION = "Allergy record";
 	public static final String CO_MORBIDITIES = "Co-Morbidities";
 	public static final String CO_MORBIDITIES_SECTION = "Co-Morbidities Section";
 	public static final String ADVERSE_EVENTS = "Adverse Events";
@@ -93,7 +94,7 @@ public class Constants {
 	public static final String BIOPSY_HISTOPATHOLOGY = "Biopsy Histopathology";
 	public static final String BIOPSY_HISTOPATHOLOGY_SNOMED_CODE = "721967005";
 	public static final String BIOPSY_HISTOPATHOLOGY_REPORT = "Biopsy Histopathology Report";
-	public static final String DOCUMENT_REFERENCE = "DocumentReference/";
+	public static final String DOCUMENT_REFERENCE = "DocumentReference";
 	public static final String DIAGNOSTICREPORT = "DiagnosticReport";
 	public static final String URN_UUID = "urn:uuid:";
 }
