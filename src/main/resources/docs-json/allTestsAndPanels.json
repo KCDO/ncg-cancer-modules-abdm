@@ -453,14 +453,14 @@
 			"description": "Body mass index (BMI) [Ratio]"
 		},
 		{
-			"name": "Vital Sign",
+			"name": "Vital Signs",
 			"code": "46680005",
-			"description": "Vital Sign"
+			"description": "Vital Signs"
 		},
 		{
 			"name": "Blood Group",
 			"code": "882-1",
-			"description": "Blood Group"
+			"description": "ABO and Rh group [Type] in Blood"
 		}
 	]
 }

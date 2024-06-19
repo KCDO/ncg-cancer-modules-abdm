@@ -1273,6 +1273,8 @@ public class OPConsultationHelper {
 			// set AllergyIntolerance resource ID
 			String allergyId = UUID.randomUUID().toString();
 			allergyIntolerance.setId(allergyId);
+			
+			allergyIntolerance.setMeta(null);
 
 			FHIRUtils.addToBundleEntry(bundle, allergyIntolerance, true);
 			allergiesSection
@@ -1347,7 +1349,7 @@ public class OPConsultationHelper {
 
 		// Set code
 		CodeableConcept code = new CodeableConcept();
-		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", "Investigation Advice"));
+		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", "Order document"));
 		code.setText("Investigation Advice");
 		investigationAdviceSection.setCode(code);
 
