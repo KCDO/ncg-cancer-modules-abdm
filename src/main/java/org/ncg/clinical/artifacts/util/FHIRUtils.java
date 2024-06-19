@@ -2,6 +2,7 @@ package org.ncg.clinical.artifacts.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,14 +20,15 @@ import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Composition;
 import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
+import org.hl7.fhir.r4.model.Encounter;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Observation;
-import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
@@ -203,7 +205,8 @@ public class FHIRUtils {
 			// add identifier
 			Identifier identifier = new Identifier();
 			if (Objects.nonNull(patientData.getIdentifier())) {
-				identifier = getIdentifier(patientData.getIdentifier().getDomain(), "urn:health:information:provider:system");
+				identifier = getIdentifier(patientData.getIdentifier().getDomain(),
+						"urn:health:information:provider:system");
 				identifier.setId(patientData.getIdentifier().getHipId());
 			}
 
@@ -490,22 +493,22 @@ public class FHIRUtils {
 	public static CodeableConcept getAdverseEventCategory(String category) {
 		switch (category.toLowerCase()) {
 		case "wrong-patient":
-			return FHIRUtils.getCodeableConcept("386368001", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Patient");
+			return FHIRUtils.getCodeableConcept("418038007", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Patient");
 		case "procedure-mishap":
-			return FHIRUtils.getCodeableConcept("389227004", Constants.SNOMED_SYSTEM_SCT, category, "Procedure Mishap");
+			return FHIRUtils.getCodeableConcept("410528009", Constants.SNOMED_SYSTEM_SCT, category, "Procedure Mishap");
 		case "medication-mishap":
-			return FHIRUtils.getCodeableConcept("407716003", Constants.SNOMED_SYSTEM_SCT, category,
+			return FHIRUtils.getCodeableConcept("425391005", Constants.SNOMED_SYSTEM_SCT, "Using access device",
 					"Medication Mishap");
 		case "device":
-			return FHIRUtils.getCodeableConcept("125661000119109", Constants.SNOMED_SYSTEM_SCT, category, "Device");
+			return FHIRUtils.getCodeableConcept("419099009", Constants.SNOMED_SYSTEM_SCT, category, "Device");
 		case "unsafe-physical-environment":
 			return FHIRUtils.getCodeableConcept("723877005", Constants.SNOMED_SYSTEM_SCT, category,
 					"Unsafe Physical Environment");
-		case "hospital-aquired-infection":
-			return FHIRUtils.getCodeableConcept("409822003", Constants.SNOMED_SYSTEM_SCT, category,
+		case "hospital-acquired-infection":
+			return FHIRUtils.getCodeableConcept("77176002", Constants.SNOMED_SYSTEM_SCT, category,
 					"Hospital Acquired Infection");
 		case "wrong-body-site":
-			return FHIRUtils.getCodeableConcept("312889002", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Body Site");
+			return FHIRUtils.getCodeableConcept("116676008", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Body Site");
 		default:
 			return null;
 		}
@@ -513,23 +516,24 @@ public class FHIRUtils {
 
 	public static CodeableConcept getSurgicalSummaryWithPostOPCourseCode(String category) {
 		switch (category.toLowerCase()) {
-		case "wrong-patient":
-			return FHIRUtils.getCodeableConcept("386368001", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Patient");
+		case "propensity to adverse reactions to substance":
+			return FHIRUtils.getCodeableConcept("418038007", Constants.SNOMED_SYSTEM_SCT, category,
+					"Propensity to adverse reactions to substance");
 		case "procedure-mishap":
-			return FHIRUtils.getCodeableConcept("389227004", Constants.SNOMED_SYSTEM_SCT, category, "Procedure Mishap");
+			return FHIRUtils.getCodeableConcept("410528009", Constants.SNOMED_SYSTEM_SCT, category, "Procedure Mishap");
 		case "medication-mishap":
-			return FHIRUtils.getCodeableConcept("407716003", Constants.SNOMED_SYSTEM_SCT, category,
+			return FHIRUtils.getCodeableConcept("425391005", Constants.SNOMED_SYSTEM_SCT, "Using access device",
 					"Medication Mishap");
-		case "device":
-			return FHIRUtils.getCodeableConcept("125661000119109", Constants.SNOMED_SYSTEM_SCT, category, "Device");
+		case "died":
+			return FHIRUtils.getCodeableConcept("419099009", Constants.SNOMED_SYSTEM_SCT, category, "Died");
 		case "unsafe-physical-environment":
 			return FHIRUtils.getCodeableConcept("723877005", Constants.SNOMED_SYSTEM_SCT, category,
 					"Unsafe Physical Environment");
-		case "hospital-aquired-infection":
-			return FHIRUtils.getCodeableConcept("409822003", Constants.SNOMED_SYSTEM_SCT, category,
+		case "hospital-acquired-infection":
+			return FHIRUtils.getCodeableConcept("77176002", Constants.SNOMED_SYSTEM_SCT, category,
 					"Hospital Acquired Infection");
 		case "wrong-body-site":
-			return FHIRUtils.getCodeableConcept("312889002", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Body Site");
+			return FHIRUtils.getCodeableConcept("116676008", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Body Site");
 		default:
 			return null;
 		}
@@ -548,5 +552,44 @@ public class FHIRUtils {
 		DateTimeType dateTimeType = new DateTimeType();
 		dateTimeType.setValue(compositionDate);
 		return dateTimeType;
+	}
+
+	static Encounter createEncounter() {
+		Encounter fhirEncounter = new Encounter();
+
+		// set id
+		fhirEncounter.setId(Utils.generateId());
+
+		// set meta
+		Date date = new Date();
+		fhirEncounter.setMeta(Utils.getMeta(date, "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"));
+
+		// set status
+		fhirEncounter.setStatus(Encounter.EncounterStatus.FINISHED);
+
+		// set class
+		fhirEncounter.setClass_(new Coding().setSystem("http://terminology.hl7.org/CodeSystem/v3-ActCode")
+				.setCode("OUTP").setDisplay("outpatient encounter"));
+
+		// Set the period with the start and end dates
+		// Get the current date
+		Date startDate = new Date();
+
+		// Create a calendar object to manipulate the date
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(startDate);
+
+		// Add one day to the current date
+		calendar.add(Calendar.DAY_OF_YEAR, 1);
+		Date endDate = calendar.getTime();
+
+		Period period = new Period();
+		period.setStart(startDate);
+		period.setEnd(endDate);
+
+		// Assign the period to the encounter
+		fhirEncounter.setPeriod(period);
+
+		return fhirEncounter;
 	}
 }

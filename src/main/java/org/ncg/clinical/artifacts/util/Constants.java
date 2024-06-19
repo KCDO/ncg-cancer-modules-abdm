@@ -76,9 +76,9 @@ public class Constants {
 	public static final String CORONARY_ARTERY_DISEASE_CODE = "53741008";
 	public static final String CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE_CODE = "13645005";
 	public static final String DIABETES_MELLITUS_CODE = "73211009";
-	public static final String ASTHMA_CODE = "195967001 ";
+	public static final String ASTHMA_CODE = "195967001";
 	public static final String PREGNANCY_STATUS_CODE = "82810-3";
-	public static final String MENSTRUAL_CYCLE_CODE = "83318-7";
+	public static final String MENSTRUAL_CYCLE_CODE = "8665-2";
 	public static final String OBSTETRIC_HISTORY_CODE = "10187-3";
 	public static final String BREAST_HEALTH_CODE = "10193-1";
 	public static final String GRAM_PER_DECILITER = "g/dL";
