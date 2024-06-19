@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
@@ -65,7 +66,6 @@ import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 
@@ -182,8 +182,7 @@ public class OPConsultationHelper {
 					condition.setCode(getCoMorbiditiesCode(coMorbidityDetail.getName()));
 
 					// set category
-					if (org.apache.commons.lang3.StringUtils.equals(coMorbidityDetail.getCategory(),
-							"problem-list-item")) {
+					if (StringUtils.equals(coMorbidityDetail.getCategory(), "problem-list-item")) {
 						condition.addCategory(FHIRUtils.getCodeableConcept("11493005", Constants.SNOMED_SYSTEM_SCT,
 								"Problem List Item", "Problem list item"));
 					} else
@@ -1029,8 +1028,10 @@ public class OPConsultationHelper {
 
 		// Set the content (attachment) of the document
 		DocumentReference.DocumentReferenceContentComponent content = new DocumentReference.DocumentReferenceContentComponent();
-		Attachment attachment = FHIRUtils.getAttachment(reportName, reportValue);
-		content.setAttachment(attachment);
+		if (StringUtils.isNotEmpty(reportValue)) {
+			Attachment attachment = FHIRUtils.getAttachment(reportName, reportValue);
+			content.setAttachment(attachment);
+		}
 
 		documentReference.addContent(content);
 		return documentReference;
@@ -1273,7 +1274,7 @@ public class OPConsultationHelper {
 			// set AllergyIntolerance resource ID
 			String allergyId = UUID.randomUUID().toString();
 			allergyIntolerance.setId(allergyId);
-			
+
 			allergyIntolerance.setMeta(null);
 
 			FHIRUtils.addToBundleEntry(bundle, allergyIntolerance, true);

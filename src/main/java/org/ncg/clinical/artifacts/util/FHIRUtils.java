@@ -25,6 +25,7 @@ import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Observation;
+import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
@@ -202,11 +203,10 @@ public class FHIRUtils {
 			// add identifier
 			Identifier identifier = new Identifier();
 			if (Objects.nonNull(patientData.getIdentifier())) {
-				identifier = getIdentifier(patientData.getIdentifier().getHipId(),
-						patientData.getIdentifier().getDomain());
+				identifier = getIdentifier(patientData.getIdentifier().getDomain(), "urn:health:information:provider:system");
+				identifier.setId(patientData.getIdentifier().getHipId());
 			}
-			// identifier = getIdentifier(fhirPatient.getId(),
-			// Constants.HTTPS_HEALTHID_NDHM_GOV_IN);
+
 			identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
 					Constants.MEDICAL_RECORD_NUMBER, Constants.MEDICAL_RECORD_NUMBER));
 			fhirPatient.addIdentifier(identifier);
@@ -319,7 +319,6 @@ public class FHIRUtils {
 		// Set the value in the Observation
 		observation.setValue(createQuantityResource(patientWeight, "kg", "kg"));
 
-
 		// Set the category to vital signs
 		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
@@ -358,7 +357,6 @@ public class FHIRUtils {
 
 		// Set the value in the Observation
 		observation.setValue(createQuantityResource(bmiValue, "kg/m2", "kg/m2"));
-
 
 		// Set the category to vital signs
 		bmiTest = getTestByName("Vital Signs");
@@ -401,8 +399,8 @@ public class FHIRUtils {
 		// Set the value for blood group using a coded value (e.g., A+, O-, etc.)
 		// Get the display value for the blood group
 		String displayValue = bloodGroupMap.getOrDefault(bloodGroup.toLowerCase(), "Unknown");
-		CodeableConcept codeableConcept = getCodeableConcept("365637002", Constants.SNOMED_SYSTEM_SCT, "Finding of ABO blood group",
-				displayValue);
+		CodeableConcept codeableConcept = getCodeableConcept("365637002", Constants.SNOMED_SYSTEM_SCT,
+				"Finding of ABO blood group", displayValue);
 
 		observation.setValue(codeableConcept);
 
