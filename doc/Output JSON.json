@@ -1,31 +1,31 @@
 {
   "resourceType": "Bundle",
-  "id": "b6cdad28-25e5-44fc-8b46-bf929fa70c5e",
+  "id": "a7aa616d-cad3-403a-a271-a1d287bd0b97",
   "meta": {
     "versionId": "0",
-    "lastUpdated": "2024-06-18T19:16:06.446+05:30",
+    "lastUpdated": "2024-06-19T17:09:13.004+05:30",
     "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle" ]
   },
   "identifier": {
     "system": "http://hip.in",
-    "value": "OpConsultRecord/b6cdad28-25e5-44fc-8b46-bf929fa70c5e"
+    "value": "OpConsultRecord/a7aa616d-cad3-403a-a271-a1d287bd0b97"
   },
   "type": "document",
-  "timestamp": "2024-06-18T19:16:06.446+05:30",
+  "timestamp": "2024-06-19T17:09:13.004+05:30",
   "entry": [ {
-    "fullUrl": "https://fhir.example.com/Composition/116f4c9c-b234-4b76-b855-e9d9ab125ff8",
+    "fullUrl": "https://fhir.example.com/Composition/4a78101b-2aec-40dd-80bb-ce855edb673c",
     "resource": {
       "resourceType": "Composition",
-      "id": "116f4c9c-b234-4b76-b855-e9d9ab125ff8",
+      "id": "4a78101b-2aec-40dd-80bb-ce855edb673c",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.446+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.004+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord" ]
       },
       "language": "en-IN",
       "identifier": {
         "system": "https://ndhm.in/phr",
-        "value": "116f4c9c-b234-4b76-b855-e9d9ab125ff8"
+        "value": "4a78101b-2aec-40dd-80bb-ce855edb673c"
       },
       "status": "final",
       "type": {
@@ -37,14 +37,15 @@
         "text": "Clinical consultation report"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962",
+        "display": "Testing POC 1"
       },
       "encounter": {
-        "reference": "Encounter/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Encounter/c33bfa64-ffb7-447a-a33c-f67a4000e754"
       },
-      "date": "2024-06-18T19:16:06+05:30",
+      "date": "2024-06-19T17:09:13+05:30",
       "author": [ {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       } ],
       "title": "OP Consultation Record",
       "section": [ {
@@ -58,9 +59,9 @@
           "text": "Allergy record"
         },
         "entry": [ {
-          "reference": "AllergyIntolerance/bdc23a79-754a-455c-bceb-e0d2c3415058"
+          "reference": "AllergyIntolerance/4feb1709-2cf5-469c-8493-ee642bbbbe86"
         }, {
-          "reference": "AllergyIntolerance/127a98c5-aaed-4491-a453-f42f20e3d552"
+          "reference": "AllergyIntolerance/8c968492-269a-43b4-b286-424b7e5f3137"
         } ]
       }, {
         "title": "Co-Morbidities",
@@ -73,7 +74,7 @@
           "text": "hypertension"
         },
         "entry": [ {
-          "reference": "Condition/6da54967-0a2f-4584-9474-6be7649d5132"
+          "reference": "Condition/51dd094b-e87f-460f-8266-a1a70439a5ca"
         } ]
       }, {
         "title": "Co-Morbidities",
@@ -86,12 +87,12 @@
           "text": "Coronary Artery Disease"
         },
         "entry": [ {
-          "reference": "Condition/26d3c68c-b4c0-4866-9c2e-7df854dbd105"
+          "reference": "Condition/83035660-663e-4e53-9e45-22240dc4bcca"
         } ]
       }, {
         "title": "Adverse Events",
         "entry": [ {
-          "reference": "AdverseEvent/3d899514-88da-4d0e-b6b5-353c47fed92e"
+          "reference": "AdverseEvent/a64d1020-782b-461f-b26e-bd2541bc6c7c"
         } ]
       }, {
         "title": "Past Medical History",
@@ -108,7 +109,7 @@
           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
         },
         "entry": [ {
-          "reference": "Condition/69fc74fb-1f94-4bf4-9cc0-6fc5395e3aed"
+          "reference": "Condition/9514ab94-9f09-4951-86ee-569b341f6c71"
         } ]
       }, {
         "title": "Past Medical History",
@@ -125,7 +126,7 @@
           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
         },
         "entry": [ {
-          "reference": "Condition/8e32e0cc-f265-4149-b12a-af41a5040942"
+          "reference": "Condition/c4f7b10a-bd00-466b-9e6b-123181e7fab7"
         } ]
       }, {
         "title": "Past Surgical History",
@@ -138,7 +139,7 @@
           "text": "hypertension"
         },
         "entry": [ {
-          "reference": "Condition/cbc784d7-0690-4219-b835-a38601971785"
+          "reference": "Condition/0e0e0778-cdb2-49b3-a8eb-ea1687a9ee02"
         } ]
       }, {
         "title": "Past Surgical History",
@@ -151,7 +152,7 @@
           "text": "Coronary Artery Disease"
         },
         "entry": [ {
-          "reference": "Condition/a2606780-77c6-416e-95e4-ae4e8c67649d"
+          "reference": "Condition/2018db77-3e53-402d-8f15-fb8bd8168d1c"
         } ]
       }, {
         "title": "Mental Health Assesment",
@@ -164,20 +165,7 @@
           "text": "Pregnancy status"
         },
         "entry": [ {
-          "reference": "Observation/28cc9b5b-5e4a-4828-b98a-80484579b657"
-        } ]
-      }, {
-        "title": "Mental Health Assesment",
-        "code": {
-          "coding": [ {
-            "system": "http://loinc.org",
-            "code": "83318-7",
-            "display": "Menstrual cycle"
-          } ],
-          "text": "Menstrual cycle"
-        },
-        "entry": [ {
-          "reference": "Observation/995d7724-4480-441a-bd18-c365dcb43e11"
+          "reference": "Observation/8db4aa46-c5a1-463c-b897-12e3a58f5045"
         } ]
       }, {
         "title": "Menstruation History",
@@ -190,20 +178,7 @@
           "text": "Pregnancy status"
         },
         "entry": [ {
-          "reference": "Observation/00f57510-d769-4e54-b0f3-89ad964fc723"
-        } ]
-      }, {
-        "title": "Menstruation History",
-        "code": {
-          "coding": [ {
-            "system": "http://loinc.org",
-            "code": "83318-7",
-            "display": "Menstrual cycle"
-          } ],
-          "text": "Menstrual cycle"
-        },
-        "entry": [ {
-          "reference": "Observation/1c0689bd-1c1c-43d5-b40d-6332ef77a5c4"
+          "reference": "Observation/30b566fc-c0a1-4b16-a5e7-324a544b2e17"
         } ]
       }, {
         "title": "Investigation Advice",
@@ -211,50 +186,50 @@
           "coding": [ {
             "system": "http://snomed.info/sct",
             "code": "721963009",
-            "display": "Investigation Advice"
+            "display": "Order document"
           } ],
           "text": "Investigation Advice"
         },
         "entry": [ {
-          "reference": "ServiceRequest/d7f3dd5b-c875-4cf5-8cd5-975e94017861"
+          "reference": "ServiceRequest/d6fbc180-fc3d-45dd-8d87-806bf3adc071"
         }, {
-          "reference": "ServiceRequest/2cd050a7-9813-401a-bd04-5fa8a5bbea3c"
+          "reference": "ServiceRequest/55992801-7627-45da-bc2c-2e4ba4f28836"
         } ]
       }, {
         "title": "Surgical Summary With Post OP Course",
         "entry": [ {
-          "reference": "Procedure/64ffc6fc-ee7a-434f-98bf-8d7439c43dd1"
+          "reference": "Procedure/d2ab864c-8f80-41b7-92c4-4d1cf3c8001f"
         } ]
       }, {
         "title": "Surgical Summary With Post OP Course",
         "entry": [ {
-          "reference": "Procedure/9278598f-745b-4950-9300-0bf58b519e50"
+          "reference": "Procedure/1defb7d3-58ff-4f96-a8b3-03f567e3befa"
         } ]
       }, {
         "title": "Ongoing Drugs",
         "entry": [ {
-          "reference": "MedicationStatement/a19d388a-e9d6-4312-9fe9-020f3d85df9f"
+          "reference": "MedicationStatement/c4e6dc0b-dba8-4d34-8f40-4ba5dfc33614"
         } ]
       }, {
         "title": "Ongoing Drugs",
         "entry": [ {
-          "reference": "MedicationStatement/0e94c02b-1641-49e2-ad85-caf4d50d920b"
+          "reference": "MedicationStatement/1800e332-8d0b-4438-8403-3bbe5a0b517f"
         } ]
       } ]
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Observation/48330793-2aba-42db-8ca4-d5beb52e1ad3",
+    "fullUrl": "https://fhir.example.com/Observation/239c128b-9b4f-4d1d-b71e-51543c395d3c",
     "resource": {
       "resourceType": "Observation",
-      "id": "48330793-2aba-42db-8ca4-d5beb52e1ad3",
+      "id": "239c128b-9b4f-4d1d-b71e-51543c395d3c",
       "status": "final",
       "category": [ {
         "coding": [ {
           "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "46680005",
-          "display": "Vital Sign"
+          "code": "vital-signs",
+          "display": "Vital Signs"
         } ],
-        "text": "Vital Sign"
+        "text": "Vital Signs"
       } ],
       "code": {
         "coding": [ {
@@ -265,9 +240,9 @@
         "text": "Height"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "effectiveDateTime": "2024-06-18T19:16:06+05:30",
+      "effectiveDateTime": "2024-06-19T17:09:13+05:30",
       "valueQuantity": {
         "value": 160.0,
         "unit": "cm",
@@ -276,31 +251,31 @@
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Observation/0315272f-fd50-4dc2-9113-1f806103ef69",
+    "fullUrl": "https://fhir.example.com/Observation/a197659f-1e7c-466f-9f6c-e7e28f4f7303",
     "resource": {
       "resourceType": "Observation",
-      "id": "0315272f-fd50-4dc2-9113-1f806103ef69",
+      "id": "a197659f-1e7c-466f-9f6c-e7e28f4f7303",
       "status": "final",
       "category": [ {
         "coding": [ {
           "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "46680005",
-          "display": "Vital Sign"
+          "code": "vital-signs",
+          "display": "Vital Signs"
         } ],
-        "text": "Vital Sign"
+        "text": "Vital Signs"
       } ],
       "code": {
         "coding": [ {
           "system": "http://loinc.org",
           "code": "29463-7",
-          "display": "Body weight"
+          "display": "weight"
         } ],
         "text": "Weight"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "effectiveDateTime": "2024-06-18T19:16:06+05:30",
+      "effectiveDateTime": "2024-06-19T17:09:13+05:30",
       "valueQuantity": {
         "value": 62.0,
         "unit": "kg",
@@ -309,18 +284,18 @@
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Observation/985c92c8-ecb8-4bcb-b1d7-217b4b159f1d",
+    "fullUrl": "https://fhir.example.com/Observation/47c5b049-670e-4570-8a3f-6f5933f3fb38",
     "resource": {
       "resourceType": "Observation",
-      "id": "985c92c8-ecb8-4bcb-b1d7-217b4b159f1d",
+      "id": "47c5b049-670e-4570-8a3f-6f5933f3fb38",
       "status": "final",
       "category": [ {
         "coding": [ {
           "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "46680005",
-          "display": "Vital Sign"
+          "code": "vital-signs",
+          "display": "Vital Signs"
         } ],
-        "text": "Vital Sign"
+        "text": "Vital Signs"
       } ],
       "code": {
         "coding": [ {
@@ -331,9 +306,9 @@
         "text": "Body Mass Index"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "effectiveDateTime": "2024-06-18T19:16:06+05:30",
+      "effectiveDateTime": "2024-06-19T17:09:13+05:30",
       "valueQuantity": {
         "value": 62.0,
         "unit": "kg/m2",
@@ -342,50 +317,51 @@
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Observation/0e9279ad-c8c4-491b-99e7-703dc6763808",
+    "fullUrl": "https://fhir.example.com/Observation/80c83d2b-5a37-4fb3-b24a-93ab5c63028b",
     "resource": {
       "resourceType": "Observation",
-      "id": "0e9279ad-c8c4-491b-99e7-703dc6763808",
+      "id": "80c83d2b-5a37-4fb3-b24a-93ab5c63028b",
       "status": "final",
       "category": [ {
         "coding": [ {
           "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "46680005",
-          "display": "Vital Sign"
+          "code": "vital-signs",
+          "display": "Vital Signs"
         } ],
-        "text": "Vital Sign"
+        "text": "Vital Signs"
       } ],
       "code": {
         "coding": [ {
           "system": "http://loinc.org",
           "code": "882-1",
-          "display": "Blood Group"
+          "display": "ABO and Rh group [Type] in Blood"
         } ],
         "text": "Blood Group"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "valueCodeableConcept": {
         "coding": [ {
           "system": "http://snomed.info/sct",
           "code": "365637002",
-          "display": "A+"
+          "display": "Finding of ABO blood group"
         } ],
         "text": "A+"
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83",
+    "fullUrl": "https://fhir.example.com/Patient/02458e6c-79bd-42f0-ab41-d8c092693962",
     "resource": {
       "resourceType": "Patient",
-      "id": "ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83",
+      "id": "02458e6c-79bd-42f0-ab41-d8c092693962",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.452+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.091+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient" ]
       },
       "identifier": [ {
+        "id": "123",
         "type": {
           "coding": [ {
             "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
@@ -394,8 +370,8 @@
           } ],
           "text": "Medical record number"
         },
-        "system": "NCG",
-        "value": "123"
+        "system": "urn:health:information:provider:system",
+        "value": "NCG"
       } ],
       "name": [ {
         "text": "Testing POC 1",
@@ -415,10 +391,34 @@
       } ]
     }
   }, {
-    "fullUrl": "https://fhir.example.com/AllergyIntolerance/bdc23a79-754a-455c-bceb-e0d2c3415058",
+    "fullUrl": "https://fhir.example.com/Encounter/c33bfa64-ffb7-447a-a33c-f67a4000e754",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "c33bfa64-ffb7-447a-a33c-f67a4000e754",
+      "meta": {
+        "versionId": "0",
+        "lastUpdated": "2024-06-19T17:09:13.102+05:30",
+        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter" ]
+      },
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "OUTP",
+        "display": "outpatient encounter"
+      },
+      "subject": {
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
+      },
+      "period": {
+        "start": "2024-06-19T17:09:13+05:30",
+        "end": "2024-06-20T17:09:13+05:30"
+      }
+    }
+  }, {
+    "fullUrl": "https://fhir.example.com/AllergyIntolerance/4feb1709-2cf5-469c-8493-ee642bbbbe86",
     "resource": {
       "resourceType": "AllergyIntolerance",
-      "id": "bdc23a79-754a-455c-bceb-e0d2c3415058",
+      "id": "4feb1709-2cf5-469c-8493-ee642bbbbe86",
       "clinicalStatus": {
         "coding": [ {
           "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
@@ -439,26 +439,26 @@
         "coding": [ {
           "system": "http://snomed.info/sct",
           "code": "256349002",
-          "display": "groundnut"
+          "display": "Peanut"
         } ],
-        "text": "groundnut"
+        "text": "Peanut"
       },
       "patient": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "recordedDate": "2024-06-18T19:16:06+05:30",
+      "recordedDate": "2024-06-19T17:09:13+05:30",
       "recorder": {
-        "reference": "Practitioner/c6a4d654-271d-4e78-9ab3-24206625dd53"
+        "reference": "Practitioner/f14c2098-1b3b-452b-a101-505d6cdb929b"
       },
       "note": [ {
-        "text": "The patient reports of: groundnut allergy which is of type: food"
+        "text": "The patient reports of: Peanut allergy which is of type: food"
       } ]
     }
   }, {
-    "fullUrl": "https://fhir.example.com/AllergyIntolerance/127a98c5-aaed-4491-a453-f42f20e3d552",
+    "fullUrl": "https://fhir.example.com/AllergyIntolerance/8c968492-269a-43b4-b286-424b7e5f3137",
     "resource": {
       "resourceType": "AllergyIntolerance",
-      "id": "127a98c5-aaed-4491-a453-f42f20e3d552",
+      "id": "8c968492-269a-43b4-b286-424b7e5f3137",
       "clinicalStatus": {
         "coding": [ {
           "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
@@ -479,29 +479,29 @@
         "coding": [ {
           "system": "http://snomed.info/sct",
           "code": "256349002",
-          "display": "dust"
+          "display": "Peanut - dietary"
         } ],
-        "text": "dust"
+        "text": "Peanut - dietary"
       },
       "patient": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "recordedDate": "2024-06-18T19:16:06+05:30",
+      "recordedDate": "2024-06-19T17:09:13+05:30",
       "recorder": {
-        "reference": "Practitioner/9da34bd6-ca42-4ae2-b43c-e0afddd619e9"
+        "reference": "Practitioner/3ff3403b-5e85-4929-b5c4-d391d6f1b418"
       },
       "note": [ {
-        "text": "The patient reports of: dust allergy which is of type: environmental"
+        "text": "The patient reports of: Peanut - dietary allergy which is of type: environmental"
       } ]
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Condition/6da54967-0a2f-4584-9474-6be7649d5132",
+    "fullUrl": "https://fhir.example.com/Condition/51dd094b-e87f-460f-8266-a1a70439a5ca",
     "resource": {
       "resourceType": "Condition",
-      "id": "6da54967-0a2f-4584-9474-6be7649d5132",
+      "id": "51dd094b-e87f-460f-8266-a1a70439a5ca",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.454+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.124+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -518,8 +518,8 @@
       "category": [ {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "11493005",
-          "display": "Problem List Item"
+          "code": "38341003",
+          "display": "Hypertensive disorder"
         } ],
         "text": "Problem list item"
       } ],
@@ -532,20 +532,20 @@
         "text": "hypertension"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "recorder": {
-        "reference": "Practitioner/a30b43e1-f51f-4803-b38c-5ee0fa844629"
+        "reference": "Practitioner/44cab95d-8dd9-4a15-aa6b-88051e415ff9"
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Condition/26d3c68c-b4c0-4866-9c2e-7df854dbd105",
+    "fullUrl": "https://fhir.example.com/Condition/83035660-663e-4e53-9e45-22240dc4bcca",
     "resource": {
       "resourceType": "Condition",
-      "id": "26d3c68c-b4c0-4866-9c2e-7df854dbd105",
+      "id": "83035660-663e-4e53-9e45-22240dc4bcca",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.455+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.177+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -562,8 +562,8 @@
       "category": [ {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "191415000",
-          "display": "Encounter Diagnosis"
+          "code": "233604007",
+          "display": "Pneumonia"
         } ],
         "text": "Encounter diagnosis"
       } ],
@@ -576,17 +576,17 @@
         "text": "Coronary Artery Disease"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "recorder": {
-        "reference": "Practitioner/f8784673-1b11-4ee4-b1a0-bf6b19a77def"
+        "reference": "Practitioner/da29f04d-9a18-4dcd-94a0-b243a268e7b9"
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/AdverseEvent/3d899514-88da-4d0e-b6b5-353c47fed92e",
+    "fullUrl": "https://fhir.example.com/AdverseEvent/a64d1020-782b-461f-b26e-bd2541bc6c7c",
     "resource": {
       "resourceType": "AdverseEvent",
-      "id": "3d899514-88da-4d0e-b6b5-353c47fed92e",
+      "id": "a64d1020-782b-461f-b26e-bd2541bc6c7c",
       "identifier": {
         "system": "http://example.com/adverseEvent",
         "value": "123456"
@@ -595,22 +595,22 @@
       "category": [ {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "407716003",
-          "display": "medication-mishap"
+          "code": "425391005",
+          "display": "Using access device"
         } ],
         "text": "Medication Mishap"
       } ],
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "date": "2024-06-18T19:16:06+05:30",
-      "detected": "2024-06-18T19:16:06+05:30",
-      "recordedDate": "2024-06-18T19:16:06+05:30",
+      "date": "2024-06-19T17:09:13+05:30",
+      "detected": "2024-06-19T17:09:13+05:30",
+      "recordedDate": "2024-06-19T17:09:13+05:30",
       "seriousness": {
         "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
-          "code": "255604002",
-          "display": "serious"
+          "system": "http://snomed.info/sct",
+          "code": "24484000",
+          "display": "Severe"
         } ],
         "text": "Serious"
       },
@@ -623,17 +623,17 @@
         "text": "Resolved"
       },
       "recorder": {
-        "reference": "Practitioner/19b316d4-29ab-4fbd-8d44-ea84b4427fc4"
+        "reference": "Practitioner/8df41c8e-9126-44b8-9047-4e7f2df1d07b"
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Condition/69fc74fb-1f94-4bf4-9cc0-6fc5395e3aed",
+    "fullUrl": "https://fhir.example.com/Condition/9514ab94-9f09-4951-86ee-569b341f6c71",
     "resource": {
       "resourceType": "Condition",
-      "id": "69fc74fb-1f94-4bf4-9cc0-6fc5395e3aed",
+      "id": "9514ab94-9f09-4951-86ee-569b341f6c71",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.457+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.185+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -664,18 +664,18 @@
         "text": "hypertension"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "recordedDate": "2024-06-18T19:16:06+05:30"
+      "recordedDate": "2024-06-19T17:09:13+05:30"
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Condition/8e32e0cc-f265-4149-b12a-af41a5040942",
+    "fullUrl": "https://fhir.example.com/Condition/c4f7b10a-bd00-466b-9e6b-123181e7fab7",
     "resource": {
       "resourceType": "Condition",
-      "id": "8e32e0cc-f265-4149-b12a-af41a5040942",
+      "id": "c4f7b10a-bd00-466b-9e6b-123181e7fab7",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.458+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.189+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -706,18 +706,18 @@
         "text": "Coronary Artery Disease"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "recordedDate": "2024-06-18T19:16:06+05:30"
+      "recordedDate": "2024-06-19T17:09:13+05:30"
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Condition/cbc784d7-0690-4219-b835-a38601971785",
+    "fullUrl": "https://fhir.example.com/Condition/0e0e0778-cdb2-49b3-a8eb-ea1687a9ee02",
     "resource": {
       "resourceType": "Condition",
-      "id": "cbc784d7-0690-4219-b835-a38601971785",
+      "id": "0e0e0778-cdb2-49b3-a8eb-ea1687a9ee02",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.459+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.191+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -747,18 +747,18 @@
         "text": "hypertension"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "recordedDate": "2024-06-18T19:16:06+05:30"
+      "recordedDate": "2024-06-19T17:09:13+05:30"
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Condition/a2606780-77c6-416e-95e4-ae4e8c67649d",
+    "fullUrl": "https://fhir.example.com/Condition/2018db77-3e53-402d-8f15-fb8bd8168d1c",
     "resource": {
       "resourceType": "Condition",
-      "id": "a2606780-77c6-416e-95e4-ae4e8c67649d",
+      "id": "2018db77-3e53-402d-8f15-fb8bd8168d1c",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.460+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.192+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
       },
       "text": {
@@ -788,18 +788,18 @@
         "text": "Coronary Artery Disease"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "recordedDate": "2024-06-18T19:16:06+05:30"
+      "recordedDate": "2024-06-19T17:09:13+05:30"
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Observation/28cc9b5b-5e4a-4828-b98a-80484579b657",
+    "fullUrl": "https://fhir.example.com/Observation/8db4aa46-c5a1-463c-b897-12e3a58f5045",
     "resource": {
       "resourceType": "Observation",
-      "id": "28cc9b5b-5e4a-4828-b98a-80484579b657",
+      "id": "8db4aa46-c5a1-463c-b897-12e3a58f5045",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.461+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.193+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
       },
       "text": {
@@ -816,54 +816,22 @@
         "text": "Pregnancy status"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "effectiveDateTime": "2024-06-18T19:16:06+05:30",
+      "effectiveDateTime": "2024-06-19T17:09:13+05:30",
       "performer": [ {
-        "reference": "Practitioner/60af62f8-c627-4a40-a8a9-18dff122c6de"
+        "reference": "Practitioner/93a62bfe-0f92-4921-9576-8d89b2ba393b"
       } ],
       "valueString": "Not pregnant"
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Observation/995d7724-4480-441a-bd18-c365dcb43e11",
+    "fullUrl": "https://fhir.example.com/Observation/30b566fc-c0a1-4b16-a5e7-324a544b2e17",
     "resource": {
       "resourceType": "Observation",
-      "id": "995d7724-4480-441a-bd18-c365dcb43e11",
+      "id": "30b566fc-c0a1-4b16-a5e7-324a544b2e17",
       "meta": {
         "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.462+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
-      },
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "83318-7",
-          "display": "Menstrual cycle"
-        } ],
-        "text": "Menstrual cycle"
-      },
-      "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
-      },
-      "effectiveDateTime": "2024-06-18T19:16:06+05:30",
-      "performer": [ {
-        "reference": "Practitioner/f7dce31b-715f-4b7e-968c-e1125239d6bf"
-      } ],
-      "valueString": "Regular"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Observation/00f57510-d769-4e54-b0f3-89ad964fc723",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "00f57510-d769-4e54-b0f3-89ad964fc723",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.463+05:30",
+        "lastUpdated": "2024-06-19T17:09:13.194+05:30",
         "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth" ]
       },
       "text": {
@@ -880,58 +848,26 @@
         "text": "Pregnancy status"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
-      "effectiveDateTime": "2024-06-18T19:16:06+05:30",
+      "effectiveDateTime": "2024-06-19T17:09:13+05:30",
       "performer": [ {
-        "reference": "Practitioner/eb55390e-f165-47dd-acb6-4092876c7bbe"
+        "reference": "Practitioner/2f85f032-a5c6-4fe2-b2d4-cbc494fbc96f"
       } ],
       "valueString": "Not pregnant"
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Observation/1c0689bd-1c1c-43d5-b40d-6332ef77a5c4",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "1c0689bd-1c1c-43d5-b40d-6332ef77a5c4",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-18T19:16:06.463+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
-      },
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "83318-7",
-          "display": "Menstrual cycle"
-        } ],
-        "text": "Menstrual cycle"
-      },
-      "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
-      },
-      "effectiveDateTime": "2024-06-18T19:16:06+05:30",
-      "performer": [ {
-        "reference": "Practitioner/a5b1372b-a840-4020-99fa-efd3b36d1dd2"
-      } ],
-      "valueString": "Regular"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/ServiceRequest/d7f3dd5b-c875-4cf5-8cd5-975e94017861",
+    "fullUrl": "https://fhir.example.com/ServiceRequest/d6fbc180-fc3d-45dd-8d87-806bf3adc071",
     "resource": {
       "resourceType": "ServiceRequest",
-      "id": "d7f3dd5b-c875-4cf5-8cd5-975e94017861",
+      "id": "d6fbc180-fc3d-45dd-8d87-806bf3adc071",
       "status": "active",
       "intent": "order",
       "code": {
         "text": "obstetric history"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
       "requester": {
@@ -939,17 +875,17 @@
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/ServiceRequest/2cd050a7-9813-401a-bd04-5fa8a5bbea3c",
+    "fullUrl": "https://fhir.example.com/ServiceRequest/55992801-7627-45da-bc2c-2e4ba4f28836",
     "resource": {
       "resourceType": "ServiceRequest",
-      "id": "2cd050a7-9813-401a-bd04-5fa8a5bbea3c",
+      "id": "55992801-7627-45da-bc2c-2e4ba4f28836",
       "status": "active",
       "intent": "order",
       "code": {
         "text": "breast health"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
       "requester": {
@@ -957,37 +893,37 @@
       }
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Procedure/64ffc6fc-ee7a-434f-98bf-8d7439c43dd1",
+    "fullUrl": "https://fhir.example.com/Procedure/d2ab864c-8f80-41b7-92c4-4d1cf3c8001f",
     "resource": {
       "resourceType": "Procedure",
-      "id": "64ffc6fc-ee7a-434f-98bf-8d7439c43dd1",
+      "id": "d2ab864c-8f80-41b7-92c4-4d1cf3c8001f",
       "status": "completed",
       "statusReason": {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "125661000119109",
-          "display": "device"
+          "code": "419099009",
+          "display": "Died"
         } ],
-        "text": "Device"
+        "text": "Died"
       },
       "category": {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "125661000119109",
-          "display": "device"
+          "code": "419099009",
+          "display": "Died"
         } ],
-        "text": "Device"
+        "text": "Died"
       },
       "code": {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "125661000119109",
-          "display": "device"
+          "code": "419099009",
+          "display": "Died"
         } ],
-        "text": "Device"
+        "text": "Died"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "performedPeriod": {
         "start": "2011-06-26",
@@ -996,18 +932,18 @@
       "reasonCode": [ {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "125661000119109",
-          "display": "device"
+          "code": "419099009",
+          "display": "Died"
         } ],
-        "text": "Device"
+        "text": "Died"
       } ],
       "bodySite": [ {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "125661000119109",
-          "display": "device"
+          "code": "419099009",
+          "display": "Died"
         } ],
-        "text": "Device"
+        "text": "Died"
       } ],
       "outcome": {
         "text": "improved blood circulation"
@@ -1016,41 +952,41 @@
         "text": "described in care plan"
       } ],
       "usedCode": [ {
-        "text": "device"
+        "text": "Died"
       } ]
     }
   }, {
-    "fullUrl": "https://fhir.example.com/Procedure/9278598f-745b-4950-9300-0bf58b519e50",
+    "fullUrl": "https://fhir.example.com/Procedure/1defb7d3-58ff-4f96-a8b3-03f567e3befa",
     "resource": {
       "resourceType": "Procedure",
-      "id": "9278598f-745b-4950-9300-0bf58b519e50",
+      "id": "1defb7d3-58ff-4f96-a8b3-03f567e3befa",
       "status": "completed",
       "statusReason": {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "386368001",
-          "display": "wrong-patient"
+          "code": "418038007",
+          "display": "Propensity to adverse reactions to substance"
         } ],
-        "text": "Wrong Patient"
+        "text": "Propensity to adverse reactions to substance"
       },
       "category": {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "386368001",
-          "display": "wrong-patient"
+          "code": "418038007",
+          "display": "Propensity to adverse reactions to substance"
         } ],
-        "text": "Wrong Patient"
+        "text": "Propensity to adverse reactions to substance"
       },
       "code": {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "386368001",
-          "display": "wrong-patient"
+          "code": "418038007",
+          "display": "Propensity to adverse reactions to substance"
         } ],
-        "text": "Wrong Patient"
+        "text": "Propensity to adverse reactions to substance"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "performedPeriod": {
         "start": "2013-01-28T13:31:00+01:00",
@@ -1059,18 +995,18 @@
       "reasonCode": [ {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "386368001",
-          "display": "wrong-patient"
+          "code": "418038007",
+          "display": "Propensity to adverse reactions to substance"
         } ],
-        "text": "Wrong Patient"
+        "text": "Propensity to adverse reactions to substance"
       } ],
       "bodySite": [ {
         "coding": [ {
           "system": "http://snomed.info/sct",
-          "code": "386368001",
-          "display": "wrong-patient"
+          "code": "418038007",
+          "display": "Propensity to adverse reactions to substance"
         } ],
-        "text": "Wrong Patient"
+        "text": "Propensity to adverse reactions to substance"
       } ],
       "outcome": {
         "text": "improved blood circulation"
@@ -1079,25 +1015,20 @@
         "text": "described in care plan"
       } ],
       "usedCode": [ {
-        "text": "wrong-patient"
+        "text": "Propensity to adverse reactions to substance"
       } ]
     }
   }, {
-    "fullUrl": "https://fhir.example.com/MedicationStatement/a19d388a-e9d6-4312-9fe9-020f3d85df9f",
+    "fullUrl": "https://fhir.example.com/MedicationStatement/c4e6dc0b-dba8-4d34-8f40-4ba5dfc33614",
     "resource": {
       "resourceType": "MedicationStatement",
-      "id": "a19d388a-e9d6-4312-9fe9-020f3d85df9f",
+      "id": "c4e6dc0b-dba8-4d34-8f40-4ba5dfc33614",
       "status": "completed",
-      "medicationCodeableConcept": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "125661000119109",
-          "display": "device"
-        } ],
-        "text": "Device"
+      "medicationReference": {
+        "reference": "Medication/example-medication"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "effectivePeriod": {
         "start": "2014-02-01T05:30:00+05:30"
@@ -1106,50 +1037,10 @@
       "derivedFrom": [ {
         "reference": "Patient/pat1"
       } ],
-      "reasonCode": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "125661000119109",
-          "display": "device"
-        } ],
-        "text": "Device"
-      } ],
       "note": [ {
         "text": "Father indicates they miss the occasional dose"
       } ],
       "dosage": [ {
-        "additionalInstruction": [ {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "125661000119109",
-            "display": "device"
-          } ],
-          "text": "Device"
-        } ],
-        "site": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "125661000119109",
-            "display": "device"
-          } ],
-          "text": "Device"
-        },
-        "route": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "125661000119109",
-            "display": "device"
-          } ],
-          "text": "Device"
-        },
-        "method": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "125661000119109",
-            "display": "device"
-          } ],
-          "text": "Device"
-        },
         "doseAndRate": [ {
           "doseQuantity": {
             "value": 500,
@@ -1159,29 +1050,24 @@
           },
           "rateQuantity": {
             "value": 3,
-            "unit": "times per day",
+            "unit": "1/d",
             "system": "http://unitsofmeasure.org",
-            "code": "times/day"
+            "code": "{1/d}"
           }
         } ]
       } ]
     }
   }, {
-    "fullUrl": "https://fhir.example.com/MedicationStatement/0e94c02b-1641-49e2-ad85-caf4d50d920b",
+    "fullUrl": "https://fhir.example.com/MedicationStatement/1800e332-8d0b-4438-8403-3bbe5a0b517f",
     "resource": {
       "resourceType": "MedicationStatement",
-      "id": "0e94c02b-1641-49e2-ad85-caf4d50d920b",
+      "id": "1800e332-8d0b-4438-8403-3bbe5a0b517f",
       "status": "completed",
-      "medicationCodeableConcept": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "386368001",
-          "display": "wrong-patient"
-        } ],
-        "text": "Wrong Patient"
+      "medicationReference": {
+        "reference": "Medication/example-medication"
       },
       "subject": {
-        "reference": "Patient/ac0c3c20-dc13-4e6f-9aec-34f0d93b4c83"
+        "reference": "Patient/02458e6c-79bd-42f0-ab41-d8c092693962"
       },
       "effectivePeriod": {
         "start": "2015-01-23T05:30:00+05:30"
@@ -1190,50 +1076,10 @@
       "derivedFrom": [ {
         "reference": "MedicationRequest/medrx002"
       } ],
-      "reasonCode": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "386368001",
-          "display": "wrong-patient"
-        } ],
-        "text": "Wrong Patient"
-      } ],
       "note": [ {
         "text": "Patient indicates they miss the occasional dose"
       } ],
       "dosage": [ {
-        "additionalInstruction": [ {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "386368001",
-            "display": "wrong-patient"
-          } ],
-          "text": "Wrong Patient"
-        } ],
-        "site": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "386368001",
-            "display": "wrong-patient"
-          } ],
-          "text": "Wrong Patient"
-        },
-        "route": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "386368001",
-            "display": "wrong-patient"
-          } ],
-          "text": "Wrong Patient"
-        },
-        "method": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "386368001",
-            "display": "wrong-patient"
-          } ],
-          "text": "Wrong Patient"
-        },
         "doseAndRate": [ {
           "doseQuantity": {
             "value": 500,
@@ -1243,9 +1089,9 @@
           },
           "rateQuantity": {
             "value": 3,
-            "unit": "times per day",
+            "unit": "1/d",
             "system": "http://unitsofmeasure.org",
-            "code": "times/day"
+            "code": "{1/d}"
           }
         } ]
       } ]
