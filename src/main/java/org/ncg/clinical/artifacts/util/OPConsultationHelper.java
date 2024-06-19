@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
@@ -26,6 +27,7 @@ import org.hl7.fhir.r4.model.DiagnosticReport;
 import org.hl7.fhir.r4.model.DocumentReference;
 import org.hl7.fhir.r4.model.Dosage;
 import org.hl7.fhir.r4.model.Dosage.DosageDoseAndRateComponent;
+import org.hl7.fhir.r4.model.Encounter;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.MedicationStatement;
@@ -65,7 +67,6 @@ import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 
@@ -117,10 +118,13 @@ public class OPConsultationHelper {
 		opDoc.setAuthor(Arrays.asList(patientRef));
 
 		// Set Encounter
+		Encounter encounter = FHIRUtils.createEncounter();
+		encounter.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
+		FHIRUtils.addToBundleEntry(bundle, encounter, true);
 		Reference encounterRef = new Reference();
-		encounterRef.setReference("Encounter/" + patientResource.getId());
+		encounterRef.setReference("Encounter/" + encounter.getId());
 		opDoc.setEncounter(encounterRef);
-
+		
 		// add sections entry
 		opDoc.setSection(createCancerModuleSections(bundle, opDoc, clinicalData, patientResource));
 
@@ -184,11 +188,11 @@ public class OPConsultationHelper {
 					// set category
 					if (org.apache.commons.lang3.StringUtils.equals(coMorbidityDetail.getCategory(),
 							"problem-list-item")) {
-						condition.addCategory(FHIRUtils.getCodeableConcept("11493005", Constants.SNOMED_SYSTEM_SCT,
-								"Problem List Item", "Problem list item"));
+						condition.addCategory(FHIRUtils.getCodeableConcept("38341003", Constants.SNOMED_SYSTEM_SCT,
+								"Hypertensive disorder", "Problem list item"));
 					} else
-						condition.addCategory(FHIRUtils.getCodeableConcept("191415000", Constants.SNOMED_SYSTEM_SCT,
-								"Encounter Diagnosis", "Encounter diagnosis"));
+						condition.addCategory(FHIRUtils.getCodeableConcept("233604007", Constants.SNOMED_SYSTEM_SCT,
+								"Pneumonia", "Encounter diagnosis"));
 
 					// Set verificationStatus
 					CodeableConcept verificationStatus = new CodeableConcept();
@@ -252,8 +256,8 @@ public class OPConsultationHelper {
 					adverseEvent.setRecordedDate(new Date());
 
 					// Set seriousness
-					adverseEvent.setSeriousness(FHIRUtils.getCodeableConcept("255604002",
-							"http://terminology.hl7.org/CodeSystem/adverse-event-seriousness", "serious", "Serious"));
+					adverseEvent.setSeriousness(
+							FHIRUtils.getCodeableConcept("24484000", "http://snomed.info/sct", "Severe", "Serious"));
 
 					// Set outcome
 					adverseEvent.setOutcome(FHIRUtils.getCodeableConcept("resolved",
@@ -618,8 +622,11 @@ public class OPConsultationHelper {
 					// set status
 					medicationStatement.setStatus(MedicationStatementStatus.COMPLETED);
 
-					// set medication
-					medicationStatement.setMedication(FHIRUtils.getAdverseEventCategory(ongoingDrugsDetail.getName()));
+					// Set medication reference
+					Reference medicationReference = new Reference("Medication/example-medication");
+
+					// Set medication reference
+					medicationStatement.setMedication(medicationReference);
 
 					// Set subject
 					Reference patientRef = new Reference();
@@ -648,8 +655,8 @@ public class OPConsultationHelper {
 					DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
 					doseAndRate.setDose(new Quantity().setValue(500).setUnit("mg")
 							.setSystem("http://unitsofmeasure.org").setCode("mg"));
-					doseAndRate.setRate(new Quantity().setValue(3).setUnit("times per day")
-							.setSystem("http://unitsofmeasure.org").setCode("times/day"));
+					doseAndRate.setRate(new Quantity().setValue(3).setUnit("1/d").setSystem("http://unitsofmeasure.org")
+							.setCode("{1/d}"));
 					dosage.addDoseAndRate(doseAndRate);
 
 					// Add dosage to medication statement
@@ -1029,8 +1036,10 @@ public class OPConsultationHelper {
 
 		// Set the content (attachment) of the document
 		DocumentReference.DocumentReferenceContentComponent content = new DocumentReference.DocumentReferenceContentComponent();
-		Attachment attachment = FHIRUtils.getAttachment(reportName, reportValue);
-		content.setAttachment(attachment);
+		if (StringUtils.isNotEmpty(reportValue)) {
+			Attachment attachment = FHIRUtils.getAttachment(reportName, reportValue);
+			content.setAttachment(attachment);
+		}
 
 		documentReference.addContent(content);
 		return documentReference;
@@ -1274,6 +1283,8 @@ public class OPConsultationHelper {
 			String allergyId = UUID.randomUUID().toString();
 			allergyIntolerance.setId(allergyId);
 
+			allergyIntolerance.setMeta(null);
+
 			FHIRUtils.addToBundleEntry(bundle, allergyIntolerance, true);
 			allergiesSection
 					.addEntry(new Reference("AllergyIntolerance/" + allergyIntolerance.getIdElement().getValue()));
@@ -1347,7 +1358,7 @@ public class OPConsultationHelper {
 
 		// Set code
 		CodeableConcept code = new CodeableConcept();
-		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", "Investigation Advice"));
+		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", "Order document"));
 		code.setText("Investigation Advice");
 		investigationAdviceSection.setCode(code);
 

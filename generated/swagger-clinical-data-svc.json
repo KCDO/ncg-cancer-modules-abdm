@@ -12,7 +12,7 @@
   } ],
   "schemes" : [ "http", "https" ],
   "paths" : {
-    "/ncg/cancer-modules/abdm/clinical-artifacts" : {
+    "/clinicalartifacts/opconsultation" : {
       "post" : {
         "tags" : [ "Clinical Data APIs" ],
         "summary" : "This Api is used to generate fhir clinical-data.",
@@ -282,11 +282,14 @@
         "disallowExtensions" : {
           "type" : "boolean"
         },
-        "asV3" : {
-          "type" : "string"
-        },
         "tzSign" : {
           "type" : "boolean"
+        },
+        "dateTime" : {
+          "type" : "boolean"
+        },
+        "asV3" : {
+          "type" : "string"
         },
         "tzHour" : {
           "type" : "integer",
@@ -295,58 +298,6 @@
         "tzMin" : {
           "type" : "integer",
           "format" : "int32"
-        },
-        "dateTime" : {
-          "type" : "boolean"
-        },
-        "month" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "millis" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "day" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "precision" : {
-          "type" : "string",
-          "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
-        },
-        "nanos" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "secondsMilli" : {
-          "type" : "number",
-          "format" : "float"
-        },
-        "valueAsCalendar" : {
-          "type" : "string",
-          "format" : "date-time"
-        },
-        "timeZoneZulu" : {
-          "type" : "boolean"
-        },
-        "hour" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "minute" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "today" : {
-          "type" : "boolean"
-        },
-        "second" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "valueAsString" : {
-          "type" : "string"
         },
         "value" : {
           "type" : "string",
@@ -359,29 +310,78 @@
           "type" : "integer",
           "format" : "int32"
         },
+        "hour" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "minute" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "second" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "valueAsCalendar" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "day" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "secondsMilli" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "timeZoneZulu" : {
+          "type" : "boolean"
+        },
+        "today" : {
+          "type" : "boolean"
+        },
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "month" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "millis" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nanos" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "precision" : {
+          "type" : "string",
+          "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
+        },
         "primitive" : {
           "type" : "boolean"
         },
         "empty" : {
           "type" : "boolean"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
+        "idElement" : {
+          "$ref" : "#/definitions/StringType"
         },
         "idBase" : {
           "type" : "string"
         },
-        "idElement" : {
-          "$ref" : "#/definitions/StringType"
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
+        },
+        "resource" : {
+          "type" : "boolean"
         },
         "booleanPrimitive" : {
           "type" : "boolean"
         },
         "xhtml" : {
           "$ref" : "#/definitions/XhtmlNode"
-        },
-        "resource" : {
-          "type" : "boolean"
         }
       }
     },
@@ -432,25 +432,28 @@
         "value" : {
           "$ref" : "#/definitions/Type"
         },
-        "urlElement" : {
-          "$ref" : "#/definitions/UriType"
-        },
         "empty" : {
           "type" : "boolean"
+        },
+        "urlElement" : {
+          "$ref" : "#/definitions/UriType"
         },
         "valueAsPrimitive" : {
           "$ref" : "#/definitions/IPrimitiveTypeObject"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
+        "idElement" : {
+          "$ref" : "#/definitions/StringType"
         },
         "idBase" : {
           "type" : "string"
         },
-        "idElement" : {
-          "$ref" : "#/definitions/StringType"
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
         },
-        "dateTime" : {
+        "primitive" : {
+          "type" : "boolean"
+        },
+        "resource" : {
           "type" : "boolean"
         },
         "booleanPrimitive" : {
@@ -459,10 +462,7 @@
         "xhtml" : {
           "$ref" : "#/definitions/XhtmlNode"
         },
-        "primitive" : {
-          "type" : "boolean"
-        },
-        "resource" : {
+        "dateTime" : {
           "type" : "boolean"
         }
       }
@@ -470,17 +470,14 @@
     "IPrimitiveType" : {
       "type" : "object",
       "properties" : {
-        "valueAsString" : {
-          "type" : "string"
-        },
         "value" : {
           "type" : "object"
         },
-        "formatCommentsPre" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "empty" : {
+          "type" : "boolean"
         },
         "formatCommentsPost" : {
           "type" : "array",
@@ -488,25 +485,25 @@
             "type" : "string"
           }
         },
-        "empty" : {
-          "type" : "boolean"
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         }
       }
     },
     "IPrimitiveTypeObject" : {
       "type" : "object",
       "properties" : {
-        "valueAsString" : {
-          "type" : "string"
-        },
         "value" : {
           "type" : "object"
         },
-        "formatCommentsPre" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "empty" : {
+          "type" : "boolean"
         },
         "formatCommentsPost" : {
           "type" : "array",
@@ -514,8 +511,11 @@
             "type" : "string"
           }
         },
-        "empty" : {
-          "type" : "boolean"
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         }
       }
     },
@@ -755,9 +755,6 @@
         "valueNotNull" : {
           "type" : "string"
         },
-        "valueAsString" : {
-          "type" : "string"
-        },
         "primitive" : {
           "type" : "boolean"
         },
@@ -767,16 +764,19 @@
         "empty" : {
           "type" : "boolean"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
-        },
-        "idBase" : {
+        "valueAsString" : {
           "type" : "string"
         },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
         },
-        "dateTime" : {
+        "idBase" : {
+          "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
+        },
+        "resource" : {
           "type" : "boolean"
         },
         "booleanPrimitive" : {
@@ -785,7 +785,7 @@
         "xhtml" : {
           "$ref" : "#/definitions/XhtmlNode"
         },
-        "resource" : {
+        "dateTime" : {
           "type" : "boolean"
         }
       }
@@ -837,10 +837,6 @@
     "TimeZone" : {
       "type" : "object",
       "properties" : {
-        "rawOffset" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
         "id" : {
           "type" : "string"
         },
@@ -848,6 +844,10 @@
           "type" : "string"
         },
         "dstsavings" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "rawOffset" : {
           "type" : "integer",
           "format" : "int32"
         }
@@ -883,16 +883,19 @@
         "empty" : {
           "type" : "boolean"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
+        "idElement" : {
+          "$ref" : "#/definitions/StringType"
         },
         "idBase" : {
           "type" : "string"
         },
-        "idElement" : {
-          "$ref" : "#/definitions/StringType"
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
         },
-        "dateTime" : {
+        "primitive" : {
+          "type" : "boolean"
+        },
+        "resource" : {
           "type" : "boolean"
         },
         "booleanPrimitive" : {
@@ -901,10 +904,7 @@
         "xhtml" : {
           "$ref" : "#/definitions/XhtmlNode"
         },
-        "primitive" : {
-          "type" : "boolean"
-        },
-        "resource" : {
+        "dateTime" : {
           "type" : "boolean"
         }
       }
@@ -936,9 +936,6 @@
         "disallowExtensions" : {
           "type" : "boolean"
         },
-        "valueAsString" : {
-          "type" : "string"
-        },
         "primitive" : {
           "type" : "boolean"
         },
@@ -948,16 +945,19 @@
         "empty" : {
           "type" : "boolean"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
-        },
-        "idBase" : {
+        "valueAsString" : {
           "type" : "string"
         },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
         },
-        "dateTime" : {
+        "idBase" : {
+          "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
+        },
+        "resource" : {
           "type" : "boolean"
         },
         "booleanPrimitive" : {
@@ -966,7 +966,7 @@
         "xhtml" : {
           "$ref" : "#/definitions/XhtmlNode"
         },
-        "resource" : {
+        "dateTime" : {
           "type" : "boolean"
         }
       }
@@ -1002,11 +1002,26 @@
         "emptyExpanded" : {
           "type" : "boolean"
         },
-        "formatCommentsPre" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
+        "value" : {
+          "type" : "string"
+        },
+        "empty" : {
+          "type" : "boolean"
+        },
+        "valueAsString" : {
+          "type" : "string"
+        },
+        "nsDecl" : {
+          "type" : "string"
+        },
+        "firstElement" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        },
+        "para" : {
+          "type" : "boolean"
+        },
+        "noPretty" : {
+          "type" : "boolean"
         },
         "formatCommentsPost" : {
           "type" : "array",
@@ -1014,26 +1029,11 @@
             "type" : "string"
           }
         },
-        "valueAsString" : {
-          "type" : "string"
-        },
-        "firstElement" : {
-          "$ref" : "#/definitions/XhtmlNode"
-        },
-        "nsDecl" : {
-          "type" : "string"
-        },
-        "noPretty" : {
-          "type" : "boolean"
-        },
-        "para" : {
-          "type" : "boolean"
-        },
-        "value" : {
-          "type" : "string"
-        },
-        "empty" : {
-          "type" : "boolean"
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         }
       }
     }
