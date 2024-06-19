@@ -276,7 +276,7 @@ public class FHIRUtils {
 		}
 
 		// Set the category to vital signs
-		bmiTest = getTestByName("Vital Sign");
+		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
 			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
@@ -321,7 +321,7 @@ public class FHIRUtils {
 
 
 		// Set the category to vital signs
-		bmiTest = getTestByName("Vital Sign");
+		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
 			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
@@ -361,7 +361,7 @@ public class FHIRUtils {
 
 
 		// Set the category to vital signs
-		bmiTest = getTestByName("Vital Sign");
+		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
 			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
@@ -389,7 +389,7 @@ public class FHIRUtils {
 		}
 
 		// Set the category to vital signs
-		bmiTest = getTestByName("Vital Sign");
+		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
 			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
@@ -401,7 +401,7 @@ public class FHIRUtils {
 		// Set the value for blood group using a coded value (e.g., A+, O-, etc.)
 		// Get the display value for the blood group
 		String displayValue = bloodGroupMap.getOrDefault(bloodGroup.toLowerCase(), "Unknown");
-		CodeableConcept codeableConcept = getCodeableConcept("365637002", Constants.SNOMED_SYSTEM_SCT, displayValue,
+		CodeableConcept codeableConcept = getCodeableConcept("365637002", Constants.SNOMED_SYSTEM_SCT, "Finding of ABO blood group",
 				displayValue);
 
 		observation.setValue(codeableConcept);
