@@ -445,7 +445,7 @@
 		{
 			"name": "Weight",
 			"code": "29463-7",
-			"description": "Body weight"
+			"description": "weight"
 		},
 		{
 			"name": "Body Mass Index",
