@@ -16,4 +16,5 @@ public class InvestigationAdvice {
 	private DateTimeType occurrenceDateTime;
 	private String requester;
 	private String reason;
+	private String code;
 }
