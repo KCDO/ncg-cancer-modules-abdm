@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Clinical Data Service REST API
   description: |-
-    The APIs related to the Clinical Data which generates sample FHIR JSON based on ABDM profiles, with or without provided input data points. Creates various clinical documents (e.g., DiagnosticReport, DischargeSummary etc.) based on provided inputs and cancer types.
+    The APIs related to the Clinical Data which generates sample FHIR JSON based on ABDM profiles, with or without provided input data points. Creates various clinical documents (e.g., OPConsultRecord, DiagnosticReport, DischargeSummary etc.) based on provided inputs and cancer types.
 
     Some useful links:
     - [The Clinical Data repository](https://github.com/KCDO/ncg-cancer-modules-abdm)
@@ -13,7 +13,7 @@ servers:
 tags:
 - name: Clinical Data APIs
 paths:
-  /clinicalartifacts/opconsultation:
+  /clinical-artifacts/op-consultation:
     post:
       tags:
       - Clinical Data APIs
@@ -113,14 +113,8 @@ components:
           $ref: '#/components/schemas/PatientData'
         clinicalInformation:
           $ref: '#/components/schemas/ClinicalInformation'
-        diagnostics:
-          $ref: '#/components/schemas/Diagnostic'
         lungCancer:
           $ref: '#/components/schemas/LungCancer'
-        oralCancer:
-          $ref: '#/components/schemas/OralCancer'
-        cervicalCancer:
-          $ref: '#/components/schemas/CervicalCancer'
     ClinicalInformation:
       type: object
       properties:
@@ -128,14 +122,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Allergy'
-        comorbidities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comorbidity'
-        adverseEvents:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdverseEvent'
         pastMedicalHistory:
           type: array
           items:
@@ -144,10 +130,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PastSurgicalHistory'
-        mentalHealthAssesment:
-          type: array
-          items:
-            $ref: '#/components/schemas/MentalHealthAssesment'
         menstruationHistory:
           type: array
           items:
@@ -164,14 +146,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OngoingDrugs'
-        otnotes:
-          type: object
-          additionalProperties:
-            type: string
-        pacnotes:
-          type: object
-          additionalProperties:
-            type: string
     Comorbidity:
       type: object
       properties:
@@ -180,7 +154,7 @@ components:
         category:
           type: string
     DateTimeType:
-      type: object
+      type: string
       properties:
         formatCommentsPre:
           type: array
