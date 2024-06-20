@@ -6,7 +6,7 @@ import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.springframework.http.ResponseEntity;
 
 /**
- * This interface exposes the endpoints related to the fhir clinical resource.
+ * This interface exposes the endpoints related to the fhir clinical data.
  * 
  * @author kumari.anamika
  *
@@ -14,12 +14,12 @@ import org.springframework.http.ResponseEntity;
 public interface ClinicalDataController {
 
 	/**
-	 * This method is used to generate clinical json data.
+	 * This method is used to generate sample FHIR JSON based on ABDM profiles for
+	 * OPConsultRecord.
 	 * 
 	 * @param clinicalData
-	 * @param pageable
 	 * @return
 	 * @throws Exception
 	 */
-	public ResponseEntity<String> generateClinicalDataJSON(@Valid ClinicalData clinicalData) throws Exception;
+	public ResponseEntity<String> opConsultRecordGenerator(@Valid ClinicalData clinicalData) throws Exception;
 }

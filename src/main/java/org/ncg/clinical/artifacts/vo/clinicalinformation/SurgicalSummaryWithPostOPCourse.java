@@ -19,4 +19,5 @@ public class SurgicalSummaryWithPostOPCourse {
 	private String bodySite;
 	private String outcome;
 	private String followUp;
+	private String code;
 }

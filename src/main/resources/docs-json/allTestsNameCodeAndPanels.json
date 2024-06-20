@@ -461,6 +461,21 @@
 			"name": "Blood Group",
 			"code": "882-1",
 			"description": "ABO and Rh group [Type] in Blood"
+		},
+		{
+			"name": "Op Consult Record",
+			"code": "371530004",
+			"description": "Clinical consultation report"
+		},
+		{
+			"name": "Chief complaints",
+			"code": "422843007",
+			"description": "Chief complaint sectiont"
+		},
+		{
+			"name": "Allergy record",
+			"code": "722446000",
+			"description": "Allergy record"
 		}
 	]
 }

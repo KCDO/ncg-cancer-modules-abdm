@@ -12,4 +12,5 @@ import lombok.Setter;
 public class MentalHealthAssesment {
 	private String name;
 	private String value;
+	private String code;
 }

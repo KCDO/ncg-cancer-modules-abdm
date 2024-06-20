@@ -12,4 +12,5 @@ import lombok.Setter;
 public class AdverseEvent {
 	private String name;
 	private String category;
+	private String code;
 }

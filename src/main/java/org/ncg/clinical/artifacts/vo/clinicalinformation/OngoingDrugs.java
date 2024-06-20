@@ -17,4 +17,5 @@ public class OngoingDrugs {
 	private Date assertedDate;
 	private String reference;
 	private String note;
+	private String code;
 }

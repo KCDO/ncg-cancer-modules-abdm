@@ -12,4 +12,5 @@ import lombok.Setter;
 public class Allergy {
 	private String name;
 	private String type;
+	private String code;
 }
