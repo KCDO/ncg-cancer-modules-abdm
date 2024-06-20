@@ -15,4 +15,5 @@ public class PastSurgicalHistory {
 	private String name;
 	private String note;
 	private Date onsetDateTime;
+	private String code;
 }

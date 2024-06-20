@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * This class provides the business logic related to the OPConsultation.
+ * This class provides the business logic related to the Clinical Data.
  * 
  * @author kumari.anamika
  *
@@ -37,14 +37,14 @@ public class ClinicalDataControllerImpl implements ClinicalDataController {
 	/**
 	 * {@inheritDoc}
 	 */
-	@PostMapping(value = "/clinicalartifacts/opconsultation")
 	@Override
-	@ApiOperation(value = "This Api is used to generate fhir clinical-data.", response = String.class)
+	@PostMapping(value = "/clinical-artifacts/op-consultation")
+	@ApiOperation(value = "This Api is used to generate sample FHIR JSON based on ABDM profiles for OPConsultRecord.", response = String.class)
 	@ApiImplicitParams(@ApiImplicitParam(name = "Content-Type", value = "application/json", required = true, allowEmptyValue = false, paramType = "header"))
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully generated") })
-	public ResponseEntity<String> generateClinicalDataJSON(@Valid @RequestBody ClinicalData clinicalData)
+	public ResponseEntity<String> opConsultRecordGenerator(@Valid @RequestBody ClinicalData clinicalData)
 			throws Exception {
 
-		return new ResponseEntity<>(clinicalDataService.clinicalDataGenerator(clinicalData), HttpStatus.OK);
+		return new ResponseEntity<>(clinicalDataService.createOpConsultRecord(clinicalData), HttpStatus.OK);
 	}
 }

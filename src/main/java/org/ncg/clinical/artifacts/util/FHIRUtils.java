@@ -18,6 +18,7 @@ import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Composition;
+import org.hl7.fhir.r4.model.Condition;
 import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Encounter;
@@ -52,11 +53,11 @@ public class FHIRUtils {
 	private static AllLabTests allLabTests;
 
 	@Value("${all.tests.labs.json}")
-	private String allTestsAndLabsJson;
+	private String allTestsNameCodeAndPanelsJson;
 
 	@PostConstruct
 	public void init() throws Exception {
-		allLabTests = new ObjectMapper().readValue(new File(allTestsAndLabsJson), AllLabTests.class);
+		allLabTests = new ObjectMapper().readValue(new File(allTestsNameCodeAndPanelsJson), AllLabTests.class);
 	}
 
 	public static Optional<Test> getTestByName(String name) {
@@ -122,7 +123,7 @@ public class FHIRUtils {
 		return String.format(Constants.HOSPITAL_SYSTEM, hospitalDomain, type);
 	}
 
-	static Bundle createBundle(Date forDate, String clinicalArtifactsType, String hipDomain) {
+	static Bundle createBundle(Date forDate, String clinicalArtifactsType) {
 		Bundle bundle = new Bundle();
 		bundle.setId(clinicalArtifactsType + "/" + Utils.generateId());
 		bundle.setTimestamp(forDate);
@@ -133,92 +134,87 @@ public class FHIRUtils {
 		return bundle;
 	}
 
-	static Patient patientBuilder(PatientData patientData, Bundle bundle) throws Exception {
-		try {
-			Patient fhirPatient = new Patient();
+	static Patient patientBuilder(PatientData patientData, Bundle bundle) {
+		Patient fhirPatient = new Patient();
 
-			// set id
-			fhirPatient.setId(Utils.generateId());
+		// set id
+		fhirPatient.setId(Utils.generateId());
 
-			// set firstName, lastName, middleName in humanName
-			fhirPatient.addName(
-					getHumanName(patientData.getFirstName(), patientData.getMiddleName(), patientData.getLastName()));
+		// set firstName, lastName, middleName in humanName
+		fhirPatient.addName(
+				getHumanName(patientData.getFirstName(), patientData.getMiddleName(), patientData.getLastName()));
 
-			// if dob is given then set dob else convert dob from age.
-			if (Objects.nonNull(patientData.getDob())) {
-				fhirPatient.setBirthDate(patientData.getDob());
-			} else {
-				if (Objects.nonNull(patientData.getAge())) {
-					fhirPatient.setBirthDate(Utils.ageToDateConverter(patientData.getAge()));
-				}
+		// if dob is given then set dob else convert dob from age.
+		if (Objects.nonNull(patientData.getDob())) {
+			fhirPatient.setBirthDate(patientData.getDob());
+		} else {
+			if (Objects.nonNull(patientData.getAge())) {
+				fhirPatient.setBirthDate(Utils.ageToDateConverter(patientData.getAge()));
 			}
-
-			// set gender
-			getFHIRGender(patientData.getGender(), fhirPatient);
-
-			// set phone number
-			if (StringUtils.isNotBlank(patientData.getPhoneNumber())) {
-				fhirPatient.addTelecom(getPhoneNumber(patientData.getPhoneNumber()));
-			}
-
-			// Add primary address
-			if (Objects.nonNull(patientData.getAddress())) {
-				fhirPatient.addAddress(getAddress(patientData.getAddress()));
-			}
-
-			// Add ABHA address
-			if (Objects.nonNull(patientData.getAbhaAddress())) {
-				fhirPatient.addAddress(getABHAAddress(patientData.getAbhaAddress()));
-			}
-
-			// Set the patient's height in Observations
-			if (Objects.nonNull(patientData.getHeight())) {
-				Observation observation = getHeight(patientData.getHeight(), fhirPatient);
-
-				FHIRUtils.addToBundleEntry(bundle, observation, true);
-			}
-
-			// Set the patient's weight in Observations
-			if (Objects.nonNull(patientData.getWeight())) {
-				Observation observation = getWeight(patientData.getWeight(), fhirPatient);
-
-				FHIRUtils.addToBundleEntry(bundle, observation, true);
-			}
-
-			// Set the patient's BMI in Observations
-			if (Objects.nonNull(patientData.getHeight()) && Objects.nonNull(patientData.getWeight())) {
-				Observation observation = getBMI(patientData.getHeight(), patientData.getHeight(), fhirPatient);
-
-				FHIRUtils.addToBundleEntry(bundle, observation, true);
-			}
-
-			// set bloodGroup in Observations
-			if (Objects.nonNull(patientData.getBloodGroup())) {
-				Observation observation = getBloodGroup(patientData.getBloodGroup(), fhirPatient);
-				FHIRUtils.addToBundleEntry(bundle, observation, true);
-			}
-
-			// add meta
-			Date date = new Date();
-			fhirPatient.setMeta(Utils.getMeta(date, Constants.STRUCTURE_DEFINITION_PATIENT));
-
-			// add identifier
-			Identifier identifier = new Identifier();
-			if (Objects.nonNull(patientData.getIdentifier())) {
-				identifier = getIdentifier(patientData.getIdentifier().getDomain(),
-						"urn:health:information:provider:system");
-				identifier.setId(patientData.getIdentifier().getHipId());
-			}
-
-			identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
-					Constants.MEDICAL_RECORD_NUMBER, Constants.MEDICAL_RECORD_NUMBER));
-			fhirPatient.addIdentifier(identifier);
-
-			return fhirPatient;
-		} catch (Exception exception) {
-			throw new Exception(
-					"FHIRUtils::patientBuilder::failed to generate fhir patient object for the given patient-data object!");
 		}
+
+		// set gender
+		getFHIRGender(patientData.getGender(), fhirPatient);
+
+		// set phone number
+		if (StringUtils.isNotBlank(patientData.getPhoneNumber())) {
+			fhirPatient.addTelecom(getPhoneNumber(patientData.getPhoneNumber()));
+		}
+
+		// Add primary address
+		if (Objects.nonNull(patientData.getAddress())) {
+			fhirPatient.addAddress(getAddress(patientData.getAddress()));
+		}
+
+		// Add ABHA address
+		if (Objects.nonNull(patientData.getAbhaAddress())) {
+			fhirPatient.addAddress(getABHAAddress(patientData.getAbhaAddress()));
+		}
+
+		// Set the patient's height in Observations
+		if (Objects.nonNull(patientData.getHeight())) {
+			Observation observation = getHeight(patientData.getHeight(), fhirPatient);
+
+			FHIRUtils.addToBundleEntry(bundle, observation, true);
+		}
+
+		// Set the patient's weight in Observations
+		if (Objects.nonNull(patientData.getWeight())) {
+			Observation observation = getWeight(patientData.getWeight(), fhirPatient);
+
+			FHIRUtils.addToBundleEntry(bundle, observation, true);
+		}
+
+		// Set the patient's BMI in Observations
+		if (Objects.nonNull(patientData.getHeight()) && Objects.nonNull(patientData.getWeight())) {
+			Observation observation = getBMI(patientData.getHeight(), patientData.getHeight(), fhirPatient);
+
+			FHIRUtils.addToBundleEntry(bundle, observation, true);
+		}
+
+		// set bloodGroup in Observations
+		if (Objects.nonNull(patientData.getBloodGroup())) {
+			Observation observation = getBloodGroup(patientData.getBloodGroup(), fhirPatient);
+			FHIRUtils.addToBundleEntry(bundle, observation, true);
+		}
+
+		// add meta
+		Date date = new Date();
+		fhirPatient.setMeta(Utils.getMeta(date, Constants.STRUCTURE_DEFINITION_PATIENT));
+
+		// add identifier
+		Identifier identifier = new Identifier();
+		if (Objects.nonNull(patientData.getIdentifier())) {
+			identifier = getIdentifier(patientData.getIdentifier().getDomain(),
+					"urn:health:information:provider:system");
+			identifier.setId(patientData.getIdentifier().getHipId());
+		}
+
+		identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
+				Constants.MEDICAL_RECORD_NUMBER, Constants.MEDICAL_RECORD_NUMBER));
+		fhirPatient.addIdentifier(identifier);
+
+		return fhirPatient;
 	}
 
 	public static ContactPoint getPhoneNumber(String mobile) {
@@ -493,14 +489,15 @@ public class FHIRUtils {
 	public static CodeableConcept getAdverseEventCategory(String category) {
 		switch (category.toLowerCase()) {
 		case "wrong-patient":
-			return FHIRUtils.getCodeableConcept("418038007", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Patient");
+			return FHIRUtils.getCodeableConcept("418038007", Constants.SNOMED_SYSTEM_SCT,
+					"Propensity to adverse reactions to substance", "Wrong Patient");
 		case "procedure-mishap":
 			return FHIRUtils.getCodeableConcept("410528009", Constants.SNOMED_SYSTEM_SCT, category, "Procedure Mishap");
 		case "medication-mishap":
 			return FHIRUtils.getCodeableConcept("425391005", Constants.SNOMED_SYSTEM_SCT, "Using access device",
 					"Medication Mishap");
 		case "device":
-			return FHIRUtils.getCodeableConcept("419099009", Constants.SNOMED_SYSTEM_SCT, category, "Device");
+			return FHIRUtils.getCodeableConcept("419099009", Constants.SNOMED_SYSTEM_SCT, "Dead", "Device");
 		case "unsafe-physical-environment":
 			return FHIRUtils.getCodeableConcept("723877005", Constants.SNOMED_SYSTEM_SCT, category,
 					"Unsafe Physical Environment");
@@ -554,7 +551,19 @@ public class FHIRUtils {
 		return dateTimeType;
 	}
 
-	static Encounter createEncounter() {
+	static Encounter addEncounterResourceToComposition(Bundle bundle, Composition opDoc, Patient patientResource)
+			throws Exception {
+		Encounter encounter = FHIRUtils.encounterBuilder();
+		encounter.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
+		FHIRUtils.addToBundleEntry(bundle, encounter, true);
+		Reference encounterRef = new Reference();
+		encounterRef.setReference("Encounter/" + encounter.getId());
+		opDoc.setEncounter(encounterRef);
+
+		return encounter;
+	}
+
+	static Encounter encounterBuilder() {
 		Encounter fhirEncounter = new Encounter();
 
 		// set id
@@ -591,5 +600,67 @@ public class FHIRUtils {
 		fhirEncounter.setPeriod(period);
 
 		return fhirEncounter;
+	}
+
+	public static Composition createCompositionResourceType(Date docDate, Bundle bundle, CodeableConcept type,
+			String title) {
+		Composition opDoc = new Composition();
+		opDoc.setId(Utils.generateId());
+		opDoc.setDate(bundle.getTimestamp());
+		opDoc.setMeta(Utils.getMeta(docDate, Constants.STRUCTURE_DEFINITION_OP_CONSULT_RECORD));
+		opDoc.setLanguage(Constants.EN_IN);
+		opDoc.setIdentifier(FHIRUtils.getIdentifier(opDoc.getId(), Constants.HTTPS_NDHM_IN_PHR));
+		opDoc.setStatus(Composition.CompositionStatus.FINAL);
+		opDoc.setType(type);
+		opDoc.setTitle(title);
+		return opDoc;
+	}
+
+	public static Composition.SectionComponent createChiefComplaintSection(Bundle bundle, Patient patient,
+			String conditionLoincCode, String conditionType) {
+		// create code for Chief complaint
+		CodeableConcept chiefComplaintCode = new CodeableConcept();
+		Optional<Test> cancerTestDetail = getTestByName("Chief complaints");
+		if (cancerTestDetail.isPresent()) {
+			Test test = cancerTestDetail.get();
+			chiefComplaintCode = FHIRUtils.getCodeableConcept(test.getCode(), Constants.SNOMED_SYSTEM_SCT,
+					test.getDescription(), test.getDescription());
+		}
+		// create Chief complaint section
+		Composition.SectionComponent oralCancerSection = createSectionComponent("Chief complaints", chiefComplaintCode);
+
+		// Create a new Condition resource for the Chief complaint
+		CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(conditionLoincCode, Constants.LOINC_SYSTEM,
+				conditionType, conditionType);
+		Condition condition = createConditionResource(conditionCode);
+
+		// make an entry for condition resource to bundle
+		FHIRUtils.addToBundleEntry(bundle, condition, true);
+
+		// make an entry for condition resource to the Chief complaint section
+		oralCancerSection.addEntry(new Reference(condition));
+		return oralCancerSection;
+	}
+
+	public static Composition.SectionComponent createSectionComponent(String title, CodeableConcept code) {
+		Composition.SectionComponent oralCancerSection = new Composition.SectionComponent();
+		oralCancerSection.setTitle(title);
+		oralCancerSection.setCode(code);
+		return oralCancerSection;
+	}
+
+	public static Condition createConditionResource(CodeableConcept code) {
+		Condition condition = new Condition();
+		condition.setId(Utils.generateId());
+		condition.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_CONDITION));
+		condition.setClinicalStatus(getConditionClinicalStatus());
+		condition.setCode(code);
+
+		return condition;
+	}
+
+	public static CodeableConcept getConditionClinicalStatus() {
+		return FHIRUtils.getCodeableConcept(Constants.ACTIVE.toLowerCase(),
+				Constants.FHIR_CONDITION_CLINICAL_STATUS_SYSTEM, Constants.ACTIVE.toLowerCase(), Constants.ACTIVE);
 	}
 }

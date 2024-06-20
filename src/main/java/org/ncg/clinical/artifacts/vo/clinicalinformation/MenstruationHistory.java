@@ -12,4 +12,5 @@ import lombok.Setter;
 public class MenstruationHistory {
 	private String name;
 	private String value;
+	private String code;
 }
