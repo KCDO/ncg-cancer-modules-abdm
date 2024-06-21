@@ -98,7 +98,7 @@ public class OPConsultationHelper {
 
 	public Bundle createOPConsultationBundle(ClinicalData clinicalData) throws Exception {
 		Date docDate = new Date();
-		Bundle bundle = FHIRUtils.createBundle(docDate, clinicalData.getOutputClinicalArtifactType());
+		Bundle bundle = FHIRUtils.createBundle(docDate, Constants.OP_CONSULT_RECORD);
 
 		// fetch code and test description based on test name from
 		// allTestsAndPanels.json and create type based on those value
@@ -106,8 +106,8 @@ public class OPConsultationHelper {
 		Optional<Test> cancerTestDetail = getTestByName(OP_CONSULT_RECORD);
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
-			type = FHIRUtils.getCodeableConcept(test.getCode(), Constants.SNOMED_SYSTEM_SCT, test.getDescription(),
-					test.getDescription());
+			type = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
+					test.getDescription(), test.getDescription());
 		}
 
 		// create composition resource
@@ -700,35 +700,29 @@ public class OPConsultationHelper {
 	private void processCancerType(CancerType cancerType, String cancerName, Bundle bundle, Patient patientResource,
 			List<Composition.SectionComponent> sections) throws IOException {
 		if (Objects.nonNull(cancerType)) {
-			Optional<Test> cancerTest = getTestByName(cancerName);
 			Composition.SectionComponent cancerSection = new Composition.SectionComponent();
 
+			Optional<Test> cancerTest = getTestByName(cancerName);
 			// Create Chief complaint section and add condition resource
 			if (cancerTest.isPresent()) {
 				cancerSection = FHIRUtils.createChiefComplaintSection(bundle, patientResource,
-						cancerTest.get().getCode(), cancerTest.get().getDescription());
+						cancerTest.get().getCoding().getCode(), cancerTest.get().getDescription());
 			}
 			// Create diagnostic report
 			if (!CollectionUtils.isEmpty(cancerType.getTests())) {
 				for (AttachmentDetail attachmentDetail : cancerType.getTests()) {
-					Optional<Test> cancerTestDetail = getTestByName(attachmentDetail.getName());
 
-					if (cancerTestDetail.isPresent()) {
-						Test test = cancerTestDetail.get();
+					// if incoming coding: system, code, display are not null then use same and if
+					// incoming coding: system, code, display are null then take those value from
+					// input file
+					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(attachmentDetail.getCoding(),
+							attachmentDetail.getName());
 
-						String code = StringUtils.isNotEmpty(attachmentDetail.getCode()) ? attachmentDetail.getCode()
-								: test.getCode();
-						String name = StringUtils.isNotEmpty(attachmentDetail.getName()) ? attachmentDetail.getName()
-								: test.getName();
-						test.setCode(code);
-						test.setName(name);
+					DiagnosticReport report = createDiagnosticReport(bundle, patientResource,
+							attachmentDetail.getAttachment(), coding, attachmentDetail.getName());
 
-						DiagnosticReport report = createDiagnosticReport(bundle, patientResource,
-								attachmentDetail.getAttachment(), test);
-
-						// Add the report to cancer section
-						cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
-					}
+					// Add the report to cancer section
+					cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
 				}
 			}
 			sections.add(cancerSection);
@@ -818,18 +812,18 @@ public class OPConsultationHelper {
 		return diagnosticReport;
 	}
 
-	private DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient, String reportValue, Test test)
-			throws IOException {
+	private DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient, String reportValue,
+			org.ncg.clinical.artifacts.vo.Coding coding, String reportName) throws IOException {
 		// Create a new CodeableConcept
-		CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
-				test.getDescription(), test.getDescription());
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				reportName);
 
 		// Create a new DiagnosticReport resource
 		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, null);
 
 		// Create a new DocumentReference resource
-		DocumentReference documentReference = createDocumentReferenceResource(test.getDescription(), reportValue,
-				patient, test.getDescription() + " report", test.getCode());
+		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient,
+				reportName + " report", coding.getCode());
 
 		// Add documentReference to the bundle
 		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
@@ -847,7 +841,7 @@ public class OPConsultationHelper {
 		CodeableConcept diagnosticReportCode = new CodeableConcept();
 		Optional<Test> testWithLoincCode = getTestByName(Constants.DIAGNOSTIC_REPORT);
 		if (testWithLoincCode.isPresent()) {
-			diagnosticReportCode = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(),
+			diagnosticReportCode = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
 					Constants.SNOMED_SYSTEM_SCT, testWithLoincCode.get().getDescription(),
 					testWithLoincCode.get().getDescription());
 		}
@@ -858,8 +852,9 @@ public class OPConsultationHelper {
 			CodeableConcept category = new CodeableConcept();
 			testWithLoincCode = getTestByName(Constants.DR_CBC);
 			if (testWithLoincCode.isPresent()) {
-				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(), Constants.LOINC_SYSTEM,
-						testWithLoincCode.get().getDescription(), testWithLoincCode.get().getDescription());
+				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
+						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
+						testWithLoincCode.get().getDescription());
 			}
 
 			// panels for CBC
@@ -880,12 +875,12 @@ public class OPConsultationHelper {
 			testWithLoincCode = getTestByName(Constants.BIOPSY_HISTOPATHOLOGY_REPORT);
 			if (testWithLoincCode.isPresent()) {
 				// Create category
-				CodeableConcept category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(),
+				CodeableConcept category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
 						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
 						testWithLoincCode.get().getDescription());
 
 				// Create code
-				CodeableConcept code = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(),
+				CodeableConcept code = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
 						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
 						testWithLoincCode.get().getDescription());
 
@@ -895,7 +890,7 @@ public class OPConsultationHelper {
 				// Create a new DocumentReference resource
 				DocumentReference documentReference = createDocumentReferenceResource(
 						testWithLoincCode.get().getDescription(), diagnostic.getBiopsyHistopathologyReport(), patient,
-						testWithLoincCode.get().getDescription(), testWithLoincCode.get().getCode());
+						testWithLoincCode.get().getDescription(), testWithLoincCode.get().getCoding().getCode());
 
 				// Add documentReference to the DiagnosticReport
 				Reference resultReference = new Reference(
@@ -917,8 +912,9 @@ public class OPConsultationHelper {
 			CodeableConcept category = new CodeableConcept();
 			testWithLoincCode = getTestByName(Constants.BIO_CHEMISTRY);
 			if (testWithLoincCode.isPresent()) {
-				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCode(), Constants.SNOMED_SYSTEM_SCT,
-						testWithLoincCode.get().getDescription(), testWithLoincCode.get().getDescription());
+				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
+						Constants.SNOMED_SYSTEM_SCT, testWithLoincCode.get().getDescription(),
+						testWithLoincCode.get().getDescription());
 			}
 			// panels for bioChemistry
 			List<PanelDetail> bioChemistryPanels = diagnostic.getBioChemistry().getPanels();
@@ -940,14 +936,15 @@ public class OPConsultationHelper {
 			Composition.SectionComponent diagnosticReportSection, CodeableConcept category, Panel panelWithLoincCode,
 			PanelDetail panelDetail) throws IOException {
 		// Create a new DiagnosticReport resource
-		CodeableConcept code = FHIRUtils.getCodeableConcept(panelWithLoincCode.getCode(), Constants.LOINC_SYSTEM,
-				panelWithLoincCode.getDescription(), panelWithLoincCode.getDescription());
+		CodeableConcept code = FHIRUtils.getCodeableConcept(panelWithLoincCode.getCoding().getCode(),
+				panelWithLoincCode.getCoding().getSystem(), panelWithLoincCode.getDescription(),
+				panelWithLoincCode.getDescription());
 		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, Arrays.asList(category));
 
 		// Create a new DocumentReference resource
 		DocumentReference documentReference = createDocumentReferenceResource(panelWithLoincCode.getDescription(),
 				panelDetail.getAttachment(), patient, panelWithLoincCode.getDescription(),
-				panelWithLoincCode.getCode());
+				panelWithLoincCode.getCoding().getCode());
 
 		// Add documentReference to the DiagnosticReport
 		Reference resultReference = new Reference(Constants.DOCUMENT_REFERENCE + "/" + documentReference.getId());
@@ -971,25 +968,25 @@ public class OPConsultationHelper {
 
 	private void addObservationToDiagnosticReport(Bundle bundle, Composition composition, Patient patient,
 			Composition.SectionComponent diagnosticReportSection, TestDetail testDetail, DiagnosticReport report) {
-		Optional<Test> panelTest = getTestByName(testDetail.getName());
-		if (panelTest.isPresent()) {
-			String loincCode = StringUtils.isEmpty(testDetail.getCode()) ? panelTest.get().getCode()
-					: testDetail.getCode();
-			CodeableConcept observationCode = FHIRUtils.getCodeableConcept(loincCode, Constants.LOINC_SYSTEM,
-					panelTest.get().getDescription(), panelTest.get().getDescription());
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(testDetail.getCoding(), testDetail.getName());
 
-			// Create an Observation
-			Observation observation = FHIRUtils.createObservation(composition.getDate(), patient);
-			observation.setCode(observationCode);
-			observation.setValue(
-					new Quantity().setValue(testDetail.getResult()).setUnit(testDetail.getUnitOfMeasurement()));
-			FHIRUtils.addToBundleEntry(bundle, observation, true);
+		CodeableConcept observationCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), testDetail.getName());
 
-			// Add Observation to the DiagnosticReport
-			Reference resultReference = new Reference("Observation/" + observation.getId());
-			resultReference.setDisplay("Observation/" + observationCode.getText());
-			report.addResult(resultReference);
-		}
+		// Create an Observation
+		Observation observation = FHIRUtils.createObservation(composition.getDate(), patient);
+		observation.setCode(observationCode);
+		observation
+				.setValue(new Quantity().setValue(testDetail.getResult()).setUnit(testDetail.getUnitOfMeasurement()));
+		FHIRUtils.addToBundleEntry(bundle, observation, true);
+
+		// Add Observation to the DiagnosticReport
+		Reference resultReference = new Reference("Observation/" + observation.getId());
+		resultReference.setDisplay("Observation/" + observationCode.getText());
+		report.addResult(resultReference);
 	}
 
 	private DocumentReference createDocumentReferenceResource(String reportType, String reportValue, Patient patient,
@@ -1226,7 +1223,7 @@ public class OPConsultationHelper {
 		Optional<Test> cancerTestDetail = getTestByName("Allergy record");
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
-			allergyCode = FHIRUtils.getCodeableConcept(test.getCode(), Constants.SNOMED_SYSTEM_SCT,
+			allergyCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
 					test.getDescription(), test.getDescription());
 		}
 		// Create the section for allergies

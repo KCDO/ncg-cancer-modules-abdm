@@ -2,6 +2,8 @@ package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import java.util.Date;
 
+import org.ncg.clinical.artifacts.vo.Coding;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,5 +17,5 @@ public class PastMedicalHistory {
 	private String name;
 	private String note;
 	private Date onsetDateTime;
-	private String code;
+	private Coding coding;
 }

@@ -1,6 +1,7 @@
 package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import org.hl7.fhir.r4.model.DateTimeType;
+import org.ncg.clinical.artifacts.vo.Coding;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,5 +17,5 @@ public class InvestigationAdvice {
 	private DateTimeType occurrenceDateTime;
 	private String requester;
 	private String reason;
-	private String code;
+	private Coding coding;
 }

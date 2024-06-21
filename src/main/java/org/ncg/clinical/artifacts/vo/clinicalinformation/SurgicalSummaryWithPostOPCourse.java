@@ -1,6 +1,7 @@
 package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import org.hl7.fhir.r4.model.DateTimeType;
+import org.ncg.clinical.artifacts.vo.Coding;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,5 +20,5 @@ public class SurgicalSummaryWithPostOPCourse {
 	private String bodySite;
 	private String outcome;
 	private String followUp;
-	private String code;
+	private Coding coding;
 }

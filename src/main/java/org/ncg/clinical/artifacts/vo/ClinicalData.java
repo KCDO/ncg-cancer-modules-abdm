@@ -1,6 +1,5 @@
 package org.ncg.clinical.artifacts.vo;
 
-import org.apache.commons.lang3.StringUtils;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.ClinicalInformation;
 import org.ncg.clinical.artifacts.vo.diagnostic.Diagnostic;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
@@ -15,7 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClinicalData {
-	private String outputClinicalArtifactType;
 	private PatientData patientDetails;
 	private ClinicalInformation clinicalInformation;
 	private Diagnostic diagnostics;
@@ -24,7 +22,7 @@ public class ClinicalData {
 	private CervicalCancer cervicalCancer;
 
 	public boolean hasEmptyFields() {
-		return (StringUtils.isEmpty(outputClinicalArtifactType) && patientDetails == null && clinicalInformation == null
-				&& diagnostics == null && lungCancer == null && oralCancer == null && cervicalCancer == null);
+		return (patientDetails == null && clinicalInformation == null && diagnostics == null && lungCancer == null
+				&& oralCancer == null && cervicalCancer == null);
 	}
 }

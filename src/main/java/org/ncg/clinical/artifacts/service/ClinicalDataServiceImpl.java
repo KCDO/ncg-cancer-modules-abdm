@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Bundle;
 import org.ncg.clinical.artifacts.util.Constants;
 import org.ncg.clinical.artifacts.util.OPConsultationHelper;
@@ -79,16 +78,13 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 		}
 	}
 
-	private Bundle processOPConsultRecord(ClinicalData clinicalData)
-			throws Exception {
+	private Bundle processOPConsultRecord(ClinicalData clinicalData) throws Exception {
 		Bundle bundle = new Bundle();
-		if(StringUtils.isNotEmpty(clinicalData.getOutputClinicalArtifactType())) {
-			AbdmHITypeGenerator generator = generators.get(clinicalData.getOutputClinicalArtifactType());
-			if (!Objects.isNull(generator)) {
-				bundle = generator.create(clinicalData);
-			}
+		AbdmHITypeGenerator generator = generators.get(Constants.OP_CONSULT_RECORD);
+		if (!Objects.isNull(generator)) {
+			bundle = generator.create(clinicalData);
 		}
-		
+
 		return bundle;
 	}
 }
