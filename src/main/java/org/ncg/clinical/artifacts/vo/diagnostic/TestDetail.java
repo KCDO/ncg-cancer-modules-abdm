@@ -1,5 +1,7 @@
 package org.ncg.clinical.artifacts.vo.diagnostic;
 
+import org.ncg.clinical.artifacts.vo.Coding;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TestDetail {
 	private String name;
-	private String code;
+	private Coding coding;
 	private String unitOfMeasurement;
 	private double result;
 }

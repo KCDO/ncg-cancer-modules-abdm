@@ -2,31 +2,51 @@
 	"panels": [
 		{
 			"name": "CBC Blood by Automated count",
-			"code": "58410-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "58410-2",
+				"display": "CBC panel - Blood by Automated count"
+			},
 			"description": "CBC panel - Blood by Automated count",
 			"members": []
 		},
 		{
 			"name": "CBC Auto Differential",
-			"code": "57023-4",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "57023-4",
+				"display": "Auto Differential panel - Blood"
+			},
 			"description": "Auto Differential panel - Blood",
 			"members": []
 		},
 		{
 			"name": "Lipid Panel",
-			"code": "100898-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "100898-6",
+				"display": "Lipid panel - Serum or Plasma"
+			},
 			"description": "Lipid panel - Serum or Plasma",
 			"members": []
 		},
 		{
 			"name": "Renal Function",
-			"code": "24362-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "24362-6",
+				"display": "Renal function 2000 panel - Serum or Plasma"
+			},
 			"description": "Renal function 2000 panel - Serum or Plasma",
 			"members": []
 		},
 		{
 			"name": "Hepatic Function",
-			"code": "24325-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "24325-3",
+				"display": "Hepatic function 2000 panel - Serum or Plasma"
+			},
 			"description": "Hepatic function 2000 panel - Serum or Plasma",
 			"members": []
 		}
@@ -34,447 +54,803 @@
 	"tests": [
 		{
 			"name": "Diagnostic Report",
-			"code": "4321000179101",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "4321000179101",
+				"display": ""
+			},
 			"description": "Diagnostic Report"
 		},
 		{
 			"name": "Biopsy Histopathology Report",
-			"code": "66121-5",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "66121-5",
+				"display": ""
+			},
 			"description": "Biopsy Histopathology Report"
 		},
 		{
 			"name": "Bio Chemistry",
-			"code": "4241000179101",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "4241000179101",
+				"display": ""
+			},
 			"description": "Bio Chemistry"
 		},
 		{
 			"name": "total cholesterol",
-			"code": "9830-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "9830-1",
+				"display": ""
+			},
 			"description": "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"
 		},
 		{
 			"name": "hdl cholesterol",
-			"code": "2085-9",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2085-9",
+				"display": ""
+			},
 			"description": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "ldl cholesterol",
-			"code": "13457-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "13457-7",
+				"display": ""
+			},
 			"description": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
 		},
 		{
 			"name": "vldl cholesterol",
-			"code": "13458-5",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "13458-5",
+				"display": ""
+			},
 			"description": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"
 		},
 		{
 			"name": "triglycerides",
-			"code": "2571-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2571-8",
+				"display": ""
+			},
 			"description": "Triglyceride [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "triglycerides fasting",
-			"code": "3048-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "3048-6",
+				"display": ""
+			},
 			"description": "Triglyceride [Mass/volume] in Serum or Plasma --fasting"
 		},
 		{
 			"name": "fasting duration",
-			"code": "87527-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "87527-8",
+				"display": ""
+			},
 			"description": "Fasting status"
 		},
 		{
 			"name": "fasting status",
-			"code": "49541-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "49541-6",
+				"display": ""
+			},
 			"description": "Fasting duration"
 		},
 		{
 			"name": "glucose",
-			"code": "2345-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2345-7",
+				"display": ""
+			},
 			"description": "Glucose [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "urea nitrogen",
-			"code": "3094-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "3094-0",
+				"display": ""
+			},
 			"description": "Urea nitrogen [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "creatinine",
-			"code": "2160-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2160-0",
+				"display": ""
+			},
 			"description": "Creatinine [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "urea nitrogen/creatinine ratio",
-			"code": "3097-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "3097-3",
+				"display": ""
+			},
 			"description": "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"
 		},
 		{
 			"name": "gfr mdrd",
-			"code": "33914-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "33914-3",
+				"display": ""
+			},
 			"description": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
 		},
 		{
 			"name": "gfr mdrd females",
-			"code": "50044-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "50044-7",
+				"display": ""
+			},
 			"description": " Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
 		},
 		{
 			"name": "gfr mdrd non-blacks",
-			"code": "48642-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "48642-3",
+				"display": ""
+			},
 			"description": " Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
 		},
 		{
 			"name": "gfr mdrd blacks",
-			"code": "48643-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "48643-1",
+				"display": ""
+			},
 			"description": " Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
 		},
 		{
 			"name": "calcium",
-			"code": "17861-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "17861-6",
+				"display": ""
+			},
 			"description": "Calcium [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "phosphate",
-			"code": "2777-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2777-1",
+				"display": ""
+			},
 			"description": "Phosphate [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "albumin",
-			"code": "1751-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "1751-7",
+				"display": ""
+			},
 			"description": "Albumin [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "electrolytes panel",
-			"code": "24326-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "24326-1",
+				"display": ""
+			},
 			"description": "Electrolytes 1998 panel - Serum or Plasma"
 		},
 		{
 			"name": "sodium",
-			"code": "2951-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2951-2",
+				"display": ""
+			},
 			"description": "Sodium [Moles/volume] in Serum or Plasma"
 		},
 		{
 			"name": "potassium",
-			"code": "2823-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2823-3",
+				"display": ""
+			},
 			"description": "Potassium [Moles/volume] in Serum or Plasma"
 		},
 		{
 			"name": "chloride",
-			"code": "2075-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2075-0",
+				"display": ""
+			},
 			"description": "Chloride [Moles/volume] in Serum or Plasma"
 		},
 		{
 			"name": "bicarbonate",
-			"code": "1963-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "1963-8",
+				"display": ""
+			},
 			"description": "Bicarbonate [Moles/volume] in Serum or Plasma"
 		},
 		{
 			"name": "carbon dioxide",
-			"code": "2028-9",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2028-9",
+				"display": ""
+			},
 			"description": "Carbon dioxide, total [Moles/volume] in Serum or Plasma"
 		},
 		{
 			"name": "anion gap",
-			"code": "33037-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "33037-3",
+				"display": ""
+			},
 			"description": "Anion gap in Serum or Plasma"
 		},
 		{
 			"name": "protein",
-			"code": "2885-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "2885-2",
+				"display": ""
+			},
 			"description": "Protein [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "albumin",
-			"code": "1751-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "1751-7",
+				"display": ""
+			},
 			"description": "Albumin [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "bilirubin total",
-			"code": "1975-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "1975-2",
+				"display": ""
+			},
 			"description": "Bilirubin.total [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "bilirubin direct",
-			"code": "1968-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "1968-7",
+				"display": ""
+			},
 			"description": "Bilirubin.direct [Mass/volume] in Serum or Plasma"
 		},
 		{
 			"name": "alkaline phosphatase",
-			"code": "6768-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "6768-6",
+				"display": ""
+			},
 			"description": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
 		},
 		{
 			"name": "aspartate aminotransferase",
-			"code": "1920-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "1920-8",
+				"display": ""
+			},
 			"description": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
 		},
 		{
 			"name": "alanine aminotransferase",
-			"code": "1742-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "1742-6",
+				"display": ""
+			},
 			"description": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
 		},
 		{
 			"name": "Lung Cancer",
-			"code": "59015-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "59015-0",
+				"display": ""
+			},
 			"description": "Lung Cancer"
 		},
 		{
 			"name": "2 D ECHO with PASP",
-			"code": "34552-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "34552-0",
+				"display": ""
+			},
 			"description": "2 D ECHO with PASP"
 		},
 		{
 			"name": "FDG PETCT",
-			"code": "81553-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "81553-0",
+				"display": ""
+			},
 			"description": "FDG PETCT"
 		},
 		{
 			"name": "MRI brain",
-			"code": "24590-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "24590-2",
+				"display": ""
+			},
 			"description": "MRI brain"
 		},
 		{
 			"name": "Fiber optic bronchoscopy",
-			"code": "18744-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "18744-3",
+				"display": ""
+			},
 			"description": "Fiber optic bronchoscopy"
 		},
 		{
 			"name": "Endobronchial ultrasound with ROSE reports",
-			"code": "100231-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "100231-0",
+				"display": ""
+			},
 			"description": "Endobronchial ultrasound with ROSE reports"
 		},
 		{
 			"name": "Pulmonary function tests with DLCO",
-			"code": "58477-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "58477-1",
+				"display": ""
+			},
 			"description": "Pulmonary function tests with DLCO"
 		},
 		{
 			"name": "V/Q scan in pneumonectomy",
-			"code": "39942-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "39942-8",
+				"display": ""
+			},
 			"description": "V/Q scan in pneumonectomy"
 		},
 		{
 			"name": "6MWT",
-			"code": "64098-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "64098-7",
+				"display": ""
+			},
 			"description": "6MWT"
 		},
 		{
 			"name": "Molecular markers/NGS as needed",
-			"code": "73977-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "73977-1",
+				"display": ""
+			},
 			"description": "Molecular markers/NGS as needed"
 		},
 		{
 			"name": "Oral Cancer",
-			"code": "54014-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "54014-2",
+				"display": ""
+			},
 			"description": "Oral Cancer"
 		},
 		{
 			"name": "FNAC report",
-			"code": "87179-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "87179-8",
+				"display": ""
+			},
 			"description": "FNAC report"
 		},
 		{
 			"name": "CECT head neck thorax report/ PET Ct/ MRI",
-			"code": "24627-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "24627-2",
+				"display": ""
+			},
 			"description": "CECT head neck thorax report/ PET Ct/ MRI"
 		},
 		{
 			"name": "CBC",
-			"code": "57021-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "57021-8",
+				"display": ""
+			},
 			"description": "CBC"
 		},
 		{
 			"name": "Leukocytes",
-			"code": "6690-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "6690-2",
+				"display": ""
+			},
 			"description": "Leukocytes [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Erythrocytes",
-			"code": "789-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "789-8",
+				"display": ""
+			},
 			"description": "Erythrocytes"
 		},
 		{
 			"name": "Hemoglobin",
-			"code": "718-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "718-7",
+				"display": ""
+			},
 			"description": "Hemoglobin [Mass/volume] in Blood"
 		},
 		{
 			"name": "Hematocrit",
-			"code": "4544-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "4544-3",
+				"display": ""
+			},
 			"description": "Hematocrit [Volume Fraction] of Blood by Automated count"
 		},
 		{
 			"name": "MCV",
-			"code": "787-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "787-2",
+				"display": ""
+			},
 			"description": "MCV [Entitic volume] by Automated count"
 		},
 		{
 			"name": "MCH",
-			"code": "785-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "785-6",
+				"display": ""
+			},
 			"description": "MCH [Entitic mass] by Automated count"
 		},
 		{
 			"name": "MCHC",
-			"code": "786-4",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "786-4",
+				"display": ""
+			},
 			"description": "MCHC [Mass/volume] by Automated count"
 		},
 		{
 			"name": "Erythrocyte entitic volume",
-			"code": "21000-5",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "21000-5",
+				"display": ""
+			},
 			"description": "Erythrocyte distribution width [Entitic volume] by Automated count"
 		},
 		{
 			"name": "Erythrocyte Ratio",
-			"code": "788-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "788-0",
+				"display": ""
+			},
 			"description": "Erythrocyte distribution width [Ratio] by Automated count"
 		},
 		{
 			"name": "Platelets volume",
-			"code": "777-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "777-3",
+				"display": ""
+			},
 			"description": "Platelets [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Platelet distribution width",
-			"code": "32207-3",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "32207-3",
+				"display": ""
+			},
 			"description": "Platelet distribution width [Entitic volume] in Blood by Automated count"
 		},
 		{
 			"name": "Platelet mean volume",
-			"code": "32623-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "32623-1",
+				"display": ""
+			},
 			"description": "Platelet mean volume [Entitic volume] in Blood by Automated count"
 		},
 		{
 			"name": "Neutrophils",
-			"code": "770-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "770-8",
+				"display": ""
+			},
 			"description": "Neutrophils/100 leukocytes in Blood by Automated count"
 		},
 		{
 			"name": "Band form neutrophils",
-			"code": "35332-6",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "35332-6",
+				"display": ""
+			},
 			"description": "Band form neutrophils/100 leukocytes in Blood by Automated count"
 		},
 		{
 			"name": "Granulocytes",
-			"code": "19023-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "19023-1",
+				"display": ""
+			},
 			"description": "Granulocytes/100 leukocytes in Blood by Automated count"
 		},
 		{
 			"name": "Lymphocytes",
-			"code": "736-9",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "736-9",
+				"display": ""
+			},
 			"description": "Lymphocytes/100 leukocytes in Blood by Automated count"
 		},
 		{
 			"name": "Variant lymphocytes",
-			"code": "42250-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "42250-1",
+				"display": ""
+			},
 			"description": "Variant lymphocytes/100 leukocytes in Blood by Automated count"
 		},
 		{
 			"name": "Monocytes",
-			"code": "5905-5",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "5905-5",
+				"display": ""
+			},
 			"description": "Monocytes/100 leukocytes in Blood by Automated count"
 		},
 		{
 			"name": "Eosinophils",
-			"code": "713-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "713-8",
+				"display": ""
+			},
 			"description": "Eosinophils/100 leukocytes in Blood by Automated count"
 		},
 		{
 			"name": "Basophils",
-			"code": "706-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "706-2",
+				"display": ""
+			},
 			"description": "Basophils"
 		},
 		{
 			"name": "Other cells leukocytes",
-			"code": "58409-4",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "58409-4",
+				"display": ""
+			},
 			"description": "Other cells/100 leukocytes in Blood by Automated count"
 		},
 		{
 			"name": "Neutrophils",
-			"code": "751-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "751-8",
+				"display": ""
+			},
 			"description": "Neutrophils [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Band form neutrophils",
-			"code": "30229-9",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "30229-9",
+				"display": ""
+			},
 			"description": "Band form neutrophils [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Lymphocytes ",
-			"code": "731-0",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "731-0",
+				"display": ""
+			},
 			"description": "Lymphocytes [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Variant lymphocytes",
-			"code": "43743-4",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "43743-4",
+				"display": ""
+			},
 			"description": "Variant lymphocytes [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Monocytes",
-			"code": "742-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "742-7",
+				"display": ""
+			},
 			"description": "Monocytes [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Eosinophils",
-			"code": "711-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "711-2",
+				"display": ""
+			},
 			"description": "Eosinophils [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Basophils",
-			"code": "704-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "704-7",
+				"display": ""
+			},
 			"description": "Basophils [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Leukocytes other",
-			"code": "51383-8",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "51383-8",
+				"display": ""
+			},
 			"description": "Leukocytes other [#/volume] in Blood by Automated count"
 		},
 		{
 			"name": "Cervical Cancer",
-			"code": "36813-4",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "36813-4",
+				"display": ""
+			},
 			"description": "Cervical Cancer"
 		},
 		{
 			"name": "MRI pelvis with abdomen / CECT abdomen pelvis",
-			"code": "36813-4",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "36813-4",
+				"display": ""
+			},
 			"description": "MRI pelvis with abdomen / CECT abdomen pelvis"
 		},
 		{
 			"name": "Height",
-			"code": "8302-2",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "8302-2",
+				"display": ""
+			},
 			"description": "Body height"
 		},
 		{
 			"name": "Weight",
-			"code": "29463-7",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "29463-7",
+				"display": ""
+			},
 			"description": "weight"
 		},
 		{
 			"name": "Body Mass Index",
-			"code": "39156-5",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "39156-5",
+				"display": ""
+			},
 			"description": "Body mass index (BMI) [Ratio]"
 		},
 		{
 			"name": "Vital Signs",
-			"code": "vital-signs",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "vital-signs",
+				"display": ""
+			},
 			"description": "Vital Signs"
 		},
 		{
 			"name": "Blood Group",
-			"code": "882-1",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "882-1",
+				"display": ""
+			},
 			"description": "ABO and Rh group [Type] in Blood"
 		},
 		{
 			"name": "Op Consult Record",
-			"code": "371530004",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "371530004",
+				"display": ""
+			},
 			"description": "Clinical consultation report"
 		},
 		{
 			"name": "Chief complaints",
-			"code": "422843007",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "422843007",
+				"display": ""
+			},
 			"description": "Chief complaint sectiont"
 		},
 		{
 			"name": "Allergy record",
-			"code": "722446000",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "722446000",
+				"display": ""
+			},
 			"description": "Allergy record"
 		}
 	]

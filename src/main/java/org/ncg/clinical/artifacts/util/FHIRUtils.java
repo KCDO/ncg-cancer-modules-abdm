@@ -269,7 +269,7 @@ public class FHIRUtils {
 		Optional<Test> bmiTest = getTestByName("Height");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
-			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.LOINC_SYSTEM,
 					test.getDescription(), test.getName());
 			observation.setCode(code);
 		}
@@ -278,7 +278,7 @@ public class FHIRUtils {
 		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
-			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
+			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCoding().getCode(),
 					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
 					test.getDescription());
 			observation.addCategory(category);
@@ -310,7 +310,7 @@ public class FHIRUtils {
 		Optional<Test> bmiTest = getTestByName("Weight");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
-			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.LOINC_SYSTEM,
 					test.getDescription(), test.getName());
 			observation.setCode(code);
 		}
@@ -322,7 +322,7 @@ public class FHIRUtils {
 		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
-			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
+			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCoding().getCode(),
 					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
 					test.getDescription());
 			observation.addCategory(category);
@@ -341,7 +341,7 @@ public class FHIRUtils {
 		Optional<Test> bmiTest = getTestByName("Body Mass Index");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
-			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.LOINC_SYSTEM,
 					test.getDescription(), test.getName());
 			observation.setCode(code);
 		}
@@ -361,7 +361,7 @@ public class FHIRUtils {
 		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
-			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
+			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCoding().getCode(),
 					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
 					test.getDescription());
 			observation.addCategory(category);
@@ -380,7 +380,7 @@ public class FHIRUtils {
 		Optional<Test> bmiTest = getTestByName("Blood Group");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
-			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCode(), Constants.LOINC_SYSTEM,
+			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.LOINC_SYSTEM,
 					test.getDescription(), test.getName());
 			observation.setCode(code);
 		}
@@ -389,7 +389,7 @@ public class FHIRUtils {
 		bmiTest = getTestByName("Vital Signs");
 		if (bmiTest.isPresent()) {
 			Test test = bmiTest.get();
-			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCode(),
+			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCoding().getCode(),
 					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
 					test.getDescription());
 			observation.addCategory(category);
@@ -623,11 +623,11 @@ public class FHIRUtils {
 		Optional<Test> cancerTestDetail = getTestByName("Chief complaints");
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
-			chiefComplaintCode = FHIRUtils.getCodeableConcept(test.getCode(), Constants.SNOMED_SYSTEM_SCT,
+			chiefComplaintCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
 					test.getDescription(), test.getDescription());
 		}
 		// create Chief complaint section
-		Composition.SectionComponent oralCancerSection = createSectionComponent("Chief complaints", chiefComplaintCode);
+		Composition.SectionComponent sectionComponent = createSectionComponent("Chief complaints", chiefComplaintCode);
 
 		// Create a new Condition resource for the Chief complaint
 		CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(conditionLoincCode, Constants.LOINC_SYSTEM,
@@ -638,8 +638,8 @@ public class FHIRUtils {
 		FHIRUtils.addToBundleEntry(bundle, condition, true);
 
 		// make an entry for condition resource to the Chief complaint section
-		oralCancerSection.addEntry(new Reference(condition));
-		return oralCancerSection;
+		sectionComponent.addEntry(new Reference(condition));
+		return sectionComponent;
 	}
 
 	public static Composition.SectionComponent createSectionComponent(String title, CodeableConcept code) {
@@ -662,5 +662,41 @@ public class FHIRUtils {
 	public static CodeableConcept getConditionClinicalStatus() {
 		return FHIRUtils.getCodeableConcept(Constants.ACTIVE.toLowerCase(),
 				Constants.FHIR_CONDITION_CLINICAL_STATUS_SYSTEM, Constants.ACTIVE.toLowerCase(), Constants.ACTIVE);
+	}
+
+	public static org.ncg.clinical.artifacts.vo.Coding mapCoding(org.ncg.clinical.artifacts.vo.Coding coding,
+			String testName) {
+		org.ncg.clinical.artifacts.vo.Coding newCoding = new org.ncg.clinical.artifacts.vo.Coding();
+
+		if (Objects.nonNull(coding)) {
+			// if incoming coding: system, code, display are not null then return coding
+			if (StringUtils.isNotEmpty(coding.getSystem()) && StringUtils.isNotEmpty(coding.getCode())
+					&& StringUtils.isNotEmpty(coding.getDisplay())) {
+				return coding;
+			} else {
+				// if any one of incoming system, code, display are null then use input json
+				// Test
+				Optional<Test> cancerTestDetail = getTestByName(testName);
+				if (cancerTestDetail.isPresent()) {
+					Test test = cancerTestDetail.get();
+					newCoding.setSystem(
+							StringUtils.isNotEmpty(coding.getSystem()) ? coding.getSystem() : test.getCoding().getSystem());
+					newCoding.setCode(StringUtils.isNotEmpty(coding.getCode()) ? coding.getCode() : test.getCoding().getCode());
+					newCoding.setDisplay(
+							StringUtils.isNotEmpty(coding.getDisplay()) ? coding.getDisplay() : test.getDescription());
+				}
+			}
+		} else {
+			// if all of incoming system, code, display are null then use input json Test
+			Optional<Test> cancerTestDetail = getTestByName(testName);
+			if (cancerTestDetail.isPresent()) {
+				Test test = cancerTestDetail.get();
+				newCoding.setSystem(test.getCoding().getSystem());
+				newCoding.setCode(test.getCoding().getCode());
+				newCoding.setDisplay(test.getDescription());
+			}
+		}
+
+		return newCoding;
 	}
 }

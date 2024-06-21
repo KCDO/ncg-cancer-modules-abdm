@@ -1,5 +1,7 @@
 package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
+import org.ncg.clinical.artifacts.vo.Coding;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,5 +14,5 @@ import lombok.Setter;
 public class Allergy {
 	private String name;
 	private String type;
-	private String code;
+	private Coding coding;
 }

@@ -1,5 +1,4 @@
 {
-	"outputClinicalArtifactType": "OpConsultRecord",
 	"patientDetails": {
 		"firstName": "Testing",
 		"middleName": "ABDM",
@@ -31,31 +30,51 @@
 			{
 				"name": "groundnut",
 				"type": "food",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "dust",
 				"type": "environmental",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"comorbidities": [
 			{
 				"name": "hypertension",
 				"category": "problem-list-item",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "Coronary Artery Disease",
 				"category": "encounter-diagnosis",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"adverseEvents": [
 			{
 				"name": "Allergic reaction",
 				"category": "medication-mishap",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"pastMedicalHistory": [
@@ -63,13 +82,21 @@
 				"name": "hypertension",
 				"note": "This patient is suffering from Stage 2 Hypertension.",
 				"onsetDateTime": "2020-01-01T10:00:00+05:00",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "Coronary Artery Disease",
 				"note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
 				"onsetDateTime": "2022-12-01T10:00:00+05:00",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"pastSurgicalHistory": [
@@ -77,37 +104,61 @@
 				"name": "hypertension",
 				"note": "This patient is suffering from Stage 2 Hypertension.",
 				"onsetDateTime": "2020-01-01T10:00:00+05:00",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "Coronary Artery Disease",
 				"note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
 				"onsetDateTime": "2022-12-01T10:00:00+05:00",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"mentalHealthAssesment": [
 			{
 				"name": "Pregnancy status",
 				"value": "Not pregnant",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "Menstrual cycle",
 				"value": "Regular",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"menstruationHistory": [
 			{
 				"name": "Pregnancy status",
 				"value": "Not pregnant",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "Menstrual cycle",
 				"value": "Regular",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"examinationDetails": [
@@ -116,14 +167,22 @@
 				"occurrenceDateTime": "2013-05-08T09:33:27+07:00",
 				"requester": "Practitioner/example1",
 				"reason": "Check for metastatic disease",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma",
 				"occurrenceDateTime": "2015-08-27T09:33:27+07:00",
 				"requester": "Practitioner/example2",
 				"reason": "Patient complains of Thyroid",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"surgicalSummaryWithPostOPCourse": [
@@ -135,7 +194,11 @@
 				"bodySite": "Heart valve structure",
 				"outcome": "improved blood circulation",
 				"followUp": "described in care plan",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "Partial lobectomy of lung",
@@ -145,7 +208,11 @@
 				"bodySite": "Lung structure",
 				"outcome": "improved blood circulation",
 				"followUp": "described in care plan",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		],
 		"ongoingDrugs": [
@@ -155,7 +222,11 @@
 				"assertedDate": "2014-02-22",
 				"reference": "Patient/pat1",
 				"note": "Father indicates they miss the occasional dose",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			},
 			{
 				"name": "Tylenol PM",
@@ -163,7 +234,11 @@
 				"assertedDate": "2015-02-22",
 				"reference": "MedicationRequest/medrx002",
 				"note": "Patient indicates they miss the occasional dose",
-				"code": ""
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				}
 			}
 		]
 	},
@@ -171,47 +246,20 @@
 		"tests": [
 			{
 				"name": "2 D ECHO with PASP",
-				"code": "34552-0",
-				"attachment": "lung6mowt"
-			},
-			{
-				"name": "FDG PETCT",
-				"code": "81553-0",
+				"coding": {
+					"system": "",
+					"code": "34552-0",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "MRI brain",
-				"code": "24590-2",
-				"attachment": "lung6mowt"
-			},
-			{
-				"name": "Fiber optic bronchoscopy",
-				"code": "18744-3",
-				"attachment": "lung6mowt"
-			},
-			{
-				"name": "Endobronchial ultrasound with ROSE reports",
-				"code": "100231-0",
-				"attachment": "lung6mowt"
-			},
-			{
-				"name": "Pulmonary function tests with DLCO",
-				"code": "58477-1",
-				"attachment": "lung6mowt"
-			},
-			{
-				"name": "V/Q scan in pneumonectomy",
-				"code": "39942-8",
-				"attachment": "lung6mowt"
-			},
-			{
-				"name": "6MWT",
-				"code": "64098-7",
-				"attachment": "lung6mowt"
-			},
-			{
-				"name": "Molecular markers/NGS as needed",
-				"code": "73977-1",
+				"coding": {
+					"system": "",
+					"code": "24590-2",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			}
 		]
@@ -220,12 +268,20 @@
 		"tests": [
 			{
 				"name": "FNAC report",
-				"code": "87179-8",
+				"coding": {
+					"system": "",
+					"code": "87179-8",
+					"display": ""
+				},
 				"attachment": "oralgvq"
 			},
 			{
 				"name": "CECT head neck thorax report/ PET Ct/ MRI",
-				"code": "24627-2",
+				"coding": {
+					"system": "",
+					"code": "24627-2",
+					"display": ""
+				},
 				"attachment": "oral6mwt"
 			}
 		]
@@ -234,7 +290,11 @@
 		"tests": [
 			{
 				"name": "MRI pelvis with abdomen / CECT abdomen pelvis ",
-				"code": "36813-4",
+				"coding": {
+					"system": "",
+					"code": "36813-4",
+					"display": ""
+				},
 				"attachment": "cervical6mowt"
 			}
 		]
