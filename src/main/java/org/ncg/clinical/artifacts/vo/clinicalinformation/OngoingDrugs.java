@@ -2,6 +2,8 @@ package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import java.sql.Date;
 
+import org.ncg.clinical.artifacts.vo.Coding;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +19,5 @@ public class OngoingDrugs {
 	private Date assertedDate;
 	private String reference;
 	private String note;
-	private String code;
+	private Coding coding;
 }
