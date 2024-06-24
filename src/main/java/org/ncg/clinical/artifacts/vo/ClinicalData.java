@@ -3,6 +3,7 @@ package org.ncg.clinical.artifacts.vo;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.ClinicalInformation;
 import org.ncg.clinical.artifacts.vo.diagnostic.Diagnostic;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
+import org.ncg.clinical.artifacts.vo.practitioner.PractitionerData;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ClinicalData {
 	private PatientData patientDetails;
+	private PractitionerData practitionerDetails;
 	private ClinicalInformation clinicalInformation;
 	private Diagnostic diagnostics;
 	private LungCancer lungCancer;

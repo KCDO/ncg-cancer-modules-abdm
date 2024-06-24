@@ -2,10 +2,13 @@ package org.ncg.clinical.artifacts.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +33,7 @@ import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Period;
+import org.hl7.fhir.r4.model.Practitioner;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
@@ -40,6 +44,7 @@ import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
 import org.ncg.clinical.artifacts.vo.labtest.Panel;
 import org.ncg.clinical.artifacts.vo.labtest.Test;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
+import org.ncg.clinical.artifacts.vo.practitioner.PractitionerData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -166,11 +171,6 @@ public class FHIRUtils {
 			fhirPatient.addAddress(getAddress(patientData.getAddress()));
 		}
 
-		// Add ABHA address
-		if (Objects.nonNull(patientData.getAbhaAddress())) {
-			fhirPatient.addAddress(getABHAAddress(patientData.getAbhaAddress()));
-		}
-
 		// Set the patient's height in Observations
 		if (Objects.nonNull(patientData.getHeight())) {
 			Observation observation = getHeight(patientData.getHeight(), fhirPatient);
@@ -203,16 +203,28 @@ public class FHIRUtils {
 		fhirPatient.setMeta(Utils.getMeta(date, Constants.STRUCTURE_DEFINITION_PATIENT));
 
 		// add identifier
-		Identifier identifier = new Identifier();
+		List<Identifier> identifierList = new ArrayList<>();
 		if (Objects.nonNull(patientData.getIdentifier())) {
+			Identifier identifier = new Identifier();
 			identifier = getIdentifier(patientData.getIdentifier().getDomain(),
-					"urn:health:information:provider:system");
+					Constants.URN_HEALTH_INFORMATION_PROVIDER_SYSTEM);
 			identifier.setId(patientData.getIdentifier().getHipId());
+			identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
+					Constants.MEDICAL_RECORD_NUMBER, Constants.MEDICAL_RECORD_NUMBER));
+			identifierList.add(identifier);
 		}
 
-		identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
-				Constants.MEDICAL_RECORD_NUMBER, Constants.MEDICAL_RECORD_NUMBER));
-		fhirPatient.addIdentifier(identifier);
+		// Add ABHA address
+		if (Objects.nonNull(patientData.getAbhaAddress())) {
+			Identifier identifier = new Identifier();
+			identifier.setSystem(Constants.URN_HEALTH_INFORMATION_PROVIDER_SYSTEM);
+			identifier.setType(getCodeableConcept(Constants.ABHA, Constants.HTTPS_HEALTHID_ABDM_GOV_IN, Constants.ABHA,
+					Constants.ABHA));
+			identifier.setValue(patientData.getAbhaAddress());
+			identifierList.add(identifier);
+		}
+
+		fhirPatient.setIdentifier(identifierList);
 
 		return fhirPatient;
 	}
@@ -243,15 +255,6 @@ public class FHIRUtils {
 		address.setState(patientAddress.getState());
 		address.setPostalCode(patientAddress.getPinCode());
 		address.setCountry(patientAddress.getCountry());
-	}
-
-	private static Address getABHAAddress(String abhaAddress) {
-		Address address = new Address();
-		address.setType(Address.AddressType.POSTAL);// Set the address type as postal
-		address.setText(abhaAddress); // Set the complete address as
-		address.addLine(Constants.ABHA); // Street address line
-
-		return address;
 	}
 
 	private static Observation createObservation(Patient patient) {
@@ -432,9 +435,10 @@ public class FHIRUtils {
 		Patient patientResource = new Patient();
 		if (Objects.nonNull(clinicalData.getPatientDetails())) {
 			patientResource = patientBuilder(clinicalData.getPatientDetails(), bundle);
-			FHIRUtils.addToBundleEntry(bundle, patientResource, false);
+			FHIRUtils.addToBundleEntry(bundle, patientResource, true);
 			opDoc.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
 		}
+
 		return patientResource;
 	}
 
@@ -450,6 +454,7 @@ public class FHIRUtils {
 		if (Utils.randomBool()) {
 			patientRef.setDisplay(patientResource.getNameFirstRep().getNameAsSingleString());
 		}
+
 		return patientRef;
 	}
 
@@ -679,9 +684,10 @@ public class FHIRUtils {
 				Optional<Test> cancerTestDetail = getTestByName(testName);
 				if (cancerTestDetail.isPresent()) {
 					Test test = cancerTestDetail.get();
-					newCoding.setSystem(
-							StringUtils.isNotEmpty(coding.getSystem()) ? coding.getSystem() : test.getCoding().getSystem());
-					newCoding.setCode(StringUtils.isNotEmpty(coding.getCode()) ? coding.getCode() : test.getCoding().getCode());
+					newCoding.setSystem(StringUtils.isNotEmpty(coding.getSystem()) ? coding.getSystem()
+							: test.getCoding().getSystem());
+					newCoding.setCode(
+							StringUtils.isNotEmpty(coding.getCode()) ? coding.getCode() : test.getCoding().getCode());
 					newCoding.setDisplay(
 							StringUtils.isNotEmpty(coding.getDisplay()) ? coding.getDisplay() : test.getDescription());
 				}
@@ -698,5 +704,98 @@ public class FHIRUtils {
 		}
 
 		return newCoding;
+	}
+
+	static Practitioner practitionerBuilder(PractitionerData practitionerDetail, Bundle bundle) {
+		Practitioner fhirPractitioner = new Practitioner();
+
+		// set id
+		fhirPractitioner.setId(Utils.generateId());
+
+		// Add the identifier to the practitioner
+		Identifier identifier = new Identifier();
+		identifier = getIdentifier(fhirPractitioner.getId(),
+				Constants.HTTP_EXAMPLE_ORG_FHIR_PRACTITIONER_IDENTIFIER_SYSTEM);
+		// Set the type of the identifier
+		identifier.setType(getCodeableConcept(Constants.PRN, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
+				Constants.PROVIDER_NUMBER, Constants.PROVIDER_NUMBER));
+		fhirPractitioner.addIdentifier(identifier);
+
+		fhirPractitioner.setIdentifier(
+				Arrays.asList(FHIRUtils.getIdentifier(fhirPractitioner.getId(), Constants.HTTPS_NDHM_IN_PHR)));
+
+		// set firstName, lastName, middleName in humanName
+		fhirPractitioner.addName(getHumanName(practitionerDetail.getFirstName(), practitionerDetail.getMiddleName(),
+				practitionerDetail.getLastName()));
+
+		// if dob is given then set dob else convert dob from age.
+		if (Objects.nonNull(practitionerDetail.getDob())) {
+			fhirPractitioner.setBirthDate(practitionerDetail.getDob());
+		} else {
+			if (Objects.nonNull(practitionerDetail.getAge())) {
+				fhirPractitioner.setBirthDate(Utils.ageToDateConverter(practitionerDetail.getAge()));
+			}
+		}
+
+		// set gender
+		getFHIRGender(practitionerDetail.getGender(), fhirPractitioner);
+
+		// set phone number
+		if (StringUtils.isNotBlank(practitionerDetail.getPhoneNumber())) {
+			fhirPractitioner.addTelecom(getPhoneNumber(practitionerDetail.getPhoneNumber()));
+		}
+
+		// Add primary address
+		if (Objects.nonNull(practitionerDetail.getAddress())) {
+			fhirPractitioner.addAddress(getAddress(practitionerDetail.getAddress()));
+		}
+
+		// add meta
+		Date date = new Date();
+		fhirPractitioner.setMeta(Utils.getMeta(date, "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"));
+
+		return fhirPractitioner;
+	}
+
+	static Practitioner addPractitionerResourceToComposition(ClinicalData clinicalData, Bundle bundle,
+			Composition opDoc) throws Exception {
+		Practitioner practitionerResource = new Practitioner();
+		if (Objects.nonNull(clinicalData.getPractitionerDetails())) {
+			practitionerResource = practitionerBuilder(clinicalData.getPractitionerDetails(), bundle);
+			FHIRUtils.addToBundleEntry(bundle, practitionerResource, true);
+			opDoc.setAuthor(Arrays.asList(FHIRUtils.getReferenceToPractitioner(practitionerResource)));
+		}
+
+		return practitionerResource;
+	}
+
+	static Reference getReferenceToPractitioner(Practitioner practitionerResource) {
+		Reference practitionerRef = new Reference();
+		practitionerRef.setResource(practitionerResource);
+		if (Utils.randomBool()) {
+			practitionerRef.setDisplay(practitionerResource.getNameFirstRep().getNameAsSingleString());
+		}
+		return practitionerRef;
+	}
+
+	static void getFHIRGender(String patientGender, Practitioner fhirPractitioner) {
+		if (StringUtils.isNotBlank(patientGender)) {
+			// converting input gender to lower case
+			String gender = patientGender.toLowerCase();
+			switch (gender) {
+			case "male":
+				fhirPractitioner.setGender(AdministrativeGender.MALE);
+				break;
+			case "female":
+				fhirPractitioner.setGender(AdministrativeGender.FEMALE);
+				break;
+			case "other":
+				fhirPractitioner.setGender(AdministrativeGender.OTHER);
+				break;
+			default:
+				fhirPractitioner.setGender(AdministrativeGender.UNKNOWN);
+				break;
+			}
+		}
 	}
 }

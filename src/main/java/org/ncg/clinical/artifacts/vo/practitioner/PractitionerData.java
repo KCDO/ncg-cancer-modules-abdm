@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo.patient;
+package org.ncg.clinical.artifacts.vo.practitioner;
 
 import java.util.Date;
 
@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.ncg.clinical.artifacts.util.Constants;
+import org.ncg.clinical.artifacts.vo.patient.Address;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PatientData {
+public class PractitionerData {
 
 	@NotBlank(message = "firstName" + Constants.CANNOT_BE_EMPTY)
 	private String firstName;
@@ -35,14 +36,4 @@ public class PatientData {
 	private String phoneNumber;
 
 	private Address address;
-
-	private double height;
-
-	private double weight;
-
-	private String abhaAddress;
-
-	private Identifier identifier;
-
-	private String bloodGroup;
 }

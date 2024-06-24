@@ -97,4 +97,9 @@ public class Constants {
 	public static final String DOCUMENT_REFERENCE = "DocumentReference";
 	public static final String DIAGNOSTICREPORT = "DiagnosticReport";
 	public static final String URN_UUID = "urn:uuid:";
+	public static final String PRN = "PRN";
+	public static final String PROVIDER_NUMBER = "Provider number";
+	public static final String HTTP_EXAMPLE_ORG_FHIR_PRACTITIONER_IDENTIFIER_SYSTEM = "http://example.org/fhir/practitioner-identifier-system";
+	public static final String URN_HEALTH_INFORMATION_PROVIDER_SYSTEM = "urn:health:information:provider:system";
+	public static final String HTTPS_HEALTHID_ABDM_GOV_IN = "https://healthid.abdm.gov.in";
 }
