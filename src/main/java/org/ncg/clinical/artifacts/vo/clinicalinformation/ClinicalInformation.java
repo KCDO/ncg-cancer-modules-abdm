@@ -15,7 +15,7 @@ import lombok.Setter;
 public class ClinicalInformation {
 	private List<Allergy> drugAllergy;
 	private List<Comorbidity> comorbidities;
-	private List<AdverseEvent> adverseEvents;
+	private List<AdverseEventRequest> adverseEvents;
 	private List<PastMedicalHistory> pastMedicalHistory;
 	private List<PastSurgicalHistory> pastSurgicalHistory;
 	private List<MentalHealthAssesment> mentalHealthAssesment;
