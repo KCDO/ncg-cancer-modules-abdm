@@ -710,30 +710,6 @@ public class OPConsultationHelper {
 		report.addResult(resultReference);
 	}
 
-	private DocumentReference createDocumentReferenceResource(String reportType, String reportValue, Patient patient,
-			String reportName, String loincCode) throws IOException {
-		// create CodeableConcept type
-		CodeableConcept type = FHIRUtils.getCodeableConcept(loincCode, Constants.LOINC_SYSTEM, reportType + " report",
-				reportType + " report");
-
-		// create documentReference resource
-		DocumentReference documentReference = new DocumentReference();
-		documentReference.setId(Utils.generateId());
-		documentReference.setType(type);
-		documentReference.setSubject(new Reference(patient));
-		documentReference.setStatus(Enumerations.DocumentReferenceStatus.CURRENT);
-
-		// Set the content (attachment) of the document
-		DocumentReference.DocumentReferenceContentComponent content = new DocumentReference.DocumentReferenceContentComponent();
-		if (StringUtils.isNotEmpty(reportValue)) {
-			Attachment attachment = FHIRUtils.getAttachment(reportName, reportValue);
-			content.setAttachment(attachment);
-		}
-
-		documentReference.addContent(content);
-		return documentReference;
-	}
-	
 	// fetch CodeableConcept for Co-Morbidities condition
 	protected CodeableConcept getCoMorbiditiesCode(String name) {
 		switch (name.toLowerCase()) {
