@@ -11,12 +11,10 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
 import org.hl7.fhir.r4.model.Annotation;
-import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
@@ -27,7 +25,6 @@ import org.hl7.fhir.r4.model.DiagnosticReport;
 import org.hl7.fhir.r4.model.DocumentReference;
 import org.hl7.fhir.r4.model.Dosage;
 import org.hl7.fhir.r4.model.Dosage.DosageDoseAndRateComponent;
-import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.MedicationStatement;
 import org.hl7.fhir.r4.model.MedicationStatement.MedicationStatementStatus;
@@ -36,6 +33,7 @@ import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Observation.ObservationStatus;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Period;
+import org.hl7.fhir.r4.model.Practitioner;
 import org.hl7.fhir.r4.model.Procedure;
 import org.hl7.fhir.r4.model.Procedure.ProcedureStatus;
 import org.hl7.fhir.r4.model.Quantity;
@@ -73,10 +71,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OPConsultationHelper {
 
-	private static final String CONSULTATION_REPORT = "Consultation Report";
-
-	private static final String OP_CONSULT_RECORD = "Op Consult Record";
-
 	private AllLabTests allLabTests;
 
 	@Value("${all.tests.labs.json}")
@@ -98,12 +92,12 @@ public class OPConsultationHelper {
 
 	public Bundle createOPConsultationBundle(ClinicalData clinicalData) throws Exception {
 		Date docDate = new Date();
-		Bundle bundle = FHIRUtils.createBundle(docDate, Constants.OP_CONSULT_RECORD);
+		Bundle bundle = FHIRUtils.createBundle(docDate, Constants.OPONSULTRECORD);
 
 		// fetch code and test description based on test name from
 		// allTestsAndPanels.json and create type based on those value
 		CodeableConcept type = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName(OP_CONSULT_RECORD);
+		Optional<Test> cancerTestDetail = getTestByName(Constants.OP_CONSULT_RECORD);
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
 			type = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
@@ -111,7 +105,8 @@ public class OPConsultationHelper {
 		}
 
 		// create composition resource
-		Composition opDoc = FHIRUtils.createCompositionResourceType(docDate, bundle, type, CONSULTATION_REPORT);
+		Composition opDoc = FHIRUtils.createCompositionResourceType(docDate, bundle, type,
+				Constants.CONSULTATION_REPORT);
 
 		FHIRUtils.addToBundleEntry(bundle, opDoc, false);
 
@@ -119,36 +114,38 @@ public class OPConsultationHelper {
 		Patient patientResource = FHIRUtils.addPatientResourceToComposition(clinicalData, bundle, opDoc);
 
 		// Create practitioner and add entry for practitioner as author in composition
-		Reference practitionerRef = new Reference();
-		practitionerRef.setReference("Practitioner/" + patientResource.getId());
-		opDoc.setAuthor(Arrays.asList(practitionerRef));
+		Practitioner practitionerResource = FHIRUtils.addPractitionerResourceToComposition(clinicalData, bundle, opDoc);
 
 		// Create encounter and add as entry in composition
 		FHIRUtils.addEncounterResourceToComposition(bundle, opDoc, patientResource);
 
 		// add sections entry
-		opDoc.setSection(createCompositionSections(bundle, opDoc, clinicalData, patientResource));
+		opDoc.setSection(createCompositionSections(bundle, opDoc, clinicalData, patientResource, practitionerResource));
 
 		return bundle;
 	}
 
 	protected List<Composition.SectionComponent> createCompositionSections(Bundle bundle, Composition opDoc,
-			ClinicalData clinicalData, Patient patientResource) throws IOException {
+			ClinicalData clinicalData, Patient patientResource, Practitioner practitionerResource) throws IOException {
 
 		List<Composition.SectionComponent> sections = new ArrayList<>();
 
 		// diagnostic
-		if (Objects.nonNull(clinicalData.getDiagnostics())) {
-			sections.add(createDiagnosticReportSection(bundle, opDoc, clinicalData.getDiagnostics(), patientResource));
-		}
+//		if (Objects.nonNull(clinicalData.getDiagnostics())) {
+//			sections.add(createDiagnosticReportSection(bundle, opDoc, clinicalData.getDiagnostics(), patientResource,
+//					practitionerResource));
+//		}
 
 		// CancerTypes
 		if (Objects.nonNull(clinicalData.getLungCancer())) {
-			processCancerType(clinicalData.getLungCancer(), "lung cancer", bundle, patientResource, sections);
+			processCancerType(clinicalData.getLungCancer(), "lung cancer", bundle, patientResource,
+					practitionerResource, sections);
 		} else if (Objects.nonNull(clinicalData.getOralCancer())) {
-			processCancerType(clinicalData.getOralCancer(), "oral cancer", bundle, patientResource, sections);
+			processCancerType(clinicalData.getOralCancer(), "oral cancer", bundle, patientResource,
+					practitionerResource, sections);
 		} else if (Objects.nonNull(clinicalData.getCervicalCancer())) {
-			processCancerType(clinicalData.getCervicalCancer(), "cervical cancer", bundle, patientResource, sections);
+			processCancerType(clinicalData.getCervicalCancer(), "cervical cancer", bundle, patientResource,
+					practitionerResource, sections);
 		}
 
 		if (Objects.nonNull(clinicalData.getClinicalInformation())) {
@@ -698,7 +695,7 @@ public class OPConsultationHelper {
 	}
 
 	private void processCancerType(CancerType cancerType, String cancerName, Bundle bundle, Patient patientResource,
-			List<Composition.SectionComponent> sections) throws IOException {
+			Practitioner practitionerResource, List<Composition.SectionComponent> sections) throws IOException {
 		if (Objects.nonNull(cancerType)) {
 			Composition.SectionComponent cancerSection = new Composition.SectionComponent();
 
@@ -708,7 +705,7 @@ public class OPConsultationHelper {
 				cancerSection = FHIRUtils.createChiefComplaintSection(bundle, patientResource,
 						cancerTest.get().getCoding().getCode(), cancerTest.get().getDescription());
 			}
-			// Create diagnostic report
+			// Create Procedure for report
 			if (!CollectionUtils.isEmpty(cancerType.getTests())) {
 				for (AttachmentDetail attachmentDetail : cancerType.getTests()) {
 
@@ -718,13 +715,15 @@ public class OPConsultationHelper {
 					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(attachmentDetail.getCoding(),
 							attachmentDetail.getName());
 
-					DiagnosticReport report = createDiagnosticReport(bundle, patientResource,
+					// create procedure with DocumentReference for storing reports information
+					FHIRUtils.createProcedureWithDocumentReference(bundle, patientResource,
 							attachmentDetail.getAttachment(), coding, attachmentDetail.getName());
 
 					// Add the report to cancer section
-					cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
+					// cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(procedure));
 				}
 			}
+
 			sections.add(cancerSection);
 		}
 	}
@@ -812,29 +811,8 @@ public class OPConsultationHelper {
 		return diagnosticReport;
 	}
 
-	private DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient, String reportValue,
-			org.ncg.clinical.artifacts.vo.Coding coding, String reportName) throws IOException {
-		// Create a new CodeableConcept
-		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				reportName);
-
-		// Create a new DiagnosticReport resource
-		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, null);
-
-		// Create a new DocumentReference resource
-		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient,
-				reportName + " report", coding.getCode());
-
-		// Add documentReference to the bundle
-		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
-
-		report.addResult(FHIRUtils.getReferenceToResource(documentReference));
-
-		return report;
-	}
-
 	private Composition.SectionComponent createDiagnosticReportSection(Bundle bundle, Composition composition,
-			Diagnostic diagnostic, Patient patient) throws IOException {
+			Diagnostic diagnostic, Patient patient, Practitioner practitioner) throws IOException {
 		if (Utils.randomBool())
 			return null;
 
@@ -861,51 +839,46 @@ public class OPConsultationHelper {
 			List<PanelDetail> cbcPanels = diagnostic.getCbc().getPanels();
 			if (!CollectionUtils.isEmpty(cbcPanels)) {
 				for (PanelDetail panelDetail : cbcPanels) {
-					Optional<Panel> panelWithLoincCode = getPanelByName(panelDetail.getName());
-					if (testWithLoincCode.isPresent()) {
-						createPanel(bundle, composition, patient, diagnosticReportSection, category,
-								panelWithLoincCode.get(), panelDetail);
-					}
+					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(panelDetail.getCoding(),
+							panelDetail.getName());
+					createPanel(bundle, composition, patient, practitioner, diagnosticReportSection, category, coding,
+							panelDetail);
 				}
 			}
 		}
 
 		if (Objects.nonNull(diagnostic.getBiopsyHistopathologyReport())) {
 			// Create a new DiagnosticReport resource
-			testWithLoincCode = getTestByName(Constants.BIOPSY_HISTOPATHOLOGY_REPORT);
-			if (testWithLoincCode.isPresent()) {
-				// Create category
-				CodeableConcept category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
-						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
-						testWithLoincCode.get().getDescription());
+			org.ncg.clinical.artifacts.vo.Coding testWithCoding = FHIRUtils.mapCoding(null,
+					Constants.BIOPSY_HISTOPATHOLOGY_REPORT);
+			// Create category
+			CodeableConcept category = FHIRUtils.getCodeableConcept(testWithCoding.getCode(),
+					testWithCoding.getSystem(), testWithCoding.getDisplay(), testWithCoding.getDisplay());
 
-				// Create code
-				CodeableConcept code = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
-						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
-						testWithLoincCode.get().getDescription());
+			// Create code
+			CodeableConcept code = FHIRUtils.getCodeableConcept(testWithCoding.getCode(), testWithCoding.getSystem(),
+					testWithCoding.getDisplay(), testWithCoding.getDisplay());
 
-				DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code,
-						Arrays.asList(category));
+			DiagnosticReport report = FHIRUtils.createDiagnosticReportResource(bundle, patient, practitioner, code,
+					Arrays.asList(category));
 
-				// Create a new DocumentReference resource
-				DocumentReference documentReference = createDocumentReferenceResource(
-						testWithLoincCode.get().getDescription(), diagnostic.getBiopsyHistopathologyReport(), patient,
-						testWithLoincCode.get().getDescription(), testWithLoincCode.get().getCoding().getCode());
+			// Create a new DocumentReference resource
+			DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
+					Constants.BIOPSY_HISTOPATHOLOGY_REPORT, diagnostic.getBiopsyHistopathologyReport(), patient,
+					testWithCoding);
 
-				// Add documentReference to the DiagnosticReport
-				Reference resultReference = new Reference(
-						Constants.DOCUMENT_REFERENCE + "/" + documentReference.getId());
-				resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
-				report.addResult(resultReference);
+			// Add documentReference to the DiagnosticReport
+			Reference resultReference = new Reference(Constants.DOCUMENT_REFERENCE + "/" + documentReference.getId());
+			resultReference.setType(Constants.DOCUMENT_REFERENCE + documentReference.getType().getText());
+			report.addResult(resultReference);
 
-				// make entry for report
-				Reference entryReference = new Reference(Constants.DIAGNOSTICREPORT + "/" + report.getId());
-				entryReference.setType(Constants.DIAGNOSTICREPORT);
-				diagnosticReportSection.getEntry().add(entryReference);
+			// make entry for report
+			Reference entryReference = new Reference(Constants.DIAGNOSTICREPORT + "/" + report.getId());
+			entryReference.setType(Constants.DIAGNOSTICREPORT);
+			diagnosticReportSection.getEntry().add(entryReference);
 
-				// Add documentReference to the bundle
-				FHIRUtils.addToBundleEntry(bundle, documentReference, true);
-			}
+			// Add documentReference to the bundle
+			FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 		}
 
 		if (Objects.nonNull(diagnostic.getBioChemistry())) {
@@ -920,11 +893,10 @@ public class OPConsultationHelper {
 			List<PanelDetail> bioChemistryPanels = diagnostic.getBioChemistry().getPanels();
 			if (!CollectionUtils.isEmpty(bioChemistryPanels)) {
 				for (PanelDetail panelDetail : bioChemistryPanels) {
-					Optional<Panel> panelWithLoincCode = getPanelByName(panelDetail.getName());
-					if (testWithLoincCode.isPresent()) {
-						createPanel(bundle, composition, patient, diagnosticReportSection, category,
-								panelWithLoincCode.get(), panelDetail);
-					}
+					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(panelDetail.getCoding(),
+							panelDetail.getName());
+					createPanel(bundle, composition, patient, practitioner, diagnosticReportSection, category, coding,
+							panelDetail);
 				}
 			}
 		}
@@ -932,19 +904,18 @@ public class OPConsultationHelper {
 		return diagnosticReportSection;
 	}
 
-	private void createPanel(Bundle bundle, Composition composition, Patient patient,
-			Composition.SectionComponent diagnosticReportSection, CodeableConcept category, Panel panelWithLoincCode,
-			PanelDetail panelDetail) throws IOException {
+	private void createPanel(Bundle bundle, Composition composition, Patient patient, Practitioner practitioner,
+			Composition.SectionComponent diagnosticReportSection, CodeableConcept category,
+			org.ncg.clinical.artifacts.vo.Coding panelWithLoincCode, PanelDetail panelDetail) throws IOException {
 		// Create a new DiagnosticReport resource
-		CodeableConcept code = FHIRUtils.getCodeableConcept(panelWithLoincCode.getCoding().getCode(),
-				panelWithLoincCode.getCoding().getSystem(), panelWithLoincCode.getDescription(),
-				panelWithLoincCode.getDescription());
-		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, code, Arrays.asList(category));
+		CodeableConcept code = FHIRUtils.getCodeableConcept(panelWithLoincCode.getCode(),
+				panelWithLoincCode.getSystem(), panelWithLoincCode.getDisplay(), panelWithLoincCode.getDisplay());
+		DiagnosticReport report = FHIRUtils.createDiagnosticReportResource(bundle, patient, practitioner, code,
+				Arrays.asList(category));
 
 		// Create a new DocumentReference resource
-		DocumentReference documentReference = createDocumentReferenceResource(panelWithLoincCode.getDescription(),
-				panelDetail.getAttachment(), patient, panelWithLoincCode.getDescription(),
-				panelWithLoincCode.getCoding().getCode());
+		DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(panelDetail.getName(),
+				panelDetail.getAttachment(), patient, panelWithLoincCode);
 
 		// Add documentReference to the DiagnosticReport
 		Reference resultReference = new Reference(Constants.DOCUMENT_REFERENCE + "/" + documentReference.getId());
@@ -987,63 +958,6 @@ public class OPConsultationHelper {
 		Reference resultReference = new Reference("Observation/" + observation.getId());
 		resultReference.setDisplay("Observation/" + observationCode.getText());
 		report.addResult(resultReference);
-	}
-
-	private DocumentReference createDocumentReferenceResource(String reportType, String reportValue, Patient patient,
-			String reportName, String loincCode) throws IOException {
-		// create CodeableConcept type
-		CodeableConcept type = FHIRUtils.getCodeableConcept(loincCode, Constants.LOINC_SYSTEM, reportType + " report",
-				reportType + " report");
-
-		// create documentReference resource
-		DocumentReference documentReference = new DocumentReference();
-		documentReference.setId(Utils.generateId());
-		documentReference.setType(type);
-		documentReference.setSubject(new Reference(patient));
-		documentReference.setStatus(Enumerations.DocumentReferenceStatus.CURRENT);
-
-		// Set the content (attachment) of the document
-		DocumentReference.DocumentReferenceContentComponent content = new DocumentReference.DocumentReferenceContentComponent();
-		if (StringUtils.isNotEmpty(reportValue)) {
-			Attachment attachment = FHIRUtils.getAttachment(reportName, reportValue);
-			content.setAttachment(attachment);
-		}
-
-		documentReference.addContent(content);
-		return documentReference;
-	}
-
-	private DiagnosticReport createDiagnosticReportResource(Bundle bundle, Patient patient, CodeableConcept code,
-			List<CodeableConcept> categories) {
-		DiagnosticReport report = new DiagnosticReport();
-		report.setId(Utils.generateId());
-		report.setStatus(DiagnosticReport.DiagnosticReportStatus.FINAL);
-		report.setCode(code);
-		report.setCategory(categories);
-		report.setSubject(FHIRUtils.getReferenceToPatient(patient));
-		report.setIssued(new Date());
-
-		// Set section
-		Composition.SectionComponent section = new Composition.SectionComponent();
-		section.setTitle("Diagnostic Report Section");
-		CodeableConcept sectionCode = new CodeableConcept();
-		sectionCode.addCoding(
-				new Coding().setSystem("http://loinc.org").setCode("45033-8").setDisplay("Diagnostic Report"));
-		sectionCode.setText("Diagnostic Report");
-		section.setCode(sectionCode);
-
-		// Set section author
-		Reference sectionAuthor = new Reference("Practitioner/prac1");
-		sectionAuthor.setDisplay("Dr. Hello KCDO");
-		section.addAuthor(sectionAuthor);
-
-		// Set section text
-		Narrative sectionText = new Narrative();
-		sectionText.setStatus(Narrative.NarrativeStatus.GENERATED);
-		section.setText(sectionText);
-
-		FHIRUtils.addToBundleEntry(bundle, report, true);
-		return report;
 	}
 
 	protected CodeableConcept getDrugAllergyCode() {

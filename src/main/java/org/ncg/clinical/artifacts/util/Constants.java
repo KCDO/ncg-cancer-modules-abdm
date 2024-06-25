@@ -1,8 +1,10 @@
 package org.ncg.clinical.artifacts.util;
 
 public class Constants {
-	static final String HOSPITAL_SYSTEM = "http://hip.in";
-	static final String LOINC_SYSTEM = "http://loinc.org";
+	public static final String CONSULTATION_REPORT = "Consultation Report";
+	public static final String OP_CONSULT_RECORD = "Op Consult Record";
+	public static final String HOSPITAL_SYSTEM = "http://hip.in";
+	public static final String LOINC_SYSTEM = "http://loinc.org";
 	public static final String HTTPS_NDHM_IN_PHR = "https://ndhm.in/phr";
 	public static final String SNOMED_SYSTEM_SCT = "http://snomed.info/sct";
 	public static final String HTTPS_HEALTHID_NDHM_GOV_IN = "https://healthid.ndhm.gov.in";
@@ -26,7 +28,7 @@ public class Constants {
 	public static final String FHIR_ALLERGY_INTOLERANCE_VERIFICATION_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification";
 	public static final String FHIR_CONDITION_VERIFICATION_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-ver-status";
 	public static final String MEDICAL_RECORD_NUMBER = "Medical record number";
-	public static final String OP_CONSULT_RECORD = "OpConsultRecord";
+	public static final String OPONSULTRECORD = "OpConsultRecord";
 	public static final String DIAGNOSTIC_REPORT = "Diagnostic Report";
 	public static final String MR = "MR";
 	public static final String DR_CBC = "CBC";
@@ -97,4 +99,11 @@ public class Constants {
 	public static final String DOCUMENT_REFERENCE = "DocumentReference";
 	public static final String DIAGNOSTICREPORT = "DiagnosticReport";
 	public static final String URN_UUID = "urn:uuid:";
+	public static final String PRN = "PRN";
+	public static final String PROVIDER_NUMBER = "Provider number";
+	public static final String HTTP_EXAMPLE_ORG_FHIR_PRACTITIONER_IDENTIFIER_SYSTEM = "http://example.org/fhir/practitioner-identifier-system";
+	public static final String URN_HEALTH_INFORMATION_PROVIDER_SYSTEM = "urn:health:information:provider:system";
+	public static final String HTTPS_HEALTHID_ABDM_GOV_IN = "https://healthid.abdm.gov.in";
+	public static final String HTTPS_FHIR_EXAMPLE_COM = "https://fhir.example.com/";
+	public static final String HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_PRACTITIONER = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner";
 }
