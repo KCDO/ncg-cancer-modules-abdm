@@ -179,6 +179,7 @@ public class OPConsultationHelper {
 						createMedicalHistorySection(bundle, opDoc, patientResource, null, pastMedicalHistoryDetails));
 			}
 
+			// TODO
 			// past surgical history section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getPastSurgicalHistory())) {
 				for (PastSurgicalHistory pastSurgicalHistoryDetail : clinicalData.getClinicalInformation()
@@ -242,6 +243,7 @@ public class OPConsultationHelper {
 				}
 			}
 
+			// TODO
 			// Mental Health Assesment section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getMentalHealthAssesment())) {
 				for (MentalHealthAssesment mentalHealthAssesmentDetail : clinicalData.getClinicalInformation()
@@ -321,6 +323,7 @@ public class OPConsultationHelper {
 						createInvestigationAdviceSection(bundle, opDoc, patientResource, investigationAdviceDetails));
 			}
 
+			// TODO
 			// ot notes
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getOTNotes())) {
 
@@ -338,6 +341,7 @@ public class OPConsultationHelper {
 				sections.add(otNotesSection);
 			}
 
+			// TODO
 			// SurgicalSummaryWithPostOPCourse section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getSurgicalSummaryWithPostOPCourse())) {
 				for (SurgicalSummaryWithPostOPCourse surgicalSummaryWithPostOPCourseDetail : clinicalData
@@ -414,6 +418,7 @@ public class OPConsultationHelper {
 				}
 			}
 
+			// TODO
 			// PAC Notes
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getPACNotes())) {
 
@@ -907,14 +912,15 @@ public class OPConsultationHelper {
 
 		// create code for allergies
 		CodeableConcept allergyCode = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName("Allergies");
+		Optional<Test> cancerTestDetail = getTestByName(Constants.ALLERGIES);
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
 			allergyCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
 					test.getDescription(), test.getDescription());
 		}
 		// Create the section for allergies
-		Composition.SectionComponent allergiesSection = FHIRUtils.createSectionComponent("Allergies", allergyCode);
+		Composition.SectionComponent allergiesSection = FHIRUtils.createSectionComponent(Constants.ALLERGIES,
+				allergyCode);
 
 		// Iterate over the drugAllergyList and create AllergyIntolerance resources
 		for (Allergy allergyDetail : drugAllergyList) {
@@ -1067,22 +1073,14 @@ public class OPConsultationHelper {
 		// Create the section for Medications
 		Composition.SectionComponent medicationsSection = new Composition.SectionComponent();
 		medicationsSection.setTitle(Constants.MEDICATIONS);
-		medicationsSection.setCode(FHIRUtils.getCodeableConcept("721912009 ", Constants.SNOMED_SYSTEM_SCT,
-				Constants.ONGOING_DRUGS, Constants.ONGOING_DRUGS));
 
-		// Set code
-		CodeableConcept code = new CodeableConcept();
-		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", Constants.ONGOING_DRUGS));
-		code.setText(Constants.ONGOING_DRUGS);
-		medicationsSection.setCode(code);
+		// set code
+		medicationsSection.setCode(FHIRUtils.getCodeableConcept("721912009", Constants.SNOMED_SYSTEM_SCT,
+				Constants.ONGOING_DRUGS, Constants.ONGOING_DRUGS));
 
 		// Iterate over the investigationAdviceList and create ServiceRequest resources
 		for (OngoingDrugs ongoingDrugs : ongoingDrugsList) {
 			MedicationStatement medicationStatement = createMedicationStatement(ongoingDrugs, patient);
-
-			// Ensure the MedicationStatement resource has an ID
-			String requestId = UUID.randomUUID().toString();
-			medicationStatement.setId(requestId);
 
 			FHIRUtils.addToBundleEntry(bundle, medicationStatement, true);
 			medicationsSection
@@ -1121,21 +1119,27 @@ public class OPConsultationHelper {
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
 				ongoingDrugsDetail.getName());
 
+		// TODO
 		// Set reasonCode
 		medicationStatement.addReasonCode(code);
 
+		// TODO
 		// Set dosage
 		Dosage dosage = new Dosage();
 
+		// TODO
 		// Additional Instruction
 		dosage.addAdditionalInstruction(code);
 
+		// TODO
 		// Site
 		dosage.setSite(code);
 
+		// TODO
 		// Route
 		dosage.setRoute(code);
 
+		// TODO
 		// Method
 		dosage.setMethod(code);
 
@@ -1176,8 +1180,6 @@ public class OPConsultationHelper {
 		// Create the section for OtherObservations
 		Composition.SectionComponent medicationsSection = new Composition.SectionComponent();
 		medicationsSection.setTitle(Constants.OTHER_OBSERVATIONS);
-		medicationsSection.setCode(FHIRUtils.getCodeableConcept("363787002 ", Constants.SNOMED_SYSTEM_SCT,
-				Constants.OTHER_OBSERVATIONS, Constants.OTHER_OBSERVATIONS));
 
 		// Set code
 		CodeableConcept code = new CodeableConcept();
@@ -1188,10 +1190,6 @@ public class OPConsultationHelper {
 		// Iterate over the menstruationHistory and create Observation resources
 		for (MenstruationHistory menstruationHistory : menstruationHistoryList) {
 			Observation observation = createOtherObservations(menstruationHistory, patient);
-
-			// Ensure the Observation resource has an ID
-			String requestId = UUID.randomUUID().toString();
-			observation.setId(requestId);
 
 			FHIRUtils.addToBundleEntry(bundle, observation, true);
 			medicationsSection.addEntry(new Reference("Observation/" + observation.getIdElement().getValue()));
@@ -1253,8 +1251,6 @@ public class OPConsultationHelper {
 		// Create the section for MedicalHistory
 		Composition.SectionComponent medicalHistorySection = new Composition.SectionComponent();
 		medicalHistorySection.setTitle(Constants.MEDICAL_HISTORY);
-		medicalHistorySection.setCode(FHIRUtils.getCodeableConcept("161615003 ", Constants.SNOMED_SYSTEM_SCT,
-				Constants.MEDICAL_HISTORY, Constants.MEDICAL_HISTORY));
 
 		// Set code
 		CodeableConcept code = new CodeableConcept();
@@ -1267,10 +1263,6 @@ public class OPConsultationHelper {
 		if (!Objects.isNull(comorbidityList)) {
 			for (Comorbidity comorbidity : comorbidityList) {
 				Condition condition = createMedicalHistory(comorbidity, null, patient);
-
-				// Ensure the Observation resource has an ID
-				String requestId = UUID.randomUUID().toString();
-				condition.setId(requestId);
 
 				FHIRUtils.addToBundleEntry(bundle, condition, true);
 				medicalHistorySection.addEntry(new Reference("Condition/" + condition.getIdElement().getValue()));
@@ -1380,15 +1372,11 @@ public class OPConsultationHelper {
 		for (AdverseEventRequest adverseEventsDetail : adverseEventsList) {
 			AdverseEvent adverseEvent = createAdverseEvent(adverseEventsDetail, patient);
 
-			// set AllergyIntolerance resource ID
-			String allergyId = UUID.randomUUID().toString();
-			adverseEvent.setId(allergyId);
-
 			// set meta profile
 			adverseEvent.setMeta(
 					Utils.getMeta(new Date(), "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent"));
 
-			// add AllergyIntolerance to bundle resource
+			// add AdverseEvent to bundle resource
 			FHIRUtils.addToBundleEntry(bundle, adverseEvent, true);
 
 			adverseEventsSection.addEntry(new Reference("AdverseEvent/" + adverseEvent.getIdElement().getValue()));
