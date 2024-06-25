@@ -491,31 +491,6 @@ public class FHIRUtils {
 		return attachment;
 	}
 
-	public static CodeableConcept getAdverseEventCategory(String category) {
-		switch (category.toLowerCase()) {
-		case "wrong-patient":
-			return FHIRUtils.getCodeableConcept("418038007", Constants.SNOMED_SYSTEM_SCT,
-					"Propensity to adverse reactions to substance", "Wrong Patient");
-		case "procedure-mishap":
-			return FHIRUtils.getCodeableConcept("410528009", Constants.SNOMED_SYSTEM_SCT, category, "Procedure Mishap");
-		case "medication-mishap":
-			return FHIRUtils.getCodeableConcept("425391005", Constants.SNOMED_SYSTEM_SCT, "Using access device",
-					"Medication Mishap");
-		case "device":
-			return FHIRUtils.getCodeableConcept("419099009", Constants.SNOMED_SYSTEM_SCT, "Dead", "Device");
-		case "unsafe-physical-environment":
-			return FHIRUtils.getCodeableConcept("723877005", Constants.SNOMED_SYSTEM_SCT, category,
-					"Unsafe Physical Environment");
-		case "hospital-acquired-infection":
-			return FHIRUtils.getCodeableConcept("77176002", Constants.SNOMED_SYSTEM_SCT, category,
-					"Hospital Acquired Infection");
-		case "wrong-body-site":
-			return FHIRUtils.getCodeableConcept("116676008", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Body Site");
-		default:
-			return null;
-		}
-	}
-
 	public static CodeableConcept getSurgicalSummaryWithPostOPCourseCode(String category) {
 		switch (category.toLowerCase()) {
 		case "propensity to adverse reactions to substance":
