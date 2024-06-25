@@ -45,6 +45,7 @@ import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
 import org.ncg.clinical.artifacts.vo.CancerType;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.vo.clinicalinformation.AdverseEventRequest;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.Allergy;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.Comorbidity;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.InvestigationAdvice;
@@ -165,75 +166,9 @@ public class OPConsultationHelper {
 
 			// adverseEvent section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getAdverseEvents())) {
-				for (org.ncg.clinical.artifacts.vo.clinicalinformation.AdverseEvent adverseEventDetail : clinicalData
-						.getClinicalInformation().getAdverseEvents()) {
-
-					Composition.SectionComponent adverseEventsSection = new Composition.SectionComponent();
-					adverseEventsSection.setTitle(Constants.ADVERSE_EVENTS);
-					adverseEventsSection.setCode(FHIRUtils.getCodeableConcept("418019003", Constants.SNOMED_SYSTEM_SCT,
-							Constants.ADVERSE_EVENTS, Constants.ADVERSE_EVENTS));
-
-					// Create a new AdverseEvent resource
-					AdverseEvent adverseEvent = new AdverseEvent();
-
-					// set id
-					adverseEvent.setId(Utils.generateId());
-
-					// set actuality
-					adverseEvent.setActuality(AdverseEventActuality.ACTUAL);
-
-					// set identifier
-					Identifier adverseEventIdentifier = new Identifier();
-					adverseEventIdentifier.setSystem("http://example.com/adverseEvent");
-					adverseEventIdentifier.setValue("123456");
-					adverseEvent.setIdentifier(adverseEventIdentifier);
-
-					// if incoming coding: system, code, display are not null then use same and if
-					// incoming coding: system, code, display are null then take those value from
-					// input file
-					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(adverseEventDetail.getCoding(),
-							adverseEventDetail.getCategory());
-
-					CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-							coding.getDisplay(), adverseEventDetail.getCategory());
-
-					// set category
-					adverseEvent.addCategory(code);
-
-					// Set patient reference
-					Reference patientRef = new Reference();
-					patientRef.setReference("Patient/" + patientResource.getId());
-					adverseEvent.setSubject(patientRef);
-
-					// Set recorder reference
-					Reference recorderRef = new Reference();
-					recorderRef.setReference("Practitioner/" + UUID.randomUUID().toString());
-					adverseEvent.setRecorder(recorderRef);
-
-					// Set date
-					adverseEvent.setDate(new Date());
-
-					// set detected date
-					adverseEvent.setDetected(new Date());
-
-					// set recorded date
-					adverseEvent.setRecordedDate(new Date());
-
-					// Set seriousness
-					adverseEvent.setSeriousness(
-							FHIRUtils.getCodeableConcept("24484000", "http://snomed.info/sct", "Severe", "Serious"));
-
-					// Set outcome
-					adverseEvent.setOutcome(FHIRUtils.getCodeableConcept("resolved",
-							"http://terminology.hl7.org/CodeSystem/adverse-event-outcome", "Resolved", "Resolved"));
-
-					FHIRUtils.addToBundleEntry(bundle, adverseEvent, true);
-
-					// Add the condition to the Adverse Event section
-					adverseEventsSection.addEntry(new Reference(adverseEvent));
-
-					sections.add(adverseEventsSection);
-				}
+				List<AdverseEventRequest> adverseEventsDetail = clinicalData.getClinicalInformation()
+						.getAdverseEvents();
+				sections.add(createAdverseEventsSection(bundle, opDoc, patientResource, adverseEventsDetail));
 			}
 
 			// past medical history section
@@ -499,7 +434,7 @@ public class OPConsultationHelper {
 			// Ongoing Drugs section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getOngoingDrugs())) {
 				List<OngoingDrugs> ongoingDrugsDetails = clinicalData.getClinicalInformation().getOngoingDrugs();
-				sections.add(createOngoingDrugsSection(bundle, opDoc, patientResource, ongoingDrugsDetails));
+				sections.add(createMedicationsSection(bundle, opDoc, patientResource, ongoingDrugsDetails));
 			}
 		}
 
@@ -972,7 +907,7 @@ public class OPConsultationHelper {
 
 		// create code for allergies
 		CodeableConcept allergyCode = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName("Allergy record");
+		Optional<Test> cancerTestDetail = getTestByName("Allergies");
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
 			allergyCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
@@ -1076,7 +1011,7 @@ public class OPConsultationHelper {
 
 		// Set code
 		CodeableConcept code = new CodeableConcept();
-		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", "Order document"));
+		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", Constants.EXAMINATION_DETAILS));
 		code.setText(Constants.EXAMINATION_DETAILS);
 		investigationAdviceSection.setCode(code);
 
@@ -1126,7 +1061,7 @@ public class OPConsultationHelper {
 		return serviceRequest;
 	}
 
-	public Composition.SectionComponent createOngoingDrugsSection(Bundle bundle, Composition composition,
+	public Composition.SectionComponent createMedicationsSection(Bundle bundle, Composition composition,
 			Patient patient, List<OngoingDrugs> ongoingDrugsList) {
 
 		// Create the section for Medications
@@ -1424,5 +1359,100 @@ public class OPConsultationHelper {
 		condition.setText(narrative);
 
 		return condition;
+	}
+
+	public Composition.SectionComponent createAdverseEventsSection(Bundle bundle, Composition composition,
+			Patient patient, List<AdverseEventRequest> adverseEventsList) {
+
+		// create code for adverseEvents Section
+		CodeableConcept adverseEventCode = new CodeableConcept();
+		Optional<Test> cancerTestDetail = getTestByName("Adverse Events");
+		if (cancerTestDetail.isPresent()) {
+			Test test = cancerTestDetail.get();
+			adverseEventCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
+					test.getDescription(), test.getDescription());
+		}
+		// Create the section for adverseEvents
+		Composition.SectionComponent adverseEventsSection = FHIRUtils.createSectionComponent("AdverseEvents",
+				adverseEventCode);
+
+		// Iterate over the adverseEventsList and create AdverseEvent resources
+		for (AdverseEventRequest adverseEventsDetail : adverseEventsList) {
+			AdverseEvent adverseEvent = createAdverseEvent(adverseEventsDetail, patient);
+
+			// set AllergyIntolerance resource ID
+			String allergyId = UUID.randomUUID().toString();
+			adverseEvent.setId(allergyId);
+
+			// set meta profile
+			adverseEvent.setMeta(
+					Utils.getMeta(new Date(), "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent"));
+
+			// add AllergyIntolerance to bundle resource
+			FHIRUtils.addToBundleEntry(bundle, adverseEvent, true);
+
+			adverseEventsSection.addEntry(new Reference("AdverseEvent/" + adverseEvent.getIdElement().getValue()));
+		}
+
+		return adverseEventsSection;
+	}
+
+	private AdverseEvent createAdverseEvent(AdverseEventRequest adverseEventDetail, Patient patient) {
+
+		// Create a new AdverseEvent resource
+		AdverseEvent adverseEvent = new AdverseEvent();
+
+		// set id
+		adverseEvent.setId(Utils.generateId());
+
+		// set actuality
+		adverseEvent.setActuality(AdverseEventActuality.ACTUAL);
+
+		// set identifier
+		Identifier adverseEventIdentifier = new Identifier();
+		adverseEventIdentifier.setSystem("http://example.com/adverseEvent");
+		adverseEventIdentifier.setValue("123456");
+		adverseEvent.setIdentifier(adverseEventIdentifier);
+
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(adverseEventDetail.getCoding(),
+				adverseEventDetail.getCategory());
+
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				adverseEventDetail.getCategory());
+
+		// set category
+		adverseEvent.addCategory(code);
+
+		// Set patient reference
+		Reference patientRef = new Reference();
+		patientRef.setReference("Patient/" + patient.getId());
+		adverseEvent.setSubject(patientRef);
+
+		// Set recorder reference
+		Reference recorderRef = new Reference();
+		recorderRef.setReference("Practitioner/" + UUID.randomUUID().toString());
+		adverseEvent.setRecorder(recorderRef);
+
+		// Set date
+		adverseEvent.setDate(new Date());
+
+		// set detected date
+		adverseEvent.setDetected(new Date());
+
+		// set recorded date
+		adverseEvent.setRecordedDate(new Date());
+
+		// Set seriousness
+		adverseEvent.setSeriousness(
+				FHIRUtils.getCodeableConcept("24484000", "http://snomed.info/sct", "Severe", "Serious"));
+
+		// Set outcome
+		adverseEvent.setOutcome(FHIRUtils.getCodeableConcept("resolved",
+				"http://terminology.hl7.org/CodeSystem/adverse-event-outcome", "Resolved", "Resolved"));
+
+		return adverseEvent;
 	}
 }

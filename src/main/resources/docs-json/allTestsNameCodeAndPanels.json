@@ -842,7 +842,16 @@
 				"code": "422843007",
 				"display": ""
 			},
-			"description": "Chief complaint sectiont"
+			"description": "Chief complaint section"
+		},
+		{
+			"name": "Allergies",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "722446000",
+				"display": "Allergies"
+			},
+			"description": "Allergies"
 		},
 		{
 			"name": "Peanut",
@@ -942,6 +951,15 @@
 				"display": "Wrong Body Site"
 			},
 			"description": "Wrong Body Site"
+		},
+		{
+			"name": "Adverse Events",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "405533003",
+				"display": "Adverse Events"
+			},
+			"description": "Adverse Events"
 		}
 	]
 }
