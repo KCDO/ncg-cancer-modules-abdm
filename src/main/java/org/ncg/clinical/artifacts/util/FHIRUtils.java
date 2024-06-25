@@ -24,16 +24,21 @@ import org.hl7.fhir.r4.model.Composition;
 import org.hl7.fhir.r4.model.Condition;
 import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
+import org.hl7.fhir.r4.model.DiagnosticReport;
+import org.hl7.fhir.r4.model.DocumentReference;
 import org.hl7.fhir.r4.model.Encounter;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
+import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Practitioner;
+import org.hl7.fhir.r4.model.Procedure;
+import org.hl7.fhir.r4.model.Procedure.ProcedureStatus;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
@@ -205,8 +210,7 @@ public class FHIRUtils {
 		// add identifier
 		List<Identifier> identifierList = new ArrayList<>();
 		if (Objects.nonNull(patientData.getIdentifier())) {
-			Identifier identifier = new Identifier();
-			identifier = getIdentifier(patientData.getIdentifier().getDomain(),
+			Identifier identifier = getIdentifier(patientData.getIdentifier().getDomain(),
 					Constants.URN_HEALTH_INFORMATION_PROVIDER_SYSTEM);
 			identifier.setId(patientData.getIdentifier().getHipId());
 			identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
@@ -436,7 +440,9 @@ public class FHIRUtils {
 		if (Objects.nonNull(clinicalData.getPatientDetails())) {
 			patientResource = patientBuilder(clinicalData.getPatientDetails(), bundle);
 			FHIRUtils.addToBundleEntry(bundle, patientResource, true);
-			opDoc.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
+			if (Objects.nonNull(patientResource)) {
+				opDoc.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
+			}
 		}
 
 		return patientResource;
@@ -445,7 +451,7 @@ public class FHIRUtils {
 	static void addToBundleEntry(Bundle bundle, Resource resource, boolean useIdPart) {
 		String resourceType = resource.getResourceType().toString();
 		String id = useIdPart ? resource.getIdElement().getIdPart() : resource.getId();
-		bundle.addEntry().setFullUrl("https://fhir.example.com/" + resourceType + "/" + id).setResource(resource);
+		bundle.addEntry().setFullUrl(Constants.HTTPS_FHIR_EXAMPLE_COM + resourceType + "/" + id).setResource(resource);
 	}
 
 	static Reference getReferenceToPatient(Patient patientResource) {
@@ -612,7 +618,7 @@ public class FHIRUtils {
 		// Create a new Condition resource for the Chief complaint
 		CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(conditionLoincCode, Constants.LOINC_SYSTEM,
 				conditionType, conditionType);
-		Condition condition = createConditionResource(conditionCode);
+		Condition condition = createConditionResource(conditionCode, patient);
 
 		// make an entry for condition resource to bundle
 		FHIRUtils.addToBundleEntry(bundle, condition, true);
@@ -629,12 +635,13 @@ public class FHIRUtils {
 		return oralCancerSection;
 	}
 
-	public static Condition createConditionResource(CodeableConcept code) {
+	public static Condition createConditionResource(CodeableConcept code, Patient patientResource) {
 		Condition condition = new Condition();
 		condition.setId(Utils.generateId());
 		condition.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_CONDITION));
 		condition.setClinicalStatus(getConditionClinicalStatus());
 		condition.setCode(code);
+		condition.setSubject(new Reference(patientResource));
 
 		return condition;
 	}
@@ -656,25 +663,25 @@ public class FHIRUtils {
 			} else {
 				// if any one of incoming system, code, display are null then use input json
 				// Test
-				Optional<Test> cancerTestDetail = getTestByName(testName);
-				if (cancerTestDetail.isPresent()) {
-					Test test = cancerTestDetail.get();
+				Optional<Test> testDetail = getTestByName(testName);
+				if (testDetail.isPresent()) {
+					Test test = testDetail.get();
 					newCoding.setSystem(StringUtils.isNotEmpty(coding.getSystem()) ? coding.getSystem()
 							: test.getCoding().getSystem());
 					newCoding.setCode(
 							StringUtils.isNotEmpty(coding.getCode()) ? coding.getCode() : test.getCoding().getCode());
-					newCoding.setDisplay(
-							StringUtils.isNotEmpty(coding.getDisplay()) ? coding.getDisplay() : test.getDescription());
+					newCoding.setDisplay(StringUtils.isNotEmpty(coding.getDisplay()) ? coding.getDisplay()
+							: test.getCoding().getDisplay());
 				}
 			}
 		} else {
 			// if all of incoming system, code, display are null then use input json Test
-			Optional<Test> cancerTestDetail = getTestByName(testName);
-			if (cancerTestDetail.isPresent()) {
-				Test test = cancerTestDetail.get();
+			Optional<Test> testDetail = getTestByName(testName);
+			if (testDetail.isPresent()) {
+				Test test = testDetail.get();
 				newCoding.setSystem(test.getCoding().getSystem());
 				newCoding.setCode(test.getCoding().getCode());
-				newCoding.setDisplay(test.getDescription());
+				newCoding.setDisplay(test.getCoding().getDisplay());
 			}
 		}
 
@@ -689,15 +696,11 @@ public class FHIRUtils {
 
 		// Add the identifier to the practitioner
 		Identifier identifier = new Identifier();
-		identifier = getIdentifier(fhirPractitioner.getId(),
-				Constants.HTTP_EXAMPLE_ORG_FHIR_PRACTITIONER_IDENTIFIER_SYSTEM);
+		identifier.setValue(fhirPractitioner.getId());
 		// Set the type of the identifier
 		identifier.setType(getCodeableConcept(Constants.PRN, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
 				Constants.PROVIDER_NUMBER, Constants.PROVIDER_NUMBER));
 		fhirPractitioner.addIdentifier(identifier);
-
-		fhirPractitioner.setIdentifier(
-				Arrays.asList(FHIRUtils.getIdentifier(fhirPractitioner.getId(), Constants.HTTPS_NDHM_IN_PHR)));
 
 		// set firstName, lastName, middleName in humanName
 		fhirPractitioner.addName(getHumanName(practitionerDetail.getFirstName(), practitionerDetail.getMiddleName(),
@@ -727,7 +730,8 @@ public class FHIRUtils {
 
 		// add meta
 		Date date = new Date();
-		fhirPractitioner.setMeta(Utils.getMeta(date, "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"));
+		fhirPractitioner
+				.setMeta(Utils.getMeta(date, Constants.HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_PRACTITIONER));
 
 		return fhirPractitioner;
 	}
@@ -738,7 +742,9 @@ public class FHIRUtils {
 		if (Objects.nonNull(clinicalData.getPractitionerDetails())) {
 			practitionerResource = practitionerBuilder(clinicalData.getPractitionerDetails(), bundle);
 			FHIRUtils.addToBundleEntry(bundle, practitionerResource, true);
-			opDoc.setAuthor(Arrays.asList(FHIRUtils.getReferenceToPractitioner(practitionerResource)));
+			if (Objects.nonNull(practitionerResource)) {
+				opDoc.setAuthor(Arrays.asList(FHIRUtils.getReferenceToPractitioner(practitionerResource)));
+			}
 		}
 
 		return practitionerResource;
@@ -753,10 +759,10 @@ public class FHIRUtils {
 		return practitionerRef;
 	}
 
-	static void getFHIRGender(String patientGender, Practitioner fhirPractitioner) {
-		if (StringUtils.isNotBlank(patientGender)) {
+	static void getFHIRGender(String practitionerGender, Practitioner fhirPractitioner) {
+		if (StringUtils.isNotBlank(practitionerGender)) {
 			// converting input gender to lower case
-			String gender = patientGender.toLowerCase();
+			String gender = practitionerGender.toLowerCase();
 			switch (gender) {
 			case "male":
 				fhirPractitioner.setGender(AdministrativeGender.MALE);
@@ -772,5 +778,114 @@ public class FHIRUtils {
 				break;
 			}
 		}
+	}
+
+	public static DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient, Practitioner practitioner,
+			String reportValue, org.ncg.clinical.artifacts.vo.Coding coding, String reportName) throws IOException {
+		// Create a new CodeableConcept
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				reportName);
+
+		// Create a new DiagnosticReport resource
+		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, practitioner, code, null);
+
+		// Create a new DocumentReference resource
+		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding);
+
+		// Add documentReference to the bundle
+		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+
+		report.addResult(FHIRUtils.getReferenceToResource(documentReference));
+
+		return report;
+	}
+
+	public static DiagnosticReport createDiagnosticReportResource(Bundle bundle, Patient patient,
+			Practitioner practitioner, CodeableConcept code, List<CodeableConcept> categories) {
+		DiagnosticReport report = new DiagnosticReport();
+		report.setId(Utils.generateId());
+		report.setStatus(DiagnosticReport.DiagnosticReportStatus.FINAL);
+		report.setCode(code);
+		report.setCategory(categories);
+		report.setSubject(FHIRUtils.getReferenceToPatient(patient));
+		report.setIssued(new Date());
+
+		// Set section
+		Composition.SectionComponent section = new Composition.SectionComponent();
+		section.setTitle("Diagnostic Report Section");
+		CodeableConcept sectionCode = new CodeableConcept();
+		sectionCode.addCoding(
+				new Coding().setSystem("http://loinc.org").setCode("45033-8").setDisplay("Diagnostic Report"));
+		sectionCode.setText("Diagnostic Report");
+		section.setCode(sectionCode);
+
+		// Set section author
+		section.setAuthor(Arrays.asList(FHIRUtils.getReferenceToPractitioner(practitioner)));
+
+		// Set section text
+		Narrative sectionText = new Narrative();
+		sectionText.setStatus(Narrative.NarrativeStatus.GENERATED);
+		section.setText(sectionText);
+
+		FHIRUtils.addToBundleEntry(bundle, report, true);
+		return report;
+	}
+
+	public static DocumentReference createDocumentReferenceResource(String reportName, String reportValue,
+			Patient patient, org.ncg.clinical.artifacts.vo.Coding coding) throws IOException {
+		// create CodeableConcept type
+		CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), Constants.LOINC_SYSTEM,
+				coding.getDisplay(), reportName + " report");
+
+		// create documentReference resource
+		DocumentReference documentReference = new DocumentReference();
+		documentReference.setId(Utils.generateId());
+		documentReference.setType(type);
+		documentReference.setSubject(new Reference(patient));
+		documentReference.setStatus(Enumerations.DocumentReferenceStatus.CURRENT);
+
+		// Set the content (attachment) of the document
+		DocumentReference.DocumentReferenceContentComponent content = new DocumentReference.DocumentReferenceContentComponent();
+		if (StringUtils.isNotEmpty(reportValue)) {
+			Attachment attachment = FHIRUtils.getAttachment(reportName, reportValue);
+			content.setAttachment(attachment);
+		}
+
+		documentReference.addContent(content);
+		return documentReference;
+	}
+
+	public static Procedure createProcedureWithDocumentReference(Bundle bundle, Patient patient, String reportValue,
+			org.ncg.clinical.artifacts.vo.Coding coding, String reportName) throws IOException {
+		// Create a new CodeableConcept
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				reportName);
+
+		Procedure procedure = new Procedure();
+
+		// set uuid in procedure
+		procedure.setId(Utils.generateId());
+
+		// set code into procedure
+		procedure.setCode(code);
+
+		// set status as COMPLETED
+		procedure.setStatus(ProcedureStatus.COMPLETED);
+
+		procedure.setSubject(new Reference(patient));
+
+		// Create a new DocumentReference resource
+		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding);
+
+		// Add documentReference to procedure
+		procedure.setReport(Arrays.asList(new Reference(documentReference)));
+
+		// Add procedure to the bundle
+		FHIRUtils.addToBundleEntry(bundle, procedure, true);
+
+		// Add documentReference to the bundle
+		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+
+		return procedure;
 	}
 }

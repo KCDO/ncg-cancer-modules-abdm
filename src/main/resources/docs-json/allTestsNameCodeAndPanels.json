@@ -390,7 +390,7 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "34552-0",
-				"display": ""
+				"display": "Cardiac 2D echo panel"
 			},
 			"description": "2 D ECHO with PASP"
 		},
@@ -408,9 +408,9 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "24590-2",
-				"display": ""
+				"display": "MR Brain"
 			},
-			"description": "MRI brain"
+			"description": "MRI Brain"
 		},
 		{
 			"name": "Fiber optic bronchoscopy",

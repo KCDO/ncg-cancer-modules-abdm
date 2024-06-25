@@ -44,7 +44,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 
 	@PostConstruct
 	public void init() throws Exception {
-		generators.put(Constants.OP_CONSULT_RECORD, new AbdmArtifactGenerator(opConsultationHelper));
+		generators.put(Constants.OPONSULTRECORD, new AbdmArtifactGenerator(opConsultationHelper));
 
 		clinicalInputData = new ObjectMapper().readValue(new File(opConsultationInput), ClinicalData.class);
 		log.info("ClinicalDataServiceImpl::init::Successfully loaded clinicalInputData from JSON.");
@@ -80,7 +80,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 
 	private Bundle processOPConsultRecord(ClinicalData clinicalData) throws Exception {
 		Bundle bundle = new Bundle();
-		AbdmHITypeGenerator generator = generators.get(Constants.OP_CONSULT_RECORD);
+		AbdmHITypeGenerator generator = generators.get(Constants.OPONSULTRECORD);
 		if (!Objects.isNull(generator)) {
 			bundle = generator.create(clinicalData);
 		}
