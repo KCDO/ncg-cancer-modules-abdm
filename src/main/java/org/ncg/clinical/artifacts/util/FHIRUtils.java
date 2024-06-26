@@ -767,7 +767,7 @@ public class FHIRUtils {
 		practitionerResource = practitionerBuilder(null);
 		FHIRUtils.addToBundleEntry(bundle, practitionerResource, true);
 		if (Objects.nonNull(practitionerResource)) {
-			opDoc.addAuthor(FHIRUtils.getReferenceToPractitioner(practitionerResource));
+			//opDoc.addAuthor(FHIRUtils.getReferenceToPractitioner(practitionerResource));
 		}
 		// }
 
@@ -966,6 +966,7 @@ public class FHIRUtils {
 			FHIRUtils.addToBundleEntry(bundle, organizationResource, true);
 			if (Objects.nonNull(organizationResource)) {
 				opDoc.setCustodian(FHIRUtils.getReferenceToPatient(organizationResource));
+				opDoc.addAuthor(FHIRUtils.getReferenceToPatient(organizationResource));
 			}
 		}
 

@@ -120,8 +120,7 @@ public class OPConsultationHelper {
 
 		// TODO: need to complete when requirement will come for practitioner
 		// Create practitioner and add entry for practitioner as author in composition
-		Practitioner practitionerResource = FHIRUtils.practitionerBuilder(null);
-		opDoc.addAuthor(FHIRUtils.getReferenceToPractitioner(practitionerResource));
+		Practitioner practitionerResource = FHIRUtils.addPractitionerResourceToComposition(clinicalData, bundle, opDoc);
 
 		// Create encounter and add as entry in composition
 		FHIRUtils.addEncounterResourceToComposition(bundle, opDoc, patientResource);
