@@ -330,8 +330,9 @@ public class OPConsultationHelper {
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getOTNotes())) {
 
 				// create OT Notes section and add document attachment resource
+				org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.OT_NOTES);
 				Composition.SectionComponent otNotesSection = FHIRUtils.createChiefComplaintSection(bundle,
-						patientResource, Constants.OT_NOTES_CODE, Constants.OT_NOTES);
+						patientResource, coding);
 
 				for (Map.Entry<String, String> otNotesDetail : clinicalData.getClinicalInformation().getOTNotes()
 						.entrySet()) {
@@ -425,8 +426,9 @@ public class OPConsultationHelper {
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getPACNotes())) {
 
 				// create PAC Notes section and add document attachment resource
+				org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, "PAC Notes");
 				Composition.SectionComponent pACNotesSection = FHIRUtils.createChiefComplaintSection(bundle,
-						patientResource, Constants.OT_NOTES_CODE, Constants.OT_NOTES);
+						patientResource, coding);
 
 				for (Map.Entry<String, String> pACNotesDetail : clinicalData.getClinicalInformation().getPACNotes()
 						.entrySet()) {
@@ -453,12 +455,11 @@ public class OPConsultationHelper {
 		if (Objects.nonNull(cancerType)) {
 			Composition.SectionComponent cancerSection = new Composition.SectionComponent();
 
-			Optional<Test> cancerTest = getTestByName(cancerName);
+			org.ncg.clinical.artifacts.vo.Coding chiefComplaintCoding = FHIRUtils.mapCoding(null, cancerName);
+
 			// Create Chief complaint section and add condition resource
-			if (cancerTest.isPresent()) {
-				cancerSection = FHIRUtils.createChiefComplaintSection(bundle, patientResource,
-						cancerTest.get().getCoding().getCode(), cancerTest.get().getDescription());
-			}
+			cancerSection = FHIRUtils.createChiefComplaintSection(bundle, patientResource, chiefComplaintCoding);
+
 			// Create Procedure for report
 			if (!CollectionUtils.isEmpty(cancerType.getTests())) {
 				for (AttachmentDetail attachmentDetail : cancerType.getTests()) {

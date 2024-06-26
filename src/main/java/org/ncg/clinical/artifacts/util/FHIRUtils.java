@@ -624,21 +624,21 @@ public class FHIRUtils {
 	}
 
 	public static Composition.SectionComponent createChiefComplaintSection(Bundle bundle, Patient patient,
-			String conditionLoincCode, String conditionType) {
+			org.ncg.clinical.artifacts.vo.Coding coding) {
 		// create code for Chief complaint
 		CodeableConcept chiefComplaintCode = new CodeableConcept();
 		Optional<Test> cancerTestDetail = getTestByName("Chief complaints");
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
 			chiefComplaintCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
-					test.getDescription(), test.getDescription());
+					test.getCoding().getDisplay(), test.getDescription());
 		}
 		// create Chief complaint section
 		Composition.SectionComponent sectionComponent = createSectionComponent("Chief complaints", chiefComplaintCode);
 
 		// Create a new Condition resource for the Chief complaint
-		CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(conditionLoincCode, Constants.LOINC_SYSTEM,
-				conditionType, conditionType);
+		CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), coding.getDisplay());
 		Condition condition = createConditionResource(conditionCode, patient);
 
 		// make an entry for condition resource to bundle
@@ -858,8 +858,8 @@ public class FHIRUtils {
 	public static DocumentReference createDocumentReferenceResource(String reportName, String reportValue,
 			Patient patient, org.ncg.clinical.artifacts.vo.Coding coding) throws IOException {
 		// create CodeableConcept type
-		CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), Constants.LOINC_SYSTEM,
-				coding.getDisplay(), reportName + " report");
+		CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				reportName + " report");
 
 		// create documentReference resource
 		DocumentReference documentReference = new DocumentReference();

@@ -379,117 +379,117 @@
 		{
 			"name": "Lung Cancer",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "59015-0",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "4221000179107",
+				"display": "Ultrasound imaging report"
 			},
 			"description": "Lung Cancer"
 		},
 		{
 			"name": "2 D ECHO with PASP",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "34552-0",
-				"display": "Cardiac 2D echo panel"
+				"system": "http://snomed.info/sct",
+				"code": "399345000",
+				"display": "Adult echocardiography procedure report"
 			},
 			"description": "2 D ECHO with PASP"
 		},
 		{
 			"name": "FDG PETCT",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "81553-0",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "443271005",
+				"display": "Positron emission tomography with computed tomography using fluorodeoxyglucose (18-F)"
 			},
 			"description": "FDG PETCT"
 		},
 		{
 			"name": "MRI brain",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "24590-2",
-				"display": "MR Brain"
+				"system": "http://snomed.info/sct",
+				"code": "4251000179103",
+				"display": "Magnetic resonance imaging report"
 			},
 			"description": "MRI Brain"
 		},
 		{
 			"name": "Fiber optic bronchoscopy",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "18744-3",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "85765000",
+				"display": "Fiberoptic bronchoscopy"
 			},
 			"description": "Fiber optic bronchoscopy"
 		},
 		{
 			"name": "Endobronchial ultrasound with ROSE reports",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "100231-0",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "770575000",
+				"display": "Endobronchial ultrasound report"
 			},
 			"description": "Endobronchial ultrasound with ROSE reports"
 		},
 		{
 			"name": "Pulmonary function tests with DLCO",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "58477-1",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "720449003",
+				"display": "Pulmonary function report"
 			},
 			"description": "Pulmonary function tests with DLCO"
 		},
 		{
 			"name": "V/Q scan in pneumonectomy",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "39942-8",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "37859006",
+				"display": "Ventilation-perfusion scan"
 			},
 			"description": "V/Q scan in pneumonectomy"
 		},
 		{
 			"name": "6MWT",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "64098-7",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "252478000",
+				"display": "6-minute walk test"
 			},
 			"description": "6MWT"
 		},
 		{
 			"name": "Molecular markers/NGS as needed",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "73977-1",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "405825005",
+				"display": "Molecular genetic test"
 			},
 			"description": "Molecular markers/NGS as needed"
 		},
 		{
 			"name": "Oral Cancer",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "54014-2",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "371528001",
+				"display": "Pathology report"
 			},
 			"description": "Oral Cancer"
 		},
 		{
 			"name": "FNAC report",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "87179-8",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "726566009",
+				"display": "Pathology biopsy report"
 			},
 			"description": "FNAC report"
 		},
 		{
 			"name": "CECT head neck thorax report/ PET Ct/ MRI",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "24627-2",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "4251000179103",
+				"display": "Magnetic resonance imaging report"
 			},
 			"description": "CECT head neck thorax report/ PET Ct/ MRI"
 		},
@@ -766,9 +766,9 @@
 		{
 			"name": "Cervical Cancer",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "36813-4",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "4261000179100",
+				"display": "Computed tomography imaging report"
 			},
 			"description": "Cervical Cancer"
 		},
@@ -840,7 +840,7 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "422843007",
-				"display": ""
+				"display": "Chief complaint section"
 			},
 			"description": "Chief complaint section"
 		},
@@ -960,6 +960,24 @@
 				"display": "Adverse incident outcome categories"
 			},
 			"description": "Adverse Events"
+		},
+		{
+			"name": "OT Notes",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "102281000000119",
+				"display": "OT Notes"
+			},
+			"description": "OT Notes"
+		},
+		{
+			"name": "PAC Notes",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "102281000000119",
+				"display": "PAC Notes"
+			},
+			"description": "PAC Notes"
 		}
 	]
 }
