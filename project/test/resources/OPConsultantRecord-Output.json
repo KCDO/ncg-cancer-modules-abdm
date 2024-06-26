@@ -1,1351 +1,1643 @@
 {
-  "resourceType": "Bundle",
-  "id": "27455922-0108-4e09-88ee-f169968f4ea2",
-  "meta": {
-    "versionId": "0",
-    "lastUpdated": "2024-06-25T17:49:08.093+05:30",
-    "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle" ]
-  },
-  "identifier": {
-    "system": "http://hip.in",
-    "value": "OpConsultRecord/27455922-0108-4e09-88ee-f169968f4ea2"
-  },
-  "type": "document",
-  "timestamp": "2024-06-25T17:49:08.093+05:30",
-  "entry": [ {
-    "fullUrl": "https://fhir.example.com/Composition/566825cf-4354-491b-9986-b98e1b5dd001",
-    "resource": {
-      "resourceType": "Composition",
-      "id": "566825cf-4354-491b-9986-b98e1b5dd001",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.093+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord" ]
-      },
-      "language": "en-IN",
-      "identifier": {
-        "system": "https://ndhm.in/phr",
-        "value": "566825cf-4354-491b-9986-b98e1b5dd001"
-      },
-      "status": "final",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "371530004",
-          "display": "Clinical consultation report"
-        } ],
-        "text": "Clinical consultation report"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3",
-        "display": "Testing ABDM NCG"
-      },
-      "encounter": {
-        "reference": "Encounter/bbb8e573-bfd6-45fe-887b-a11acff51e01"
-      },
-      "date": "2024-06-25T17:49:08+05:30",
-      "author": [ {
-        "reference": "Practitioner/def74380-41be-4ecc-824d-dcf831da2044"
-      } ],
-      "title": "Consultation Report",
-      "section": [ {
-        "title": "Chief complaints",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "422843007",
-            "display": "Chief complaint section"
-          } ],
-          "text": "Chief complaint section"
-        },
-        "entry": [ {
-          "reference": "Condition/65bac1c6-6c57-4a7c-b558-b12c3379f860"
-        } ]
-      }, {
-        "title": "Allergies",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "722446000",
-            "display": "Allergies"
-          } ],
-          "text": "Allergies"
-        },
-        "entry": [ {
-          "reference": "AllergyIntolerance/e6b5e1f1-c109-4e95-9a32-54a515fc2aa5"
-        }, {
-          "reference": "AllergyIntolerance/9ac97353-30cc-41cb-a141-a7fa49d968b5"
-        } ]
-      }, {
-        "title": "Medical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "417662000",
-            "display": "Comorbidities and Past Medical History"
-          } ],
-          "text": "Comorbidities and Past Medical History"
-        },
-        "entry": [ {
-          "reference": "Condition/829281a7-65ae-4787-bf98-f799fcec5640"
-        }, {
-          "reference": "Condition/b4aa6e72-4ff2-4125-93ea-dc9673fbe47b"
-        } ]
-      }, {
-        "title": "AdverseEvents",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "405533003",
-            "display": "Adverse Events"
-          } ],
-          "text": "Adverse Events"
-        },
-        "entry": [ {
-          "reference": "AdverseEvent/47ea6556-7369-4404-8798-5c424493c50e"
-        } ]
-      }, {
-        "title": "Medical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "417662000",
-            "display": "Comorbidities and Past Medical History"
-          } ],
-          "text": "Comorbidities and Past Medical History"
-        },
-        "entry": [ {
-          "reference": "Condition/ee479cc6-c5a8-4682-b74f-c4bb5bb7b90e"
-        }, {
-          "reference": "Condition/0def2829-c8a6-488e-b964-a554a62b4f22"
-        } ]
-      }, {
-        "title": "Past Surgical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "276026009",
-            "display": "Past Surgical History"
-          } ],
-          "text": "Past Surgical History"
-        },
-        "entry": [ {
-          "reference": "Condition/8e038d48-587f-462f-b141-31e1455a769f"
-        } ]
-      }, {
-        "title": "Past Surgical History",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "276026009",
-            "display": "Past Surgical History"
-          } ],
-          "text": "Past Surgical History"
-        },
-        "entry": [ {
-          "reference": "Condition/3811cca6-5af4-425c-84a2-0b5a9e46a0d3"
-        } ]
-      }, {
-        "title": "Mental Health Assesment",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "416940007",
-            "display": "Mental Health Assesment"
-          } ],
-          "text": "Mental Health Assesment"
-        },
-        "entry": [ {
-          "reference": "Observation/a4579c16-f10c-414c-aa62-fc1f7286c86d"
-        } ]
-      }, {
-        "title": "OtherObservations",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "364313002",
-            "display": "Menstruation History"
-          } ],
-          "text": "Menstruation History"
-        },
-        "entry": [ {
-          "reference": "Observation/09d6cfb2-37fc-48d9-8681-f8020061c284"
-        }, {
-          "reference": "Observation/43834742-5c2a-43c1-ab26-2ab02d1037a7"
-        } ]
-      }, {
-        "title": "InvestigationAdvice",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "721963009",
-            "display": "Examination Details"
-          } ],
-          "text": "Examination Details"
-        },
-        "entry": [ {
-          "reference": "ServiceRequest/a7411698-ec03-409e-9c2e-baa056dcbe28"
-        }, {
-          "reference": "ServiceRequest/c7464650-e28f-4c9d-a6cd-18bc452ed7a1"
-        } ]
-      }, {
-        "title": "Surgical Summary With Post OP Course",
-        "entry": [ {
-          "reference": "Procedure/b3ebe11d-b081-45f5-b469-de8a5f2dd4ef"
-        } ]
-      }, {
-        "title": "Surgical Summary With Post OP Course",
-        "entry": [ {
-          "reference": "Procedure/33c0de79-bfc5-47ee-99f0-d7f2558461eb"
-        } ]
-      }, {
-        "title": "Medications",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "721912009",
-            "display": "Ongoing Drugs"
-          } ],
-          "text": "Ongoing Drugs"
-        },
-        "entry": [ {
-          "reference": "MedicationStatement/fcccaec4-a789-4dee-984d-b14a35dfe748"
-        }, {
-          "reference": "MedicationStatement/c2688cd0-f934-445c-95cf-59ce4a0998c2"
-        } ]
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Observation/cb7880bd-01f9-43c5-ad3d-5aa8930da65f",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "cb7880bd-01f9-43c5-ad3d-5aa8930da65f",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        } ],
-        "text": "Vital Signs"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "8302-2",
-          "display": "Body height"
-        } ],
-        "text": "Height"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "effectiveDateTime": "2024-06-25T17:49:08+05:30",
-      "valueQuantity": {
-        "value": 160.0,
-        "unit": "cm",
-        "system": "http://unitsofmeasure.org",
-        "code": "cm"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Observation/b75074ea-897b-4cf6-ac86-b16439debf7e",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "b75074ea-897b-4cf6-ac86-b16439debf7e",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        } ],
-        "text": "Vital Signs"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "29463-7",
-          "display": "weight"
-        } ],
-        "text": "Weight"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "effectiveDateTime": "2024-06-25T17:49:08+05:30",
-      "valueQuantity": {
-        "value": 62.0,
-        "unit": "kg",
-        "system": "http://unitsofmeasure.org",
-        "code": "kg"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Observation/a2bf2cbe-7acb-437f-8302-6b8a2a8d46c9",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "a2bf2cbe-7acb-437f-8302-6b8a2a8d46c9",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        } ],
-        "text": "Vital Signs"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "39156-5",
-          "display": "Body mass index (BMI) [Ratio]"
-        } ],
-        "text": "Body Mass Index"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "effectiveDateTime": "2024-06-25T17:49:08+05:30",
-      "valueQuantity": {
-        "value": 62.0,
-        "unit": "kg/m2",
-        "system": "http://unitsofmeasure.org",
-        "code": "kg/m2"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Observation/c6c6f540-ea3e-48e4-a7e1-ca293d2ce134",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "c6c6f540-ea3e-48e4-a7e1-ca293d2ce134",
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        } ],
-        "text": "Vital Signs"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "882-1",
-          "display": "ABO and Rh group [Type] in Blood"
-        } ],
-        "text": "Blood Group"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "valueCodeableConcept": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "365637002",
-          "display": "Finding of ABO blood group"
-        } ],
-        "text": "A+"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Patient/8c685432-deda-4486-b270-153ee76aa4d3",
-    "resource": {
-      "resourceType": "Patient",
-      "id": "8c685432-deda-4486-b270-153ee76aa4d3",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.139+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient" ]
-      },
-      "identifier": [ {
-        "id": "123",
-        "type": {
-          "coding": [ {
-            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-            "code": "MR",
-            "display": "Medical record number"
-          } ],
-          "text": "Medical record number"
-        },
-        "system": "urn:health:information:provider:system",
-        "value": "NCG"
-      }, {
-        "type": {
-          "coding": [ {
-            "system": "https://healthid.abdm.gov.in",
-            "code": "ABHAAddress",
-            "display": "ABHAAddress"
-          } ],
-          "text": "ABHAAddress"
-        },
-        "system": "urn:health:information:provider:system",
-        "value": "Bellandur Bangalore Urban District Karnataka India"
-      } ],
-      "name": [ {
-        "text": "Testing ABDM NCG",
-        "family": "NCG",
-        "given": [ "Testing ABDM" ]
-      } ],
-      "telecom": [ {
-        "system": "phone",
-        "value": "9898989898"
-      } ],
-      "gender": "male",
-      "birthDate": "1999-08-14",
-      "address": [ {
-        "type": "both",
-        "text": "House Name: 123",
-        "city": "Bangalore",
-        "district": "Bangalore",
-        "state": "Karnataka",
-        "postalCode": "560103",
-        "country": "India"
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Practitioner/def74380-41be-4ecc-824d-dcf831da2044",
-    "resource": {
-      "resourceType": "Practitioner",
-      "id": "def74380-41be-4ecc-824d-dcf831da2044",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.143+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner" ]
-      },
-      "identifier": [ {
-        "type": {
-          "coding": [ {
-            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-            "code": "PRN",
-            "display": "Provider number"
-          } ],
-          "text": "Provider number"
-        },
-        "value": "def74380-41be-4ecc-824d-dcf831da2044"
-      } ],
-      "name": [ {
-        "text": "Practitioner Testing NCG",
-        "family": "NCG",
-        "given": [ "Practitioner Testing" ]
-      } ],
-      "telecom": [ {
-        "system": "phone",
-        "value": "9898989898"
-      } ],
-      "address": [ {
-        "type": "both",
-        "text": "House Name: 123",
-        "city": "Bangalore",
-        "district": "Bangalore",
-        "state": "Karnataka",
-        "postalCode": "560103",
-        "country": "India"
-      } ],
-      "gender": "male",
-      "birthDate": "1989-08-14"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Encounter/bbb8e573-bfd6-45fe-887b-a11acff51e01",
-    "resource": {
-      "resourceType": "Encounter",
-      "id": "bbb8e573-bfd6-45fe-887b-a11acff51e01",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.156+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter" ]
-      },
-      "status": "finished",
-      "class": {
-        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-        "code": "OUTP",
-        "display": "outpatient encounter"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3",
-        "display": "Testing ABDM NCG"
-      },
-      "period": {
-        "start": "2024-06-25T17:49:08+05:30",
-        "end": "2024-06-26T17:49:08+05:30"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Condition/65bac1c6-6c57-4a7c-b558-b12c3379f860",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "65bac1c6-6c57-4a7c-b558-b12c3379f860",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.161+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "active",
-          "display": "active"
-        } ],
-        "text": "Active"
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "59015-0",
-          "display": "Lung Cancer"
-        } ],
-        "text": "Lung Cancer"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Procedure/e1b2967b-7007-49a4-9967-c8e8f5c335a8",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "e1b2967b-7007-49a4-9967-c8e8f5c335a8",
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "34552-0",
-          "display": "Cardiac 2D echo panel"
-        } ],
-        "text": "2 D ECHO with PASP"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "report": [ {
-        "reference": "DocumentReference/4553ed1f-2168-44b9-9e18-8b273bf7f65e"
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/DocumentReference/4553ed1f-2168-44b9-9e18-8b273bf7f65e",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "4553ed1f-2168-44b9-9e18-8b273bf7f65e",
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "34552-0",
-          "display": "Cardiac 2D echo panel"
-        } ],
-        "text": "2 D ECHO with PASP report"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "2 D ECHO with PASP"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Procedure/ea8bcc60-c266-404f-a64b-3ca8eb35f0cd",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "ea8bcc60-c266-404f-a64b-3ca8eb35f0cd",
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "24590-2",
-          "display": "MR Brain"
-        } ],
-        "text": "MRI brain"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "report": [ {
-        "reference": "DocumentReference/53890f8f-824c-42ba-9004-8c52ec92a425"
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/DocumentReference/53890f8f-824c-42ba-9004-8c52ec92a425",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "53890f8f-824c-42ba-9004-8c52ec92a425",
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "24590-2",
-          "display": "MR Brain"
-        } ],
-        "text": "MRI brain report"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "MRI brain"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/AllergyIntolerance/e6b5e1f1-c109-4e95-9a32-54a515fc2aa5",
-    "resource": {
-      "resourceType": "AllergyIntolerance",
-      "id": "e6b5e1f1-c109-4e95-9a32-54a515fc2aa5",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.185+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-          "code": "active",
-          "display": "Active"
-        } ],
-        "text": "Active"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ],
-        "text": "Confirmed"
-      },
-      "type": "allergy",
-      "category": [ "food" ],
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "91935009",
-          "display": "An adverse immune response to peanuts consumed as food."
-        } ],
-        "text": "Peanut"
-      },
-      "patient": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "recordedDate": "2024-06-25T17:49:08+05:30",
-      "recorder": {
-        "reference": "Practitioner/038ce9f1-14b6-4f3b-bc52-cce39404e092"
-      },
-      "note": [ {
-        "text": "The patient reports of: Peanut allergy which is of type: food"
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/AllergyIntolerance/9ac97353-30cc-41cb-a141-a7fa49d968b5",
-    "resource": {
-      "resourceType": "AllergyIntolerance",
-      "id": "9ac97353-30cc-41cb-a141-a7fa49d968b5",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.186+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-          "code": "active",
-          "display": "Active"
-        } ],
-        "text": "Active"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ],
-        "text": "Confirmed"
-      },
-      "type": "allergy",
-      "category": [ "environment" ],
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "91934004",
-          "display": "An adverse immune response to peanuts present in the environment, typically not related to ingestion but to contact or inhalation."
-        } ],
-        "text": "Peanut - dietary"
-      },
-      "patient": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "recordedDate": "2024-06-25T17:49:08+05:30",
-      "recorder": {
-        "reference": "Practitioner/0f08c6a6-cea0-416c-8b8a-64fa9c10035d"
-      },
-      "note": [ {
-        "text": "The patient reports of: Peanut - dietary allergy which is of type: environmental"
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Condition/829281a7-65ae-4787-bf98-f799fcec5640",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "829281a7-65ae-4787-bf98-f799fcec5640",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.186+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "category": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "38341003",
-          "display": "problem-list-item"
-        } ],
-        "text": "Problem list item"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "38341003",
-          "display": "This code represents the diagnosis of hypertension, commonly known as high blood pressure, which indicates that the force of the blood against the artery walls is too high."
-        } ],
-        "text": "Hypertension"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "recordedDate": "2024-06-25T17:49:08+05:30"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Condition/b4aa6e72-4ff2-4125-93ea-dc9673fbe47b",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "b4aa6e72-4ff2-4125-93ea-dc9673fbe47b",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.210+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "category": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "233604007",
-          "display": "encounter-diagnosis"
-        } ],
-        "text": "Encounter diagnosis"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "53741008",
-          "display": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-        } ],
-        "text": "Coronary Artery Disease"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "recordedDate": "2024-06-25T17:49:08+05:30"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/AdverseEvent/47ea6556-7369-4404-8798-5c424493c50e",
-    "resource": {
-      "resourceType": "AdverseEvent",
-      "id": "47ea6556-7369-4404-8798-5c424493c50e",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.215+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent" ]
-      },
-      "identifier": {
-        "system": "http://example.com/adverseEvent",
-        "value": "123456"
-      },
-      "actuality": "actual",
-      "category": [ {
-        "text": "medication-mishap"
-      } ],
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "date": "2024-06-25T17:49:08+05:30",
-      "detected": "2024-06-25T17:49:08+05:30",
-      "recordedDate": "2024-06-25T17:49:08+05:30",
-      "seriousness": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "24484000",
-          "display": "Severe"
-        } ],
-        "text": "Serious"
-      },
-      "outcome": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/adverse-event-outcome",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "Resolved"
-      },
-      "recorder": {
-        "reference": "Practitioner/72cc9b0e-7b74-497c-9ad4-21b28b46c01f"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Condition/ee479cc6-c5a8-4682-b74f-c4bb5bb7b90e",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "ee479cc6-c5a8-4682-b74f-c4bb5bb7b90e",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.215+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "38341003",
-          "display": "This code represents the diagnosis of hypertension, commonly known as high blood pressure, which indicates that the force of the blood against the artery walls is too high."
-        } ],
-        "text": "hypertension"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "recordedDate": "2024-06-25T17:49:08+05:30"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Condition/0def2829-c8a6-488e-b964-a554a62b4f22",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "0def2829-c8a6-488e-b964-a554a62b4f22",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.216+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "53741008",
-          "display": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-        } ],
-        "text": "Coronary Artery Disease"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "recordedDate": "2024-06-25T17:49:08+05:30"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Condition/8e038d48-587f-462f-b141-31e1455a769f",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "8e038d48-587f-462f-b141-31e1455a769f",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.217+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ]
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "38341003",
-          "display": "This code represents the diagnosis of hypertension, commonly known as high blood pressure, which indicates that the force of the blood against the artery walls is too high."
-        } ],
-        "text": "hypertension"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "recordedDate": "2024-06-25T17:49:08+05:30"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Condition/3811cca6-5af4-425c-84a2-0b5a9e46a0d3",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "3811cca6-5af4-425c-84a2-0b5a9e46a0d3",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.217+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ]
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "53741008",
-          "display": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-        } ],
-        "text": "Coronary Artery Disease"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "recordedDate": "2024-06-25T17:49:08+05:30"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Observation/a4579c16-f10c-414c-aa62-fc1f7286c86d",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "a4579c16-f10c-414c-aa62-fc1f7286c86d",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.218+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
-      },
-      "status": "final",
-      "code": {
-        "text": "Pregnancy status"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "effectiveDateTime": "2024-06-25T17:49:08+05:30",
-      "performer": [ {
-        "reference": "Practitioner/c5838889-6e59-43b4-942d-56797e236009"
-      } ],
-      "valueString": "Not pregnant"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Observation/09d6cfb2-37fc-48d9-8681-f8020061c284",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "09d6cfb2-37fc-48d9-8681-f8020061c284",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.219+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
-      },
-      "status": "final",
-      "code": {
-        "text": "Pregnancy status"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "effectiveDateTime": "2024-06-25T17:49:08+05:30",
-      "performer": [ {
-        "reference": "Practitioner/dda71686-49a2-44cd-aeef-bd95950d93a3"
-      } ],
-      "valueString": "Not pregnant"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Observation/43834742-5c2a-43c1-ab26-2ab02d1037a7",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "43834742-5c2a-43c1-ab26-2ab02d1037a7",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-06-25T17:49:08.219+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth" ]
-      },
-      "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
-      },
-      "status": "final",
-      "code": {
-        "text": "Menstrual cycle"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "effectiveDateTime": "2024-06-25T17:49:08+05:30",
-      "performer": [ {
-        "reference": "Practitioner/30dcf6d8-de97-48eb-85d5-ca45d586753e"
-      } ],
-      "valueString": "Regular"
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/ServiceRequest/a7411698-ec03-409e-9c2e-baa056dcbe28",
-    "resource": {
-      "resourceType": "ServiceRequest",
-      "id": "a7411698-ec03-409e-9c2e-baa056dcbe28",
-      "status": "active",
-      "intent": "order",
-      "code": {
-        "text": "obstetric history"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
-      "requester": {
-        "reference": "Practitioner/example1"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/ServiceRequest/c7464650-e28f-4c9d-a6cd-18bc452ed7a1",
-    "resource": {
-      "resourceType": "ServiceRequest",
-      "id": "c7464650-e28f-4c9d-a6cd-18bc452ed7a1",
-      "status": "active",
-      "intent": "order",
-      "code": {
-        "text": "breast health"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
-      "requester": {
-        "reference": "Practitioner/example2"
-      }
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Procedure/b3ebe11d-b081-45f5-b469-de8a5f2dd4ef",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "b3ebe11d-b081-45f5-b469-de8a5f2dd4ef",
-      "status": "completed",
-      "statusReason": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "419099009",
-          "display": "Dead"
-        } ],
-        "text": "Device"
-      },
-      "category": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "419099009",
-          "display": "Dead"
-        } ],
-        "text": "Device"
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "419099009",
-          "display": "Dead"
-        } ],
-        "text": "Device"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "performedPeriod": {
-        "start": "2011-06-26",
-        "end": "2011-06-27"
-      },
-      "reasonCode": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "419099009",
-          "display": "Dead"
-        } ],
-        "text": "Device"
-      } ],
-      "bodySite": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "419099009",
-          "display": "Dead"
-        } ],
-        "text": "Device"
-      } ],
-      "outcome": {
-        "text": "improved blood circulation"
-      },
-      "followUp": [ {
-        "text": "described in care plan"
-      } ],
-      "usedCode": [ {
-        "text": "Device"
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/Procedure/33c0de79-bfc5-47ee-99f0-d7f2558461eb",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "33c0de79-bfc5-47ee-99f0-d7f2558461eb",
-      "status": "completed",
-      "statusReason": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "77176002",
-          "display": "Hospital Acquired Infection"
-        } ],
-        "text": "Hospital Acquired Infection"
-      },
-      "category": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "77176002",
-          "display": "Hospital Acquired Infection"
-        } ],
-        "text": "Hospital Acquired Infection"
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "77176002",
-          "display": "Hospital Acquired Infection"
-        } ],
-        "text": "Hospital Acquired Infection"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "performedPeriod": {
-        "start": "2013-01-28T13:31:00+01:00",
-        "end": "2013-01-28T14:27:00+01:00"
-      },
-      "reasonCode": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "77176002",
-          "display": "Hospital Acquired Infection"
-        } ],
-        "text": "Hospital Acquired Infection"
-      } ],
-      "bodySite": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "77176002",
-          "display": "Hospital Acquired Infection"
-        } ],
-        "text": "Hospital Acquired Infection"
-      } ],
-      "outcome": {
-        "text": "improved blood circulation"
-      },
-      "followUp": [ {
-        "text": "described in care plan"
-      } ],
-      "usedCode": [ {
-        "text": "Hospital Acquired Infection"
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/MedicationStatement/fcccaec4-a789-4dee-984d-b14a35dfe748",
-    "resource": {
-      "resourceType": "MedicationStatement",
-      "id": "fcccaec4-a789-4dee-984d-b14a35dfe748",
-      "status": "completed",
-      "medicationReference": {
-        "reference": "Medication/example-medication"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "effectivePeriod": {
-        "start": "2014-02-01T05:30:00+05:30"
-      },
-      "dateAsserted": "2014-02-22T05:30:00+05:30",
-      "derivedFrom": [ {
-        "reference": "Patient/pat1"
-      } ],
-      "reasonCode": [ {
-        "text": "Died"
-      } ],
-      "note": [ {
-        "text": "Father indicates they miss the occasional dose"
-      } ],
-      "dosage": [ {
-        "additionalInstruction": [ {
-          "text": "Died"
-        } ],
-        "site": {
-          "text": "Died"
-        },
-        "route": {
-          "text": "Died"
-        },
-        "method": {
-          "text": "Died"
-        },
-        "doseAndRate": [ {
-          "doseQuantity": {
-            "value": 500,
-            "unit": "mg",
-            "system": "http://unitsofmeasure.org",
-            "code": "mg"
-          },
-          "rateQuantity": {
-            "value": 3,
-            "unit": "1/d",
-            "system": "http://unitsofmeasure.org",
-            "code": "{1/d}"
-          }
-        } ]
-      } ]
-    }
-  }, {
-    "fullUrl": "https://fhir.example.com/MedicationStatement/c2688cd0-f934-445c-95cf-59ce4a0998c2",
-    "resource": {
-      "resourceType": "MedicationStatement",
-      "id": "c2688cd0-f934-445c-95cf-59ce4a0998c2",
-      "status": "completed",
-      "medicationReference": {
-        "reference": "Medication/example-medication"
-      },
-      "subject": {
-        "reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
-      },
-      "effectivePeriod": {
-        "start": "2015-01-23T05:30:00+05:30"
-      },
-      "dateAsserted": "2015-02-22T05:30:00+05:30",
-      "derivedFrom": [ {
-        "reference": "MedicationRequest/medrx002"
-      } ],
-      "reasonCode": [ {
-        "text": "Propensity to adverse reactions to substance"
-      } ],
-      "note": [ {
-        "text": "Patient indicates they miss the occasional dose"
-      } ],
-      "dosage": [ {
-        "additionalInstruction": [ {
-          "text": "Propensity to adverse reactions to substance"
-        } ],
-        "site": {
-          "text": "Propensity to adverse reactions to substance"
-        },
-        "route": {
-          "text": "Propensity to adverse reactions to substance"
-        },
-        "method": {
-          "text": "Propensity to adverse reactions to substance"
-        },
-        "doseAndRate": [ {
-          "doseQuantity": {
-            "value": 500,
-            "unit": "mg",
-            "system": "http://unitsofmeasure.org",
-            "code": "mg"
-          },
-          "rateQuantity": {
-            "value": 3,
-            "unit": "1/d",
-            "system": "http://unitsofmeasure.org",
-            "code": "{1/d}"
-          }
-        } ]
-      } ]
-    }
-  } ]
+	"resourceType": "Bundle",
+	"id": "27455922-0108-4e09-88ee-f169968f4ea2",
+	"meta": {
+		"versionId": "0",
+		"lastUpdated": "2024-06-25T17:49:08.093+05:30",
+		"profile": [
+			"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+		]
+	},
+	"identifier": {
+		"system": "http://hip.in",
+		"value": "OpConsultRecord/27455922-0108-4e09-88ee-f169968f4ea2"
+	},
+	"type": "document",
+	"timestamp": "2024-06-25T17:49:08.093+05:30",
+	"entry": [
+		{
+			"fullUrl": "https://fhir.example.com/Composition/566825cf-4354-491b-9986-b98e1b5dd001",
+			"resource": {
+				"resourceType": "Composition",
+				"id": "566825cf-4354-491b-9986-b98e1b5dd001",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.093+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
+					]
+				},
+				"language": "en-IN",
+				"identifier": {
+					"system": "https://ndhm.in/phr",
+					"value": "566825cf-4354-491b-9986-b98e1b5dd001"
+				},
+				"status": "final",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "371530004",
+							"display": "Clinical consultation report"
+						}
+					],
+					"text": "Clinical consultation report"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3",
+					"display": "Testing ABDM NCG"
+				},
+				"encounter": {
+					"reference": "Encounter/bbb8e573-bfd6-45fe-887b-a11acff51e01"
+				},
+				"date": "2024-06-25T17:49:08+05:30",
+				"author": [
+					{
+						"reference": "Practitioner/def74380-41be-4ecc-824d-dcf831da2044"
+					}
+				],
+				"title": "Consultation Report",
+				"section": [
+					{
+						"title": "Chief complaints",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "422843007",
+									"display": "Chief complaint section"
+								}
+							],
+							"text": "Chief complaint section"
+						},
+						"entry": [
+							{
+								"reference": "Condition/65bac1c6-6c57-4a7c-b558-b12c3379f860"
+							}
+						]
+					},
+					{
+						"title": "Allergies",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "722446000",
+									"display": "Allergies"
+								}
+							],
+							"text": "Allergies"
+						},
+						"entry": [
+							{
+								"reference": "AllergyIntolerance/e6b5e1f1-c109-4e95-9a32-54a515fc2aa5"
+							},
+							{
+								"reference": "AllergyIntolerance/9ac97353-30cc-41cb-a141-a7fa49d968b5"
+							}
+						]
+					},
+					{
+						"title": "Medical History",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "417662000",
+									"display": "Comorbidities and Past Medical History"
+								}
+							],
+							"text": "Comorbidities and Past Medical History"
+						},
+						"entry": [
+							{
+								"reference": "Condition/829281a7-65ae-4787-bf98-f799fcec5640"
+							},
+							{
+								"reference": "Condition/b4aa6e72-4ff2-4125-93ea-dc9673fbe47b"
+							}
+						]
+					},
+					{
+						"title": "AdverseEvents",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "405533003",
+									"display": "Adverse Events"
+								}
+							],
+							"text": "Adverse Events"
+						},
+						"entry": [
+							{
+								"reference": "AdverseEvent/47ea6556-7369-4404-8798-5c424493c50e"
+							}
+						]
+					},
+					{
+						"title": "Medical History",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "417662000",
+									"display": "Comorbidities and Past Medical History"
+								}
+							],
+							"text": "Comorbidities and Past Medical History"
+						},
+						"entry": [
+							{
+								"reference": "Condition/ee479cc6-c5a8-4682-b74f-c4bb5bb7b90e"
+							},
+							{
+								"reference": "Condition/0def2829-c8a6-488e-b964-a554a62b4f22"
+							}
+						]
+					},
+					{
+						"title": "Past Surgical History",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "276026009",
+									"display": "Past Surgical History"
+								}
+							],
+							"text": "Past Surgical History"
+						},
+						"entry": [
+							{
+								"reference": "Condition/8e038d48-587f-462f-b141-31e1455a769f"
+							}
+						]
+					},
+					{
+						"title": "Past Surgical History",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "276026009",
+									"display": "Past Surgical History"
+								}
+							],
+							"text": "Past Surgical History"
+						},
+						"entry": [
+							{
+								"reference": "Condition/3811cca6-5af4-425c-84a2-0b5a9e46a0d3"
+							}
+						]
+					},
+					{
+						"title": "Mental Health Assesment",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "416940007",
+									"display": "Mental Health Assesment"
+								}
+							],
+							"text": "Mental Health Assesment"
+						},
+						"entry": [
+							{
+								"reference": "Observation/a4579c16-f10c-414c-aa62-fc1f7286c86d"
+							}
+						]
+					},
+					{
+						"title": "OtherObservations",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "364313002",
+									"display": "Menstruation History"
+								}
+							],
+							"text": "Menstruation History"
+						},
+						"entry": [
+							{
+								"reference": "Observation/09d6cfb2-37fc-48d9-8681-f8020061c284"
+							},
+							{
+								"reference": "Observation/43834742-5c2a-43c1-ab26-2ab02d1037a7"
+							}
+						]
+					},
+					{
+						"title": "InvestigationAdvice",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "721963009",
+									"display": "Examination Details"
+								}
+							],
+							"text": "Examination Details"
+						},
+						"entry": [
+							{
+								"reference": "ServiceRequest/a7411698-ec03-409e-9c2e-baa056dcbe28"
+							},
+							{
+								"reference": "ServiceRequest/c7464650-e28f-4c9d-a6cd-18bc452ed7a1"
+							}
+						]
+					},
+					{
+						"title": "Surgical Summary With Post OP Course",
+						"entry": [
+							{
+								"reference": "Procedure/b3ebe11d-b081-45f5-b469-de8a5f2dd4ef"
+							}
+						]
+					},
+					{
+						"title": "Surgical Summary With Post OP Course",
+						"entry": [
+							{
+								"reference": "Procedure/33c0de79-bfc5-47ee-99f0-d7f2558461eb"
+							}
+						]
+					},
+					{
+						"title": "Medications",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "721912009",
+									"display": "Ongoing Drugs"
+								}
+							],
+							"text": "Ongoing Drugs"
+						},
+						"entry": [
+							{
+								"reference": "MedicationStatement/fcccaec4-a789-4dee-984d-b14a35dfe748"
+							},
+							{
+								"reference": "MedicationStatement/c2688cd0-f934-445c-95cf-59ce4a0998c2"
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Observation/cb7880bd-01f9-43c5-ad3d-5aa8930da65f",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "cb7880bd-01f9-43c5-ad3d-5aa8930da65f",
+				"status": "final",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+								"code": "vital-signs",
+								"display": "Vital Signs"
+							}
+						],
+						"text": "Vital Signs"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "8302-2",
+							"display": "Body height"
+						}
+					],
+					"text": "Height"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"effectiveDateTime": "2024-06-25T17:49:08+05:30",
+				"valueQuantity": {
+					"value": 160.0,
+					"unit": "cm",
+					"system": "http://unitsofmeasure.org",
+					"code": "cm"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Observation/b75074ea-897b-4cf6-ac86-b16439debf7e",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "b75074ea-897b-4cf6-ac86-b16439debf7e",
+				"status": "final",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+								"code": "vital-signs",
+								"display": "Vital Signs"
+							}
+						],
+						"text": "Vital Signs"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "29463-7",
+							"display": "weight"
+						}
+					],
+					"text": "Weight"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"effectiveDateTime": "2024-06-25T17:49:08+05:30",
+				"valueQuantity": {
+					"value": 62.0,
+					"unit": "kg",
+					"system": "http://unitsofmeasure.org",
+					"code": "kg"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Observation/a2bf2cbe-7acb-437f-8302-6b8a2a8d46c9",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "a2bf2cbe-7acb-437f-8302-6b8a2a8d46c9",
+				"status": "final",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+								"code": "vital-signs",
+								"display": "Vital Signs"
+							}
+						],
+						"text": "Vital Signs"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "39156-5",
+							"display": "Body mass index (BMI) [Ratio]"
+						}
+					],
+					"text": "Body Mass Index"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"effectiveDateTime": "2024-06-25T17:49:08+05:30",
+				"valueQuantity": {
+					"value": 62.0,
+					"unit": "kg/m2",
+					"system": "http://unitsofmeasure.org",
+					"code": "kg/m2"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Observation/c6c6f540-ea3e-48e4-a7e1-ca293d2ce134",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "c6c6f540-ea3e-48e4-a7e1-ca293d2ce134",
+				"status": "final",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+								"code": "vital-signs",
+								"display": "Vital Signs"
+							}
+						],
+						"text": "Vital Signs"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "882-1",
+							"display": "ABO and Rh group [Type] in Blood"
+						}
+					],
+					"text": "Blood Group"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"valueCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "365637002",
+							"display": "Finding of ABO blood group"
+						}
+					],
+					"text": "A+"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Patient/8c685432-deda-4486-b270-153ee76aa4d3",
+			"resource": {
+				"resourceType": "Patient",
+				"id": "8c685432-deda-4486-b270-153ee76aa4d3",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.139+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+					]
+				},
+				"identifier": [
+					{
+						"id": "123",
+						"type": {
+							"coding": [
+								{
+									"system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+									"code": "MR",
+									"display": "Medical record number"
+								}
+							],
+							"text": "Medical record number"
+						},
+						"system": "urn:health:information:provider:system",
+						"value": "NCG"
+					},
+					{
+						"type": {
+							"coding": [
+								{
+									"system": "https://healthid.abdm.gov.in",
+									"code": "ABHAAddress",
+									"display": "ABHAAddress"
+								}
+							],
+							"text": "ABHAAddress"
+						},
+						"system": "urn:health:information:provider:system",
+						"value": "Bellandur Bangalore Urban District Karnataka India"
+					}
+				],
+				"name": [
+					{
+						"text": "Testing ABDM NCG",
+						"family": "NCG",
+						"given": [
+							"Testing ABDM"
+						]
+					}
+				],
+				"telecom": [
+					{
+						"system": "phone",
+						"value": "9898989898"
+					}
+				],
+				"gender": "male",
+				"birthDate": "1999-08-14",
+				"address": [
+					{
+						"type": "both",
+						"text": "House Name: 123",
+						"city": "Bangalore",
+						"district": "Bangalore",
+						"state": "Karnataka",
+						"postalCode": "560103",
+						"country": "India"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Encounter/bbb8e573-bfd6-45fe-887b-a11acff51e01",
+			"resource": {
+				"resourceType": "Encounter",
+				"id": "bbb8e573-bfd6-45fe-887b-a11acff51e01",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.156+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
+					]
+				},
+				"status": "finished",
+				"class": {
+					"system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+					"code": "OUTP",
+					"display": "outpatient encounter"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3",
+					"display": "Testing ABDM NCG"
+				},
+				"period": {
+					"start": "2024-06-25T17:49:08+05:30",
+					"end": "2024-06-26T17:49:08+05:30"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Condition/65bac1c6-6c57-4a7c-b558-b12c3379f860",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "65bac1c6-6c57-4a7c-b558-b12c3379f860",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.161+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "active",
+							"display": "active"
+						}
+					],
+					"text": "Active"
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "59015-0",
+							"display": "Lung Cancer"
+						}
+					],
+					"text": "Lung Cancer"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Procedure/e1b2967b-7007-49a4-9967-c8e8f5c335a8",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "e1b2967b-7007-49a4-9967-c8e8f5c335a8",
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "34552-0",
+							"display": "Cardiac 2D echo panel"
+						}
+					],
+					"text": "2 D ECHO with PASP"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"report": [
+					{
+						"reference": "DocumentReference/4553ed1f-2168-44b9-9e18-8b273bf7f65e"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/DocumentReference/4553ed1f-2168-44b9-9e18-8b273bf7f65e",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "4553ed1f-2168-44b9-9e18-8b273bf7f65e",
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "34552-0",
+							"display": "Cardiac 2D echo panel"
+						}
+					],
+					"text": "2 D ECHO with PASP report"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "bHVuZzZtb3d0",
+							"title": "2 D ECHO with PASP"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Procedure/ea8bcc60-c266-404f-a64b-3ca8eb35f0cd",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "ea8bcc60-c266-404f-a64b-3ca8eb35f0cd",
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "24590-2",
+							"display": "MR Brain"
+						}
+					],
+					"text": "MRI brain"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"report": [
+					{
+						"reference": "DocumentReference/53890f8f-824c-42ba-9004-8c52ec92a425"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/DocumentReference/53890f8f-824c-42ba-9004-8c52ec92a425",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "53890f8f-824c-42ba-9004-8c52ec92a425",
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "24590-2",
+							"display": "MR Brain"
+						}
+					],
+					"text": "MRI brain report"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "bHVuZzZtb3d0",
+							"title": "MRI brain"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/AllergyIntolerance/e6b5e1f1-c109-4e95-9a32-54a515fc2aa5",
+			"resource": {
+				"resourceType": "AllergyIntolerance",
+				"id": "e6b5e1f1-c109-4e95-9a32-54a515fc2aa5",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.185+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+							"code": "active",
+							"display": "Active"
+						}
+					],
+					"text": "Active"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					],
+					"text": "Confirmed"
+				},
+				"type": "allergy",
+				"category": [
+					"food"
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "91935009",
+							"display": "An adverse immune response to peanuts consumed as food."
+						}
+					],
+					"text": "Peanut"
+				},
+				"patient": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"recordedDate": "2024-06-25T17:49:08+05:30",
+				"recorder": {
+					"reference": "Practitioner/038ce9f1-14b6-4f3b-bc52-cce39404e092"
+				},
+				"note": [
+					{
+						"text": "The patient reports of: Peanut allergy which is of type: food"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/AllergyIntolerance/9ac97353-30cc-41cb-a141-a7fa49d968b5",
+			"resource": {
+				"resourceType": "AllergyIntolerance",
+				"id": "9ac97353-30cc-41cb-a141-a7fa49d968b5",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.186+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+							"code": "active",
+							"display": "Active"
+						}
+					],
+					"text": "Active"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					],
+					"text": "Confirmed"
+				},
+				"type": "allergy",
+				"category": [
+					"environment"
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "91934004",
+							"display": "An adverse immune response to peanuts present in the environment, typically not related to ingestion but to contact or inhalation."
+						}
+					],
+					"text": "Peanut - dietary"
+				},
+				"patient": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"recordedDate": "2024-06-25T17:49:08+05:30",
+				"recorder": {
+					"reference": "Practitioner/0f08c6a6-cea0-416c-8b8a-64fa9c10035d"
+				},
+				"note": [
+					{
+						"text": "The patient reports of: Peanut - dietary allergy which is of type: environmental"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Condition/829281a7-65ae-4787-bf98-f799fcec5640",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "829281a7-65ae-4787-bf98-f799fcec5640",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.186+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "38341003",
+								"display": "problem-list-item"
+							}
+						],
+						"text": "Problem list item"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "38341003",
+							"display": "This code represents the diagnosis of hypertension, commonly known as high blood pressure, which indicates that the force of the blood against the artery walls is too high."
+						}
+					],
+					"text": "Hypertension"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"recordedDate": "2024-06-25T17:49:08+05:30"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Condition/b4aa6e72-4ff2-4125-93ea-dc9673fbe47b",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "b4aa6e72-4ff2-4125-93ea-dc9673fbe47b",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.210+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "233604007",
+								"display": "encounter-diagnosis"
+							}
+						],
+						"text": "Encounter diagnosis"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "53741008",
+							"display": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+						}
+					],
+					"text": "Coronary Artery Disease"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"recordedDate": "2024-06-25T17:49:08+05:30"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/AdverseEvent/47ea6556-7369-4404-8798-5c424493c50e",
+			"resource": {
+				"resourceType": "AdverseEvent",
+				"id": "47ea6556-7369-4404-8798-5c424493c50e",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.215+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent"
+					]
+				},
+				"identifier": {
+					"system": "http://example.com/adverseEvent",
+					"value": "123456"
+				},
+				"actuality": "actual",
+				"category": [
+					{
+						"text": "medication-mishap"
+					}
+				],
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"date": "2024-06-25T17:49:08+05:30",
+				"detected": "2024-06-25T17:49:08+05:30",
+				"recordedDate": "2024-06-25T17:49:08+05:30",
+				"seriousness": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "24484000",
+							"display": "Severe"
+						}
+					],
+					"text": "Serious"
+				},
+				"outcome": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/adverse-event-outcome",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "Resolved"
+				},
+				"recorder": {
+					"reference": "Practitioner/72cc9b0e-7b74-497c-9ad4-21b28b46c01f"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Condition/ee479cc6-c5a8-4682-b74f-c4bb5bb7b90e",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "ee479cc6-c5a8-4682-b74f-c4bb5bb7b90e",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.215+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "38341003",
+							"display": "This code represents the diagnosis of hypertension, commonly known as high blood pressure, which indicates that the force of the blood against the artery walls is too high."
+						}
+					],
+					"text": "hypertension"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"recordedDate": "2024-06-25T17:49:08+05:30"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Condition/0def2829-c8a6-488e-b964-a554a62b4f22",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "0def2829-c8a6-488e-b964-a554a62b4f22",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.216+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "53741008",
+							"display": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+						}
+					],
+					"text": "Coronary Artery Disease"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"recordedDate": "2024-06-25T17:49:08+05:30"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Condition/8e038d48-587f-462f-b141-31e1455a769f",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "8e038d48-587f-462f-b141-31e1455a769f",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.217+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					]
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "38341003",
+							"display": "This code represents the diagnosis of hypertension, commonly known as high blood pressure, which indicates that the force of the blood against the artery walls is too high."
+						}
+					],
+					"text": "hypertension"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"recordedDate": "2024-06-25T17:49:08+05:30"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Condition/3811cca6-5af4-425c-84a2-0b5a9e46a0d3",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "3811cca6-5af4-425c-84a2-0b5a9e46a0d3",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.217+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>"
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					]
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "53741008",
+							"display": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+						}
+					],
+					"text": "Coronary Artery Disease"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"recordedDate": "2024-06-25T17:49:08+05:30"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Observation/a4579c16-f10c-414c-aa62-fc1f7286c86d",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "a4579c16-f10c-414c-aa62-fc1f7286c86d",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.218+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
+				},
+				"status": "final",
+				"code": {
+					"text": "Pregnancy status"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"effectiveDateTime": "2024-06-25T17:49:08+05:30",
+				"performer": [
+					{
+						"reference": "Practitioner/c5838889-6e59-43b4-942d-56797e236009"
+					}
+				],
+				"valueString": "Not pregnant"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Observation/09d6cfb2-37fc-48d9-8681-f8020061c284",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "09d6cfb2-37fc-48d9-8681-f8020061c284",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.219+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
+				},
+				"status": "final",
+				"code": {
+					"text": "Pregnancy status"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"effectiveDateTime": "2024-06-25T17:49:08+05:30",
+				"performer": [
+					{
+						"reference": "Practitioner/dda71686-49a2-44cd-aeef-bd95950d93a3"
+					}
+				],
+				"valueString": "Not pregnant"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Observation/43834742-5c2a-43c1-ab26-2ab02d1037a7",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "43834742-5c2a-43c1-ab26-2ab02d1037a7",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-06-25T17:49:08.219+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>"
+				},
+				"status": "final",
+				"code": {
+					"text": "Menstrual cycle"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"effectiveDateTime": "2024-06-25T17:49:08+05:30",
+				"performer": [
+					{
+						"reference": "Practitioner/30dcf6d8-de97-48eb-85d5-ca45d586753e"
+					}
+				],
+				"valueString": "Regular"
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/ServiceRequest/a7411698-ec03-409e-9c2e-baa056dcbe28",
+			"resource": {
+				"resourceType": "ServiceRequest",
+				"id": "a7411698-ec03-409e-9c2e-baa056dcbe28",
+				"status": "active",
+				"intent": "order",
+				"code": {
+					"text": "obstetric history"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"occurrenceDateTime": "2013-05-08T09:33:27+07:00",
+				"requester": {
+					"reference": "Practitioner/example1"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/ServiceRequest/c7464650-e28f-4c9d-a6cd-18bc452ed7a1",
+			"resource": {
+				"resourceType": "ServiceRequest",
+				"id": "c7464650-e28f-4c9d-a6cd-18bc452ed7a1",
+				"status": "active",
+				"intent": "order",
+				"code": {
+					"text": "breast health"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"occurrenceDateTime": "2015-08-27T09:33:27+07:00",
+				"requester": {
+					"reference": "Practitioner/example2"
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Procedure/b3ebe11d-b081-45f5-b469-de8a5f2dd4ef",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "b3ebe11d-b081-45f5-b469-de8a5f2dd4ef",
+				"status": "completed",
+				"statusReason": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "419099009",
+							"display": "Dead"
+						}
+					],
+					"text": "Device"
+				},
+				"category": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "419099009",
+							"display": "Dead"
+						}
+					],
+					"text": "Device"
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "419099009",
+							"display": "Dead"
+						}
+					],
+					"text": "Device"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"performedPeriod": {
+					"start": "2011-06-26",
+					"end": "2011-06-27"
+				},
+				"reasonCode": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "419099009",
+								"display": "Dead"
+							}
+						],
+						"text": "Device"
+					}
+				],
+				"bodySite": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "419099009",
+								"display": "Dead"
+							}
+						],
+						"text": "Device"
+					}
+				],
+				"outcome": {
+					"text": "improved blood circulation"
+				},
+				"followUp": [
+					{
+						"text": "described in care plan"
+					}
+				],
+				"usedCode": [
+					{
+						"text": "Device"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/Procedure/33c0de79-bfc5-47ee-99f0-d7f2558461eb",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "33c0de79-bfc5-47ee-99f0-d7f2558461eb",
+				"status": "completed",
+				"statusReason": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "77176002",
+							"display": "Hospital Acquired Infection"
+						}
+					],
+					"text": "Hospital Acquired Infection"
+				},
+				"category": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "77176002",
+							"display": "Hospital Acquired Infection"
+						}
+					],
+					"text": "Hospital Acquired Infection"
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "77176002",
+							"display": "Hospital Acquired Infection"
+						}
+					],
+					"text": "Hospital Acquired Infection"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"performedPeriod": {
+					"start": "2013-01-28T13:31:00+01:00",
+					"end": "2013-01-28T14:27:00+01:00"
+				},
+				"reasonCode": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "77176002",
+								"display": "Hospital Acquired Infection"
+							}
+						],
+						"text": "Hospital Acquired Infection"
+					}
+				],
+				"bodySite": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "77176002",
+								"display": "Hospital Acquired Infection"
+							}
+						],
+						"text": "Hospital Acquired Infection"
+					}
+				],
+				"outcome": {
+					"text": "improved blood circulation"
+				},
+				"followUp": [
+					{
+						"text": "described in care plan"
+					}
+				],
+				"usedCode": [
+					{
+						"text": "Hospital Acquired Infection"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/MedicationStatement/fcccaec4-a789-4dee-984d-b14a35dfe748",
+			"resource": {
+				"resourceType": "MedicationStatement",
+				"id": "fcccaec4-a789-4dee-984d-b14a35dfe748",
+				"status": "completed",
+				"medicationReference": {
+					"reference": "Medication/example-medication"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"effectivePeriod": {
+					"start": "2014-02-01T05:30:00+05:30"
+				},
+				"dateAsserted": "2014-02-22T05:30:00+05:30",
+				"derivedFrom": [
+					{
+						"reference": "Patient/pat1"
+					}
+				],
+				"reasonCode": [
+					{
+						"text": "Died"
+					}
+				],
+				"note": [
+					{
+						"text": "Father indicates they miss the occasional dose"
+					}
+				],
+				"dosage": [
+					{
+						"additionalInstruction": [
+							{
+								"text": "Died"
+							}
+						],
+						"site": {
+							"text": "Died"
+						},
+						"route": {
+							"text": "Died"
+						},
+						"method": {
+							"text": "Died"
+						},
+						"doseAndRate": [
+							{
+								"doseQuantity": {
+									"value": 500,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "https://fhir.example.com/MedicationStatement/c2688cd0-f934-445c-95cf-59ce4a0998c2",
+			"resource": {
+				"resourceType": "MedicationStatement",
+				"id": "c2688cd0-f934-445c-95cf-59ce4a0998c2",
+				"status": "completed",
+				"medicationReference": {
+					"reference": "Medication/example-medication"
+				},
+				"subject": {
+					"reference": "Patient/8c685432-deda-4486-b270-153ee76aa4d3"
+				},
+				"effectivePeriod": {
+					"start": "2015-01-23T05:30:00+05:30"
+				},
+				"dateAsserted": "2015-02-22T05:30:00+05:30",
+				"derivedFrom": [
+					{
+						"reference": "MedicationRequest/medrx002"
+					}
+				],
+				"reasonCode": [
+					{
+						"text": "Propensity to adverse reactions to substance"
+					}
+				],
+				"note": [
+					{
+						"text": "Patient indicates they miss the occasional dose"
+					}
+				],
+				"dosage": [
+					{
+						"additionalInstruction": [
+							{
+								"text": "Propensity to adverse reactions to substance"
+							}
+						],
+						"site": {
+							"text": "Propensity to adverse reactions to substance"
+						},
+						"route": {
+							"text": "Propensity to adverse reactions to substance"
+						},
+						"method": {
+							"text": "Propensity to adverse reactions to substance"
+						},
+						"doseAndRate": [
+							{
+								"doseQuantity": {
+									"value": 500,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	]
 }
