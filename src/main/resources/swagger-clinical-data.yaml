@@ -72,6 +72,15 @@ components:
           type: string
         type:
           type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     AttachmentDetail:
       type: object
       properties:
@@ -81,6 +90,15 @@ components:
           type: string
         attachment:
           type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     BioChemistry:
       type: object
       properties:
@@ -111,6 +129,8 @@ components:
             type: string
         patientDetails:
           $ref: '#/components/schemas/PatientData'
+        organizationDetails:
+          $ref: '#/components/schemas/OrganizationData'
         clinicalInformation:
           $ref: '#/components/schemas/ClinicalInformation'
         lungCancer:
@@ -138,10 +158,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InvestigationAdvice'
-        surgicalSummaryWithPostOPCourse:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurgicalSummaryWithPostOPCourse'
         ongoingDrugs:
           type: array
           items:
@@ -358,6 +374,15 @@ components:
           type: string
         reason:
           type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     Location:
       type: object
       properties:
@@ -381,6 +406,15 @@ components:
           type: string
         value:
           type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     MentalHealthAssesment:
       type: object
       properties:
@@ -388,6 +422,15 @@ components:
           type: string
         value:
           type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     OngoingDrugs:
       type: object
       properties:
@@ -403,6 +446,15 @@ components:
           type: string
         note:
           type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     OralCancer:
       type: object
       properties:
@@ -433,6 +485,15 @@ components:
         onsetDateTime:
           type: string
           format: date-time
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     PastSurgicalHistory:
       type: object
       properties:
@@ -443,6 +504,15 @@ components:
         onsetDateTime:
           type: string
           format: date-time
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     PatientData:
       required:
       - gender
@@ -478,6 +548,16 @@ components:
           $ref: '#/components/schemas/Identifier'
         bloodGroup:
           type: string
+    OrganizationData:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        
     StringType:
       type: object
       properties:
@@ -521,23 +601,7 @@ components:
           type: boolean
         xhtml:
           $ref: '#/components/schemas/XhtmlNode'
-    SurgicalSummaryWithPostOPCourse:
-      type: object
-      properties:
-        name:
-          type: string
-        startDate:
-          $ref: '#/components/schemas/DateTimeType'
-        endDate:
-          $ref: '#/components/schemas/DateTimeType'
-        reason:
-          type: string
-        bodySite:
-          type: string
-        outcome:
-          type: string
-        followUp:
-          type: string
+
     TestDetail:
       type: object
       properties:
@@ -692,4 +756,3 @@ components:
         para:
           type: boolean
 x-original-swagger-version: "2.0"
-
