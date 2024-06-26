@@ -1016,6 +1016,9 @@ public class OPConsultationHelper {
 		// set id
 		medicationStatement.setId(Utils.generateId());
 
+		// add meta
+		medicationStatement.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_MEDICATION_STATEMENT));
+
 		// set status
 		medicationStatement.setStatus(MedicationStatementStatus.COMPLETED);
 
