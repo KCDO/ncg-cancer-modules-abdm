@@ -765,9 +765,9 @@ public class FHIRUtils {
 		// practitionerResource =
 		// practitionerBuilder(clinicalData.getOrganizationDetails());
 		practitionerResource = practitionerBuilder(null);
-		FHIRUtils.addToBundleEntry(bundle, practitionerResource, true);
+		// FHIRUtils.addToBundleEntry(bundle, practitionerResource, true);
 		if (Objects.nonNull(practitionerResource)) {
-			//opDoc.addAuthor(FHIRUtils.getReferenceToPractitioner(practitionerResource));
+			// opDoc.addAuthor(FHIRUtils.getReferenceToPractitioner(practitionerResource));
 		}
 		// }
 
