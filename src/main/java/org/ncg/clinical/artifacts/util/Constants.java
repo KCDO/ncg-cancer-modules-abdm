@@ -18,6 +18,8 @@ public class Constants {
 	public static final String STRUCTURE_DEFINITION_PATIENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient";
 	public static final String STRUCTURE_DEFINITION_CONDITION = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition";
 	public static final String STRUCTURE_DEFINITION_OBSERVATION = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation";
+	public static final String STRUCTURE_DEFINITION_PROCEDURE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure";
+	public static final String STRUCTURE_DEFINITION_ORGANIZATION = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization";
 	public static final String STRUCTURE_DEFINITION_OBSERVATION_WOMEN_HEALTH = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth";
 	public static final String STRUCTURE_DEFINITION_ALLERGY_INTOLERANCE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance";
 	public static final String CLINICAL_CONSULTATION_REPORT = "Clinical consultation report";

@@ -114,8 +114,14 @@ public class OPConsultationHelper {
 		// Create patient and add entry for patient as subject in composition
 		Patient patientResource = FHIRUtils.addPatientResourceToComposition(clinicalData, bundle, opDoc);
 
+		// Create organization and add entry for organization as custodian in
+		// composition
+		FHIRUtils.addOrganizationResourceToComposition(clinicalData, bundle, opDoc);
+
+		// TODO: need to complete when requirement will come for practitioner
 		// Create practitioner and add entry for practitioner as author in composition
-		Practitioner practitionerResource = FHIRUtils.addPractitionerResourceToComposition(clinicalData, bundle, opDoc);
+		Practitioner practitionerResource = FHIRUtils.practitionerBuilder(null);
+		opDoc.addAuthor(FHIRUtils.getReferenceToPractitioner(practitionerResource));
 
 		// Create encounter and add as entry in composition
 		FHIRUtils.addEncounterResourceToComposition(bundle, opDoc, patientResource);
@@ -184,9 +190,8 @@ public class OPConsultationHelper {
 						.getPastSurgicalHistory()) {
 					Composition.SectionComponent pastSurgicalHistorySection = new Composition.SectionComponent();
 					pastSurgicalHistorySection.setTitle(Constants.PAST_SURGICAL_HISTORY);
-					pastSurgicalHistorySection
-							.setCode(FHIRUtils.getCodeableConcept("276026009", Constants.SNOMED_SYSTEM_SCT,
-									Constants.PAST_SURGICAL_HISTORY, Constants.PAST_SURGICAL_HISTORY));
+					pastSurgicalHistorySection.setCode(FHIRUtils.getCodeableConcept("276026009",
+							Constants.SNOMED_SYSTEM_SCT, "Fluid balance regulation", Constants.PAST_SURGICAL_HISTORY));
 
 					// Create a new Condition resource
 					Condition condition = new Condition();
@@ -250,7 +255,7 @@ public class OPConsultationHelper {
 					mentalHealthAssesmentSection.setTitle(Constants.MENTAL_HEALTH_ASSESMENT);
 					mentalHealthAssesmentSection
 							.setCode(FHIRUtils.getCodeableConcept("416940007", Constants.SNOMED_SYSTEM_SCT,
-									Constants.MENTAL_HEALTH_ASSESMENT, Constants.MENTAL_HEALTH_ASSESMENT));
+									"Past history of procedure", Constants.MENTAL_HEALTH_ASSESMENT));
 
 					// Create a new Condition resource for the complaint
 					Observation observation = new Observation();
@@ -466,8 +471,8 @@ public class OPConsultationHelper {
 							attachmentDetail.getName());
 
 					// create procedure with DocumentReference for storing reports information
-					FHIRUtils.createProcedureWithDocumentReference(bundle, patientResource,
-							attachmentDetail.getAttachment(), coding, attachmentDetail.getName());
+					FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource, attachmentDetail.getAttachment(),
+							coding, attachmentDetail.getName());
 
 					// Add the report to cancer section
 					// cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(procedure));
@@ -831,7 +836,7 @@ public class OPConsultationHelper {
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
 			allergyCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
-					test.getDescription(), test.getDescription());
+					test.getCoding().getDisplay(), test.getDescription());
 		}
 		// Create the section for allergies
 		Composition.SectionComponent allergiesSection = FHIRUtils.createSectionComponent(Constants.ALLERGIES,
@@ -932,7 +937,7 @@ public class OPConsultationHelper {
 
 		// Set code
 		CodeableConcept code = new CodeableConcept();
-		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", Constants.EXAMINATION_DETAILS));
+		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", "Order document"));
 		code.setText(Constants.EXAMINATION_DETAILS);
 		investigationAdviceSection.setCode(code);
 
@@ -991,7 +996,7 @@ public class OPConsultationHelper {
 
 		// set code
 		medicationsSection.setCode(FHIRUtils.getCodeableConcept("721912009", Constants.SNOMED_SYSTEM_SCT,
-				Constants.ONGOING_DRUGS, Constants.ONGOING_DRUGS));
+				"Medication summary document", Constants.ONGOING_DRUGS));
 
 		// Iterate over the investigationAdviceList and create ServiceRequest resources
 		for (OngoingDrugs ongoingDrugs : ongoingDrugsList) {
@@ -1098,7 +1103,7 @@ public class OPConsultationHelper {
 
 		// Set code
 		CodeableConcept code = new CodeableConcept();
-		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "364313002", Constants.MENSTRUATION_HISTORY));
+		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "364313002", "Measure of menstruation"));
 		code.setText(Constants.MENSTRUATION_HISTORY);
 		medicationsSection.setCode(code);
 
@@ -1169,8 +1174,7 @@ public class OPConsultationHelper {
 
 		// Set code
 		CodeableConcept code = new CodeableConcept();
-		code.addCoding(
-				new Coding(Constants.SNOMED_SYSTEM_SCT, "417662000", Constants.COMORBIDITIES_AND_PAST_MEDICAL_HISTORY));
+		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "417662000", "PMH - past medical history"));
 		code.setText(Constants.COMORBIDITIES_AND_PAST_MEDICAL_HISTORY);
 		medicalHistorySection.setCode(code);
 
@@ -1235,10 +1239,10 @@ public class OPConsultationHelper {
 			// set category
 			if (!org.apache.commons.lang3.StringUtils.equals(comorbidity.getCategory(), "problem-list-item")) {
 				condition.addCategory(FHIRUtils.getCodeableConcept("233604007", Constants.SNOMED_SYSTEM_SCT,
-						"encounter-diagnosis", "Encounter diagnosis"));
+						"Pneumonia", "Encounter diagnosis"));
 			} else {
 				condition.addCategory(FHIRUtils.getCodeableConcept("38341003", Constants.SNOMED_SYSTEM_SCT,
-						"problem-list-item", "Problem list item"));
+						"High blood pressure", "Problem list item"));
 			}
 		}
 		if (pastMedicalHistory != null) {
@@ -1277,7 +1281,7 @@ public class OPConsultationHelper {
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
 			adverseEventCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
-					test.getDescription(), test.getDescription());
+					test.getCoding().getDisplay(), test.getDescription());
 		}
 		// Create the section for adverseEvents
 		Composition.SectionComponent adverseEventsSection = FHIRUtils.createSectionComponent("AdverseEvents",

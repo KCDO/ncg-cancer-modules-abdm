@@ -34,6 +34,7 @@ import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Observation;
+import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Practitioner;
@@ -48,6 +49,7 @@ import org.ncg.clinical.artifacts.vo.ClinicalData;
 import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
 import org.ncg.clinical.artifacts.vo.labtest.Panel;
 import org.ncg.clinical.artifacts.vo.labtest.Test;
+import org.ncg.clinical.artifacts.vo.organization.OrganizationData;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
 import org.ncg.clinical.artifacts.vo.practitioner.PractitionerData;
 import org.springframework.beans.factory.annotation.Value;
@@ -168,7 +170,7 @@ public class FHIRUtils {
 
 		// set phone number
 		if (StringUtils.isNotBlank(patientData.getPhoneNumber())) {
-			fhirPatient.addTelecom(getPhoneNumber(patientData.getPhoneNumber()));
+			fhirPatient.addTelecom(getTelecom(patientData.getPhoneNumber(), "phone"));
 		}
 
 		// Add primary address
@@ -204,8 +206,7 @@ public class FHIRUtils {
 		}
 
 		// add meta
-		Date date = new Date();
-		fhirPatient.setMeta(Utils.getMeta(date, Constants.STRUCTURE_DEFINITION_PATIENT));
+		fhirPatient.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_PATIENT));
 
 		// add identifier
 		List<Identifier> identifierList = new ArrayList<>();
@@ -233,11 +234,21 @@ public class FHIRUtils {
 		return fhirPatient;
 	}
 
-	public static ContactPoint getPhoneNumber(String mobile) {
-		ContactPoint contactPoint = new ContactPoint();
-		contactPoint.setSystem(ContactPoint.ContactPointSystem.PHONE);
-		contactPoint.setValue(mobile);
+	public static ContactPoint getTelecom(String telecomValue, String type) {
+		switch (type.toLowerCase()) {
+		case "phone":
+			return createContactPoint(telecomValue, ContactPoint.ContactPointSystem.PHONE);
+		case "email":
+			return createContactPoint(telecomValue, ContactPoint.ContactPointSystem.EMAIL);
+		default:
+			return null;
+		}
+	}
 
+	private static ContactPoint createContactPoint(String telecomValue, ContactPoint.ContactPointSystem type) {
+		ContactPoint contactPoint = new ContactPoint();
+		contactPoint.setSystem(type);
+		contactPoint.setValue(telecomValue);
 		return contactPoint;
 	}
 
@@ -537,18 +548,6 @@ public class FHIRUtils {
 		return dateTimeType;
 	}
 
-	static Encounter addEncounterResourceToComposition(Bundle bundle, Composition opDoc, Patient patientResource)
-			throws Exception {
-		Encounter encounter = FHIRUtils.encounterBuilder();
-		encounter.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
-		FHIRUtils.addToBundleEntry(bundle, encounter, true);
-		Reference encounterRef = new Reference();
-		encounterRef.setReference("Encounter/" + encounter.getId());
-		opDoc.setEncounter(encounterRef);
-
-		return encounter;
-	}
-
 	static Encounter encounterBuilder() {
 		Encounter fhirEncounter = new Encounter();
 
@@ -586,6 +585,28 @@ public class FHIRUtils {
 		fhirEncounter.setPeriod(period);
 
 		return fhirEncounter;
+	}
+
+	static Encounter addEncounterResourceToComposition(Bundle bundle, Composition opDoc, Patient patientResource)
+			throws Exception {
+		Encounter encounterResource = FHIRUtils.encounterBuilder();
+		encounterResource.setSubject(FHIRUtils.getReferenceToPatient(patientResource));
+		FHIRUtils.addToBundleEntry(bundle, encounterResource, true);
+		if (Objects.nonNull(encounterResource)) {
+			opDoc.setEncounter(FHIRUtils.getReferenceToEncounter(encounterResource));
+		}
+
+		return encounterResource;
+	}
+
+	static Reference getReferenceToEncounter(Encounter encounterResource) {
+		Reference organizationRef = new Reference();
+		organizationRef.setResource(encounterResource);
+		if (Utils.randomBool()) {
+			organizationRef.setDisplay(encounterResource.getClass_().getDisplay());
+		}
+
+		return organizationRef;
 	}
 
 	public static Composition createCompositionResourceType(Date docDate, Bundle bundle, CodeableConcept type,
@@ -688,7 +709,7 @@ public class FHIRUtils {
 		return newCoding;
 	}
 
-	static Practitioner practitionerBuilder(PractitionerData practitionerDetail, Bundle bundle) {
+	static Practitioner practitionerBuilder(PractitionerData practitionerDetail) {
 		Practitioner fhirPractitioner = new Practitioner();
 
 		// set id
@@ -702,36 +723,36 @@ public class FHIRUtils {
 				Constants.PROVIDER_NUMBER, Constants.PROVIDER_NUMBER));
 		fhirPractitioner.addIdentifier(identifier);
 
-		// set firstName, lastName, middleName in humanName
-		fhirPractitioner.addName(getHumanName(practitionerDetail.getFirstName(), practitionerDetail.getMiddleName(),
-				practitionerDetail.getLastName()));
-
-		// if dob is given then set dob else convert dob from age.
-		if (Objects.nonNull(practitionerDetail.getDob())) {
-			fhirPractitioner.setBirthDate(practitionerDetail.getDob());
-		} else {
-			if (Objects.nonNull(practitionerDetail.getAge())) {
-				fhirPractitioner.setBirthDate(Utils.ageToDateConverter(practitionerDetail.getAge()));
-			}
-		}
-
-		// set gender
-		getFHIRGender(practitionerDetail.getGender(), fhirPractitioner);
-
-		// set phone number
-		if (StringUtils.isNotBlank(practitionerDetail.getPhoneNumber())) {
-			fhirPractitioner.addTelecom(getPhoneNumber(practitionerDetail.getPhoneNumber()));
-		}
-
-		// Add primary address
-		if (Objects.nonNull(practitionerDetail.getAddress())) {
-			fhirPractitioner.addAddress(getAddress(practitionerDetail.getAddress()));
-		}
+		// TODO: uncomment A/T requirement
+//		// set firstName, lastName, middleName in humanName
+//		fhirPractitioner.addName(getHumanName(practitionerDetail.getFirstName(), practitionerDetail.getMiddleName(),
+//				practitionerDetail.getLastName()));
+//
+//		// if dob is given then set dob else convert dob from age.
+//		if (Objects.nonNull(practitionerDetail.getDob())) {
+//			fhirPractitioner.setBirthDate(practitionerDetail.getDob());
+//		} else {
+//			if (Objects.nonNull(practitionerDetail.getAge())) {
+//				fhirPractitioner.setBirthDate(Utils.ageToDateConverter(practitionerDetail.getAge()));
+//			}
+//		}
+//
+//		// set gender
+//		getFHIRGender(practitionerDetail.getGender(), fhirPractitioner);
+//
+//		// set phone number
+//		if (StringUtils.isNotBlank(practitionerDetail.getPhoneNumber())) {
+//			fhirPractitioner.addTelecom(getTelecom(practitionerDetail.getPhoneNumber(), "phone"));
+//		}
+//
+//		// Add primary address
+//		if (Objects.nonNull(practitionerDetail.getAddress())) {
+//			fhirPractitioner.addAddress(getAddress(practitionerDetail.getAddress()));
+//		}
 
 		// add meta
-		Date date = new Date();
-		fhirPractitioner
-				.setMeta(Utils.getMeta(date, Constants.HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_PRACTITIONER));
+		fhirPractitioner.setMeta(
+				Utils.getMeta(new Date(), Constants.HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_PRACTITIONER));
 
 		return fhirPractitioner;
 	}
@@ -739,13 +760,16 @@ public class FHIRUtils {
 	static Practitioner addPractitionerResourceToComposition(ClinicalData clinicalData, Bundle bundle,
 			Composition opDoc) throws Exception {
 		Practitioner practitionerResource = new Practitioner();
-		if (Objects.nonNull(clinicalData.getPractitionerDetails())) {
-			practitionerResource = practitionerBuilder(clinicalData.getPractitionerDetails(), bundle);
-			FHIRUtils.addToBundleEntry(bundle, practitionerResource, true);
-			if (Objects.nonNull(practitionerResource)) {
-				opDoc.setAuthor(Arrays.asList(FHIRUtils.getReferenceToPractitioner(practitionerResource)));
-			}
+		// TODO: uncomment A/T requirement
+		// if (Objects.nonNull(clinicalData.getPractitionerDetails())) {
+		// practitionerResource =
+		// practitionerBuilder(clinicalData.getOrganizationDetails());
+		practitionerResource = practitionerBuilder(null);
+		FHIRUtils.addToBundleEntry(bundle, practitionerResource, true);
+		if (Objects.nonNull(practitionerResource)) {
+			opDoc.addAuthor(FHIRUtils.getReferenceToPractitioner(practitionerResource));
 		}
+		// }
 
 		return practitionerResource;
 	}
@@ -855,24 +879,10 @@ public class FHIRUtils {
 		return documentReference;
 	}
 
-	public static Procedure createProcedureWithDocumentReference(Bundle bundle, Patient patient, String reportValue,
+	public static Procedure addDocumentReferenceToProcedure(Bundle bundle, Patient patient, String reportValue,
 			org.ncg.clinical.artifacts.vo.Coding coding, String reportName) throws IOException {
-		// Create a new CodeableConcept
-		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				reportName);
 
-		Procedure procedure = new Procedure();
-
-		// set uuid in procedure
-		procedure.setId(Utils.generateId());
-
-		// set code into procedure
-		procedure.setCode(code);
-
-		// set status as COMPLETED
-		procedure.setStatus(ProcedureStatus.COMPLETED);
-
-		procedure.setSubject(new Reference(patient));
+		Procedure procedure = procedureBuilder(patient, coding, reportName);
 
 		// Create a new DocumentReference resource
 		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding);
@@ -887,5 +897,88 @@ public class FHIRUtils {
 		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 
 		return procedure;
+	}
+
+	public static Procedure procedureBuilder(Patient patient, org.ncg.clinical.artifacts.vo.Coding coding,
+			String reportName) {
+		Procedure fhirProcedure = new Procedure();
+
+		// set uuid in procedure
+		fhirProcedure.setId(Utils.generateId());
+
+		// add meta
+		fhirProcedure.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_PROCEDURE));
+
+		// Create a new CodeableConcept
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				reportName);
+
+		// set code into procedure
+		fhirProcedure.setCode(code);
+
+		// set status as COMPLETED
+		fhirProcedure.setStatus(ProcedureStatus.COMPLETED);
+
+		// set patient reference as subject
+		fhirProcedure.setSubject(new Reference(patient));
+
+		return fhirProcedure;
+	}
+
+	public static Organization organizationBuilder(OrganizationData organizationDetails) {
+		Organization fhirOrganization = new Organization();
+
+		// set uuid in procedure
+		fhirOrganization.setId(Utils.generateId());
+
+		// add meta
+		fhirOrganization.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_ORGANIZATION));
+
+		// Add the identifier to the fhirOrganization
+		Identifier identifier = getIdentifier("4567878", "https://facility.ndhm.gov.in");
+
+		// Set the type of the identifier
+		identifier.setType(getCodeableConcept(Constants.PRN, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
+				Constants.PROVIDER_NUMBER, Constants.PROVIDER_NUMBER));
+		fhirOrganization.addIdentifier(identifier);
+
+		// set name
+		fhirOrganization.setName(organizationDetails.getName());
+
+		// set phone number
+		if (StringUtils.isNotBlank(organizationDetails.getPhoneNumber())) {
+			fhirOrganization.addTelecom(getTelecom(organizationDetails.getPhoneNumber(), "phone"));
+		}
+
+		// set email
+		if (StringUtils.isNotBlank(organizationDetails.getPhoneNumber())) {
+			fhirOrganization.addTelecom(getTelecom(organizationDetails.getPhoneNumber(), "email"));
+		}
+
+		return fhirOrganization;
+	}
+
+	static Organization addOrganizationResourceToComposition(ClinicalData clinicalData, Bundle bundle,
+			Composition opDoc) throws Exception {
+		Organization organizationResource = new Organization();
+		if (Objects.nonNull(clinicalData.getOrganizationDetails())) {
+			organizationResource = organizationBuilder(clinicalData.getOrganizationDetails());
+			FHIRUtils.addToBundleEntry(bundle, organizationResource, true);
+			if (Objects.nonNull(organizationResource)) {
+				opDoc.setCustodian(FHIRUtils.getReferenceToPatient(organizationResource));
+			}
+		}
+
+		return organizationResource;
+	}
+
+	static Reference getReferenceToPatient(Organization organizationResource) {
+		Reference organizationRef = new Reference();
+		organizationRef.setResource(organizationResource);
+		if (Utils.randomBool()) {
+			organizationRef.setDisplay(organizationResource.getName());
+		}
+
+		return organizationRef;
 	}
 }

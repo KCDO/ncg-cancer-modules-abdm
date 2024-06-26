@@ -25,6 +25,11 @@
 		},
 		"bloodGroup": "APLUS"
 	},
+	"organizationDetails": {
+		"name": "XYZ Lab Pvt.Ltd.",
+		"phoneNumber": "9898989898",
+		"email": "contact@labs.xyz.org"
+	},
 	"clinicalInformation": {
 		"drugAllergy": [
 			{
