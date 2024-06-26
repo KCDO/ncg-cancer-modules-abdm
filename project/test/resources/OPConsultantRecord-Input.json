@@ -25,24 +25,6 @@
         },
         "bloodGroup": "APLUS"
     },
-    "practitionerDetails": {
-        "firstName": "Practitioner",
-        "middleName": "Testing",
-        "lastName": "NCG",
-        "age": 40,
-        "gender": "male",
-        "dob": "1989-08-14",
-        "phoneNumber": "9898989898",
-        "address": {
-            "type": "",
-            "houseName": "123",
-            "district": "Bangalore",
-            "state": "Karnataka",
-            "city": "Bangalore",
-            "pinCode": "560103",
-            "country": "India"
-        }
-    },
     "clinicalInformation": {
         "drugAllergy": [
             {
