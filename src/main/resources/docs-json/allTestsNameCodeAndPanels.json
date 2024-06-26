@@ -390,7 +390,7 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "34552-0",
-				"display": ""
+				"display": "Cardiac 2D echo panel"
 			},
 			"description": "2 D ECHO with PASP"
 		},
@@ -408,9 +408,9 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "24590-2",
-				"display": ""
+				"display": "MR Brain"
 			},
-			"description": "MRI brain"
+			"description": "MRI Brain"
 		},
 		{
 			"name": "Fiber optic bronchoscopy",
@@ -842,16 +842,124 @@
 				"code": "422843007",
 				"display": ""
 			},
-			"description": "Chief complaint sectiont"
+			"description": "Chief complaint section"
 		},
 		{
-			"name": "Allergy record",
+			"name": "Allergies",
 			"coding": {
-				"system": "http://loinc.org",
+				"system": "http://snomed.info/sct",
 				"code": "722446000",
-				"display": ""
+				"display": "Allergies"
 			},
-			"description": "Allergy record"
+			"description": "Allergies"
+		},
+		{
+			"name": "Peanut",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91935009",
+				"display": "An adverse immune response to peanuts consumed as food."
+			},
+			"description": "Peanut (food)"
+		},
+		{
+			"name": "Peanut - dietary",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91934004",
+				"display": "An adverse immune response to peanuts present in the environment, typically not related to ingestion but to contact or inhalation."
+			},
+			"description": "Peanut - dietary (environmental)"
+		},
+		{
+			"name": "Hypertension",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "38341003",
+				"display": "This code represents the diagnosis of hypertension, commonly known as high blood pressure, which indicates that the force of the blood against the artery walls is too high."
+			},
+			"description": "Hypertension"
+		},
+		{
+			"name": "Coronary Artery Disease",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "53741008",
+				"display": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+			},
+			"description": "Coronary Artery Disease"
+		},
+		{
+			"name": "Wrong Patient",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "418038007",
+				"display": "Propensity to adverse reactions to substance"
+			},
+			"description": "Wrong Patient"
+		},
+		{
+			"name": "Procedure Mishap",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "410528009",
+				"display": "Procedure Mishap"
+			},
+			"description": "Procedure Mishap"
+		},
+		{
+			"name": "Medication Mishap",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "425391005",
+				"display": "Using access device"
+			},
+			"description": "Medication Mishap"
+		},
+		{
+			"name": "Device",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "419099009",
+				"display": "Dead"
+			},
+			"description": "Device"
+		},
+		{
+			"name": "Unsafe Physical Environment",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "723877005",
+				"display": "Unsafe Physical Environment"
+			},
+			"description": "Unsafe Physical Environment"
+		},
+		{
+			"name": "Hospital Acquired Infection",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "77176002",
+				"display": "Hospital Acquired Infection"
+			},
+			"description": "Hospital Acquired Infection"
+		},
+		{
+			"name": "Wrong Body Site",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "116676008",
+				"display": "Wrong Body Site"
+			},
+			"description": "Wrong Body Site"
+		},
+		{
+			"name": "Adverse Events",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "405533003",
+				"display": "Adverse Events"
+			},
+			"description": "Adverse Events"
 		}
 	]
 }

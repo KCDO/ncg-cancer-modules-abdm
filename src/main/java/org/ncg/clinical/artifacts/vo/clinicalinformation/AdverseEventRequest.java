@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdverseEvent {
+public class AdverseEventRequest {
 	private String name;
 	private String category;
 	private Coding coding;
