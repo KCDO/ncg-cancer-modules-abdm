@@ -867,6 +867,7 @@ public class FHIRUtils {
 		documentReference.setType(type);
 		documentReference.setSubject(new Reference(patient));
 		documentReference.setStatus(Enumerations.DocumentReferenceStatus.CURRENT);
+		documentReference.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_DOCUMENT_REFERENCE));
 
 		// Set the content (attachment) of the document
 		DocumentReference.DocumentReferenceContentComponent content = new DocumentReference.DocumentReferenceContentComponent();
