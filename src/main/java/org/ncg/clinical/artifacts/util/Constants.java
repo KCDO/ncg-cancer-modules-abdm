@@ -14,16 +14,17 @@ public class Constants {
 	public static final String STRUCTURE_DEFINITION_PATIENT_BMI = "http://hl7.org/fhir/StructureDefinition/patient-bmi";
 	public static final String STRUCTURE_DEFINITION_PATIENT_BLOOD_GROUP = "http://example.com/fhir/StructureDefinition/patient-blood-group";
 	public static final String STRUCTURE_DEFINITION_DOCUMENT_BUNDLE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle";
+	public static final String STRUCTURE_DEFINITION_DOCUMENT_REFERENCE	 = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference";
 	public static final String STRUCTURE_DEFINITION_OP_CONSULT_RECORD = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord";
 	public static final String STRUCTURE_DEFINITION_PATIENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient";
 	public static final String STRUCTURE_DEFINITION_CONDITION = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition";
 	public static final String STRUCTURE_DEFINITION_OBSERVATION = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation";
 	public static final String STRUCTURE_DEFINITION_PROCEDURE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure";
-	public static final String STRUCTURE_DEFINITION_MEDICATION_STATEMENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement";
 	public static final String STRUCTURE_DEFINITION_ORGANIZATION = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization";
 	public static final String STRUCTURE_DEFINITION_OBSERVATION_WOMEN_HEALTH = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ObservationWomenHealth";
 	public static final String STRUCTURE_DEFINITION_ALLERGY_INTOLERANCE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance";
 	public static final String CLINICAL_CONSULTATION_REPORT = "Clinical consultation report";
+	public static final String STRUCTURE_DEFINITION_MEDICATION_STATEMENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement";
 	public static final String HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203 = "http://terminology.hl7.org/CodeSystem/v2-0203";
 	public static final String FHIR_CONDITION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-category";
 	public static final String FHIR_CONDITION_CLINICAL_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-clinical";
@@ -44,7 +45,7 @@ public class Constants {
 	public static final String CO_MORBIDITIES = "Co-Morbidities";
 	public static final String CO_MORBIDITIES_SECTION = "Co-Morbidities Section";
 	public static final String ADVERSE_EVENTS = "Adverse Events";
-	public static final String COMORBIDITIES_AND_PAST_MEDICAL_HISTORY = "Comorbidities and Past Medical History";
+	public static final String HISTORY_AND_PHYSICAL_REPORT = "History and physical report";
 	public static final String PAST_SURGICAL_HISTORY = "Past Surgical History";
 	public static final String MENTAL_HEALTH_ASSESMENT = "Mental Health Assesment";
 	public static final String MENSTRUATION_HISTORY = "Menstruation History";

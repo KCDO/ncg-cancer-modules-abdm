@@ -858,7 +858,7 @@
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91935009",
-				"display": "An adverse immune response to peanuts consumed as food."
+				"display": "Allergy to peanut"
 			},
 			"description": "Peanut (food)"
 		},
@@ -866,8 +866,8 @@
 			"name": "Peanut - dietary",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "91934004",
-				"display": "An adverse immune response to peanuts present in the environment, typically not related to ingestion but to contact or inhalation."
+				"code": "91935009",
+				"display": "Allergy to peanut"
 			},
 			"description": "Peanut - dietary (environmental)"
 		},
@@ -939,7 +939,7 @@
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "77176002",
-				"display": "Hospital Acquired Infection"
+				"display": "Smoking"
 			},
 			"description": "Hospital Acquired Infection"
 		},
