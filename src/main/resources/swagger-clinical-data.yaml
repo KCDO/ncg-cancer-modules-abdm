@@ -99,34 +99,9 @@ components:
               type: string
             display:
               type: string
-    BioChemistry:
-      type: object
-      properties:
-        panels:
-          type: array
-          items:
-            $ref: '#/components/schemas/PanelDetail'
-    CBC:
-      type: object
-      properties:
-        panels:
-          type: array
-          items:
-            $ref: '#/components/schemas/PanelDetail'
-    CervicalCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
     ClinicalData:
       type: object
       properties:
-        outputClinicalArtifactTypes:
-          type: array
-          items:
-            type: string
         patientDetails:
           $ref: '#/components/schemas/PatientData'
         organizationDetails:
@@ -135,6 +110,10 @@ components:
           $ref: '#/components/schemas/ClinicalInformation'
         lungCancer:
           $ref: '#/components/schemas/LungCancer'
+        oralCancer:
+          $ref: '#/components/schemas/OralCancer'
+        cervicalCancer:
+          $ref: '#/components/schemas/CervicalCancer'
     ClinicalInformation:
       type: object
       properties:
@@ -162,13 +141,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OngoingDrugs'
-    Comorbidity:
-      type: object
-      properties:
-        name:
-          type: string
-        category:
-          type: string
+        comorbidities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comorbidities'
     DateTimeType:
       type: string
       properties:
@@ -266,15 +242,6 @@ components:
           type: boolean
         xhtml:
           $ref: '#/components/schemas/XhtmlNode'
-    Diagnostic:
-      type: object
-      properties:
-        cbc:
-          $ref: '#/components/schemas/CBC'
-        bioChemistry:
-          $ref: '#/components/schemas/BioChemistry'
-        biopsyHistopathologyReport:
-          type: string
     Extension:
       type: object
       properties:
@@ -399,23 +366,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AttachmentDetail'
-    MenstruationHistory:
+    OralCancer:
       type: object
       properties:
-        name:
-          type: string
-        value:
-          type: string
-        coding:
-          type: object
-          properties:
-            system:
-              type: string
-            code:
-              type: string
-            display:
-              type: string
-    MentalHealthAssesment:
+        tests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachmentDetail'
+    CervicalCancer:
+      type: object
+      properties:
+        tests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachmentDetail'
+    MenstruationHistory:
       type: object
       properties:
         name:
@@ -455,26 +420,22 @@ components:
               type: string
             display:
               type: string
-    OralCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    PanelDetail:
+    Comorbidities:
       type: object
       properties:
         name:
           type: string
-        code:
+        category:
           type: string
-        attachment:
-          type: string
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/TestDetail'
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     PastMedicalHistory:
       type: object
       properties:
@@ -557,7 +518,6 @@ components:
           type: string
         email:
           type: string
-        
     StringType:
       type: object
       properties:

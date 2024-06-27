@@ -14,7 +14,7 @@ public class Constants {
 	public static final String STRUCTURE_DEFINITION_PATIENT_BMI = "http://hl7.org/fhir/StructureDefinition/patient-bmi";
 	public static final String STRUCTURE_DEFINITION_PATIENT_BLOOD_GROUP = "http://example.com/fhir/StructureDefinition/patient-blood-group";
 	public static final String STRUCTURE_DEFINITION_DOCUMENT_BUNDLE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle";
-	public static final String STRUCTURE_DEFINITION_DOCUMENT_REFERENCE	 = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference";
+	public static final String STRUCTURE_DEFINITION_DOCUMENT_REFERENCE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference";
 	public static final String STRUCTURE_DEFINITION_OP_CONSULT_RECORD = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord";
 	public static final String STRUCTURE_DEFINITION_PATIENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient";
 	public static final String STRUCTURE_DEFINITION_CONDITION = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition";
@@ -105,4 +105,5 @@ public class Constants {
 	public static final String HTTPS_HEALTHID_ABDM_GOV_IN = "https://healthid.abdm.gov.in";
 	public static final String HTTPS_FHIR_EXAMPLE_COM = "https://fhir.example.com/";
 	public static final String HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_PRACTITIONER = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner";
+	public static final String CHIEF_COMPLAINTS = "Chief complaints";
 }

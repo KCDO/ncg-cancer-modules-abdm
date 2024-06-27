@@ -139,17 +139,23 @@ public class OPConsultationHelper {
 //					practitionerResource));
 //		}
 
-		// CancerTypes
+		// Create Chief complaint section for CancerTypes
+		Composition.SectionComponent cancerSection = FHIRUtils.createChiefComplaintSection(bundle, patientResource);
+
 		if (Objects.nonNull(clinicalData.getLungCancer())) {
 			processCancerType(clinicalData.getLungCancer(), "lung cancer", bundle, patientResource,
-					practitionerResource, sections);
-		} else if (Objects.nonNull(clinicalData.getOralCancer())) {
-			processCancerType(clinicalData.getOralCancer(), "oral cancer", bundle, patientResource,
-					practitionerResource, sections);
-		} else if (Objects.nonNull(clinicalData.getCervicalCancer())) {
-			processCancerType(clinicalData.getCervicalCancer(), "cervical cancer", bundle, patientResource,
-					practitionerResource, sections);
+					practitionerResource, cancerSection);
 		}
+		if (Objects.nonNull(clinicalData.getOralCancer())) {
+			processCancerType(clinicalData.getOralCancer(), "oral cancer", bundle, patientResource,
+					practitionerResource, cancerSection);
+		}
+		if (Objects.nonNull(clinicalData.getCervicalCancer())) {
+			processCancerType(clinicalData.getCervicalCancer(), "cervical cancer", bundle, patientResource,
+					practitionerResource, cancerSection);
+		}
+		// add cancer section to bundle resource
+		sections.add(cancerSection);
 
 		if (Objects.nonNull(clinicalData.getClinicalInformation())) {
 
@@ -217,25 +223,6 @@ public class OPConsultationHelper {
 						createInvestigationAdviceSection(bundle, opDoc, patientResource, investigationAdviceDetails));
 			}
 
-			// TODO
-			// ot notes
-			if (Objects.nonNull(clinicalData.getClinicalInformation().getOTNotes())) {
-
-				// create OT Notes section and add document attachment resource
-				org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.OT_NOTES);
-				Composition.SectionComponent otNotesSection = FHIRUtils.createChiefComplaintSection(bundle,
-						patientResource, coding);
-
-				for (Map.Entry<String, String> otNotesDetail : clinicalData.getClinicalInformation().getOTNotes()
-						.entrySet()) {
-					DiagnosticReport report = getOTNotesReports(bundle, patientResource, otNotesDetail);
-
-					// Add the condition to the OT Notes section
-					otNotesSection.getEntry().add(FHIRUtils.getReferenceToResource(report));
-				}
-				sections.add(otNotesSection);
-			}
-
 			// Ongoing Drugs section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getOngoingDrugs())) {
 				List<OngoingDrugs> ongoingDrugsDetails = clinicalData.getClinicalInformation().getOngoingDrugs();
@@ -247,14 +234,25 @@ public class OPConsultationHelper {
 	}
 
 	private void processCancerType(CancerType cancerType, String cancerName, Bundle bundle, Patient patientResource,
-			Practitioner practitionerResource, List<Composition.SectionComponent> sections) throws IOException {
+			Practitioner practitionerResource, Composition.SectionComponent sectionComponent) throws IOException {
 		if (Objects.nonNull(cancerType)) {
-			Composition.SectionComponent cancerSection = new Composition.SectionComponent();
 
-			org.ncg.clinical.artifacts.vo.Coding chiefComplaintCoding = FHIRUtils.mapCoding(null, cancerName);
+			// find code, system, display for each cancer based on cancerName from json file
+			// and map it to Coding format.
+			org.ncg.clinical.artifacts.vo.Coding cancerTypeCoding = FHIRUtils.mapCoding(null, cancerName);
 
-			// Create Chief complaint section and add condition resource
-			cancerSection = FHIRUtils.createChiefComplaintSection(bundle, patientResource, chiefComplaintCoding);
+			// create CodeableConcept:coding for condition resource
+			CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(cancerTypeCoding.getCode(),
+					cancerTypeCoding.getSystem(), cancerTypeCoding.getDisplay(), cancerName);
+
+			// create condition resource for each cancerType
+			Condition condition = FHIRUtils.createConditionResource(conditionCode, patientResource);
+
+			// make an entry for condition resource to bundle
+			FHIRUtils.addToBundleEntry(bundle, condition, true);
+
+			// make an entry for condition resource to the Chief complaint section
+			sectionComponent.addEntry(new Reference(condition));
 
 			// Create Procedure for report
 			if (!CollectionUtils.isEmpty(cancerType.getTests())) {
@@ -269,13 +267,8 @@ public class OPConsultationHelper {
 					// create procedure with DocumentReference for storing reports information
 					FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource, attachmentDetail.getAttachment(),
 							coding, attachmentDetail.getName());
-
-					// Add the report to cancer section
-					// cancerSection.getEntry().add(FHIRUtils.getReferenceToResource(procedure));
 				}
 			}
-
-			sections.add(cancerSection);
 		}
 	}
 

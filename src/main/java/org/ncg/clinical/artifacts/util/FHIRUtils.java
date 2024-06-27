@@ -623,29 +623,19 @@ public class FHIRUtils {
 		return opDoc;
 	}
 
-	public static Composition.SectionComponent createChiefComplaintSection(Bundle bundle, Patient patient,
-			org.ncg.clinical.artifacts.vo.Coding coding) {
+	public static Composition.SectionComponent createChiefComplaintSection(Bundle bundle, Patient patient) {
 		// create code for Chief complaint
 		CodeableConcept chiefComplaintCode = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName("Chief complaints");
+		Optional<Test> cancerTestDetail = getTestByName(Constants.CHIEF_COMPLAINTS);
 		if (cancerTestDetail.isPresent()) {
 			Test test = cancerTestDetail.get();
 			chiefComplaintCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
 					test.getCoding().getDisplay(), test.getDescription());
 		}
 		// create Chief complaint section
-		Composition.SectionComponent sectionComponent = createSectionComponent("Chief complaints", chiefComplaintCode);
+		Composition.SectionComponent sectionComponent = createSectionComponent(Constants.CHIEF_COMPLAINTS,
+				chiefComplaintCode);
 
-		// Create a new Condition resource for the Chief complaint
-		CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-				coding.getDisplay(), coding.getDisplay());
-		Condition condition = createConditionResource(conditionCode, patient);
-
-		// make an entry for condition resource to bundle
-		FHIRUtils.addToBundleEntry(bundle, condition, true);
-
-		// make an entry for condition resource to the Chief complaint section
-		sectionComponent.addEntry(new Reference(condition));
 		return sectionComponent;
 	}
 
