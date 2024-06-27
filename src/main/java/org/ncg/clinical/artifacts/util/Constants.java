@@ -103,7 +103,7 @@ public class Constants {
 	public static final String HTTP_EXAMPLE_ORG_FHIR_PRACTITIONER_IDENTIFIER_SYSTEM = "http://example.org/fhir/practitioner-identifier-system";
 	public static final String URN_HEALTH_INFORMATION_PROVIDER_SYSTEM = "urn:health:information:provider:system";
 	public static final String HTTPS_HEALTHID_ABDM_GOV_IN = "https://healthid.abdm.gov.in";
-	public static final String HTTPS_FHIR_EXAMPLE_COM = "https://fhir.example.com/";
+	public static final String URN_UUID = "urn:uuid:";
 	public static final String HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_PRACTITIONER = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner";
 	public static final String CHIEF_COMPLAINTS = "Chief complaints";
 }

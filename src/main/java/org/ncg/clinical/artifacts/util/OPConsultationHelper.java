@@ -162,7 +162,8 @@ public class OPConsultationHelper {
 			// Drug Allergy section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getDrugAllergy())) {
 				List<Allergy> allergiesDetail = clinicalData.getClinicalInformation().getDrugAllergy();
-				sections.add(createDrugAllergySection(bundle, opDoc, patientResource, allergiesDetail));
+				sections.add(createDrugAllergySection(bundle, opDoc, patientResource, practitionerResource,
+						allergiesDetail));
 			}
 
 			// Create the section for MedicalHistory
@@ -204,15 +205,16 @@ public class OPConsultationHelper {
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getAdverseEvents())) {
 				List<AdverseEventRequest> adverseEventsDetail = clinicalData.getClinicalInformation()
 						.getAdverseEvents();
-				sections.add(createAdverseEventsSection(bundle, opDoc, patientResource, adverseEventsDetail));
+				sections.add(createAdverseEventsSection(bundle, opDoc, patientResource, practitionerResource,
+						adverseEventsDetail));
 			}
 
 			// Menstruation History section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getMenstruationHistory())) {
 				List<MenstruationHistory> menstruationHistoryDetails = clinicalData.getClinicalInformation()
 						.getMenstruationHistory();
-				sections.add(
-						createOtherObservationsSection(bundle, opDoc, patientResource, menstruationHistoryDetails));
+				sections.add(createOtherObservationsSection(bundle, opDoc, patientResource, practitionerResource,
+						menstruationHistoryDetails));
 			}
 
 			// Examination Details section
@@ -252,7 +254,7 @@ public class OPConsultationHelper {
 			FHIRUtils.addToBundleEntry(bundle, condition, true);
 
 			// make an entry for condition resource to the Chief complaint section
-			sectionComponent.addEntry(new Reference(condition));
+			sectionComponent.addEntry(FHIRUtils.getReferenceToCondition(condition));
 
 			// Create Procedure for report
 			if (!CollectionUtils.isEmpty(cancerType.getTests())) {
@@ -320,10 +322,7 @@ public class OPConsultationHelper {
 		diagnosticReport.setCode(getDiagnosticReportCode(key));
 
 		// Set subject
-		Reference patientRef = new Reference();
-		patientRef.setReference("Patient/" + patient.getId());
-		patientRef.setDisplay(patient.getName().toString());
-		diagnosticReport.setSubject(patientRef);
+		diagnosticReport.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
 		// Set the effective date
 		diagnosticReport.setEffective(new DateTimeType(new Date()));
@@ -342,10 +341,10 @@ public class OPConsultationHelper {
 		observation.setValue(new StringType(value));
 
 		// Set the subject of the observation
-		observation.setSubject(new Reference(patient.getIdElement().getValue()));
+		observation.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
 		// Add the observation to the DiagnosticReport
-		diagnosticReport.addResult(new Reference(observation.getIdElement().getValue()));
+		diagnosticReport.addResult(FHIRUtils.getReferenceToObservation(observation));
 
 		// Add the Observation to the bundle (if provided)
 		if (bundle != null) {
@@ -617,7 +616,7 @@ public class OPConsultationHelper {
 	}
 
 	public Composition.SectionComponent createDrugAllergySection(Bundle bundle, Composition composition,
-			Patient patient, List<Allergy> drugAllergyList) {
+			Patient patient, Practitioner practitioner, List<Allergy> drugAllergyList) {
 
 		// create code for allergies
 		CodeableConcept allergyCode = new CodeableConcept();
@@ -633,7 +632,7 @@ public class OPConsultationHelper {
 
 		// Iterate over the drugAllergyList and create AllergyIntolerance resources
 		for (Allergy allergyDetail : drugAllergyList) {
-			AllergyIntolerance allergyIntolerance = createAllergyIntolerance(allergyDetail, patient);
+			AllergyIntolerance allergyIntolerance = createAllergyIntolerance(allergyDetail, patient, practitioner);
 
 			// set AllergyIntolerance resource ID
 			String allergyId = UUID.randomUUID().toString();
@@ -646,14 +645,14 @@ public class OPConsultationHelper {
 			// add AllergyIntolerance to bundle resource
 			FHIRUtils.addToBundleEntry(bundle, allergyIntolerance, true);
 
-			allergiesSection
-					.addEntry(new Reference("AllergyIntolerance/" + allergyIntolerance.getIdElement().getValue()));
+			allergiesSection.addEntry(FHIRUtils.getReferenceToAllergyIntolerance(allergyIntolerance));
 		}
 
 		return allergiesSection;
 	}
 
-	private AllergyIntolerance createAllergyIntolerance(Allergy allergyDetail, Patient patient) {
+	private AllergyIntolerance createAllergyIntolerance(Allergy allergyDetail, Patient patient,
+			Practitioner practitioner) {
 		AllergyIntolerance allergyIntolerance = new AllergyIntolerance();
 
 		// set id
@@ -693,18 +692,14 @@ public class OPConsultationHelper {
 		allergyIntolerance.setCode(code);
 
 		// Set patient reference
-		Reference patientRef = new Reference();
-		patientRef.setReference("Patient/" + patient.getId());
-		allergyIntolerance.setPatient(patientRef);
+		allergyIntolerance.setPatient(FHIRUtils.getReferenceToPatient(patient));
 
 		// Set recorded date
 		DateTimeType currentTime = new DateTimeType(new Date());
 		allergyIntolerance.setRecordedDateElement(new DateTimeType(currentTime.getValueAsString()));
 
 		// Set recorder reference
-		Reference recorderRef = new Reference();
-		recorderRef.setReference("Practitioner/" + UUID.randomUUID().toString());
-		allergyIntolerance.setRecorder(recorderRef);
+		allergyIntolerance.setRecorder(FHIRUtils.getReferenceToPractitioner(practitioner));
 
 		// Set note
 		Annotation note = new Annotation();
@@ -739,8 +734,7 @@ public class OPConsultationHelper {
 			serviceRequest.setId(requestId);
 
 			FHIRUtils.addToBundleEntry(bundle, serviceRequest, true);
-			investigationAdviceSection
-					.addEntry(new Reference("ServiceRequest/" + serviceRequest.getIdElement().getValue()));
+			investigationAdviceSection.addEntry(FHIRUtils.getReferenceToServiceRequest(serviceRequest));
 		}
 
 		return investigationAdviceSection;
@@ -761,16 +755,14 @@ public class OPConsultationHelper {
 		serviceRequest.setCode(code);
 
 		// Set subject (patient reference)
-		Reference patientRef = new Reference();
-		patientRef.setReference("Patient/" + patient.getId());
-		serviceRequest.setSubject(patientRef);
+		serviceRequest.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
 		// Set occurrence
 		serviceRequest.setOccurrence(investigationAdvice.getOccurrenceDateTime());
 
 		// Set requester
 		Reference requesterRef = new Reference();
-		requesterRef.setReference(investigationAdvice.getRequester());
+		requesterRef.setReference(Constants.URN_UUID + investigationAdvice.getRequester());
 		serviceRequest.setRequester(requesterRef);
 
 		return serviceRequest;
@@ -792,8 +784,7 @@ public class OPConsultationHelper {
 			MedicationStatement medicationStatement = createMedicationStatement(ongoingDrugs, patient);
 
 			FHIRUtils.addToBundleEntry(bundle, medicationStatement, true);
-			medicationsSection
-					.addEntry(new Reference("MedicationStatement/" + medicationStatement.getIdElement().getValue()));
+			medicationsSection.addEntry(FHIRUtils.getReferenceToMedicationStatement(medicationStatement));
 		}
 
 		return medicationsSection;
@@ -816,9 +807,7 @@ public class OPConsultationHelper {
 				"Medication summary document", Constants.ONGOING_DRUGS));
 
 		// Set subject
-		Reference patientRef = new Reference();
-		patientRef.setReference("Patient/" + patient.getId());
-		medicationStatement.setSubject(patientRef);
+		medicationStatement.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
 		// if incoming coding: system, code, display are not null then use same and if
 		// incoming coding: system, code, display are null then take those value from
@@ -885,7 +874,7 @@ public class OPConsultationHelper {
 	}
 
 	public Composition.SectionComponent createOtherObservationsSection(Bundle bundle, Composition composition,
-			Patient patient, List<MenstruationHistory> menstruationHistoryList) {
+			Patient patient, Practitioner practitioner, List<MenstruationHistory> menstruationHistoryList) {
 
 		// Create the section for OtherObservations
 		Composition.SectionComponent medicationsSection = new Composition.SectionComponent();
@@ -899,16 +888,17 @@ public class OPConsultationHelper {
 
 		// Iterate over the menstruationHistory and create Observation resources
 		for (MenstruationHistory menstruationHistory : menstruationHistoryList) {
-			Observation observation = createOtherObservations(menstruationHistory, patient);
+			Observation observation = createOtherObservations(menstruationHistory, patient, practitioner);
 
 			FHIRUtils.addToBundleEntry(bundle, observation, true);
-			medicationsSection.addEntry(new Reference("Observation/" + observation.getIdElement().getValue()));
+			medicationsSection.addEntry(FHIRUtils.getReferenceToObservation(observation));
 		}
 
 		return medicationsSection;
 	}
 
-	private Observation createOtherObservations(MenstruationHistory menstruationHistoryDetail, Patient patient) {
+	private Observation createOtherObservations(MenstruationHistory menstruationHistoryDetail, Patient patient,
+			Practitioner practitioner) {
 
 		// Create a new Condition resource for the complaint
 		Observation observation = new Observation();
@@ -917,16 +907,11 @@ public class OPConsultationHelper {
 		observation.setStatus(Observation.ObservationStatus.FINAL);
 
 		// Set patient reference
-		Reference patientRef = new Reference();
-		patientRef.setReference("Patient/" + patient.getId());
-		observation.setSubject(patientRef);
+		observation.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
-		// Set performer references
-		Reference recorderRef = new Reference();
-		recorderRef.setReference("Practitioner/" + UUID.randomUUID().toString());
-
+		// Set performer practitioner as recorder references
 		List<Reference> performers = new ArrayList<>();
-		performers.add(recorderRef);
+		performers.add(FHIRUtils.getReferenceToPractitioner(practitioner));
 		observation.setPerformer(performers);
 
 		// Set text
@@ -965,7 +950,7 @@ public class OPConsultationHelper {
 				Condition condition = createMedicalHistoryCondition(comorbidity, null, patient);
 
 				FHIRUtils.addToBundleEntry(bundle, condition, true);
-				medicalHistorySection.addEntry(new Reference("Condition/" + condition.getIdElement().getValue()));
+				medicalHistorySection.addEntry(FHIRUtils.getReferenceToCondition(condition));
 			}
 		}
 
@@ -975,7 +960,7 @@ public class OPConsultationHelper {
 				Condition condition = createMedicalHistoryCondition(null, pastMedicalHistory, patient);
 
 				FHIRUtils.addToBundleEntry(bundle, condition, true);
-				medicalHistorySection.addEntry(new Reference("Condition/" + condition.getIdElement().getValue()));
+				medicalHistorySection.addEntry(FHIRUtils.getReferenceToCondition(condition));
 			}
 		}
 
@@ -988,7 +973,7 @@ public class OPConsultationHelper {
 				procedure.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_PROCEDURE));
 
 				FHIRUtils.addToBundleEntry(bundle, procedure, true);
-				medicalHistorySection.addEntry(new Reference("Procedure/" + procedure.getIdElement().getValue()));
+				medicalHistorySection.addEntry(FHIRUtils.getReferenceToProcedure(procedure));
 			}
 		}
 
@@ -1045,9 +1030,7 @@ public class OPConsultationHelper {
 		}
 
 		// Set patient reference
-		Reference patientRef = new Reference();
-		patientRef.setReference("Patient/" + patient.getId());
-		condition.setSubject(patientRef);
+		condition.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
 		// Set recorded date time
 		condition.setRecordedDate(new Date());
@@ -1085,9 +1068,7 @@ public class OPConsultationHelper {
 		procedure.setStatus(Procedure.ProcedureStatus.COMPLETED);
 
 		// Set patient reference
-		Reference patientRef = new Reference();
-		patientRef.setReference("Patient/" + patient.getId());
-		procedure.setSubject(patientRef);
+		procedure.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
 		// Set the note
 		Annotation annotation = new Annotation();
@@ -1101,7 +1082,7 @@ public class OPConsultationHelper {
 	}
 
 	public Composition.SectionComponent createAdverseEventsSection(Bundle bundle, Composition composition,
-			Patient patient, List<AdverseEventRequest> adverseEventsList) {
+			Patient patient, Practitioner practitioner, List<AdverseEventRequest> adverseEventsList) {
 
 		// create code for adverseEvents Section
 		CodeableConcept adverseEventCode = new CodeableConcept();
@@ -1117,7 +1098,7 @@ public class OPConsultationHelper {
 
 		// Iterate over the adverseEventsList and create AdverseEvent resources
 		for (AdverseEventRequest adverseEventsDetail : adverseEventsList) {
-			AdverseEvent adverseEvent = createAdverseEvent(adverseEventsDetail, patient);
+			AdverseEvent adverseEvent = createAdverseEvent(adverseEventsDetail, patient, practitioner);
 
 			// set meta profile
 			adverseEvent.setMeta(
@@ -1126,13 +1107,14 @@ public class OPConsultationHelper {
 			// add AdverseEvent to bundle resource
 			FHIRUtils.addToBundleEntry(bundle, adverseEvent, true);
 
-			adverseEventsSection.addEntry(new Reference("AdverseEvent/" + adverseEvent.getIdElement().getValue()));
+			adverseEventsSection.addEntry(FHIRUtils.getReferenceToAdverseEvent(adverseEvent));
 		}
 
 		return adverseEventsSection;
 	}
 
-	private AdverseEvent createAdverseEvent(AdverseEventRequest adverseEventDetail, Patient patient) {
+	private AdverseEvent createAdverseEvent(AdverseEventRequest adverseEventDetail, Patient patient,
+			Practitioner practitioner) {
 
 		// Create a new AdverseEvent resource
 		AdverseEvent adverseEvent = new AdverseEvent();
@@ -1162,14 +1144,10 @@ public class OPConsultationHelper {
 		adverseEvent.addCategory(code);
 
 		// Set patient reference
-		Reference patientRef = new Reference();
-		patientRef.setReference("Patient/" + patient.getId());
-		adverseEvent.setSubject(patientRef);
+		adverseEvent.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
-		// Set recorder reference
-		Reference recorderRef = new Reference();
-		recorderRef.setReference("Practitioner/" + UUID.randomUUID().toString());
-		adverseEvent.setRecorder(recorderRef);
+		// Set practitioner as recorder reference
+		adverseEvent.setRecorder(FHIRUtils.getReferenceToPractitioner(practitioner));
 
 		// Set date
 		adverseEvent.setDate(new Date());

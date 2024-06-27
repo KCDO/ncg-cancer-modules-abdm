@@ -16,6 +16,8 @@ import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Address;
+import org.hl7.fhir.r4.model.AdverseEvent;
+import org.hl7.fhir.r4.model.AllergyIntolerance;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
@@ -31,6 +33,7 @@ import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
+import org.hl7.fhir.r4.model.MedicationStatement;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Observation;
@@ -43,6 +46,7 @@ import org.hl7.fhir.r4.model.Procedure.ProcedureStatus;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
+import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.Type;
 import org.ncg.clinical.artifacts.vo.ClinicalData;
@@ -276,8 +280,16 @@ public class FHIRUtils {
 		Observation observation = new Observation();
 		observation.setId(UUID.randomUUID().toString());
 		observation.setStatus(Observation.ObservationStatus.FINAL);
-		observation.setSubject(new Reference("Patient/" + patient.getId()));
+		observation.setSubject(getReferenceToPatient(patient));
 		return observation;
+	}
+
+	static Reference getReferenceToObservation(Observation observationResource) {
+		Reference observationRef = new Reference(Constants.URN_UUID + observationResource.getId());
+		observationRef.setResource(observationResource);
+		observationRef.setDisplay("Observation");
+
+		return observationRef;
 	}
 
 	private static Observation getHeight(double patientHeight, Patient patient) {
@@ -460,17 +472,13 @@ public class FHIRUtils {
 	}
 
 	static void addToBundleEntry(Bundle bundle, Resource resource, boolean useIdPart) {
-		String resourceType = resource.getResourceType().toString();
 		String id = useIdPart ? resource.getIdElement().getIdPart() : resource.getId();
-		bundle.addEntry().setFullUrl(Constants.HTTPS_FHIR_EXAMPLE_COM + resourceType + "/" + id).setResource(resource);
+		bundle.addEntry().setFullUrl(Constants.URN_UUID + id).setResource(resource);
 	}
 
 	static Reference getReferenceToPatient(Patient patientResource) {
-		Reference patientRef = new Reference();
-		patientRef.setResource(patientResource);
-		if (Utils.randomBool()) {
-			patientRef.setDisplay(patientResource.getNameFirstRep().getNameAsSingleString());
-		}
+		Reference patientRef = new Reference(Constants.URN_UUID + patientResource.getId());
+		patientRef.setDisplay("Patient");
 
 		return patientRef;
 	}
@@ -600,11 +608,9 @@ public class FHIRUtils {
 	}
 
 	static Reference getReferenceToEncounter(Encounter encounterResource) {
-		Reference organizationRef = new Reference();
+		Reference organizationRef = new Reference(Constants.URN_UUID + encounterResource.getId());
 		organizationRef.setResource(encounterResource);
-		if (Utils.randomBool()) {
-			organizationRef.setDisplay(encounterResource.getClass_().getDisplay());
-		}
+		organizationRef.setDisplay("Encounter");
 
 		return organizationRef;
 	}
@@ -652,9 +658,17 @@ public class FHIRUtils {
 		condition.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_CONDITION));
 		condition.setClinicalStatus(getConditionClinicalStatus());
 		condition.setCode(code);
-		condition.setSubject(new Reference(patientResource));
+		condition.setSubject(getReferenceToPatient(patientResource));
 
 		return condition;
+	}
+
+	static Reference getReferenceToCondition(Condition conditionResource) {
+		Reference conditionRef = new Reference(Constants.URN_UUID + conditionResource.getId());
+		conditionRef.setResource(conditionResource);
+		conditionRef.setDisplay("Condition");
+
+		return conditionRef;
 	}
 
 	public static CodeableConcept getConditionClinicalStatus() {
@@ -765,11 +779,10 @@ public class FHIRUtils {
 	}
 
 	static Reference getReferenceToPractitioner(Practitioner practitionerResource) {
-		Reference practitionerRef = new Reference();
+		Reference practitionerRef = new Reference(Constants.URN_UUID + practitionerResource.getId());
 		practitionerRef.setResource(practitionerResource);
-		if (Utils.randomBool()) {
-			practitionerRef.setDisplay(practitionerResource.getNameFirstRep().getNameAsSingleString());
-		}
+		practitionerRef.setDisplay("Practitioner");
+
 		return practitionerRef;
 	}
 
@@ -821,7 +834,7 @@ public class FHIRUtils {
 		report.setStatus(DiagnosticReport.DiagnosticReportStatus.FINAL);
 		report.setCode(code);
 		report.setCategory(categories);
-		report.setSubject(FHIRUtils.getReferenceToPatient(patient));
+		report.setSubject(getReferenceToPatient(patient));
 		report.setIssued(new Date());
 
 		// Set section
@@ -855,7 +868,7 @@ public class FHIRUtils {
 		DocumentReference documentReference = new DocumentReference();
 		documentReference.setId(Utils.generateId());
 		documentReference.setType(type);
-		documentReference.setSubject(new Reference(patient));
+		documentReference.setSubject(getReferenceToPatient(patient));
 		documentReference.setStatus(Enumerations.DocumentReferenceStatus.CURRENT);
 		documentReference.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_DOCUMENT_REFERENCE));
 
@@ -879,7 +892,7 @@ public class FHIRUtils {
 		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding);
 
 		// Add documentReference to procedure
-		procedure.setReport(Arrays.asList(new Reference(documentReference)));
+		procedure.setReport(Arrays.asList(getReferenceToDocumentReference(documentReference)));
 
 		// Add procedure to the bundle
 		FHIRUtils.addToBundleEntry(bundle, procedure, true);
@@ -911,7 +924,7 @@ public class FHIRUtils {
 		fhirProcedure.setStatus(ProcedureStatus.COMPLETED);
 
 		// set patient reference as subject
-		fhirProcedure.setSubject(new Reference(patient));
+		fhirProcedure.setSubject(getReferenceToPatient(patient));
 
 		return fhirProcedure;
 	}
@@ -956,21 +969,67 @@ public class FHIRUtils {
 			organizationResource = organizationBuilder(clinicalData.getOrganizationDetails());
 			FHIRUtils.addToBundleEntry(bundle, organizationResource, true);
 			if (Objects.nonNull(organizationResource)) {
-				opDoc.setCustodian(FHIRUtils.getReferenceToPatient(organizationResource));
-				opDoc.addAuthor(FHIRUtils.getReferenceToPatient(organizationResource));
+				opDoc.setCustodian(FHIRUtils.getReferenceToOrganization(organizationResource));
+				opDoc.addAuthor(FHIRUtils.getReferenceToOrganization(organizationResource));
 			}
 		}
 
 		return organizationResource;
 	}
 
-	static Reference getReferenceToPatient(Organization organizationResource) {
-		Reference organizationRef = new Reference();
+	static Reference getReferenceToOrganization(Organization organizationResource) {
+		Reference organizationRef = new Reference(Constants.URN_UUID + organizationResource.getId());
 		organizationRef.setResource(organizationResource);
-		if (Utils.randomBool()) {
-			organizationRef.setDisplay(organizationResource.getName());
-		}
+		organizationRef.setDisplay("Organization");
 
 		return organizationRef;
+	}
+
+	static Reference getReferenceToDocumentReference(DocumentReference observationResource) {
+		Reference documentReferenceRef = new Reference(Constants.URN_UUID + observationResource.getId());
+		documentReferenceRef.setResource(observationResource);
+		documentReferenceRef.setDisplay("DocumentReference");
+
+		return documentReferenceRef;
+	}
+
+	static Reference getReferenceToAllergyIntolerance(AllergyIntolerance allergyIntolerance) {
+		Reference allergyIntoleranceRef = new Reference(Constants.URN_UUID + allergyIntolerance.getId());
+		allergyIntoleranceRef.setResource(allergyIntolerance);
+		allergyIntoleranceRef.setDisplay("AllergyIntolerance");
+
+		return allergyIntoleranceRef;
+	}
+
+	static Reference getReferenceToProcedure(Procedure procedure) {
+		Reference procedureRef = new Reference(Constants.URN_UUID + procedure.getId());
+		procedureRef.setResource(procedure);
+		procedureRef.setDisplay("Procedure");
+
+		return procedureRef;
+	}
+
+	static Reference getReferenceToAdverseEvent(AdverseEvent adverseEvent) {
+		Reference adverseEventRef = new Reference(Constants.URN_UUID + adverseEvent.getId());
+		adverseEventRef.setResource(adverseEvent);
+		adverseEventRef.setDisplay("AdverseEvent");
+
+		return adverseEventRef;
+	}
+
+	static Reference getReferenceToServiceRequest(ServiceRequest serviceRequest) {
+		Reference serviceRequestRef = new Reference(Constants.URN_UUID + serviceRequest.getId());
+		serviceRequestRef.setResource(serviceRequest);
+		serviceRequestRef.setDisplay("ServiceRequest");
+
+		return serviceRequestRef;
+	}
+
+	static Reference getReferenceToMedicationStatement(MedicationStatement medicationStatement) {
+		Reference medicationStatementRef = new Reference(Constants.URN_UUID + medicationStatement.getId());
+		medicationStatementRef.setResource(medicationStatement);
+		medicationStatementRef.setDisplay("MedicationStatement");
+
+		return medicationStatementRef;
 	}
 }
