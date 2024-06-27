@@ -33,6 +33,7 @@ import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
+import org.hl7.fhir.r4.model.MedicationRequest;
 import org.hl7.fhir.r4.model.MedicationStatement;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Narrative;
@@ -1031,5 +1032,13 @@ public class FHIRUtils {
 		medicationStatementRef.setDisplay("MedicationStatement");
 
 		return medicationStatementRef;
+	}
+
+	static Reference getReferenceToMedicationRequest(MedicationRequest medicationRequest) {
+		Reference medicationRequestRef = new Reference(Constants.URN_UUID + medicationRequest.getId());
+		medicationRequestRef.setResource(medicationRequest);
+		medicationRequestRef.setDisplay("MedicationRequest");
+
+		return medicationRequestRef;
 	}
 }

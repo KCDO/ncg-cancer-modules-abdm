@@ -978,6 +978,24 @@
 				"display": "PAC Notes"
 			},
 			"description": "PAC Notes"
+		},
+		{
+			"name": "Amoxicillin anhydrous",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "785686003",
+				"display": "Amoxicillin anhydrous"
+			},
+			"description": "Amoxicillin anhydrous (substance)"
+		},
+		{
+			"name": "Amoxicillin",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "323732002",
+				"display": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
+			},
+			"description": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
 		}
 	]
 }

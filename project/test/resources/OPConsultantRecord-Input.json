@@ -173,6 +173,7 @@
 		"ongoingDrugs": [
 			{
 				"name": "Amoxicillin",
+				"medicationType": "MEDICATION_STATEMENT",
 				"effectiveDate": "2014-02-01",
 				"assertedDate": "2014-02-22",
 				"reference": "Patient/pat1",
@@ -184,11 +185,9 @@
 				}
 			},
 			{
-				"name": "Tylenol PM",
-				"effectiveDate": "2015-01-23",
-				"assertedDate": "2015-02-22",
+				"name": "Amoxicillin anhydrous",
+				"medicationType": "MEDICATION_REQUEST",
 				"reference": "MedicationRequest/medrx002",
-				"note": "Patient indicates they miss the occasional dose",
 				"coding": {
 					"system": "",
 					"code": "",
@@ -219,65 +218,30 @@
 			},
 			{
 				"name": "FDG PETCT",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": ""
-				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Fiber optic bronchoscopy",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": ""
-				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Endobronchial ultrasound with ROSE reports",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": ""
-				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Pulmonary function tests with DLCO",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": ""
-				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "V/Q scan in pneumonectomy",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": ""
-				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "6MWT",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": ""
-				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Molecular markers/NGS as needed",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": ""
-				},
 				"attachment": "lung6mowt"
 			}
 		]

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,6 +25,9 @@ import org.hl7.fhir.r4.model.DocumentReference;
 import org.hl7.fhir.r4.model.Dosage;
 import org.hl7.fhir.r4.model.Dosage.DosageDoseAndRateComponent;
 import org.hl7.fhir.r4.model.Identifier;
+import org.hl7.fhir.r4.model.MedicationRequest;
+import org.hl7.fhir.r4.model.MedicationRequest.MedicationRequestIntent;
+import org.hl7.fhir.r4.model.MedicationRequest.MedicationRequestStatus;
 import org.hl7.fhir.r4.model.MedicationStatement;
 import org.hl7.fhir.r4.model.MedicationStatement.MedicationStatementStatus;
 import org.hl7.fhir.r4.model.Narrative;
@@ -47,6 +49,7 @@ import org.ncg.clinical.artifacts.vo.clinicalinformation.Comorbidity;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.InvestigationAdvice;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.MenstruationHistory;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs;
+import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs.ReferenceType;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastMedicalHistory;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastSurgicalHistory;
 import org.ncg.clinical.artifacts.vo.diagnostic.AttachmentDetail;
@@ -274,40 +277,6 @@ public class OPConsultationHelper {
 		}
 	}
 
-	private DiagnosticReport getOTNotesReports(Bundle bundle, Patient patient, Map.Entry<String, String> oTNotesDetail)
-			throws IOException {
-		String oTNotesIndicator = oTNotesDetail.getKey().toLowerCase();
-		switch (oTNotesIndicator) {
-		case "wrist extension":
-		case "strength of left hand":
-		case "strength of right hand":
-		case "sensation in left thumb":
-		case "sensation in right thumb":
-		case "left hand grip strength":
-		case "right hand grip strength":
-			return createDiagnosticReport(bundle, patient, oTNotesDetail.getKey(), oTNotesDetail.getValue());
-		default:
-			return null;
-		}
-	}
-
-	private DiagnosticReport getPACNotesReports(Bundle bundle, Patient patient,
-			Map.Entry<String, String> pACNotesDetail) throws IOException {
-		String pACNotesIndicator = pACNotesDetail.getKey().toLowerCase();
-		switch (pACNotesIndicator) {
-		case "wrist extension":
-		case "strength of left hand":
-		case "strength of right hand":
-		case "sensation in left thumb":
-		case "sensation in right thumb":
-		case "left hand grip strength":
-		case "right hand grip strength":
-			return createDiagnosticReport(bundle, patient, pACNotesDetail.getKey(), pACNotesDetail.getValue());
-		default:
-			return null;
-		}
-	}
-
 	private DiagnosticReport createDiagnosticReport(Bundle bundle, Patient patient, String key, String value) {
 		// Create a new DiagnosticReport resource
 		DiagnosticReport diagnosticReport = new DiagnosticReport();
@@ -503,97 +472,6 @@ public class OPConsultationHelper {
 		report.addResult(resultReference);
 	}
 
-	// fetch CodeableConcept for Co-Morbidities condition
-	protected CodeableConcept getCoMorbiditiesCode(String name) {
-		switch (name.toLowerCase()) {
-		case "hypertension":
-			return FHIRUtils.getCodeableConcept(Constants.HYPERTENSION_CODE, Constants.SNOMED_SYSTEM_SCT, name, name);
-		case "coronary artery disease":
-			return FHIRUtils.getCodeableConcept(Constants.CORONARY_ARTERY_DISEASE_CODE, Constants.SNOMED_SYSTEM_SCT,
-					name, name);
-		case "chronic obstructive pulmonary disease":
-			return FHIRUtils.getCodeableConcept(Constants.CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE_CODE,
-					Constants.SNOMED_SYSTEM_SCT, name, name);
-		case "diabetes mellitus":
-			return FHIRUtils.getCodeableConcept(Constants.DIABETES_MELLITUS_CODE, Constants.SNOMED_SYSTEM_SCT, name,
-					name);
-		default:
-			return null;
-		}
-	}
-
-	// fetch CodeableConcept for Co-Morbidities condition category
-	protected CodeableConcept getCoMorbiditiesCategoryCode(Comorbidity coMorbidityDetail) {
-		switch (coMorbidityDetail.getName().toLowerCase()) {
-		case "hypertension":
-			return FHIRUtils.getCodeableConcept(Constants.HYPERTENSION_CODE, Constants.SNOMED_SYSTEM_SCT,
-					coMorbidityDetail.getName(), coMorbidityDetail.getName());
-		case "diabetes mellitus":
-			return FHIRUtils.getCodeableConcept(Constants.DIABETES_MELLITUS_CODE, Constants.SNOMED_SYSTEM_SCT,
-					coMorbidityDetail.getName(), coMorbidityDetail.getName());
-		case "asthma":
-			return FHIRUtils.getCodeableConcept(Constants.ASTHMA_CODE, Constants.SNOMED_SYSTEM_SCT,
-					coMorbidityDetail.getName(), coMorbidityDetail.getName());
-		default:
-			return null;
-		}
-	}
-
-	// fetch CodeableConcept for Adverse Events resource
-	protected CodeableConcept getAdverseEventsCode(String name) {
-		switch (name.toLowerCase()) {
-		case "hypertension":
-			return FHIRUtils.getCodeableConcept(Constants.HYPERTENSION_CODE, Constants.SNOMED_SYSTEM_SCT, name, name);
-		case "coronary artery disease":
-			return FHIRUtils.getCodeableConcept(Constants.CORONARY_ARTERY_DISEASE_CODE, Constants.SNOMED_SYSTEM_SCT,
-					name, name);
-		case "chronic obstructive pulmonary disease":
-			return FHIRUtils.getCodeableConcept(Constants.CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE_CODE,
-					Constants.SNOMED_SYSTEM_SCT, name, name);
-		case "diabetes mellitus":
-			return FHIRUtils.getCodeableConcept(Constants.DIABETES_MELLITUS_CODE, Constants.SNOMED_SYSTEM_SCT, name,
-					name);
-		default:
-			return null;
-		}
-	}
-
-	// fetch CodeableConcept for Past Surgical History condition
-	protected CodeableConcept getPastSurgicalHistoryCode(String name) {
-		switch (name.toLowerCase()) {
-		case "hypertension":
-			return FHIRUtils.getCodeableConcept(Constants.HYPERTENSION_CODE, Constants.SNOMED_SYSTEM_SCT, name, name);
-		case "coronary artery disease":
-			return FHIRUtils.getCodeableConcept(Constants.CORONARY_ARTERY_DISEASE_CODE, Constants.SNOMED_SYSTEM_SCT,
-					name, name);
-		case "chronic obstructive pulmonary disease":
-			return FHIRUtils.getCodeableConcept(Constants.CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE_CODE,
-					Constants.SNOMED_SYSTEM_SCT, name, name);
-		case "diabetes mellitus":
-			return FHIRUtils.getCodeableConcept(Constants.DIABETES_MELLITUS_CODE, Constants.SNOMED_SYSTEM_SCT, name,
-					name);
-		default:
-			return null;
-		}
-	}
-
-	// fetch Mental health Assesment code
-	protected CodeableConcept getMentalHealthAssesmentCode(String name) {
-		switch (name.toLowerCase()) {
-		case "pregnancy status":
-			return FHIRUtils.getCodeableConcept(Constants.PREGNANCY_STATUS_CODE, Constants.LOINC_SYSTEM, name, name);
-		case "menstrual cycle":
-			return FHIRUtils.getCodeableConcept(Constants.MENSTRUAL_CYCLE_CODE, Constants.LOINC_SYSTEM,
-					"Last menstrual period start date", name);
-		case "obstetric history":
-			return FHIRUtils.getCodeableConcept(Constants.OBSTETRIC_HISTORY_CODE, Constants.LOINC_SYSTEM, name, name);
-		case "breast health":
-			return FHIRUtils.getCodeableConcept(Constants.BREAST_HEALTH_CODE, Constants.LOINC_SYSTEM, name, name);
-		default:
-			return null;
-		}
-	}
-
 	// fetch Diagnostic Report code
 	protected CodeableConcept getDiagnosticReportCode(String name) {
 		switch (name.toLowerCase()) {
@@ -781,12 +659,17 @@ public class OPConsultationHelper {
 
 		// Iterate over the investigationAdviceList and create ServiceRequest resources
 		for (OngoingDrugs ongoingDrugs : ongoingDrugsList) {
-			MedicationStatement medicationStatement = createMedicationStatement(ongoingDrugs, patient);
-
-			FHIRUtils.addToBundleEntry(bundle, medicationStatement, true);
-			medicationsSection.addEntry(FHIRUtils.getReferenceToMedicationStatement(medicationStatement));
+			if (ongoingDrugs.getMedicationType() == ReferenceType.MEDICATION_STATEMENT) {
+				MedicationStatement medicationStatement = createMedicationStatement(ongoingDrugs, patient);
+				FHIRUtils.addToBundleEntry(bundle, medicationStatement, true);
+				medicationsSection.addEntry(FHIRUtils.getReferenceToMedicationStatement(medicationStatement));
+			}
+			if (ongoingDrugs.getMedicationType() == ReferenceType.MEDICATION_REQUEST) {
+				MedicationRequest medicationRequest = createMedicationRequest(ongoingDrugs, patient);
+				FHIRUtils.addToBundleEntry(bundle, medicationRequest, true);
+				medicationsSection.addEntry(FHIRUtils.getReferenceToMedicationRequest(medicationRequest));
+			}
 		}
-
 		return medicationsSection;
 	}
 
@@ -871,6 +754,87 @@ public class OPConsultationHelper {
 		medicationStatement.addNote(note);
 
 		return medicationStatement;
+	}
+
+	private MedicationRequest createMedicationRequest(OngoingDrugs ongoingDrugsDetail, Patient patient) {
+		MedicationRequest medicationRequest = new MedicationRequest();
+
+		// set id
+		medicationRequest.setId(Utils.generateId());
+
+		// add meta
+		medicationRequest.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_MEDICATION_REQUEST));
+
+		// set status
+		medicationRequest.setStatus(MedicationRequestStatus.ACTIVE);
+
+		// set intent
+		medicationRequest.setIntent(MedicationRequestIntent.PROPOSAL);
+
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(ongoingDrugsDetail.getCoding(),
+				ongoingDrugsDetail.getName());
+
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				ongoingDrugsDetail.getName());
+
+		// Set medication reference
+		medicationRequest.setMedication(code);
+
+		// Set subject
+		medicationRequest.setSubject(FHIRUtils.getReferenceToPatient(patient));
+
+		// set requester
+		medicationRequest.setRequester(FHIRUtils.getReferenceToPatient(patient));
+
+		// TODO
+		// Set reasonCode
+		medicationRequest.addReasonCode(code);
+
+		// add reasonReference after creating a Condition resource
+		Condition condition = FHIRUtils.createConditionResource(code, patient);
+		Reference conditionRef = new Reference(Constants.URN_UUID + condition.getId());
+		conditionRef.setDisplay("Condition");
+
+		medicationRequest.addReasonReference(conditionRef);
+
+		// TODO
+		// Set dosage
+		Dosage dosage = new Dosage();
+
+		// TODO
+		// Additional Instruction
+		dosage.addAdditionalInstruction(code);
+
+		// TODO
+		// Site
+		dosage.setSite(code);
+
+		// TODO
+		// Route
+		dosage.setRoute(code);
+
+		// TODO
+		// Method
+		dosage.setMethod(code);
+
+		// Dose and Rate
+		DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
+		doseAndRate.setDose(
+				new Quantity().setValue(500).setUnit("mg").setSystem("http://unitsofmeasure.org").setCode("mg"));
+		doseAndRate.setRate(
+				new Quantity().setValue(3).setUnit("1/d").setSystem("http://unitsofmeasure.org").setCode("{1/d}"));
+		dosage.addDoseAndRate(doseAndRate);
+
+		// Add dosage to medication statement
+		medicationRequest.addDosageInstruction(dosage);
+
+		// Set current time as authoredOn
+		medicationRequest.setAuthoredOn(new Date());
+
+		return medicationRequest;
 	}
 
 	public Composition.SectionComponent createOtherObservationsSection(Bundle bundle, Composition composition,
