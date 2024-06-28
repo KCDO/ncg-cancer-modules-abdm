@@ -72,6 +72,15 @@ components:
           type: string
         type:
           type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     AttachmentDetail:
       type: object
       properties:
@@ -81,40 +90,30 @@ components:
           type: string
         attachment:
           type: string
-    BioChemistry:
-      type: object
-      properties:
-        panels:
-          type: array
-          items:
-            $ref: '#/components/schemas/PanelDetail'
-    CBC:
-      type: object
-      properties:
-        panels:
-          type: array
-          items:
-            $ref: '#/components/schemas/PanelDetail'
-    CervicalCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     ClinicalData:
       type: object
       properties:
-        outputClinicalArtifactTypes:
-          type: array
-          items:
-            type: string
         patientDetails:
           $ref: '#/components/schemas/PatientData'
+        organizationDetails:
+          $ref: '#/components/schemas/OrganizationData'
         clinicalInformation:
           $ref: '#/components/schemas/ClinicalInformation'
         lungCancer:
           $ref: '#/components/schemas/LungCancer'
+        oralCancer:
+          $ref: '#/components/schemas/OralCancer'
+        cervicalCancer:
+          $ref: '#/components/schemas/CervicalCancer'
     ClinicalInformation:
       type: object
       properties:
@@ -138,21 +137,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InvestigationAdvice'
-        surgicalSummaryWithPostOPCourse:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurgicalSummaryWithPostOPCourse'
         ongoingDrugs:
           type: array
           items:
             $ref: '#/components/schemas/OngoingDrugs'
-    Comorbidity:
-      type: object
-      properties:
-        name:
-          type: string
-        category:
-          type: string
+        comorbidities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comorbidities'
     DateTimeType:
       type: string
       properties:
@@ -250,15 +242,6 @@ components:
           type: boolean
         xhtml:
           $ref: '#/components/schemas/XhtmlNode'
-    Diagnostic:
-      type: object
-      properties:
-        cbc:
-          $ref: '#/components/schemas/CBC'
-        bioChemistry:
-          $ref: '#/components/schemas/BioChemistry'
-        biopsyHistopathologyReport:
-          type: string
     Extension:
       type: object
       properties:
@@ -358,6 +341,15 @@ components:
           type: string
         reason:
           type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     Location:
       type: object
       properties:
@@ -374,6 +366,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AttachmentDetail'
+    OralCancer:
+      type: object
+      properties:
+        tests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachmentDetail'
+    CervicalCancer:
+      type: object
+      properties:
+        tests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachmentDetail'
     MenstruationHistory:
       type: object
       properties:
@@ -381,13 +387,15 @@ components:
           type: string
         value:
           type: string
-    MentalHealthAssesment:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     OngoingDrugs:
       type: object
       properties:
@@ -403,26 +411,31 @@ components:
           type: string
         note:
           type: string
-    OralCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    PanelDetail:
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
+    Comorbidities:
       type: object
       properties:
         name:
           type: string
-        code:
+        category:
           type: string
-        attachment:
-          type: string
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/TestDetail'
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     PastMedicalHistory:
       type: object
       properties:
@@ -433,6 +446,15 @@ components:
         onsetDateTime:
           type: string
           format: date-time
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     PastSurgicalHistory:
       type: object
       properties:
@@ -443,6 +465,15 @@ components:
         onsetDateTime:
           type: string
           format: date-time
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
     PatientData:
       required:
       - gender
@@ -477,6 +508,15 @@ components:
         identifier:
           $ref: '#/components/schemas/Identifier'
         bloodGroup:
+          type: string
+    OrganizationData:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        email:
           type: string
     StringType:
       type: object
@@ -521,23 +561,7 @@ components:
           type: boolean
         xhtml:
           $ref: '#/components/schemas/XhtmlNode'
-    SurgicalSummaryWithPostOPCourse:
-      type: object
-      properties:
-        name:
-          type: string
-        startDate:
-          $ref: '#/components/schemas/DateTimeType'
-        endDate:
-          $ref: '#/components/schemas/DateTimeType'
-        reason:
-          type: string
-        bodySite:
-          type: string
-        outcome:
-          type: string
-        followUp:
-          type: string
+
     TestDetail:
       type: object
       properties:
@@ -692,4 +716,3 @@ components:
         para:
           type: boolean
 x-original-swagger-version: "2.0"
-

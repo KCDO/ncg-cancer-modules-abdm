@@ -15,9 +15,25 @@ import lombok.Setter;
 @AllArgsConstructor
 public class OngoingDrugs {
 	private String name;
+	private ReferenceType medicationType;
 	private Date effectiveDate;
 	private Date assertedDate;
 	private String reference;
 	private String note;
 	private Coding coding;
+
+	public enum ReferenceType {
+		MEDICATION_STATEMENT("MedicationStatement"), MEDICATION_REQUEST("MedicationRequest");
+
+		private final String value;
+
+		ReferenceType(String value) {
+			this.value = value;
+		}
+
+		public String getValue() {
+			return value;
+		}
+
+	}
 }
