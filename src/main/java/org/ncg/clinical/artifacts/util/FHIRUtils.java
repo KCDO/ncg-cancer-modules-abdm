@@ -33,6 +33,7 @@ import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
+import org.hl7.fhir.r4.model.MedicationRequest;
 import org.hl7.fhir.r4.model.MedicationStatement;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Narrative;
@@ -49,7 +50,7 @@ import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.Type;
-import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
 import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
 import org.ncg.clinical.artifacts.vo.labtest.Panel;
 import org.ncg.clinical.artifacts.vo.labtest.Test;
@@ -174,7 +175,7 @@ public class FHIRUtils {
 
 		// set phone number
 		if (StringUtils.isNotBlank(patientData.getPhoneNumber())) {
-			fhirPatient.addTelecom(getTelecom(patientData.getPhoneNumber(), "phone"));
+			fhirPatient.addTelecom(getTelecom(patientData.getPhoneNumber(), Constants.PHONE));
 		}
 
 		// Add primary address
@@ -240,9 +241,9 @@ public class FHIRUtils {
 
 	public static ContactPoint getTelecom(String telecomValue, String type) {
 		switch (type.toLowerCase()) {
-		case "phone":
+		case Constants.PHONE:
 			return createContactPoint(telecomValue, ContactPoint.ContactPointSystem.PHONE);
-		case "email":
+		case Constants.EMAIL:
 			return createContactPoint(telecomValue, ContactPoint.ContactPointSystem.EMAIL);
 		default:
 			return null;
@@ -279,6 +280,7 @@ public class FHIRUtils {
 	private static Observation createObservation(Patient patient) {
 		Observation observation = new Observation();
 		observation.setId(UUID.randomUUID().toString());
+		observation.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_OBSERVATION));
 		observation.setStatus(Observation.ObservationStatus.FINAL);
 		observation.setSubject(getReferenceToPatient(patient));
 		return observation;
@@ -287,7 +289,7 @@ public class FHIRUtils {
 	static Reference getReferenceToObservation(Observation observationResource) {
 		Reference observationRef = new Reference(Constants.URN_UUID + observationResource.getId());
 		observationRef.setResource(observationResource);
-		observationRef.setDisplay("Observation");
+		observationRef.setDisplay(Constants.OBSERVATION);
 
 		return observationRef;
 	}
@@ -296,29 +298,22 @@ public class FHIRUtils {
 		Observation observation = createObservation(patient);
 
 		// Set the code for patient height observation using LOINC system
-		Optional<Test> bmiTest = getTestByName("Height");
-		if (bmiTest.isPresent()) {
-			Test test = bmiTest.get();
-			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.LOINC_SYSTEM,
-					test.getDescription(), test.getName());
-			observation.setCode(code);
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = mapCoding(null, Constants.HEIGHT);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				Constants.HEIGHT);
+		observation.setCode(code);
 
 		// Set the category to vital signs
-		bmiTest = getTestByName("Vital Signs");
-		if (bmiTest.isPresent()) {
-			Test test = bmiTest.get();
-			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCoding().getCode(),
-					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
-					test.getDescription());
-			observation.addCategory(category);
-		}
+		coding = mapCoding(null, Constants.VITAL_SIGNS);
+		CodeableConcept category = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), Constants.VITAL_SIGNS);
+		observation.addCategory(category);
 
 		// Set the value in the Observation
-		observation.setValue(createQuantityResource(patientHeight, "cm", "cm"));
+		observation.setValue(createQuantityResource(patientHeight, Constants.CM, Constants.CM));
 
 		// set effective date time
-		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
+		observation.setEffective(FHIRUtils.getEffectiveDate(new Date()));
 
 		return observation;
 	}
@@ -327,7 +322,7 @@ public class FHIRUtils {
 		Quantity quantity = new Quantity();
 		quantity.setValue(value);
 		quantity.setUnit(uom);
-		quantity.setSystem("http://unitsofmeasure.org");
+		quantity.setSystem(Constants.HTTP_UNITSOFMEASURE_ORG);
 		quantity.setCode(code);
 
 		return quantity;
@@ -337,29 +332,22 @@ public class FHIRUtils {
 		Observation observation = createObservation(patient);
 
 		// Set the code for patient weight observation using LOINC system
-		Optional<Test> bmiTest = getTestByName("Weight");
-		if (bmiTest.isPresent()) {
-			Test test = bmiTest.get();
-			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.LOINC_SYSTEM,
-					test.getDescription(), test.getName());
-			observation.setCode(code);
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = mapCoding(null, Constants.WEIGHT);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				Constants.WEIGHT);
+		observation.setCode(code);
 
 		// Set the value in the Observation
-		observation.setValue(createQuantityResource(patientWeight, "kg", "kg"));
+		observation.setValue(createQuantityResource(patientWeight, Constants.KG, Constants.KG));
 
 		// Set the category to vital signs
-		bmiTest = getTestByName("Vital Signs");
-		if (bmiTest.isPresent()) {
-			Test test = bmiTest.get();
-			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCoding().getCode(),
-					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
-					test.getDescription());
-			observation.addCategory(category);
-		}
+		coding = mapCoding(null, Constants.VITAL_SIGNS);
+		CodeableConcept category = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), Constants.VITAL_SIGNS);
+		observation.addCategory(category);
 
 		// set effective date time
-		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
+		observation.setEffective(FHIRUtils.getEffectiveDate(new Date()));
 
 		return observation;
 	}
@@ -368,13 +356,10 @@ public class FHIRUtils {
 		Observation observation = createObservation(patient);
 
 		// Set the code for patient BMI observation using LOINC system
-		Optional<Test> bmiTest = getTestByName("Body Mass Index");
-		if (bmiTest.isPresent()) {
-			Test test = bmiTest.get();
-			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.LOINC_SYSTEM,
-					test.getDescription(), test.getName());
-			observation.setCode(code);
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = mapCoding(null, Constants.BODY_MASS_INDEX);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				Constants.BODY_MASS_INDEX);
+		observation.setCode(code);
 
 		// calculate BMI
 		double bmiValue = 0;
@@ -385,20 +370,16 @@ public class FHIRUtils {
 		}
 
 		// Set the value in the Observation
-		observation.setValue(createQuantityResource(bmiValue, "kg/m2", "kg/m2"));
+		observation.setValue(createQuantityResource(bmiValue, Constants.KG_M2, Constants.KG_M2));
 
 		// Set the category to vital signs
-		bmiTest = getTestByName("Vital Signs");
-		if (bmiTest.isPresent()) {
-			Test test = bmiTest.get();
-			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCoding().getCode(),
-					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
-					test.getDescription());
-			observation.addCategory(category);
-		}
+		coding = mapCoding(null, Constants.VITAL_SIGNS);
+		CodeableConcept category = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), Constants.VITAL_SIGNS);
+		observation.addCategory(category);
 
 		// set effective date time
-		observation.setEffective(FHIRUtils.getEffectiveObservationDate(new Date()));
+		observation.setEffective(FHIRUtils.getEffectiveDate(new Date()));
 
 		return observation;
 	}
@@ -407,29 +388,23 @@ public class FHIRUtils {
 		Observation observation = createObservation(patient);
 
 		// Set the code for blood group observation using LOINC system
-		Optional<Test> bmiTest = getTestByName("Blood Group");
-		if (bmiTest.isPresent()) {
-			Test test = bmiTest.get();
-			CodeableConcept code = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.LOINC_SYSTEM,
-					test.getDescription(), test.getName());
-			observation.setCode(code);
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = mapCoding(null, Constants.BLOOD_GROUP);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				Constants.BLOOD_GROUP);
+		observation.setCode(code);
 
 		// Set the category to vital signs
-		bmiTest = getTestByName("Vital Signs");
-		if (bmiTest.isPresent()) {
-			Test test = bmiTest.get();
-			CodeableConcept category = FHIRUtils.getCodeableConcept(test.getCoding().getCode(),
-					"http://terminology.hl7.org/CodeSystem/observation-category", test.getName(),
-					test.getDescription());
-			observation.addCategory(category);
-		}
+		coding = mapCoding(null, Constants.VITAL_SIGNS);
+		CodeableConcept category = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), Constants.VITAL_SIGNS);
+		observation.addCategory(category);
 
 		// Set the value for blood group using a coded value (e.g., A+, O-, etc.)
 		// Get the display value for the blood group
 		String displayValue = bloodGroupMap.getOrDefault(bloodGroup.toLowerCase(), "Unknown");
-		CodeableConcept codeableConcept = getCodeableConcept("365637002", Constants.SNOMED_SYSTEM_SCT,
-				"Finding of ABO blood group", displayValue);
+		coding = mapCoding(null, Constants.FINDING_OF_ABO_BLOOD_GROUP);
+		CodeableConcept codeableConcept = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), displayValue);
 
 		observation.setValue(codeableConcept);
 
@@ -457,8 +432,8 @@ public class FHIRUtils {
 		bloodGroupMap.put("abminus", "AB-");
 	}
 
-	static Patient addPatientResourceToComposition(ClinicalData clinicalData, Bundle bundle, Composition opDoc)
-			throws Exception {
+	static Patient addPatientResourceToComposition(OPConsultRecordRequest clinicalData, Bundle bundle,
+			Composition opDoc) throws Exception {
 		Patient patientResource = new Patient();
 		if (Objects.nonNull(clinicalData.getPatientDetails())) {
 			patientResource = patientBuilder(clinicalData.getPatientDetails(), bundle);
@@ -478,7 +453,7 @@ public class FHIRUtils {
 
 	static Reference getReferenceToPatient(Patient patientResource) {
 		Reference patientRef = new Reference(Constants.URN_UUID + patientResource.getId());
-		patientRef.setDisplay("Patient");
+		patientRef.setDisplay(Constants.PATIENT);
 
 		return patientRef;
 	}
@@ -496,15 +471,15 @@ public class FHIRUtils {
 	}
 
 	public static CodeableConcept getCodeableConcept(String code, String system, String display, String text) {
-		CodeableConcept procedureCode = new CodeableConcept();
-		Coding coding = procedureCode.addCoding();
+		CodeableConcept codeableConceptCode = new CodeableConcept();
+		Coding coding = codeableConceptCode.addCoding();
 		coding.setSystem(system);
 		coding.setCode(code);
 		coding.setDisplay(display);
 		if (!Utils.isBlank(text)) {
-			procedureCode.setText(text);
+			codeableConceptCode.setText(text);
 		}
-		return procedureCode;
+		return codeableConceptCode;
 	}
 
 	public static Attachment getAttachment(String title, String input) throws IOException {
@@ -545,12 +520,12 @@ public class FHIRUtils {
 		Observation observation = new Observation();
 		observation.setId(UUID.randomUUID().toString());
 		observation.setStatus(Observation.ObservationStatus.FINAL);
-		observation.setSubject(new Reference(patient));
-		observation.setEffective(getEffectiveObservationDate(compositionDate));
+		observation.setSubject(FHIRUtils.getReferenceToPatient(patient));
+		observation.setEffective(getEffectiveDate(compositionDate));
 		return observation;
 	}
 
-	public static Type getEffectiveObservationDate(Date compositionDate) {
+	public static Type getEffectiveDate(Date compositionDate) {
 		DateTimeType dateTimeType = new DateTimeType();
 		dateTimeType.setValue(compositionDate);
 		return dateTimeType;
@@ -564,14 +539,15 @@ public class FHIRUtils {
 
 		// set meta
 		Date date = new Date();
-		fhirEncounter.setMeta(Utils.getMeta(date, "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"));
+		fhirEncounter
+				.setMeta(Utils.getMeta(date, Constants.HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_ENCOUNTER));
 
 		// set status
 		fhirEncounter.setStatus(Encounter.EncounterStatus.FINISHED);
 
 		// set class
-		fhirEncounter.setClass_(new Coding().setSystem("http://terminology.hl7.org/CodeSystem/v3-ActCode")
-				.setCode("OUTP").setDisplay("outpatient encounter"));
+		fhirEncounter.setClass_(new Coding().setSystem(Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V3_ACT_CODE)
+				.setCode(Constants.OUTP).setDisplay(Constants.OUTPATIENT_ENCOUNTER));
 
 		// Set the period with the start and end dates
 		// Get the current date
@@ -610,7 +586,7 @@ public class FHIRUtils {
 	static Reference getReferenceToEncounter(Encounter encounterResource) {
 		Reference organizationRef = new Reference(Constants.URN_UUID + encounterResource.getId());
 		organizationRef.setResource(encounterResource);
-		organizationRef.setDisplay("Encounter");
+		organizationRef.setDisplay(Constants.ENCOUNTER);
 
 		return organizationRef;
 	}
@@ -666,7 +642,7 @@ public class FHIRUtils {
 	static Reference getReferenceToCondition(Condition conditionResource) {
 		Reference conditionRef = new Reference(Constants.URN_UUID + conditionResource.getId());
 		conditionRef.setResource(conditionResource);
-		conditionRef.setDisplay("Condition");
+		conditionRef.setDisplay(Constants.CONDITION);
 
 		return conditionRef;
 	}
@@ -761,7 +737,7 @@ public class FHIRUtils {
 		return fhirPractitioner;
 	}
 
-	static Practitioner addPractitionerResourceToComposition(ClinicalData clinicalData, Bundle bundle,
+	static Practitioner addPractitionerResourceToComposition(OPConsultRecordRequest clinicalData, Bundle bundle,
 			Composition opDoc) throws Exception {
 		Practitioner practitionerResource = new Practitioner();
 		// TODO: uncomment A/T requirement
@@ -781,7 +757,7 @@ public class FHIRUtils {
 	static Reference getReferenceToPractitioner(Practitioner practitionerResource) {
 		Reference practitionerRef = new Reference(Constants.URN_UUID + practitionerResource.getId());
 		practitionerRef.setResource(practitionerResource);
-		practitionerRef.setDisplay("Practitioner");
+		practitionerRef.setDisplay(Constants.PRACTITIONER);
 
 		return practitionerRef;
 	}
@@ -839,11 +815,11 @@ public class FHIRUtils {
 
 		// Set section
 		Composition.SectionComponent section = new Composition.SectionComponent();
-		section.setTitle("Diagnostic Report Section");
-		CodeableConcept sectionCode = new CodeableConcept();
-		sectionCode.addCoding(
-				new Coding().setSystem("http://loinc.org").setCode("45033-8").setDisplay("Diagnostic Report"));
-		sectionCode.setText("Diagnostic Report");
+		section.setTitle(Constants.DIAGNOSTIC_REPORT_SECTION);
+
+		org.ncg.clinical.artifacts.vo.Coding coding = mapCoding(null, Constants.DIAGNOSTIC_REPORT);
+		CodeableConcept sectionCode = getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				Constants.DIAGNOSTIC_REPORT);
 		section.setCode(sectionCode);
 
 		// Set section author
@@ -939,7 +915,7 @@ public class FHIRUtils {
 		fhirOrganization.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_ORGANIZATION));
 
 		// Add the identifier to the fhirOrganization
-		Identifier identifier = getIdentifier("4567878", "https://facility.ndhm.gov.in");
+		Identifier identifier = getIdentifier(fhirOrganization.getId(), Constants.HTTPS_FACILITY_NDHM_GOV_IN);
 
 		// Set the type of the identifier
 		identifier.setType(getCodeableConcept(Constants.PRN, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
@@ -951,18 +927,18 @@ public class FHIRUtils {
 
 		// set phone number
 		if (StringUtils.isNotBlank(organizationDetails.getPhoneNumber())) {
-			fhirOrganization.addTelecom(getTelecom(organizationDetails.getPhoneNumber(), "phone"));
+			fhirOrganization.addTelecom(getTelecom(organizationDetails.getPhoneNumber(), Constants.PHONE));
 		}
 
 		// set email
 		if (StringUtils.isNotBlank(organizationDetails.getPhoneNumber())) {
-			fhirOrganization.addTelecom(getTelecom(organizationDetails.getPhoneNumber(), "email"));
+			fhirOrganization.addTelecom(getTelecom(organizationDetails.getPhoneNumber(), Constants.EMAIL));
 		}
 
 		return fhirOrganization;
 	}
 
-	static Organization addOrganizationResourceToComposition(ClinicalData clinicalData, Bundle bundle,
+	static Organization addOrganizationResourceToComposition(OPConsultRecordRequest clinicalData, Bundle bundle,
 			Composition opDoc) throws Exception {
 		Organization organizationResource = new Organization();
 		if (Objects.nonNull(clinicalData.getOrganizationDetails())) {
@@ -980,7 +956,7 @@ public class FHIRUtils {
 	static Reference getReferenceToOrganization(Organization organizationResource) {
 		Reference organizationRef = new Reference(Constants.URN_UUID + organizationResource.getId());
 		organizationRef.setResource(organizationResource);
-		organizationRef.setDisplay("Organization");
+		organizationRef.setDisplay(Constants.ORGANIZATION);
 
 		return organizationRef;
 	}
@@ -988,7 +964,7 @@ public class FHIRUtils {
 	static Reference getReferenceToDocumentReference(DocumentReference observationResource) {
 		Reference documentReferenceRef = new Reference(Constants.URN_UUID + observationResource.getId());
 		documentReferenceRef.setResource(observationResource);
-		documentReferenceRef.setDisplay("DocumentReference");
+		documentReferenceRef.setDisplay(Constants.DOCUMENT_REFERENCE);
 
 		return documentReferenceRef;
 	}
@@ -996,7 +972,7 @@ public class FHIRUtils {
 	static Reference getReferenceToAllergyIntolerance(AllergyIntolerance allergyIntolerance) {
 		Reference allergyIntoleranceRef = new Reference(Constants.URN_UUID + allergyIntolerance.getId());
 		allergyIntoleranceRef.setResource(allergyIntolerance);
-		allergyIntoleranceRef.setDisplay("AllergyIntolerance");
+		allergyIntoleranceRef.setDisplay(Constants.ALLERGY_INTOLERANCE);
 
 		return allergyIntoleranceRef;
 	}
@@ -1004,7 +980,7 @@ public class FHIRUtils {
 	static Reference getReferenceToProcedure(Procedure procedure) {
 		Reference procedureRef = new Reference(Constants.URN_UUID + procedure.getId());
 		procedureRef.setResource(procedure);
-		procedureRef.setDisplay("Procedure");
+		procedureRef.setDisplay(Constants.PROCEDURE);
 
 		return procedureRef;
 	}
@@ -1012,7 +988,7 @@ public class FHIRUtils {
 	static Reference getReferenceToAdverseEvent(AdverseEvent adverseEvent) {
 		Reference adverseEventRef = new Reference(Constants.URN_UUID + adverseEvent.getId());
 		adverseEventRef.setResource(adverseEvent);
-		adverseEventRef.setDisplay("AdverseEvent");
+		adverseEventRef.setDisplay(Constants.ADVERSE_EVENT);
 
 		return adverseEventRef;
 	}
@@ -1020,7 +996,7 @@ public class FHIRUtils {
 	static Reference getReferenceToServiceRequest(ServiceRequest serviceRequest) {
 		Reference serviceRequestRef = new Reference(Constants.URN_UUID + serviceRequest.getId());
 		serviceRequestRef.setResource(serviceRequest);
-		serviceRequestRef.setDisplay("ServiceRequest");
+		serviceRequestRef.setDisplay(Constants.SERVICE_REQUEST);
 
 		return serviceRequestRef;
 	}
@@ -1028,8 +1004,16 @@ public class FHIRUtils {
 	static Reference getReferenceToMedicationStatement(MedicationStatement medicationStatement) {
 		Reference medicationStatementRef = new Reference(Constants.URN_UUID + medicationStatement.getId());
 		medicationStatementRef.setResource(medicationStatement);
-		medicationStatementRef.setDisplay("MedicationStatement");
+		medicationStatementRef.setDisplay(Constants.MEDICATION_STATEMENT);
 
 		return medicationStatementRef;
+	}
+
+	static Reference getReferenceToMedicationRequest(MedicationRequest medicationRequest) {
+		Reference medicationRequestRef = new Reference(Constants.URN_UUID + medicationRequest.getId());
+		medicationRequestRef.setResource(medicationRequest);
+		medicationRequestRef.setDisplay(Constants.MEDICATION_REQUEST);
+
+		return medicationRequestRef;
 	}
 }

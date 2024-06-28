@@ -1,6 +1,6 @@
 package org.ncg.clinical.artifacts.service;
 
-import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
 
 /**
  * This interface exposes the endpoints related to the fhir clinical data.
@@ -14,9 +14,9 @@ public interface ClinicalDataService {
 	 * This method is used to generate sample FHIR JSON based on ABDM profiles for
 	 * OPConsultRecord.
 	 * 
-	 * @param clinicalData
+	 * @param oPConsultRecordRequest
 	 * @return
 	 * @throws Exception
 	 */
-	public String createOpConsultRecord(ClinicalData clinicalData) throws Exception;
+	public String createOpConsultRecord(OPConsultRecordRequest oPConsultRecordRequest) throws Exception;
 }

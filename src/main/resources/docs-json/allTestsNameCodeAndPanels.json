@@ -55,9 +55,9 @@
 		{
 			"name": "Diagnostic Report",
 			"coding": {
-				"system": "http://loinc.org",
+				"system": "http://snomed.info/sct",
 				"code": "4321000179101",
-				"display": ""
+				"display": "Diagnostic report"
 			},
 			"description": "Diagnostic Report"
 		},
@@ -786,7 +786,7 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "8302-2",
-				"display": ""
+				"display": "Body height"
 			},
 			"description": "Body height"
 		},
@@ -795,7 +795,7 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "29463-7",
-				"display": ""
+				"display": "weight"
 			},
 			"description": "weight"
 		},
@@ -804,16 +804,16 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "39156-5",
-				"display": ""
+				"display": "Body mass index (BMI) [Ratio]"
 			},
 			"description": "Body mass index (BMI) [Ratio]"
 		},
 		{
 			"name": "Vital Signs",
 			"coding": {
-				"system": "http://loinc.org",
+				"system": "http://terminology.hl7.org/CodeSystem/observation-category",
 				"code": "vital-signs",
-				"display": ""
+				"display": "Vital Signs"
 			},
 			"description": "Vital Signs"
 		},
@@ -822,9 +822,18 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "882-1",
-				"display": ""
+				"display": "ABO and Rh group [Type] in Blood"
 			},
 			"description": "ABO and Rh group [Type] in Blood"
+		},
+		{
+			"name": "Finding of ABO blood group",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "365637002",
+				"display": "Finding of ABO blood group"
+			},
+			"description": "Finding of ABO blood group"
 		},
 		{
 			"name": "Op Consult Record",
@@ -978,6 +987,150 @@
 				"display": "PAC Notes"
 			},
 			"description": "PAC Notes"
+		},
+		{
+			"name": "Amoxicillin anhydrous",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "785686003",
+				"display": "Amoxicillin anhydrous"
+			},
+			"description": "Amoxicillin anhydrous (substance)"
+		},
+		{
+			"name": "Amoxicillin",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "323732002",
+				"display": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
+			},
+			"description": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
+		},
+		{
+			"name": "Acute Myeloid leukemia",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91861009",
+				"display": "Acute Myeloid leukemia"
+			},
+			"description": "Acute Myeloid leukemia"
+		},
+		{
+			"name": "Bone marrow or peripheral blood flow cytometry",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "64444005",
+				"display": "Flow cytometry"
+			},
+			"description": "Bone marrow or peripheral blood flow cytometry"
+		},
+		{
+			"name": "Cytogenetics",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "10050001",
+				"display": "SNOMED CT core"
+			},
+			"description": "Cytogenetics"
+		},
+		{
+			"name": "Fluorescence in situ hybridisation (FISH)",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "426329006",
+				"display": "Fluorescence in situ hybridisation"
+			},
+			"description": "Fluorescence in situ hybridisation (FISH)"
+		},
+		{
+			"name": "PCR",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "718006",
+				"display": "PCR"
+			},
+			"description": "PCR"
+		},
+		{
+			"name": "Baseline NCCT chest",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "169069000",
+				"display": "Computed tomography of chest"
+			},
+			"description": "Baseline NCCT chest"
+		},
+		{
+			"name": "Extramedullary disease",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "725390002",
+				"display": "Extramedullary disease"
+			},
+			"description": "Extramedullary disease"
+		},
+		{
+			"name": "Type of induction",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91861009",
+				"display": "Type of induction"
+			},
+			"description": "Type of induction"
+		},
+		{
+			"name": "Date of start",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91861009",
+				"display": "Date of start"
+			},
+			"description": "Date of start"
+		},
+		{
+			"name": "Response to induction ( Bone marrow report)",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "721631001",
+				"display": "Bone marrow pathology biopsy report"
+			},
+			"description": "Response to induction ( Bone marrow report)"
+		},
+		{
+			"name": "Toxicities during induction)",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91861009",
+				"display": "Toxicities during induction - Blood stream infections, LRTI, Invasive fungal infections, MDRO, soft tissue infections, need for ICU, mechanical ventilation)"
+			},
+			"description": "Toxicities during induction - Blood stream infections, LRTI, Invasive fungal infections, MDRO, soft tissue infections, need for ICU, mechanical ventilation)"
+		},
+		{
+			"name": "Consolidation chemotherapy",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91861009",
+				"display": "Consolidation chemotherapy - number of courses, toxicities"
+			},
+			"description": "Consolidation chemotherapy - number of courses, toxicities"
+		},
+		{
+			"name": "Menstruation History",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "364313002",
+				"display": "Measure of menstruation"
+			},
+			"description": "Menstruation History"
+		},
+		{
+			"name": "Ongoing Drugs",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "721912009",
+				"display": "Medication summary document"
+			},
+			"description": "Ongoing Drugs"
 		}
 	]
 }

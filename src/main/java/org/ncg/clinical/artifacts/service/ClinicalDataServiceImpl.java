@@ -7,8 +7,8 @@ import java.util.Objects;
 
 import org.hl7.fhir.r4.model.Bundle;
 import org.ncg.clinical.artifacts.util.Constants;
-import org.ncg.clinical.artifacts.util.OPConsultationHelper;
-import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.util.OPConsultRecordHelper;
+import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -33,25 +33,26 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 	private FhirContext fhirContext = FhirContext.forR4();
 
 	@Autowired
-	private OPConsultationHelper opConsultationHelper;
+	private OPConsultRecordHelper oPConsultRecordHelper;
 
-	private ClinicalData clinicalInputData = new ClinicalData();
+	private OPConsultRecordRequest oPConsultRecordRequestInputJson = new OPConsultRecordRequest();
 
 	private final Map<String, AbdmHITypeGenerator> generators = new HashMap<>();
 
 	@Value("${op.consultation.input.json}")
-	private String opConsultationInput;
+	private String opConsultRecordInput;
 
 	@PostConstruct
 	public void init() throws Exception {
-		generators.put(Constants.OPONSULTRECORD, new AbdmArtifactGenerator(opConsultationHelper));
+		generators.put(Constants.OPONSULTRECORD, new AbdmArtifactGenerator(oPConsultRecordHelper));
 
-		clinicalInputData = new ObjectMapper().readValue(new File(opConsultationInput), ClinicalData.class);
-		log.info("ClinicalDataServiceImpl::init::Successfully loaded clinicalInputData from JSON.");
+		oPConsultRecordRequestInputJson = new ObjectMapper().readValue(new File(opConsultRecordInput),
+				OPConsultRecordRequest.class);
+		log.info("ClinicalDataServiceImpl::init::Successfully loaded OPConsultRecord from JSON.");
 	}
 
 	@Override
-	public String createOpConsultRecord(ClinicalData clinicalData) throws Exception {
+	public String createOpConsultRecord(OPConsultRecordRequest oPConsultRecordRequest) throws Exception {
 		try {
 			// clinicalArtifacts values: "DiagnosticReport","DischargeSummary",
 			// "OpConsultRecord","Prescription","WellnessRecord","HealthDocument","Immunization"
@@ -59,12 +60,12 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 
 			// if request body is not null then take the clinicalData as input and
 			// generate the data.
-			if (!clinicalData.hasEmptyFields()) {
-				bundle = processOPConsultRecord(clinicalData);
+			if (!oPConsultRecordRequest.hasEmptyFields()) {
+				bundle = processOPConsultRecord(oPConsultRecordRequest);
 			} else {
 				// if request body is null then take the opConsultationInput.json as input and
 				// generate the data.
-				bundle = processOPConsultRecord(clinicalInputData);
+				bundle = processOPConsultRecord(oPConsultRecordRequestInputJson);
 			}
 
 			String encodedString = fhirContext.newJsonParser().setPrettyPrint(true).encodeResourceToString(bundle);
@@ -78,11 +79,11 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 		}
 	}
 
-	private Bundle processOPConsultRecord(ClinicalData clinicalData) throws Exception {
+	private Bundle processOPConsultRecord(OPConsultRecordRequest oPConsultRecordRequest) throws Exception {
 		Bundle bundle = new Bundle();
 		AbdmHITypeGenerator generator = generators.get(Constants.OPONSULTRECORD);
 		if (!Objects.isNull(generator)) {
-			bundle = generator.create(clinicalData);
+			bundle = generator.create(oPConsultRecordRequest);
 		}
 
 		return bundle;
