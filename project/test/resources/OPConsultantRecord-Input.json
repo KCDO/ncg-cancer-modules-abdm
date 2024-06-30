@@ -187,7 +187,10 @@
 			{
 				"name": "Amoxicillin anhydrous",
 				"medicationType": "MEDICATION_REQUEST",
+				"effectiveDate": "2015-01-23",
+				"assertedDate": "2015-02-22",
 				"reference": "MedicationRequest/medrx002",
+				"note": "Patient indicates they miss the occasional dose",
 				"coding": {
 					"system": "",
 					"code": "",
@@ -218,30 +221,65 @@
 			},
 			{
 				"name": "FDG PETCT",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Fiber optic bronchoscopy",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Endobronchial ultrasound with ROSE reports",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Pulmonary function tests with DLCO",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "V/Q scan in pneumonectomy",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "6MWT",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			},
 			{
 				"name": "Molecular markers/NGS as needed",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
 				"attachment": "lung6mowt"
 			}
 		]
@@ -272,6 +310,46 @@
 		"tests": [
 			{
 				"name": "MRI pelvis with abdomen / CECT abdomen pelvis ",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
+				"attachment": "cervical6mowt"
+			}
+		]
+	},
+	"acuteMyeloidLeukemiaCancer": {
+		"tests": [
+			{
+				"name": "Bone marrow or peripheral blood flow cytometry",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
+				"attachment": "cervical6mowt"
+			},
+			{
+				"name": "Fluorescence in situ hybridisation (FISH)",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
+				"attachment": "cervical6mowt"
+			},
+			{
+				"name": "Baseline NCCT chest",
+				"coding": {
+					"system": "",
+					"code": "",
+					"display": ""
+				},
+				"attachment": "cervical6mowt"
+			},
+			{
+				"name": "Response to induction ( Bone marrow report)",
 				"coding": {
 					"system": "",
 					"code": "",

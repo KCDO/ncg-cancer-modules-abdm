@@ -3,7 +3,7 @@ package org.ncg.clinical.artifacts.controller;
 import javax.validation.Valid;
 
 import org.ncg.clinical.artifacts.service.ClinicalDataService;
-import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,9 +42,10 @@ public class ClinicalDataControllerImpl implements ClinicalDataController {
 	@ApiOperation(value = "This Api is used to generate sample FHIR JSON based on ABDM profiles for OPConsultRecord.", response = String.class)
 	@ApiImplicitParams(@ApiImplicitParam(name = "Content-Type", value = "application/json", required = true, allowEmptyValue = false, paramType = "header"))
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully generated") })
-	public ResponseEntity<String> opConsultRecordGenerator(@Valid @RequestBody ClinicalData clinicalData)
+	public ResponseEntity<String> opConsultRecordGenerator(
+			@Valid @RequestBody OPConsultRecordRequest oPConsultRecordRequest)
 			throws Exception {
 
-		return new ResponseEntity<>(clinicalDataService.createOpConsultRecord(clinicalData), HttpStatus.OK);
+		return new ResponseEntity<>(clinicalDataService.createOpConsultRecord(oPConsultRecordRequest), HttpStatus.OK);
 	}
 }

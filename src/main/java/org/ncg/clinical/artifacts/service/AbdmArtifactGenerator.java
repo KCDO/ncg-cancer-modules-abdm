@@ -1,18 +1,18 @@
 package org.ncg.clinical.artifacts.service;
 
 import org.hl7.fhir.r4.model.Bundle;
-import org.ncg.clinical.artifacts.util.OPConsultationHelper;
-import org.ncg.clinical.artifacts.vo.ClinicalData;
+import org.ncg.clinical.artifacts.util.OPConsultRecordHelper;
+import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
 
 public class AbdmArtifactGenerator implements AbdmHITypeGenerator {
-	private final OPConsultationHelper opConsultationHelper;
+	private final OPConsultRecordHelper opConsultationHelper;
 
-	public AbdmArtifactGenerator(OPConsultationHelper opConsultationHelper) {
+	public AbdmArtifactGenerator(OPConsultRecordHelper opConsultationHelper) {
 		this.opConsultationHelper = opConsultationHelper;
 	}
 
 	@Override
-	public Bundle create(ClinicalData clinicalData) throws Exception {
-		return opConsultationHelper.createOPConsultationBundle(clinicalData);
+	public Bundle create(OPConsultRecordRequest oPConsultRecordRequest) throws Exception {
+		return opConsultationHelper.createOPConsultationBundle(oPConsultRecordRequest);
 	}
 }

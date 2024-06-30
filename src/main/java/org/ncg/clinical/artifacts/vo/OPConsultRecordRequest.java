@@ -1,7 +1,6 @@
 package org.ncg.clinical.artifacts.vo;
 
 import org.ncg.clinical.artifacts.vo.clinicalinformation.ClinicalInformation;
-import org.ncg.clinical.artifacts.vo.diagnostic.Diagnostic;
 import org.ncg.clinical.artifacts.vo.organization.OrganizationData;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
 
@@ -14,17 +13,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClinicalData {
+public class OPConsultRecordRequest {
 	private PatientData patientDetails;
 	private OrganizationData organizationDetails;
 	private ClinicalInformation clinicalInformation;
-	private Diagnostic diagnostics;
-	private LungCancer lungCancer;
-	private OralCancer oralCancer;
-	private CervicalCancer cervicalCancer;
+//	private Diagnostic diagnostics;
+	private CancerType lungCancer;
+	private CancerType oralCancer;
+	private CancerType cervicalCancer;
+	private CancerType acuteMyeloidLeukemiaCancer;
 
 	public boolean hasEmptyFields() {
 		return (patientDetails == null && organizationDetails == null && clinicalInformation == null
-				&& diagnostics == null && lungCancer == null && oralCancer == null && cervicalCancer == null);
+				&& lungCancer == null && oralCancer == null && cervicalCancer == null);
 	}
 }

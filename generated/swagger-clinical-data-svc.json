@@ -23,7 +23,7 @@
           "name" : "body",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/ClinicalData"
+            "$ref" : "#/definitions/OPConsultRecordRequest"
           }
         }, {
           "name" : "Content-Type",
@@ -111,29 +111,7 @@
         }
       }
     },
-    "BioChemistry" : {
-      "type" : "object",
-      "properties" : {
-        "panels" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/PanelDetail"
-          }
-        }
-      }
-    },
-    "CBC" : {
-      "type" : "object",
-      "properties" : {
-        "panels" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/PanelDetail"
-          }
-        }
-      }
-    },
-    "CervicalCancer" : {
+    "CancerType" : {
       "type" : "object",
       "properties" : {
         "tests" : {
@@ -141,32 +119,6 @@
           "items" : {
             "$ref" : "#/definitions/AttachmentDetail"
           }
-        }
-      }
-    },
-    "ClinicalData" : {
-      "type" : "object",
-      "properties" : {
-        "patientDetails" : {
-          "$ref" : "#/definitions/PatientData"
-        },
-        "organizationDetails" : {
-          "$ref" : "#/definitions/OrganizationData"
-        },
-        "clinicalInformation" : {
-          "$ref" : "#/definitions/ClinicalInformation"
-        },
-        "diagnostics" : {
-          "$ref" : "#/definitions/Diagnostic"
-        },
-        "lungCancer" : {
-          "$ref" : "#/definitions/LungCancer"
-        },
-        "oralCancer" : {
-          "$ref" : "#/definitions/OralCancer"
-        },
-        "cervicalCancer" : {
-          "$ref" : "#/definitions/CervicalCancer"
         }
       }
     },
@@ -302,16 +254,16 @@
         "disallowExtensions" : {
           "type" : "boolean"
         },
-        "tzMin" : {
-          "type" : "integer",
-          "format" : "int32"
+        "asV3" : {
+          "type" : "string"
         },
         "tzHour" : {
           "type" : "integer",
           "format" : "int32"
         },
-        "asV3" : {
-          "type" : "string"
+        "tzMin" : {
+          "type" : "integer",
+          "format" : "int32"
         },
         "dateTime" : {
           "type" : "boolean"
@@ -322,10 +274,6 @@
         "value" : {
           "type" : "string",
           "format" : "date-time"
-        },
-        "day" : {
-          "type" : "integer",
-          "format" : "int32"
         },
         "year" : {
           "type" : "integer",
@@ -354,19 +302,13 @@
           "type" : "integer",
           "format" : "int32"
         },
+        "day" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
         "precision" : {
           "type" : "string",
           "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
-        },
-        "nanos" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "timeZoneZulu" : {
-          "type" : "boolean"
-        },
-        "today" : {
-          "type" : "boolean"
         },
         "secondsMilli" : {
           "type" : "number",
@@ -376,8 +318,18 @@
           "type" : "string",
           "format" : "date-time"
         },
+        "timeZoneZulu" : {
+          "type" : "boolean"
+        },
+        "today" : {
+          "type" : "boolean"
+        },
         "valueAsString" : {
           "type" : "string"
+        },
+        "nanos" : {
+          "type" : "integer",
+          "format" : "int64"
         },
         "primitive" : {
           "type" : "boolean"
@@ -385,14 +337,14 @@
         "empty" : {
           "type" : "boolean"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
         },
         "idBase" : {
           "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
         },
         "resource" : {
           "type" : "boolean"
@@ -402,20 +354,6 @@
         },
         "xhtml" : {
           "$ref" : "#/definitions/XhtmlNode"
-        }
-      }
-    },
-    "Diagnostic" : {
-      "type" : "object",
-      "properties" : {
-        "cbc" : {
-          "$ref" : "#/definitions/CBC"
-        },
-        "bioChemistry" : {
-          "$ref" : "#/definitions/BioChemistry"
-        },
-        "biopsyHistopathologyReport" : {
-          "type" : "string"
         }
       }
     },
@@ -461,14 +399,14 @@
         "valueAsPrimitive" : {
           "$ref" : "#/definitions/IPrimitiveTypeObject"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
         },
         "idBase" : {
           "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
         },
         "primitive" : {
           "type" : "boolean"
@@ -583,17 +521,6 @@
         }
       }
     },
-    "LungCancer" : {
-      "type" : "object",
-      "properties" : {
-        "tests" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/AttachmentDetail"
-          }
-        }
-      }
-    },
     "MenstruationHistory" : {
       "type" : "object",
       "properties" : {
@@ -622,11 +549,41 @@
         }
       }
     },
+    "OPConsultRecordRequest" : {
+      "type" : "object",
+      "properties" : {
+        "patientDetails" : {
+          "$ref" : "#/definitions/PatientData"
+        },
+        "organizationDetails" : {
+          "$ref" : "#/definitions/OrganizationData"
+        },
+        "clinicalInformation" : {
+          "$ref" : "#/definitions/ClinicalInformation"
+        },
+        "lungCancer" : {
+          "$ref" : "#/definitions/CancerType"
+        },
+        "oralCancer" : {
+          "$ref" : "#/definitions/CancerType"
+        },
+        "cervicalCancer" : {
+          "$ref" : "#/definitions/CancerType"
+        },
+        "acuteMyeloidLeukemiaCancer" : {
+          "$ref" : "#/definitions/CancerType"
+        }
+      }
+    },
     "OngoingDrugs" : {
       "type" : "object",
       "properties" : {
         "name" : {
           "type" : "string"
+        },
+        "medicationType" : {
+          "type" : "string",
+          "enum" : [ "MEDICATION_STATEMENT", "MEDICATION_REQUEST" ]
         },
         "effectiveDate" : {
           "type" : "string",
@@ -647,17 +604,6 @@
         }
       }
     },
-    "OralCancer" : {
-      "type" : "object",
-      "properties" : {
-        "tests" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/AttachmentDetail"
-          }
-        }
-      }
-    },
     "OrganizationData" : {
       "type" : "object",
       "properties" : {
@@ -669,26 +615,6 @@
         },
         "email" : {
           "type" : "string"
-        }
-      }
-    },
-    "PanelDetail" : {
-      "type" : "object",
-      "properties" : {
-        "name" : {
-          "type" : "string"
-        },
-        "coding" : {
-          "$ref" : "#/definitions/Coding"
-        },
-        "attachment" : {
-          "type" : "string"
-        },
-        "tests" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/TestDetail"
-          }
         }
       }
     },
@@ -819,14 +745,14 @@
         "valueAsString" : {
           "type" : "string"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
         },
         "idBase" : {
           "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
         },
         "resource" : {
           "type" : "boolean"
@@ -871,24 +797,6 @@
         }
       }
     },
-    "TestDetail" : {
-      "type" : "object",
-      "properties" : {
-        "name" : {
-          "type" : "string"
-        },
-        "coding" : {
-          "$ref" : "#/definitions/Coding"
-        },
-        "unitOfMeasurement" : {
-          "type" : "string"
-        },
-        "result" : {
-          "type" : "number",
-          "format" : "double"
-        }
-      }
-    },
     "TimeZone" : {
       "type" : "object",
       "properties" : {
@@ -898,11 +806,11 @@
         "displayName" : {
           "type" : "string"
         },
-        "rawOffset" : {
+        "dstsavings" : {
           "type" : "integer",
           "format" : "int32"
         },
-        "dstsavings" : {
+        "rawOffset" : {
           "type" : "integer",
           "format" : "int32"
         }
@@ -938,14 +846,14 @@
         "empty" : {
           "type" : "boolean"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
         },
         "idBase" : {
           "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
         },
         "primitive" : {
           "type" : "boolean"
@@ -1003,14 +911,14 @@
         "valueAsString" : {
           "type" : "string"
         },
-        "extensionFirstRep" : {
-          "$ref" : "#/definitions/Extension"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
         },
         "idBase" : {
           "type" : "string"
+        },
+        "extensionFirstRep" : {
+          "$ref" : "#/definitions/Extension"
         },
         "resource" : {
           "type" : "boolean"
@@ -1066,6 +974,18 @@
         "valueAsString" : {
           "type" : "string"
         },
+        "nsDecl" : {
+          "type" : "string"
+        },
+        "firstElement" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        },
+        "noPretty" : {
+          "type" : "boolean"
+        },
+        "para" : {
+          "type" : "boolean"
+        },
         "formatCommentsPre" : {
           "type" : "array",
           "items" : {
@@ -1077,18 +997,6 @@
           "items" : {
             "type" : "string"
           }
-        },
-        "noPretty" : {
-          "type" : "boolean"
-        },
-        "nsDecl" : {
-          "type" : "string"
-        },
-        "firstElement" : {
-          "$ref" : "#/definitions/XhtmlNode"
-        },
-        "para" : {
-          "type" : "boolean"
         }
       }
     }
