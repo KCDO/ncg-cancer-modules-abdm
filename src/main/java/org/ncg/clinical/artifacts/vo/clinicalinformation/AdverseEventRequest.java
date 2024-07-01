@@ -14,5 +14,7 @@ import lombok.Setter;
 public class AdverseEventRequest {
 	private String name;
 	private String category;
+	private String seriousness;
+	private String outcome;
 	private Coding coding;
 }

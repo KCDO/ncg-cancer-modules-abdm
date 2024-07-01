@@ -98,7 +98,6 @@ public class Constants {
 	public static final String BIOPSY_HISTOPATHOLOGY_REPORT = "Biopsy Histopathology Report";
 	public static final String DOCUMENT_REFERENCE = "DocumentReference";
 	public static final String DIAGNOSTICREPORT = "DiagnosticReport";
-	public static final String STRUCTURE_DEFINITION_MEDICATION_REQUEST = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest";
 	public static final String PRN = "PRN";
 	public static final String PROVIDER_NUMBER = "Provider number";
 	public static final String HTTP_EXAMPLE_ORG_FHIR_PRACTITIONER_IDENTIFIER_SYSTEM = "http://example.org/fhir/practitioner-identifier-system";
@@ -144,4 +143,6 @@ public class Constants {
 	public static final String RESOLVED = "Resolved";
 	public static final String HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_ADVERSE_EVENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent";
 	public static final String HTTP_EXAMPLE_COM_ADVERSE_EVENT = "http://example.com/adverseEvent";
+	public static final String URN_UUID = "urn:uuid:";
+	public static final String PROBLEM_LIST_ITEM = "problem-list-item";
 }
