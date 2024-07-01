@@ -25,6 +25,7 @@ public class Constants {
 	public static final String STRUCTURE_DEFINITION_ALLERGY_INTOLERANCE = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance";
 	public static final String CLINICAL_CONSULTATION_REPORT = "Clinical consultation report";
 	public static final String STRUCTURE_DEFINITION_MEDICATION_STATEMENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement";
+	public static final String STRUCTURE_DEFINITION_MEDICATION_REQUEST = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest";
 	public static final String HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203 = "http://terminology.hl7.org/CodeSystem/v2-0203";
 	public static final String FHIR_CONDITION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-category";
 	public static final String FHIR_CONDITION_CLINICAL_STATUS_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-clinical";
@@ -97,13 +98,11 @@ public class Constants {
 	public static final String BIOPSY_HISTOPATHOLOGY_REPORT = "Biopsy Histopathology Report";
 	public static final String DOCUMENT_REFERENCE = "DocumentReference";
 	public static final String DIAGNOSTICREPORT = "DiagnosticReport";
-	public static final String STRUCTURE_DEFINITION_MEDICATION_REQUEST = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest";
 	public static final String PRN = "PRN";
 	public static final String PROVIDER_NUMBER = "Provider number";
 	public static final String HTTP_EXAMPLE_ORG_FHIR_PRACTITIONER_IDENTIFIER_SYSTEM = "http://example.org/fhir/practitioner-identifier-system";
 	public static final String URN_HEALTH_INFORMATION_PROVIDER_SYSTEM = "urn:health:information:provider:system";
 	public static final String HTTPS_HEALTHID_ABDM_GOV_IN = "https://healthid.abdm.gov.in";
-	public static final String URN_UUID = "urn:uuid:";
 	public static final String HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_PRACTITIONER = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner";
 	public static final String CHIEF_COMPLAINTS = "Chief complaints";
 	public static final String PATIENT = "Patient";
@@ -144,4 +143,6 @@ public class Constants {
 	public static final String RESOLVED = "Resolved";
 	public static final String HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_ADVERSE_EVENT = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent";
 	public static final String HTTP_EXAMPLE_COM_ADVERSE_EVENT = "http://example.com/adverseEvent";
+	public static final String URN_UUID = "urn:uuid:";
+	public static final String PROBLEM_LIST_ITEM = "problem-list-item";
 }

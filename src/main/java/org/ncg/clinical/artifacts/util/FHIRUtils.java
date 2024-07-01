@@ -481,6 +481,14 @@ public class FHIRUtils {
 		}
 		return codeableConceptCode;
 	}
+	
+	public static Quantity createQuantity(double value, String unit, String system, String code) {
+        return new Quantity()
+                .setValue(value)
+                .setUnit(unit)
+                .setSystem(system)
+                .setCode(code);
+    }
 
 	public static Attachment getAttachment(String title, String input) throws IOException {
 		Attachment attachment = new Attachment();
@@ -489,31 +497,6 @@ public class FHIRUtils {
 		byte[] inputBytes = input.getBytes();
 		attachment.setData(inputBytes);
 		return attachment;
-	}
-
-	public static CodeableConcept getSurgicalSummaryWithPostOPCourseCode(String category) {
-		switch (category.toLowerCase()) {
-		case "propensity to adverse reactions to substance":
-			return FHIRUtils.getCodeableConcept("418038007", Constants.SNOMED_SYSTEM_SCT, category,
-					"Propensity to adverse reactions to substance");
-		case "procedure-mishap":
-			return FHIRUtils.getCodeableConcept("410528009", Constants.SNOMED_SYSTEM_SCT, category, "Procedure Mishap");
-		case "medication-mishap":
-			return FHIRUtils.getCodeableConcept("425391005", Constants.SNOMED_SYSTEM_SCT, "Using access device",
-					"Medication Mishap");
-		case "died":
-			return FHIRUtils.getCodeableConcept("419099009", Constants.SNOMED_SYSTEM_SCT, category, "Died");
-		case "unsafe-physical-environment":
-			return FHIRUtils.getCodeableConcept("723877005", Constants.SNOMED_SYSTEM_SCT, category,
-					"Unsafe Physical Environment");
-		case "hospital-acquired-infection":
-			return FHIRUtils.getCodeableConcept("77176002", Constants.SNOMED_SYSTEM_SCT, category,
-					"Hospital Acquired Infection");
-		case "wrong-body-site":
-			return FHIRUtils.getCodeableConcept("116676008", Constants.SNOMED_SYSTEM_SCT, category, "Wrong Body Site");
-		default:
-			return null;
-		}
 	}
 
 	public static Observation createObservation(Date compositionDate, Patient patient) {
@@ -662,7 +645,7 @@ public class FHIRUtils {
 					&& StringUtils.isNotEmpty(coding.getDisplay())) {
 				return coding;
 			} else {
-				// if any one of incoming system, code, display are null then use input json
+				// if any one of incoming system, code, display, text are null then use input json
 				// Test
 				Optional<Test> testDetail = getTestByName(testName);
 				if (testDetail.isPresent()) {
@@ -673,6 +656,8 @@ public class FHIRUtils {
 							StringUtils.isNotEmpty(coding.getCode()) ? coding.getCode() : test.getCoding().getCode());
 					newCoding.setDisplay(StringUtils.isNotEmpty(coding.getDisplay()) ? coding.getDisplay()
 							: test.getCoding().getDisplay());
+					newCoding.setText(StringUtils.isNotEmpty(coding.getText()) ? coding.getText()
+							: test.getCoding().getText());
 				}
 			}
 		} else {
@@ -683,6 +668,7 @@ public class FHIRUtils {
 				newCoding.setSystem(test.getCoding().getSystem());
 				newCoding.setCode(test.getCoding().getCode());
 				newCoding.setDisplay(test.getCoding().getDisplay());
+				newCoding.setText(test.getCoding().getText());
 			}
 		}
 

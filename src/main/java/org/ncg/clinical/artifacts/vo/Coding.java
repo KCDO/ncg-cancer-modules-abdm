@@ -13,4 +13,5 @@ public class Coding {
 	private String system;
 	private String code;
 	private String display;
+	private String text;
 }
