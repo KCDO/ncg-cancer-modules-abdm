@@ -58,13 +58,6 @@ components:
           type: string
         country:
           type: string
-    AdverseEvent:
-      type: object
-      properties:
-        name:
-          type: string
-        category:
-          type: string
     Allergy:
       type: object
       properties:
@@ -80,6 +73,8 @@ components:
             code:
               type: string
             display:
+              type: string
+            text:
               type: string
     AttachmentDetail:
       type: object
@@ -99,6 +94,8 @@ components:
               type: string
             display:
               type: string
+            text:
+              type: string
     ClinicalData:
       type: object
       properties:
@@ -112,8 +109,12 @@ components:
           $ref: '#/components/schemas/LungCancer'
         oralCancer:
           $ref: '#/components/schemas/OralCancer'
+        breastCancer:
+          $ref: '#/components/schemas/BreastCancer'
         cervicalCancer:
           $ref: '#/components/schemas/CervicalCancer'
+        acuteMyeloidLeukemiaCancer:
+          $ref: '#/components/schemas/AcuteMyeloidLeukemiaCancer'
     ClinicalInformation:
       type: object
       properties:
@@ -121,6 +122,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Allergy'
+        comorbidities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comorbidities'
+        adverseEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdverseEvent'
         pastMedicalHistory:
           type: array
           items:
@@ -129,10 +138,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PastSurgicalHistory'
+        mentalHealthAssesment:
+          type: array
+          items:
+            $ref: '#/components/schemas/MentalHealthAssesment'
         menstruationHistory:
           type: array
           items:
             $ref: '#/components/schemas/MenstruationHistory'
+        clinicalHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClinicalHistory'
         examinationDetails:
           type: array
           items:
@@ -141,10 +158,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OngoingDrugs'
-        comorbidities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comorbidities'
     DateTimeType:
       type: string
       properties:
@@ -328,7 +341,7 @@ components:
       properties:
         hipId:
           type: string
-        domain:
+        patientHealthId:
           type: string
     InvestigationAdvice:
       type: object
@@ -349,6 +362,8 @@ components:
             code:
               type: string
             display:
+              type: string
+            text:
               type: string
     Location:
       type: object
@@ -373,6 +388,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AttachmentDetail'
+    BreastCancer:
+      type: object
+      properties:
+        tests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachmentDetail'
     CervicalCancer:
       type: object
       properties:
@@ -380,6 +402,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AttachmentDetail'
+    AcuteMyeloidLeukemiaCancer:
+      type: object
+      properties:
+        tests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachmentDetail'
+    MentalHealthAssesment:
+      type: object
+      properties:
+        name:
+          type: string
+        attachment:
+          type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
+            text:
+              type: string
     MenstruationHistory:
       type: object
       properties:
@@ -396,11 +443,17 @@ components:
               type: string
             display:
               type: string
+            text:
+              type: string
     OngoingDrugs:
       type: object
       properties:
         name:
           type: string
+        medicationType:
+          type: string
+          enum:
+            - MEDICATION_STATEMENT/MEDICATION_REQUEST
         effectiveDate:
           type: string
           format: date-time
@@ -420,6 +473,8 @@ components:
               type: string
             display:
               type: string
+            text:
+              type: string
     Comorbidities:
       type: object
       properties:
@@ -435,6 +490,30 @@ components:
             code:
               type: string
             display:
+              type: string
+            text:
+              type: string
+    AdverseEvent:
+      type: object
+      properties:
+        name:
+          type: string
+        category:
+          type: string
+        seriousness:
+          type: string
+        outcome:
+          type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
+            text:
               type: string
     PastMedicalHistory:
       type: object
@@ -455,6 +534,8 @@ components:
               type: string
             display:
               type: string
+            text:
+              type: string
     PastSurgicalHistory:
       type: object
       properties:
@@ -473,6 +554,29 @@ components:
             code:
               type: string
             display:
+              type: string
+            text:
+              type: string
+    ClinicalHistory:
+      type: object
+      properties:
+        name:
+          type: string
+        note:
+          type: string
+        onsetDateTime:
+          type: string
+          format: date-time
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
+            text:
               type: string
     PatientData:
       required:
