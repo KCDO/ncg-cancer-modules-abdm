@@ -78,6 +78,12 @@
         "category" : {
           "type" : "string"
         },
+        "seriousness" : {
+          "type" : "string"
+        },
+        "outcome" : {
+          "type" : "string"
+        },
         "coding" : {
           "$ref" : "#/definitions/Coding"
         }
@@ -119,6 +125,24 @@
           "items" : {
             "$ref" : "#/definitions/AttachmentDetail"
           }
+        }
+      }
+    },
+    "ClinicalHistory" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "onsetDateTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "coding" : {
+          "$ref" : "#/definitions/Coding"
         }
       }
     },
@@ -167,6 +191,12 @@
             "$ref" : "#/definitions/MenstruationHistory"
           }
         },
+        "clinicalHistory" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ClinicalHistory"
+          }
+        },
         "examinationDetails" : {
           "type" : "array",
           "items" : {
@@ -185,13 +215,13 @@
             "$ref" : "#/definitions/OngoingDrugs"
           }
         },
-        "otnotes" : {
+        "pacnotes" : {
           "type" : "object",
           "additionalProperties" : {
             "type" : "string"
           }
         },
-        "pacnotes" : {
+        "otnotes" : {
           "type" : "object",
           "additionalProperties" : {
             "type" : "string"
@@ -209,6 +239,9 @@
           "type" : "string"
         },
         "display" : {
+          "type" : "string"
+        },
+        "text" : {
           "type" : "string"
         }
       }
@@ -257,6 +290,9 @@
         "asV3" : {
           "type" : "string"
         },
+        "tzSign" : {
+          "type" : "boolean"
+        },
         "tzHour" : {
           "type" : "integer",
           "format" : "int32"
@@ -268,12 +304,12 @@
         "dateTime" : {
           "type" : "boolean"
         },
-        "tzSign" : {
-          "type" : "boolean"
-        },
         "value" : {
           "type" : "string",
           "format" : "date-time"
+        },
+        "timeZone" : {
+          "$ref" : "#/definitions/TimeZone"
         },
         "year" : {
           "type" : "integer",
@@ -291,8 +327,9 @@
           "type" : "integer",
           "format" : "int32"
         },
-        "timeZone" : {
-          "$ref" : "#/definitions/TimeZone"
+        "day" : {
+          "type" : "integer",
+          "format" : "int32"
         },
         "month" : {
           "type" : "integer",
@@ -302,13 +339,13 @@
           "type" : "integer",
           "format" : "int32"
         },
-        "day" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
         "precision" : {
           "type" : "string",
           "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
+        },
+        "nanos" : {
+          "type" : "integer",
+          "format" : "int64"
         },
         "secondsMilli" : {
           "type" : "number",
@@ -326,10 +363,6 @@
         },
         "valueAsString" : {
           "type" : "string"
-        },
-        "nanos" : {
-          "type" : "integer",
-          "format" : "int64"
         },
         "primitive" : {
           "type" : "boolean"
@@ -437,13 +470,13 @@
         "empty" : {
           "type" : "boolean"
         },
-        "formatCommentsPre" : {
+        "formatCommentsPost" : {
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         },
-        "formatCommentsPost" : {
+        "formatCommentsPre" : {
           "type" : "array",
           "items" : {
             "type" : "string"
@@ -463,13 +496,13 @@
         "empty" : {
           "type" : "boolean"
         },
-        "formatCommentsPre" : {
+        "formatCommentsPost" : {
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         },
-        "formatCommentsPost" : {
+        "formatCommentsPre" : {
           "type" : "array",
           "items" : {
             "type" : "string"
@@ -483,7 +516,7 @@
         "hipId" : {
           "type" : "string"
         },
-        "domain" : {
+        "patientHealthId" : {
           "type" : "string"
         }
       }
@@ -541,7 +574,7 @@
         "name" : {
           "type" : "string"
         },
-        "value" : {
+        "attachment" : {
           "type" : "string"
         },
         "coding" : {
@@ -567,7 +600,13 @@
         "oralCancer" : {
           "$ref" : "#/definitions/CancerType"
         },
+        "breastCancer" : {
+          "$ref" : "#/definitions/CancerType"
+        },
         "cervicalCancer" : {
+          "$ref" : "#/definitions/CancerType"
+        },
+        "adultHematolymphoid" : {
           "$ref" : "#/definitions/CancerType"
         },
         "acuteMyeloidLeukemiaCancer" : {
@@ -974,17 +1013,11 @@
         "valueAsString" : {
           "type" : "string"
         },
-        "nsDecl" : {
-          "type" : "string"
-        },
-        "firstElement" : {
-          "$ref" : "#/definitions/XhtmlNode"
-        },
-        "noPretty" : {
-          "type" : "boolean"
-        },
-        "para" : {
-          "type" : "boolean"
+        "formatCommentsPost" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         },
         "formatCommentsPre" : {
           "type" : "array",
@@ -992,11 +1025,17 @@
             "type" : "string"
           }
         },
-        "formatCommentsPost" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
+        "firstElement" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        },
+        "para" : {
+          "type" : "boolean"
+        },
+        "noPretty" : {
+          "type" : "boolean"
+        },
+        "nsDecl" : {
+          "type" : "string"
         }
       }
     }

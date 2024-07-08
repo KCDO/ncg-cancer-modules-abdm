@@ -5,9 +5,9 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "58410-2",
-				"display": "CBC panel - Blood by Automated count"
+				"display": "CBC panel - Blood by Automated count",
+				"text": "CBC panel - Blood by Automated count"
 			},
-			"description": "CBC panel - Blood by Automated count",
 			"members": []
 		},
 		{
@@ -15,9 +15,9 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "57023-4",
-				"display": "Auto Differential panel - Blood"
+				"display": "Auto Differential panel - Blood",
+				"text": "Auto Differential panel - Blood"
 			},
-			"description": "Auto Differential panel - Blood",
 			"members": []
 		},
 		{
@@ -25,9 +25,9 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "100898-6",
-				"display": "Lipid panel - Serum or Plasma"
+				"display": "Lipid panel - Serum or Plasma",
+				"text": "Lipid panel - Serum or Plasma"
 			},
-			"description": "Lipid panel - Serum or Plasma",
 			"members": []
 		},
 		{
@@ -35,9 +35,9 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "24362-6",
-				"display": "Renal function 2000 panel - Serum or Plasma"
+				"display": "Renal function 2000 panel - Serum or Plasma",
+				"text": "Renal function 2000 panel - Serum or Plasma"
 			},
-			"description": "Renal function 2000 panel - Serum or Plasma",
 			"members": []
 		},
 		{
@@ -45,9 +45,9 @@
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "24325-3",
-				"display": "Hepatic function 2000 panel - Serum or Plasma"
+				"display": "Hepatic function 2000 panel - Serum or Plasma",
+				"text": "Hepatic function 2000 panel - Serum or Plasma"
 			},
-			"description": "Hepatic function 2000 panel - Serum or Plasma",
 			"members": []
 		}
 	],
@@ -57,1081 +57,1089 @@
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "4321000179101",
-				"display": "Diagnostic report"
-			},
-			"description": "Diagnostic Report"
+				"display": "Diagnostic report",
+				"text": "Diagnostic Report"
+			}
 		},
 		{
 			"name": "Biopsy Histopathology Report",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "66121-5",
-				"display": ""
-			},
-			"description": "Biopsy Histopathology Report"
+				"display": "",
+				"text": "Biopsy Histopathology Report"
+			}
 		},
 		{
 			"name": "Bio Chemistry",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "4241000179101",
-				"display": ""
-			},
-			"description": "Bio Chemistry"
+				"display": "Bio Chemistry",
+				"text": "Bio Chemistry"
+			}
 		},
 		{
 			"name": "total cholesterol",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "9830-1",
-				"display": ""
-			},
-			"description": "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"
+				"display": "",
+				"text": "Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "hdl cholesterol",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2085-9",
-				"display": ""
-			},
-			"description": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "ldl cholesterol",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "13457-7",
-				"display": ""
-			},
-			"description": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
+				"display": "",
+				"text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
+			}
 		},
 		{
 			"name": "vldl cholesterol",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "13458-5",
-				"display": ""
-			},
-			"description": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"
+				"display": "",
+				"text": "Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation"
+			}
 		},
 		{
 			"name": "triglycerides",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2571-8",
-				"display": ""
-			},
-			"description": "Triglyceride [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Triglyceride [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "triglycerides fasting",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "3048-6",
-				"display": ""
-			},
-			"description": "Triglyceride [Mass/volume] in Serum or Plasma --fasting"
+				"display": "",
+				"text": "Triglyceride [Mass/volume] in Serum or Plasma --fasting"
+			}
 		},
 		{
 			"name": "fasting duration",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "87527-8",
-				"display": ""
-			},
-			"description": "Fasting status"
+				"display": "",
+				"text": "Fasting status"
+			}
 		},
 		{
 			"name": "fasting status",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "49541-6",
-				"display": ""
-			},
-			"description": "Fasting duration"
+				"display": "",
+				"text": "Fasting duration"
+			}
 		},
 		{
 			"name": "glucose",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2345-7",
-				"display": ""
-			},
-			"description": "Glucose [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Glucose [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "urea nitrogen",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "3094-0",
-				"display": ""
-			},
-			"description": "Urea nitrogen [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Urea nitrogen [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "creatinine",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2160-0",
-				"display": ""
-			},
-			"description": "Creatinine [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Creatinine [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "urea nitrogen/creatinine ratio",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "3097-3",
-				"display": ""
-			},
-			"description": "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"
+				"display": "",
+				"text": "Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "gfr mdrd",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "33914-3",
-				"display": ""
-			},
-			"description": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
+				"display": "",
+				"text": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
+			}
 		},
 		{
 			"name": "gfr mdrd females",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "50044-7",
-				"display": ""
-			},
-			"description": " Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+				"display": "",
+				"text": " Glomerular filtration rate/1.73 sq M.predicted among females [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+			}
 		},
 		{
 			"name": "gfr mdrd non-blacks",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "48642-3",
-				"display": ""
-			},
-			"description": " Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+				"display": "",
+				"text": " Glomerular filtration rate/1.73 sq M.predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+			}
 		},
 		{
 			"name": "gfr mdrd blacks",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "48643-1",
-				"display": ""
-			},
-			"description": " Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+				"display": "",
+				"text": " Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+			}
 		},
 		{
 			"name": "calcium",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "17861-6",
-				"display": ""
-			},
-			"description": "Calcium [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Calcium [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "phosphate",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2777-1",
-				"display": ""
-			},
-			"description": "Phosphate [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Phosphate [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "albumin",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "1751-7",
-				"display": ""
-			},
-			"description": "Albumin [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Albumin [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "electrolytes panel",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "24326-1",
-				"display": ""
-			},
-			"description": "Electrolytes 1998 panel - Serum or Plasma"
+				"display": "",
+				"text": "Electrolytes 1998 panel - Serum or Plasma"
+			}
 		},
 		{
 			"name": "sodium",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2951-2",
-				"display": ""
-			},
-			"description": "Sodium [Moles/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Sodium [Moles/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "potassium",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2823-3",
-				"display": ""
-			},
-			"description": "Potassium [Moles/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Potassium [Moles/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "chloride",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2075-0",
-				"display": ""
-			},
-			"description": "Chloride [Moles/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Chloride [Moles/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "bicarbonate",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "1963-8",
-				"display": ""
-			},
-			"description": "Bicarbonate [Moles/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Bicarbonate [Moles/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "carbon dioxide",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2028-9",
-				"display": ""
-			},
-			"description": "Carbon dioxide, total [Moles/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Carbon dioxide, total [Moles/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "anion gap",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "33037-3",
-				"display": ""
-			},
-			"description": "Anion gap in Serum or Plasma"
+				"display": "",
+				"text": "Anion gap in Serum or Plasma"
+			}
 		},
 		{
 			"name": "protein",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "2885-2",
-				"display": ""
-			},
-			"description": "Protein [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Protein [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "albumin",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "1751-7",
-				"display": ""
-			},
-			"description": "Albumin [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Albumin [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "bilirubin total",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "1975-2",
-				"display": ""
-			},
-			"description": "Bilirubin.total [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Bilirubin.total [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "bilirubin direct",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "1968-7",
-				"display": ""
-			},
-			"description": "Bilirubin.direct [Mass/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Bilirubin.direct [Mass/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "alkaline phosphatase",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "6768-6",
-				"display": ""
-			},
-			"description": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "aspartate aminotransferase",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "1920-8",
-				"display": ""
-			},
-			"description": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "alanine aminotransferase",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "1742-6",
-				"display": ""
-			},
-			"description": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+				"display": "",
+				"text": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+			}
 		},
 		{
 			"name": "Lung Cancer",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "363358000",
-				"display": "Malignant tumor of lung (disorder)",
+				"code": "4221000179107",
+				"display": "Ultrasound imaging report",
 				"text": "Lung Cancer"
-			},
-			"description": "Malignant tumor of lung (disorder)"
+			}
 		},
 		{
 			"name": "2 D ECHO with PASP",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "399345000",
-				"display": "Adult echocardiography procedure report"
-			},
-			"description": "2 D ECHO with PASP"
+				"display": "Adult echocardiography procedure report",
+				"text": "2 D ECHO with PASP"
+			}
 		},
 		{
 			"name": "FDG PETCT",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "443271005",
-				"display": "Positron emission tomography with computed tomography using fluorodeoxyglucose (18-F)"
-			},
-			"description": "FDG PETCT"
+				"display": "Positron emission tomography with computed tomography using fluorodeoxyglucose (18-F)",
+				"text": "FDG PETCT"
+			}
 		},
 		{
 			"name": "MRI brain",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "4251000179103",
-				"display": "Magnetic resonance imaging report"
-			},
-			"description": "MRI Brain"
+				"display": "Magnetic resonance imaging report",
+				"text": "MRI Brain"
+			}
 		},
 		{
 			"name": "Fiber optic bronchoscopy",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "85765000",
-				"display": "Fiberoptic bronchoscopy"
-			},
-			"description": "Fiber optic bronchoscopy"
+				"display": "Fiberoptic bronchoscopy",
+				"text": "Fiber optic bronchoscopy"
+			}
 		},
 		{
 			"name": "Endobronchial ultrasound with ROSE reports",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "770575000",
-				"display": "Endobronchial ultrasound report"
-			},
-			"description": "Endobronchial ultrasound with ROSE reports"
+				"display": "Endobronchial ultrasound report",
+				"text": "Endobronchial ultrasound with ROSE reports"
+			}
 		},
 		{
 			"name": "Pulmonary function tests with DLCO",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "720449003",
-				"display": "Pulmonary function report"
-			},
-			"description": "Pulmonary function tests with DLCO"
+				"display": "Pulmonary function report",
+				"text": "Pulmonary function tests with DLCO"
+			}
 		},
 		{
 			"name": "V/Q scan in pneumonectomy",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "37859006",
-				"display": "Ventilation-perfusion scan"
-			},
-			"description": "V/Q scan in pneumonectomy"
+				"display": "Ventilation-perfusion scan",
+				"text": "V/Q scan in pneumonectomy"
+			}
 		},
 		{
 			"name": "6MWT",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "252478000",
-				"display": "6-minute walk test"
-			},
-			"description": "6MWT"
+				"display": "6-minute walk test",
+				"text": "6MWT"
+			}
 		},
 		{
 			"name": "Molecular markers/NGS as needed",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "405825005",
-				"display": "Molecular genetic test"
-			},
-			"description": "Molecular markers/NGS as needed"
+				"display": "Molecular genetic test",
+				"text": "Molecular markers/NGS as needed"
+			}
 		},
 		{
 			"name": "Oral Cancer",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "271323007",
-				"display": "Malignant neoplasm of lip, oral cavity and pharynx"
-			},
-			"description": "Malignant neoplasm of lip, oral cavity and pharynx"
+				"code": "371528001",
+				"display": "Pathology report",
+				"text": "Oral Cancer"
+			}
 		},
 		{
 			"name": "FNAC report",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "726566009",
-				"display": "Pathology biopsy report"
-			},
-			"description": "FNAC report"
+				"display": "Pathology biopsy report",
+				"text": "FNAC report"
+			}
 		},
 		{
 			"name": "CECT head neck thorax report/ PET Ct/ MRI",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "4251000179103",
-				"display": "Magnetic resonance imaging report"
-			},
-			"description": "CECT head neck thorax report/ PET Ct/ MRI"
+				"display": "Magnetic resonance imaging report",
+				"text": "CECT head neck thorax report/ PET Ct/ MRI"
+			}
 		},
 		{
 			"name": "CBC",
 			"coding": {
-				"system": "http://loinc.org",
+				"system": "http://snomed.info/sct",
 				"code": "57021-8",
-				"display": ""
-			},
-			"description": "CBC"
+				"display": "CBC",
+				"text": "CBC"
+			}
 		},
 		{
 			"name": "Leukocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "6690-2",
-				"display": ""
-			},
-			"description": "Leukocytes [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Leukocytes [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Erythrocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "789-8",
-				"display": ""
-			},
-			"description": "Erythrocytes"
+				"display": "",
+				"text": "Erythrocytes"
+			}
 		},
 		{
 			"name": "Hemoglobin",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "718-7",
-				"display": ""
-			},
-			"description": "Hemoglobin [Mass/volume] in Blood"
+				"display": "",
+				"text": "Hemoglobin [Mass/volume] in Blood"
+			}
 		},
 		{
 			"name": "Hematocrit",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "4544-3",
-				"display": ""
-			},
-			"description": "Hematocrit [Volume Fraction] of Blood by Automated count"
+				"display": "",
+				"text": "Hematocrit [Volume Fraction] of Blood by Automated count"
+			}
 		},
 		{
 			"name": "MCV",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "787-2",
-				"display": ""
-			},
-			"description": "MCV [Entitic volume] by Automated count"
+				"display": "",
+				"text": "MCV [Entitic volume] by Automated count"
+			}
 		},
 		{
 			"name": "MCH",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "785-6",
-				"display": ""
-			},
-			"description": "MCH [Entitic mass] by Automated count"
+				"display": "",
+				"text": "MCH [Entitic mass] by Automated count"
+			}
 		},
 		{
 			"name": "MCHC",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "786-4",
-				"display": ""
-			},
-			"description": "MCHC [Mass/volume] by Automated count"
+				"display": "",
+				"text": "MCHC [Mass/volume] by Automated count"
+			}
 		},
 		{
 			"name": "Erythrocyte entitic volume",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "21000-5",
-				"display": ""
-			},
-			"description": "Erythrocyte distribution width [Entitic volume] by Automated count"
+				"display": "",
+				"text": "Erythrocyte distribution width [Entitic volume] by Automated count"
+			}
 		},
 		{
 			"name": "Erythrocyte Ratio",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "788-0",
-				"display": ""
-			},
-			"description": "Erythrocyte distribution width [Ratio] by Automated count"
+				"display": "",
+				"text": "Erythrocyte distribution width [Ratio] by Automated count"
+			}
 		},
 		{
 			"name": "Platelets volume",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "777-3",
-				"display": ""
-			},
-			"description": "Platelets [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Platelets [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Platelet distribution width",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "32207-3",
-				"display": ""
-			},
-			"description": "Platelet distribution width [Entitic volume] in Blood by Automated count"
+				"display": "",
+				"text": "Platelet distribution width [Entitic volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Platelet mean volume",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "32623-1",
-				"display": ""
-			},
-			"description": "Platelet mean volume [Entitic volume] in Blood by Automated count"
+				"display": "",
+				"text": "Platelet mean volume [Entitic volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Neutrophils",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "770-8",
-				"display": ""
-			},
-			"description": "Neutrophils/100 leukocytes in Blood by Automated count"
+				"display": "",
+				"text": "Neutrophils/100 leukocytes in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Band form neutrophils",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "35332-6",
-				"display": ""
-			},
-			"description": "Band form neutrophils/100 leukocytes in Blood by Automated count"
+				"display": "",
+				"text": "Band form neutrophils/100 leukocytes in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Granulocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "19023-1",
-				"display": ""
-			},
-			"description": "Granulocytes/100 leukocytes in Blood by Automated count"
+				"display": "",
+				"text": "Granulocytes/100 leukocytes in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Lymphocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "736-9",
-				"display": ""
-			},
-			"description": "Lymphocytes/100 leukocytes in Blood by Automated count"
+				"display": "",
+				"text": "Lymphocytes/100 leukocytes in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Variant lymphocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "42250-1",
-				"display": ""
-			},
-			"description": "Variant lymphocytes/100 leukocytes in Blood by Automated count"
+				"display": "",
+				"text": "Variant lymphocytes/100 leukocytes in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Monocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "5905-5",
-				"display": ""
-			},
-			"description": "Monocytes/100 leukocytes in Blood by Automated count"
+				"display": "",
+				"text": "Monocytes/100 leukocytes in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Eosinophils",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "713-8",
-				"display": ""
-			},
-			"description": "Eosinophils/100 leukocytes in Blood by Automated count"
+				"display": "",
+				"text": "Eosinophils/100 leukocytes in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Basophils",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "706-2",
-				"display": ""
-			},
-			"description": "Basophils"
+				"display": "",
+				"text": "Basophils"
+			}
 		},
 		{
 			"name": "Other cells leukocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "58409-4",
-				"display": ""
-			},
-			"description": "Other cells/100 leukocytes in Blood by Automated count"
+				"display": "",
+				"text": "Other cells/100 leukocytes in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Neutrophils",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "751-8",
-				"display": ""
-			},
-			"description": "Neutrophils [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Neutrophils [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Band form neutrophils",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "30229-9",
-				"display": ""
-			},
-			"description": "Band form neutrophils [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Band form neutrophils [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Lymphocytes ",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "731-0",
-				"display": ""
-			},
-			"description": "Lymphocytes [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Lymphocytes [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Variant lymphocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "43743-4",
-				"display": ""
-			},
-			"description": "Variant lymphocytes [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Variant lymphocytes [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Monocytes",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "742-7",
-				"display": ""
-			},
-			"description": "Monocytes [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Monocytes [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Eosinophils",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "711-2",
-				"display": ""
-			},
-			"description": "Eosinophils [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Eosinophils [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Basophils",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "704-7",
-				"display": ""
-			},
-			"description": "Basophils [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Basophils [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Leukocytes other",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "51383-8",
-				"display": ""
-			},
-			"description": "Leukocytes other [#/volume] in Blood by Automated count"
+				"display": "",
+				"text": "Leukocytes other [#/volume] in Blood by Automated count"
+			}
 		},
 		{
 			"name": "Cervical Cancer",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "363354003",
-				"display": "Malignant tumor of cervix"
-			},
-			"description": "Malignant tumor of cervix"
+				"code": "4261000179100",
+				"display": "Computed tomography imaging report",
+				"text": "Cervical Cancer"
+			}
 		},
 		{
 			"name": "MRI pelvis with abdomen / CECT abdomen pelvis",
 			"coding": {
-				"system": "http://snomed.info/sct",
-				"code": "22831000087106",
-				"display": "CT of abdomen, pelvis and bilateral lower limbs with contrast"
-			},
-			"description": "MRI pelvis with abdomen / CECT abdomen pelvis"
+				"system": "http://loinc.org",
+				"code": "36813-4",
+				"display": "CT Abdomen and Pelvis W contrast IV",
+				"text": "MRI pelvis with abdomen / CECT abdomen pelvis"
+			}
 		},
 		{
 			"name": "Height",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "8302-2",
-				"display": "Body height"
-			},
-			"description": "Body height"
+				"display": "Body height",
+				"text": "Body height"
+			}
 		},
 		{
 			"name": "Weight",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "29463-7",
-				"display": "weight"
-			},
-			"description": "weight"
+				"display": "weight",
+				"text": "weight"
+			}
 		},
 		{
 			"name": "Body Mass Index",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "39156-5",
-				"display": "Body mass index (BMI) [Ratio]"
-			},
-			"description": "Body mass index (BMI) [Ratio]"
+				"display": "Body mass index (BMI) [Ratio]",
+				"text": "Body mass index (BMI) [Ratio]"
+			}
 		},
 		{
 			"name": "Vital Signs",
 			"coding": {
 				"system": "http://terminology.hl7.org/CodeSystem/observation-category",
 				"code": "vital-signs",
-				"display": "Vital Signs"
-			},
-			"description": "Vital Signs"
+				"display": "Vital Signs",
+				"text": "Vital Signs"
+			}
 		},
 		{
 			"name": "Blood Group",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "882-1",
-				"display": "ABO and Rh group [Type] in Blood"
-			},
-			"description": "ABO and Rh group [Type] in Blood"
+				"display": "ABO and Rh group [Type] in Blood",
+				"text": "ABO and Rh group [Type] in Blood"
+			}
 		},
 		{
 			"name": "Finding of ABO blood group",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "365637002",
-				"display": "Finding of ABO blood group"
-			},
-			"description": "Finding of ABO blood group"
+				"display": "Finding of ABO blood group",
+				"text": "Finding of ABO blood group"
+			}
 		},
 		{
 			"name": "Op Consult Record",
 			"coding": {
-				"system": "http://loinc.org",
+				"system": "http://snomed.info/sct",
 				"code": "371530004",
-				"display": ""
-			},
-			"description": "Clinical consultation report"
+				"display": "Clinical consultation report",
+				"text": "Clinical consultation report"
+			}
 		},
 		{
 			"name": "Chief complaints",
 			"coding": {
-				"system": "http://loinc.org",
+				"system": "http://snomed.info/sct",
 				"code": "422843007",
-				"display": "Chief complaint section"
-			},
-			"description": "Chief complaint section"
+				"display": "Chief complaint section",
+				"text": "Chief complaint section"
+			}
 		},
 		{
 			"name": "Allergies",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "722446000",
-				"display": "Allergy record"
-			},
-			"description": "Allergies"
+				"display": "Allergy record",
+				"text": "Allergies"
+			}
 		},
 		{
 			"name": "Peanut",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91935009",
-				"display": "Allergy to peanut"
-			},
-			"description": "Peanut (food)"
+				"display": "Allergy to peanut",
+				"text": "Peanut (food)"
+			}
 		},
 		{
 			"name": "Peanut - dietary",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91935009",
-				"display": "Allergy to peanut"
-			},
-			"description": "Peanut - dietary (environmental)"
+				"display": "Allergy to peanut",
+				"text": "Peanut - dietary (environmental)"
+			}
 		},
 		{
 			"name": "Hypertension",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "38341003",
-				"display": "High blood pressure"
-			},
-			"description": "Hypertension"
+				"display": "High blood pressure",
+				"text": "Hypertension"
+			}
 		},
 		{
 			"name": "Coronary Artery Disease",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "53741008",
-				"display": "Coronary artery disease"
-			},
-			"description": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+				"display": "Coronary artery disease",
+				"text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+			}
 		},
 		{
 			"name": "Wrong Patient",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "418038007",
-				"display": "Propensity to adverse reactions to substance"
-			},
-			"description": "Wrong Patient"
+				"display": "Propensity to adverse reactions to substance",
+				"text": "Wrong Patient"
+			}
 		},
 		{
 			"name": "Procedure Mishap",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "410528009",
-				"display": "Procedure Mishap"
-			},
-			"description": "Procedure Mishap"
+				"display": "Procedure Mishap",
+				"text": "Procedure Mishap"
+			}
 		},
 		{
 			"name": "Medication Mishap",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "425391005",
-				"display": "Using access device"
-			},
-			"description": "Medication Mishap"
+				"display": "Using access device",
+				"text": "Medication Mishap"
+			}
 		},
 		{
 			"name": "Device",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "419099009",
-				"display": "Dead"
-			},
-			"description": "Device"
+				"display": "Dead",
+				"text": "Device"
+			}
 		},
 		{
 			"name": "Unsafe Physical Environment",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "723877005",
-				"display": "Unsafe Physical Environment"
-			},
-			"description": "Unsafe Physical Environment"
+				"display": "Unsafe Physical Environment",
+				"text": "Unsafe Physical Environment"
+			}
 		},
 		{
 			"name": "Hospital Acquired Infection",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "77176002",
-				"display": "Smoking"
-			},
-			"description": "Hospital Acquired Infection"
+				"display": "Smoking",
+				"text": "Hospital Acquired Infection"
+			}
 		},
 		{
 			"name": "Wrong Body Site",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "116676008",
-				"display": "Wrong Body Site"
-			},
-			"description": "Wrong Body Site"
+				"display": "Wrong Body Site",
+				"text": "Wrong Body Site"
+			}
 		},
 		{
 			"name": "Adverse Events",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "405533003",
-				"display": "Adverse incident outcome categories"
-			},
-			"description": "Adverse Events"
+				"code": "418019003",
+				"display": "Accidental event",
+				"text": "Adverse Events"
+			}
 		},
 		{
 			"name": "OT Notes",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "102281000000119",
-				"display": "OT Notes"
-			},
-			"description": "OT Notes"
+				"display": "OT Notes",
+				"text": "OT Notes"
+			}
 		},
 		{
 			"name": "PAC Notes",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "102281000000119",
-				"display": "PAC Notes"
-			},
-			"description": "PAC Notes"
+				"display": "PAC Notes",
+				"text": "PAC Notes"
+			}
 		},
 		{
 			"name": "Amoxicillin anhydrous",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "785686003",
-				"display": "Amoxicillin anhydrous"
-			},
-			"description": "Amoxicillin anhydrous (substance)"
+				"display": "Amoxicillin anhydrous",
+				"text": "Amoxicillin anhydrous (substance)"
+			}
 		},
 		{
 			"name": "Amoxicillin",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "323732002",
-				"display": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
-			},
-			"description": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
+				"display": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension",
+				"text": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
+			}
 		},
 		{
 			"name": "Acute Myeloid leukemia",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91861009",
-				"display": "Acute myeloid leukemia"
-			},
-			"description": "Acute myeloid leukemia"
+				"display": "Acute Myeloid leukemia",
+				"text": "Acute Myeloid leukemia"
+			}
 		},
 		{
 			"name": "Bone marrow or peripheral blood flow cytometry",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "64444005",
-				"display": "Flow cytometry"
-			},
-			"description": "Bone marrow or peripheral blood flow cytometry"
+				"display": "Flow cytometry",
+				"text": "Bone marrow or peripheral blood flow cytometry"
+			}
 		},
 		{
 			"name": "Cytogenetics",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "10050001",
-				"display": "SNOMED CT core"
-			},
-			"description": "Cytogenetics"
+				"display": "SNOMED CT core",
+				"text": "Cytogenetics"
+			}
 		},
 		{
 			"name": "Fluorescence in situ hybridisation (FISH)",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "426329006",
-				"display": "Fluorescence in situ hybridisation"
-			},
-			"description": "Fluorescence in situ hybridisation (FISH)"
+				"display": "Fluorescence in situ hybridisation",
+				"text": "Fluorescence in situ hybridisation (FISH)"
+			}
 		},
 		{
 			"name": "PCR",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "718006",
-				"display": "PCR"
-			},
-			"description": "PCR"
+				"display": "PCR",
+				"text": "PCR"
+			}
 		},
 		{
 			"name": "Baseline NCCT chest",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "169069000",
-				"display": "Computed tomography of chest"
-			},
-			"description": "Baseline NCCT chest"
+				"display": "Computed tomography of chest",
+				"text": "Baseline NCCT chest"
+			}
 		},
 		{
 			"name": "Extramedullary disease",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "725390002",
-				"display": "Extramedullary disease"
-			},
-			"description": "Extramedullary disease"
+				"display": "Extramedullary disease",
+				"text": "Extramedullary disease"
+			}
 		},
 		{
 			"name": "Type of induction",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91861009",
-				"display": "Type of induction"
-			},
-			"description": "Type of induction"
+				"display": "Type of induction",
+				"text": "Type of induction"
+			}
 		},
 		{
 			"name": "Date of start",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91861009",
-				"display": "Date of start"
-			},
-			"description": "Date of start"
+				"display": "Date of start",
+				"text": "Date of start"
+			}
 		},
 		{
 			"name": "Response to induction ( Bone marrow report)",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "721631001",
-				"display": "Bone marrow pathology biopsy report"
-			},
-			"description": "Response to induction ( Bone marrow report)"
+				"display": "Bone marrow pathology biopsy report",
+				"text": "Response to induction ( Bone marrow report)"
+			}
 		},
 		{
 			"name": "Toxicities during induction)",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91861009",
-				"display": "Toxicities during induction - Blood stream infections, LRTI, Invasive fungal infections, MDRO, soft tissue infections, need for ICU, mechanical ventilation)"
-			},
-			"description": "Toxicities during induction - Blood stream infections, LRTI, Invasive fungal infections, MDRO, soft tissue infections, need for ICU, mechanical ventilation)"
+				"display": "Toxicities during induction - Blood stream infections, LRTI, Invasive fungal infections, MDRO, soft tissue infections, need for ICU, mechanical ventilation)",
+				"text": "Toxicities during induction - Blood stream infections, LRTI, Invasive fungal infections, MDRO, soft tissue infections, need for ICU, mechanical ventilation)"
+			}
 		},
 		{
 			"name": "Consolidation chemotherapy",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91861009",
-				"display": "Consolidation chemotherapy - number of courses, toxicities"
-			},
-			"description": "Consolidation chemotherapy - number of courses, toxicities"
+				"display": "Consolidation chemotherapy - number of courses, toxicities",
+				"text": "Consolidation chemotherapy - number of courses, toxicities"
+			}
 		},
 		{
 			"name": "Menstruation History",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "364313002",
-				"display": "Measure of menstruation"
-			},
-			"description": "Menstruation History"
+				"code": "404684003",
+				"display": "Clinical finding",
+				"text": "Menstruation History"
+			}
 		},
 		{
 			"name": "Ongoing Drugs",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "721912009",
-				"display": "Medication summary document"
-			},
-			"description": "Ongoing Drugs"
+				"display": "Medication summary document",
+				"text": "Ongoing Drugs"
+			}
+		},
+		{
+			"name": "Adult Hematolymphoid",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "269475001",
+				"display": "Adult Hematolymphoid",
+				"text": "Adult Hematolymphoid"
+			}
 		},
 		{
 			"name": "Serious",
@@ -1139,9 +1147,8 @@
 				"system": "http://snomed.info/sct",
 				"code": "24484000",
 				"display": "Severe",
-				"text": "Severe"
-			},
-			"description": "Serious"
+				"text": "Serious"
+			}
 		},
 		{
 			"name": "Resolved",
@@ -1150,8 +1157,7 @@
 				"code": "resolved",
 				"display": "Resolved",
 				"text": "Resolved"
-			},
-			"description": "Resolved"
+			}
 		},
 		{
 			"name": "problem-list-item",
@@ -1160,8 +1166,7 @@
 				"code": "problem-list-item",
 				"display": "Problem List Item",
 				"text": "Problem List Item"
-			},
-			"description": "Problem List Item"
+			}
 		},
 		{
 			"name": "encounter-diagnosis",
@@ -1170,8 +1175,7 @@
 				"code": "encounter-diagnosis",
 				"display": "Encounter Diagnosis",
 				"text": "Encounter Diagnosis"
-			},
-			"description": "Encounter Diagnosis"
+			}
 		},
 		{
 			"name": "product-problem",
@@ -1180,8 +1184,7 @@
 				"code": "product-problem",
 				"display": "Product Problem",
 				"text": "Product Problem"
-			},
-			"description": "Product Problem"
+			}
 		},
 		{
 			"name": "product-quality",
@@ -1190,8 +1193,7 @@
 				"code": "product-quality",
 				"display": "Product Quality",
 				"text": "Product Quality"
-			},
-			"description": "Product Quality"
+			}
 		},
 		{
 			"name": "product-use-error",
@@ -1200,8 +1202,7 @@
 				"code": "product-use-error",
 				"display": "Product Use Error",
 				"text": "Product Use Error"
-			},
-			"description": "Product Use Error"
+			}
 		},
 		{
 			"name": "wrong-dose",
@@ -1210,8 +1211,7 @@
 				"code": "wrong-dose",
 				"display": "Wrong Dose",
 				"text": "Wrong Dose"
-			},
-			"description": "Wrong Dose"
+			}
 		},
 		{
 			"name": "incorrect-prescribing-information",
@@ -1220,8 +1220,7 @@
 				"code": "incorrect-prescribing-information",
 				"display": "Incorrect Prescribing Information",
 				"text": "Incorrect Prescribing Information"
-			},
-			"description": "Incorrect Prescribing Information"
+			}
 		},
 		{
 			"name": "wrong-technique",
@@ -1230,8 +1229,7 @@
 				"code": "wrong-technique",
 				"display": "Wrong Technique",
 				"text": "Wrong Technique"
-			},
-			"description": "Wrong Technique"
+			}
 		},
 		{
 			"name": "wrong-route-of-administration",
@@ -1240,8 +1238,7 @@
 				"code": "wrong-route-of-administration",
 				"display": "Wrong Route of Administration",
 				"text": "Wrong Route of Administration"
-			},
-			"description": "Wrong Route of Administration"
+			}
 		},
 		{
 			"name": "wrong-rate",
@@ -1250,8 +1247,7 @@
 				"code": "wrong-rate",
 				"display": "Wrong Rate",
 				"text": "Wrong Rate"
-			},
-			"description": "Wrong Rate"
+			}
 		},
 		{
 			"name": "wrong-duration",
@@ -1260,8 +1256,7 @@
 				"code": "wrong-duration",
 				"display": "Wrong Duration",
 				"text": "Wrong Duration"
-			},
-			"description": "Wrong Duration"
+			}
 		},
 		{
 			"name": "wrong-time",
@@ -1270,8 +1265,7 @@
 				"code": "wrong-time",
 				"display": "Wrong Time",
 				"text": "Wrong Time"
-			},
-			"description": "Wrong Time"
+			}
 		},
 		{
 			"name": "expired-drug",
@@ -1280,8 +1274,7 @@
 				"code": "expired-drug",
 				"display": "Expired Drug",
 				"text": "Expired Drug"
-			},
-			"description": "Expired Drug"
+			}
 		},
 		{
 			"name": "medical-device-use-error",
@@ -1290,8 +1283,7 @@
 				"code": "medical-device-use-error",
 				"display": "Medical Device Use Error",
 				"text": "Medical Device Use Error"
-			},
-			"description": "Medical Device Use Error"
+			}
 		},
 		{
 			"name": "problem-different-manufacturer",
@@ -1300,8 +1292,7 @@
 				"code": "problem-different-manufacturer",
 				"display": "Problem with Different Manufacturer",
 				"text": "Problem with Different Manufacturer"
-			},
-			"description": "Problem with Different Manufacturer"
+			}
 		},
 		{
 			"name": "unsafe-physical-environment",
@@ -1310,8 +1301,7 @@
 				"code": "unsafe-physical-environment",
 				"display": "Unsafe Physical Environment",
 				"text": "Unsafe Physical Environment"
-			},
-			"description": "Unsafe Physical Environment"
+			}
 		},
 		{
 			"name": "Examination Details",
@@ -1319,9 +1309,8 @@
 				"system": "http://snomed.info/sct",
 				"code": "721963009",
 				"display": "Order document",
-				"text": "Examination Details"
-			},
-			"description": "Examination Details"
+				"text": "Investigation Advice"
+			}
 		},
 		{
 			"name": "History and physical report",
@@ -1330,8 +1319,7 @@
 				"code": "371529009",
 				"display": "History and physical report",
 				"text": "History and physical report"
-			},
-			"description": "History and physical report"
+			}
 		},
 		{
 			"name": "medication-mishap",
@@ -1340,35 +1328,34 @@
 				"code": "medication-mishap",
 				"display": "Medication Mishap",
 				"text": "Medication Mishap"
-			},
-			"description": "The adverse event pertains to a medication mishap, such as wrong dose, route, rate, or duration of administration."
+			}
 		},
 		{
 			"name": "Breast Cancer",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "254837009",
-				"display": "Malignant neoplasm of breast"
-			},
-			"description": "Malignant neoplasm of breast"
+				"display": "Malignant neoplasm of breast",
+				"text": "Malignant neoplasm of breast"
+			}
 		},
 		{
 			"name": "Mammography",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "4231000179109",
-				"display": "Mammography report"
-			},
-			"description": "Mammography report"
+				"display": "Mammography report",
+				"text": "Mammography report"
+			}
 		},
 		{
 			"name": "CECT TAP + Bone Scan or FDG PET CT",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "4261000179100",
-				"display": "Computed tomography imaging report"
-			},
-			"description": "Computed tomography imaging report"
+				"display": "Computed tomography imaging report",
+				"text": "Computed tomography imaging report"
+			}
 		},
 		{
 			"name": "DocumentReference",
@@ -1377,26 +1364,34 @@
 				"code": "72267-8",
 				"display": "Evaluation of mental and physical incapacity certificate",
 				"text": "Evaluation of mental and physical incapacity certificate"
-			},
-			"description": "Evaluation of mental and physical incapacity certificate"
+			}
 		},
 		{
 			"name": "Mental Health Screening",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "94015-5",
-				"display": "Mental health screening report"
-			},
-			"description": "Mental health screening report"
+				"display": "Mental health screening report",
+				"text": "Mental health screening report"
+			}
 		},
 		{
 			"name": "Mental health Mandatory reporting",
 			"coding": {
 				"system": "http://loinc.org",
 				"code": "80420-3",
-				"display": "Mental health Mandatory reporting form"
-			},
-			"description": "Mental health Mandatory reporting form"
+				"display": "Mental health Mandatory reporting form",
+				"text": "Mental health Mandatory reporting form"
+			}
+		},
+		{
+			"name": "Procedure",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "36969009",
+				"display": "Placement of stent in coronary artery",
+				"text": "Procedure"
+			}
 		}
 	]
 }

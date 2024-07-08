@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
@@ -91,13 +90,9 @@ public class OPConsultRecordHelper {
 
 		// fetch code and test description based on test name from
 		// allTestsAndPanels.json and create type based on those value
-		CodeableConcept type = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName(Constants.OP_CONSULT_RECORD);
-		if (cancerTestDetail.isPresent()) {
-			Test test = cancerTestDetail.get();
-			type = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
-					test.getDescription(), test.getDescription());
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.OP_CONSULT_RECORD);
+		CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
 
 		// create composition resource
 		Composition opDoc = FHIRUtils.createCompositionResourceType(docDate, bundle, type,
@@ -138,34 +133,47 @@ public class OPConsultRecordHelper {
 		List<Composition.SectionComponent> sections = new ArrayList<>();
 
 		// Create Chief complaint section for CancerTypes
-		Composition.SectionComponent cancerSection = FHIRUtils.createChiefComplaintSection(bundle, patientResource);
+		Composition.SectionComponent chiefComplaintSection = FHIRUtils.createChiefComplaintSection(patientResource);
+
+		// create Procedure section for cancer types
+		Composition.SectionComponent procedureSection = FHIRUtils.createProcedureSection(patientResource);
 
 		if (Objects.nonNull(clinicalData.getLungCancer())) {
+			FHIRUtils.addConditionResourceToCompositionSection(Constants.LUNG_CANCER, bundle, patientResource,
+					chiefComplaintSection);
 			processCancerType(clinicalData.getLungCancer(), Constants.LUNG_CANCER, bundle, patientResource,
-					practitionerResource, cancerSection);
+					procedureSection);
 		}
 		if (Objects.nonNull(clinicalData.getOralCancer())) {
+			FHIRUtils.addConditionResourceToCompositionSection(Constants.ORAL_CANCER, bundle, patientResource,
+					chiefComplaintSection);
 			processCancerType(clinicalData.getOralCancer(), Constants.ORAL_CANCER, bundle, patientResource,
-					practitionerResource, cancerSection);
-		}
-		if (Objects.nonNull(clinicalData.getBreastCancer())) {
-			processCancerType(clinicalData.getBreastCancer(), Constants.BREAST_CANCER, bundle, patientResource,
-					practitionerResource, cancerSection);
+					procedureSection);
 		}
 		if (Objects.nonNull(clinicalData.getCervicalCancer())) {
+			FHIRUtils.addConditionResourceToCompositionSection(Constants.CERVICAL_CANCER, bundle, patientResource,
+					chiefComplaintSection);
 			processCancerType(clinicalData.getCervicalCancer(), Constants.CERVICAL_CANCER, bundle, patientResource,
-					practitionerResource, cancerSection);
-		}
-		if (Objects.nonNull(clinicalData.getAdultHematolymphoid())) {
-			processCancerType(clinicalData.getAdultHematolymphoid(), Constants.ADULT_HEMATOLYMPHOID, bundle,
-					patientResource, practitionerResource, cancerSection);
+					procedureSection);
 		}
 		if (Objects.nonNull(clinicalData.getAcuteMyeloidLeukemiaCancer())) {
+			FHIRUtils.addConditionResourceToCompositionSection(Constants.ACUTE_MYELOID_LEUKEMIA, bundle,
+					patientResource, chiefComplaintSection);
 			processCancerType(clinicalData.getAcuteMyeloidLeukemiaCancer(), Constants.ACUTE_MYELOID_LEUKEMIA, bundle,
-					patientResource, practitionerResource, cancerSection);
+					patientResource, procedureSection);
 		}
-		// add cancer section to bundle resource
-		sections.add(cancerSection);
+
+//		if (Objects.nonNull(clinicalData.getAdultHematolymphoid())) {
+//			FHIRUtils.addConditionResourceToCompositionSection(Constants.ADULT_HEMATOLYMPHOID, bundle, patientResource,
+//					chiefComplaintSection);
+//			processCancerType(clinicalData.getAdultHematolymphoid(), Constants.ADULT_HEMATOLYMPHOID, bundle,
+//					patientResource, procedureSection);
+//		}
+		// add chiefComplaintSection to bundle resource
+		sections.add(chiefComplaintSection);
+
+		// add procedureSection to bundle resource
+		sections.add(procedureSection);
 
 		if (Objects.nonNull(clinicalData.getClinicalInformation())) {
 
@@ -263,53 +271,25 @@ public class OPConsultRecordHelper {
 	}
 
 	private void processCancerType(CancerType cancerType, String cancerName, Bundle bundle, Patient patientResource,
-			Practitioner practitionerResource, Composition.SectionComponent sectionComponent) throws IOException {
+			Composition.SectionComponent procedureSection) throws IOException {
 		if (Objects.nonNull(cancerType)) {
 
-			// find code, system, display for each cancer based on cancerName from json file
-			// and map it to Coding format.
-			org.ncg.clinical.artifacts.vo.Coding cancerTypeCoding = FHIRUtils.mapCoding(null, cancerName);
+			// Create Procedure for report
+			if (!CollectionUtils.isEmpty(cancerType.getTests())) {
+				for (AttachmentDetail attachmentDetail : cancerType.getTests()) {
 
-			// create CodeableConcept:coding for condition resource
-			CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(cancerTypeCoding.getCode(),
-					cancerTypeCoding.getSystem(), cancerTypeCoding.getDisplay(), cancerName);
+					// if incoming coding: system, code, display are not null then use same and if
+					// incoming coding: system, code, display are null then take those value from
+					// input file
+					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(attachmentDetail.getCoding(),
+							attachmentDetail.getName());
 
-			// create condition resource for each cancerType
-			Condition condition = FHIRUtils.createConditionResource(conditionCode, patientResource);
+					// create procedure with DocumentReference for storing reports information
+					Procedure procedure = FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource,
+							attachmentDetail.getAttachment(), coding, coding.getText());
 
-			// make an entry for condition resource to bundle
-			FHIRUtils.addToBundleEntry(bundle, condition, true);
-
-			// make an entry for condition resource to the Chief complaint section
-			sectionComponent.addEntry(FHIRUtils.getReferenceToCondition(condition));
-			
-			//check if cancerName is Adult Hematolymphoid then set isAdultHematolymphoid to true
-			boolean isAdultHematolymphoid = StringUtils.equals(cancerName, Constants.ADULT_HEMATOLYMPHOID) ? true : false;
-			
-			// Create Observation for Adult Hematolymphoid cancerName
-			if (isAdultHematolymphoid) {
-				// TODO
-				// Create Observation to be added in OtherOservations section of OpConsultNote
-				if (!CollectionUtils.isEmpty(cancerType.getTests())) {
-					for (AttachmentDetail attachmentDetail : cancerType.getTests()) {
-						
-					}
-				}
-
-				// Create Procedure for report
-				if (!CollectionUtils.isEmpty(cancerType.getTests()) && isAdultHematolymphoid==false) {
-					for (AttachmentDetail attachmentDetail : cancerType.getTests()) {
-
-						// if incoming coding: system, code, display are not null then use same and if
-						// incoming coding: system, code, display are null then take those value from
-						// input file
-						org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(attachmentDetail.getCoding(),
-								attachmentDetail.getName());
-
-						// create procedure with DocumentReference for storing reports information
-						FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource,
-								attachmentDetail.getAttachment(), coding, attachmentDetail.getName(), cancerName);
-					}
+					// make an entry for procedure in procedureSection
+					procedureSection.addEntry(FHIRUtils.getReferenceToProcedure(procedure));
 				}
 			}
 		}
@@ -374,7 +354,7 @@ public class OPConsultRecordHelper {
 				allergyDetail.getName());
 
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				allergyDetail.getName());
+				coding.getText());
 		allergyIntolerance.setCode(code);
 
 		// Set patient reference
@@ -500,7 +480,7 @@ public class OPConsultRecordHelper {
 		// Set medication reference
 		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.ONGOING_DRUGS);
 		CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-				coding.getDisplay(), Constants.ONGOING_DRUGS);
+				coding.getDisplay(), coding.getText());
 		medicationStatement.setMedication(medicationCode);
 
 		// Set subject
@@ -512,7 +492,7 @@ public class OPConsultRecordHelper {
 		coding = FHIRUtils.mapCoding(ongoingDrugsDetail.getCoding(), ongoingDrugsDetail.getName());
 
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				ongoingDrugsDetail.getName());
+				coding.getText());
 
 		// TODO
 		// Set reasonCode
@@ -573,7 +553,7 @@ public class OPConsultRecordHelper {
 				ongoingDrugsDetail.getName());
 
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				ongoingDrugsDetail.getName());
+				coding.getText());
 
 		// Set medication reference
 		medicationRequest.setMedication(code);
@@ -617,7 +597,7 @@ public class OPConsultRecordHelper {
 		// Set code
 		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.MENSTRUATION_HISTORY);
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				Constants.MENSTRUATION_HISTORY);
+				coding.getText());
 
 		// Create the section for OtherObservations
 		Composition.SectionComponent medicationsSection = FHIRUtils.createSectionComponent(Constants.OTHER_OBSERVATIONS,
@@ -651,7 +631,7 @@ public class OPConsultRecordHelper {
 				menstruationHistoryDetail.getName());
 
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				menstruationHistoryDetail.getName());
+				coding.getText());
 		observation.setCode(code);
 
 		// set value
@@ -741,7 +721,7 @@ public class OPConsultRecordHelper {
 					comorbidity.getName());
 
 			CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-					coding.getDisplay(), comorbidity.getName());
+					coding.getDisplay(), coding.getText());
 			condition.setCode(code);
 
 			// set category
@@ -802,7 +782,7 @@ public class OPConsultRecordHelper {
 		// create code for adverseEvents Section
 		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.ADVERSE_EVENTS);
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				Constants.ADVERSE_EVENTS);
+				coding.getText());
 
 		// Create the section for adverseEvents
 		Composition.SectionComponent adverseEventsSection = FHIRUtils.createSectionComponent(Constants.ADVERSE_EVENTS,
@@ -886,7 +866,8 @@ public class OPConsultRecordHelper {
 	}
 
 	public Composition.SectionComponent createDocumentReferenceSection(Bundle bundle, Composition composition,
-			Patient patient, Practitioner practitioner, List<MentalHealthAssesment> mentalHealthAssesmentList) throws IOException {
+			Patient patient, Practitioner practitioner, List<MentalHealthAssesment> mentalHealthAssesmentList)
+			throws IOException {
 
 		// create code for DocumentReference Section
 		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.DOCUMENT_REFERENCE);

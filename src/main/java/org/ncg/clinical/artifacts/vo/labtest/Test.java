@@ -14,5 +14,4 @@ import lombok.Setter;
 public class Test {
 	private String name;
 	private Coding coding;
-	private String description;
 }

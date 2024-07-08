@@ -97,13 +97,9 @@ public class DiagnosticReportHelper {
 
 		// fetch code and test description based on test name from
 		// allTestsAndPanels.json and create type based on those value
-		CodeableConcept type = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName(Constants.OP_CONSULT_RECORD);
-		if (cancerTestDetail.isPresent()) {
-			Test test = cancerTestDetail.get();
-			type = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
-					test.getDescription(), test.getDescription());
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.OP_CONSULT_RECORD);
+		CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
 
 		// create composition resource
 		Composition opDoc = FHIRUtils.createCompositionResourceType(docDate, bundle, type,
@@ -213,31 +209,23 @@ public class DiagnosticReportHelper {
 		if (Utils.randomBool())
 			return null;
 
-		CodeableConcept diagnosticReportCode = new CodeableConcept();
-		Optional<Test> testWithLoincCode = getTestByName(Constants.DIAGNOSTIC_REPORT);
-		if (testWithLoincCode.isPresent()) {
-			diagnosticReportCode = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
-					Constants.SNOMED_SYSTEM_SCT, testWithLoincCode.get().getDescription(),
-					testWithLoincCode.get().getDescription());
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.DIAGNOSTIC_REPORT);
+		CodeableConcept diagnosticReportCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), coding.getText());
+
 		Composition.SectionComponent diagnosticReportSection = FHIRUtils
 				.createSectionComponent(Constants.DIAGNOSTIC_REPORTS, diagnosticReportCode);
 
 		if (Objects.nonNull(diagnostic.getCbc())) {
-			CodeableConcept category = new CodeableConcept();
-			testWithLoincCode = getTestByName(Constants.DR_CBC);
-			if (testWithLoincCode.isPresent()) {
-				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
-						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
-						testWithLoincCode.get().getDescription());
-			}
+			coding = FHIRUtils.mapCoding(null, Constants.DR_CBC);
+			CodeableConcept category = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+					coding.getDisplay(), coding.getText());
 
 			// panels for CBC
 			List<PanelDetail> cbcPanels = diagnostic.getCbc().getPanels();
 			if (!CollectionUtils.isEmpty(cbcPanels)) {
 				for (PanelDetail panelDetail : cbcPanels) {
-					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(panelDetail.getCoding(),
-							panelDetail.getName());
+					coding = FHIRUtils.mapCoding(panelDetail.getCoding(), panelDetail.getName());
 					createPanel(bundle, composition, patient, practitioner, diagnosticReportSection, category, coding,
 							panelDetail);
 				}
@@ -279,19 +267,15 @@ public class DiagnosticReportHelper {
 		}
 
 		if (Objects.nonNull(diagnostic.getBioChemistry())) {
-			CodeableConcept category = new CodeableConcept();
-			testWithLoincCode = getTestByName(Constants.BIO_CHEMISTRY);
-			if (testWithLoincCode.isPresent()) {
-				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
-						Constants.SNOMED_SYSTEM_SCT, testWithLoincCode.get().getDescription(),
-						testWithLoincCode.get().getDescription());
-			}
+			coding = FHIRUtils.mapCoding(null, Constants.BIO_CHEMISTRY);
+			CodeableConcept category = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+					coding.getDisplay(), coding.getText());
+
 			// panels for bioChemistry
 			List<PanelDetail> bioChemistryPanels = diagnostic.getBioChemistry().getPanels();
 			if (!CollectionUtils.isEmpty(bioChemistryPanels)) {
 				for (PanelDetail panelDetail : bioChemistryPanels) {
-					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(panelDetail.getCoding(),
-							panelDetail.getName());
+					coding = FHIRUtils.mapCoding(panelDetail.getCoding(), panelDetail.getName());
 					createPanel(bundle, composition, patient, practitioner, diagnosticReportSection, category, coding,
 							panelDetail);
 				}

@@ -16,6 +16,5 @@ import lombok.Setter;
 public class Panel {
 	private String name;
 	private Coding coding;
-	private String description;
 	private List<String> members;
 }
