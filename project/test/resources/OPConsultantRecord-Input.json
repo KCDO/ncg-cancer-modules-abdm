@@ -18,17 +18,17 @@
         },
         "height": "160",
         "weight": "62",
-        "abhaAddress": "Bellandur Bangalore Urban District Karnataka India",
+        "abhaAddress": "patientxyz@abdm",
         "identifier": {
-            "hipId": "123",
-            "domain": "NCG"
+            "hipId": "Health-Information-Provider-Example-Id",
+            "patientHealthId": "UHID-109123"
         },
         "bloodGroup": "APLUS"
     },
     "organizationDetails": {
         "name": "XYZ Lab Pvt.Ltd.",
         "phoneNumber": "9898989898",
-        "email": "contact@labs.xyz.org"
+        "email": "xyz@facility.org"
     },
     "clinicalInformation": {
         "drugAllergy": [
@@ -137,6 +137,28 @@
                 }
             }
         ],
+        "mentalHealthAssesment": [
+            {
+                "name": "Mental Health Screening",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "lung6mowt"
+            },
+            {
+                "name": "Mental health Mandatory reporting",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "lung6mowt"
+            }
+        ],
         "menstruationHistory": [
             {
                 "name": "Pregnancy status",
@@ -151,6 +173,30 @@
             {
                 "name": "Menstrual cycle",
                 "value": "Regular",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "clinicalHistory": [
+            {
+                "name": "hypertension",
+                "note": "This patient is suffering from Stage 2 Hypertension.",
+                "onsetDateTime": "2020-01-01T10:00:00+05:00",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Coronary Artery Disease",
+                "note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
+                "onsetDateTime": "2022-12-01T10:00:00+05:00",
                 "coding": {
                     "system": "",
                     "code": "",
@@ -334,10 +380,58 @@
             }
         ]
     },
+    "breastCancer": {
+        "tests": [
+            {
+                "name": "Mammography",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "cervical6mowt"
+            },
+            {
+                "name": "CECT TAP + Bone Scan or FDG PET CT",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "cervical6mowt"
+            }
+        ]
+    },
     "cervicalCancer": {
         "tests": [
             {
-                "name": "MRI pelvis with abdomen / CECT abdomen pelvis ",
+                "name": "MRI pelvis with abdomen / CECT abdomen pelvis",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "cervical6mowt"
+            }
+        ]
+    },
+    "adultHematolymphoid": {
+        "tests": [
+            {
+                "name": "B Symptoms",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "cervical6mowt"
+            },
+            {
+                "name": "PS (ECOG)",
                 "coding": {
                     "system": "",
                     "code": "",

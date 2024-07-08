@@ -23,6 +23,8 @@ import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Composition;
+import org.hl7.fhir.r4.model.Composition.CompositionAttestationMode;
+import org.hl7.fhir.r4.model.Composition.CompositionAttesterComponent;
 import org.hl7.fhir.r4.model.Condition;
 import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
@@ -144,7 +146,7 @@ public class FHIRUtils {
 		Bundle bundle = new Bundle();
 		bundle.setId(clinicalArtifactsType + "/" + Utils.generateId());
 		bundle.setTimestamp(forDate);
-		bundle.setIdentifier(getIdentifier(bundle.getId(), Constants.HOSPITAL_SYSTEM));
+		bundle.setIdentifier(getIdentifier(bundle.getId(), Constants.PROVIDER_EXAMPLE));
 		Meta bundleMeta = Utils.getMeta(forDate, Constants.STRUCTURE_DEFINITION_DOCUMENT_BUNDLE);
 		bundle.setMeta(bundleMeta);
 		bundle.setType(Bundle.BundleType.DOCUMENT);
@@ -216,9 +218,9 @@ public class FHIRUtils {
 		// add identifier
 		List<Identifier> identifierList = new ArrayList<>();
 		if (Objects.nonNull(patientData.getIdentifier())) {
-			Identifier identifier = getIdentifier(patientData.getIdentifier().getDomain(),
+			Identifier identifier = getIdentifier(patientData.getIdentifier().getPatientHealthId(),
 					Constants.URN_HEALTH_INFORMATION_PROVIDER_SYSTEM);
-			identifier.setId(patientData.getIdentifier().getHipId());
+			identifier.setValue(patientData.getIdentifier().getHipId());
 			identifier.setType(getCodeableConcept(Constants.MR, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
 					Constants.MEDICAL_RECORD_NUMBER, Constants.MEDICAL_RECORD_NUMBER));
 			identifierList.add(identifier);
@@ -259,8 +261,14 @@ public class FHIRUtils {
 
 	private static Address getAddress(org.ncg.clinical.artifacts.vo.patient.Address patientAddress) {
 		Address address = new Address();
-		address.setType(Address.AddressType.BOTH);// Set the address type as both postal and physical
-		address.setText("House Name: " + patientAddress.getHouseName()); // Set the complete address as
+
+		// Set the address type as both postal and physical
+		address.setType(Address.AddressType.BOTH);
+
+		// set complete address as text
+		address.setText(patientAddress.getHouseName() + ", " + patientAddress.getCity() + ", "
+				+ patientAddress.getDistrict() + ", " + patientAddress.getState() + ", " + patientAddress.getCountry()
+				+ ", Pincode:" + patientAddress.getPinCode());
 
 		// Add address components
 		setAddressComponents(patientAddress, address);
@@ -453,7 +461,7 @@ public class FHIRUtils {
 
 	static Reference getReferenceToPatient(Patient patientResource) {
 		Reference patientRef = new Reference(Constants.URN_UUID + patientResource.getId());
-		patientRef.setDisplay(Constants.PATIENT);
+		patientRef.setType(Constants.PATIENT);
 
 		return patientRef;
 	}
@@ -481,14 +489,10 @@ public class FHIRUtils {
 		}
 		return codeableConceptCode;
 	}
-	
+
 	public static Quantity createQuantity(double value, String unit, String system, String code) {
-        return new Quantity()
-                .setValue(value)
-                .setUnit(unit)
-                .setSystem(system)
-                .setCode(code);
-    }
+		return new Quantity().setValue(value).setUnit(unit).setSystem(system).setCode(code);
+	}
 
 	public static Attachment getAttachment(String title, String input) throws IOException {
 		Attachment attachment = new Attachment();
@@ -530,7 +534,7 @@ public class FHIRUtils {
 
 		// set class
 		fhirEncounter.setClass_(new Coding().setSystem(Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V3_ACT_CODE)
-				.setCode(Constants.OUTP).setDisplay(Constants.OUTPATIENT_ENCOUNTER));
+				.setCode(Constants.AMB).setDisplay(Constants.OUTPATIENT_ENCOUNTER));
 
 		// Set the period with the start and end dates
 		// Get the current date
@@ -567,11 +571,26 @@ public class FHIRUtils {
 	}
 
 	static Reference getReferenceToEncounter(Encounter encounterResource) {
-		Reference organizationRef = new Reference(Constants.URN_UUID + encounterResource.getId());
-		organizationRef.setResource(encounterResource);
-		organizationRef.setDisplay(Constants.ENCOUNTER);
+		Reference encounterRef = new Reference(Constants.URN_UUID + encounterResource.getId());
+		encounterRef.setResource(encounterResource);
+		encounterRef.setType(Constants.ENCOUNTER);
 
-		return organizationRef;
+		return encounterRef;
+	}
+
+	static CompositionAttesterComponent addAttesterResourceToComposition(Bundle bundle, Composition opDoc,
+			Organization organizationRef) throws Exception {
+
+		// Create the attester component
+		CompositionAttesterComponent attester = new CompositionAttesterComponent();
+		attester.setMode(CompositionAttestationMode.LEGAL);
+		attester.setTime(new Date());
+		attester.setParty(new Reference(Constants.URN_UUID + organizationRef.getId()));
+
+		// Add the attester to the Composition
+		opDoc.addAttester(attester);
+
+		return attester;
 	}
 
 	public static Composition createCompositionResourceType(Date docDate, Bundle bundle, CodeableConcept type,
@@ -581,7 +600,7 @@ public class FHIRUtils {
 		opDoc.setDate(bundle.getTimestamp());
 		opDoc.setMeta(Utils.getMeta(docDate, Constants.STRUCTURE_DEFINITION_OP_CONSULT_RECORD));
 		opDoc.setLanguage(Constants.EN_IN);
-		opDoc.setIdentifier(FHIRUtils.getIdentifier(opDoc.getId(), Constants.HTTPS_NDHM_IN_PHR));
+		opDoc.setIdentifier(FHIRUtils.getIdentifier(opDoc.getId(), Constants.PROVIDER_EXAMPLE));
 		opDoc.setStatus(Composition.CompositionStatus.FINAL);
 		opDoc.setType(type);
 		opDoc.setTitle(title);
@@ -645,7 +664,8 @@ public class FHIRUtils {
 					&& StringUtils.isNotEmpty(coding.getDisplay())) {
 				return coding;
 			} else {
-				// if any one of incoming system, code, display, text are null then use input json
+				// if any one of incoming system, code, display, text are null then use input
+				// json
 				// Test
 				Optional<Test> testDetail = getTestByName(testName);
 				if (testDetail.isPresent()) {
@@ -656,8 +676,8 @@ public class FHIRUtils {
 							StringUtils.isNotEmpty(coding.getCode()) ? coding.getCode() : test.getCoding().getCode());
 					newCoding.setDisplay(StringUtils.isNotEmpty(coding.getDisplay()) ? coding.getDisplay()
 							: test.getCoding().getDisplay());
-					newCoding.setText(StringUtils.isNotEmpty(coding.getText()) ? coding.getText()
-							: test.getCoding().getText());
+					newCoding.setText(
+							StringUtils.isNotEmpty(coding.getText()) ? coding.getText() : test.getCoding().getText());
 				}
 			}
 		} else {
@@ -846,9 +866,12 @@ public class FHIRUtils {
 	}
 
 	public static Procedure addDocumentReferenceToProcedure(Bundle bundle, Patient patient, String reportValue,
-			org.ncg.clinical.artifacts.vo.Coding coding, String reportName) throws IOException {
+			org.ncg.clinical.artifacts.vo.Coding coding, String reportName, String cancerName) throws IOException {
 
-		Procedure procedure = procedureBuilder(patient, coding, reportName);
+		// fetch coding for procedure
+		org.ncg.clinical.artifacts.vo.Coding procedureCoding = FHIRUtils.mapCoding(null, cancerName);
+
+		Procedure procedure = procedureBuilder(patient, procedureCoding, reportName);
 
 		// Create a new DocumentReference resource
 		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding);
@@ -877,13 +900,16 @@ public class FHIRUtils {
 
 		// Create a new CodeableConcept
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				reportName);
+				coding.getText());
 
 		// set code into procedure
 		fhirProcedure.setCode(code);
 
 		// set status as COMPLETED
 		fhirProcedure.setStatus(ProcedureStatus.COMPLETED);
+
+		// Set the performed date
+		fhirProcedure.setPerformed(new DateTimeType());
 
 		// set patient reference as subject
 		fhirProcedure.setSubject(getReferenceToPatient(patient));
@@ -901,7 +927,8 @@ public class FHIRUtils {
 		fhirOrganization.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_ORGANIZATION));
 
 		// Add the identifier to the fhirOrganization
-		Identifier identifier = getIdentifier(fhirOrganization.getId(), Constants.HTTPS_FACILITY_NDHM_GOV_IN);
+		Identifier identifier = getIdentifier(Constants.FACILITY_ID_FROM_REGISTRY,
+				Constants.HTTPS_FACILITY_NDHM_GOV_IN);
 
 		// Set the type of the identifier
 		identifier.setType(getCodeableConcept(Constants.PRN, Constants.HTTP_TERMINOLOGY_HL7_ORG_CODE_SYSTEM_V2_0203,
@@ -918,7 +945,7 @@ public class FHIRUtils {
 
 		// set email
 		if (StringUtils.isNotBlank(organizationDetails.getPhoneNumber())) {
-			fhirOrganization.addTelecom(getTelecom(organizationDetails.getPhoneNumber(), Constants.EMAIL));
+			fhirOrganization.addTelecom(getTelecom(organizationDetails.getEmail(), Constants.EMAIL));
 		}
 
 		return fhirOrganization;
@@ -942,7 +969,8 @@ public class FHIRUtils {
 	static Reference getReferenceToOrganization(Organization organizationResource) {
 		Reference organizationRef = new Reference(Constants.URN_UUID + organizationResource.getId());
 		organizationRef.setResource(organizationResource);
-		organizationRef.setDisplay(Constants.ORGANIZATION);
+		organizationRef.setType(Constants.ORGANIZATION);
+		organizationRef.setDisplay(organizationResource.getName());
 
 		return organizationRef;
 	}

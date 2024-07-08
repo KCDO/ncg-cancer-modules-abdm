@@ -380,10 +380,11 @@
 			"name": "Lung Cancer",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "4221000179107",
-				"display": "Ultrasound imaging report"
+				"code": "363358000",
+				"display": "Malignant tumor of lung (disorder)",
+				"text": "Lung Cancer"
 			},
-			"description": "Lung Cancer"
+			"description": "Malignant tumor of lung (disorder)"
 		},
 		{
 			"name": "2 D ECHO with PASP",
@@ -470,10 +471,10 @@
 			"name": "Oral Cancer",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "371528001",
-				"display": "Pathology report"
+				"code": "271323007",
+				"display": "Malignant neoplasm of lip, oral cavity and pharynx"
 			},
-			"description": "Oral Cancer"
+			"description": "Malignant neoplasm of lip, oral cavity and pharynx"
 		},
 		{
 			"name": "FNAC report",
@@ -767,17 +768,17 @@
 			"name": "Cervical Cancer",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "4261000179100",
-				"display": "Computed tomography imaging report"
+				"code": "363354003",
+				"display": "Malignant tumor of cervix"
 			},
-			"description": "Cervical Cancer"
+			"description": "Malignant tumor of cervix"
 		},
 		{
 			"name": "MRI pelvis with abdomen / CECT abdomen pelvis",
 			"coding": {
-				"system": "http://loinc.org",
-				"code": "36813-4",
-				"display": ""
+				"system": "http://snomed.info/sct",
+				"code": "22831000087106",
+				"display": "CT of abdomen, pelvis and bilateral lower limbs with contrast"
 			},
 			"description": "MRI pelvis with abdomen / CECT abdomen pelvis"
 		},
@@ -1011,9 +1012,9 @@
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "91861009",
-				"display": "Acute Myeloid leukemia"
+				"display": "Acute myeloid leukemia"
 			},
-			"description": "Acute Myeloid leukemia"
+			"description": "Acute myeloid leukemia"
 		},
 		{
 			"name": "Bone marrow or peripheral blood flow cytometry",
@@ -1341,6 +1342,61 @@
 				"text": "Medication Mishap"
 			},
 			"description": "The adverse event pertains to a medication mishap, such as wrong dose, route, rate, or duration of administration."
+		},
+		{
+			"name": "Breast Cancer",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "254837009",
+				"display": "Malignant neoplasm of breast"
+			},
+			"description": "Malignant neoplasm of breast"
+		},
+		{
+			"name": "Mammography",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "4231000179109",
+				"display": "Mammography report"
+			},
+			"description": "Mammography report"
+		},
+		{
+			"name": "CECT TAP + Bone Scan or FDG PET CT",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "4261000179100",
+				"display": "Computed tomography imaging report"
+			},
+			"description": "Computed tomography imaging report"
+		},
+		{
+			"name": "DocumentReference",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "72267-8",
+				"display": "Evaluation of mental and physical incapacity certificate",
+				"text": "Evaluation of mental and physical incapacity certificate"
+			},
+			"description": "Evaluation of mental and physical incapacity certificate"
+		},
+		{
+			"name": "Mental Health Screening",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "94015-5",
+				"display": "Mental health screening report"
+			},
+			"description": "Mental health screening report"
+		},
+		{
+			"name": "Mental health Mandatory reporting",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "80420-3",
+				"display": "Mental health Mandatory reporting form"
+			},
+			"description": "Mental health Mandatory reporting form"
 		}
 	]
 }

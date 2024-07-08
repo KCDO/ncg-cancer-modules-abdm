@@ -20,11 +20,14 @@ public class OPConsultRecordRequest {
 //	private Diagnostic diagnostics;
 	private CancerType lungCancer;
 	private CancerType oralCancer;
+	private CancerType breastCancer;
 	private CancerType cervicalCancer;
+	private CancerType adultHematolymphoid;
 	private CancerType acuteMyeloidLeukemiaCancer;
 
 	public boolean hasEmptyFields() {
 		return (patientDetails == null && organizationDetails == null && clinicalInformation == null
-				&& lungCancer == null && oralCancer == null && cervicalCancer == null);
+				&& lungCancer == null && oralCancer == null && breastCancer == null && cervicalCancer == null
+				&& adultHematolymphoid == null && acuteMyeloidLeukemiaCancer == null);
 	}
 }

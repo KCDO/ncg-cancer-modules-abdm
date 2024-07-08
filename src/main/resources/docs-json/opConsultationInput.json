@@ -18,10 +18,10 @@
 		},
 		"height": "160",
 		"weight": "62",
-		"abhaAddress": "Bellandur Bangalore Urban District Karnataka India",
+		"abhaAddress": "patientxyz@abhm",
 		"identifier": {
-			"hipId": "123",
-			"domain": "NCG"
+			"hipId": "Health-Information-Provider-Example-Id",
+            "patientHealthId": "UHID-109123"
 		},
 		"bloodGroup": "APLUS"
 	},
