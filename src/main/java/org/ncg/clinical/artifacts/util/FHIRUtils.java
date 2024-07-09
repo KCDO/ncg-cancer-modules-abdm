@@ -306,7 +306,7 @@ public class FHIRUtils {
 		address.setText(textBuilder.toString());
 	}
 
-	private static Observation createObservation(Patient patient) {
+	public static Observation createObservation(Patient patient) {
 		Observation observation = new Observation();
 		observation.setId(UUID.randomUUID().toString());
 		observation.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_OBSERVATION));
@@ -339,7 +339,8 @@ public class FHIRUtils {
 		observation.addCategory(category);
 
 		// Set the value in the Observation
-		observation.setValue(createQuantityResource(patientHeight, Constants.CM, Constants.CM));
+		observation.setValue(
+				createQuantityResource(patientHeight, Constants.CM, Constants.HTTP_UNITSOFMEASURE_ORG, Constants.CM));
 
 		// set effective date time
 		observation.setEffective(FHIRUtils.getEffectiveDate(new Date()));
@@ -347,11 +348,11 @@ public class FHIRUtils {
 		return observation;
 	}
 
-	private static Quantity createQuantityResource(double value, String uom, String code) {
+	public static Quantity createQuantityResource(double value, String uom, String system, String code) {
 		Quantity quantity = new Quantity();
 		quantity.setValue(value);
 		quantity.setUnit(uom);
-		quantity.setSystem(Constants.HTTP_UNITSOFMEASURE_ORG);
+		quantity.setSystem(system);
 		quantity.setCode(code);
 
 		return quantity;
@@ -367,7 +368,8 @@ public class FHIRUtils {
 		observation.setCode(code);
 
 		// Set the value in the Observation
-		observation.setValue(createQuantityResource(patientWeight, Constants.KG, Constants.KG));
+		observation.setValue(
+				createQuantityResource(patientWeight, Constants.KG, Constants.HTTP_UNITSOFMEASURE_ORG, Constants.KG));
 
 		// Set the category to vital signs
 		coding = mapCoding(null, Constants.VITAL_SIGNS);
@@ -399,7 +401,8 @@ public class FHIRUtils {
 		}
 
 		// Set the value in the Observation
-		observation.setValue(createQuantityResource(bmiValue, Constants.KG_M2, Constants.KG_M2));
+		observation.setValue(
+				createQuantityResource(bmiValue, Constants.KG_M2, Constants.HTTP_UNITSOFMEASURE_ORG, Constants.KG_M2));
 
 		// Set the category to vital signs
 		coding = mapCoding(null, Constants.VITAL_SIGNS);
@@ -629,19 +632,6 @@ public class FHIRUtils {
 		opDoc.setType(type);
 		opDoc.setTitle(title);
 		return opDoc;
-	}
-
-	public static Composition.SectionComponent createChiefComplaintSection(Patient patient) {
-		// create code for Chief complaint
-		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.CHIEF_COMPLAINTS);
-		CodeableConcept chiefComplaintCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-				coding.getDisplay(), coding.getText());
-
-		// create Chief complaint section
-		Composition.SectionComponent sectionComponent = createSectionComponent(Constants.CHIEF_COMPLAINTS,
-				chiefComplaintCode);
-
-		return sectionComponent;
 	}
 
 	public static Composition.SectionComponent createSectionComponent(String title, CodeableConcept code) {
@@ -913,19 +903,6 @@ public class FHIRUtils {
 		return procedure;
 	}
 
-	public static Composition.SectionComponent createProcedureSection(Patient patient) {
-
-		// create code for procedure
-		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.PROCEDURE);
-		CodeableConcept procedureCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-				coding.getDisplay(), coding.getText());
-
-		// create procedure section
-		Composition.SectionComponent sectionComponent = createSectionComponent(Constants.PROCEDURE, procedureCode);
-
-		return sectionComponent;
-	}
-
 	public static Procedure procedureBuilder(Patient patient, org.ncg.clinical.artifacts.vo.Coding coding,
 			String reportName) {
 		Procedure fhirProcedure = new Procedure();
@@ -1084,5 +1061,17 @@ public class FHIRUtils {
 
 		// make an entry for condition resource to the Composition section
 		section.addEntry(FHIRUtils.getReferenceToCondition(condition));
+	}
+
+	public static Composition.SectionComponent createSection(String sectionName) {
+		// create code for sectionName
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, sectionName);
+		CodeableConcept codeableConceptCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), coding.getText());
+
+		// create section
+		Composition.SectionComponent sectionComponent = createSectionComponent(sectionName, codeableConceptCode);
+
+		return sectionComponent;
 	}
 }

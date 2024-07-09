@@ -1,5 +1,8 @@
 package org.ncg.clinical.artifacts.vo;
 
+import org.ncg.clinical.artifacts.vo.cancer.type.AcuteMyeloidLeukemiaCancerType;
+import org.ncg.clinical.artifacts.vo.cancer.type.AdultHematolymphoidCancerType;
+import org.ncg.clinical.artifacts.vo.cancer.type.CancerType;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.ClinicalInformation;
 import org.ncg.clinical.artifacts.vo.organization.OrganizationData;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
@@ -22,12 +25,12 @@ public class OPConsultRecordRequest {
 	private CancerType oralCancer;
 	private CancerType breastCancer;
 	private CancerType cervicalCancer;
-	private CancerType adultHematolymphoid;
-	private CancerType acuteMyeloidLeukemiaCancer;
+	private AdultHematolymphoidCancerType adultHematolymphoidCancer;
+	private AcuteMyeloidLeukemiaCancerType acuteMyeloidLeukemiaCancer;
 
 	public boolean hasEmptyFields() {
 		return (patientDetails == null && organizationDetails == null && clinicalInformation == null
 				&& lungCancer == null && oralCancer == null && breastCancer == null && cervicalCancer == null
-				&& adultHematolymphoid == null && acuteMyeloidLeukemiaCancer == null);
+				&& adultHematolymphoidCancer == null && acuteMyeloidLeukemiaCancer == null);
 	}
 }

@@ -845,7 +845,7 @@
 			}
 		},
 		{
-			"name": "Chief complaints",
+			"name": "ChiefComplaints",
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "422843007",
@@ -1065,8 +1065,8 @@
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "725390002",
-				"display": "Extramedullary disease",
-				"text": "Extramedullary disease"
+				"display": "Acute myeloid leukemia with t(8;16)(p11;p13) translocation",
+				"text": "Acute myeloid leukemia with t(8;16)(p11;p13) translocation"
 			}
 		},
 		{
@@ -1388,9 +1388,18 @@
 			"name": "Procedure",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "36969009",
-				"display": "Placement of stent in coronary artery",
-				"text": "Procedure"
+				"code": "371525003",
+				"display": "Clinical procedure report",
+				"text": "Clinical procedure report"
+			}
+		},
+		{
+			"name": "OtherObservations",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "725390002",
+				"display": "OtherObservations",
+				"text": "OtherObservations section"
 			}
 		}
 	]
