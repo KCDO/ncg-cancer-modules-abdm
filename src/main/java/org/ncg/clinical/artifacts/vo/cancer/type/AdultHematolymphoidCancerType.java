@@ -11,6 +11,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdultHematolymphoidCancerType {
+public class AdultHematolymphoidCancerType extends CancerType {
 	private List<CancerTypeObservation> observations;
 }
