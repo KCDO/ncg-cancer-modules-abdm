@@ -1137,8 +1137,8 @@
 			"coding": {
 				"system": "http://snomed.info/sct",
 				"code": "269475001",
-				"display": "Adult Hematolymphoid",
-				"text": "Adult Hematolymphoid"
+				"display": "Malignant tumor of lymphoid hemopoietic and related tissue",
+				"text": "Malignant tumor of lymphoid hemopoietic and related tissue"
 			}
 		},
 		{
@@ -1397,9 +1397,118 @@
 			"name": "OtherObservations",
 			"coding": {
 				"system": "http://snomed.info/sct",
-				"code": "725390002",
-				"display": "OtherObservations",
-				"text": "OtherObservations section"
+				"code": "404684003",
+				"display": "Clinical finding",
+				"text": "Clinical finding"
+			}
+		},
+		{
+			"name": "B Symptoms",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "42984000",
+				"display": "Night sweats",
+				"text": "Night sweats"
+			}
+			
+		},
+		{
+			"name": "PS (ECOG)",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "424122007",
+				"display": "ECOG performance status finding",
+				"text": "ECOG performance status finding"
+			}
+		},
+		{
+			"name": "Follow up",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "414482001",
+				"display": "Indication for relapse",
+				"text": "Indication for relapse"
+			}
+		},
+		{
+			"name": "Radiation",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "395531003",
+				"display": "Neoplasm observable",
+				"text": "Neoplasm observable"
+			}
+		},
+		{
+			"name": "ASCT",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "425983008",
+				"display": "Autologous peripheral blood stem cell transplant",
+				"text": "Autologous peripheral blood stem cell transplant"
+			}
+		},
+		{
+			"name": "LDH",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "26758005",
+				"display": "Albumin measurement",
+				"text": "Albumin measurement"
+			}
+		},
+		{
+			"name": "Albumin",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "11274001",
+				"display": "Lactate dehydrogenase measurement",
+				"text": "Lactate dehydrogenase measurement"
+			}
+		},
+		{
+			"name": "PET CT or CECT Chest/Abdomen and Pelvis",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "4261000179100",
+				"display": "Computed tomography imaging report",
+				"text": "Computed tomography imaging report"
+			}
+		},
+		{
+			"name": "Mental Health Screening",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "94015-5",
+				"display": "Mental health screening report",
+				"text": "Mental health screening report"
+			}
+		},
+		{
+			"name": "Mental health Mandatory reporting",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "80420-3",
+				"display": "Mental health Mandatory reporting form",
+				"text": "Mental health Mandatory reporting form"
+			}
+		},
+		{
+			"name": "Pregnancy status",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "719303004",
+				"display": "Assessment of pregnancy status prior to imaging",
+				"text": "Assessment of pregnancy status prior to imaging"
+			}
+		},
+		{
+			"name": "Menstrual cycle",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "80182007",
+				"display": "Irregular periods",
+				"text": "Irregular periods"
 			}
 		}
 	]

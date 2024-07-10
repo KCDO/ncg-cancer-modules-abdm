@@ -173,6 +173,8 @@ public class OPConsultRecordHelper {
 		if (Objects.nonNull(clinicalData.getAdultHematolymphoidCancer())) {
 			FHIRUtils.addConditionResourceToCompositionSection(Constants.ADULT_HEMATOLYMPHOID, bundle, patientResource,
 					chiefComplaintSection);
+			createProcedureAndDcumentReferenceForCancerType(clinicalData.getAdultHematolymphoidCancer(), bundle,
+					patientResource, procedureSection);
 			createObservationForCancerType(clinicalData.getAdultHematolymphoidCancer().getObservations(), bundle,
 					patientResource, otherObservationsSection);
 		}
