@@ -118,6 +118,7 @@ public class Constants {
 	public static final String ADVERSE_EVENT = "AdverseEvent";
 	public static final String ALLERGY_INTOLERANCE = "AllergyIntolerance";
 	public static final String ORGANIZATION = "Organization";
+	public static final String OP_CONSULT_RECORD_CANCER_TYPE = "OPConsultRecord-CancerType";
 	public static final String EMAIL = "email";
 	public static final String PHONE = "phone";
 	public static final String HTTPS_FACILITY_NDHM_GOV_IN = "https://facility.ndhm.gov.in";

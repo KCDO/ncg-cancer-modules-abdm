@@ -43,23 +43,6 @@
     }
   },
   "definitions" : {
-    "AcuteMyeloidLeukemiaCancerType" : {
-      "type" : "object",
-      "properties" : {
-        "tests" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/AttachmentDetail"
-          }
-        },
-        "observations" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/CancerTypeObservation"
-          }
-        }
-      }
-    },
     "Address" : {
       "type" : "object",
       "properties" : {
@@ -83,17 +66,6 @@
         },
         "country" : {
           "type" : "string"
-        }
-      }
-    },
-    "AdultHematolymphoidCancerType" : {
-      "type" : "object",
-      "properties" : {
-        "observations" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/CancerTypeObservation"
-          }
         }
       }
     },
@@ -131,42 +103,42 @@
         }
       }
     },
-    "AttachmentDetail" : {
+    "CancerDetail" : {
       "type" : "object",
       "properties" : {
-        "name" : {
-          "type" : "string"
-        },
         "coding" : {
           "$ref" : "#/definitions/Coding"
         },
         "attachment" : {
           "type" : "string"
-        }
-      }
-    },
-    "CancerType" : {
-      "type" : "object",
-      "properties" : {
-        "tests" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/AttachmentDetail"
-          }
-        }
-      }
-    },
-    "CancerTypeObservation" : {
-      "type" : "object",
-      "properties" : {
-        "name" : {
-          "type" : "string"
-        },
-        "coding" : {
-          "$ref" : "#/definitions/Coding"
         },
         "valueQuantity" : {
           "$ref" : "#/definitions/ValueQuantity"
+        },
+        "medicationType" : {
+          "type" : "string",
+          "enum" : [ "MEDICATION_STATEMENT", "MEDICATION_REQUEST" ]
+        },
+        "effectiveDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "assertedDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "reference" : {
+          "type" : "string"
+        },
+        "note" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "ACTIVE", "COMPLETED", "ENTERED_IN_ERROR", "INTENDED", "STOPPED", "ON_HOLD", "UNKNOWN", "NOT_TAKEN" ]
+        },
+        "target" : {
+          "type" : "string"
         }
       }
     },
@@ -329,21 +301,21 @@
         "disallowExtensions" : {
           "type" : "boolean"
         },
-        "tzMin" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
         "asV3" : {
           "type" : "string"
         },
-        "tzSign" : {
-          "type" : "boolean"
+        "tzMin" : {
+          "type" : "integer",
+          "format" : "int32"
         },
         "tzHour" : {
           "type" : "integer",
           "format" : "int32"
         },
         "dateTime" : {
+          "type" : "boolean"
+        },
+        "tzSign" : {
           "type" : "boolean"
         },
         "value" : {
@@ -369,6 +341,14 @@
           "type" : "integer",
           "format" : "int32"
         },
+        "month" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "millis" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
         "day" : {
           "type" : "integer",
           "format" : "int32"
@@ -377,30 +357,22 @@
           "type" : "string",
           "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
         },
-        "secondsMilli" : {
-          "type" : "number",
-          "format" : "float"
+        "timeZoneZulu" : {
+          "type" : "boolean"
         },
         "today" : {
           "type" : "boolean"
+        },
+        "secondsMilli" : {
+          "type" : "number",
+          "format" : "float"
         },
         "valueAsCalendar" : {
           "type" : "string",
           "format" : "date-time"
         },
-        "timeZoneZulu" : {
-          "type" : "boolean"
-        },
         "valueAsString" : {
           "type" : "string"
-        },
-        "month" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "millis" : {
-          "type" : "integer",
-          "format" : "int32"
         },
         "nanos" : {
           "type" : "integer",
@@ -415,11 +387,11 @@
         "extensionFirstRep" : {
           "$ref" : "#/definitions/Extension"
         },
-        "idBase" : {
-          "type" : "string"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
         },
         "resource" : {
           "type" : "boolean"
@@ -477,11 +449,11 @@
         "extensionFirstRep" : {
           "$ref" : "#/definitions/Extension"
         },
-        "idBase" : {
-          "type" : "string"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
         },
         "primitive" : {
           "type" : "boolean"
@@ -512,13 +484,13 @@
         "empty" : {
           "type" : "boolean"
         },
-        "formatCommentsPre" : {
+        "formatCommentsPost" : {
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         },
-        "formatCommentsPost" : {
+        "formatCommentsPre" : {
           "type" : "array",
           "items" : {
             "type" : "string"
@@ -538,13 +510,13 @@
         "empty" : {
           "type" : "boolean"
         },
-        "formatCommentsPre" : {
+        "formatCommentsPost" : {
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         },
-        "formatCommentsPost" : {
+        "formatCommentsPre" : {
           "type" : "array",
           "items" : {
             "type" : "string"
@@ -636,23 +608,17 @@
         "clinicalInformation" : {
           "$ref" : "#/definitions/ClinicalInformation"
         },
-        "lungCancer" : {
-          "$ref" : "#/definitions/CancerType"
-        },
-        "oralCancer" : {
-          "$ref" : "#/definitions/CancerType"
-        },
-        "breastCancer" : {
-          "$ref" : "#/definitions/CancerType"
-        },
-        "cervicalCancer" : {
-          "$ref" : "#/definitions/CancerType"
-        },
         "adultHematolymphoidCancer" : {
-          "$ref" : "#/definitions/AdultHematolymphoidCancerType"
+          "type" : "object",
+          "additionalProperties" : {
+            "$ref" : "#/definitions/CancerDetail"
+          }
         },
         "acuteMyeloidLeukemiaCancer" : {
-          "$ref" : "#/definitions/AcuteMyeloidLeukemiaCancerType"
+          "type" : "object",
+          "additionalProperties" : {
+            "$ref" : "#/definitions/CancerDetail"
+          }
         }
       }
     },
@@ -829,11 +795,11 @@
         "extensionFirstRep" : {
           "$ref" : "#/definitions/Extension"
         },
-        "idBase" : {
-          "type" : "string"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
         },
         "resource" : {
           "type" : "boolean"
@@ -930,11 +896,11 @@
         "extensionFirstRep" : {
           "$ref" : "#/definitions/Extension"
         },
-        "idBase" : {
-          "type" : "string"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
         },
         "primitive" : {
           "type" : "boolean"
@@ -995,11 +961,11 @@
         "extensionFirstRep" : {
           "$ref" : "#/definitions/Extension"
         },
-        "idBase" : {
-          "type" : "string"
-        },
         "idElement" : {
           "$ref" : "#/definitions/StringType"
+        },
+        "idBase" : {
+          "type" : "string"
         },
         "resource" : {
           "type" : "boolean"
@@ -1070,32 +1036,32 @@
         "empty" : {
           "type" : "boolean"
         },
-        "formatCommentsPre" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
-        },
         "formatCommentsPost" : {
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         },
-        "valueAsString" : {
-          "type" : "string"
+        "formatCommentsPre" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "para" : {
+          "type" : "boolean"
         },
         "nsDecl" : {
           "type" : "string"
         },
-        "firstElement" : {
-          "$ref" : "#/definitions/XhtmlNode"
-        },
         "noPretty" : {
           "type" : "boolean"
         },
-        "para" : {
-          "type" : "boolean"
+        "firstElement" : {
+          "$ref" : "#/definitions/XhtmlNode"
+        },
+        "valueAsString" : {
+          "type" : "string"
         }
       }
     }

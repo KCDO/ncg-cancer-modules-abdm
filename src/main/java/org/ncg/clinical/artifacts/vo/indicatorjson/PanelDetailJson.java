@@ -1,4 +1,6 @@
-package org.ncg.clinical.artifacts.vo.cancer.type;
+package org.ncg.clinical.artifacts.vo.indicatorjson;
+
+import java.util.List;
 
 import org.ncg.clinical.artifacts.vo.Coding;
 
@@ -11,8 +13,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CancerTypeObservation {
+public class PanelDetailJson {
 	private String name;
 	private Coding coding;
-	private ValueQuantity valueQuantity;
+	private List<String> members;
 }

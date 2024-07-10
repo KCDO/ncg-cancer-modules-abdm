@@ -1,2809 +1,2304 @@
 {
-  "resourceType": "Bundle",
-  "id": "505b8f31-8cb9-423e-8290-3f0f38031f59",
-  "meta": {
-    "versionId": "0",
-    "lastUpdated": "2024-07-09T20:29:02.822+05:30",
-    "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle" ]
-  },
-  "identifier": {
-    "system": "http://example-provider.org",
-    "value": "OpConsultRecord/505b8f31-8cb9-423e-8290-3f0f38031f59"
-  },
-  "type": "document",
-  "timestamp": "2024-07-09T20:29:02.822+05:30",
-  "entry": [ {
-    "fullUrl": "urn:uuid:43883276-4ba8-4985-b59c-841f94d0cc8a",
-    "resource": {
-      "resourceType": "Composition",
-      "id": "43883276-4ba8-4985-b59c-841f94d0cc8a",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.822+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord" ]
-      },
-      "language": "en-IN",
-      "identifier": {
-        "system": "http://example-provider.org",
-        "value": "43883276-4ba8-4985-b59c-841f94d0cc8a"
-      },
-      "status": "final",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "371530004",
-          "display": "Clinical consultation report"
-        } ],
-        "text": "Clinical consultation report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "encounter": {
-        "reference": "urn:uuid:3dbff2a6-6946-47e3-8f68-88286a97bc6e",
-        "type": "Encounter"
-      },
-      "date": "2024-07-09T20:29:02+05:30",
-      "author": [ {
-        "reference": "urn:uuid:e49908b0-5510-44d4-b3fd-245d6265f260",
-        "type": "Organization",
-        "display": "XYZ Lab Pvt.Ltd."
-      } ],
-      "title": "Consultation Report",
-      "attester": [ {
-        "mode": "legal",
-        "time": "2024-07-09T20:29:02+05:30",
-        "party": {
-          "reference": "urn:uuid:e49908b0-5510-44d4-b3fd-245d6265f260"
-        }
-      } ],
-      "custodian": {
-        "reference": "urn:uuid:e49908b0-5510-44d4-b3fd-245d6265f260",
-        "type": "Organization",
-        "display": "XYZ Lab Pvt.Ltd."
-      },
-      "section": [ {
-        "title": "ChiefComplaints",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "422843007",
-            "display": "Chief complaint section"
-          } ],
-          "text": "Chief complaint section"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:e5762ea9-a073-4370-8039-83b69014235b",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:f650dadf-4452-46c2-91a2-44c3ceb5cae9",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:aa5be9d6-02da-4ea0-993b-2d6b6d657e16",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:1625371a-1ec1-4125-9953-7d79f62d585a",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:7c3a76ec-7492-4a7d-aca8-0a5dcaa03c9c",
-          "type": "Condition"
-        } ]
-      }, {
-        "title": "Procedure",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "371525003",
-            "display": "Clinical procedure report"
-          } ],
-          "text": "Clinical procedure report"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:56c71cc8-3e1a-4e67-b25a-734d7ef39999",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:447d25e1-ed11-479b-b5d8-df7104eb8317",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:71556814-e72f-4442-bc52-8729b9b35c22",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:a4639e43-c390-4a4b-b7f4-5e9040c38959",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:dced1a23-912d-4132-9ae0-f04eb8c354a5",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:50e025e4-dab4-4a5d-b57e-acb72c4704b0",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:b38970ac-9750-4b97-a6ec-cd92a0f67ca1",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:2ade8089-0275-4086-adb7-f1f410b52227",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:74cd2bd7-a8bf-424f-87e2-5e99208354db",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:bf8a2480-93c9-4956-85b0-dce68d5c877a",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:ee6c76ac-d2c4-497d-85e9-5de7c9a7efe9",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:6dd0b4ab-a45b-493b-894a-8a870aec9b1c",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:ca66d18d-b17f-4482-b65d-a8e1bacc102b",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:c83ab6ad-f88c-49d9-8e2d-49304c55653c",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:a4507184-8817-473c-8ad7-09e5a4046778",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:cc7631ba-8d50-47a5-8bc3-ffdf75bbd21f",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:b7483e8d-266d-48c7-9de7-51405da66d03",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:dc006981-c61f-4ad4-a07f-387eceef27f8",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:28453156-0558-4da2-851c-25f8a0ff6100",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:a1065b60-df5c-451d-92b4-898070f86c9e",
-          "type": "Procedure"
-        } ]
-      }, {
-        "title": "OtherObservations",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "404684003",
-            "display": "Clinical finding"
-          } ],
-          "text": "Clinical finding"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:b1963b13-5947-4ad2-b7bd-8c8bfdffba6a",
-          "display": "Observation"
-        }, {
-          "reference": "urn:uuid:41c38f20-e601-4dd1-a7fa-e363a23f9c51",
-          "display": "Observation"
-        }, {
-          "reference": "urn:uuid:827d5dff-378b-4422-8779-df9a6ac95a77",
-          "display": "Observation"
-        }, {
-          "reference": "urn:uuid:bfb04126-6a1f-4a0a-89f8-155a97cafea0",
-          "display": "Observation"
-        }, {
-          "reference": "urn:uuid:7f62207d-8891-4ec9-806b-a35404ad6bdf",
-          "display": "Observation"
-        } ]
-      }, {
-        "title": "Allergies",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "722446000",
-            "display": "Allergy record"
-          } ],
-          "text": "Allergies"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:8826bbaf-7da5-47a6-8cea-146b27330e80",
-          "type": "AllergyIntolerance"
-        }, {
-          "reference": "urn:uuid:7ee2e9eb-9b4f-465f-9225-ea2d0956ec17",
-          "type": "AllergyIntolerance"
-        } ]
-      }, {
-        "title": "MedicalHistory",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "371529009",
-            "display": "History and physical report"
-          } ],
-          "text": "History and physical report"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:d128a16d-ea5a-44de-a9b1-2d8305ba60f4",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:786c9965-0e80-4062-aab6-8801e3048d96",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:7831d58f-6391-4e02-9e7e-3b00ad9735c4",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:faa887f6-9ff5-4198-8ba1-6b61514e4b4d",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:e62c108f-c1fc-4e39-b90d-1c76d6596256",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:aaddccf1-6bcc-4742-b4b2-f32b86d65ae6",
-          "type": "Procedure"
-        }, {
-          "reference": "urn:uuid:67d2ab3e-07bd-43b1-ac6c-510753f7370a",
-          "type": "Condition"
-        }, {
-          "reference": "urn:uuid:8853e95b-8351-42e6-9e46-91e9728d1ccc",
-          "type": "Condition"
-        } ]
-      }, {
-        "title": "Adverse Events",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "418019003",
-            "display": "Accidental event"
-          } ],
-          "text": "Adverse Events"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:1ac1527a-fab0-47a3-8f2e-4d387b334a97",
-          "type": "AdverseEvent"
-        } ]
-      }, {
-        "title": "DocumentReference",
-        "code": {
-          "coding": [ {
-            "system": "http://loinc.org",
-            "code": "72267-8",
-            "display": "Evaluation of mental and physical incapacity certificate"
-          } ],
-          "text": "Evaluation of mental and physical incapacity certificate"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:ed4b6a8c-7796-451a-bde4-6bba3e99a607",
-          "type": "DocumentReference"
-        }, {
-          "reference": "urn:uuid:46e5a9f8-f5fd-4a27-b78e-496b50050cca",
-          "type": "DocumentReference"
-        } ]
-      }, {
-        "title": "OtherObservations",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "404684003",
-            "display": "Clinical finding"
-          } ],
-          "text": "Menstruation History"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:4136ef4d-6e57-4ed7-be15-df5975eb852f",
-          "display": "Observation"
-        }, {
-          "reference": "urn:uuid:7dbf568a-c330-4bdd-b410-417efb967cbf",
-          "display": "Observation"
-        } ]
-      }, {
-        "title": "InvestigationAdvice",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "721963009",
-            "display": "Order document"
-          } ],
-          "text": "Investigation Advice"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:66e96964-1ef1-4c82-88a7-95fbad8f1bc6",
-          "type": "ServiceRequest"
-        }, {
-          "reference": "urn:uuid:6a828c26-f9d6-4dda-abf1-b76a2f3531d1",
-          "type": "ServiceRequest"
-        } ]
-      }, {
-        "title": "Medications",
-        "code": {
-          "coding": [ {
-            "system": "http://snomed.info/sct",
-            "code": "721912009",
-            "display": "Medication summary document"
-          } ],
-          "text": "Ongoing Drugs"
-        },
-        "entry": [ {
-          "reference": "urn:uuid:2fd27024-a730-49d8-99cc-c4cee83b4bff",
-          "type": "MedicationStatement"
-        }, {
-          "reference": "urn:uuid:ba12b15b-ad11-4d0b-976f-213e484e6c06",
-          "type": "MedicationRequest"
-        } ]
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:3bc47436-a7f3-4328-b9c6-e266172ff120",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "3bc47436-a7f3-4328-b9c6-e266172ff120",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.825+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        } ],
-        "text": "Vital Signs"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "8302-2",
-          "display": "Body height"
-        } ],
-        "text": "Body height"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "valueQuantity": {
-        "value": 160.0,
-        "unit": "cm",
-        "system": "http://unitsofmeasure.org",
-        "code": "cm"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:c3fbd877-4540-4f14-948a-ce2499d55525",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "c3fbd877-4540-4f14-948a-ce2499d55525",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.825+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        } ],
-        "text": "Vital Signs"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "29463-7",
-          "display": "weight"
-        } ],
-        "text": "weight"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "valueQuantity": {
-        "value": 62.0,
-        "unit": "kg",
-        "system": "http://unitsofmeasure.org",
-        "code": "kg"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:c4422bde-aabe-4234-8a5e-af942a218b2f",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "c4422bde-aabe-4234-8a5e-af942a218b2f",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.826+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        } ],
-        "text": "Vital Signs"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "39156-5",
-          "display": "Body mass index (BMI) [Ratio]"
-        } ],
-        "text": "Body mass index (BMI) [Ratio]"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "valueQuantity": {
-        "value": 62.0,
-        "unit": "kg/m2",
-        "system": "http://unitsofmeasure.org",
-        "code": "kg/m2"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:a6b73401-a020-448e-a2d8-f796aec3716f",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "a6b73401-a020-448e-a2d8-f796aec3716f",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.826+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        } ],
-        "text": "Vital Signs"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "882-1",
-          "display": "ABO and Rh group [Type] in Blood"
-        } ],
-        "text": "ABO and Rh group [Type] in Blood"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "valueCodeableConcept": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "365637002",
-          "display": "Finding of ABO blood group"
-        } ],
-        "text": "A+"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-    "resource": {
-      "resourceType": "Patient",
-      "id": "92849134-3f8a-49d0-92a9-e554966b7875",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.826+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient" ]
-      },
-      "identifier": [ {
-        "type": {
-          "coding": [ {
-            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-            "code": "MR",
-            "display": "Medical record number"
-          } ],
-          "text": "Medical record number"
-        },
-        "system": "urn:health:information:provider:system",
-        "value": "Health-Information-Provider-Example-Id"
-      }, {
-        "type": {
-          "coding": [ {
-            "system": "https://healthid.abdm.gov.in",
-            "code": "ABHAAddress",
-            "display": "ABHAAddress"
-          } ],
-          "text": "ABHAAddress"
-        },
-        "system": "urn:health:information:provider:system",
-        "value": "patientxyz@abdm"
-      } ],
-      "name": [ {
-        "text": "Testing ABDM NCG",
-        "family": "NCG",
-        "given": [ "Testing ABDM" ]
-      } ],
-      "telecom": [ {
-        "system": "phone",
-        "value": "9898989898"
-      } ],
-      "gender": "male",
-      "birthDate": "1999-08-14",
-      "address": [ {
-        "type": "both",
-        "text": "123, Bangalore, Bangalore, Karnataka, India, Pincode:560103",
-        "city": "Bangalore",
-        "district": "Bangalore",
-        "state": "Karnataka",
-        "postalCode": "560103",
-        "country": "India"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:e49908b0-5510-44d4-b3fd-245d6265f260",
-    "resource": {
-      "resourceType": "Organization",
-      "id": "e49908b0-5510-44d4-b3fd-245d6265f260",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.826+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization" ]
-      },
-      "identifier": [ {
-        "type": {
-          "coding": [ {
-            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-            "code": "PRN",
-            "display": "Provider number"
-          } ],
-          "text": "Provider number"
-        },
-        "system": "https://facility.ndhm.gov.in",
-        "value": "[FACILITY-ID-FROM-REGISTRY]"
-      } ],
-      "name": "XYZ Lab Pvt.Ltd.",
-      "telecom": [ {
-        "system": "phone",
-        "value": "9898989898"
-      }, {
-        "system": "email",
-        "value": "xyz@facility.org"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:3dbff2a6-6946-47e3-8f68-88286a97bc6e",
-    "resource": {
-      "resourceType": "Encounter",
-      "id": "3dbff2a6-6946-47e3-8f68-88286a97bc6e",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.826+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter" ]
-      },
-      "status": "finished",
-      "class": {
-        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-        "code": "AMB",
-        "display": "outpatient encounter"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "period": {
-        "start": "2024-07-09T20:29:02+05:30",
-        "end": "2024-07-10T20:29:02+05:30"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:e5762ea9-a073-4370-8039-83b69014235b",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "e5762ea9-a073-4370-8039-83b69014235b",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.827+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "active",
-          "display": "active"
-        } ],
-        "text": "Active"
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "4221000179107",
-          "display": "Ultrasound imaging report"
-        } ],
-        "text": "Lung Cancer"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:56c71cc8-3e1a-4e67-b25a-734d7ef39999",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "56c71cc8-3e1a-4e67-b25a-734d7ef39999",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.827+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "399345000",
-          "display": "Adult echocardiography procedure report"
-        } ],
-        "text": "2 D ECHO with PASP"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:afb0ffdb-70ad-4188-8698-19a54be43936",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:afb0ffdb-70ad-4188-8698-19a54be43936",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "afb0ffdb-70ad-4188-8698-19a54be43936",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.827+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "399345000",
-          "display": "Adult echocardiography procedure report"
-        } ],
-        "text": "2 D ECHO with PASP report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "2 D ECHO with PASP"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:447d25e1-ed11-479b-b5d8-df7104eb8317",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "447d25e1-ed11-479b-b5d8-df7104eb8317",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "4251000179103",
-          "display": "Magnetic resonance imaging report"
-        } ],
-        "text": "MRI Brain"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:e9931582-5038-4b19-bc54-18cb6664513b",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:e9931582-5038-4b19-bc54-18cb6664513b",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "e9931582-5038-4b19-bc54-18cb6664513b",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "4251000179103",
-          "display": "Magnetic resonance imaging report"
-        } ],
-        "text": "MRI Brain report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "MRI Brain"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:71556814-e72f-4442-bc52-8729b9b35c22",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "71556814-e72f-4442-bc52-8729b9b35c22",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "443271005",
-          "display": "Positron emission tomography with computed tomography using fluorodeoxyglucose (18-F)"
-        } ],
-        "text": "FDG PETCT"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:22f0ecd7-f3b1-4e37-ae14-0c2dfd89f27f",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:22f0ecd7-f3b1-4e37-ae14-0c2dfd89f27f",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "22f0ecd7-f3b1-4e37-ae14-0c2dfd89f27f",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "443271005",
-          "display": "Positron emission tomography with computed tomography using fluorodeoxyglucose (18-F)"
-        } ],
-        "text": "FDG PETCT report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "FDG PETCT"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:a4639e43-c390-4a4b-b7f4-5e9040c38959",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "a4639e43-c390-4a4b-b7f4-5e9040c38959",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "85765000",
-          "display": "Fiberoptic bronchoscopy"
-        } ],
-        "text": "Fiber optic bronchoscopy"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:434d5626-9d03-4121-a68d-e2f268b14aa2",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:434d5626-9d03-4121-a68d-e2f268b14aa2",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "434d5626-9d03-4121-a68d-e2f268b14aa2",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "85765000",
-          "display": "Fiberoptic bronchoscopy"
-        } ],
-        "text": "Fiber optic bronchoscopy report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "Fiber optic bronchoscopy"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:dced1a23-912d-4132-9ae0-f04eb8c354a5",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "dced1a23-912d-4132-9ae0-f04eb8c354a5",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "770575000",
-          "display": "Endobronchial ultrasound report"
-        } ],
-        "text": "Endobronchial ultrasound with ROSE reports"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:06eadba3-abfc-43bf-891d-37af4224157f",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:06eadba3-abfc-43bf-891d-37af4224157f",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "06eadba3-abfc-43bf-891d-37af4224157f",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "770575000",
-          "display": "Endobronchial ultrasound report"
-        } ],
-        "text": "Endobronchial ultrasound with ROSE reports report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "Endobronchial ultrasound with ROSE reports"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:50e025e4-dab4-4a5d-b57e-acb72c4704b0",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "50e025e4-dab4-4a5d-b57e-acb72c4704b0",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "720449003",
-          "display": "Pulmonary function report"
-        } ],
-        "text": "Pulmonary function tests with DLCO"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:8d8d51ad-56d6-4b15-8609-0d4931628be2",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:8d8d51ad-56d6-4b15-8609-0d4931628be2",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "8d8d51ad-56d6-4b15-8609-0d4931628be2",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "720449003",
-          "display": "Pulmonary function report"
-        } ],
-        "text": "Pulmonary function tests with DLCO report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "Pulmonary function tests with DLCO"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:b38970ac-9750-4b97-a6ec-cd92a0f67ca1",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "b38970ac-9750-4b97-a6ec-cd92a0f67ca1",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.828+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "37859006",
-          "display": "Ventilation-perfusion scan"
-        } ],
-        "text": "V/Q scan in pneumonectomy"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:01c7e8e1-f859-4e0e-b5f6-57b5fe95b791",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:01c7e8e1-f859-4e0e-b5f6-57b5fe95b791",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "01c7e8e1-f859-4e0e-b5f6-57b5fe95b791",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "37859006",
-          "display": "Ventilation-perfusion scan"
-        } ],
-        "text": "V/Q scan in pneumonectomy report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "V/Q scan in pneumonectomy"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:2ade8089-0275-4086-adb7-f1f410b52227",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "2ade8089-0275-4086-adb7-f1f410b52227",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "252478000",
-          "display": "6-minute walk test"
-        } ],
-        "text": "6MWT"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:f1bf6c47-578f-491d-94ee-baf975c9b7b8",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:f1bf6c47-578f-491d-94ee-baf975c9b7b8",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "f1bf6c47-578f-491d-94ee-baf975c9b7b8",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "252478000",
-          "display": "6-minute walk test"
-        } ],
-        "text": "6MWT report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "6MWT"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:74cd2bd7-a8bf-424f-87e2-5e99208354db",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "74cd2bd7-a8bf-424f-87e2-5e99208354db",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "405825005",
-          "display": "Molecular genetic test"
-        } ],
-        "text": "Molecular markers/NGS as needed"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:397b1002-edf5-4702-b9c3-6ac00c4c9740",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:397b1002-edf5-4702-b9c3-6ac00c4c9740",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "397b1002-edf5-4702-b9c3-6ac00c4c9740",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "405825005",
-          "display": "Molecular genetic test"
-        } ],
-        "text": "Molecular markers/NGS as needed report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "Molecular markers/NGS as needed"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:f650dadf-4452-46c2-91a2-44c3ceb5cae9",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "f650dadf-4452-46c2-91a2-44c3ceb5cae9",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "active",
-          "display": "active"
-        } ],
-        "text": "Active"
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "371528001",
-          "display": "Pathology report"
-        } ],
-        "text": "Oral Cancer"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:bf8a2480-93c9-4956-85b0-dce68d5c877a",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "bf8a2480-93c9-4956-85b0-dce68d5c877a",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "726566009",
-          "display": "Pathology biopsy report"
-        } ],
-        "text": "FNAC report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:30aa84c6-7de9-4418-9cf0-8cd7f6489938",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:30aa84c6-7de9-4418-9cf0-8cd7f6489938",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "30aa84c6-7de9-4418-9cf0-8cd7f6489938",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "726566009",
-          "display": "Pathology biopsy report"
-        } ],
-        "text": "FNAC report report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "b3JhbGd2cQ==",
-          "title": "FNAC report"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:ee6c76ac-d2c4-497d-85e9-5de7c9a7efe9",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "ee6c76ac-d2c4-497d-85e9-5de7c9a7efe9",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "4251000179103",
-          "display": "Magnetic resonance imaging report"
-        } ],
-        "text": "CECT head neck thorax report/ PET Ct/ MRI"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:06b8625a-6c31-4a83-864c-c626d66db1da",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:06b8625a-6c31-4a83-864c-c626d66db1da",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "06b8625a-6c31-4a83-864c-c626d66db1da",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "4251000179103",
-          "display": "Magnetic resonance imaging report"
-        } ],
-        "text": "CECT head neck thorax report/ PET Ct/ MRI report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "b3JhbDZtd3Q=",
-          "title": "CECT head neck thorax report/ PET Ct/ MRI"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:aa5be9d6-02da-4ea0-993b-2d6b6d657e16",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "aa5be9d6-02da-4ea0-993b-2d6b6d657e16",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "active",
-          "display": "active"
-        } ],
-        "text": "Active"
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "4261000179100",
-          "display": "Computed tomography imaging report"
-        } ],
-        "text": "Cervical Cancer"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:6dd0b4ab-a45b-493b-894a-8a870aec9b1c",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "6dd0b4ab-a45b-493b-894a-8a870aec9b1c",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "36813-4",
-          "display": "CT Abdomen and Pelvis W contrast IV"
-        } ],
-        "text": "MRI pelvis with abdomen / CECT abdomen pelvis"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:59291c1f-1de2-477c-8d50-58005edaf537",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:59291c1f-1de2-477c-8d50-58005edaf537",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "59291c1f-1de2-477c-8d50-58005edaf537",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "36813-4",
-          "display": "CT Abdomen and Pelvis W contrast IV"
-        } ],
-        "text": "MRI pelvis with abdomen / CECT abdomen pelvis report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "MRI pelvis with abdomen / CECT abdomen pelvis"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:1625371a-1ec1-4125-9953-7d79f62d585a",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "1625371a-1ec1-4125-9953-7d79f62d585a",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "active",
-          "display": "active"
-        } ],
-        "text": "Active"
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "91861009",
-          "display": "Acute Myeloid leukemia"
-        } ],
-        "text": "Acute Myeloid leukemia"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:ca66d18d-b17f-4482-b65d-a8e1bacc102b",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "ca66d18d-b17f-4482-b65d-a8e1bacc102b",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "64444005",
-          "display": "Flow cytometry"
-        } ],
-        "text": "Bone marrow or peripheral blood flow cytometry"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:cec372cd-f91a-4691-9ab7-1fbe4edbd2df",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:cec372cd-f91a-4691-9ab7-1fbe4edbd2df",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "cec372cd-f91a-4691-9ab7-1fbe4edbd2df",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "64444005",
-          "display": "Flow cytometry"
-        } ],
-        "text": "Bone marrow or peripheral blood flow cytometry report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "Bone marrow or peripheral blood flow cytometry"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:c83ab6ad-f88c-49d9-8e2d-49304c55653c",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "c83ab6ad-f88c-49d9-8e2d-49304c55653c",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "426329006",
-          "display": "Fluorescence in situ hybridisation"
-        } ],
-        "text": "Fluorescence in situ hybridisation (FISH)"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:0fd63113-3fba-47cb-8395-b76334b2d4ec",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:0fd63113-3fba-47cb-8395-b76334b2d4ec",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "0fd63113-3fba-47cb-8395-b76334b2d4ec",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.829+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "426329006",
-          "display": "Fluorescence in situ hybridisation"
-        } ],
-        "text": "Fluorescence in situ hybridisation (FISH) report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "Fluorescence in situ hybridisation (FISH)"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:a4507184-8817-473c-8ad7-09e5a4046778",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "a4507184-8817-473c-8ad7-09e5a4046778",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "169069000",
-          "display": "Computed tomography of chest"
-        } ],
-        "text": "Baseline NCCT chest"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:a596a384-2142-4693-9d37-f693c901989c",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:a596a384-2142-4693-9d37-f693c901989c",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "a596a384-2142-4693-9d37-f693c901989c",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "169069000",
-          "display": "Computed tomography of chest"
-        } ],
-        "text": "Baseline NCCT chest report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "Baseline NCCT chest"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:cc7631ba-8d50-47a5-8bc3-ffdf75bbd21f",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "cc7631ba-8d50-47a5-8bc3-ffdf75bbd21f",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "721631001",
-          "display": "Bone marrow pathology biopsy report"
-        } ],
-        "text": "Response to induction ( Bone marrow report)"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:d752b2b0-4c6b-4420-bf3b-1ae031053ef6",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:d752b2b0-4c6b-4420-bf3b-1ae031053ef6",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "d752b2b0-4c6b-4420-bf3b-1ae031053ef6",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "721631001",
-          "display": "Bone marrow pathology biopsy report"
-        } ],
-        "text": "Response to induction ( Bone marrow report) report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "Response to induction ( Bone marrow report)"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:b1963b13-5947-4ad2-b7bd-8c8bfdffba6a",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "b1963b13-5947-4ad2-b7bd-8c8bfdffba6a",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "725390002",
-          "display": "Acute myeloid leukemia with t(8;16)(p11;p13) translocation"
-        } ],
-        "text": "Acute myeloid leukemia with t(8;16)(p11;p13) translocation"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "valueQuantity": {
-        "value": 12.0,
-        "unit": "t(8;16)(p11;p13)"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:7c3a76ec-7492-4a7d-aca8-0a5dcaa03c9c",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "7c3a76ec-7492-4a7d-aca8-0a5dcaa03c9c",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "active",
-          "display": "active"
-        } ],
-        "text": "Active"
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "269475001",
-          "display": "Malignant tumor of lymphoid hemopoietic and related tissue"
-        } ],
-        "text": "Malignant tumor of lymphoid hemopoietic and related tissue"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:b7483e8d-266d-48c7-9de7-51405da66d03",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "b7483e8d-266d-48c7-9de7-51405da66d03",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "425983008",
-          "display": "Autologous peripheral blood stem cell transplant"
-        } ],
-        "text": "Autologous peripheral blood stem cell transplant"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:936b057f-c111-4ea2-abc9-d583ecceeec3",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:936b057f-c111-4ea2-abc9-d583ecceeec3",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "936b057f-c111-4ea2-abc9-d583ecceeec3",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "425983008",
-          "display": "Autologous peripheral blood stem cell transplant"
-        } ],
-        "text": "Autologous peripheral blood stem cell transplant report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "Autologous peripheral blood stem cell transplant"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:dc006981-c61f-4ad4-a07f-387eceef27f8",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "dc006981-c61f-4ad4-a07f-387eceef27f8",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "26758005",
-          "display": "Albumin measurement"
-        } ],
-        "text": "Albumin measurement"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "report": [ {
-        "reference": "urn:uuid:4a8e3278-ad41-4e2f-8a8b-84e67c56097b",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:4a8e3278-ad41-4e2f-8a8b-84e67c56097b",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "4a8e3278-ad41-4e2f-8a8b-84e67c56097b",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "26758005",
-          "display": "Albumin measurement"
-        } ],
-        "text": "Albumin measurement report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "Albumin measurement"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:28453156-0558-4da2-851c-25f8a0ff6100",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "28453156-0558-4da2-851c-25f8a0ff6100",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "1751-7"
-        } ],
-        "text": "Albumin [Mass/volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:96a77f77-f456-4b0f-b9bf-9accaac68286",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:96a77f77-f456-4b0f-b9bf-9accaac68286",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "96a77f77-f456-4b0f-b9bf-9accaac68286",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "1751-7"
-        } ],
-        "text": "Albumin [Mass/volume] in Serum or Plasma report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "Albumin [Mass/volume] in Serum or Plasma"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:a1065b60-df5c-451d-92b4-898070f86c9e",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "a1065b60-df5c-451d-92b4-898070f86c9e",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "4261000179100",
-          "display": "Computed tomography imaging report"
-        } ],
-        "text": "Computed tomography imaging report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "report": [ {
-        "reference": "urn:uuid:9dca70a0-dc15-4551-bc22-550efd852580",
-        "type": "DocumentReference"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:9dca70a0-dc15-4551-bc22-550efd852580",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "9dca70a0-dc15-4551-bc22-550efd852580",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "4261000179100",
-          "display": "Computed tomography imaging report"
-        } ],
-        "text": "Computed tomography imaging report report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "Y2VydmljYWw2bW93dA==",
-          "title": "Computed tomography imaging report"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:41c38f20-e601-4dd1-a7fa-e363a23f9c51",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "41c38f20-e601-4dd1-a7fa-e363a23f9c51",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "42984000",
-          "display": "Night sweats"
-        } ],
-        "text": "Night sweats"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "valueQuantity": {
-        "value": 96.0,
-        "unit": "t(8;16)(p11;p13)"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:827d5dff-378b-4422-8779-df9a6ac95a77",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "827d5dff-378b-4422-8779-df9a6ac95a77",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "424122007",
-          "display": "ECOG performance status finding"
-        } ],
-        "text": "ECOG performance status finding"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "valueQuantity": {
-        "value": 96.0,
-        "unit": "t(8;16)(p11;p13)"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:bfb04126-6a1f-4a0a-89f8-155a97cafea0",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "bfb04126-6a1f-4a0a-89f8-155a97cafea0",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.830+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "414482001",
-          "display": "Indication for relapse"
-        } ],
-        "text": "Indication for relapse"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "valueQuantity": {
-        "value": 96.0,
-        "unit": "t(8;16)(p11;p13)"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:7f62207d-8891-4ec9-806b-a35404ad6bdf",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "7f62207d-8891-4ec9-806b-a35404ad6bdf",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.831+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation" ]
-      },
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "395531003",
-          "display": "Neoplasm observable"
-        } ],
-        "text": "Neoplasm observable"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "valueQuantity": {
-        "value": 96.0,
-        "unit": "t(8;16)(p11;p13)"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:8826bbaf-7da5-47a6-8cea-146b27330e80",
-    "resource": {
-      "resourceType": "AllergyIntolerance",
-      "id": "8826bbaf-7da5-47a6-8cea-146b27330e80",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.831+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-          "code": "active",
-          "display": "Active"
-        } ],
-        "text": "Active"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ],
-        "text": "Confirmed"
-      },
-      "type": "allergy",
-      "category": [ "food" ],
-      "patient": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "recordedDate": "2024-07-09T20:29:02+05:30",
-      "recorder": {
-        "reference": "urn:uuid:fc6d3a00-e737-49a5-bbb1-6cf5524bbf0d",
-        "type": "Practitioner"
-      },
-      "note": [ {
-        "text": "The patient reports of: groundnut allergy which is of type: food"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:7ee2e9eb-9b4f-465f-9225-ea2d0956ec17",
-    "resource": {
-      "resourceType": "AllergyIntolerance",
-      "id": "7ee2e9eb-9b4f-465f-9225-ea2d0956ec17",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-          "code": "active",
-          "display": "Active"
-        } ],
-        "text": "Active"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ],
-        "text": "Confirmed"
-      },
-      "type": "allergy",
-      "category": [ "environment" ],
-      "patient": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "recordedDate": "2024-07-09T20:29:02+05:30",
-      "recorder": {
-        "reference": "urn:uuid:fc6d3a00-e737-49a5-bbb1-6cf5524bbf0d",
-        "type": "Practitioner"
-      },
-      "note": [ {
-        "text": "The patient reports of: dust allergy which is of type: environmental"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:d128a16d-ea5a-44de-a9b1-2d8305ba60f4",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "d128a16d-ea5a-44de-a9b1-2d8305ba60f4",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-          "code": "problem-list-item",
-          "display": "Problem List Item"
-        } ],
-        "text": "Problem List Item"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "38341003",
-          "display": "High blood pressure"
-        } ],
-        "text": "Hypertension"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "recordedDate": "2024-07-09T20:29:02+05:30"
-    }
-  }, {
-    "fullUrl": "urn:uuid:786c9965-0e80-4062-aab6-8801e3048d96",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "786c9965-0e80-4062-aab6-8801e3048d96",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-          "code": "encounter-diagnosis",
-          "display": "Encounter Diagnosis"
-        } ],
-        "text": "Encounter Diagnosis"
-      } ],
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "53741008",
-          "display": "Coronary artery disease"
-        } ],
-        "text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "recordedDate": "2024-07-09T20:29:02+05:30"
-    }
-  }, {
-    "fullUrl": "urn:uuid:7831d58f-6391-4e02-9e7e-3b00ad9735c4",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "7831d58f-6391-4e02-9e7e-3b00ad9735c4",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "38341003",
-          "display": "High blood pressure"
-        } ],
-        "text": "Hypertension"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "recordedDate": "2024-07-09T20:29:02+05:30"
-    }
-  }, {
-    "fullUrl": "urn:uuid:faa887f6-9ff5-4198-8ba1-6b61514e4b4d",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "faa887f6-9ff5-4198-8ba1-6b61514e4b4d",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "53741008",
-          "display": "Coronary artery disease"
-        } ],
-        "text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "recordedDate": "2024-07-09T20:29:02+05:30"
-    }
-  }, {
-    "fullUrl": "urn:uuid:e62c108f-c1fc-4e39-b90d-1c76d6596256",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "e62c108f-c1fc-4e39-b90d-1c76d6596256",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "38341003",
-          "display": "High blood pressure"
-        } ],
-        "text": "hypertension"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "performedDateTime": "2020-01-01T10:30:00+05:30",
-      "note": [ {
-        "text": "This patient is suffering from Stage 2 Hypertension."
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:aaddccf1-6bcc-4742-b4b2-f32b86d65ae6",
-    "resource": {
-      "resourceType": "Procedure",
-      "id": "aaddccf1-6bcc-4742-b4b2-f32b86d65ae6",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure" ]
-      },
-      "status": "completed",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "53741008",
-          "display": "Coronary artery disease"
-        } ],
-        "text": "Coronary Artery Disease"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "performedDateTime": "2022-12-01T10:30:00+05:30",
-      "note": [ {
-        "text": "This patient is suffering from severe coronary artery disease. This is a critical condition!"
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:67d2ab3e-07bd-43b1-ac6c-510753f7370a",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "67d2ab3e-07bd-43b1-ac6c-510753f7370a",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "38341003",
-          "display": "High blood pressure"
-        } ],
-        "text": "Hypertension"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "recordedDate": "2024-07-09T20:29:02+05:30"
-    }
-  }, {
-    "fullUrl": "urn:uuid:8853e95b-8351-42e6-9e46-91e9728d1ccc",
-    "resource": {
-      "resourceType": "Condition",
-      "id": "8853e95b-8351-42e6-9e46-91e9728d1ccc",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition" ]
-      },
-      "clinicalStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "resolved"
-      },
-      "verificationStatus": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-          "code": "confirmed",
-          "display": "Confirmed"
-        } ]
-      },
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "53741008",
-          "display": "Coronary artery disease"
-        } ],
-        "text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "recordedDate": "2024-07-09T20:29:02+05:30"
-    }
-  }, {
-    "fullUrl": "urn:uuid:1ac1527a-fab0-47a3-8f2e-4d387b334a97",
-    "resource": {
-      "resourceType": "AdverseEvent",
-      "id": "1ac1527a-fab0-47a3-8f2e-4d387b334a97",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.832+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent" ]
-      },
-      "identifier": {
-        "system": "http://example.com/adverseEvent",
-        "value": "1ac1527a-fab0-47a3-8f2e-4d387b334a97"
-      },
-      "actuality": "actual",
-      "category": [ {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
-          "code": "medication-mishap",
-          "display": "Medication Mishap"
-        } ],
-        "text": "Medication Mishap"
-      } ],
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "date": "2024-07-09T20:29:02+05:30",
-      "detected": "2024-07-09T20:29:02+05:30",
-      "recordedDate": "2024-07-09T20:29:02+05:30",
-      "seriousness": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "24484000",
-          "display": "Severe"
-        } ],
-        "text": "Serious"
-      },
-      "outcome": {
-        "coding": [ {
-          "system": "http://terminology.hl7.org/CodeSystem/adverse-event-outcome",
-          "code": "resolved",
-          "display": "Resolved"
-        } ],
-        "text": "Resolved"
-      },
-      "recorder": {
-        "reference": "urn:uuid:fc6d3a00-e737-49a5-bbb1-6cf5524bbf0d",
-        "type": "Practitioner"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:ed4b6a8c-7796-451a-bde4-6bba3e99a607",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "ed4b6a8c-7796-451a-bde4-6bba3e99a607",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.833+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "94015-5",
-          "display": "Mental health screening report"
-        } ],
-        "text": "Mental Health Screening report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "Mental Health Screening"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:46e5a9f8-f5fd-4a27-b78e-496b50050cca",
-    "resource": {
-      "resourceType": "DocumentReference",
-      "id": "46e5a9f8-f5fd-4a27-b78e-496b50050cca",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.833+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference" ]
-      },
-      "status": "current",
-      "type": {
-        "coding": [ {
-          "system": "http://loinc.org",
-          "code": "80420-3",
-          "display": "Mental health Mandatory reporting form"
-        } ],
-        "text": "Mental health Mandatory reporting report"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "content": [ {
-        "attachment": {
-          "contentType": "application/pdf",
-          "data": "bHVuZzZtb3d0",
-          "title": "Mental health Mandatory reporting"
-        }
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:4136ef4d-6e57-4ed7-be15-df5975eb852f",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "4136ef4d-6e57-4ed7-be15-df5975eb852f",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "719303004",
-          "display": "Assessment of pregnancy status prior to imaging"
-        } ],
-        "text": "Assessment of pregnancy status prior to imaging"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "performer": [ {
-        "reference": "urn:uuid:fc6d3a00-e737-49a5-bbb1-6cf5524bbf0d",
-        "type": "Practitioner"
-      } ],
-      "valueString": "Not pregnant"
-    }
-  }, {
-    "fullUrl": "urn:uuid:7dbf568a-c330-4bdd-b410-417efb967cbf",
-    "resource": {
-      "resourceType": "Observation",
-      "id": "7dbf568a-c330-4bdd-b410-417efb967cbf",
-      "status": "final",
-      "code": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "80182007",
-          "display": "Irregular periods"
-        } ],
-        "text": "Irregular periods"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "effectiveDateTime": "2024-07-09T20:29:02+05:30",
-      "performer": [ {
-        "reference": "urn:uuid:fc6d3a00-e737-49a5-bbb1-6cf5524bbf0d",
-        "type": "Practitioner"
-      } ],
-      "valueString": "Irregular periods"
-    }
-  }, {
-    "fullUrl": "urn:uuid:66e96964-1ef1-4c82-88a7-95fbad8f1bc6",
-    "resource": {
-      "resourceType": "ServiceRequest",
-      "id": "66e96964-1ef1-4c82-88a7-95fbad8f1bc6",
-      "status": "active",
-      "intent": "order",
-      "code": {
-        "text": "Chest CT"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
-      "requester": {
-        "reference": "urn:uuid:Practitioner/example1"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:6a828c26-f9d6-4dda-abf1-b76a2f3531d1",
-    "resource": {
-      "resourceType": "ServiceRequest",
-      "id": "6a828c26-f9d6-4dda-abf1-b76a2f3531d1",
-      "status": "active",
-      "intent": "order",
-      "code": {
-        "text": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
-      "requester": {
-        "reference": "urn:uuid:Practitioner/example2"
-      }
-    }
-  }, {
-    "fullUrl": "urn:uuid:2fd27024-a730-49d8-99cc-c4cee83b4bff",
-    "resource": {
-      "resourceType": "MedicationStatement",
-      "id": "2fd27024-a730-49d8-99cc-c4cee83b4bff",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.833+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement" ]
-      },
-      "status": "completed",
-      "medicationCodeableConcept": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "721912009",
-          "display": "Medication summary document"
-        } ],
-        "text": "Ongoing Drugs"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient",
-        "display": "Testing ABDM NCG"
-      },
-      "effectivePeriod": {
-        "start": "2014-02-01T05:30:00+05:30"
-      },
-      "dateAsserted": "2014-02-22T05:30:00+05:30",
-      "derivedFrom": [ {
-        "reference": "Patient/pat1"
-      } ],
-      "reasonCode": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "323732002",
-          "display": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
-        } ],
-        "text": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
-      } ],
-      "note": [ {
-        "text": "Father indicates they miss the occasional dose"
-      } ],
-      "dosage": [ {
-        "doseAndRate": [ {
-          "doseQuantity": {
-            "value": 500.0,
-            "unit": "mg",
-            "system": "http://unitsofmeasure.org",
-            "code": "mg"
-          },
-          "rateQuantity": {
-            "value": 3.0,
-            "unit": "1/d",
-            "system": "http://unitsofmeasure.org",
-            "code": "{1/d}"
-          }
-        } ]
-      } ]
-    }
-  }, {
-    "fullUrl": "urn:uuid:ba12b15b-ad11-4d0b-976f-213e484e6c06",
-    "resource": {
-      "resourceType": "MedicationRequest",
-      "id": "ba12b15b-ad11-4d0b-976f-213e484e6c06",
-      "meta": {
-        "versionId": "0",
-        "lastUpdated": "2024-07-09T20:29:02.834+05:30",
-        "profile": [ "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest" ]
-      },
-      "status": "active",
-      "intent": "proposal",
-      "medicationCodeableConcept": {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "785686003",
-          "display": "Amoxicillin anhydrous"
-        } ],
-        "text": "Amoxicillin anhydrous (substance)"
-      },
-      "subject": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "authoredOn": "2024-07-09T20:29:02+05:30",
-      "requester": {
-        "reference": "urn:uuid:92849134-3f8a-49d0-92a9-e554966b7875",
-        "type": "Patient"
-      },
-      "reasonCode": [ {
-        "coding": [ {
-          "system": "http://snomed.info/sct",
-          "code": "785686003",
-          "display": "Amoxicillin anhydrous"
-        } ],
-        "text": "Amoxicillin anhydrous (substance)"
-      } ],
-      "reasonReference": [ {
-        "reference": "urn:uuid:dcb03d02-dfc8-43b2-9bf0-4795620bd6e1",
-        "type": "Condition"
-      } ],
-      "dosageInstruction": [ {
-        "doseAndRate": [ {
-          "doseQuantity": {
-            "value": 500.0,
-            "unit": "mg",
-            "system": "http://unitsofmeasure.org",
-            "code": "mg"
-          },
-          "rateQuantity": {
-            "value": 3.0,
-            "unit": "1/d",
-            "system": "http://unitsofmeasure.org",
-            "code": "{1/d}"
-          }
-        } ]
-      } ]
-    }
-  } ]
+	"resourceType": "Bundle",
+	"id": "1afc9dfb-9dab-4bc9-a91a-f9c97935ad48",
+	"meta": {
+		"versionId": "0",
+		"lastUpdated": "2024-07-10T19:05:39.735+05:30",
+		"profile": [
+			"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+		]
+	},
+	"identifier": {
+		"system": "http://example-provider.org",
+		"value": "OpConsultRecord/1afc9dfb-9dab-4bc9-a91a-f9c97935ad48"
+	},
+	"type": "document",
+	"timestamp": "2024-07-10T19:05:39.735+05:30",
+	"entry": [
+		{
+			"fullUrl": "urn:uuid:8089accf-5e17-49ef-a993-9bab801e0679",
+			"resource": {
+				"resourceType": "Composition",
+				"id": "8089accf-5e17-49ef-a993-9bab801e0679",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.735+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
+					]
+				},
+				"language": "en-IN",
+				"identifier": {
+					"system": "http://example-provider.org",
+					"value": "8089accf-5e17-49ef-a993-9bab801e0679"
+				},
+				"status": "final",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "371530004",
+							"display": "Clinical consultation report"
+						}
+					],
+					"text": "Clinical consultation report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"encounter": {
+					"reference": "urn:uuid:efde9afa-7434-4125-9be5-8e3760a58552",
+					"type": "Encounter"
+				},
+				"date": "2024-07-10T19:05:39+05:30",
+				"author": [
+					{
+						"reference": "urn:uuid:8a7f5519-11af-43cd-8aeb-890c064ac0b1",
+						"type": "Organization",
+						"display": "XYZ Lab Pvt.Ltd."
+					}
+				],
+				"title": "Consultation Report",
+				"attester": [
+					{
+						"mode": "legal",
+						"time": "2024-07-10T19:05:39+05:30",
+						"party": {
+							"reference": "urn:uuid:8a7f5519-11af-43cd-8aeb-890c064ac0b1"
+						}
+					}
+				],
+				"custodian": {
+					"reference": "urn:uuid:8a7f5519-11af-43cd-8aeb-890c064ac0b1",
+					"type": "Organization",
+					"display": "XYZ Lab Pvt.Ltd."
+				},
+				"section": [
+					{
+						"title": "ChiefComplaints",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "422843007",
+									"display": "Chief complaint section"
+								}
+							],
+							"text": "Chief complaint section"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:f6f84c9b-2f8b-4a72-a4f1-52e598bd6968",
+								"type": "Condition"
+							},
+							{
+								"reference": "urn:uuid:9046571b-b40c-421e-a093-83e255da814d",
+								"type": "Condition"
+							}
+						]
+					},
+					{
+						"title": "Procedure",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "371525003",
+									"display": "Clinical procedure report"
+								}
+							],
+							"text": "Clinical procedure report"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:46ce1cb3-22ab-4edb-9d9c-43a5a5ab2124",
+								"type": "Procedure"
+							},
+							{
+								"reference": "urn:uuid:aea943e5-37e4-4446-8c0c-66d7c94fbba0",
+								"type": "Procedure"
+							},
+							{
+								"reference": "urn:uuid:34231f18-e52e-494b-a1c0-203cb7e13fae",
+								"type": "Procedure"
+							},
+							{
+								"reference": "urn:uuid:0311be62-fc4d-46fd-8ac2-85a74885a3ae",
+								"type": "Procedure"
+							},
+							{
+								"reference": "urn:uuid:653c348e-8b08-4082-b4c6-95b28b327c5f",
+								"type": "Procedure"
+							},
+							{
+								"reference": "urn:uuid:b1539825-ab17-4862-9758-edee44feb57c",
+								"type": "Procedure"
+							},
+							{
+								"reference": "urn:uuid:54e7a87b-0cab-4831-9d1f-75891c6cdffd",
+								"type": "Procedure"
+							}
+						]
+					},
+					{
+						"title": "OtherObservations",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "404684003",
+									"display": "Clinical finding"
+								}
+							],
+							"text": "Clinical finding"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:fc6fdb27-5def-459c-9033-14ffa8f58728",
+								"type": "Observation"
+							},
+							{
+								"reference": "urn:uuid:5a7af2d4-4216-4a9a-a4c0-1b1962ade4eb",
+								"type": "Observation"
+							},
+							{
+								"reference": "urn:uuid:d3c39390-8de1-4cc7-a6a9-999f5a9e8725",
+								"type": "Observation"
+							},
+							{
+								"reference": "urn:uuid:1b513441-5158-4af7-9db6-bdfa9606eda2",
+								"type": "Observation"
+							},
+							{
+								"reference": "urn:uuid:a70010df-8119-4df6-a992-92b2d5bacf41",
+								"type": "Observation"
+							},
+							{
+								"reference": "urn:uuid:88804ec1-eeb1-4787-a1d4-8fcbdcb8c47e",
+								"type": "Observation"
+							}
+						]
+					},
+					{
+						"title": "Allergies",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "722446000",
+									"display": "Allergy record"
+								}
+							],
+							"text": "Allergies"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:c886c352-56da-4a3d-8561-875dc6dcbf03",
+								"type": "AllergyIntolerance"
+							},
+							{
+								"reference": "urn:uuid:af89ccea-cc6b-4fc7-93e3-d78eef8d5cac",
+								"type": "AllergyIntolerance"
+							}
+						]
+					},
+					{
+						"title": "MedicalHistory",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "371529009",
+									"display": "History and physical report"
+								}
+							],
+							"text": "History and physical report"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:01f3cb2a-43b9-4288-a5d1-d120d94ebe36",
+								"type": "Condition"
+							},
+							{
+								"reference": "urn:uuid:61ab43d4-55be-4da0-8c4b-7b2a9ab14fc9",
+								"type": "Condition"
+							},
+							{
+								"reference": "urn:uuid:05c2058e-dcf6-40e5-9c6a-2a14ff518d58",
+								"type": "Condition"
+							},
+							{
+								"reference": "urn:uuid:8727867d-ab28-41c1-aaf9-a97ac3416f87",
+								"type": "Condition"
+							},
+							{
+								"reference": "urn:uuid:38af1d5a-2432-4906-9f5f-45681e83de36",
+								"type": "Procedure"
+							},
+							{
+								"reference": "urn:uuid:95c8885c-5493-4420-8838-b8881c0e7b6e",
+								"type": "Procedure"
+							},
+							{
+								"reference": "urn:uuid:6eedab3b-1779-42e5-8c37-48f80060b7e4",
+								"type": "Condition"
+							},
+							{
+								"reference": "urn:uuid:6d54576b-4d2c-466d-8aad-815a9c065fb6",
+								"type": "Condition"
+							}
+						]
+					},
+					{
+						"title": "Adverse Events",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "418019003",
+									"display": "Accidental event"
+								}
+							],
+							"text": "Adverse Events"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:0724eb5c-dc94-489d-9779-0b3d81aa39d7",
+								"type": "AdverseEvent"
+							}
+						]
+					},
+					{
+						"title": "DocumentReference",
+						"code": {
+							"coding": [
+								{
+									"system": "http://loinc.org",
+									"code": "72267-8",
+									"display": "Evaluation of mental and physical incapacity certificate"
+								}
+							],
+							"text": "Evaluation of mental and physical incapacity certificate"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:3552901b-ace7-4bb5-a600-bd86c4180b1c",
+								"type": "DocumentReference"
+							},
+							{
+								"reference": "urn:uuid:f655860d-a874-4a27-858b-9fef6805f8b4",
+								"type": "DocumentReference"
+							}
+						]
+					},
+					{
+						"title": "InvestigationAdvice",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "721963009",
+									"display": "Order document"
+								}
+							],
+							"text": "Investigation Advice"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:5f813a12-ad89-4316-aa55-b38b4a537aff",
+								"type": "ServiceRequest"
+							},
+							{
+								"reference": "urn:uuid:b74a65f2-c070-4e5a-9fc0-5ce6c0062a32",
+								"type": "ServiceRequest"
+							}
+						]
+					},
+					{
+						"title": "Medications",
+						"code": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "721912009",
+									"display": "Medication summary document"
+								}
+							],
+							"text": "Ongoing Drugs"
+						},
+						"entry": [
+							{
+								"reference": "urn:uuid:27872d78-23db-4855-9d0a-c64ee2f343f7",
+								"type": "MedicationStatement"
+							},
+							{
+								"reference": "urn:uuid:1aa601e3-5a25-4390-b21a-7f70fa3281b9",
+								"type": "MedicationRequest"
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:1d84c6be-f3b8-40b4-84ca-5c8fa0fc05e1",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "1d84c6be-f3b8-40b4-84ca-5c8fa0fc05e1",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.739+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"status": "final",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+								"code": "vital-signs",
+								"display": "Vital Signs"
+							}
+						],
+						"text": "Vital Signs"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "8302-2",
+							"display": "Body height"
+						}
+					],
+					"text": "Body height"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"valueQuantity": {
+					"value": 160.0,
+					"unit": "cm",
+					"system": "http://unitsofmeasure.org",
+					"code": "cm"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:1940798a-2d6a-4e86-a912-de6cac13be9a",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "1940798a-2d6a-4e86-a912-de6cac13be9a",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.739+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"status": "final",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+								"code": "vital-signs",
+								"display": "Vital Signs"
+							}
+						],
+						"text": "Vital Signs"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "29463-7",
+							"display": "weight"
+						}
+					],
+					"text": "weight"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"valueQuantity": {
+					"value": 62.0,
+					"unit": "kg",
+					"system": "http://unitsofmeasure.org",
+					"code": "kg"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:1f637594-0954-443e-a7ab-96c4468afcf5",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "1f637594-0954-443e-a7ab-96c4468afcf5",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.741+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"status": "final",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+								"code": "vital-signs",
+								"display": "Vital Signs"
+							}
+						],
+						"text": "Vital Signs"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "39156-5",
+							"display": "Body mass index (BMI) [Ratio]"
+						}
+					],
+					"text": "Body mass index (BMI) [Ratio]"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"valueQuantity": {
+					"value": 62.0,
+					"unit": "kg/m2",
+					"system": "http://unitsofmeasure.org",
+					"code": "kg/m2"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:92d07715-4d92-4314-9486-dbb42b718cf4",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "92d07715-4d92-4314-9486-dbb42b718cf4",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.741+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"status": "final",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/observation-category",
+								"code": "vital-signs",
+								"display": "Vital Signs"
+							}
+						],
+						"text": "Vital Signs"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "882-1",
+							"display": "ABO and Rh group [Type] in Blood"
+						}
+					],
+					"text": "ABO and Rh group [Type] in Blood"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"valueCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "365637002",
+							"display": "Finding of ABO blood group"
+						}
+					],
+					"text": "A+"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+			"resource": {
+				"resourceType": "Patient",
+				"id": "b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.741+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+					]
+				},
+				"identifier": [
+					{
+						"type": {
+							"coding": [
+								{
+									"system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+									"code": "MR",
+									"display": "Medical record number"
+								}
+							],
+							"text": "Medical record number"
+						},
+						"system": "urn:health:information:provider:system",
+						"value": "Health-Information-Provider-Example-Id"
+					},
+					{
+						"type": {
+							"coding": [
+								{
+									"system": "https://healthid.abdm.gov.in",
+									"code": "ABHAAddress",
+									"display": "ABHAAddress"
+								}
+							],
+							"text": "ABHAAddress"
+						},
+						"system": "urn:health:information:provider:system",
+						"value": "patientxyz@abdm"
+					}
+				],
+				"name": [
+					{
+						"text": "Testing ABDM NCG",
+						"family": "NCG",
+						"given": [
+							"Testing ABDM"
+						]
+					}
+				],
+				"telecom": [
+					{
+						"system": "phone",
+						"value": "9898989898"
+					}
+				],
+				"gender": "male",
+				"birthDate": "1999-08-14",
+				"address": [
+					{
+						"type": "both",
+						"text": "123, Bangalore, Bangalore, Karnataka, India, Pincode:560103",
+						"city": "Bangalore",
+						"district": "Bangalore",
+						"state": "Karnataka",
+						"postalCode": "560103",
+						"country": "India"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:8a7f5519-11af-43cd-8aeb-890c064ac0b1",
+			"resource": {
+				"resourceType": "Organization",
+				"id": "8a7f5519-11af-43cd-8aeb-890c064ac0b1",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.741+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+					]
+				},
+				"identifier": [
+					{
+						"type": {
+							"coding": [
+								{
+									"system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+									"code": "PRN",
+									"display": "Provider number"
+								}
+							],
+							"text": "Provider number"
+						},
+						"system": "https://facility.ndhm.gov.in",
+						"value": "[FACILITY-ID-FROM-REGISTRY]"
+					}
+				],
+				"name": "XYZ Lab Pvt.Ltd.",
+				"telecom": [
+					{
+						"system": "phone",
+						"value": "9898989898"
+					},
+					{
+						"system": "email",
+						"value": "xyz@facility.org"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:efde9afa-7434-4125-9be5-8e3760a58552",
+			"resource": {
+				"resourceType": "Encounter",
+				"id": "efde9afa-7434-4125-9be5-8e3760a58552",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.741+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
+					]
+				},
+				"status": "finished",
+				"class": {
+					"system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+					"code": "AMB",
+					"display": "outpatient encounter"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"period": {
+					"start": "2024-07-10T19:05:39+05:30",
+					"end": "2024-07-11T19:05:39+05:30"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:f6f84c9b-2f8b-4a72-a4f1-52e598bd6968",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "f6f84c9b-2f8b-4a72-a4f1-52e598bd6968",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.742+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "active",
+							"display": "active"
+						}
+					],
+					"text": "Active"
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "91861009",
+							"display": "Acute Myeloid leukemia"
+						}
+					],
+					"text": "Acute Myeloid leukemia"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:46ce1cb3-22ab-4edb-9d9c-43a5a5ab2124",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "46ce1cb3-22ab-4edb-9d9c-43a5a5ab2124",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.743+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "64444005",
+							"display": "Flow cytometry"
+						}
+					],
+					"text": "Bone marrow or peripheral blood flow cytometry"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"report": [
+					{
+						"reference": "urn:uuid:e0ad21fa-5721-4bcc-8d9a-8557386823dc",
+						"type": "DocumentReference"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:e0ad21fa-5721-4bcc-8d9a-8557386823dc",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "e0ad21fa-5721-4bcc-8d9a-8557386823dc",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.743+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "64444005",
+							"display": "Flow cytometry"
+						}
+					],
+					"text": "Bone marrow or peripheral blood flow cytometry report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "Y2VydmljYWw2bW93dA==",
+							"title": "Bone marrow or peripheral blood flow cytometry"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:aea943e5-37e4-4446-8c0c-66d7c94fbba0",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "aea943e5-37e4-4446-8c0c-66d7c94fbba0",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.743+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "426329006",
+							"display": "Fluorescence in situ hybridisation"
+						}
+					],
+					"text": "Fluorescence in situ hybridisation (FISH)"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"report": [
+					{
+						"reference": "urn:uuid:40170c9c-59d1-40de-a52e-7aeb92e920ee",
+						"type": "DocumentReference"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:40170c9c-59d1-40de-a52e-7aeb92e920ee",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "40170c9c-59d1-40de-a52e-7aeb92e920ee",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.743+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "426329006",
+							"display": "Fluorescence in situ hybridisation"
+						}
+					],
+					"text": "Fluorescence in situ hybridisation (FISH) report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "Y2VydmljYWw2bW93dA==",
+							"title": "Fluorescence in situ hybridisation (FISH)"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:34231f18-e52e-494b-a1c0-203cb7e13fae",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "34231f18-e52e-494b-a1c0-203cb7e13fae",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.743+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "169069000",
+							"display": "Computed tomography of chest"
+						}
+					],
+					"text": "Baseline NCCT chest"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"report": [
+					{
+						"reference": "urn:uuid:d1f16f51-9660-4246-ad78-5201c461f8e3",
+						"type": "DocumentReference"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:d1f16f51-9660-4246-ad78-5201c461f8e3",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "d1f16f51-9660-4246-ad78-5201c461f8e3",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.743+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "169069000",
+							"display": "Computed tomography of chest"
+						}
+					],
+					"text": "Baseline NCCT chest report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "Y2VydmljYWw2bW93dA==",
+							"title": "Baseline NCCT chest"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:fc6fdb27-5def-459c-9033-14ffa8f58728",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "fc6fdb27-5def-459c-9033-14ffa8f58728",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.744+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"status": "final",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "725390002",
+							"display": "Acute myeloid leukemia with t(8;16)(p11;p13) translocation"
+						}
+					],
+					"text": "Acute myeloid leukemia with t(8;16)(p11;p13) translocation"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"valueQuantity": {
+					"value": 12.0,
+					"unit": "t(8;16)(p11;p13)"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:9046571b-b40c-421e-a093-83e255da814d",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "9046571b-b40c-421e-a093-83e255da814d",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.744+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "active",
+							"display": "active"
+						}
+					],
+					"text": "Active"
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "269475001",
+							"display": "Malignant tumor of lymphoid hemopoietic and related tissue"
+						}
+					],
+					"text": "Malignant tumor of lymphoid hemopoietic and related tissue"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:5a7af2d4-4216-4a9a-a4c0-1b1962ade4eb",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "5a7af2d4-4216-4a9a-a4c0-1b1962ade4eb",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.744+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"status": "final",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "C1706867",
+							"display": "B Symptoms"
+						}
+					],
+					"text": "B Symptoms"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"valueQuantity": {
+					"value": 96.0,
+					"unit": "t(8;16)(p11;p13)"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:d3c39390-8de1-4cc7-a6a9-999f5a9e8725",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "d3c39390-8de1-4cc7-a6a9-999f5a9e8725",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"status": "final",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "424122007",
+							"display": "ECOG performance status finding"
+						}
+					],
+					"text": "ECOG performance status finding"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"valueQuantity": {
+					"value": 96.0,
+					"unit": "t(8;16)(p11;p13)"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:0311be62-fc4d-46fd-8ac2-85a74885a3ae",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "0311be62-fc4d-46fd-8ac2-85a74885a3ae",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "108290001",
+							"display": "Radiotherapy"
+						}
+					],
+					"text": "Radiotherapy"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"report": [
+					{
+						"reference": "urn:uuid:709c017b-afe3-4039-943d-83fb2ce76e1d",
+						"type": "DocumentReference"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:709c017b-afe3-4039-943d-83fb2ce76e1d",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "709c017b-afe3-4039-943d-83fb2ce76e1d",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "108290001",
+							"display": "Radiotherapy"
+						}
+					],
+					"text": "Radiotherapy report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "Y2VydmljYWw2bW93dA==",
+							"title": "Radiotherapy"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:1b513441-5158-4af7-9db6-bdfa9606eda2",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "1b513441-5158-4af7-9db6-bdfa9606eda2",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+					]
+				},
+				"status": "final",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "12301000132103",
+							"display": "Acute lymphoid leukemia relapse (disorder)"
+						}
+					],
+					"text": "Acute lymphoid leukemia relapse (disorder)"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"valueQuantity": {
+					"value": 96.0,
+					"unit": "t(8;16)(p11;p13)"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:653c348e-8b08-4082-b4c6-95b28b327c5f",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "653c348e-8b08-4082-b4c6-95b28b327c5f",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "425983008",
+							"display": "Autologous peripheral blood stem cell transplant"
+						}
+					],
+					"text": "Autologous peripheral blood stem cell transplant"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"report": [
+					{
+						"reference": "urn:uuid:0783c2c9-764a-4e5b-8487-76fbcf019a9b",
+						"type": "DocumentReference"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:0783c2c9-764a-4e5b-8487-76fbcf019a9b",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "0783c2c9-764a-4e5b-8487-76fbcf019a9b",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "425983008",
+							"display": "Autologous peripheral blood stem cell transplant"
+						}
+					],
+					"text": "Autologous peripheral blood stem cell transplant report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "Y2VydmljYWw2bW93dA==",
+							"title": "Autologous peripheral blood stem cell transplant"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:b1539825-ab17-4862-9758-edee44feb57c",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "b1539825-ab17-4862-9758-edee44feb57c",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "26758005",
+							"display": "Albumin measurement"
+						}
+					],
+					"text": "Albumin measurement"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"report": [
+					{
+						"reference": "urn:uuid:e8ab7a20-a944-45c0-81ef-24e2d5cff1ce",
+						"type": "DocumentReference"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:e8ab7a20-a944-45c0-81ef-24e2d5cff1ce",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "e8ab7a20-a944-45c0-81ef-24e2d5cff1ce",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "26758005",
+							"display": "Albumin measurement"
+						}
+					],
+					"text": "Albumin measurement report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "Y2VydmljYWw2bW93dA==",
+							"title": "Albumin measurement"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:54e7a87b-0cab-4831-9d1f-75891c6cdffd",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "54e7a87b-0cab-4831-9d1f-75891c6cdffd",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "11274001",
+							"display": "Lactic acid dehydrogenase measurement"
+						}
+					],
+					"text": "Albumin"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"report": [
+					{
+						"reference": "urn:uuid:06194a62-ffe8-4140-a345-6a31ea28de8e",
+						"type": "DocumentReference"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:06194a62-ffe8-4140-a345-6a31ea28de8e",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "06194a62-ffe8-4140-a345-6a31ea28de8e",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.745+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "11274001",
+							"display": "Lactic acid dehydrogenase measurement"
+						}
+					],
+					"text": "Albumin report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "Y2VydmljYWw2bW93dA==",
+							"title": "Albumin"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:c886c352-56da-4a3d-8561-875dc6dcbf03",
+			"resource": {
+				"resourceType": "AllergyIntolerance",
+				"id": "c886c352-56da-4a3d-8561-875dc6dcbf03",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.746+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+							"code": "active",
+							"display": "Active"
+						}
+					],
+					"text": "Active"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					],
+					"text": "Confirmed"
+				},
+				"type": "allergy",
+				"category": [
+					"food"
+				],
+				"patient": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"recordedDate": "2024-07-10T19:05:39+05:30",
+				"recorder": {
+					"reference": "urn:uuid:9374bd00-f644-4570-a650-0abd29b77ceb",
+					"type": "Practitioner"
+				},
+				"note": [
+					{
+						"text": "The patient reports of: groundnut allergy which is of type: food"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:af89ccea-cc6b-4fc7-93e3-d78eef8d5cac",
+			"resource": {
+				"resourceType": "AllergyIntolerance",
+				"id": "af89ccea-cc6b-4fc7-93e3-d78eef8d5cac",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+							"code": "active",
+							"display": "Active"
+						}
+					],
+					"text": "Active"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					],
+					"text": "Confirmed"
+				},
+				"type": "allergy",
+				"category": [
+					"environment"
+				],
+				"patient": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"recordedDate": "2024-07-10T19:05:39+05:30",
+				"recorder": {
+					"reference": "urn:uuid:9374bd00-f644-4570-a650-0abd29b77ceb",
+					"type": "Practitioner"
+				},
+				"note": [
+					{
+						"text": "The patient reports of: dust allergy which is of type: environmental"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:01f3cb2a-43b9-4288-a5d1-d120d94ebe36",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "01f3cb2a-43b9-4288-a5d1-d120d94ebe36",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/condition-category",
+								"code": "problem-list-item",
+								"display": "Problem List Item"
+							}
+						],
+						"text": "Problem List Item"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "38341003",
+							"display": "High blood pressure"
+						}
+					],
+					"text": "Hypertension"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"recordedDate": "2024-07-10T19:05:39+05:30"
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:61ab43d4-55be-4da0-8c4b-7b2a9ab14fc9",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "61ab43d4-55be-4da0-8c4b-7b2a9ab14fc9",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/condition-category",
+								"code": "encounter-diagnosis",
+								"display": "Encounter Diagnosis"
+							}
+						],
+						"text": "Encounter Diagnosis"
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "53741008",
+							"display": "Coronary artery disease"
+						}
+					],
+					"text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"recordedDate": "2024-07-10T19:05:39+05:30"
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:05c2058e-dcf6-40e5-9c6a-2a14ff518d58",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "05c2058e-dcf6-40e5-9c6a-2a14ff518d58",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "38341003",
+							"display": "High blood pressure"
+						}
+					],
+					"text": "Hypertension"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"recordedDate": "2024-07-10T19:05:39+05:30"
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:8727867d-ab28-41c1-aaf9-a97ac3416f87",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "8727867d-ab28-41c1-aaf9-a97ac3416f87",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "53741008",
+							"display": "Coronary artery disease"
+						}
+					],
+					"text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"recordedDate": "2024-07-10T19:05:39+05:30"
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:38af1d5a-2432-4906-9f5f-45681e83de36",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "38af1d5a-2432-4906-9f5f-45681e83de36",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "38341003",
+							"display": "High blood pressure"
+						}
+					],
+					"text": "hypertension"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"performedDateTime": "2020-01-01T10:30:00+05:30",
+				"note": [
+					{
+						"text": "This patient is suffering from Stage 2 Hypertension."
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:95c8885c-5493-4420-8838-b8881c0e7b6e",
+			"resource": {
+				"resourceType": "Procedure",
+				"id": "95c8885c-5493-4420-8838-b8881c0e7b6e",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+					]
+				},
+				"status": "completed",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "53741008",
+							"display": "Coronary artery disease"
+						}
+					],
+					"text": "Coronary Artery Disease"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"performedDateTime": "2022-12-01T10:30:00+05:30",
+				"note": [
+					{
+						"text": "This patient is suffering from severe coronary artery disease. This is a critical condition!"
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:6eedab3b-1779-42e5-8c37-48f80060b7e4",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "6eedab3b-1779-42e5-8c37-48f80060b7e4",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "38341003",
+							"display": "High blood pressure"
+						}
+					],
+					"text": "Hypertension"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"recordedDate": "2024-07-10T19:05:39+05:30"
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:6d54576b-4d2c-466d-8aad-815a9c065fb6",
+			"resource": {
+				"resourceType": "Condition",
+				"id": "6d54576b-4d2c-466d-8aad-815a9c065fb6",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.747+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+					]
+				},
+				"clinicalStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "resolved"
+				},
+				"verificationStatus": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+							"code": "confirmed",
+							"display": "Confirmed"
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "53741008",
+							"display": "Coronary artery disease"
+						}
+					],
+					"text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"recordedDate": "2024-07-10T19:05:39+05:30"
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:0724eb5c-dc94-489d-9779-0b3d81aa39d7",
+			"resource": {
+				"resourceType": "AdverseEvent",
+				"id": "0724eb5c-dc94-489d-9779-0b3d81aa39d7",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.748+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent"
+					]
+				},
+				"identifier": {
+					"system": "http://example.com/adverseEvent",
+					"value": "0724eb5c-dc94-489d-9779-0b3d81aa39d7"
+				},
+				"actuality": "actual",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
+								"code": "medication-mishap",
+								"display": "Medication Mishap"
+							}
+						],
+						"text": "Medication Mishap"
+					}
+				],
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"date": "2024-07-10T19:05:39+05:30",
+				"detected": "2024-07-10T19:05:39+05:30",
+				"recordedDate": "2024-07-10T19:05:39+05:30",
+				"seriousness": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "24484000",
+							"display": "Severe"
+						}
+					],
+					"text": "Serious"
+				},
+				"outcome": {
+					"coding": [
+						{
+							"system": "http://terminology.hl7.org/CodeSystem/adverse-event-outcome",
+							"code": "resolved",
+							"display": "Resolved"
+						}
+					],
+					"text": "Resolved"
+				},
+				"recorder": {
+					"reference": "urn:uuid:9374bd00-f644-4570-a650-0abd29b77ceb",
+					"type": "Practitioner"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:3552901b-ace7-4bb5-a600-bd86c4180b1c",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "3552901b-ace7-4bb5-a600-bd86c4180b1c",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.748+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "94015-5",
+							"display": "Mental health screening report"
+						}
+					],
+					"text": "Mental Health Screening report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "bHVuZzZtb3d0",
+							"title": "Mental Health Screening"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:f655860d-a874-4a27-858b-9fef6805f8b4",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "f655860d-a874-4a27-858b-9fef6805f8b4",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.748+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+					]
+				},
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "80420-3",
+							"display": "Mental health Mandatory reporting form"
+						}
+					],
+					"text": "Mental health Mandatory reporting report"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"data": "bHVuZzZtb3d0",
+							"title": "Mental health Mandatory reporting"
+						}
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:a70010df-8119-4df6-a992-92b2d5bacf41",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "a70010df-8119-4df6-a992-92b2d5bacf41",
+				"status": "final",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "719303004",
+							"display": "Assessment of pregnancy status prior to imaging"
+						}
+					],
+					"text": "Assessment of pregnancy status prior to imaging"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"performer": [
+					{
+						"reference": "urn:uuid:9374bd00-f644-4570-a650-0abd29b77ceb",
+						"type": "Practitioner"
+					}
+				],
+				"valueString": "Not pregnant"
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:88804ec1-eeb1-4787-a1d4-8fcbdcb8c47e",
+			"resource": {
+				"resourceType": "Observation",
+				"id": "88804ec1-eeb1-4787-a1d4-8fcbdcb8c47e",
+				"status": "final",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "80182007",
+							"display": "Irregular periods"
+						}
+					],
+					"text": "Irregular periods"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"effectiveDateTime": "2024-07-10T19:05:39+05:30",
+				"performer": [
+					{
+						"reference": "urn:uuid:9374bd00-f644-4570-a650-0abd29b77ceb",
+						"type": "Practitioner"
+					}
+				],
+				"valueString": "Irregular periods"
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:5f813a12-ad89-4316-aa55-b38b4a537aff",
+			"resource": {
+				"resourceType": "ServiceRequest",
+				"id": "5f813a12-ad89-4316-aa55-b38b4a537aff",
+				"status": "active",
+				"intent": "order",
+				"code": {
+					"text": "Chest CT"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"occurrenceDateTime": "2013-05-08T09:33:27+07:00",
+				"requester": {
+					"reference": "urn:uuid:Practitioner/example1"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:b74a65f2-c070-4e5a-9fc0-5ce6c0062a32",
+			"resource": {
+				"resourceType": "ServiceRequest",
+				"id": "b74a65f2-c070-4e5a-9fc0-5ce6c0062a32",
+				"status": "active",
+				"intent": "order",
+				"code": {
+					"text": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"occurrenceDateTime": "2015-08-27T09:33:27+07:00",
+				"requester": {
+					"reference": "urn:uuid:Practitioner/example2"
+				}
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:27872d78-23db-4855-9d0a-c64ee2f343f7",
+			"resource": {
+				"resourceType": "MedicationStatement",
+				"id": "27872d78-23db-4855-9d0a-c64ee2f343f7",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.748+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
+					]
+				},
+				"status": "completed",
+				"medicationCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "721912009",
+							"display": "Medication summary document"
+						}
+					],
+					"text": "Ongoing Drugs"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"effectivePeriod": {
+					"start": "2014-02-01T05:30:00+05:30"
+				},
+				"dateAsserted": "2014-02-22T05:30:00+05:30",
+				"derivedFrom": [
+					{
+						"reference": "Patient/pat1"
+					}
+				],
+				"reasonCode": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "323732002",
+								"display": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
+							}
+						],
+						"text": "Amoxicillin (as amoxicillin trihydrate) 25 mg/mL oral suspension"
+					}
+				],
+				"note": [
+					{
+						"text": "Father indicates they miss the occasional dose"
+					}
+				],
+				"dosage": [
+					{
+						"doseAndRate": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "urn:uuid:1aa601e3-5a25-4390-b21a-7f70fa3281b9",
+			"resource": {
+				"resourceType": "MedicationRequest",
+				"id": "1aa601e3-5a25-4390-b21a-7f70fa3281b9",
+				"meta": {
+					"versionId": "0",
+					"lastUpdated": "2024-07-10T19:05:39.750+05:30",
+					"profile": [
+						"https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
+					]
+				},
+				"status": "active",
+				"intent": "proposal",
+				"medicationCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "785686003",
+							"display": "Amoxicillin anhydrous"
+						}
+					],
+					"text": "Amoxicillin anhydrous (substance)"
+				},
+				"subject": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient"
+				},
+				"authoredOn": "2024-07-10T19:05:39+05:30",
+				"requester": {
+					"reference": "urn:uuid:b6800d7a-9d58-4ef5-bea8-ddc7d5e9b58f",
+					"type": "Patient",
+					"display": "Testing ABDM NCG"
+				},
+				"reasonCode": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "785686003",
+								"display": "Amoxicillin anhydrous"
+							}
+						],
+						"text": "Amoxicillin anhydrous (substance)"
+					}
+				],
+				"reasonReference": [
+					{
+						"reference": "urn:uuid:de6f9419-14c5-4db5-bf7d-1465d42817d0",
+						"type": "Condition"
+					}
+				],
+				"dosageInstruction": [
+					{
+						"doseAndRate": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	]
 }

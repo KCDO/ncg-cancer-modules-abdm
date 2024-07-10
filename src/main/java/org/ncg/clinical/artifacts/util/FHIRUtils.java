@@ -53,9 +53,9 @@ import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.Type;
 import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
-import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
-import org.ncg.clinical.artifacts.vo.labtest.Panel;
-import org.ncg.clinical.artifacts.vo.labtest.Test;
+import org.ncg.clinical.artifacts.vo.indicatorjson.AllIndicatorAndPanelDetail;
+import org.ncg.clinical.artifacts.vo.indicatorjson.IndicatorDetailJson;
+import org.ncg.clinical.artifacts.vo.indicatorjson.PanelDetailJson;
 import org.ncg.clinical.artifacts.vo.organization.OrganizationData;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
 import org.ncg.clinical.artifacts.vo.practitioner.PractitionerData;
@@ -69,22 +69,25 @@ import jakarta.annotation.PostConstruct;
 @Service
 public class FHIRUtils {
 
-	private static AllLabTests allLabTests;
+	private static AllIndicatorAndPanelDetail allIndicatorAndPanelDetails;
 
 	@Value("${all.tests.labs.json}")
-	private String allTestsNameCodeAndPanelsJson;
+	private String allIndicatorAndPanelDetailsJson;
 
 	@PostConstruct
 	public void init() throws Exception {
-		allLabTests = new ObjectMapper().readValue(new File(allTestsNameCodeAndPanelsJson), AllLabTests.class);
+		allIndicatorAndPanelDetails = new ObjectMapper().readValue(new File(allIndicatorAndPanelDetailsJson),
+				AllIndicatorAndPanelDetail.class);
 	}
 
-	public static Optional<Test> getTestByName(String name) {
-		return allLabTests.getTests().stream().filter(test -> test.getName().equalsIgnoreCase(name)).findFirst();
+	public static Optional<IndicatorDetailJson> getIndicatorByName(String name) {
+		return allIndicatorAndPanelDetails.getIndicatorDetails().stream()
+				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)).findFirst();
 	}
 
-	public static Optional<Panel> getPanelByName(String name) {
-		return allLabTests.getPanels().stream().filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
+	public Optional<PanelDetailJson> getPanelByName(String name) {
+		return allIndicatorAndPanelDetails.getPanelDetails().stream()
+				.filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
 	}
 
 	public static Enumerations.AdministrativeGender getGender(String gender) {
@@ -318,7 +321,7 @@ public class FHIRUtils {
 	static Reference getReferenceToObservation(Observation observationResource) {
 		Reference observationRef = new Reference(Constants.URN_UUID + observationResource.getId());
 		observationRef.setResource(observationResource);
-		observationRef.setDisplay(Constants.OBSERVATION);
+		observationRef.setType(Constants.OBSERVATION);
 
 		return observationRef;
 	}
@@ -679,9 +682,9 @@ public class FHIRUtils {
 			} else {
 				// if any one of incoming system, code, display or text are null then use input
 				// json Test
-				Optional<Test> testDetail = getTestByName(testName);
-				if (testDetail.isPresent()) {
-					Test test = testDetail.get();
+				Optional<IndicatorDetailJson> indicatorDetail = getIndicatorByName(testName);
+				if (indicatorDetail.isPresent()) {
+					IndicatorDetailJson test = indicatorDetail.get();
 					newCoding.setSystem(StringUtils.isNotEmpty(coding.getSystem()) ? coding.getSystem()
 							: test.getCoding().getSystem());
 					newCoding.setCode(
@@ -695,9 +698,9 @@ public class FHIRUtils {
 		} else {
 			// if all of incoming system, code, display or text are null then use input json
 			// Test
-			Optional<Test> testDetail = getTestByName(testName);
-			if (testDetail.isPresent()) {
-				Test test = testDetail.get();
+			Optional<IndicatorDetailJson> indicatorDetail = getIndicatorByName(testName);
+			if (indicatorDetail.isPresent()) {
+				IndicatorDetailJson test = indicatorDetail.get();
 				newCoding.setSystem(test.getCoding().getSystem());
 				newCoding.setCode(test.getCoding().getCode());
 				newCoding.setDisplay(test.getCoding().getDisplay());

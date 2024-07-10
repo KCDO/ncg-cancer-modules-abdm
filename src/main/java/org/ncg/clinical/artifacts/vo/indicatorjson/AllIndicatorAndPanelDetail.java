@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo.cancer.type;
+package org.ncg.clinical.artifacts.vo.indicatorjson;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdultHematolymphoidCancerType extends CancerType {
-	private List<CancerTypeObservation> observations;
+public class AllIndicatorAndPanelDetail {
+	private List<PanelDetailJson> panelDetails;
+	private List<IndicatorDetailJson> indicatorDetails;
 }

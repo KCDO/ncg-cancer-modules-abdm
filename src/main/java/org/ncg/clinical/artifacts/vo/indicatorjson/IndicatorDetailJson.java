@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo.labtest;
+package org.ncg.clinical.artifacts.vo.indicatorjson;
 
 import org.ncg.clinical.artifacts.vo.Coding;
 
@@ -11,7 +11,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Test {
+public class IndicatorDetailJson {
+	private String moduleName;
 	private String name;
 	private Coding coding;
+	private String resourceType;
 }

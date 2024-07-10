@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ValueQuantity {
 	private double value;
-	private String uom;
+	private String unit;
 	private String system;
 	private String code;
 }
