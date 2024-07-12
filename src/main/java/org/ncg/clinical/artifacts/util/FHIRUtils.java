@@ -14,10 +14,12 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Address;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
+import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
@@ -30,12 +32,15 @@ import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.DiagnosticReport;
 import org.hl7.fhir.r4.model.DocumentReference;
+import org.hl7.fhir.r4.model.Dosage;
+import org.hl7.fhir.r4.model.Dosage.DosageDoseAndRateComponent;
 import org.hl7.fhir.r4.model.Encounter;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.MedicationRequest;
+import org.hl7.fhir.r4.model.MedicationRequest.MedicationRequestIntent;
 import org.hl7.fhir.r4.model.MedicationStatement;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Narrative;
@@ -52,7 +57,11 @@ import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.Type;
+import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
+import org.ncg.clinical.artifacts.vo.cancer.type.CancerDetail;
+import org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest.ReferenceType;
+import org.ncg.clinical.artifacts.vo.clinicalinformation.AdverseEventRequest;
 import org.ncg.clinical.artifacts.vo.indicatorjson.AllIndicatorAndPanelDetail;
 import org.ncg.clinical.artifacts.vo.indicatorjson.IndicatorDetailJson;
 import org.ncg.clinical.artifacts.vo.indicatorjson.PanelDetailJson;
@@ -85,9 +94,16 @@ public class FHIRUtils {
 				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)).findFirst();
 	}
 
-	public Optional<PanelDetailJson> getPanelByName(String name) {
+	public static Optional<PanelDetailJson> getPanelByName(String name) {
 		return allIndicatorAndPanelDetails.getPanelDetails().stream()
 				.filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
+	}
+
+	public static Optional<IndicatorDetailJson> getIndicatorByNameAndModuleName(String name, String moduleName) {
+		return allIndicatorAndPanelDetails.getIndicatorDetails().stream()
+				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)
+						&& indicator.getModuleName().equalsIgnoreCase(moduleName))
+				.findFirst();
 	}
 
 	public static Enumerations.AdministrativeGender getGender(String gender) {
@@ -1076,5 +1092,381 @@ public class FHIRUtils {
 		Composition.SectionComponent sectionComponent = createSectionComponent(sectionName, codeableConceptCode);
 
 		return sectionComponent;
+	}
+
+	public static MedicationStatement createMedicationStatement(org.ncg.clinical.artifacts.vo.Coding medicationCoding,
+			String medicationName, org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest,
+			Patient patient) {
+		MedicationStatement medicationStatement = new MedicationStatement();
+
+		// set id in medicationStatement
+		medicationStatement.setId(Utils.generateId());
+
+		// add meta to medicationStatement
+		medicationStatement.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_MEDICATION_STATEMENT));
+
+		// set status in medicationStatement
+		if (!Objects.isNull(medicationRequest.getStatus())) {
+			medicationStatement.setStatus(getMedicationStatementStatus(medicationRequest.getStatus()));
+		}
+
+		// Set medication in medicationStatement
+		// if incoming coding is not null then use same and if it is null then call
+		// mapCoding method for taking those value from input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(medicationCoding, medicationName);
+		CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), coding.getText());
+		medicationStatement.setMedication(medicationCode);
+
+		// Set patient reference as subject in medicationStatement
+		medicationStatement.setSubject(FHIRUtils.getReferenceToPatient(patient));
+
+		// TODO
+		// Set dosage
+		Dosage dosage = new Dosage();
+
+		// Dose and Rate
+		DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
+		// if (medicationRequest.get)
+		doseAndRate.setDose(FHIRUtils.createQuantity(500, "mg", Constants.HTTP_UNITSOFMEASURE_ORG, "mg"));
+		doseAndRate.setRate(FHIRUtils.createQuantity(3, "1/d", Constants.HTTP_UNITSOFMEASURE_ORG, "{1/d}"));
+		dosage.addDoseAndRate(doseAndRate);
+
+		// Add dosage to medicationStatement
+		medicationStatement.addDosage(dosage);
+
+		// Set the effective date in in medicationStatement
+		Period effectivePeriod = new Period();
+		effectivePeriod.setStart(medicationRequest.getEffectiveDate());
+		medicationStatement.setEffective(effectivePeriod);
+
+		// Set the date asserted
+		medicationStatement.setDateAsserted(medicationRequest.getAssertedDate());
+
+		// Set the derivedFrom (the reference to the MedicationRequest)
+		Reference derivedFromReference = new Reference(medicationRequest.getReference());
+		medicationStatement.addDerivedFrom(derivedFromReference);
+
+		// Add a note
+		Annotation note = new Annotation();
+		note.setText(medicationRequest.getNote());
+		medicationStatement.addNote(note);
+
+		return medicationStatement;
+	}
+
+	public static MedicationRequest createMedicationRequest(org.ncg.clinical.artifacts.vo.Coding medicationCoding,
+			String medicationName, org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest,
+			Patient patient) {
+		MedicationRequest medicationRequestResource = new MedicationRequest();
+
+		// set id in medicationRequestResource
+		medicationRequestResource.setId(Utils.generateId());
+
+		// add meta to medicationRequestResource
+		medicationRequestResource.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_MEDICATION_REQUEST));
+
+		// set status in medicationRequestResource
+		if (!Objects.isNull(medicationRequestResource.getStatus())) {
+			medicationRequestResource.setStatus(getMedicationRequestStatus(medicationRequest.getStatus()));
+		}
+
+		// set intent in medicationRequestResource
+		if (StringUtils.isNotEmpty(medicationRequest.getReference())) {
+			medicationRequestResource.setIntent(MedicationRequestIntent.PROPOSAL);
+		}
+
+		// Set medication in medicationRequestResource
+		// if incoming coding is not null then use same and if it is null then call
+		// mapCoding method for taking those value from input file
+//		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(coding, indicatorName);
+//		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+//				coding.getText());
+//
+//		// Set medication reference
+//		medicationRequestResource.setMedication(code);
+
+		// Set subject
+		medicationRequestResource.setSubject(FHIRUtils.getReferenceToPatient(patient));
+
+		// set requester
+		medicationRequestResource.setRequester(FHIRUtils.getReferenceToPatient(patient));
+
+		// TODO
+		// Set reasonCode
+		// medicationRequestResource.addReasonCode(code);
+
+		// add reasonReference after creating a Condition resource
+//		Condition condition = FHIRUtils.createConditionResource(code, patient);
+//		medicationRequestResource.addReasonReference(FHIRUtils.getReferenceToCondition(condition));
+
+		// TODO
+		// Set dosage
+		Dosage dosage = new Dosage();
+
+		// Dose and Rate
+		DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
+		doseAndRate.setDose(FHIRUtils.createQuantity(500, "mg", Constants.HTTP_UNITSOFMEASURE_ORG, "mg"));
+		doseAndRate.setRate(FHIRUtils.createQuantity(3, "1/d", Constants.HTTP_UNITSOFMEASURE_ORG, "{1/d}"));
+		dosage.addDoseAndRate(doseAndRate);
+
+		// Add dosage to medication statement
+		medicationRequestResource.addDosageInstruction(dosage);
+
+		// Set current time as authoredOn
+		medicationRequestResource.setAuthoredOn(new Date());
+
+		return medicationRequestResource;
+	}
+
+	static MedicationStatement.MedicationStatementStatus getMedicationStatementStatus(
+			org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest.medicationStatus medicationStatus) {
+		// converting input status to lower case
+		String status = medicationStatus.getStatus().toLowerCase();
+		switch (status) {
+		case "active":
+			return MedicationStatement.MedicationStatementStatus.ACTIVE;
+		case "completed":
+			return MedicationStatement.MedicationStatementStatus.COMPLETED;
+		case "entered-in-error":
+			return MedicationStatement.MedicationStatementStatus.ENTEREDINERROR;
+		case "intended":
+			return MedicationStatement.MedicationStatementStatus.INTENDED;
+		case "stopped":
+			return MedicationStatement.MedicationStatementStatus.STOPPED;
+		case "on-hold":
+			return MedicationStatement.MedicationStatementStatus.ONHOLD;
+		case "not-taken":
+			return MedicationStatement.MedicationStatementStatus.NOTTAKEN;
+		default:
+			return MedicationStatement.MedicationStatementStatus.UNKNOWN;
+		}
+	}
+
+	static MedicationRequest.MedicationRequestStatus getMedicationRequestStatus(
+			org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest.medicationStatus medicationStatus) {
+		// converting input status to lower case
+		String status = medicationStatus.getStatus().toLowerCase();
+		switch (status) {
+		case "active":
+			return MedicationRequest.MedicationRequestStatus.ACTIVE;
+		case "completed":
+			return MedicationRequest.MedicationRequestStatus.COMPLETED;
+		case "entered-in-error":
+			return MedicationRequest.MedicationRequestStatus.ENTEREDINERROR;
+		case "draft":
+			return MedicationRequest.MedicationRequestStatus.DRAFT;
+		case "stopped":
+			return MedicationRequest.MedicationRequestStatus.STOPPED;
+		case "on-hold":
+			return MedicationRequest.MedicationRequestStatus.ONHOLD;
+		case "cancelled":
+			return MedicationRequest.MedicationRequestStatus.CANCELLED;
+		default:
+			return MedicationRequest.MedicationRequestStatus.UNKNOWN;
+		}
+	}
+
+	public static void processCancerTypeWithDifferentResources(Bundle bundle, Patient patientResource,
+			Composition.SectionComponent procedureSection, Composition.SectionComponent otherObservationsSection,
+			Composition.SectionComponent medicationsSection, Composition.SectionComponent documentReferenceSection,
+			Map<String, CancerDetail> cancerDetailMap) throws IOException {
+		for (Map.Entry<String, CancerDetail> entry : cancerDetailMap.entrySet()) {
+
+			// find indicatorDetailJson based on module and name
+			Optional<IndicatorDetailJson> indicatorDetailJson = getIndicatorByNameAndModuleName(entry.getKey(),
+					Constants.OP_CONSULT_RECORD_CANCER_TYPE);
+
+			if (indicatorDetailJson.isPresent()) {
+				// fetch resource type for given cancerTypeName/indicator
+				String resourceType = indicatorDetailJson.get().getResourceType();
+
+				// create procedure, observation, medication, documentReference etc resources
+				// based on resourceType
+				switch (resourceType) {
+				case Constants.PROCEDURE:
+					createProcedureAndDcumentReferenceForCancerType(entry, bundle, patientResource, procedureSection);
+
+				case Constants.OBSERVATION:
+					createObservationForCancerType(entry, bundle, patientResource, otherObservationsSection);
+
+				case Constants.MEDICATIONS:
+					CancerDetail cancerDetail = entry.getValue();
+
+					// populating medication related data from cancer details to MedicationRequest
+					// object
+					org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest = new org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest(
+							cancerDetail);
+					if (!Objects.isNull(cancerDetail.getMedicationType())) {
+						createMedicationsBasedOnMedicationType(bundle, patientResource, medicationsSection,
+								entry.getKey(), cancerDetail.getCoding(), medicationRequest);
+					}
+
+				case Constants.DOCUMENT_REFERENCE:
+					if (StringUtils.isNoneBlank(entry.getValue().getAttachment())) {
+						DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(entry.getKey(),
+								entry.getValue().getAttachment(), patientResource, entry.getValue().getCoding());
+
+						// Add documentReference to the bundle
+						FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+
+						// make an entry for medicationStatementResource in medicationsSection
+						documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
+					}
+				}
+			}
+		}
+	}
+
+	public static void createMedicationsBasedOnMedicationType(Bundle bundle, Patient patientResource,
+			Composition.SectionComponent medicationsSection, String medicationName,
+			org.ncg.clinical.artifacts.vo.Coding coding,
+			org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest) {
+
+		if (medicationRequest.getMedicationType().equals(ReferenceType.MEDICATION_STATEMENT)) {
+			// create medicationStatementResource
+			MedicationStatement medicationStatementResource = createMedicationStatement(coding, medicationName,
+					medicationRequest, patientResource);
+
+			// make an entry for medicationStatementResource in medicationsSection
+			medicationsSection.addEntry(FHIRUtils.getReferenceToMedicationStatement(medicationStatementResource));
+
+			// Add medicationStatementResource to the bundle
+			FHIRUtils.addToBundleEntry(bundle, medicationStatementResource, true);
+		}
+
+		if (medicationRequest.getMedicationType().equals(ReferenceType.MEDICATION_REQUEST)) {
+			// create medicationRequestResource
+			MedicationRequest medicationRequestResource = createMedicationRequest(coding, medicationName,
+					medicationRequest, patientResource);
+
+			// make an entry for medicationRequestResource in medicationsSection
+			medicationsSection.addEntry(FHIRUtils.getReferenceToMedicationRequest(medicationRequestResource));
+
+			// Add medicationRequestResource to the bundle
+			FHIRUtils.addToBundleEntry(bundle, medicationRequestResource, true);
+		}
+	}
+
+	public static void createProcedureAndDcumentReferenceForCancerType(Map.Entry<String, CancerDetail> entry,
+			Bundle bundle, Patient patientResource, Composition.SectionComponent procedureSection) throws IOException {
+
+		CancerDetail cancerDetail = entry.getValue();
+		String indicatorName = entry.getKey();
+
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(), indicatorName);
+
+		// create procedure with DocumentReference for storing reports information
+		Procedure procedure = FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource,
+				cancerDetail.getAttachment(), coding, coding.getText());
+
+		// make an entry for procedure in procedureSection
+		procedureSection.addEntry(FHIRUtils.getReferenceToProcedure(procedure));
+	}
+
+	public static void createObservationForCancerType(Map.Entry<String, CancerDetail> entry, Bundle bundle,
+			Patient patientResource, Composition.SectionComponent otherObservationsSection) throws IOException {
+
+		CancerDetail cancerDetail = entry.getValue();
+		String indicatorName = entry.getKey();
+
+		// create observation
+		Observation observation = FHIRUtils.createObservation(patientResource);
+
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(), indicatorName);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
+
+		// Set the code for observation
+		observation.setCode(code);
+
+		// Set the value in the Observation
+		if (ObjectUtils.isNotEmpty(cancerDetail.getValueQuantity())) {
+			observation.setValue(FHIRUtils.createQuantityResource(cancerDetail.getValueQuantity().getValue(),
+					cancerDetail.getValueQuantity().getUnit(), cancerDetail.getValueQuantity().getSystem(),
+					cancerDetail.getValueQuantity().getCode()));
+		}
+
+		// set effective date time
+		observation.setEffective(FHIRUtils.getEffectiveDate(new Date()));
+
+		// make an entry for procedure in procedureSection
+		otherObservationsSection.addEntry(FHIRUtils.getReferenceToObservation(observation));
+
+		// Add observation to the bundle
+		FHIRUtils.addToBundleEntry(bundle, observation, true);
+	}
+
+	public static AdverseEvent createAdverseEvent(Bundle bundle, AdverseEventRequest adverseEventDetail,
+			Patient patient, Practitioner practitioner) {
+
+		// Create a new AdverseEvent resource
+		AdverseEvent adverseEvent = new AdverseEvent();
+
+		// set id
+		adverseEvent.setId(Utils.generateId());
+
+		// set actuality
+		adverseEvent.setActuality(AdverseEventActuality.ACTUAL);
+
+		// set identifier
+		Identifier adverseEventIdentifier = FHIRUtils.getIdentifier(adverseEvent.getId(),
+				Constants.HTTP_EXAMPLE_COM_ADVERSE_EVENT);
+		adverseEvent.setIdentifier(adverseEventIdentifier);
+
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding categoryCoding = FHIRUtils.mapCoding(null,
+				adverseEventDetail.getCategory());
+
+		CodeableConcept categoryCode = FHIRUtils.getCodeableConcept(categoryCoding.getCode(),
+				categoryCoding.getSystem(), categoryCoding.getDisplay(), categoryCoding.getText());
+
+		// set category
+		adverseEvent.addCategory(categoryCode);
+
+		// Set patient reference
+		adverseEvent.setSubject(FHIRUtils.getReferenceToPatient(patient));
+
+		// Set practitioner as recorder reference
+		adverseEvent.setRecorder(FHIRUtils.getReferenceToPractitioner(practitioner));
+
+		// Set date
+		adverseEvent.setDate(new Date());
+
+		// set detected date
+		adverseEvent.setDetected(new Date());
+
+		// set recorded date
+		adverseEvent.setRecordedDate(new Date());
+
+		// set meta profile
+		adverseEvent.setMeta(
+				Utils.getMeta(new Date(), Constants.HTTPS_NRCES_IN_NDHM_FHIR_R4_STRUCTURE_DEFINITION_ADVERSE_EVENT));
+
+		// add AdverseEvent to bundle resource
+		FHIRUtils.addToBundleEntry(bundle, adverseEvent, true);
+
+		// Set seriousness
+		org.ncg.clinical.artifacts.vo.Coding seriousnessCoding = FHIRUtils.mapCoding(null,
+				adverseEventDetail.getSeriousness());
+		CodeableConcept seriousnessCode = FHIRUtils.getCodeableConcept(seriousnessCoding.getCode(),
+				seriousnessCoding.getSystem(), seriousnessCoding.getDisplay(), seriousnessCoding.getText());
+		adverseEvent.setSeriousness(seriousnessCode);
+
+		// Set outcome
+		org.ncg.clinical.artifacts.vo.Coding outcomeCoding = FHIRUtils.mapCoding(null, adverseEventDetail.getOutcome());
+		CodeableConcept outcomeCode = FHIRUtils.getCodeableConcept(outcomeCoding.getCode(), outcomeCoding.getSystem(),
+				outcomeCoding.getDisplay(), outcomeCoding.getText());
+		adverseEvent.setOutcome(outcomeCode);
+
+		return adverseEvent;
 	}
 }

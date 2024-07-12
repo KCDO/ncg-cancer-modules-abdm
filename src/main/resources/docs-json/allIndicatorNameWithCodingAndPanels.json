@@ -1877,6 +1877,72 @@
 				"text": "Clinical finding"
 			},
 			"resourceType": ""
+		},
+		{
+			"moduleName": "",
+			"name": "Medications",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "721912009",
+				"display": "Medication summary document",
+				"text": "Medication summary document"
+			},
+			"resourceType": ""
+		},
+		{
+			"moduleName": "",
+			"name": "Follow Up",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "736271009",
+				"display": "Outpatient care plan",
+				"text": "Outpatient care plan"
+			},
+			"resourceType": ""
+		},
+		{
+			"moduleName": "",
+			"name": "Document Reference",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "371530004",
+				"display": "Clinical consultation report",
+				"text": "Clinical consultation report"
+			},
+			"resourceType": ""
+		},
+		{
+			"moduleName": "",
+			"name": "Investigation Advice",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "721963009",
+				"display": "Order document",
+				"text": "Order document"
+			},
+			"resourceType": ""
+		},
+		{
+			"moduleName": "",
+			"name": "MedicalHistory",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "371529009",
+				"display": "History and physical report",
+				"text": "History and physical report"
+			},
+			"resourceType": ""
+		},
+		{
+			"moduleName": "",
+			"name": "InvestigationAdvice",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "721963009",
+				"display": "Order document",
+				"text": "Investigation Advice"
+			},
+			"resourceType": ""
 		}
 	]
 }

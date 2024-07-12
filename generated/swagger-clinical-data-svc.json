@@ -106,15 +106,6 @@
     "CancerDetail" : {
       "type" : "object",
       "properties" : {
-        "coding" : {
-          "$ref" : "#/definitions/Coding"
-        },
-        "attachment" : {
-          "type" : "string"
-        },
-        "valueQuantity" : {
-          "$ref" : "#/definitions/ValueQuantity"
-        },
         "medicationType" : {
           "type" : "string",
           "enum" : [ "MEDICATION_STATEMENT", "MEDICATION_REQUEST" ]
@@ -135,7 +126,16 @@
         },
         "status" : {
           "type" : "string",
-          "enum" : [ "ACTIVE", "COMPLETED", "ENTERED_IN_ERROR", "INTENDED", "STOPPED", "ON_HOLD", "UNKNOWN", "NOT_TAKEN" ]
+          "enum" : [ "ACTIVE", "COMPLETED", "ENTERED_IN_ERROR", "INTENDED", "STOPPED", "ON_HOLD", "UNKNOWN", "NOT_TAKEN", "CANCELLED", "DRAFT" ]
+        },
+        "coding" : {
+          "$ref" : "#/definitions/Coding"
+        },
+        "attachment" : {
+          "type" : "string"
+        },
+        "valueQuantity" : {
+          "$ref" : "#/definitions/ValueQuantity"
         },
         "target" : {
           "type" : "string"
@@ -229,13 +229,13 @@
             "$ref" : "#/definitions/OngoingDrugs"
           }
         },
-        "pacnotes" : {
+        "otnotes" : {
           "type" : "object",
           "additionalProperties" : {
             "type" : "string"
           }
         },
-        "otnotes" : {
+        "pacnotes" : {
           "type" : "object",
           "additionalProperties" : {
             "type" : "string"
@@ -301,6 +301,12 @@
         "disallowExtensions" : {
           "type" : "boolean"
         },
+        "dateTime" : {
+          "type" : "boolean"
+        },
+        "tzSign" : {
+          "type" : "boolean"
+        },
         "asV3" : {
           "type" : "string"
         },
@@ -311,12 +317,6 @@
         "tzHour" : {
           "type" : "integer",
           "format" : "int32"
-        },
-        "dateTime" : {
-          "type" : "boolean"
-        },
-        "tzSign" : {
-          "type" : "boolean"
         },
         "value" : {
           "type" : "string",
@@ -357,8 +357,9 @@
           "type" : "string",
           "enum" : [ "YEAR", "MONTH", "DAY", "MINUTE", "SECOND", "MILLI" ]
         },
-        "timeZoneZulu" : {
-          "type" : "boolean"
+        "nanos" : {
+          "type" : "integer",
+          "format" : "int64"
         },
         "today" : {
           "type" : "boolean"
@@ -367,16 +368,15 @@
           "type" : "number",
           "format" : "float"
         },
+        "timeZoneZulu" : {
+          "type" : "boolean"
+        },
         "valueAsCalendar" : {
           "type" : "string",
           "format" : "date-time"
         },
         "valueAsString" : {
           "type" : "string"
-        },
-        "nanos" : {
-          "type" : "integer",
-          "format" : "int64"
         },
         "primitive" : {
           "type" : "boolean"
@@ -625,9 +625,6 @@
     "OngoingDrugs" : {
       "type" : "object",
       "properties" : {
-        "name" : {
-          "type" : "string"
-        },
         "medicationType" : {
           "type" : "string",
           "enum" : [ "MEDICATION_STATEMENT", "MEDICATION_REQUEST" ]
@@ -644,6 +641,13 @@
           "type" : "string"
         },
         "note" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "ACTIVE", "COMPLETED", "ENTERED_IN_ERROR", "INTENDED", "STOPPED", "ON_HOLD", "UNKNOWN", "NOT_TAKEN", "CANCELLED", "DRAFT" ]
+        },
+        "name" : {
           "type" : "string"
         },
         "coding" : {
@@ -853,11 +857,11 @@
         "displayName" : {
           "type" : "string"
         },
-        "dstsavings" : {
+        "rawOffset" : {
           "type" : "integer",
           "format" : "int32"
         },
-        "rawOffset" : {
+        "dstsavings" : {
           "type" : "integer",
           "format" : "int32"
         }
@@ -1048,17 +1052,17 @@
             "type" : "string"
           }
         },
-        "para" : {
-          "type" : "boolean"
+        "firstElement" : {
+          "$ref" : "#/definitions/XhtmlNode"
         },
         "nsDecl" : {
           "type" : "string"
         },
-        "noPretty" : {
+        "para" : {
           "type" : "boolean"
         },
-        "firstElement" : {
-          "$ref" : "#/definitions/XhtmlNode"
+        "noPretty" : {
+          "type" : "boolean"
         },
         "valueAsString" : {
           "type" : "string"
