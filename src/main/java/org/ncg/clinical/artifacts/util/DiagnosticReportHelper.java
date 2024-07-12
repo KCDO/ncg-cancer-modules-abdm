@@ -8,57 +8,27 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.UUID;
 
-import org.hl7.fhir.r4.model.AdverseEvent;
-import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
-import org.hl7.fhir.r4.model.AllergyIntolerance;
-import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
-import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Composition;
-import org.hl7.fhir.r4.model.Condition;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.DiagnosticReport;
 import org.hl7.fhir.r4.model.DocumentReference;
-import org.hl7.fhir.r4.model.Dosage;
-import org.hl7.fhir.r4.model.Dosage.DosageDoseAndRateComponent;
-import org.hl7.fhir.r4.model.Identifier;
-import org.hl7.fhir.r4.model.MedicationRequest;
-import org.hl7.fhir.r4.model.MedicationRequest.MedicationRequestIntent;
-import org.hl7.fhir.r4.model.MedicationRequest.MedicationRequestStatus;
-import org.hl7.fhir.r4.model.MedicationStatement;
-import org.hl7.fhir.r4.model.MedicationStatement.MedicationStatementStatus;
-import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Observation.ObservationStatus;
 import org.hl7.fhir.r4.model.Patient;
-import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Practitioner;
-import org.hl7.fhir.r4.model.Procedure;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
-import org.ncg.clinical.artifacts.vo.CancerType;
 import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.AdverseEventRequest;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.Allergy;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.Comorbidity;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.InvestigationAdvice;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.MenstruationHistory;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs.ReferenceType;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.PastMedicalHistory;
-import org.ncg.clinical.artifacts.vo.clinicalinformation.PastSurgicalHistory;
-import org.ncg.clinical.artifacts.vo.diagnostic.AttachmentDetail;
 import org.ncg.clinical.artifacts.vo.diagnostic.Diagnostic;
 import org.ncg.clinical.artifacts.vo.diagnostic.PanelDetail;
 import org.ncg.clinical.artifacts.vo.diagnostic.TestDetail;
-import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
-import org.ncg.clinical.artifacts.vo.labtest.Panel;
-import org.ncg.clinical.artifacts.vo.labtest.Test;
+import org.ncg.clinical.artifacts.vo.indicatorjson.AllIndicatorAndPanelDetail;
+import org.ncg.clinical.artifacts.vo.indicatorjson.IndicatorDetailJson;
+import org.ncg.clinical.artifacts.vo.indicatorjson.PanelDetailJson;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -72,23 +42,26 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DiagnosticReportHelper {
 
-	private AllLabTests allLabTests;
+	private AllIndicatorAndPanelDetail allIndicatorAndPanelDetails;
 
 	@Value("${all.tests.labs.json}")
-	private String allTestsNameCodeAndPanelsJson;
+	private String allIndicatorAndPanelDetailsJson;
 
 	@PostConstruct
 	public void init() throws Exception {
-		allLabTests = new ObjectMapper().readValue(new File(allTestsNameCodeAndPanelsJson), AllLabTests.class);
-		log.info("OPConsultRecordHelper::init::Successfully loaded AllLabTests from JSON.");
+		allIndicatorAndPanelDetails = new ObjectMapper().readValue(new File(allIndicatorAndPanelDetailsJson),
+				AllIndicatorAndPanelDetail.class);
+		log.info("DiagnosticReportHelper::init::Successfully loaded AllLabTests from JSON.");
 	}
 
-	public Optional<Test> getTestByName(String name) {
-		return allLabTests.getTests().stream().filter(test -> test.getName().equalsIgnoreCase(name)).findFirst();
+	public Optional<IndicatorDetailJson> getIndicatorByName(String name) {
+		return allIndicatorAndPanelDetails.getIndicatorDetails().stream()
+				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)).findFirst();
 	}
 
-	public Optional<Panel> getPanelByName(String name) {
-		return allLabTests.getPanels().stream().filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
+	public Optional<PanelDetailJson> getPanelByName(String name) {
+		return allIndicatorAndPanelDetails.getPanelDetails().stream()
+				.filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
 	}
 
 	public Bundle createOPConsultationBundle(OPConsultRecordRequest clinicalData) throws Exception {
@@ -97,13 +70,9 @@ public class DiagnosticReportHelper {
 
 		// fetch code and test description based on test name from
 		// allTestsAndPanels.json and create type based on those value
-		CodeableConcept type = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName(Constants.OP_CONSULT_RECORD);
-		if (cancerTestDetail.isPresent()) {
-			Test test = cancerTestDetail.get();
-			type = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
-					test.getDescription(), test.getDescription());
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.OP_CONSULT_RECORD);
+		CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
 
 		// create composition resource
 		Composition opDoc = FHIRUtils.createCompositionResourceType(docDate, bundle, type,
@@ -213,31 +182,23 @@ public class DiagnosticReportHelper {
 		if (Utils.randomBool())
 			return null;
 
-		CodeableConcept diagnosticReportCode = new CodeableConcept();
-		Optional<Test> testWithLoincCode = getTestByName(Constants.DIAGNOSTIC_REPORT);
-		if (testWithLoincCode.isPresent()) {
-			diagnosticReportCode = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
-					Constants.SNOMED_SYSTEM_SCT, testWithLoincCode.get().getDescription(),
-					testWithLoincCode.get().getDescription());
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.DIAGNOSTIC_REPORT);
+		CodeableConcept diagnosticReportCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+				coding.getDisplay(), coding.getText());
+
 		Composition.SectionComponent diagnosticReportSection = FHIRUtils
 				.createSectionComponent(Constants.DIAGNOSTIC_REPORTS, diagnosticReportCode);
 
 		if (Objects.nonNull(diagnostic.getCbc())) {
-			CodeableConcept category = new CodeableConcept();
-			testWithLoincCode = getTestByName(Constants.DR_CBC);
-			if (testWithLoincCode.isPresent()) {
-				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
-						Constants.LOINC_SYSTEM, testWithLoincCode.get().getDescription(),
-						testWithLoincCode.get().getDescription());
-			}
+			coding = FHIRUtils.mapCoding(null, Constants.DR_CBC);
+			CodeableConcept category = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+					coding.getDisplay(), coding.getText());
 
 			// panels for CBC
 			List<PanelDetail> cbcPanels = diagnostic.getCbc().getPanels();
 			if (!CollectionUtils.isEmpty(cbcPanels)) {
 				for (PanelDetail panelDetail : cbcPanels) {
-					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(panelDetail.getCoding(),
-							panelDetail.getName());
+					coding = FHIRUtils.mapCoding(panelDetail.getCoding(), panelDetail.getName());
 					createPanel(bundle, composition, patient, practitioner, diagnosticReportSection, category, coding,
 							panelDetail);
 				}
@@ -279,19 +240,15 @@ public class DiagnosticReportHelper {
 		}
 
 		if (Objects.nonNull(diagnostic.getBioChemistry())) {
-			CodeableConcept category = new CodeableConcept();
-			testWithLoincCode = getTestByName(Constants.BIO_CHEMISTRY);
-			if (testWithLoincCode.isPresent()) {
-				category = FHIRUtils.getCodeableConcept(testWithLoincCode.get().getCoding().getCode(),
-						Constants.SNOMED_SYSTEM_SCT, testWithLoincCode.get().getDescription(),
-						testWithLoincCode.get().getDescription());
-			}
+			coding = FHIRUtils.mapCoding(null, Constants.BIO_CHEMISTRY);
+			CodeableConcept category = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+					coding.getDisplay(), coding.getText());
+
 			// panels for bioChemistry
 			List<PanelDetail> bioChemistryPanels = diagnostic.getBioChemistry().getPanels();
 			if (!CollectionUtils.isEmpty(bioChemistryPanels)) {
 				for (PanelDetail panelDetail : bioChemistryPanels) {
-					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(panelDetail.getCoding(),
-							panelDetail.getName());
+					coding = FHIRUtils.mapCoding(panelDetail.getCoding(), panelDetail.getName());
 					createPanel(bundle, composition, patient, practitioner, diagnosticReportSection, category, coding,
 							panelDetail);
 				}

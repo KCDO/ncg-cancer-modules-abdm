@@ -20,6 +20,7 @@ public class ClinicalInformation {
 	private List<PastSurgicalHistory> pastSurgicalHistory;
 	private List<MentalHealthAssesment> mentalHealthAssesment;
 	private List<MenstruationHistory> menstruationHistory;
+	private List<ClinicalHistory> clinicalHistory;
 	private List<InvestigationAdvice> examinationDetails;
 	private Map<String, String> oTNotes;
 	private List<SurgicalSummaryWithPostOPCourse> surgicalSummaryWithPostOPCourse;

@@ -1,4 +1,6 @@
-package org.ncg.clinical.artifacts.vo.labtest;
+package org.ncg.clinical.artifacts.vo.clinicalinformation;
+
+import java.util.Date;
 
 import org.ncg.clinical.artifacts.vo.Coding;
 
@@ -11,8 +13,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Test {
+public class ClinicalHistory {
 	private String name;
+	private String note;
+	private Date onsetDateTime;
 	private Coding coding;
-	private String description;
 }

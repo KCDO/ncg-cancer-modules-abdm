@@ -5,20 +5,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
 import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
-import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Composition;
 import org.hl7.fhir.r4.model.Condition;
 import org.hl7.fhir.r4.model.DateTimeType;
+import org.hl7.fhir.r4.model.DocumentReference;
 import org.hl7.fhir.r4.model.Dosage;
 import org.hl7.fhir.r4.model.Dosage.DosageDoseAndRateComponent;
 import org.hl7.fhir.r4.model.Identifier;
@@ -27,33 +29,32 @@ import org.hl7.fhir.r4.model.MedicationRequest.MedicationRequestIntent;
 import org.hl7.fhir.r4.model.MedicationRequest.MedicationRequestStatus;
 import org.hl7.fhir.r4.model.MedicationStatement;
 import org.hl7.fhir.r4.model.MedicationStatement.MedicationStatementStatus;
-import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Observation;
+import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Practitioner;
 import org.hl7.fhir.r4.model.Procedure;
-import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.ServiceRequest;
-import org.ncg.clinical.artifacts.vo.CancerType;
 import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
+import org.ncg.clinical.artifacts.vo.cancer.type.CancerDetail;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.AdverseEventRequest;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.Allergy;
+import org.ncg.clinical.artifacts.vo.clinicalinformation.ClinicalHistory;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.Comorbidity;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.InvestigationAdvice;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.MenstruationHistory;
+import org.ncg.clinical.artifacts.vo.clinicalinformation.MentalHealthAssesment;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs.ReferenceType;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastMedicalHistory;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastSurgicalHistory;
-import org.ncg.clinical.artifacts.vo.diagnostic.AttachmentDetail;
-import org.ncg.clinical.artifacts.vo.labtest.AllLabTests;
-import org.ncg.clinical.artifacts.vo.labtest.Panel;
-import org.ncg.clinical.artifacts.vo.labtest.Test;
+import org.ncg.clinical.artifacts.vo.indicatorjson.AllIndicatorAndPanelDetail;
+import org.ncg.clinical.artifacts.vo.indicatorjson.IndicatorDetailJson;
+import org.ncg.clinical.artifacts.vo.indicatorjson.PanelDetailJson;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -64,23 +65,33 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OPConsultRecordHelper {
 
-	private AllLabTests allLabTests;
+	private AllIndicatorAndPanelDetail allIndicatorAndPanelDetail;
 
 	@Value("${all.tests.labs.json}")
-	private String allTestsNameCodeAndPanelsJson;
+	private String allIndicatorAndPanelDetailsJson;
 
 	@PostConstruct
 	public void init() throws Exception {
-		allLabTests = new ObjectMapper().readValue(new File(allTestsNameCodeAndPanelsJson), AllLabTests.class);
+		allIndicatorAndPanelDetail = new ObjectMapper().readValue(new File(allIndicatorAndPanelDetailsJson),
+				AllIndicatorAndPanelDetail.class);
 		log.info("OPConsultRecordHelper::init::Successfully loaded AllLabTests from JSON.");
 	}
 
-	public Optional<Test> getTestByName(String name) {
-		return allLabTests.getTests().stream().filter(test -> test.getName().equalsIgnoreCase(name)).findFirst();
+	public Optional<IndicatorDetailJson> getIndicatorByName(String name) {
+		return allIndicatorAndPanelDetail.getIndicatorDetails().stream()
+				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)).findAny();
 	}
 
-	public Optional<Panel> getPanelByName(String name) {
-		return allLabTests.getPanels().stream().filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
+	public Optional<PanelDetailJson> getPanelByName(String name) {
+		return allIndicatorAndPanelDetail.getPanelDetails().stream()
+				.filter(panel -> panel.getName().equalsIgnoreCase(name)).findAny();
+	}
+
+	public Optional<IndicatorDetailJson> getIndicatorByNameAndModuleName(String name, String moduleName) {
+		return allIndicatorAndPanelDetail.getIndicatorDetails().stream()
+				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)
+						&& indicator.getModuleName().equalsIgnoreCase(moduleName))
+				.findAny();
 	}
 
 	public Bundle createOPConsultationBundle(OPConsultRecordRequest oPConsultRecordRequest) throws Exception {
@@ -89,13 +100,9 @@ public class OPConsultRecordHelper {
 
 		// fetch code and test description based on test name from
 		// allTestsAndPanels.json and create type based on those value
-		CodeableConcept type = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName(Constants.OP_CONSULT_RECORD);
-		if (cancerTestDetail.isPresent()) {
-			Test test = cancerTestDetail.get();
-			type = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
-					test.getDescription(), test.getDescription());
-		}
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.OP_CONSULT_RECORD);
+		CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
 
 		// create composition resource
 		Composition opDoc = FHIRUtils.createCompositionResourceType(docDate, bundle, type,
@@ -108,7 +115,8 @@ public class OPConsultRecordHelper {
 
 		// Create organization and add entry for organization as custodian in
 		// composition
-		FHIRUtils.addOrganizationResourceToComposition(oPConsultRecordRequest, bundle, opDoc);
+		Organization organizationRef = FHIRUtils.addOrganizationResourceToComposition(oPConsultRecordRequest, bundle,
+				opDoc);
 
 		// TODO: need to complete when requirement will come for practitioner
 		// Create practitioner and add entry for practitioner as author in composition
@@ -117,6 +125,9 @@ public class OPConsultRecordHelper {
 
 		// Create encounter and add as entry in composition
 		FHIRUtils.addEncounterResourceToComposition(bundle, opDoc, patientResource);
+
+		// Create attester and add as entry in composition
+		FHIRUtils.addAttesterResourceToComposition(bundle, opDoc, organizationRef);
 
 		// add sections entry
 		opDoc.setSection(createCompositionSections(bundle, opDoc, oPConsultRecordRequest, patientResource,
@@ -132,26 +143,61 @@ public class OPConsultRecordHelper {
 		List<Composition.SectionComponent> sections = new ArrayList<>();
 
 		// Create Chief complaint section for CancerTypes
-		Composition.SectionComponent cancerSection = FHIRUtils.createChiefComplaintSection(bundle, patientResource);
+		Composition.SectionComponent chiefComplaintSection = FHIRUtils.createSection(Constants.CHIEF_COMPLAINTS);
 
-		if (Objects.nonNull(clinicalData.getLungCancer())) {
-			processCancerType(clinicalData.getLungCancer(), Constants.LUNG_CANCER, bundle, patientResource,
-					practitionerResource, cancerSection);
-		}
-		if (Objects.nonNull(clinicalData.getOralCancer())) {
-			processCancerType(clinicalData.getOralCancer(), Constants.ORAL_CANCER, bundle, patientResource,
-					practitionerResource, cancerSection);
-		}
-		if (Objects.nonNull(clinicalData.getCervicalCancer())) {
-			processCancerType(clinicalData.getCervicalCancer(), Constants.CERVICAL_CANCER, bundle, patientResource,
-					practitionerResource, cancerSection);
-		}
+		// create Procedure section for cancer types
+		Composition.SectionComponent procedureSection = FHIRUtils.createSection(Constants.PROCEDURE);
+
+		// create OtherObservations section for cancer types
+		Composition.SectionComponent otherObservationsSection = FHIRUtils.createSection(Constants.OTHER_OBSERVATIONS);
+
+//		if (Objects.nonNull(clinicalData.getLungCancer())) {
+//			FHIRUtils.addConditionResourceToCompositionSection(Constants.LUNG_CANCER, bundle, patientResource,
+//					chiefComplaintSection);
+//			createProcedureAndDcumentReferenceForCancerType(clinicalData.getLungCancer(), bundle, patientResource,
+//					procedureSection);
+//		}
+//		if (Objects.nonNull(clinicalData.getOralCancer())) {
+//			FHIRUtils.addConditionResourceToCompositionSection(Constants.ORAL_CANCER, bundle, patientResource,
+//					chiefComplaintSection);
+//			createProcedureAndDcumentReferenceForCancerType(clinicalData.getOralCancer(), bundle, patientResource,
+//					procedureSection);
+//		}
+//		if (Objects.nonNull(clinicalData.getCervicalCancer())) {
+//			FHIRUtils.addConditionResourceToCompositionSection(Constants.CERVICAL_CANCER, bundle, patientResource,
+//					chiefComplaintSection);
+//			createProcedureAndDcumentReferenceForCancerType(clinicalData.getCervicalCancer(), bundle, patientResource,
+//					procedureSection);
+//		}
+
 		if (Objects.nonNull(clinicalData.getAcuteMyeloidLeukemiaCancer())) {
-			processCancerType(clinicalData.getAcuteMyeloidLeukemiaCancer(), Constants.ACUTE_MYELOID_LEUKEMIA, bundle,
-					patientResource, practitionerResource, cancerSection);
+			// create condition resource for AcuteMyeloidLeukemia Cancer type
+			FHIRUtils.addConditionResourceToCompositionSection(Constants.ACUTE_MYELOID_LEUKEMIA, bundle,
+					patientResource, chiefComplaintSection);
+
+			// process cancer details for creating different fhir resources
+			processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection, otherObservationsSection,
+					clinicalData.getAcuteMyeloidLeukemiaCancer());
 		}
-		// add cancer section to bundle resource
-		sections.add(cancerSection);
+
+		if (Objects.nonNull(clinicalData.getAdultHematolymphoidCancer())) {
+			// create condition resource for AdultHematolymphoid Cancer type
+			FHIRUtils.addConditionResourceToCompositionSection(Constants.ADULT_HEMATOLYMPHOID, bundle, patientResource,
+					chiefComplaintSection);
+
+			// process cancer details for creating different fhir resources
+			processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection, otherObservationsSection,
+					clinicalData.getAdultHematolymphoidCancer());
+		}
+
+		// add chiefComplaintSection to bundle resource
+		sections.add(chiefComplaintSection);
+
+		// add procedureSection to bundle resource
+		sections.add(procedureSection);
+
+		// add otherObservationsSection to bundle resource
+		sections.add(otherObservationsSection);
 
 		if (Objects.nonNull(clinicalData.getClinicalInformation())) {
 
@@ -162,20 +208,21 @@ public class OPConsultRecordHelper {
 						allergiesDetail));
 			}
 
-			// Create the section for MedicalHistory
-			Composition.SectionComponent medicalHistorySection = new Composition.SectionComponent();
-			medicalHistorySection.setTitle(Constants.MEDICAL_HISTORY);
+			// Set code for MedicalHistory
+			org.ncg.clinical.artifacts.vo.Coding medicalHistoryCoding = FHIRUtils.mapCoding(null,
+					Constants.HISTORY_AND_PHYSICAL_REPORT);
+			CodeableConcept historyAndPhysicalReportcode = FHIRUtils.getCodeableConcept(medicalHistoryCoding.getCode(),
+					medicalHistoryCoding.getSystem(), medicalHistoryCoding.getDisplay(),
+					medicalHistoryCoding.getText());
 
-			// Set code
-			CodeableConcept code = new CodeableConcept();
-			code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "371529009", Constants.HISTORY_AND_PHYSICAL_REPORT));
-			code.setText(Constants.HISTORY_AND_PHYSICAL_REPORT);
-			medicalHistorySection.setCode(code);
+			// Create the section for MedicalHistory
+			Composition.SectionComponent medicalHistorySection = FHIRUtils
+					.createSectionComponent(Constants.MEDICAL_HISTORY, historyAndPhysicalReportcode);
 
 			// comorbidities section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getComorbidities())) {
 				List<Comorbidity> comorbidityDetails = clinicalData.getClinicalInformation().getComorbidities();
-				createMedicalHistorySection(bundle, opDoc, patientResource, comorbidityDetails, null, null,
+				createMedicalHistorySection(bundle, opDoc, patientResource, comorbidityDetails, null, null, null,
 						medicalHistorySection);
 			}
 
@@ -183,7 +230,7 @@ public class OPConsultRecordHelper {
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getPastMedicalHistory())) {
 				List<PastMedicalHistory> pastMedicalHistoryDetails = clinicalData.getClinicalInformation()
 						.getPastMedicalHistory();
-				createMedicalHistorySection(bundle, opDoc, patientResource, null, pastMedicalHistoryDetails, null,
+				createMedicalHistorySection(bundle, opDoc, patientResource, null, pastMedicalHistoryDetails, null, null,
 						medicalHistorySection);
 			}
 
@@ -192,6 +239,14 @@ public class OPConsultRecordHelper {
 				List<PastSurgicalHistory> pastSurgicalHistoryDetails = clinicalData.getClinicalInformation()
 						.getPastSurgicalHistory();
 				createMedicalHistorySection(bundle, opDoc, patientResource, null, null, pastSurgicalHistoryDetails,
+						null, medicalHistorySection);
+			}
+
+			// clinical history section
+			if (Objects.nonNull(clinicalData.getClinicalInformation().getClinicalHistory())) {
+				List<ClinicalHistory> clinicalHistoryDetails = clinicalData.getClinicalInformation()
+						.getClinicalHistory();
+				createMedicalHistorySection(bundle, opDoc, patientResource, null, null, null, clinicalHistoryDetails,
 						medicalHistorySection);
 			}
 
@@ -205,12 +260,20 @@ public class OPConsultRecordHelper {
 						adverseEventsDetail));
 			}
 
+			// Mental Health Assessment section
+			if (Objects.nonNull(clinicalData.getClinicalInformation().getMentalHealthAssesment())) {
+				List<MentalHealthAssesment> mentalHealthAssesmentDetails = clinicalData.getClinicalInformation()
+						.getMentalHealthAssesment();
+				sections.add(createDocumentReferenceSection(bundle, opDoc, patientResource, practitionerResource,
+						mentalHealthAssesmentDetails));
+			}
+
 			// Menstruation History section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getMenstruationHistory())) {
 				List<MenstruationHistory> menstruationHistoryDetails = clinicalData.getClinicalInformation()
 						.getMenstruationHistory();
-				sections.add(createOtherObservationsSection(bundle, opDoc, patientResource, practitionerResource,
-						menstruationHistoryDetails));
+				createOtherObservationsSection(bundle, opDoc, patientResource, practitionerResource,
+						menstruationHistoryDetails, otherObservationsSection);
 			}
 
 			// Examination Details section
@@ -231,59 +294,100 @@ public class OPConsultRecordHelper {
 		return sections;
 	}
 
-	private void processCancerType(CancerType cancerType, String cancerName, Bundle bundle, Patient patientResource,
-			Practitioner practitionerResource, Composition.SectionComponent sectionComponent) throws IOException {
-		if (Objects.nonNull(cancerType)) {
+	private void processCancerTypeWithDifferentResources(Bundle bundle, Patient patientResource,
+			Composition.SectionComponent procedureSection, Composition.SectionComponent otherObservationsSection,
+			Map<String, CancerDetail> cancerDetailMap) throws IOException {
+		for (Map.Entry<String, CancerDetail> entry : cancerDetailMap.entrySet()) {
 
-			// find code, system, display for each cancer based on cancerName from json file
-			// and map it to Coding format.
-			org.ncg.clinical.artifacts.vo.Coding cancerTypeCoding = FHIRUtils.mapCoding(null, cancerName);
+			// find indicatorDetailJson based on module and name
+			Optional<IndicatorDetailJson> indicatorDetailJson = getIndicatorByNameAndModuleName(entry.getKey(),
+					Constants.OP_CONSULT_RECORD_CANCER_TYPE);
 
-			// create CodeableConcept:coding for condition resource
-			CodeableConcept conditionCode = FHIRUtils.getCodeableConcept(cancerTypeCoding.getCode(),
-					cancerTypeCoding.getSystem(), cancerTypeCoding.getDisplay(), cancerName);
+			if (indicatorDetailJson.isPresent()) {
 
-			// create condition resource for each cancerType
-			Condition condition = FHIRUtils.createConditionResource(conditionCode, patientResource);
+				// fetch resource type for given cancerType name/indicator
+				String resourceType = indicatorDetailJson.get().getResourceType();
 
-			// make an entry for condition resource to bundle
-			FHIRUtils.addToBundleEntry(bundle, condition, true);
+				// If resource type is procedure then create procedure resource and document
+				// reference
+				if (resourceType.equals(Constants.PROCEDURE)) {
+					createProcedureAndDcumentReferenceForCancerType(entry, bundle, patientResource, procedureSection);
+				}
 
-			// make an entry for condition resource to the Chief complaint section
-			sectionComponent.addEntry(FHIRUtils.getReferenceToCondition(condition));
-
-			// Create Procedure for report
-			if (!CollectionUtils.isEmpty(cancerType.getTests())) {
-				for (AttachmentDetail attachmentDetail : cancerType.getTests()) {
-
-					// if incoming coding: system, code, display are not null then use same and if
-					// incoming coding: system, code, display are null then take those value from
-					// input file
-					org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(attachmentDetail.getCoding(),
-							attachmentDetail.getName());
-
-					// create procedure with DocumentReference for storing reports information
-					FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource, attachmentDetail.getAttachment(),
-							coding, attachmentDetail.getName());
+				// If resource type is observation then create observation resource and map
+				// value quantity
+				if (resourceType.equals(Constants.OBSERVATION)) {
+					createObservationForCancerType(entry, bundle, patientResource, otherObservationsSection);
 				}
 			}
 		}
 	}
 
+	private void createProcedureAndDcumentReferenceForCancerType(Map.Entry<String, CancerDetail> entry, Bundle bundle,
+			Patient patientResource, Composition.SectionComponent procedureSection) throws IOException {
+
+		CancerDetail cancerDetail = entry.getValue();
+		String indicatorName = entry.getKey();
+
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(), indicatorName);
+
+		// create procedure with DocumentReference for storing reports information
+		Procedure procedure = FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource,
+				cancerDetail.getAttachment(), coding, coding.getText());
+
+		// make an entry for procedure in procedureSection
+		procedureSection.addEntry(FHIRUtils.getReferenceToProcedure(procedure));
+	}
+
+	private void createObservationForCancerType(Map.Entry<String, CancerDetail> entry, Bundle bundle,
+			Patient patientResource, Composition.SectionComponent otherObservationsSection) throws IOException {
+
+		CancerDetail cancerDetail = entry.getValue();
+		String indicatorName = entry.getKey();
+
+		// create observation
+		Observation observation = FHIRUtils.createObservation(patientResource);
+
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(), indicatorName);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
+
+		// Set the code for observation
+		observation.setCode(code);
+
+		// Set the value in the Observation
+		if (ObjectUtils.isNotEmpty(cancerDetail.getValueQuantity())) {
+			observation.setValue(FHIRUtils.createQuantityResource(cancerDetail.getValueQuantity().getValue(),
+					cancerDetail.getValueQuantity().getUnit(), cancerDetail.getValueQuantity().getSystem(),
+					cancerDetail.getValueQuantity().getCode()));
+		}
+
+		// set effective date time
+		observation.setEffective(FHIRUtils.getEffectiveDate(new Date()));
+
+		// make an entry for procedure in procedureSection
+		otherObservationsSection.addEntry(FHIRUtils.getReferenceToObservation(observation));
+
+		// Add observation to the bundle
+		FHIRUtils.addToBundleEntry(bundle, observation, true);
+	}
+
 	public Composition.SectionComponent createDrugAllergySection(Bundle bundle, Composition composition,
 			Patient patient, Practitioner practitioner, List<Allergy> drugAllergyList) {
 
-		// create code for allergies
-		CodeableConcept allergyCode = new CodeableConcept();
-		Optional<Test> cancerTestDetail = getTestByName(Constants.ALLERGIES);
-		if (cancerTestDetail.isPresent()) {
-			Test test = cancerTestDetail.get();
-			allergyCode = FHIRUtils.getCodeableConcept(test.getCoding().getCode(), Constants.SNOMED_SYSTEM_SCT,
-					test.getCoding().getDisplay(), test.getDescription());
-		}
+		// set code
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.ALLERGIES);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
+
 		// Create the section for allergies
-		Composition.SectionComponent allergiesSection = FHIRUtils.createSectionComponent(Constants.ALLERGIES,
-				allergyCode);
+		Composition.SectionComponent allergiesSection = FHIRUtils.createSectionComponent(Constants.ALLERGIES, code);
 
 		// Iterate over the drugAllergyList and create AllergyIntolerance resources
 		for (Allergy allergyDetail : drugAllergyList) {
@@ -333,7 +437,7 @@ public class OPConsultRecordHelper {
 				allergyDetail.getName());
 
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				allergyDetail.getName());
+				coding.getText());
 		allergyIntolerance.setCode(code);
 
 		// Set patient reference
@@ -365,17 +469,14 @@ public class OPConsultRecordHelper {
 	public Composition.SectionComponent createInvestigationAdviceSection(Bundle bundle, Composition composition,
 			Patient patient, List<InvestigationAdvice> investigationAdviceList) {
 
-		// Create the section for investigation advice
-		Composition.SectionComponent investigationAdviceSection = new Composition.SectionComponent();
-		investigationAdviceSection.setTitle(Constants.INVESTIGATION_ADVICE);
-		investigationAdviceSection.setCode(FHIRUtils.getCodeableConcept("424224008", Constants.SNOMED_SYSTEM_SCT,
-				Constants.EXAMINATION_DETAILS, Constants.EXAMINATION_DETAILS));
+		// set code
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.EXAMINATION_DETAILS);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
 
-		// Set code
-		CodeableConcept code = new CodeableConcept();
-		code.addCoding(new Coding(Constants.SNOMED_SYSTEM_SCT, "721963009", "Order document"));
-		code.setText(Constants.EXAMINATION_DETAILS);
-		investigationAdviceSection.setCode(code);
+		// Create the section for investigation advice
+		Composition.SectionComponent investigationAdviceSection = FHIRUtils
+				.createSectionComponent(Constants.INVESTIGATION_ADVICE, code);
 
 		// Iterate over the investigationAdviceList and create ServiceRequest resources
 		for (InvestigationAdvice investigationAdvice : investigationAdviceList) {
@@ -423,15 +524,13 @@ public class OPConsultRecordHelper {
 	public Composition.SectionComponent createMedicationsSection(Bundle bundle, Composition composition,
 			Patient patient, List<OngoingDrugs> ongoingDrugsList) {
 
-		// Create the section for Medications
-		Composition.SectionComponent medicationsSection = new Composition.SectionComponent();
-		medicationsSection.setTitle(Constants.MEDICATIONS);
-
 		// set code
 		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.ONGOING_DRUGS);
-		CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-				coding.getDisplay(), Constants.ONGOING_DRUGS);
-		medicationsSection.setCode(medicationCode);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
+
+		// Create the section for Medications
+		Composition.SectionComponent medicationsSection = FHIRUtils.createSectionComponent(Constants.MEDICATIONS, code);
 
 		// Iterate over the investigationAdviceList and create ServiceRequest resources
 		for (OngoingDrugs ongoingDrugs : ongoingDrugsList) {
@@ -446,7 +545,6 @@ public class OPConsultRecordHelper {
 				medicationsSection.addEntry(FHIRUtils.getReferenceToMedicationRequest(medicationRequest));
 			}
 		}
-
 		return medicationsSection;
 	}
 
@@ -465,7 +563,7 @@ public class OPConsultRecordHelper {
 		// Set medication reference
 		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.ONGOING_DRUGS);
 		CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-				coding.getDisplay(), Constants.ONGOING_DRUGS);
+				coding.getDisplay(), coding.getText());
 		medicationStatement.setMedication(medicationCode);
 
 		// Set subject
@@ -477,7 +575,7 @@ public class OPConsultRecordHelper {
 		coding = FHIRUtils.mapCoding(ongoingDrugsDetail.getCoding(), ongoingDrugsDetail.getName());
 
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				ongoingDrugsDetail.getName());
+				coding.getText());
 
 		// TODO
 		// Set reasonCode
@@ -487,28 +585,10 @@ public class OPConsultRecordHelper {
 		// Set dosage
 		Dosage dosage = new Dosage();
 
-		// TODO
-		// Additional Instruction
-		dosage.addAdditionalInstruction(code);
-
-		// TODO
-		// Site
-		dosage.setSite(code);
-
-		// TODO
-		// Route
-		dosage.setRoute(code);
-
-		// TODO
-		// Method
-		dosage.setMethod(code);
-
 		// Dose and Rate
 		DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
-		doseAndRate.setDose(
-				new Quantity().setValue(500).setUnit("mg").setSystem("http://unitsofmeasure.org").setCode("mg"));
-		doseAndRate.setRate(
-				new Quantity().setValue(3).setUnit("1/d").setSystem("http://unitsofmeasure.org").setCode("{1/d}"));
+		doseAndRate.setDose(FHIRUtils.createQuantity(500, "mg", Constants.HTTP_UNITSOFMEASURE_ORG, "mg"));
+		doseAndRate.setRate(FHIRUtils.createQuantity(3, "1/d", Constants.HTTP_UNITSOFMEASURE_ORG, "{1/d}"));
 		dosage.addDoseAndRate(doseAndRate);
 
 		// Add dosage to medication statement
@@ -556,7 +636,7 @@ public class OPConsultRecordHelper {
 				ongoingDrugsDetail.getName());
 
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				ongoingDrugsDetail.getName());
+				coding.getText());
 
 		// Set medication reference
 		medicationRequest.setMedication(code);
@@ -579,28 +659,10 @@ public class OPConsultRecordHelper {
 		// Set dosage
 		Dosage dosage = new Dosage();
 
-		// TODO
-		// Additional Instruction
-		dosage.addAdditionalInstruction(code);
-
-		// TODO
-		// Site
-		dosage.setSite(code);
-
-		// TODO
-		// Route
-		dosage.setRoute(code);
-
-		// TODO
-		// Method
-		dosage.setMethod(code);
-
 		// Dose and Rate
 		DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
-		doseAndRate.setDose(
-				new Quantity().setValue(500).setUnit("mg").setSystem("http://unitsofmeasure.org").setCode("mg"));
-		doseAndRate.setRate(
-				new Quantity().setValue(3).setUnit("1/d").setSystem("http://unitsofmeasure.org").setCode("{1/d}"));
+		doseAndRate.setDose(FHIRUtils.createQuantity(500, "mg", Constants.HTTP_UNITSOFMEASURE_ORG, "mg"));
+		doseAndRate.setRate(FHIRUtils.createQuantity(3, "1/d", Constants.HTTP_UNITSOFMEASURE_ORG, "{1/d}"));
 		dosage.addDoseAndRate(doseAndRate);
 
 		// Add dosage to medication statement
@@ -613,17 +675,11 @@ public class OPConsultRecordHelper {
 	}
 
 	public Composition.SectionComponent createOtherObservationsSection(Bundle bundle, Composition composition,
-			Patient patient, Practitioner practitioner, List<MenstruationHistory> menstruationHistoryList) {
-
-		// Create the section for OtherObservations
-		Composition.SectionComponent medicationsSection = new Composition.SectionComponent();
-		medicationsSection.setTitle(Constants.OTHER_OBSERVATIONS);
+			Patient patient, Practitioner practitioner, List<MenstruationHistory> menstruationHistoryList,
+			Composition.SectionComponent medicationsSection) {
 
 		// Set code
 		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.MENSTRUATION_HISTORY);
-		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				Constants.MENSTRUATION_HISTORY);
-		medicationsSection.setCode(code);
 
 		// Iterate over the menstruationHistory and create Observation resources
 		for (MenstruationHistory menstruationHistory : menstruationHistoryList) {
@@ -646,13 +702,6 @@ public class OPConsultRecordHelper {
 		performers.add(FHIRUtils.getReferenceToPractitioner(practitioner));
 		observation.setPerformer(performers);
 
-		// Set text
-		Narrative narrative = new Narrative();
-		narrative.setStatusAsString("generated");
-		narrative.setDivAsString(
-				"<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: example-20</p><p><b>status</b>: final</p><p><b>code</b>: Age at menarche <span>(Details : LOINC code '42798-9' = 'Age at menarche', given as 'Age at menarche')</span></p><p><b>subject</b>: ABC</p><p><b>value</b>: 14 age</p></div>");
-		observation.setText(narrative);
-
 		// if incoming coding: system, code, display are not null then use same and if
 		// incoming coding: system, code, display are null then take those value from
 		// input file
@@ -660,7 +709,7 @@ public class OPConsultRecordHelper {
 				menstruationHistoryDetail.getName());
 
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				menstruationHistoryDetail.getName());
+				coding.getText());
 		observation.setCode(code);
 
 		// set value
@@ -676,12 +725,13 @@ public class OPConsultRecordHelper {
 
 	public Composition.SectionComponent createMedicalHistorySection(Bundle bundle, Composition composition,
 			Patient patient, List<Comorbidity> comorbidityList, List<PastMedicalHistory> pastMedicalHistoryList,
-			List<PastSurgicalHistory> pastSurgicalHistoryList, Composition.SectionComponent medicalHistorySection) {
+			List<PastSurgicalHistory> pastSurgicalHistoryList, List<ClinicalHistory> clinicalHistoryList,
+			Composition.SectionComponent medicalHistorySection) {
 
 		// Iterate over the comorbidityList and create Condition resources
 		if (!Objects.isNull(comorbidityList)) {
 			for (Comorbidity comorbidity : comorbidityList) {
-				Condition condition = createMedicalHistoryCondition(comorbidity, null, patient);
+				Condition condition = createMedicalHistoryCondition(comorbidity, null, null, patient);
 
 				FHIRUtils.addToBundleEntry(bundle, condition, true);
 				medicalHistorySection.addEntry(FHIRUtils.getReferenceToCondition(condition));
@@ -691,7 +741,7 @@ public class OPConsultRecordHelper {
 		// Iterate over the pastMedicalHistoryList and create Condition resources
 		if (!Objects.isNull(pastMedicalHistoryList)) {
 			for (PastMedicalHistory pastMedicalHistory : pastMedicalHistoryList) {
-				Condition condition = createMedicalHistoryCondition(null, pastMedicalHistory, patient);
+				Condition condition = createMedicalHistoryCondition(null, pastMedicalHistory, null, patient);
 
 				FHIRUtils.addToBundleEntry(bundle, condition, true);
 				medicalHistorySection.addEntry(FHIRUtils.getReferenceToCondition(condition));
@@ -708,14 +758,27 @@ public class OPConsultRecordHelper {
 			}
 		}
 
+		// Iterate over the clinicalHistoryList and create Condition resources
+		if (!Objects.isNull(clinicalHistoryList)) {
+			for (ClinicalHistory clinicalHistory : clinicalHistoryList) {
+				Condition condition = createMedicalHistoryCondition(null, null, clinicalHistory, patient);
+				FHIRUtils.addToBundleEntry(bundle, condition, true);
+
+				medicalHistorySection.addEntry(FHIRUtils.getReferenceToCondition(condition));
+			}
+		}
+
 		return medicalHistorySection;
 	}
 
 	private Condition createMedicalHistoryCondition(Comorbidity comorbidity, PastMedicalHistory pastMedicalHistory,
-			Patient patient) {
+			ClinicalHistory clinicalHistory, Patient patient) {
 
 		// Create a new Condition resource
 		Condition condition = FHIRUtils.createConditionResource(null, patient);
+
+		// add meta
+		condition.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_CONDITION));
 
 		// Set clinicalStatus
 		CodeableConcept clinicalStatus = FHIRUtils.getCodeableConcept(Constants.RESOLVED.toLowerCase(),
@@ -736,36 +799,35 @@ public class OPConsultRecordHelper {
 					comorbidity.getName());
 
 			CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-					coding.getDisplay(), comorbidity.getName());
+					coding.getDisplay(), coding.getText());
 			condition.setCode(code);
 
 			// set category
-			if (!org.apache.commons.lang3.StringUtils.equals(comorbidity.getCategory(), "problem-list-item")) {
-				condition.addCategory(FHIRUtils.getCodeableConcept("233604007", Constants.SNOMED_SYSTEM_SCT,
-						"Pneumonia", "Encounter diagnosis"));
-			} else {
-				condition.addCategory(FHIRUtils.getCodeableConcept("38341003", Constants.SNOMED_SYSTEM_SCT,
-						"High blood pressure", "Problem list item"));
-			}
+			org.ncg.clinical.artifacts.vo.Coding categoryCoding = FHIRUtils.mapCoding(null, comorbidity.getCategory());
+			CodeableConcept categoryCode = FHIRUtils.getCodeableConcept(categoryCoding.getCode(),
+					categoryCoding.getSystem(), categoryCoding.getDisplay(), categoryCoding.getText());
+			condition.addCategory(categoryCode);
 		}
 		if (pastMedicalHistory != null) {
 			org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(pastMedicalHistory.getCoding(),
 					pastMedicalHistory.getName());
 
 			CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-					coding.getDisplay(), pastMedicalHistory.getName());
+					coding.getDisplay(), coding.getText());
+			condition.setCode(code);
+		}
+
+		if (clinicalHistory != null) {
+			org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(clinicalHistory.getCoding(),
+					clinicalHistory.getName());
+
+			CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+					coding.getDisplay(), coding.getText());
 			condition.setCode(code);
 		}
 
 		// Set recorded date time
 		condition.setRecordedDate(new Date());
-
-		// Set text
-		Narrative narrative = new Narrative();
-		narrative.setStatusAsString("generated");
-		narrative.setDivAsString(
-				"<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Narrative with Details</b></p><p><b>id</b>: finding-example-01</p><p><b>status</b>: final</p><p><b>code</b>: Respiratory rate <span>(Details : SNOMED CT code '780834008' = 'Respiratory rate normal', given as 'Respiratory rate normal')</span></p><p><b>subject</b>: ABC</p><p><b>performer</b>: Dr. DEF, MD</p><p><b>value</b>: 18 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td></tr><tr><td>*</td><td>12 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr><tr><td>-</td><td><b>High</b></td></tr><tr><td>*</td><td>20 breaths/minute<span> (Details: UCUM code /min = '/min')</span></td></tr></table></div>");
-		condition.setText(narrative);
 
 		return condition;
 	}
@@ -797,12 +859,12 @@ public class OPConsultRecordHelper {
 
 		// create code for adverseEvents Section
 		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.ADVERSE_EVENTS);
-		CodeableConcept adverseEventCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-				coding.getDisplay(), Constants.ADVERSE_EVENTS);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
 
 		// Create the section for adverseEvents
 		Composition.SectionComponent adverseEventsSection = FHIRUtils.createSectionComponent(Constants.ADVERSE_EVENTS,
-				adverseEventCode);
+				code);
 
 		// Iterate over the adverseEventsList and create AdverseEvent resources
 		for (AdverseEventRequest adverseEventsDetail : adverseEventsList) {
@@ -834,14 +896,14 @@ public class OPConsultRecordHelper {
 		// if incoming coding: system, code, display are not null then use same and if
 		// incoming coding: system, code, display are null then take those value from
 		// input file
-		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(adverseEventDetail.getCoding(),
+		org.ncg.clinical.artifacts.vo.Coding categoryCoding = FHIRUtils.mapCoding(null,
 				adverseEventDetail.getCategory());
 
-		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				adverseEventDetail.getCategory());
+		CodeableConcept categoryCode = FHIRUtils.getCodeableConcept(categoryCoding.getCode(),
+				categoryCoding.getSystem(), categoryCoding.getDisplay(), categoryCoding.getText());
 
 		// set category
-		adverseEvent.addCategory(code);
+		adverseEvent.addCategory(categoryCode);
 
 		// Set patient reference
 		adverseEvent.setSubject(FHIRUtils.getReferenceToPatient(patient));
@@ -866,13 +928,57 @@ public class OPConsultRecordHelper {
 		FHIRUtils.addToBundleEntry(bundle, adverseEvent, true);
 
 		// Set seriousness
-		adverseEvent.setSeriousness(
-				FHIRUtils.getCodeableConcept("24484000", "http://snomed.info/sct", "Severe", "Serious"));
+		org.ncg.clinical.artifacts.vo.Coding seriousnessCoding = FHIRUtils.mapCoding(null,
+				adverseEventDetail.getSeriousness());
+		CodeableConcept seriousnessCode = FHIRUtils.getCodeableConcept(seriousnessCoding.getCode(),
+				seriousnessCoding.getSystem(), seriousnessCoding.getDisplay(), seriousnessCoding.getText());
+		adverseEvent.setSeriousness(seriousnessCode);
 
 		// Set outcome
-		adverseEvent.setOutcome(FHIRUtils.getCodeableConcept("resolved",
-				"http://terminology.hl7.org/CodeSystem/adverse-event-outcome", Constants.RESOLVED, Constants.RESOLVED));
+		org.ncg.clinical.artifacts.vo.Coding outcomeCoding = FHIRUtils.mapCoding(null, adverseEventDetail.getOutcome());
+		CodeableConcept outcomeCode = FHIRUtils.getCodeableConcept(outcomeCoding.getCode(), outcomeCoding.getSystem(),
+				outcomeCoding.getDisplay(), outcomeCoding.getText());
+		adverseEvent.setOutcome(outcomeCode);
 
 		return adverseEvent;
+	}
+
+	public Composition.SectionComponent createDocumentReferenceSection(Bundle bundle, Composition composition,
+			Patient patient, Practitioner practitioner, List<MentalHealthAssesment> mentalHealthAssesmentList)
+			throws IOException {
+
+		// create code for DocumentReference Section
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(null, Constants.DOCUMENT_REFERENCE);
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
+
+		// Create the section for DocumentReference
+		Composition.SectionComponent documentReferenceSection = FHIRUtils
+				.createSectionComponent(Constants.DOCUMENT_REFERENCE, code);
+
+		// Iterate over the adverseEventsList and create DocumentReference resources
+		for (MentalHealthAssesment mentalHealthAssesmentDetail : mentalHealthAssesmentList) {
+			DocumentReference documentReference = createDocumentReference(bundle, mentalHealthAssesmentDetail, patient,
+					practitioner);
+
+			documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
+		}
+
+		return documentReferenceSection;
+	}
+
+	private DocumentReference createDocumentReference(Bundle bundle, MentalHealthAssesment mentalHealthAssesmentDetail,
+			Patient patient, Practitioner practitioner) throws IOException {
+
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(mentalHealthAssesmentDetail.getCoding(),
+				mentalHealthAssesmentDetail.getName());
+
+		DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
+				mentalHealthAssesmentDetail.getName(), mentalHealthAssesmentDetail.getAttachment(), patient, coding);
+
+		// add DocumentReference to bundle resource
+		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+
+		return documentReference;
 	}
 }

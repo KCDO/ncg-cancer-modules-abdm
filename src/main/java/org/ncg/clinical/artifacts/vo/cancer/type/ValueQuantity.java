@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.cancer.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Coding {
+public class ValueQuantity {
+	private double value;
+	private String unit;
 	private String system;
 	private String code;
-	private String display;
-	private String text;
 }

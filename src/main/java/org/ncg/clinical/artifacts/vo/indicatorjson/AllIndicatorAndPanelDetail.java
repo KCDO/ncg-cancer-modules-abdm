@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo.labtest;
+package org.ncg.clinical.artifacts.vo.indicatorjson;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AllLabTests {
-	private List<Panel> panels;
-	private List<Test> tests;
+public class AllIndicatorAndPanelDetail {
+	private List<PanelDetailJson> panelDetails;
+	private List<IndicatorDetailJson> indicatorDetails;
 }
