@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo.indicatorjson;
+package org.ncg.clinical.artifacts.vo.json;
 
 import java.util.List;
 

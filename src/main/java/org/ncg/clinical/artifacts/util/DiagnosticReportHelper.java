@@ -26,9 +26,9 @@ import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
 import org.ncg.clinical.artifacts.vo.diagnostic.Diagnostic;
 import org.ncg.clinical.artifacts.vo.diagnostic.PanelDetail;
 import org.ncg.clinical.artifacts.vo.diagnostic.TestDetail;
-import org.ncg.clinical.artifacts.vo.indicatorjson.AllIndicatorAndPanelDetail;
-import org.ncg.clinical.artifacts.vo.indicatorjson.IndicatorDetailJson;
-import org.ncg.clinical.artifacts.vo.indicatorjson.PanelDetailJson;
+import org.ncg.clinical.artifacts.vo.json.AllTestAndPanelDetail;
+import org.ncg.clinical.artifacts.vo.json.PanelDetailJson;
+import org.ncg.clinical.artifacts.vo.json.TestDetailJson;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -42,26 +42,26 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DiagnosticReportHelper {
 
-	private AllIndicatorAndPanelDetail allIndicatorAndPanelDetails;
+	private static AllTestAndPanelDetail allTestAndPanelDetails;
 
-	@Value("${all.tests.labs.json}")
-	private String allIndicatorAndPanelDetailsJson;
+	@Value("${all.tests.panels.json}")
+	private String allTestAndPanelDetailsJson;
 
 	@PostConstruct
 	public void init() throws Exception {
-		allIndicatorAndPanelDetails = new ObjectMapper().readValue(new File(allIndicatorAndPanelDetailsJson),
-				AllIndicatorAndPanelDetail.class);
+		allTestAndPanelDetails = new ObjectMapper().readValue(new File(allTestAndPanelDetailsJson),
+				AllTestAndPanelDetail.class);
 		log.info("DiagnosticReportHelper::init::Successfully loaded AllLabTests from JSON.");
 	}
 
-	public Optional<IndicatorDetailJson> getIndicatorByName(String name) {
-		return allIndicatorAndPanelDetails.getIndicatorDetails().stream()
-				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)).findFirst();
+	public static Optional<TestDetailJson> getTestDetailByName(String name) {
+		return allTestAndPanelDetails.getTestDetails().stream().filter(test -> test.getName().equalsIgnoreCase(name))
+				.findFirst();
 	}
 
-	public Optional<PanelDetailJson> getPanelByName(String name) {
-		return allIndicatorAndPanelDetails.getPanelDetails().stream()
-				.filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
+	public static Optional<PanelDetailJson> getPanelByName(String name) {
+		return allTestAndPanelDetails.getPanelDetails().stream().filter(panel -> panel.getName().equalsIgnoreCase(name))
+				.findFirst();
 	}
 
 	public Bundle createOPConsultationBundle(OPConsultRecordRequest clinicalData) throws Exception {

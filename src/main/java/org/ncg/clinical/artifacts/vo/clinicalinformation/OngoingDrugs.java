@@ -1,7 +1,7 @@
 package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import org.ncg.clinical.artifacts.vo.Coding;
-import org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest;
+import org.ncg.clinical.artifacts.vo.json.MedicationRequest;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

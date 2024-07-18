@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo.cancer.type;
+package org.ncg.clinical.artifacts.vo.json;
 
 import java.sql.Date;
 

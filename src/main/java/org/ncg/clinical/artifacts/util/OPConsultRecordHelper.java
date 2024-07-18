@@ -36,11 +36,13 @@ import org.ncg.clinical.artifacts.vo.clinicalinformation.MentalHealthAssesment;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastMedicalHistory;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastSurgicalHistory;
-import org.ncg.clinical.artifacts.vo.indicatorjson.AllIndicatorAndPanelDetail;
-import org.ncg.clinical.artifacts.vo.indicatorjson.IndicatorDetailJson;
-import org.ncg.clinical.artifacts.vo.indicatorjson.PanelDetailJson;
+import org.ncg.clinical.artifacts.vo.json.AllTestAndPanelDetail;
+import org.ncg.clinical.artifacts.vo.json.CancerTypeDetail;
+import org.ncg.clinical.artifacts.vo.json.PanelDetailJson;
+import org.ncg.clinical.artifacts.vo.json.TestDetailJson;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -51,26 +53,32 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OPConsultRecordHelper {
 
-	private AllIndicatorAndPanelDetail allIndicatorAndPanelDetail;
+	private AllTestAndPanelDetail allTestAndPanelDetails;
 
-	@Value("${all.tests.labs.json}")
-	private String allIndicatorAndPanelDetailsJson;
+	private CancerTypeDetail cancerTypeDetails;
+
+	@Value("${all.tests.panels.json}")
+	private String allTestAndPanelDetailsJson;
+
+	@Value("${cancer.type.details.json}")
+	private String cancerTypeDetailsJson;
 
 	@PostConstruct
 	public void init() throws Exception {
-		allIndicatorAndPanelDetail = new ObjectMapper().readValue(new File(allIndicatorAndPanelDetailsJson),
-				AllIndicatorAndPanelDetail.class);
+		allTestAndPanelDetails = new ObjectMapper().readValue(new File(allTestAndPanelDetailsJson),
+				AllTestAndPanelDetail.class);
+		cancerTypeDetails = new ObjectMapper().readValue(new File(cancerTypeDetailsJson), CancerTypeDetail.class);
 		log.info("OPConsultRecordHelper::init::Successfully loaded AllLabTests from JSON.");
 	}
 
-	public Optional<IndicatorDetailJson> getIndicatorByName(String name) {
-		return allIndicatorAndPanelDetail.getIndicatorDetails().stream()
-				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)).findFirst();
+	public Optional<TestDetailJson> getTestDetailByName(String name) {
+		return allTestAndPanelDetails.getTestDetails().stream().filter(test -> test.getName().equalsIgnoreCase(name))
+				.findFirst();
 	}
 
 	public Optional<PanelDetailJson> getPanelByName(String name) {
-		return allIndicatorAndPanelDetail.getPanelDetails().stream()
-				.filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
+		return allTestAndPanelDetails.getPanelDetails().stream().filter(panel -> panel.getName().equalsIgnoreCase(name))
+				.findFirst();
 	}
 
 	public Bundle createOPConsultationBundle(OPConsultRecordRequest oPConsultRecordRequest) throws Exception {
@@ -149,45 +157,30 @@ public class OPConsultRecordHelper {
 		// Create the section for allergies
 		Composition.SectionComponent allergiesSection = FHIRUtils.createSection(Constants.ALLERGIES);
 
-//		if (Objects.nonNull(clinicalData.getLungCancer())) {
-//			FHIRUtils.addConditionResourceToCompositionSection(Constants.LUNG_CANCER, bundle, patientResource,
-//					chiefComplaintSection);
-//			createProcedureAndDcumentReferenceForCancerType(clinicalData.getLungCancer(), bundle, patientResource,
-//					procedureSection);
-//		}
-//		if (Objects.nonNull(clinicalData.getOralCancer())) {
-//			FHIRUtils.addConditionResourceToCompositionSection(Constants.ORAL_CANCER, bundle, patientResource,
-//					chiefComplaintSection);
-//			createProcedureAndDcumentReferenceForCancerType(clinicalData.getOralCancer(), bundle, patientResource,
-//					procedureSection);
-//		}
-//		if (Objects.nonNull(clinicalData.getCervicalCancer())) {
-//			FHIRUtils.addConditionResourceToCompositionSection(Constants.CERVICAL_CANCER, bundle, patientResource,
-//					chiefComplaintSection);
-//			createProcedureAndDcumentReferenceForCancerType(clinicalData.getCervicalCancer(), bundle, patientResource,
-//					procedureSection);
-//		}
+		if (!CollectionUtils.isEmpty(clinicalData.getCancerTypes())) {
+			for (String cancerType : clinicalData.getCancerTypes()) {
+				if (cancerType.toLowerCase().contains(Constants.ACUTE_MYELOID_LEUKEMIA.toLowerCase())) {
+					// create condition resource for AcuteMyeloidLeukemia Cancer type
+					FHIRUtils.addConditionResourceToCompositionSection(Constants.ACUTE_MYELOID_LEUKEMIA, bundle,
+							patientResource, chiefComplaintSection);
 
-		if (Objects.nonNull(clinicalData.getAcuteMyeloidLeukemiaCancer())) {
-			// create condition resource for AcuteMyeloidLeukemia Cancer type
-			FHIRUtils.addConditionResourceToCompositionSection(Constants.ACUTE_MYELOID_LEUKEMIA, bundle,
-					patientResource, chiefComplaintSection);
+					// process cancer details for creating different fhir resources
+					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
+							otherObservationsSection, medicationsSection, documentReferenceSection,
+							cancerTypeDetails.getAcuteMyeloidleukemia());
+				}
 
-			// process cancer details for creating different fhir resources
-			FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
-					otherObservationsSection, medicationsSection, documentReferenceSection,
-					clinicalData.getAcuteMyeloidLeukemiaCancer());
-		}
+				if (cancerType.toLowerCase().contains(Constants.ADULT_HEMATOLYMPHOID.toLowerCase())) {
+					// create condition resource for AdultHematolymphoid Cancer type
+					FHIRUtils.addConditionResourceToCompositionSection(Constants.ADULT_HEMATOLYMPHOID, bundle,
+							patientResource, chiefComplaintSection);
 
-		if (Objects.nonNull(clinicalData.getAdultHematolymphoidCancer())) {
-			// create condition resource for AdultHematolymphoid Cancer type
-			FHIRUtils.addConditionResourceToCompositionSection(Constants.ADULT_HEMATOLYMPHOID, bundle, patientResource,
-					chiefComplaintSection);
-
-			// process cancer details for creating different fhir resources
-			FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
-					otherObservationsSection, medicationsSection, documentReferenceSection,
-					clinicalData.getAdultHematolymphoidCancer());
+					// process cancer details for creating different fhir resources
+					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
+							otherObservationsSection, medicationsSection, documentReferenceSection,
+							cancerTypeDetails.getAdultHematolymphoid());
+				}
+			}
 		}
 
 		// add chiefComplaintSection to bundle resource
@@ -436,7 +429,7 @@ public class OPConsultRecordHelper {
 		for (OngoingDrugs ongoingDrugs : ongoingDrugsList) {
 			// populating medication related data from ongoingDrugs to MedicationRequest
 			// object
-			org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest = new org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest(
+			org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest = new org.ncg.clinical.artifacts.vo.json.MedicationRequest(
 					ongoingDrugs);
 
 			if (!Objects.isNull(medicationRequest.getMedicationType())) {

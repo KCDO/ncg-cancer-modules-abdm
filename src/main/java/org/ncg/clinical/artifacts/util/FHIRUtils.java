@@ -18,6 +18,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Address;
 import org.hl7.fhir.r4.model.AdverseEvent;
+import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
 import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Attachment;
@@ -57,14 +58,13 @@ import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.Type;
-import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
-import org.ncg.clinical.artifacts.vo.cancer.type.CancerDetail;
-import org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest.ReferenceType;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.AdverseEventRequest;
-import org.ncg.clinical.artifacts.vo.indicatorjson.AllIndicatorAndPanelDetail;
-import org.ncg.clinical.artifacts.vo.indicatorjson.IndicatorDetailJson;
-import org.ncg.clinical.artifacts.vo.indicatorjson.PanelDetailJson;
+import org.ncg.clinical.artifacts.vo.json.AllTestAndPanelDetail;
+import org.ncg.clinical.artifacts.vo.json.CancerDetail;
+import org.ncg.clinical.artifacts.vo.json.MedicationRequest.ReferenceType;
+import org.ncg.clinical.artifacts.vo.json.PanelDetailJson;
+import org.ncg.clinical.artifacts.vo.json.TestDetailJson;
 import org.ncg.clinical.artifacts.vo.organization.OrganizationData;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
 import org.ncg.clinical.artifacts.vo.practitioner.PractitionerData;
@@ -78,31 +78,24 @@ import jakarta.annotation.PostConstruct;
 @Service
 public class FHIRUtils {
 
-	private static AllIndicatorAndPanelDetail allIndicatorAndPanelDetails;
+	private static AllTestAndPanelDetail allTestAndPanelDetails;
 
-	@Value("${all.tests.labs.json}")
-	private String allIndicatorAndPanelDetailsJson;
+	@Value("${all.tests.panels.json}")
+	private String allTestAndPanelDetailsJson;
 
 	@PostConstruct
 	public void init() throws Exception {
-		allIndicatorAndPanelDetails = new ObjectMapper().readValue(new File(allIndicatorAndPanelDetailsJson),
-				AllIndicatorAndPanelDetail.class);
+		allTestAndPanelDetails = new ObjectMapper().readValue(new File(allTestAndPanelDetailsJson),
+				AllTestAndPanelDetail.class);
 	}
 
-	public static Optional<IndicatorDetailJson> getIndicatorByName(String name) {
-		return allIndicatorAndPanelDetails.getIndicatorDetails().stream()
-				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)).findFirst();
+	public static Optional<TestDetailJson> getTestDetailByName(String name) {
+		return allTestAndPanelDetails.getTestDetails().stream().filter(test -> test.getName().equalsIgnoreCase(name))
+				.findFirst();
 	}
 
 	public static Optional<PanelDetailJson> getPanelByName(String name) {
-		return allIndicatorAndPanelDetails.getPanelDetails().stream()
-				.filter(panel -> panel.getName().equalsIgnoreCase(name)).findFirst();
-	}
-
-	public static Optional<IndicatorDetailJson> getIndicatorByNameAndModuleName(String name, String moduleName) {
-		return allIndicatorAndPanelDetails.getIndicatorDetails().stream()
-				.filter(indicator -> indicator.getName().equalsIgnoreCase(name)
-						&& indicator.getModuleName().equalsIgnoreCase(moduleName))
+		return allTestAndPanelDetails.getPanelDetails().stream().filter(panel -> panel.getName().equalsIgnoreCase(name))
 				.findFirst();
 	}
 
@@ -698,9 +691,9 @@ public class FHIRUtils {
 			} else {
 				// if any one of incoming system, code, display or text are null then use input
 				// json Test
-				Optional<IndicatorDetailJson> indicatorDetail = getIndicatorByName(testName);
-				if (indicatorDetail.isPresent()) {
-					IndicatorDetailJson test = indicatorDetail.get();
+				Optional<TestDetailJson> testDetail = getTestDetailByName(testName);
+				if (testDetail.isPresent()) {
+					TestDetailJson test = testDetail.get();
 					newCoding.setSystem(StringUtils.isNotEmpty(coding.getSystem()) ? coding.getSystem()
 							: test.getCoding().getSystem());
 					newCoding.setCode(
@@ -714,9 +707,9 @@ public class FHIRUtils {
 		} else {
 			// if all of incoming system, code, display or text are null then use input json
 			// Test
-			Optional<IndicatorDetailJson> indicatorDetail = getIndicatorByName(testName);
-			if (indicatorDetail.isPresent()) {
-				IndicatorDetailJson test = indicatorDetail.get();
+			Optional<TestDetailJson> testDetail = getTestDetailByName(testName);
+			if (testDetail.isPresent()) {
+				TestDetailJson test = testDetail.get();
 				newCoding.setSystem(test.getCoding().getSystem());
 				newCoding.setCode(test.getCoding().getCode());
 				newCoding.setDisplay(test.getCoding().getDisplay());
@@ -1095,7 +1088,7 @@ public class FHIRUtils {
 	}
 
 	public static MedicationStatement createMedicationStatement(org.ncg.clinical.artifacts.vo.Coding medicationCoding,
-			String medicationName, org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest,
+			String medicationName, org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest,
 			Patient patient) {
 		MedicationStatement medicationStatement = new MedicationStatement();
 
@@ -1156,7 +1149,7 @@ public class FHIRUtils {
 	}
 
 	public static MedicationRequest createMedicationRequest(org.ncg.clinical.artifacts.vo.Coding medicationCoding,
-			String medicationName, org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest,
+			String medicationName, org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest,
 			Patient patient) {
 		MedicationRequest medicationRequestResource = new MedicationRequest();
 
@@ -1179,7 +1172,7 @@ public class FHIRUtils {
 		// Set medication in medicationRequestResource
 		// if incoming coding is not null then use same and if it is null then call
 		// mapCoding method for taking those value from input file
-//		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(coding, indicatorName);
+//		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(coding, testName);
 //		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
 //				coding.getText());
 //
@@ -1220,7 +1213,7 @@ public class FHIRUtils {
 	}
 
 	static MedicationStatement.MedicationStatementStatus getMedicationStatementStatus(
-			org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest.medicationStatus medicationStatus) {
+			org.ncg.clinical.artifacts.vo.json.MedicationRequest.medicationStatus medicationStatus) {
 		// converting input status to lower case
 		String status = medicationStatus.getStatus().toLowerCase();
 		switch (status) {
@@ -1244,7 +1237,7 @@ public class FHIRUtils {
 	}
 
 	static MedicationRequest.MedicationRequestStatus getMedicationRequestStatus(
-			org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest.medicationStatus medicationStatus) {
+			org.ncg.clinical.artifacts.vo.json.MedicationRequest.medicationStatus medicationStatus) {
 		// converting input status to lower case
 		String status = medicationStatus.getStatus().toLowerCase();
 		switch (status) {
@@ -1270,49 +1263,43 @@ public class FHIRUtils {
 	public static void processCancerTypeWithDifferentResources(Bundle bundle, Patient patientResource,
 			Composition.SectionComponent procedureSection, Composition.SectionComponent otherObservationsSection,
 			Composition.SectionComponent medicationsSection, Composition.SectionComponent documentReferenceSection,
-			Map<String, CancerDetail> cancerDetailMap) throws IOException {
-		for (Map.Entry<String, CancerDetail> entry : cancerDetailMap.entrySet()) {
+			List<CancerDetail> cancerDetails) throws IOException {
+		for (CancerDetail cancerDetail : cancerDetails) {
 
-			// find indicatorDetailJson based on module and name
-			Optional<IndicatorDetailJson> indicatorDetailJson = getIndicatorByNameAndModuleName(entry.getKey(),
-					Constants.OP_CONSULT_RECORD_CANCER_TYPE);
+			// fetch resource type for given cancerTypeName/test
+			String resourceType = cancerDetail.getResourceType();
 
-			if (indicatorDetailJson.isPresent()) {
-				// fetch resource type for given cancerTypeName/indicator
-				String resourceType = indicatorDetailJson.get().getResourceType();
+			// create procedure, observation, medication, documentReference etc resources
+			// based on resourceType
+			switch (resourceType) {
+			case Constants.PROCEDURE:
+				createProcedureAndDcumentReferenceForCancerType(cancerDetail, bundle, patientResource,
+						procedureSection);
 
-				// create procedure, observation, medication, documentReference etc resources
-				// based on resourceType
-				switch (resourceType) {
-				case Constants.PROCEDURE:
-					createProcedureAndDcumentReferenceForCancerType(entry, bundle, patientResource, procedureSection);
+			case Constants.OBSERVATION:
+				createObservationForCancerType(cancerDetail, bundle, patientResource, otherObservationsSection);
 
-				case Constants.OBSERVATION:
-					createObservationForCancerType(entry, bundle, patientResource, otherObservationsSection);
+			case Constants.MEDICATIONS:
+				// populating medication related data from cancer details to MedicationRequest
+				// object
+				org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest = new org.ncg.clinical.artifacts.vo.json.MedicationRequest(
+						cancerDetail);
+				if (!Objects.isNull(cancerDetail.getMedicationType())) {
+					createMedicationsBasedOnMedicationType(bundle, patientResource, medicationsSection,
+							cancerDetail.getName(), cancerDetail.getCoding(), medicationRequest);
+				}
 
-				case Constants.MEDICATIONS:
-					CancerDetail cancerDetail = entry.getValue();
+			case Constants.DOCUMENT_REFERENCE:
+				if (StringUtils.isNoneBlank(cancerDetail.getAttachment())) {
+					DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
+							cancerDetail.getName(), cancerDetail.getAttachment(), patientResource,
+							cancerDetail.getCoding());
 
-					// populating medication related data from cancer details to MedicationRequest
-					// object
-					org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest = new org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest(
-							cancerDetail);
-					if (!Objects.isNull(cancerDetail.getMedicationType())) {
-						createMedicationsBasedOnMedicationType(bundle, patientResource, medicationsSection,
-								entry.getKey(), cancerDetail.getCoding(), medicationRequest);
-					}
+					// Add documentReference to the bundle
+					FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 
-				case Constants.DOCUMENT_REFERENCE:
-					if (StringUtils.isNoneBlank(entry.getValue().getAttachment())) {
-						DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(entry.getKey(),
-								entry.getValue().getAttachment(), patientResource, entry.getValue().getCoding());
-
-						// Add documentReference to the bundle
-						FHIRUtils.addToBundleEntry(bundle, documentReference, true);
-
-						// make an entry for medicationStatementResource in medicationsSection
-						documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
-					}
+					// make an entry for medicationStatementResource in medicationsSection
+					documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
 				}
 			}
 		}
@@ -1321,7 +1308,7 @@ public class FHIRUtils {
 	public static void createMedicationsBasedOnMedicationType(Bundle bundle, Patient patientResource,
 			Composition.SectionComponent medicationsSection, String medicationName,
 			org.ncg.clinical.artifacts.vo.Coding coding,
-			org.ncg.clinical.artifacts.vo.cancer.type.MedicationRequest medicationRequest) {
+			org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest) {
 
 		if (medicationRequest.getMedicationType().equals(ReferenceType.MEDICATION_STATEMENT)) {
 			// create medicationStatementResource
@@ -1348,16 +1335,14 @@ public class FHIRUtils {
 		}
 	}
 
-	public static void createProcedureAndDcumentReferenceForCancerType(Map.Entry<String, CancerDetail> entry,
-			Bundle bundle, Patient patientResource, Composition.SectionComponent procedureSection) throws IOException {
-
-		CancerDetail cancerDetail = entry.getValue();
-		String indicatorName = entry.getKey();
+	public static void createProcedureAndDcumentReferenceForCancerType(CancerDetail cancerDetail, Bundle bundle,
+			Patient patientResource, Composition.SectionComponent procedureSection) throws IOException {
 
 		// if incoming coding: system, code, display are not null then use same and if
 		// incoming coding: system, code, display are null then take those value from
 		// input file
-		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(), indicatorName);
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(),
+				cancerDetail.getName());
 
 		// create procedure with DocumentReference for storing reports information
 		Procedure procedure = FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource,
@@ -1367,11 +1352,8 @@ public class FHIRUtils {
 		procedureSection.addEntry(FHIRUtils.getReferenceToProcedure(procedure));
 	}
 
-	public static void createObservationForCancerType(Map.Entry<String, CancerDetail> entry, Bundle bundle,
-			Patient patientResource, Composition.SectionComponent otherObservationsSection) throws IOException {
-
-		CancerDetail cancerDetail = entry.getValue();
-		String indicatorName = entry.getKey();
+	public static void createObservationForCancerType(CancerDetail cancerDetail, Bundle bundle, Patient patientResource,
+			Composition.SectionComponent otherObservationsSection) throws IOException {
 
 		// create observation
 		Observation observation = FHIRUtils.createObservation(patientResource);
@@ -1379,7 +1361,8 @@ public class FHIRUtils {
 		// if incoming coding: system, code, display are not null then use same and if
 		// incoming coding: system, code, display are null then take those value from
 		// input file
-		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(), indicatorName);
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(),
+				cancerDetail.getName());
 		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
 				coding.getText());
 
