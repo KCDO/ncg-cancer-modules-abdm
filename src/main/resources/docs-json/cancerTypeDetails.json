@@ -19,7 +19,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -40,7 +41,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -61,7 +63,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -82,7 +85,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -103,7 +107,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -124,7 +129,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -145,7 +151,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -166,7 +173,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -187,7 +195,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		],
 		"oralCancer": [
@@ -210,7 +219,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -231,7 +241,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		],
 		"cervicalCancer": [
@@ -254,7 +265,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		],
 		"breastCancer": [
@@ -277,7 +289,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -298,7 +311,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -319,7 +333,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		],
 		"acuteMyeloidleukemia": [
@@ -339,10 +354,11 @@
 				"reference": "",
 				"note": "",
 				"status": null,
-				"attachment": "",
+				"attachment": "Bone marrow",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -360,10 +376,11 @@
 				"reference": "",
 				"note": "",
 				"status": null,
-				"attachment": "",
+				"attachment": "Cytogenetics",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -381,10 +398,11 @@
 				"reference": "",
 				"note": "",
 				"status": null,
-				"attachment": "",
+				"attachment": "Fluorescence",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -402,10 +420,11 @@
 				"reference": "",
 				"note": "",
 				"status": null,
-				"attachment": "",
+				"attachment": "PCR",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -423,10 +442,11 @@
 				"reference": "",
 				"note": "",
 				"status": null,
-				"attachment": "",
+				"attachment": "Baseline",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -446,12 +466,13 @@
 				"status": null,
 				"attachment": "",
 				"target": "",
-				"doseAndRate": "",
+				"dosageInstructions": null,
+				"medicationCoding": null,
 				"valueQuantity": {
-					"value": 12.0,
-					"unit": "",
-					"system": "",
-					"code": ""
+					"value": 0,
+					"unit": "cm",
+					"system": "http://unitsofmeasure.org",
+					"code": "cm"
 				}
 			},
 			{
@@ -469,11 +490,36 @@
 				"assertedDate": "2014-02-22",
 				"reference": "Patient/pat1",
 				"note": "",
-				"status": null,
+				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -490,11 +536,36 @@
 				"assertedDate": "2014-02-22",
 				"reference": "Patient/pat1",
 				"note": "",
-				"status": null,
+				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "DiagnosticReportRecord-CancerType",
@@ -515,7 +586,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "DischargeSummaryRecord-CancerType",
@@ -536,7 +608,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -553,11 +626,36 @@
 				"assertedDate": "2014-02-22",
 				"reference": "Patient/pat1",
 				"note": "",
-				"status": null,
+				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			}
 		],
 		"adultHematolymphoid": [
@@ -579,7 +677,8 @@
 				"status": null,
 				"attachment": "",
 				"target": "",
-				"doseAndRate": "",
+				"dosageInstructions": null,
+				"medicationCoding": null,
 				"valueQuantity": {
 					"value": 12.0,
 					"unit": "",
@@ -605,7 +704,8 @@
 				"status": null,
 				"attachment": "",
 				"target": "",
-				"doseAndRate": "",
+				"dosageInstructions": null,
+				"medicationCoding": null,
 				"valueQuantity": {
 					"value": 12.0,
 					"unit": "",
@@ -632,7 +732,8 @@
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -653,7 +754,8 @@
 				"attachment": "nknk",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "DischargeSummaryRecord-CancerType",
@@ -674,7 +776,8 @@
 				"attachment": "nkjnjkn",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -691,11 +794,36 @@
 				"assertedDate": "2014-02-22",
 				"reference": "Patient/pat1",
 				"note": "",
-				"status": null,
+				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "DischargeSummaryRecord-CancerType",
@@ -712,11 +840,36 @@
 				"assertedDate": "2014-02-22",
 				"reference": "Patient/pat1",
 				"note": "",
-				"status": null,
+				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -737,7 +890,8 @@
 				"attachment": "njknkjnjk",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "DischargeSummaryRecord-CancerType",
@@ -758,7 +912,8 @@
 				"attachment": "nkjnkj",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -778,7 +933,8 @@
 				"status": null,
 				"attachment": "",
 				"target": "",
-				"doseAndRate": "",
+				"dosageInstructions": null,
+				"medicationCoding": null,
 				"valueQuantity": {
 					"value": 12.0,
 					"unit": "",
@@ -805,7 +961,8 @@
 				"attachment": "njnj",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -822,11 +979,36 @@
 				"assertedDate": "2014-02-22",
 				"reference": "Patient/pat1",
 				"note": "",
-				"status": null,
+				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -847,7 +1029,8 @@
 				"attachment": "nknkn",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -868,7 +1051,8 @@
 				"attachment": "njkn",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -889,7 +1073,8 @@
 				"attachment": "jnknjn",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "DiagnosticReport-CancerType",
@@ -910,7 +1095,8 @@
 				"attachment": "njnkjn",
 				"valueQuantity": null,
 				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		]
 	}
