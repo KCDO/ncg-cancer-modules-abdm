@@ -62,9 +62,12 @@ import org.ncg.clinical.artifacts.vo.OPConsultRecordRequest;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.AdverseEventRequest;
 import org.ncg.clinical.artifacts.vo.json.AllTestAndPanelDetail;
 import org.ncg.clinical.artifacts.vo.json.CancerDetail;
+import org.ncg.clinical.artifacts.vo.json.DosageInstruction;
+import org.ncg.clinical.artifacts.vo.json.DoseAndRate;
 import org.ncg.clinical.artifacts.vo.json.MedicationRequest.ReferenceType;
 import org.ncg.clinical.artifacts.vo.json.PanelDetailJson;
 import org.ncg.clinical.artifacts.vo.json.TestDetailJson;
+import org.ncg.clinical.artifacts.vo.json.ValueQuantity;
 import org.ncg.clinical.artifacts.vo.organization.OrganizationData;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
 import org.ncg.clinical.artifacts.vo.practitioner.PractitionerData;
@@ -1087,7 +1090,7 @@ public class FHIRUtils {
 		return sectionComponent;
 	}
 
-	public static MedicationStatement createMedicationStatement(org.ncg.clinical.artifacts.vo.Coding medicationCoding,
+	public static MedicationStatement createMedicationStatement(org.ncg.clinical.artifacts.vo.Coding coding,
 			String medicationName, org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest,
 			Patient patient) {
 		MedicationStatement medicationStatement = new MedicationStatement();
@@ -1098,35 +1101,36 @@ public class FHIRUtils {
 		// add meta to medicationStatement
 		medicationStatement.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_MEDICATION_STATEMENT));
 
+		// add coding to medicationStatement
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
+		medicationStatement.addReasonCode(code);
+
 		// set status in medicationStatement
 		if (!Objects.isNull(medicationRequest.getStatus())) {
 			medicationStatement.setStatus(getMedicationStatementStatus(medicationRequest.getStatus()));
 		}
 
 		// Set medication in medicationStatement
-		// if incoming coding is not null then use same and if it is null then call
-		// mapCoding method for taking those value from input file
-		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(medicationCoding, medicationName);
-		CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
-				coding.getDisplay(), coding.getText());
-		medicationStatement.setMedication(medicationCode);
+		if (!Objects.isNull(medicationRequest.getMedicationCoding())) {
+			CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(
+					medicationRequest.getMedicationCoding().getCode(),
+					medicationRequest.getMedicationCoding().getSystem(),
+					medicationRequest.getMedicationCoding().getDisplay(),
+					medicationRequest.getMedicationCoding().getText());
+
+			// Set medication reference
+			medicationStatement.setMedication(medicationCode);
+		}
 
 		// Set patient reference as subject in medicationStatement
 		medicationStatement.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
-		// TODO
-		// Set dosage
-		Dosage dosage = new Dosage();
+		// Map DosageInstruction to Dosage
+		List<Dosage> dosages = mapDosageAndRateToFhirDosageAndRate(medicationRequest);
 
-		// Dose and Rate
-		DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
-		// if (medicationRequest.get)
-		doseAndRate.setDose(FHIRUtils.createQuantity(500, "mg", Constants.HTTP_UNITSOFMEASURE_ORG, "mg"));
-		doseAndRate.setRate(FHIRUtils.createQuantity(3, "1/d", Constants.HTTP_UNITSOFMEASURE_ORG, "{1/d}"));
-		dosage.addDoseAndRate(doseAndRate);
-
-		// Add dosage to medicationStatement
-		medicationStatement.addDosage(dosage);
+		// Set dosages to medicationStatement
+		medicationStatement.setDosage(dosages);
 
 		// Set the effective date in in medicationStatement
 		Period effectivePeriod = new Period();
@@ -1148,7 +1152,7 @@ public class FHIRUtils {
 		return medicationStatement;
 	}
 
-	public static MedicationRequest createMedicationRequest(org.ncg.clinical.artifacts.vo.Coding medicationCoding,
+	public static MedicationRequest createMedicationRequest(org.ncg.clinical.artifacts.vo.Coding coding,
 			String medicationName, org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest,
 			Patient patient) {
 		MedicationRequest medicationRequestResource = new MedicationRequest();
@@ -1158,6 +1162,11 @@ public class FHIRUtils {
 
 		// add meta to medicationRequestResource
 		medicationRequestResource.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_MEDICATION_REQUEST));
+
+		// add coding to medicationRequestResource
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
+		medicationRequestResource.addReasonCode(code);
 
 		// set status in medicationRequestResource
 		if (!Objects.isNull(medicationRequestResource.getStatus())) {
@@ -1170,14 +1179,15 @@ public class FHIRUtils {
 		}
 
 		// Set medication in medicationRequestResource
-		// if incoming coding is not null then use same and if it is null then call
-		// mapCoding method for taking those value from input file
-//		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(coding, testName);
-//		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-//				coding.getText());
-//
-//		// Set medication reference
-//		medicationRequestResource.setMedication(code);
+		if (!Objects.isNull(medicationRequest.getMedicationCoding())) {
+			CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(medicationRequest.getMedicationCoding().getCode(),
+					medicationRequest.getMedicationCoding().getSystem(),
+					medicationRequest.getMedicationCoding().getDisplay(),
+					medicationRequest.getMedicationCoding().getText());
+
+			// Set medication reference
+			medicationRequestResource.setMedication(medicationCode);
+		}
 
 		// Set subject
 		medicationRequestResource.setSubject(FHIRUtils.getReferenceToPatient(patient));
@@ -1193,18 +1203,11 @@ public class FHIRUtils {
 //		Condition condition = FHIRUtils.createConditionResource(code, patient);
 //		medicationRequestResource.addReasonReference(FHIRUtils.getReferenceToCondition(condition));
 
-		// TODO
-		// Set dosage
-		Dosage dosage = new Dosage();
+		// Map DosageInstruction to Dosage
+		List<Dosage> dosages = mapDosageAndRateToFhirDosageAndRate(medicationRequest);
 
-		// Dose and Rate
-		DosageDoseAndRateComponent doseAndRate = new DosageDoseAndRateComponent();
-		doseAndRate.setDose(FHIRUtils.createQuantity(500, "mg", Constants.HTTP_UNITSOFMEASURE_ORG, "mg"));
-		doseAndRate.setRate(FHIRUtils.createQuantity(3, "1/d", Constants.HTTP_UNITSOFMEASURE_ORG, "{1/d}"));
-		dosage.addDoseAndRate(doseAndRate);
-
-		// Add dosage to medication statement
-		medicationRequestResource.addDosageInstruction(dosage);
+		// Set dosages to medicationStatement
+		medicationRequestResource.setDosageInstruction(dosages);
 
 		// Set current time as authoredOn
 		medicationRequestResource.setAuthoredOn(new Date());
@@ -1258,6 +1261,44 @@ public class FHIRUtils {
 		default:
 			return MedicationRequest.MedicationRequestStatus.UNKNOWN;
 		}
+	}
+
+	private static List<Dosage> mapDosageAndRateToFhirDosageAndRate(
+			org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest) {
+		List<Dosage> dosages = new ArrayList<>();
+
+		for (DosageInstruction dosageInstruction : medicationRequest.getDosageInstructions()) {
+			for (DoseAndRate doseAndRateVO : dosageInstruction.getDosesAndRates()) {
+				Dosage dosage = new Dosage();
+				DosageDoseAndRateComponent doseAndRateComponent = new DosageDoseAndRateComponent();
+
+				// Map doseQuantity
+				ValueQuantity doseQuantityVO = doseAndRateVO.getDoseQuantity();
+				if (ObjectUtils.isNotEmpty(doseQuantityVO)) {
+					Quantity doseQuantity = new Quantity();
+					doseQuantity.setValue(doseQuantityVO.getValue()).setUnit(doseQuantityVO.getUnit())
+							.setSystem(doseQuantityVO.getSystem()).setCode(doseQuantityVO.getCode());
+					doseAndRateComponent.setDose(doseQuantity);
+				}
+
+				// Map rateQuantity
+				ValueQuantity rateQuantityVO = doseAndRateVO.getRateQuantity();
+				if (ObjectUtils.isNotEmpty(rateQuantityVO)) {
+					Quantity rateQuantity = new Quantity();
+					rateQuantity.setValue(rateQuantityVO.getValue()).setUnit(rateQuantityVO.getUnit())
+							.setSystem(rateQuantityVO.getSystem()).setCode(rateQuantityVO.getCode());
+					doseAndRateComponent.setRate(rateQuantity);
+				}
+
+				// Add doseAndRateComponent to dosage
+				dosage.addDoseAndRate(doseAndRateComponent);
+
+				// Add dosage to dosages list
+				dosages.add(dosage);
+			}
+		}
+
+		return dosages;
 	}
 
 	public static void processCancerTypeWithDifferentResources(Bundle bundle, Patient patientResource,

@@ -1,5 +1,7 @@
 package org.ncg.clinical.artifacts.vo.json;
 
+import java.util.List;
+
 import org.ncg.clinical.artifacts.vo.Coding;
 
 import lombok.AllArgsConstructor;
@@ -19,5 +21,5 @@ public class CancerDetail extends MedicationRequest {
 	private ValueQuantity valueQuantity;
 	private String target;
 	private String resourceType;
-	private String doseAndRate;
+	private List<DosageInstruction> dosageInstructions;
 }
