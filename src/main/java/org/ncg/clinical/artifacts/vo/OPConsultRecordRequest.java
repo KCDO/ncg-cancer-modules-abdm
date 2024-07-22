@@ -1,5 +1,7 @@
 package org.ncg.clinical.artifacts.vo;
 
+import java.util.List;
+
 import org.ncg.clinical.artifacts.vo.clinicalinformation.ClinicalInformation;
 import org.ncg.clinical.artifacts.vo.organization.OrganizationData;
 import org.ncg.clinical.artifacts.vo.patient.PatientData;
@@ -17,14 +19,10 @@ public class OPConsultRecordRequest {
 	private PatientData patientDetails;
 	private OrganizationData organizationDetails;
 	private ClinicalInformation clinicalInformation;
-//	private Diagnostic diagnostics;
-	private CancerType lungCancer;
-	private CancerType oralCancer;
-	private CancerType cervicalCancer;
-	private CancerType acuteMyeloidLeukemiaCancer;
+	private List<String> cancerTypes;
 
 	public boolean hasEmptyFields() {
 		return (patientDetails == null && organizationDetails == null && clinicalInformation == null
-				&& lungCancer == null && oralCancer == null && cervicalCancer == null);
+				&& cancerTypes == null);
 	}
 }

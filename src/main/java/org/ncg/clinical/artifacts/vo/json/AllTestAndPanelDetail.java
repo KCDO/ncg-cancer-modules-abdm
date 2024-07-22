@@ -1,8 +1,6 @@
-package org.ncg.clinical.artifacts.vo;
+package org.ncg.clinical.artifacts.vo.json;
 
 import java.util.List;
-
-import org.ncg.clinical.artifacts.vo.diagnostic.AttachmentDetail;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CancerType {
-	private List<AttachmentDetail> tests;
+public class AllTestAndPanelDetail {
+	private List<PanelDetailJson> panelDetails;
+	private List<TestDetailJson> testDetails;
 }

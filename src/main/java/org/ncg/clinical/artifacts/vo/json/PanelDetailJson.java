@@ -1,4 +1,6 @@
-package org.ncg.clinical.artifacts.vo.labtest;
+package org.ncg.clinical.artifacts.vo.json;
+
+import java.util.List;
 
 import org.ncg.clinical.artifacts.vo.Coding;
 
@@ -11,8 +13,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Test {
+public class PanelDetailJson {
 	private String name;
 	private Coding coding;
-	private String description;
+	private List<String> members;
 }

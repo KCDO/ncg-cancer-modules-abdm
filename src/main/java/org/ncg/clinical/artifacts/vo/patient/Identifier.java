@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Identifier {
 	private String hipId;
-	private String domain;
+	private String patientHealthId;
 }

@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo.clinicalinformation;
+package org.ncg.clinical.artifacts.vo.json;
 
 import org.ncg.clinical.artifacts.vo.Coding;
 
@@ -11,8 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MentalHealthAssesment {
+public class TestDetailJson {
 	private String name;
-	private String attachment;
 	private Coding coding;
 }
