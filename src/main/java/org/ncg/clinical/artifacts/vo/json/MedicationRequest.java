@@ -1,7 +1,9 @@
 package org.ncg.clinical.artifacts.vo.json;
 
 import java.sql.Date;
+import java.util.List;
 
+import org.ncg.clinical.artifacts.vo.Coding;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +22,8 @@ public class MedicationRequest {
 	private String reference;
 	private String note;
 	private medicationStatus status;
+	private List<DosageInstruction> dosageInstructions;
+	private Coding medicationCoding;
 
 	public MedicationRequest(CancerDetail cancerDetail) {
 		this.assertedDate = cancerDetail.getAssertedDate();
@@ -28,6 +32,8 @@ public class MedicationRequest {
 		this.note = cancerDetail.getNote();
 		this.reference = cancerDetail.getReference();
 		this.status = cancerDetail.getStatus();
+		this.dosageInstructions = cancerDetail.getDosageInstructions();
+		this.medicationCoding = cancerDetail.getMedicationCoding();
 	}
 
 	public MedicationRequest(OngoingDrugs ongoingDrugs) {
@@ -37,6 +43,8 @@ public class MedicationRequest {
 		this.note = ongoingDrugs.getNote();
 		this.reference = ongoingDrugs.getReference();
 		this.status = ongoingDrugs.getStatus();
+		this.dosageInstructions = ongoingDrugs.getDosageInstructions();
+		this.medicationCoding = ongoingDrugs.getMedicationCoding();
 	}
 
 	public enum medicationStatus {

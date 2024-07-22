@@ -3,6 +3,7 @@ package org.ncg.clinical.artifacts.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -38,8 +39,12 @@ import org.ncg.clinical.artifacts.vo.clinicalinformation.PastMedicalHistory;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastSurgicalHistory;
 import org.ncg.clinical.artifacts.vo.json.AllTestAndPanelDetail;
 import org.ncg.clinical.artifacts.vo.json.CancerTypeDetail;
+import org.ncg.clinical.artifacts.vo.json.DosageInstruction;
+import org.ncg.clinical.artifacts.vo.json.DoseAndRate;
+import org.ncg.clinical.artifacts.vo.json.MedicationRequest;
 import org.ncg.clinical.artifacts.vo.json.PanelDetailJson;
 import org.ncg.clinical.artifacts.vo.json.TestDetailJson;
+import org.ncg.clinical.artifacts.vo.json.ValueQuantity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -431,6 +436,34 @@ public class OPConsultRecordHelper {
 			// object
 			org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest = new org.ncg.clinical.artifacts.vo.json.MedicationRequest(
 					ongoingDrugs);
+
+			// set status
+			medicationRequest.setStatus(MedicationRequest.medicationStatus.COMPLETED);
+
+			// Create and set the dosage instruction
+			DosageInstruction dosageInstruction = new DosageInstruction();
+
+			DoseAndRate doseAndRate = new DoseAndRate();
+			// Set dose quantity
+			ValueQuantity doseQuantity = new ValueQuantity(500.0, "mg", "http://unitsofmeasure.org", "mg");
+			doseAndRate.setDoseQuantity(doseQuantity);
+
+			// Set rate quantity
+			ValueQuantity rateQuantity = new ValueQuantity(3.0, "1/d", "http://unitsofmeasure.org", "{1/d}");
+			doseAndRate.setRateQuantity(rateQuantity);
+
+			dosageInstruction.setDosesAndRates(Arrays.asList(doseAndRate));
+
+			// set the dosage instructions
+			medicationRequest.setDosageInstructions(Arrays.asList(dosageInstruction));
+
+			// Set medication reference
+			// if incoming coding: system, code, display are not null then use same and if
+			// incoming coding: system, code, display are null then take those value from
+			// input file
+			org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(ongoingDrugs.getCoding(),
+					ongoingDrugs.getName());
+			medicationRequest.setMedicationCoding(coding);
 
 			if (!Objects.isNull(medicationRequest.getMedicationType())) {
 				FHIRUtils.createMedicationsBasedOnMedicationType(bundle, patientResource, medicationsSection,
