@@ -1,7 +1,6 @@
-package org.ncg.clinical.artifacts.vo.clinicalinformation;
+package org.ncg.clinical.artifacts.vo.json;
 
 import org.ncg.clinical.artifacts.vo.Coding;
-import org.ncg.clinical.artifacts.vo.json.MedicationRequest;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OngoingDrugs extends MedicationRequest {
+public class TestDetailJson {
 	private String name;
 	private Coding coding;
 }

@@ -1,4 +1,4 @@
-package org.ncg.clinical.artifacts.vo.indicatorjson;
+package org.ncg.clinical.artifacts.vo.json;
 
 import org.ncg.clinical.artifacts.vo.Coding;
 
@@ -11,9 +11,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class IndicatorDetailJson {
+public class CancerDetail extends MedicationRequest {
 	private String moduleName;
 	private String name;
 	private Coding coding;
+	private String attachment;
+	private ValueQuantity valueQuantity;
+	private String target;
 	private String resourceType;
+	private String doseAndRate;
 }
