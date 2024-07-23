@@ -43,9 +43,21 @@ public class ClinicalDataControllerImpl implements ClinicalDataController {
 	@ApiImplicitParams(@ApiImplicitParam(name = "Content-Type", value = "application/json", required = true, allowEmptyValue = false, paramType = "header"))
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully generated") })
 	public ResponseEntity<String> opConsultRecordGenerator(
-			@Valid @RequestBody OPConsultRecordRequest oPConsultRecordRequest)
-			throws Exception {
+			@Valid @RequestBody OPConsultRecordRequest oPConsultRecordRequest) throws Exception {
 
 		return new ResponseEntity<>(clinicalDataService.createOpConsultRecord(oPConsultRecordRequest), HttpStatus.OK);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@PostMapping(value = "/clinical-artifacts/fhir-validator")
+	@ApiOperation(value = "This Api is used to validate FHIR resources based on ABDM profiles", response = String.class)
+	@ApiImplicitParams(@ApiImplicitParam(name = "Content-Type", value = "application/json", required = true, allowEmptyValue = false, paramType = "header"))
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully generated") })
+	public ResponseEntity<String> fhirResourceValidator(@RequestBody String fhirResource) throws Exception {
+
+		return new ResponseEntity<>(clinicalDataService.validateFHIRResource(fhirResource), HttpStatus.OK);
 	}
 }

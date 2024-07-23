@@ -13,7 +13,7 @@
 	<name>ncg-cancer-modules-abdm</name>
 	<description>NCG Cancer Modules ABDM</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 		<swagger-version>3.0.0</swagger-version>
 		<swagger-maven-plugin-version>3.1.7</swagger-maven-plugin-version>
 		<copy-rename-maven-plugin-version>1.0</copy-rename-maven-plugin-version>
@@ -71,21 +71,55 @@
 			<version>2.0.1.Final</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.16.0</version>
 		</dependency>
 
 		<!-- FHIR related dependencies -->
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-r4</artifactId>
-			<version>6.4.3</version>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-validation-resources-r4</artifactId>
+			<version>4.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-client</artifactId>
-			<version>5.5.0</version> <!-- Specify the desired version here -->
+			<version>4.2.0</version> 
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-base</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-validation</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>org.hl7.fhir.utilities</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.21</version>
 		</dependency>
 
 		<!-- swagger dependencies -->
