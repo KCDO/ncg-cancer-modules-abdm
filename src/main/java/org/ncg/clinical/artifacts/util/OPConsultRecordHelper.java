@@ -445,11 +445,11 @@ public class OPConsultRecordHelper {
 
 			DoseAndRate doseAndRate = new DoseAndRate();
 			// Set dose quantity
-			ValueQuantity doseQuantity = new ValueQuantity(500.0, "mg", "http://unitsofmeasure.org", "mg");
+			ValueQuantity doseQuantity = new ValueQuantity(500.0, "mg", Constants.HTTP_UNITSOFMEASURE_ORG, "mg");
 			doseAndRate.setDoseQuantity(doseQuantity);
 
 			// Set rate quantity
-			ValueQuantity rateQuantity = new ValueQuantity(3.0, "1/d", "http://unitsofmeasure.org", "{1/d}");
+			ValueQuantity rateQuantity = new ValueQuantity(3.0, "1/d", Constants.HTTP_UNITSOFMEASURE_ORG, "{1/d}");
 			doseAndRate.setRateQuantity(rateQuantity);
 
 			dosageInstruction.setDosesAndRates(Arrays.asList(doseAndRate));
