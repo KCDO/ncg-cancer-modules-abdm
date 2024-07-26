@@ -18,7 +18,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -40,7 +39,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -62,7 +60,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -84,7 +81,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -106,7 +102,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -128,7 +123,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -150,7 +144,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -172,7 +165,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -194,7 +186,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			}
@@ -218,7 +209,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -240,7 +230,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			}
@@ -264,7 +253,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			}
@@ -288,7 +276,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -310,7 +297,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -332,7 +318,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			}
@@ -356,7 +341,6 @@
 				"status": null,
 				"attachment": "Bone marrow",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -378,7 +362,6 @@
 				"status": null,
 				"attachment": "Cytogenetics",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -400,7 +383,6 @@
 				"status": null,
 				"attachment": "Fluorescence",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -422,7 +404,6 @@
 				"status": null,
 				"attachment": "PCR",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -444,7 +425,6 @@
 				"status": null,
 				"attachment": "Baseline",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -465,7 +445,6 @@
 				"note": "",
 				"status": null,
 				"attachment": "",
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null,
 				"valueQuantity": {
@@ -493,7 +472,6 @@
 				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": [
 					{
 						"dosesAndRates": [
@@ -539,7 +517,6 @@
 				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": [
 					{
 						"dosesAndRates": [
@@ -585,7 +562,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -607,7 +583,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -629,7 +604,6 @@
 				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": [
 					{
 						"dosesAndRates": [
@@ -676,7 +650,6 @@
 				"note": "",
 				"status": null,
 				"attachment": "",
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null,
 				"valueQuantity": {
@@ -703,7 +676,6 @@
 				"note": "",
 				"status": null,
 				"attachment": "",
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null,
 				"valueQuantity": {
@@ -731,7 +703,6 @@
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -753,7 +724,6 @@
 				"status": null,
 				"attachment": "nknk",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -775,7 +745,6 @@
 				"status": null,
 				"attachment": "nkjnjkn",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -797,7 +766,6 @@
 				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": [
 					{
 						"dosesAndRates": [
@@ -843,7 +811,6 @@
 				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": [
 					{
 						"dosesAndRates": [
@@ -889,7 +856,6 @@
 				"status": null,
 				"attachment": "njknkjnjk",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -911,7 +877,6 @@
 				"status": null,
 				"attachment": "nkjnkj",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -932,7 +897,6 @@
 				"note": "",
 				"status": null,
 				"attachment": "",
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null,
 				"valueQuantity": {
@@ -960,7 +924,6 @@
 				"status": null,
 				"attachment": "njnj",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -982,7 +945,6 @@
 				"status": "UNKNOWN",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": [
 					{
 						"dosesAndRates": [
@@ -1028,7 +990,6 @@
 				"status": null,
 				"attachment": "nknkn",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -1050,7 +1011,6 @@
 				"status": null,
 				"attachment": "njkn",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -1072,7 +1032,6 @@
 				"status": null,
 				"attachment": "jnknjn",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			},
@@ -1094,7 +1053,6 @@
 				"status": null,
 				"attachment": "njnkjn",
 				"valueQuantity": null,
-				"target": "",
 				"dosageInstructions": null,
 				"medicationCoding": null
 			}

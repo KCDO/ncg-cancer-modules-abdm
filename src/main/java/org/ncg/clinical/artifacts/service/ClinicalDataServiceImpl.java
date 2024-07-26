@@ -92,6 +92,7 @@ public class ClinicalDataServiceImpl implements ClinicalDataService {
 					return validationResult;
 				}
 			}
+
 			return encodedString;
 		} catch (Exception exception) {
 			log.error("ClinicalDataServiceImpl::createOpConsultRecord:: Exception: ", exception);

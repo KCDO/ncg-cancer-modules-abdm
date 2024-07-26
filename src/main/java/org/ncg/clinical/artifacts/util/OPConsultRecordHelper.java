@@ -172,7 +172,7 @@ public class OPConsultRecordHelper {
 					// process cancer details for creating different fhir resources
 					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
 							otherObservationsSection, medicationsSection, documentReferenceSection,
-							cancerTypeDetails.getAcuteMyeloidleukemia());
+							medicalHistorySection, cancerTypeDetails.getAcuteMyeloidleukemia());
 				}
 
 				if (cancerType.toLowerCase().contains(Constants.ADULT_HEMATOLYMPHOID.toLowerCase())) {
@@ -183,7 +183,7 @@ public class OPConsultRecordHelper {
 					// process cancer details for creating different fhir resources
 					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
 							otherObservationsSection, medicationsSection, documentReferenceSection,
-							cancerTypeDetails.getAdultHematolymphoid());
+							medicalHistorySection, cancerTypeDetails.getAdultHematolymphoid());
 				}
 			}
 		}
