@@ -19,7 +19,6 @@ public class CancerDetail extends MedicationRequest {
 	private Coding coding;
 	private String attachment;
 	private ValueQuantity valueQuantity;
-	private String target;
 	private String resourceType;
 	private List<DosageInstruction> dosageInstructions;
 }

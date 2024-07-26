@@ -1133,21 +1133,29 @@ public class FHIRUtils {
 		medicationStatement.setDosage(dosages);
 
 		// Set the effective date in in medicationStatement
-		Period effectivePeriod = new Period();
-		effectivePeriod.setStart(medicationRequest.getEffectiveDate());
-		medicationStatement.setEffective(effectivePeriod);
+		if (!Objects.isNull(medicationRequest.getEffectiveDate())) {
+			Period effectivePeriod = new Period();
+			effectivePeriod.setStart(medicationRequest.getEffectiveDate());
+			medicationStatement.setEffective(effectivePeriod);
+		}
 
 		// Set the date asserted
-		medicationStatement.setDateAsserted(medicationRequest.getAssertedDate());
+		if (!Objects.isNull(medicationRequest.getAssertedDate())) {
+			medicationStatement.setDateAsserted(medicationRequest.getAssertedDate());
+		}
 
 		// Set the derivedFrom (the reference to the MedicationRequest)
-		Reference derivedFromReference = new Reference(medicationRequest.getReference());
-		medicationStatement.addDerivedFrom(derivedFromReference);
+		if (StringUtils.isNotEmpty(medicationRequest.getReference())) {
+			Reference derivedFromReference = new Reference(medicationRequest.getReference());
+			medicationStatement.addDerivedFrom(derivedFromReference);
+		}
 
 		// Add a note
-		Annotation note = new Annotation();
-		note.setText(medicationRequest.getNote());
-		medicationStatement.addNote(note);
+		if (StringUtils.isNotEmpty(medicationRequest.getNote())) {
+			Annotation note = new Annotation();
+			note.setText(medicationRequest.getNote());
+			medicationStatement.addNote(note);
+		}
 
 		return medicationStatement;
 	}
@@ -1169,7 +1177,7 @@ public class FHIRUtils {
 		medicationRequestResource.addReasonCode(code);
 
 		// set status in medicationRequestResource
-		if (!Objects.isNull(medicationRequestResource.getStatus())) {
+		if (!Objects.isNull(medicationRequest.getStatus())) {
 			medicationRequestResource.setStatus(getMedicationRequestStatus(medicationRequest.getStatus()));
 		}
 
@@ -1180,7 +1188,8 @@ public class FHIRUtils {
 
 		// Set medication in medicationRequestResource
 		if (!Objects.isNull(medicationRequest.getMedicationCoding())) {
-			CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(medicationRequest.getMedicationCoding().getCode(),
+			CodeableConcept medicationCode = FHIRUtils.getCodeableConcept(
+					medicationRequest.getMedicationCoding().getCode(),
 					medicationRequest.getMedicationCoding().getSystem(),
 					medicationRequest.getMedicationCoding().getDisplay(),
 					medicationRequest.getMedicationCoding().getText());
@@ -1304,7 +1313,7 @@ public class FHIRUtils {
 	public static void processCancerTypeWithDifferentResources(Bundle bundle, Patient patientResource,
 			Composition.SectionComponent procedureSection, Composition.SectionComponent otherObservationsSection,
 			Composition.SectionComponent medicationsSection, Composition.SectionComponent documentReferenceSection,
-			List<CancerDetail> cancerDetails) throws IOException {
+			Composition.SectionComponent medicalHistorySection, List<CancerDetail> cancerDetails) throws IOException {
 		for (CancerDetail cancerDetail : cancerDetails) {
 
 			// fetch resource type for given cancerTypeName/test
@@ -1342,6 +1351,8 @@ public class FHIRUtils {
 					// make an entry for medicationStatementResource in medicationsSection
 					documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
 				}
+			case Constants.CONDITION:
+				createConditionForCancerType(cancerDetail, bundle, patientResource, medicalHistorySection);
 			}
 		}
 	}
@@ -1492,5 +1503,29 @@ public class FHIRUtils {
 		adverseEvent.setOutcome(outcomeCode);
 
 		return adverseEvent;
+	}
+
+	public static void createConditionForCancerType(CancerDetail cancerDetail, Bundle bundle, Patient patientResource,
+			Composition.SectionComponent medicalHistorySection) throws IOException {
+
+		// if incoming coding: system, code, display are not null then use same and if
+		// incoming coding: system, code, display are null then take those value from
+		// input file
+		org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(cancerDetail.getCoding(),
+				cancerDetail.getName());
+		CodeableConcept code = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
+				coding.getText());
+
+		// create conditionResource
+		Condition conditionResource = FHIRUtils.createConditionResource(code, patientResource);
+
+		// Set the code for conditionResource
+		conditionResource.setCode(code);
+
+		// make an entry for conditionResource in medicalHistorySection
+		medicalHistorySection.addEntry(FHIRUtils.getReferenceToCondition(conditionResource));
+
+		// Add conditionResource to the bundle
+		FHIRUtils.addToBundleEntry(bundle, conditionResource, true);
 	}
 }
