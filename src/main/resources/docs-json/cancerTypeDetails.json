@@ -349,9 +349,9 @@
 				"name": "Cytogenetics",
 				"coding": {
 					"system": "http://snomed.info/sct",
-					"code": "10050001",
-					"display": "SNOMED CT core",
-					"text": "Cytogenetics"
+					"code": "168445004",
+					"display": "Cell chromosome examination",
+					"text": "Cell chromosome examination"
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
@@ -391,9 +391,9 @@
 				"name": "PCR",
 				"coding": {
 					"system": "http://snomed.info/sct",
-					"code": "718006",
-					"display": "PCR",
-					"text": "PCR"
+					"code": "9718006",
+					"display": "Polymerase chain reaction analysis",
+					"text": "Polymerase chain reaction analysis"
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
