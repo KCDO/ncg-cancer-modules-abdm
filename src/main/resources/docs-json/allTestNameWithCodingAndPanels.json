@@ -845,24 +845,6 @@
 			}
 		},
 		{
-			"name": "Peanut",
-			"coding": {
-				"system": "http://snomed.info/sct",
-				"code": "91935009",
-				"display": "Allergy to peanut",
-				"text": "Peanut (food)"
-			}
-		},
-		{
-			"name": "Peanut - dietary",
-			"coding": {
-				"system": "http://snomed.info/sct",
-				"code": "91935009",
-				"display": "Allergy to peanut",
-				"text": "Peanut - dietary (environmental)"
-			}
-		},
-		{
 			"name": "Hypertension",
 			"coding": {
 				"system": "http://snomed.info/sct",
@@ -1355,6 +1337,24 @@
 				"code": "721963009",
 				"display": "Order document",
 				"text": "Investigation Advice"
+			}
+		},
+		{
+			"name": "Groundnut",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91935009",
+				"display": "Allergy to peanut",
+				"text": "Groundnut (peanut) allergy"
+			}
+		},
+		{
+			"name": "Penicillin",
+			"coding": {
+				"system": "http://snomed.info/sct",
+				"code": "91936005",
+				"display": "Allergy to penicillin",
+				"text": "Allergy to penicillin"
 			}
 		}
 	]
