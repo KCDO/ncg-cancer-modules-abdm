@@ -105,16 +105,12 @@ components:
           $ref: '#/components/schemas/OrganizationData'
         clinicalInformation:
           $ref: '#/components/schemas/ClinicalInformation'
-        lungCancer:
-          $ref: '#/components/schemas/LungCancer'
-        oralCancer:
-          $ref: '#/components/schemas/OralCancer'
-        breastCancer:
-          $ref: '#/components/schemas/BreastCancer'
-        cervicalCancer:
-          $ref: '#/components/schemas/CervicalCancer'
-        acuteMyeloidLeukemiaCancer:
-          $ref: '#/components/schemas/AcuteMyeloidLeukemiaCancer'
+        cancerTypes:
+          $ref: '#/components/schemas/CancerTypes'
+    CancerTypes:
+      type: array
+      items:
+        type: string
     ClinicalInformation:
       type: object
       properties:
@@ -374,41 +370,6 @@ components:
         column:
           type: integer
           format: int32
-    LungCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    OralCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    BreastCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    CervicalCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    AcuteMyeloidLeukemiaCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
     MentalHealthAssesment:
       type: object
       properties:
