@@ -20,7 +20,6 @@ import org.hl7.fhir.r4.model.Address;
 import org.hl7.fhir.r4.model.AdverseEvent;
 import org.hl7.fhir.r4.model.AdverseEvent.AdverseEventActuality;
 import org.hl7.fhir.r4.model.AllergyIntolerance;
-import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.CodeableConcept;
@@ -936,7 +935,7 @@ public class FHIRUtils {
 		fhirProcedure.setCode(procedureCode);
 
 		// set status as COMPLETED
-		fhirProcedure.setStatus(ProcedureStatus.COMPLETED);
+		fhirProcedure.setStatus(ProcedureStatus.PREPARATION);
 
 		// set patient reference as subject
 		fhirProcedure.setSubject(getReferenceToPatient(patient));
@@ -1132,37 +1131,12 @@ public class FHIRUtils {
 		// Set dosages to medicationStatement
 		medicationStatement.setDosage(dosages);
 
-		// Set the effective date in in medicationStatement
-		if (!Objects.isNull(medicationRequest.getEffectiveDate())) {
-			Period effectivePeriod = new Period();
-			effectivePeriod.setStart(medicationRequest.getEffectiveDate());
-			medicationStatement.setEffective(effectivePeriod);
-		}
-
-		// Set the date asserted
-		if (!Objects.isNull(medicationRequest.getAssertedDate())) {
-			medicationStatement.setDateAsserted(medicationRequest.getAssertedDate());
-		}
-
-		// Set the derivedFrom (the reference to the MedicationRequest)
-		if (StringUtils.isNotEmpty(medicationRequest.getReference())) {
-			Reference derivedFromReference = new Reference(medicationRequest.getReference());
-			medicationStatement.addDerivedFrom(derivedFromReference);
-		}
-
-		// Add a note
-		if (StringUtils.isNotEmpty(medicationRequest.getNote())) {
-			Annotation note = new Annotation();
-			note.setText(medicationRequest.getNote());
-			medicationStatement.addNote(note);
-		}
-
 		return medicationStatement;
 	}
 
 	public static MedicationRequest createMedicationRequest(org.ncg.clinical.artifacts.vo.Coding coding,
 			String medicationName, org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest,
-			Patient patient) {
+			Patient patient, Practitioner practitioner) {
 		MedicationRequest medicationRequestResource = new MedicationRequest();
 
 		// set id in medicationRequestResource
@@ -1182,9 +1156,7 @@ public class FHIRUtils {
 		}
 
 		// set intent in medicationRequestResource
-		if (StringUtils.isNotEmpty(medicationRequest.getReference())) {
-			medicationRequestResource.setIntent(MedicationRequestIntent.PROPOSAL);
-		}
+		medicationRequestResource.setIntent(MedicationRequestIntent.PLAN);
 
 		// Set medication in medicationRequestResource
 		if (!Objects.isNull(medicationRequest.getMedicationCoding())) {
@@ -1202,15 +1174,7 @@ public class FHIRUtils {
 		medicationRequestResource.setSubject(FHIRUtils.getReferenceToPatient(patient));
 
 		// set requester
-		medicationRequestResource.setRequester(FHIRUtils.getReferenceToPatient(patient));
-
-		// TODO
-		// Set reasonCode
-		// medicationRequestResource.addReasonCode(code);
-
-		// add reasonReference after creating a Condition resource
-//		Condition condition = FHIRUtils.createConditionResource(code, patient);
-//		medicationRequestResource.addReasonReference(FHIRUtils.getReferenceToCondition(condition));
+		medicationRequestResource.setRequester(FHIRUtils.getReferenceToPractitioner(practitioner));
 
 		// Map DosageInstruction to Dosage
 		List<Dosage> dosages = mapDosageAndRateToFhirDosageAndRate(medicationRequest);
@@ -1225,7 +1189,7 @@ public class FHIRUtils {
 	}
 
 	static MedicationStatement.MedicationStatementStatus getMedicationStatementStatus(
-			org.ncg.clinical.artifacts.vo.json.MedicationRequest.medicationStatus medicationStatus) {
+			CancerDetail.status medicationStatus) {
 		// converting input status to lower case
 		String status = medicationStatus.getStatus().toLowerCase();
 		switch (status) {
@@ -1248,8 +1212,7 @@ public class FHIRUtils {
 		}
 	}
 
-	static MedicationRequest.MedicationRequestStatus getMedicationRequestStatus(
-			org.ncg.clinical.artifacts.vo.json.MedicationRequest.medicationStatus medicationStatus) {
+	static MedicationRequest.MedicationRequestStatus getMedicationRequestStatus(CancerDetail.status medicationStatus) {
 		// converting input status to lower case
 		String status = medicationStatus.getStatus().toLowerCase();
 		switch (status) {
@@ -1269,6 +1232,65 @@ public class FHIRUtils {
 			return MedicationRequest.MedicationRequestStatus.CANCELLED;
 		default:
 			return MedicationRequest.MedicationRequestStatus.UNKNOWN;
+		}
+	}
+
+	static Procedure.ProcedureStatus getProcedureStatus(CancerDetail.status status) {
+		// converting input status to lower case
+		String procedureStatus = status.getStatus().toLowerCase();
+		switch (procedureStatus) {
+		case "preparation":
+			return Procedure.ProcedureStatus.PREPARATION;
+		case "completed":
+			return Procedure.ProcedureStatus.COMPLETED;
+		case "entered-in-error":
+			return Procedure.ProcedureStatus.ENTEREDINERROR;
+		case "in-progress":
+			return Procedure.ProcedureStatus.INPROGRESS;
+		case "stopped":
+			return Procedure.ProcedureStatus.STOPPED;
+		case "on-hold":
+			return Procedure.ProcedureStatus.ONHOLD;
+		case "not-done":
+			return Procedure.ProcedureStatus.NOTDONE;
+		default:
+			return Procedure.ProcedureStatus.UNKNOWN;
+		}
+	}
+
+	static Observation.ObservationStatus getObservationStatus(CancerDetail.status status) {
+		// converting input status to lower case
+		String observationStatus = status.getStatus().toLowerCase();
+		switch (observationStatus) {
+		case "registered":
+			return Observation.ObservationStatus.REGISTERED;
+		case "preliminary":
+			return Observation.ObservationStatus.PRELIMINARY;
+		case "final":
+			return Observation.ObservationStatus.FINAL;
+		case "amended +":
+			return Observation.ObservationStatus.AMENDED;
+		case "cancelled +":
+			return Observation.ObservationStatus.CANCELLED;
+		case "corrected":
+			return Observation.ObservationStatus.CORRECTED;
+		default:
+			return Observation.ObservationStatus.UNKNOWN;
+		}
+	}
+
+	static Enumerations.DocumentReferenceStatus getDocumentReferenceStatus(CancerDetail.status status) {
+		// converting input status to lower case
+		String documentReferenceStatus = status.getStatus().toLowerCase();
+		switch (documentReferenceStatus) {
+		case "current":
+			return Enumerations.DocumentReferenceStatus.CURRENT;
+		case "entered-in-error":
+			return Enumerations.DocumentReferenceStatus.ENTEREDINERROR;
+		case "superseded":
+			return Enumerations.DocumentReferenceStatus.SUPERSEDED;
+		default:
+			return Enumerations.DocumentReferenceStatus.NULL;
 		}
 	}
 
@@ -1311,9 +1333,10 @@ public class FHIRUtils {
 	}
 
 	public static void processCancerTypeWithDifferentResources(Bundle bundle, Patient patientResource,
-			Composition.SectionComponent procedureSection, Composition.SectionComponent otherObservationsSection,
-			Composition.SectionComponent medicationsSection, Composition.SectionComponent documentReferenceSection,
-			Composition.SectionComponent medicalHistorySection, List<CancerDetail> cancerDetails) throws IOException {
+			Practitioner practitioner, Composition.SectionComponent procedureSection,
+			Composition.SectionComponent otherObservationsSection, Composition.SectionComponent medicationsSection,
+			Composition.SectionComponent documentReferenceSection, Composition.SectionComponent medicalHistorySection,
+			List<CancerDetail> cancerDetails) throws IOException {
 		for (CancerDetail cancerDetail : cancerDetails) {
 
 			// fetch resource type for given cancerTypeName/test
@@ -1325,9 +1348,11 @@ public class FHIRUtils {
 			case Constants.PROCEDURE:
 				createProcedureAndDcumentReferenceForCancerType(cancerDetail, bundle, patientResource,
 						procedureSection);
+				break;
 
 			case Constants.OBSERVATION:
 				createObservationForCancerType(cancerDetail, bundle, patientResource, otherObservationsSection);
+				break;
 
 			case Constants.MEDICATIONS:
 				// populating medication related data from cancer details to MedicationRequest
@@ -1335,9 +1360,10 @@ public class FHIRUtils {
 				org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest = new org.ncg.clinical.artifacts.vo.json.MedicationRequest(
 						cancerDetail);
 				if (!Objects.isNull(cancerDetail.getMedicationType())) {
-					createMedicationsBasedOnMedicationType(bundle, patientResource, medicationsSection,
+					createMedicationsBasedOnMedicationType(bundle, patientResource, practitioner, medicationsSection,
 							cancerDetail.getName(), cancerDetail.getCoding(), medicationRequest);
 				}
+				break;
 
 			case Constants.DOCUMENT_REFERENCE:
 				if (StringUtils.isNoneBlank(cancerDetail.getAttachment())) {
@@ -1345,20 +1371,28 @@ public class FHIRUtils {
 							cancerDetail.getName(), cancerDetail.getAttachment(), patientResource,
 							cancerDetail.getCoding());
 
+					// set status in documentReference
+					if (!Objects.isNull(cancerDetail.getStatus())) {
+						documentReference.setStatus(getDocumentReferenceStatus(cancerDetail.getStatus()));
+					}
+
 					// Add documentReference to the bundle
 					FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 
 					// make an entry for medicationStatementResource in medicationsSection
 					documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
 				}
+				break;
+
 			case Constants.CONDITION:
 				createConditionForCancerType(cancerDetail, bundle, patientResource, medicalHistorySection);
+				break;
 			}
 		}
 	}
 
 	public static void createMedicationsBasedOnMedicationType(Bundle bundle, Patient patientResource,
-			Composition.SectionComponent medicationsSection, String medicationName,
+			Practitioner practitioner, Composition.SectionComponent medicationsSection, String medicationName,
 			org.ncg.clinical.artifacts.vo.Coding coding,
 			org.ncg.clinical.artifacts.vo.json.MedicationRequest medicationRequest) {
 
@@ -1377,7 +1411,7 @@ public class FHIRUtils {
 		if (medicationRequest.getMedicationType().equals(ReferenceType.MEDICATION_REQUEST)) {
 			// create medicationRequestResource
 			MedicationRequest medicationRequestResource = createMedicationRequest(coding, medicationName,
-					medicationRequest, patientResource);
+					medicationRequest, patientResource, practitioner);
 
 			// make an entry for medicationRequestResource in medicationsSection
 			medicationsSection.addEntry(FHIRUtils.getReferenceToMedicationRequest(medicationRequestResource));
@@ -1400,6 +1434,11 @@ public class FHIRUtils {
 		Procedure procedure = FHIRUtils.addDocumentReferenceToProcedure(bundle, patientResource,
 				cancerDetail.getAttachment(), coding, coding.getText());
 
+		// set status in procedure
+		if (!Objects.isNull(cancerDetail.getStatus())) {
+			procedure.setStatus(getProcedureStatus(cancerDetail.getStatus()));
+		}
+
 		// make an entry for procedure in procedureSection
 		procedureSection.addEntry(FHIRUtils.getReferenceToProcedure(procedure));
 	}
@@ -1409,6 +1448,11 @@ public class FHIRUtils {
 
 		// create observation
 		Observation observation = FHIRUtils.createObservation(patientResource);
+
+		// set status in observation
+		if (!Objects.isNull(cancerDetail.getStatus())) {
+			observation.setStatus(getObservationStatus(cancerDetail.getStatus()));
+		}
 
 		// if incoming coding: system, code, display are not null then use same and if
 		// incoming coding: system, code, display are null then take those value from

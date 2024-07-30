@@ -1,6 +1,5 @@
 package org.ncg.clinical.artifacts.vo.json;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.ncg.clinical.artifacts.vo.Coding;
@@ -17,44 +16,34 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MedicationRequest {
 	private ReferenceType medicationType;
-	private Date effectiveDate;
-	private Date assertedDate;
-	private String reference;
-	private String note;
-	private medicationStatus status;
+	private status status;
 	private List<DosageInstruction> dosageInstructions;
 	private Coding medicationCoding;
 
 	public MedicationRequest(CancerDetail cancerDetail) {
-		this.assertedDate = cancerDetail.getAssertedDate();
-		this.effectiveDate = cancerDetail.getEffectiveDate();
 		this.medicationType = cancerDetail.getMedicationType();
-		this.note = cancerDetail.getNote();
-		this.reference = cancerDetail.getReference();
 		this.status = cancerDetail.getStatus();
 		this.dosageInstructions = cancerDetail.getDosageInstructions();
 		this.medicationCoding = cancerDetail.getMedicationCoding();
 	}
 
 	public MedicationRequest(OngoingDrugs ongoingDrugs) {
-		this.assertedDate = ongoingDrugs.getAssertedDate();
-		this.effectiveDate = ongoingDrugs.getEffectiveDate();
 		this.medicationType = ongoingDrugs.getMedicationType();
-		this.note = ongoingDrugs.getNote();
-		this.reference = ongoingDrugs.getReference();
 		this.status = ongoingDrugs.getStatus();
 		this.dosageInstructions = ongoingDrugs.getDosageInstructions();
 		this.medicationCoding = ongoingDrugs.getMedicationCoding();
 	}
 
-	public enum medicationStatus {
+	public enum status {
 		ACTIVE("active"), COMPLETED("completed"), ENTERED_IN_ERROR("entered-in-error"), INTENDED("intended"),
 		STOPPED("stopped"), ON_HOLD("on-hold"), UNKNOWN("unknown"), NOT_TAKEN("not-taken"), CANCELLED("cancelled"),
-		DRAFT("draft");
+		DRAFT("draft"), PREPERATION("preparation"), IN_PROGRESS("in-progress"), NOT_DONE("not-done"),
+		REGISTERED("registered"), PRELIMINARY("preliminary"), FINAL("final"), AMENDED_PLUS("amended +"),
+		CURRENT("current"), SUPERSEDED("superseded");
 
 		private final String status;
 
-		medicationStatus(String status) {
+		status(String status) {
 			this.status = status;
 		}
 

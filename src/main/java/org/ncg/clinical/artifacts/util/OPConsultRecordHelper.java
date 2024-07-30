@@ -170,8 +170,8 @@ public class OPConsultRecordHelper {
 							patientResource, chiefComplaintSection);
 
 					// process cancer details for creating different fhir resources
-					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
-							otherObservationsSection, medicationsSection, documentReferenceSection,
+					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, practitionerResource,
+							procedureSection, otherObservationsSection, medicationsSection, documentReferenceSection,
 							medicalHistorySection, cancerTypeDetails.getAcuteMyeloidleukemia());
 				}
 
@@ -181,8 +181,8 @@ public class OPConsultRecordHelper {
 							patientResource, chiefComplaintSection);
 
 					// process cancer details for creating different fhir resources
-					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
-							otherObservationsSection, medicationsSection, documentReferenceSection,
+					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, practitionerResource,
+							procedureSection, otherObservationsSection, medicationsSection, documentReferenceSection,
 							medicalHistorySection, cancerTypeDetails.getAdultHematolymphoid());
 				}
 			}
@@ -290,8 +290,8 @@ public class OPConsultRecordHelper {
 			// Ongoing Drugs section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getOngoingDrugs())) {
 				List<OngoingDrugs> ongoingDrugsDetails = clinicalData.getClinicalInformation().getOngoingDrugs();
-				createMedicationsSectionForOngoingDrugs(bundle, opDoc, patientResource, ongoingDrugsDetails,
-						medicationsSection);
+				createMedicationsSectionForOngoingDrugs(bundle, opDoc, patientResource, practitionerResource,
+						ongoingDrugsDetails, medicationsSection);
 			}
 		}
 
@@ -427,7 +427,7 @@ public class OPConsultRecordHelper {
 	}
 
 	public Composition.SectionComponent createMedicationsSectionForOngoingDrugs(Bundle bundle, Composition composition,
-			Patient patientResource, List<OngoingDrugs> ongoingDrugsList,
+			Patient patientResource, Practitioner practitionerResource, List<OngoingDrugs> ongoingDrugsList,
 			Composition.SectionComponent medicationsSection) {
 
 		// Iterate over the investigationAdviceList and create ServiceRequest resources
@@ -438,7 +438,7 @@ public class OPConsultRecordHelper {
 					ongoingDrugs);
 
 			// set status
-			medicationRequest.setStatus(MedicationRequest.medicationStatus.COMPLETED);
+			medicationRequest.setStatus(MedicationRequest.status.ACTIVE);
 
 			// Create and set the dosage instruction
 			DosageInstruction dosageInstruction = new DosageInstruction();
@@ -466,8 +466,8 @@ public class OPConsultRecordHelper {
 			medicationRequest.setMedicationCoding(coding);
 
 			if (!Objects.isNull(medicationRequest.getMedicationType())) {
-				FHIRUtils.createMedicationsBasedOnMedicationType(bundle, patientResource, medicationsSection,
-						ongoingDrugs.getName(), ongoingDrugs.getCoding(), medicationRequest);
+				FHIRUtils.createMedicationsBasedOnMedicationType(bundle, patientResource, practitionerResource,
+						medicationsSection, ongoingDrugs.getName(), ongoingDrugs.getCoding(), medicationRequest);
 			}
 		}
 
