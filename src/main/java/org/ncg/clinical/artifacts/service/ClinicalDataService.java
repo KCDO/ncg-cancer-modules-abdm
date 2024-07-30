@@ -19,4 +19,13 @@ public interface ClinicalDataService {
 	 * @throws Exception
 	 */
 	public String createOpConsultRecord(OPConsultRecordRequest oPConsultRecordRequest) throws Exception;
+
+	/**
+	 * This method is used to validate FHIR resources based on ABDM profiles
+	 * 
+	 * @param fhirResource
+	 * @return
+	 * @throws Exception
+	 */
+	public String validateFHIRResource(String fhirResource) throws Exception;
 }

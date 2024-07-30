@@ -170,9 +170,9 @@ public class OPConsultRecordHelper {
 							patientResource, chiefComplaintSection);
 
 					// process cancer details for creating different fhir resources
-					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
-							otherObservationsSection, medicationsSection, documentReferenceSection,
-							cancerTypeDetails.getAcuteMyeloidleukemia());
+					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, practitionerResource,
+							procedureSection, otherObservationsSection, medicationsSection, documentReferenceSection,
+							medicalHistorySection, cancerTypeDetails.getAcuteMyeloidleukemia());
 				}
 
 				if (cancerType.toLowerCase().contains(Constants.ADULT_HEMATOLYMPHOID.toLowerCase())) {
@@ -181,9 +181,9 @@ public class OPConsultRecordHelper {
 							patientResource, chiefComplaintSection);
 
 					// process cancer details for creating different fhir resources
-					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, procedureSection,
-							otherObservationsSection, medicationsSection, documentReferenceSection,
-							cancerTypeDetails.getAdultHematolymphoid());
+					FHIRUtils.processCancerTypeWithDifferentResources(bundle, patientResource, practitionerResource,
+							procedureSection, otherObservationsSection, medicationsSection, documentReferenceSection,
+							medicalHistorySection, cancerTypeDetails.getAdultHematolymphoid());
 				}
 			}
 		}
@@ -290,8 +290,8 @@ public class OPConsultRecordHelper {
 			// Ongoing Drugs section
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getOngoingDrugs())) {
 				List<OngoingDrugs> ongoingDrugsDetails = clinicalData.getClinicalInformation().getOngoingDrugs();
-				createMedicationsSectionForOngoingDrugs(bundle, opDoc, patientResource, ongoingDrugsDetails,
-						medicationsSection);
+				createMedicationsSectionForOngoingDrugs(bundle, opDoc, patientResource, practitionerResource,
+						ongoingDrugsDetails, medicationsSection);
 			}
 		}
 
@@ -427,7 +427,7 @@ public class OPConsultRecordHelper {
 	}
 
 	public Composition.SectionComponent createMedicationsSectionForOngoingDrugs(Bundle bundle, Composition composition,
-			Patient patientResource, List<OngoingDrugs> ongoingDrugsList,
+			Patient patientResource, Practitioner practitionerResource, List<OngoingDrugs> ongoingDrugsList,
 			Composition.SectionComponent medicationsSection) {
 
 		// Iterate over the investigationAdviceList and create ServiceRequest resources
@@ -438,18 +438,18 @@ public class OPConsultRecordHelper {
 					ongoingDrugs);
 
 			// set status
-			medicationRequest.setStatus(MedicationRequest.medicationStatus.COMPLETED);
+			medicationRequest.setStatus(MedicationRequest.status.ACTIVE);
 
 			// Create and set the dosage instruction
 			DosageInstruction dosageInstruction = new DosageInstruction();
 
 			DoseAndRate doseAndRate = new DoseAndRate();
 			// Set dose quantity
-			ValueQuantity doseQuantity = new ValueQuantity(500.0, "mg", "http://unitsofmeasure.org", "mg");
+			ValueQuantity doseQuantity = new ValueQuantity(500.0, "mg", Constants.HTTP_UNITSOFMEASURE_ORG, "mg");
 			doseAndRate.setDoseQuantity(doseQuantity);
 
 			// Set rate quantity
-			ValueQuantity rateQuantity = new ValueQuantity(3.0, "1/d", "http://unitsofmeasure.org", "{1/d}");
+			ValueQuantity rateQuantity = new ValueQuantity(3.0, "1/d", Constants.HTTP_UNITSOFMEASURE_ORG, "{1/d}");
 			doseAndRate.setRateQuantity(rateQuantity);
 
 			dosageInstruction.setDosesAndRates(Arrays.asList(doseAndRate));
@@ -466,8 +466,8 @@ public class OPConsultRecordHelper {
 			medicationRequest.setMedicationCoding(coding);
 
 			if (!Objects.isNull(medicationRequest.getMedicationType())) {
-				FHIRUtils.createMedicationsBasedOnMedicationType(bundle, patientResource, medicationsSection,
-						ongoingDrugs.getName(), ongoingDrugs.getCoding(), medicationRequest);
+				FHIRUtils.createMedicationsBasedOnMedicationType(bundle, patientResource, practitionerResource,
+						medicationsSection, ongoingDrugs.getName(), ongoingDrugs.getCoding(), medicationRequest);
 			}
 		}
 

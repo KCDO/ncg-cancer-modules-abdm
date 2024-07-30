@@ -1,269 +1,268 @@
 {
-	"patientDetails": {
-		"firstName": "Testing",
-		"middleName": "ABDM",
-		"lastName": "NCG",
-		"age": 24,
-		"gender": "male",
-		"dob": "1999-08-14",
-		"phoneNumber": "9898989898",
-		"address": {
-			"type": "",
-			"houseName": "123",
-			"district": "Bangalore",
-			"state": "Karnataka",
-			"city": "Bangalore",
-			"pinCode": "560103",
-			"country": "India"
-		},
-		"height": "160",
-		"weight": "62",
-		"abhaAddress": "patientxyz@abdm",
-		"identifier": {
-			"hipId": "Health-Information-Provider-Example-Id",
-			"patientHealthId": "UHID-109123"
-		},
-		"bloodGroup": "APLUS"
-	},
-	"organizationDetails": {
-		"name": "XYZ Lab Pvt.Ltd.",
-		"phoneNumber": "9898989898",
-		"email": "xyz@facility.org"
-	},
-	"clinicalInformation": {
-		"drugAllergy": [
-			{
-				"name": "groundnut",
-				"type": "food",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			},
-			{
-				"name": "dust",
-				"type": "environmental",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		],
-		"comorbidities": [
-			{
-				"name": "hypertension",
-				"category": "problem-list-item",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			},
-			{
-				"name": "Coronary Artery Disease",
-				"category": "encounter-diagnosis",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		],
-		"adverseEvents": [
-			{
-				"name": "Allergic reaction",
-				"category": "medication-mishap",
-				"seriousness": "Serious",
-				"outcome": "Resolved",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		],
-		"pastMedicalHistory": [
-			{
-				"name": "hypertension",
-				"note": "This patient is suffering from Stage 2 Hypertension.",
-				"onsetDateTime": "2020-01-01T10:00:00+05:00",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			},
-			{
-				"name": "Coronary Artery Disease",
-				"note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
-				"onsetDateTime": "2022-12-01T10:00:00+05:00",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		],
-		"pastSurgicalHistory": [
-			{
-				"name": "hypertension",
-				"note": "This patient is suffering from Stage 2 Hypertension.",
-				"onsetDateTime": "2020-01-01T10:00:00+05:00",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			},
-			{
-				"name": "Coronary Artery Disease",
-				"note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
-				"onsetDateTime": "2022-12-01T10:00:00+05:00",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		],
-		"mentalHealthAssesment": [
-			{
-				"name": "Mental Health Screening",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				},
-				"attachment": "lung6mowt"
-			},
-			{
-				"name": "Mental health Mandatory reporting",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				},
-				"attachment": "lung6mowt"
-			}
-		],
-		"menstruationHistory": [
-			{
-				"name": "Pregnancy status",
-				"value": "Not pregnant",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			},
-			{
-				"name": "Menstrual cycle",
-				"value": "Irregular periods",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		],
-		"clinicalHistory": [
-			{
-				"name": "hypertension",
-				"note": "This patient is suffering from Stage 2 Hypertension.",
-				"onsetDateTime": "2020-01-01T10:00:00+05:00",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			},
-			{
-				"name": "Coronary Artery Disease",
-				"note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
-				"onsetDateTime": "2022-12-01T10:00:00+05:00",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		],
-		"examinationDetails": [
-			{
-				"name": "Chest CT",
-				"occurrenceDateTime": "2013-05-08T09:33:27+07:00",
-				"requester": "Practitioner/example1",
-				"reason": "Check for metastatic disease",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			},
-			{
-				"name": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma",
-				"occurrenceDateTime": "2015-08-27T09:33:27+07:00",
-				"requester": "Practitioner/example2",
-				"reason": "Patient complains of Thyroid",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		],
-		"ongoingDrugs": [
-			{
-				"name": "Amoxicillin",
-				"medicationType": "MEDICATION_STATEMENT",
-				"effectiveDate": "2014-02-01",
-				"assertedDate": "2014-02-22",
-				"reference": "Patient/pat1",
-				"note": "Father indicates they miss the occasional dose",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			},
-			{
-				"name": "Amoxicillin anhydrous",
-				"effectiveDate": "2015-01-23",
-				"assertedDate": "2015-02-22",
-				"medicationType": "MEDICATION_REQUEST",
-				"reference": "MedicationRequest/medrx002",
-				"note": "Patient indicates they miss the occasional dose",
-				"coding": {
-					"system": "",
-					"code": "",
-					"display": "",
-					"text": ""
-				}
-			}
-		]
-	},
-	"cancerTypes": [
-		"Adult Hematolymphoid",
-		"Acute Myeloid leukemia"
-	]
+    "patientDetails": {
+        "firstName": "Testing",
+        "middleName": "ABDM",
+        "lastName": "NCG",
+        "age": 24,
+        "gender": "male",
+        "dob": "1999-08-14",
+        "phoneNumber": "9898989898",
+        "address": {
+            "type": "",
+            "houseName": "123",
+            "district": "Bangalore",
+            "state": "Karnataka",
+            "city": "Bangalore",
+            "pinCode": "560103",
+            "country": "India"
+        },
+        "height": "160",
+        "weight": "62",
+        "abhaAddress": "patientxyz@abdm",
+        "identifier": {
+            "hipId": "Health-Information-Provider-Example-Id",
+            "patientHealthId": "UHID-109123"
+        },
+        "bloodGroup": "APLUS"
+    },
+    "organizationDetails": {
+        "name": "XYZ Lab Pvt.Ltd.",
+        "phoneNumber": "9898989898",
+        "email": "xyz@facility.org"
+    },
+    "clinicalInformation": {
+        "drugAllergy": [
+            {
+                "name": "Groundnut",
+                "type": "food",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Penicillin",
+                "type": "medication",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "comorbidities": [
+            {
+                "name": "hypertension",
+                "category": "problem-list-item",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Coronary Artery Disease",
+                "category": "encounter-diagnosis",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "adverseEvents": [
+            {
+                "name": "Allergic reaction",
+                "category": "medication-mishap",
+                "seriousness": "Serious",
+                "outcome": "Resolved",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "pastMedicalHistory": [
+            {
+                "name": "hypertension",
+                "note": "This patient is suffering from Stage 2 Hypertension.",
+                "onsetDateTime": "2020-01-01T10:00:00+05:00",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Coronary Artery Disease",
+                "note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
+                "onsetDateTime": "2022-12-01T10:00:00+05:00",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "pastSurgicalHistory": [
+            {
+                "name": "hypertension",
+                "note": "This patient is suffering from Stage 2 Hypertension.",
+                "onsetDateTime": "2020-01-01T10:00:00+05:00",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Coronary Artery Disease",
+                "note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
+                "onsetDateTime": "2022-12-01T10:00:00+05:00",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "mentalHealthAssesment": [
+            {
+                "name": "Mental Health Screening",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "lung6mowt"
+            },
+            {
+                "name": "Mental health Mandatory reporting",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "lung6mowt"
+            }
+        ],
+        "menstruationHistory": [
+            {
+                "name": "Pregnancy status",
+                "value": "Not pregnant",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Menstrual cycle",
+                "value": "Irregular periods",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "clinicalHistory": [
+            {
+                "name": "hypertension",
+                "note": "This patient is suffering from Stage 2 Hypertension.",
+                "onsetDateTime": "2020-01-01T10:00:00+05:00",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Coronary Artery Disease",
+                "note": "This patient is suffering from severe coronary artery disease. This is a critical condition!",
+                "onsetDateTime": "2022-12-01T10:00:00+05:00",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "examinationDetails": [
+            {
+                "name": "Chest CT",
+                "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
+                "requester": "Practitioner/example1",
+                "reason": "Check for metastatic disease",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma",
+                "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
+                "requester": "Practitioner/example2",
+                "reason": "Patient complains of Thyroid",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ],
+        "ongoingDrugs": [
+            {
+                "name": "Amoxicillin",
+                "medicationType": "MEDICATION_STATEMENT",
+                "effectiveDate": "2014-02-01",
+                "assertedDate": "2014-02-22",
+                "reference": "Patient/pat1",
+                "note": "Father indicates they miss the occasional dose",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            },
+            {
+                "name": "Amoxicillin anhydrous",
+                "effectiveDate": "2015-01-23",
+                "assertedDate": "2015-02-22",
+                "medicationType": "MEDICATION_REQUEST",
+                "reference": "MedicationRequest/medrx002",
+                "note": "Patient indicates they miss the occasional dose",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                }
+            }
+        ]
+    },
+    "cancerTypes": [
+        "Acute Myeloid leukemia"
+    ]
 }

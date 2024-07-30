@@ -11,15 +11,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -32,15 +28,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -53,15 +45,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -74,15 +62,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -95,15 +79,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -116,15 +96,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -137,15 +113,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -158,15 +130,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -179,15 +147,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		],
 		"oralCancer": [
@@ -202,15 +166,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -223,15 +183,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		],
 		"cervicalCancer": [
@@ -246,15 +202,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		],
 		"breastCancer": [
@@ -269,15 +221,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -290,15 +238,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "",
@@ -311,15 +255,11 @@
 				},
 				"resourceType": "",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		],
 		"acuteMyeloidleukemia": [
@@ -334,36 +274,28 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
-				"attachment": "",
+				"status": "PREPERATION",
+				"attachment": "Bone marrow",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
 				"name": "Cytogenetics",
 				"coding": {
 					"system": "http://snomed.info/sct",
-					"code": "10050001",
-					"display": "SNOMED CT core",
-					"text": "Cytogenetics"
+					"code": "168445004",
+					"display": "Cell chromosome examination",
+					"text": "Cell chromosome examination"
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
-				"attachment": "",
+				"status": "PREPERATION",
+				"attachment": "Cytogenetics",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -376,36 +308,28 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
-				"attachment": "",
+				"status": "PREPERATION",
+				"attachment": "Fluorescence",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
 				"name": "PCR",
 				"coding": {
 					"system": "http://snomed.info/sct",
-					"code": "718006",
-					"display": "PCR",
-					"text": "PCR"
+					"code": "9718006",
+					"display": "Polymerase chain reaction analysis",
+					"text": "Polymerase chain reaction analysis"
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
-				"attachment": "",
+				"status": "PREPERATION",
+				"attachment": "PCR",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -418,15 +342,11 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
-				"attachment": "",
+				"status": "PREPERATION",
+				"attachment": "Baseline",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -439,19 +359,15 @@
 				},
 				"resourceType": "Observation",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "FINAL",
 				"attachment": "",
-				"target": "",
-				"doseAndRate": "",
+				"dosageInstructions": null,
+				"medicationCoding": null,
 				"valueQuantity": {
-					"value": 12.0,
-					"unit": "",
-					"system": "",
-					"code": ""
+					"value": 0,
+					"unit": "cm",
+					"system": "http://unitsofmeasure.org",
+					"code": "cm"
 				}
 			},
 			{
@@ -465,15 +381,35 @@
 				},
 				"resourceType": "Medication",
 				"medicationType": "MEDICATION_STATEMENT",
-				"effectiveDate": "2014-02-01",
-				"assertedDate": "2014-02-22",
-				"reference": "Patient/pat1",
-				"note": "",
-				"status": null,
+				"status": "ACTIVE",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -486,15 +422,35 @@
 				},
 				"resourceType": "Medication",
 				"medicationType": "MEDICATION_STATEMENT",
-				"effectiveDate": "2014-02-01",
-				"assertedDate": "2014-02-22",
-				"reference": "Patient/pat1",
-				"note": "",
-				"status": null,
+				"status": "ACTIVE",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "DiagnosticReportRecord-CancerType",
@@ -507,15 +463,11 @@
 				},
 				"resourceType": "DiagnosticReport",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "DischargeSummaryRecord-CancerType",
@@ -528,15 +480,11 @@
 				},
 				"resourceType": "DischargeSummary",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -549,15 +497,35 @@
 				},
 				"resourceType": "Medication",
 				"medicationType": "MEDICATION_STATEMENT",
-				"effectiveDate": "2014-02-01",
-				"assertedDate": "2014-02-22",
-				"reference": "Patient/pat1",
-				"note": "",
-				"status": null,
+				"status": "ACTIVE",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			}
 		],
 		"adultHematolymphoid": [
@@ -572,14 +540,10 @@
 				},
 				"resourceType": "Observation",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "FINAL",
 				"attachment": "",
-				"target": "",
-				"doseAndRate": "",
+				"dosageInstructions": null,
+				"medicationCoding": null,
 				"valueQuantity": {
 					"value": 12.0,
 					"unit": "",
@@ -598,14 +562,10 @@
 				},
 				"resourceType": "Observation",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "FINAL",
 				"attachment": "",
-				"target": "",
-				"doseAndRate": "",
+				"dosageInstructions": null,
+				"medicationCoding": null,
 				"valueQuantity": {
 					"value": 12.0,
 					"unit": "",
@@ -624,15 +584,11 @@
 				},
 				"resourceType": "Condition",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -645,15 +601,11 @@
 				},
 				"resourceType": "DocumentReference",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "CURRENT",
 				"attachment": "nknk",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "DischargeSummaryRecord-CancerType",
@@ -666,15 +618,11 @@
 				},
 				"resourceType": "DocumentReference",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "CURRENT",
 				"attachment": "nkjnjkn",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -687,15 +635,35 @@
 				},
 				"resourceType": "Medication",
 				"medicationType": "MEDICATION_STATEMENT",
-				"effectiveDate": "2014-02-01",
-				"assertedDate": "2014-02-22",
-				"reference": "Patient/pat1",
-				"note": "",
-				"status": null,
+				"status": "ACTIVE",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "DischargeSummaryRecord-CancerType",
@@ -708,15 +676,35 @@
 				},
 				"resourceType": "Medication",
 				"medicationType": "MEDICATION_STATEMENT",
-				"effectiveDate": "2014-02-01",
-				"assertedDate": "2014-02-22",
-				"reference": "Patient/pat1",
-				"note": "",
-				"status": null,
+				"status": "ACTIVE",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -729,15 +717,11 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "PREPERATION",
 				"attachment": "njknkjnjk",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "DischargeSummaryRecord-CancerType",
@@ -750,15 +734,11 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "PREPERATION",
 				"attachment": "nkjnkj",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -771,14 +751,10 @@
 				},
 				"resourceType": "Observation",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "FINAL",
 				"attachment": "",
-				"target": "",
-				"doseAndRate": "",
+				"dosageInstructions": null,
+				"medicationCoding": null,
 				"valueQuantity": {
 					"value": 12.0,
 					"unit": "",
@@ -797,15 +773,11 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "PREPERATION",
 				"attachment": "njnj",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -818,15 +790,35 @@
 				},
 				"resourceType": "Medication",
 				"medicationType": "MEDICATION_STATEMENT",
-				"effectiveDate": "2014-02-01",
-				"assertedDate": "2014-02-22",
-				"reference": "Patient/pat1",
-				"note": "",
-				"status": null,
+				"status": "ACTIVE",
 				"attachment": "",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": [
+					{
+						"dosesAndRates": [
+							{
+								"doseQuantity": {
+									"value": 500.0,
+									"unit": "mg",
+									"system": "http://unitsofmeasure.org",
+									"code": "mg"
+								},
+								"rateQuantity": {
+									"value": 3.0,
+									"unit": "1/d",
+									"system": "http://unitsofmeasure.org",
+									"code": "{1/d}"
+								}
+							}
+						]
+					}
+				],
+				"medicationCoding": {
+					"system": "http://snomed.info/sct",
+					"code": "708256001",
+					"display": "Second line therapy",
+					"text": "Second line therapy"
+				}
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -839,15 +831,11 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "PREPERATION",
 				"attachment": "nknkn",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -860,15 +848,11 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "PREPERATION",
 				"attachment": "njkn",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "OPConsultRecord-CancerType",
@@ -881,15 +865,11 @@
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
-				"status": null,
+				"status": "PREPERATION",
 				"attachment": "jnknjn",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			},
 			{
 				"moduleName": "DiagnosticReport-CancerType",
@@ -902,15 +882,11 @@
 				},
 				"resourceType": "DiagnosticReport",
 				"medicationType": null,
-				"effectiveDate": "",
-				"assertedDate": "",
-				"reference": "",
-				"note": "",
 				"status": null,
 				"attachment": "njnkjn",
 				"valueQuantity": null,
-				"target": "",
-				"doseAndRate": ""
+				"dosageInstructions": null,
+				"medicationCoding": null
 			}
 		]
 	}
