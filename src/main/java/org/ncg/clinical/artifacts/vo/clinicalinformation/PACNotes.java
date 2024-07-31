@@ -1,6 +1,5 @@
 package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
-import org.hl7.fhir.r4.model.DateTimeType;
 import org.ncg.clinical.artifacts.vo.Coding;
 
 import lombok.AllArgsConstructor;
@@ -12,13 +11,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SurgicalSummaryWithPostOPCourse {
+public class PACNotes {
 	private String name;
-	private DateTimeType startDate;
-	private DateTimeType endDate;
-	private String reason;
-	private String bodySite;
-	private String outcome;
-	private String followUp;
+	private String attachment;
 	private Coding coding;
 }

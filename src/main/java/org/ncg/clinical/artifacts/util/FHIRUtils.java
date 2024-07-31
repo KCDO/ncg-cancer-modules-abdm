@@ -829,7 +829,8 @@ public class FHIRUtils {
 		DiagnosticReport report = createDiagnosticReportResource(bundle, patient, practitioner, code, null);
 
 		// Create a new DocumentReference resource
-		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding);
+		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding,
+				false);
 
 		// Add documentReference to the bundle
 		FHIRUtils.addToBundleEntry(bundle, documentReference, true);
@@ -871,15 +872,22 @@ public class FHIRUtils {
 	}
 
 	public static DocumentReference createDocumentReferenceResource(String reportName, String reportValue,
-			Patient patient, org.ncg.clinical.artifacts.vo.Coding coding) throws IOException {
-		// create CodeableConcept type
-		CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(), coding.getDisplay(),
-				reportName + " report");
+			Patient patient, org.ncg.clinical.artifacts.vo.Coding coding, Boolean setDocumentType) throws IOException {
 
 		// create documentReference resource
 		DocumentReference documentReference = new DocumentReference();
 		documentReference.setId(Utils.generateId());
-		documentReference.setType(type);
+
+		if (setDocumentType) {
+			CodeableConcept documentType = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+					coding.getDisplay(), coding.getText());
+			documentReference.setType(documentType);
+		} else {
+			// create CodeableConcept type
+			CodeableConcept type = FHIRUtils.getCodeableConcept(coding.getCode(), coding.getSystem(),
+					coding.getDisplay(), reportName + " report");
+			documentReference.setType(type);
+		}
 		documentReference.setSubject(getReferenceToPatient(patient));
 		documentReference.setStatus(Enumerations.DocumentReferenceStatus.CURRENT);
 		documentReference.setMeta(Utils.getMeta(new Date(), Constants.STRUCTURE_DEFINITION_DOCUMENT_REFERENCE));
@@ -903,7 +911,8 @@ public class FHIRUtils {
 		Procedure procedure = procedureBuilder(patient, coding, reportName);
 
 		// Create a new DocumentReference resource
-		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding);
+		DocumentReference documentReference = createDocumentReferenceResource(reportName, reportValue, patient, coding,
+				false);
 
 		// Add documentReference to procedure
 		procedure.setReport(Arrays.asList(getReferenceToDocumentReference(documentReference)));
@@ -1369,7 +1378,7 @@ public class FHIRUtils {
 				if (StringUtils.isNoneBlank(cancerDetail.getAttachment())) {
 					DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
 							cancerDetail.getName(), cancerDetail.getAttachment(), patientResource,
-							cancerDetail.getCoding());
+							cancerDetail.getCoding(), false);
 
 					// set status in documentReference
 					if (!Objects.isNull(cancerDetail.getStatus())) {

@@ -138,6 +138,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MentalHealthAssesment'
+        pacNotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/PACNotes'
+        radiationPlan:
+          type: array
+          items:
+            $ref: '#/components/schemas/RadiationPlan'
         menstruationHistory:
           type: array
           items:
@@ -371,6 +379,42 @@ components:
           type: integer
           format: int32
     MentalHealthAssesment:
+      type: object
+      properties:
+        name:
+          type: string
+        attachment:
+          type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
+            text:
+              type: string
+    PACNotes:
+      type: object
+      properties:
+        name:
+          type: string
+        attachment:
+          type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
+            text:
+              type: string
+    RadiationPlan:
       type: object
       properties:
         name:

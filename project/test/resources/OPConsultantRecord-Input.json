@@ -159,6 +159,30 @@
                 "attachment": "lung6mowt"
             }
         ],
+        "pacNotes": [
+            {
+                "name": "Evaluation note",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "lung6mowt"
+            }
+        ],
+        "radiationPlan": [
+            {
+                "name": "Radiology study observation note",
+                "coding": {
+                    "system": "",
+                    "code": "",
+                    "display": "",
+                    "text": ""
+                },
+                "attachment": "lung6mowt"
+            }
+        ],
         "menstruationHistory": [
             {
                 "name": "Pregnancy status",

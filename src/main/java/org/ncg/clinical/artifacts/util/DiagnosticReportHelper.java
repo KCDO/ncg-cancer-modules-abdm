@@ -223,7 +223,7 @@ public class DiagnosticReportHelper {
 			// Create a new DocumentReference resource
 			DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
 					Constants.BIOPSY_HISTOPATHOLOGY_REPORT, diagnostic.getBiopsyHistopathologyReport(), patient,
-					testWithCoding);
+					testWithCoding, false);
 
 			// Add documentReference to the DiagnosticReport
 			Reference resultReference = new Reference(Constants.DOCUMENT_REFERENCE + "/" + documentReference.getId());
@@ -269,7 +269,7 @@ public class DiagnosticReportHelper {
 
 		// Create a new DocumentReference resource
 		DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(panelDetail.getName(),
-				panelDetail.getAttachment(), patient, panelWithLoincCode);
+				panelDetail.getAttachment(), patient, panelWithLoincCode, false);
 
 		// Add documentReference to the DiagnosticReport
 		Reference resultReference = new Reference(Constants.DOCUMENT_REFERENCE + "/" + documentReference.getId());
