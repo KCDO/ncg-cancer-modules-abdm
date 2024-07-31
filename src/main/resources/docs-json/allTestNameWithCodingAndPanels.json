@@ -1356,6 +1356,24 @@
 				"display": "Allergy to penicillin",
 				"text": "Allergy to penicillin"
 			}
+		},
+		{
+			"name": "Evaluation note",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "34751-8",
+				"display": "Anesthesiology Preoperative evaluation and management note",
+				"text": "Anesthesiology Preoperative evaluation and management note"
+			}
+		},
+		{
+			"name": "Radiology study observation note",
+			"coding": {
+				"system": "http://loinc.org",
+				"code": "80785-9",
+				"display": "Radiation oncology Plan of care note",
+				"text": "Radiation oncology Plan of care note"
+			}
 		}
 	]
 }
