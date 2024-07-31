@@ -1,7 +1,6 @@
 package org.ncg.clinical.artifacts.vo.clinicalinformation;
 
 import java.util.List;
-import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,8 +21,7 @@ public class ClinicalInformation {
 	private List<MenstruationHistory> menstruationHistory;
 	private List<ClinicalHistory> clinicalHistory;
 	private List<InvestigationAdvice> examinationDetails;
-	private Map<String, String> oTNotes;
-	private List<SurgicalSummaryWithPostOPCourse> surgicalSummaryWithPostOPCourse;
-	private Map<String, String> pACNotes;
+	private List<PACNotes> pacNotes;
+	private List<RadiationPlan> radiationPlan;
 	private List<OngoingDrugs> ongoingDrugs;
 }
