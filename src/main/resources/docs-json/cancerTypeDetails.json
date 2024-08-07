@@ -577,9 +577,9 @@
 				"moduleName": "OPConsultRecord-CancerType",
 				"name": "Stage",
 				"coding": {
-					"system": "http://snomed.info/sct",
-					"code": "424122007",
-					"display": "Stage",
+					"code": "385388004",
+				        "system": "http://snomed.info/sct",
+				        "display": "Lymphoma stage",
 					"text": "Stage"
 				},
 				"resourceType": "Condition",
