@@ -596,7 +596,7 @@
 				"coding": {
 					"system": "http://snomed.info/sct",
 					"code": "424122007",
-					"display": "Joint clinic notes",
+					"display": "Eastern Cooperative Oncology Group performance status finding",
 					"text": "Joint clinic notes"
 				},
 				"resourceType": "DocumentReference",
@@ -613,7 +613,7 @@
 				"coding": {
 					"system": "http://snomed.info/sct",
 					"code": "424122007",
-					"display": "Joint clinic notes",
+					"display": "Eastern Cooperative Oncology Group performance status finding",
 					"text": "Joint clinic notes"
 				},
 				"resourceType": "DocumentReference",
@@ -713,7 +713,7 @@
 					"system": "http://snomed.info/sct",
 					"code": "108290001",
 					"display": "Radiotherapy",
-					"text": "Radiotherapy"
+					"text": "Radiation"
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
@@ -729,7 +729,7 @@
 				"coding": {
 					"system": "http://snomed.info/sct",
 					"code": "108290001",
-					"display": "Radiation",
+					"display": "Radiotherapy",
 					"text": "Radiation"
 				},
 				"resourceType": "Procedure",
