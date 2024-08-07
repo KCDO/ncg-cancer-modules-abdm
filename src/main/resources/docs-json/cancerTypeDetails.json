@@ -285,9 +285,9 @@
 				"name": "Cytogenetics",
 				"coding": {
 					"system": "http://snomed.info/sct",
-					"code": "168445004",
+					"code": "10050001",
 					"display": "Cell chromosome examination",
-					"text": "Cell chromosome examination"
+					"text": "Cytogenetics"
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
@@ -319,9 +319,9 @@
 				"name": "PCR",
 				"coding": {
 					"system": "http://snomed.info/sct",
-					"code": "9718006",
+					"code": "718006",
 					"display": "Polymerase chain reaction analysis",
-					"text": "Polymerase chain reaction analysis"
+					"text": "PCR"
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
@@ -355,7 +355,7 @@
 					"system": "http://snomed.info/sct",
 					"code": "725390002",
 					"display": "Acute myeloid leukemia with t(8;16)(p11;p13) translocation",
-					"text": "Acute myeloid leukemia with t(8;16)(p11;p13) translocation"
+					"text": "Extramedullary disease"
 				},
 				"resourceType": "Observation",
 				"medicationType": null,
@@ -596,7 +596,7 @@
 				"coding": {
 					"system": "http://snomed.info/sct",
 					"code": "424122007",
-					"display": "Joint clinic notes",
+					"display": "Eastern Cooperative Oncology Group performance status finding",
 					"text": "Joint clinic notes"
 				},
 				"resourceType": "DocumentReference",
@@ -613,7 +613,7 @@
 				"coding": {
 					"system": "http://snomed.info/sct",
 					"code": "424122007",
-					"display": "Joint clinic notes",
+					"display": "Eastern Cooperative Oncology Group performance status finding",
 					"text": "Joint clinic notes"
 				},
 				"resourceType": "DocumentReference",
@@ -713,7 +713,7 @@
 					"system": "http://snomed.info/sct",
 					"code": "108290001",
 					"display": "Radiotherapy",
-					"text": "Radiotherapy"
+					"text": "Radiation"
 				},
 				"resourceType": "Procedure",
 				"medicationType": null,
@@ -729,7 +729,7 @@
 				"coding": {
 					"system": "http://snomed.info/sct",
 					"code": "108290001",
-					"display": "Radiation",
+					"display": "Radiotherapy",
 					"text": "Radiation"
 				},
 				"resourceType": "Procedure",
@@ -768,7 +768,7 @@
 				"coding": {
 					"system": "http://snomed.info/sct",
 					"code": "84755001",
-					"display": "Response - interim and end of therapy",
+					"display": "Radiation therapy treatment management",
 					"text": "Response - interim and end of therapy"
 				},
 				"resourceType": "Procedure",
