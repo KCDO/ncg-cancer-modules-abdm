@@ -768,7 +768,7 @@
 				"coding": {
 					"system": "http://snomed.info/sct",
 					"code": "84755001",
-					"display": "Response - interim and end of therapy",
+					"display": "Radiation therapy treatment management",
 					"text": "Response - interim and end of therapy"
 				},
 				"resourceType": "Procedure",
