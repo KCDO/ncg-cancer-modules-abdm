@@ -35,8 +35,10 @@ import org.ncg.clinical.artifacts.vo.clinicalinformation.InvestigationAdvice;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.MenstruationHistory;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.MentalHealthAssesment;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.OngoingDrugs;
+import org.ncg.clinical.artifacts.vo.clinicalinformation.PACNotes;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastMedicalHistory;
 import org.ncg.clinical.artifacts.vo.clinicalinformation.PastSurgicalHistory;
+import org.ncg.clinical.artifacts.vo.clinicalinformation.RadiationPlan;
 import org.ncg.clinical.artifacts.vo.json.AllTestAndPanelDetail;
 import org.ncg.clinical.artifacts.vo.json.CancerTypeDetail;
 import org.ncg.clinical.artifacts.vo.json.DosageInstruction;
@@ -267,8 +269,15 @@ public class OPConsultRecordHelper {
 			if (Objects.nonNull(clinicalData.getClinicalInformation().getMentalHealthAssesment())) {
 				List<MentalHealthAssesment> mentalHealthAssesmentDetails = clinicalData.getClinicalInformation()
 						.getMentalHealthAssesment();
-				createDocumentReferenceSectionForMentalHealthAssesment(bundle, opDoc, patientResource,
-						practitionerResource, mentalHealthAssesmentDetails, documentReferenceSection);
+				createDocumentReferenceSection(bundle, opDoc, patientResource, practitionerResource,
+						mentalHealthAssesmentDetails, null, null, documentReferenceSection);
+			}
+
+			// PAC Notes section
+			if (Objects.nonNull(clinicalData.getClinicalInformation().getPacNotes())) {
+				List<PACNotes> pACNotesDetails = clinicalData.getClinicalInformation().getPacNotes();
+				createDocumentReferenceSection(bundle, opDoc, patientResource, practitionerResource, null,
+						pACNotesDetails, null, documentReferenceSection);
 			}
 
 			// Menstruation History section
@@ -292,6 +301,13 @@ public class OPConsultRecordHelper {
 				List<OngoingDrugs> ongoingDrugsDetails = clinicalData.getClinicalInformation().getOngoingDrugs();
 				createMedicationsSectionForOngoingDrugs(bundle, opDoc, patientResource, practitionerResource,
 						ongoingDrugsDetails, medicationsSection);
+			}
+
+			// Radiation Plan section
+			if (Objects.nonNull(clinicalData.getClinicalInformation().getRadiationPlan())) {
+				List<RadiationPlan> radiationPlanDetails = clinicalData.getClinicalInformation().getRadiationPlan();
+				createDocumentReferenceSection(bundle, opDoc, patientResource, practitionerResource, null, null,
+						radiationPlanDetails, documentReferenceSection);
 			}
 		}
 
@@ -667,25 +683,64 @@ public class OPConsultRecordHelper {
 		return adverseEventsSection;
 	}
 
-	public Composition.SectionComponent createDocumentReferenceSectionForMentalHealthAssesment(Bundle bundle,
-			Composition composition, Patient patient, Practitioner practitioner,
-			List<MentalHealthAssesment> mentalHealthAssesmentList,
+	public Composition.SectionComponent createDocumentReferenceSection(Bundle bundle, Composition composition,
+			Patient patient, Practitioner practitioner, List<MentalHealthAssesment> mentalHealthAssesmentList,
+			List<PACNotes> pACNotesList, List<RadiationPlan> radiationPlanList,
 			Composition.SectionComponent documentReferenceSection) throws IOException {
 
-		// Iterate over the adverseEventsList and create DocumentReference resources
-		for (MentalHealthAssesment mentalHealthAssesmentDetail : mentalHealthAssesmentList) {
+		// Iterate over the mentalHealthAssesmentList and create DocumentReference
+		// resources
+		if (!Objects.isNull(mentalHealthAssesmentList)) {
+			for (MentalHealthAssesment mentalHealthAssesmentDetail : mentalHealthAssesmentList) {
 
-			org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(mentalHealthAssesmentDetail.getCoding(),
-					mentalHealthAssesmentDetail.getName());
+				org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils
+						.mapCoding(mentalHealthAssesmentDetail.getCoding(), mentalHealthAssesmentDetail.getName());
 
-			DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
-					mentalHealthAssesmentDetail.getName(), mentalHealthAssesmentDetail.getAttachment(), patient,
-					coding);
+				DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
+						mentalHealthAssesmentDetail.getName(), mentalHealthAssesmentDetail.getAttachment(), patient,
+						coding, false);
 
-			// add DocumentReference to bundle resource
-			FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+				// add DocumentReference to bundle resource
+				FHIRUtils.addToBundleEntry(bundle, documentReference, true);
 
-			documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
+				documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
+			}
+		}
+
+		// Iterate over the pACNotesList and create DocumentReference
+		// resources
+		if (!Objects.isNull(pACNotesList)) {
+			for (PACNotes pACNotesDetail : pACNotesList) {
+
+				org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(pACNotesDetail.getCoding(),
+						pACNotesDetail.getName());
+
+				DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
+						pACNotesDetail.getName(), pACNotesDetail.getAttachment(), patient, coding, true);
+
+				// add DocumentReference to bundle resource
+				FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+
+				documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
+			}
+		}
+
+		// Iterate over the radiationPlanList and create DocumentReference
+		// resources
+		if (!Objects.isNull(radiationPlanList)) {
+			for (RadiationPlan radiationPlanDetail : radiationPlanList) {
+
+				org.ncg.clinical.artifacts.vo.Coding coding = FHIRUtils.mapCoding(radiationPlanDetail.getCoding(),
+						radiationPlanDetail.getName());
+
+				DocumentReference documentReference = FHIRUtils.createDocumentReferenceResource(
+						radiationPlanDetail.getName(), radiationPlanDetail.getAttachment(), patient, coding, true);
+
+				// add DocumentReference to bundle resource
+				FHIRUtils.addToBundleEntry(bundle, documentReference, true);
+
+				documentReferenceSection.addEntry(FHIRUtils.getReferenceToDocumentReference(documentReference));
+			}
 		}
 
 		return documentReferenceSection;

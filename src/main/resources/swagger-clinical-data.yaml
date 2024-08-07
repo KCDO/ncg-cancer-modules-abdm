@@ -105,16 +105,12 @@ components:
           $ref: '#/components/schemas/OrganizationData'
         clinicalInformation:
           $ref: '#/components/schemas/ClinicalInformation'
-        lungCancer:
-          $ref: '#/components/schemas/LungCancer'
-        oralCancer:
-          $ref: '#/components/schemas/OralCancer'
-        breastCancer:
-          $ref: '#/components/schemas/BreastCancer'
-        cervicalCancer:
-          $ref: '#/components/schemas/CervicalCancer'
-        acuteMyeloidLeukemiaCancer:
-          $ref: '#/components/schemas/AcuteMyeloidLeukemiaCancer'
+        cancerTypes:
+          $ref: '#/components/schemas/CancerTypes'
+    CancerTypes:
+      type: array
+      items:
+        type: string
     ClinicalInformation:
       type: object
       properties:
@@ -142,6 +138,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MentalHealthAssesment'
+        pacNotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/PACNotes'
+        radiationPlan:
+          type: array
+          items:
+            $ref: '#/components/schemas/RadiationPlan'
         menstruationHistory:
           type: array
           items:
@@ -374,42 +378,43 @@ components:
         column:
           type: integer
           format: int32
-    LungCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    OralCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    BreastCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    CervicalCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
-    AcuteMyeloidLeukemiaCancer:
-      type: object
-      properties:
-        tests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentDetail'
     MentalHealthAssesment:
+      type: object
+      properties:
+        name:
+          type: string
+        attachment:
+          type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
+            text:
+              type: string
+    PACNotes:
+      type: object
+      properties:
+        name:
+          type: string
+        attachment:
+          type: string
+        coding:
+          type: object
+          properties:
+            system:
+              type: string
+            code:
+              type: string
+            display:
+              type: string
+            text:
+              type: string
+    RadiationPlan:
       type: object
       properties:
         name:
