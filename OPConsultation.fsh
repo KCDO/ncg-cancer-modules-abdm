@@ -142,6 +142,22 @@ Usage: #example
 * entry[=].resource = dc0d79a6-2611-4917-9d34-e6a98acede05
 * entry[+].fullUrl = "urn:uuid:b0267f24-a264-43d2-8813-ef8de560269f"
 * entry[=].resource = b0267f24-a264-43d2-8813-ef8de560269f
+* entry[+].fullUrl = "urn:uuid:c1e7f3a9-b1b6-4f28-8d36-4f1d8f20f4b2"
+* entry[=].resource = c1e7f3a9-b1b6-4f28-8d36-4f1d8f20f4b2
+* entry[+].fullUrl = "urn:uuid:7b291840-e4cb-4530-9e0d-7b35d1b3b0c7"
+* entry[=].resource = 7b291840-e4cb-4530-9e0d-7b35d1b3b0c7
+* entry[+].fullUrl = "urn:uuid:58f21d5b-9240-4e85-bdc2-7fbc23f1f6e2"
+* entry[=].resource = 58f21d5b-9240-4e85-bdc2-7fbc23f1f6e2
+* entry[+].fullUrl = "urn:uuid:d4a20b17-e2c1-4ebd-8b12-3488b2f07f15"
+* entry[=].resource = d4a20b17-e2c1-4ebd-8b12-3488b2f07f15
+* entry[+].fullUrl = "urn:uuid:0a7c2f5e-b3d3-4e27-8c9e-4e69b8b8a6f5"
+* entry[=].resource = 0a7c2f5e-b3d3-4e27-8c9e-4e69b8b8a6f5
+* entry[+].fullUrl = "urn:uuid:1b6f8c29-456e-4a7a-8f34-4b33ab1c8f0e"
+* entry[=].resource = 1b6f8c29-456e-4a7a-8f34-4b33ab1c8f0e
+* entry[+].fullUrl = "urn:uuid:2f9d3f4b-cb2e-4c7a-90f9-4a07b9a2e5f1"
+* entry[=].resource = 2f9d3f4b-cb2e-4c7a-90f9-4a07b9a2e5f1
+* entry[+].fullUrl = "urn:uuid:3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2"
+* entry[=].resource = 3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2
 
 Instance: 7230e12b-d0f7-499c-925d-9a3046d10877
 InstanceOf: Composition
@@ -235,6 +251,22 @@ Usage: #inline
 * section[=].entry[=].type = "DocumentReference"
 * section[=].entry[+] = Reference(urn:uuid:caa38f9b-2e1c-49f6-950a-4b930b667e73)
 * section[=].entry[=].type = "DocumentReference"
+* section[=].entry[+] = Reference(urn:uuid:c1e7f3a9-b1b6-4f28-8d36-4f1d8f20f4b2)
+* section[=].entry[=].type = "DocumentReference"
+* section[=].entry[+] = Reference(urn:uuid:7b291840-e4cb-4530-9e0d-7b35d1b3b0c7)
+* section[=].entry[=].type = "DocumentReference"
+* section[=].entry[+] = Reference(urn:uuid:58f21d5b-9240-4e85-bdc2-7fbc23f1f6e2)
+* section[=].entry[=].type = "DocumentReference"
+* section[=].entry[+] = Reference(urn:uuid:d4a20b17-e2c1-4ebd-8b12-3488b2f07f15)
+* section[=].entry[=].type = "DocumentReference"
+* section[=].entry[+] = Reference(urn:uuid:0a7c2f5e-b3d3-4e27-8c9e-4e69b8b8a6f5)
+* section[=].entry[=].type = "DocumentReference"
+* section[=].entry[+] = Reference(urn:uuid:1b6f8c29-456e-4a7a-8f34-4b33ab1c8f0e)
+* section[=].entry[=].type = "DocumentReference"
+* section[=].entry[+] = Reference(urn:uuid:2f9d3f4b-cb2e-4c7a-90f9-4a07b9a2e5f1)
+* section[=].entry[=].type = "DocumentReference"
+* section[=].entry[+] = Reference(urn:uuid:3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2)
+* section[=].entry[=].type = "DocumentReference"
 * section[+].title = "Adverse Events"
 * section[=].code = $sct#418019003 "Accidental event"
 * section[=].code.text = "Adverse Events"
@@ -243,7 +275,7 @@ Usage: #inline
 * section[+].title = "MedicalHistory"
 * section[=].code = $sct#371529009 "History and physical report"
 * section[=].code.text = "History and physical report"
-* section[=].entry[+] = Reference(urn:uuid:b2d215d0-a13c-44c0-a03b-b8a2894c10cd)
+* section[=].entry[0] = Reference(urn:uuid:b2d215d0-a13c-44c0-a03b-b8a2894c10cd)
 * section[=].entry[=].type = "Condition"
 * section[=].entry[+] = Reference(urn:uuid:534640d1-84da-4c93-97fc-6760a2d8ee8c)
 * section[=].entry[=].type = "Condition"
@@ -445,7 +477,7 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.136+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #preparation
-* code = $sct#10050001 "Cell chromosome examination"
+* code = $sct#108261007 "Chromosome analysis, cytogenetic procedure AND/OR molecular biology method"
 * code.text = "Cytogenetics"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
 * subject.type = "Patient"
@@ -459,7 +491,7 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.136+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
 * status = #current
-* type = $sct#10050001 "Cell chromosome examination"
+* type = $sct#108261007 "Chromosome analysis, cytogenetic procedure AND/OR molecular biology method"
 * type.text = "Cytogenetics report"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
 * subject.type = "Patient"
@@ -503,7 +535,7 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.136+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #preparation
-* code = $sct#718006 "Polymerase chain reaction analysis"
+* code = $sct#9718006 "Polymerase chain reaction analysis"
 * code.text = "PCR"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
@@ -517,7 +549,7 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.136+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
 * status = #current
-* type = $sct#718006 "Polymerase chain reaction analysis"
+* type = $sct#9718006 "Polymerase chain reaction analysis"
 * type.text = "PCR"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
 * subject.type = "Patient"
@@ -568,60 +600,6 @@ Usage: #inline
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
 * valueQuantity = 0 'cm' "cm"
 
-Instance: c97b7902-58ea-4a8c-92fd-4a40913adc8b
-InstanceOf: MedicationRequest
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
-* status = #active
-* intent = #plan
-* medicationCodeableConcept = $sct#785686003 "Type of induction"
-* medicationCodeableConcept.text = "Type of induction"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* authoredOn = "2024-08-06T12:18:11+05:30"
-* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
-* requester.type = "Practitioner"
-* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
-* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
-
-Instance: 84100a2b-c661-4094-8353-3de0356f238b
-InstanceOf: MedicationRequest
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
-* status = #active
-* intent = #plan
-* medicationCodeableConcept = $sct#785686003 "Date of start"
-* medicationCodeableConcept.text = "Date of start"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* authoredOn = "2024-08-06T12:18:11+05:30"
-* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
-* requester.type = "Practitioner"
-* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
-* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
-
-Instance: a8ba176c-ce49-4517-a65f-432b724259b6
-InstanceOf: MedicationRequest
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
-* status = #active
-* intent = #plan
-* medicationCodeableConcept = $sct#785686003 "Consolidation chemotherapy"
-* medicationCodeableConcept.text = "Consolidation chemotherapy"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* authoredOn = "2024-08-06T12:18:11+05:30"
-* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
-* requester.type = "Practitioner"
-* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
-* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
-
 Instance: 2d927688-e932-4062-83cb-f376e6b40189
 InstanceOf: Condition
 Usage: #inline
@@ -642,8 +620,8 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.145+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* code = $sct#C1706867 "B Symptoms"
-* code.text = "Observation Women Health"
+* code = $sct#42984000 "Night sweats (finding)"
+* code.text = "B Symptoms"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
@@ -663,24 +641,6 @@ Usage: #inline
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
 * valueQuantity.value = 12
 
-Instance: b0267f24-a264-43d2-8813-ef8de560269f
-InstanceOf: MedicationRequest
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
-* status = #active
-* intent = #plan
-* medicationCodeableConcept = $sct#385388004 "Lymphoma stage"
-* medicationCodeableConcept.text = "Stage"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* authoredOn = "2024-08-06T12:18:11+05:30"
-* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
-* requester.type = "Practitioner"
-* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
-* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
-
 Instance: a78a9019-6594-4f39-9922-b5b8752db8a2
 InstanceOf: DocumentReference
 Usage: #inline
@@ -688,31 +648,13 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.158+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
 * status = #current
-* type = $sct#12345 "Joint clinic notes"
+* type = $sct#818981001 "Cross-sectional abdomen"
 * type.text = "Joint clinic notes report"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bmtuaw=="
 * content.attachment.title = "Joint clinic notes"
-
-Instance: dc0d79a6-2611-4917-9d34-e6a98acede05
-InstanceOf: MedicationRequest
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
-* status = #active
-* intent = #plan
-* medicationCodeableConcept = $sct#367336001 "Chemotherapy"
-* medicationCodeableConcept.text = "Chemotherapy"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* authoredOn = "2024-08-06T12:18:11+05:30"
-* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
-* requester.type = "Practitioner"
-* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
-* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
 
 Instance: fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf
 InstanceOf: Procedure
@@ -770,24 +712,6 @@ Usage: #inline
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
 * valueQuantity.value = 12
-
-Instance: a0cd0ffa-fc45-4f02-be5c-c39acbf55815
-InstanceOf: MedicationRequest
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
-* status = #active
-* intent = #plan
-* medicationCodeableConcept = $sct#708256001 "Second line therapy"
-* medicationCodeableConcept.text = "Second line therapy"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* authoredOn = "2024-08-06T12:18:11+05:30"
-* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
-* requester.type = "Practitioner"
-* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
-* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
 
 Instance: 1a609ab4-a1f3-4e6a-9e01-7be644e325b8
 InstanceOf: Procedure
@@ -1202,3 +1126,213 @@ Usage: #inline
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bHVuZzZtb3d0"
 * content.attachment.title = "Radiology study observation note"
+
+Instance: c97b7902-58ea-4a8c-92fd-4a40913adc8b
+InstanceOf: MedicationRequest
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
+* status = #active
+* intent = #plan
+* medicationCodeableConcept = $sct#785686003 "Amoxicillin anhydrous"
+* medicationCodeableConcept.text = "Amoxicillin anhydrous"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject.type = "Patient"
+* authoredOn = "2024-08-06T12:18:11+05:30"
+* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
+* requester.type = "Practitioner"
+* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
+* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
+
+Instance: 84100a2b-c661-4094-8353-3de0356f238b
+InstanceOf: MedicationRequest
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
+* status = #active
+* intent = #plan
+* medicationCodeableConcept = $sct#785686003 "Amoxicillin anhydrous"
+* medicationCodeableConcept.text = "Amoxicillin anhydrous"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject.type = "Patient"
+* authoredOn = "2024-08-06T12:18:11+05:30"
+* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
+* requester.type = "Practitioner"
+* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
+* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
+
+Instance: a8ba176c-ce49-4517-a65f-432b724259b6
+InstanceOf: MedicationRequest
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
+* status = #active
+* intent = #plan
+* medicationCodeableConcept = $sct#785686003 "Amoxicillin anhydrous"
+* medicationCodeableConcept.text = "Amoxicillin anhydrous"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject.type = "Patient"
+* authoredOn = "2024-08-06T12:18:11+05:30"
+* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
+* requester.type = "Practitioner"
+* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
+* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
+
+Instance: dc0d79a6-2611-4917-9d34-e6a98acede05
+InstanceOf: MedicationRequest
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
+* status = #active
+* intent = #plan
+* medicationCodeableConcept = $sct#367336001 "Chemotherapy"
+* medicationCodeableConcept.text = "Chemotherapy"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject.type = "Patient"
+* authoredOn = "2024-08-06T12:18:11+05:30"
+* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
+* requester.type = "Practitioner"
+* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
+* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
+
+Instance: b0267f24-a264-43d2-8813-ef8de560269f
+InstanceOf: MedicationRequest
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.223+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
+* status = #active
+* intent = #plan
+* medicationCodeableConcept = $sct#385388004 "Lymphoma stage"
+* medicationCodeableConcept.text = "Stage"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject.type = "Patient"
+* authoredOn = "2024-08-06T12:18:11+05:30"
+* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
+* requester.type = "Practitioner"
+* dosageInstruction.doseAndRate.doseQuantity = 500 'mg' "mg"
+* dosageInstruction.doseAndRate.rateQuantity = 3 '{1/d}' "1/d"
+
+Instance: c1e7f3a9-b1b6-4f28-8d36-4f1d8f20f4b2
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T15:30:10.215+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $sct#448826009 "Brief operative note"
+* type.text = "Brief operative note"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "b3BlcmF0aXZlTm90ZQ=="
+* content.attachment.title = "Operative Note"
+
+Instance: 7b291840-e4cb-4530-9e0d-7b35d1b3b0c7
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T16:00:22.185+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $loinc#10223-6 "Surgical operation note surgical procedure Narrative"
+* type.text = "Surgical operation note surgical procedure Narrative"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "b3BlcmF0aXZlTm90ZTI="
+* content.attachment.title = "Surgical Note"
+
+Instance: 58f21d5b-9240-4e85-bdc2-7fbc23f1f6e2
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T17:12:45.328+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $sct#448826009 "Brief operative note"
+* type.text = "Brief operative note"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "c3VyZ2ljYWxTdW1tYXJ5"
+* content.attachment.title = "Surgical Summary"
+
+Instance: d4a20b17-e2c1-4ebd-8b12-3488b2f07f15
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T18:30:19.512+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $loinc#10223-6 "Surgical operation note surgical procedure Narrative"
+* type.text = "Surgical operation note surgical procedure Narrative"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "cG9zdE9QY291cnNl"
+* content.attachment.title = "Post-Op Course Summary"
+
+Instance: 0a7c2f5e-b3d3-4e27-8c9e-4e69b8b8a6f5
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-12T10:00:00.000+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $sct#736373009 "End of life care plan"
+* type.text = "End of life care plan"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "Zm9sbG93VXBTdW1tYXJ5"
+* content.attachment.title = "Follow-up Summary"
+
+Instance: 1b6f8c29-456e-4a7a-8f34-4b33ab1c8f0e
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-12T10:15:00.000+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $loinc#11504-8 "Surgical operation note"
+* type.text = "Follow-up note"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "Zm9sbG93VXBOb3Rl"
+* content.attachment.title = "Follow-up Note"
+
+Instance: 2f9d3f4b-cb2e-4c7a-90f9-4a07b9a2e5f1
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-12T10:30:00.000+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $sct#367336001 "Chemotherapy (procedure)"
+* type.text = "Chemotherapy treatment plan"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "Y2hlbW90aGVyYXB5UGxhbg=="
+* content.attachment.title = "Chemotherapy Plan"
+
+Instance: 3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-12T10:45:00.000+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $loinc#29762-2 "Social history Narrative"
+* type.text = "Chemotherapy plan of care"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "Y2hlbW90aGVyYXB5U3VtbWFyeQ=="
+* content.attachment.title = "Chemotherapy Summary"
