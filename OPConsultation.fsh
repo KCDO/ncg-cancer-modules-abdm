@@ -206,8 +206,6 @@ Usage: #inline
 * section[=].entry[=].type = "Procedure"
 * section[=].entry[+] = Reference(urn:uuid:fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf)
 * section[=].entry[=].type = "Procedure"
-* section[=].entry[+] = Reference(urn:uuid:85b68907-0219-4689-8f3d-2d59823a7f01)
-* section[=].entry[=].type = "Procedure"
 * section[=].entry[+] = Reference(urn:uuid:1a609ab4-a1f3-4e6a-9e01-7be644e325b8)
 * section[=].entry[=].type = "Procedure"
 * section[=].entry[+] = Reference(urn:uuid:1f824da9-0209-40f6-a3e9-37dd4db75486)
@@ -228,6 +226,8 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:910e1ca3-c2e6-4e54-b76a-a12c719aa8a3)
 * section[=].entry[=].type = "Observation"
 * section[=].entry[+] = Reference(urn:uuid:320b2b02-1872-484b-907f-f7d0d873fac0)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:85b68907-0219-4689-8f3d-2d59823a7f01)
 * section[=].entry[=].type = "Observation"
 * section[+].title = "Medications"
 * section[=].code = $sct#721912009 "Medication summary document"
