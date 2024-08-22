@@ -118,7 +118,7 @@ Usage: #example
 * signature.when = "2020-07-09T07:42:33+10:00"
 * signature.who = Reference(urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17) "Practitioner"
 * signature.sigFormat = #image/jpeg
-* signature.data = ""
+// * signature.data = "jnkjn"
 
 Instance: f1ab8bba-a0ed-476a-a902-a1e08517020b
 InstanceOf: Composition
@@ -301,7 +301,7 @@ Usage: #inline
 * address.postalCode = "560103"
 * address.country = "India"
 
-// Observation for body weight
+// Observation for body height
 Instance: 1e2fff4e-4ea6-4222-98f3-8b72cb9d3d63
 InstanceOf: Observation
 Usage: #inline
@@ -611,7 +611,7 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.173+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #preparation
-* code = $sct#448826009 "Surgical summary with post Op Course"
+* code = $sct#448826009 "Brief operative note"
 * code.text = "Surgical summary with post Op Course"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
@@ -628,7 +628,7 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.136+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
 * status = #current
-* type = $sct#448826009 "Surgical summary with post Op Course"
+* type = $sct#448826009 "Brief operative note"
 * type.text = "Bone marrow or peripheral blood Surgical summary with post Op Course report"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
 * subject.type = "Patient"
@@ -735,7 +735,7 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.158+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #preparation
-* code = $sct#84755001 "Response - interim and end of therapy"
+* code = $sct#84755001 "Radiation therapy treatment management"
 * code.text = "Response - interim and end of therapy"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
@@ -750,7 +750,7 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.158+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
 * status = #current
-* type = $sct#84755001 "Response - interim and end of therapy"
+* type = $sct#84755001 "Radiation therapy treatment management"
 * type.text = "Response - interim and end of therapy report"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
 * subject.type = "Patient"

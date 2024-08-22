@@ -1229,7 +1229,7 @@
             {
               "code": "448826009",
               "system": "http://snomed.info/sct",
-              "display": "Surgical summary with post Op Course"
+              "display": "Brief operative note"
             }
           ],
           "text": "Surgical summary with post Op Course"
@@ -1270,7 +1270,7 @@
             {
               "code": "448826009",
               "system": "http://snomed.info/sct",
-              "display": "Surgical summary with post Op Course"
+              "display": "Brief operative note"
             }
           ],
           "text": "Bone marrow or peripheral blood Surgical summary with post Op Course report"
@@ -1538,7 +1538,7 @@
             {
               "code": "84755001",
               "system": "http://snomed.info/sct",
-              "display": "Response - interim and end of therapy"
+              "display": "Radiation therapy treatment management"
             }
           ],
           "text": "Response - interim and end of therapy"
@@ -1573,7 +1573,7 @@
             {
               "code": "84755001",
               "system": "http://snomed.info/sct",
-              "display": "Response - interim and end of therapy"
+              "display": "Radiation therapy treatment management"
             }
           ],
           "text": "Response - interim and end of therapy report"
@@ -1608,7 +1608,6 @@
       "reference": "urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17",
       "display": "Practitioner"
     },
-    "sigFormat": "image/jpeg",
-    "data": ""
+    "sigFormat": "image/jpeg"
   }
 }
