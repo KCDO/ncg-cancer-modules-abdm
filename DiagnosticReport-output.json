@@ -1,0 +1,2126 @@
+{
+  "resourceType": "Bundle",
+  "type": "document",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:9bf7226d-221f-4802-9fa2-27a330b22b34",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "9bf7226d-221f-4802-9fa2-27a330b22b34",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "60591-5",
+              "display": "Patient summary Document"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "date": "2024-08-28T14:30:00Z",
+        "author": [
+          {
+            "reference": "urn:uuid:f7f025c5-71be-470d-a8bc-c59f52ea7627"
+          }
+        ],
+        "title": "Complete Diagnostic Report",
+        "section": [
+          {
+            "title": "Diagnostic Reports",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11506-3",
+                  "display": "Progress note"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:dd23211b-bf35-48f4-a2ad-f40fb3850b8d"
+              },
+              {
+                "reference": "urn:uuid:2e00aca6-3409-42ff-84cc-ea7e665ab19c"
+              },
+              {
+                "reference": "urn:uuid:147a3228-fed8-4b6d-b38e-4e2a3c34e091"
+              },
+              {
+                "reference": "urn:uuid:e145b415-824a-4043-a4e1-90f49517ffd3"
+              },
+              {
+                "reference": "urn:uuid:ff1b0e3b-b69c-4118-aa18-7c24f2e23132"
+              },
+              {
+                "reference": "urn:uuid:f456fa7f-4aff-4592-acf9-5c39145e7f5b"
+              },
+              {
+                "reference": "urn:uuid:f2ffd0e6-227e-4403-8e7c-a0a29913f866"
+              },
+              {
+                "reference": "urn:uuid:4ff98fbc-5f91-4b06-9673-43fce36219dd"
+              },
+              {
+                "reference": "urn:uuid:8f0c9ec5-ce0a-411f-bb02-7ec7407919a7"
+              },
+              {
+                "reference": "urn:uuid:0484d1aa-8b5d-4c6d-bc05-053b41768620"
+              },
+              {
+                "reference": "urn:uuid:a9ec323e-a066-48ab-920c-64f4b14ce8b8"
+              },
+              {
+                "reference": "urn:uuid:44ffa3a4-2829-400f-b717-095be09dadc3"
+              },
+              {
+                "reference": "urn:uuid:fd17c609-81eb-4bc8-b648-db0a173f9be4"
+              },
+              {
+                "reference": "urn:uuid:1ccfc52d-ab38-4a25-97e1-88a303cb6a74"
+              },
+              {
+                "reference": "urn:uuid:6e84b14a-6995-4d33-bbb8-fc254846f864"
+              },
+              {
+                "reference": "urn:uuid:7beacfd4-f39d-4fcd-9440-33e9048a797b"
+              },
+              {
+                "reference": "urn:uuid:396bb1b9-0fe3-48da-ad15-536d019f97f5"
+              },
+              {
+                "reference": "urn:uuid:98b218b0-42d4-46fe-8d94-bc083a9ec12e"
+              },
+              {
+                "reference": "urn:uuid:e33bd1e7-6b2e-4ff7-8c8f-7d2afa4ef246"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:dd23211b-bf35-48f4-a2ad-f40fb3850b8d",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "dd23211b-bf35-48f4-a2ad-f40fb3850b8d",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4321000179101",
+                "display": "Hematology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "issued": "2024-08-28T12:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:3a09b3bd-ebb7-4914-b6b2-0f8ff658b1e5"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:2e00aca6-3409-42ff-84cc-ea7e665ab19c",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "2e00aca6-3409-42ff-84cc-ea7e665ab19c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4321000179101",
+                "display": "Hematology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57023-4",
+              "display": "Auto Differential panel - Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:d3439bb8-36ba-45fb-90dc-b50ebfdaab35"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:147a3228-fed8-4b6d-b38e-4e2a3c34e091",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "147a3228-fed8-4b6d-b38e-4e2a3c34e091",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4241000179101",
+                "display": "Laboratory report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24331-1",
+              "display": "Lipid 1996 panel - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:b5b9f0a3-a8d2-4322-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:147a3228-fed8-4b6d-b38e-4e2a3c34e092",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "147a3228-fed8-4b6d-b38e-4e2a3c34e091",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4241000179101",
+                "display": "Laboratory report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:b4b9f0a3-a8d2-4322-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:147a3228-fed8-4b6d-b38e-4e2a3c34e093",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "147a3228-fed8-4b6d-b38e-4e2a3c34e091",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4241000179101",
+                "display": "Laboratory report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24362-6",
+              "display": "Renal function 2000 panel - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:bob9f0a3-a8d2-4322-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:147a3228-fez8-4b6d-b38e-4e2a3c34e093",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "147a3228-fed8-4b6d-b38e-4e2a3c34e091",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4311000179106",
+                "display": "Chemical pathology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "252416005",
+              "display": "Histopathology test (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:bpb9f0a3-a8d2-4322-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:147a3228-feg8-4b6d-b38e-4e2a3c34e093",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "147a3228-fed8-4b6d-b38e-4e2a3c34e091",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4311000179106",
+                "display": "Chemical pathology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66121-5",
+              "display": "Tissue Pathology biopsy report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:blb9f0a3-a8d2-4322-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e145b415-824a-4043-a4e1-90f49517ffd3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "e145b415-824a-4043-a4e1-90f49517ffd3",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "770573007",
+                "display": "Airway endoscopy report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18744-3",
+              "display": "Bronchoscopy study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "issued": "2024-08-28T12:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:f1eb1921-070a-475c-9815-82d8bd10427d"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ff1b0e3b-b69c-4118-aa18-7c24f2e23132",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "ff1b0e3b-b69c-4118-aa18-7c24f2e23132",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "720449003",
+                "display": "Pulmonary function report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58477-1",
+              "display": "Pulmonary function study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:668f7522-a958-4d3d-8145-0c454a748d37"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f456fa7f-4aff-4592-acf9-5c39145e7f5b",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "f456fa7f-4aff-4592-acf9-5c39145e7f5b",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "721981007",
+                "display": "Diagnostic studies report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "64098-7",
+              "display": "Six minute walk test"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:d32649cc-1a5f-4cae-bbda-7b3fd0c5fb79"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f2ffd0e6-227e-4403-8e7c-a0a29913f866",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "f2ffd0e6-227e-4403-8e7c-a0a29913f866",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "721631001",
+                "display": "Bone marrow pathology biopsy report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "53043-6",
+              "display": "DNA marker analysis test coverage panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "issued": "2024-08-28T12:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:ed4bb153-cfba-4ec3-a590-d9847234a08a"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4ff98fbc-5f91-4b06-9673-43fce36219dd",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "4ff98fbc-5f91-4b06-9673-43fce36219dd",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "371528001",
+                "display": "Pathology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "87179-8",
+              "display": "Guidance for fine needle aspiration"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:7e6adcc5-c7a9-48e3-81cc-6be2f71f1c4a"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f0c9ec5-ce0a-411f-bb02-7ec7407919a7",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "8f0c9ec5-ce0a-411f-bb02-7ec7407919a7",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "399345000",
+              "display": "Adult echocardiography procedure report (record artifact)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:fec7642e-fe48-4c85-959e-293ea1ead1be"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:0484d1aa-8b5d-4c6d-bc05-053b41768620",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "0484d1aa-8b5d-4c6d-bc05-053b41768620",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "443271005",
+              "display": "Positron emission tomography with computed tomography using fluorodeoxyglucose (18-F) (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:6f6ae80e-7aef-43a4-b2ee-16d0aa226463"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a9ec323e-a066-48ab-920c-64f4b14ce8b8",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "a9ec323e-a066-48ab-920c-64f4b14ce8b8",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24590-2",
+              "display": "MR Brain"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:842e257a-54dc-4ea7-922a-09186073dff8"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:44ffa3a4-2829-400f-b717-095be09dadc3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "44ffa3a4-2829-400f-b717-095be09dadc3",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "100231-0",
+              "display": "Endobronchial ultrasound study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:2119b71f-9c81-4380-b1f1-1b6d0b5359ad"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:fd17c609-81eb-4bc8-b648-db0a173f9be4",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "fd17c609-81eb-4bc8-b648-db0a173f9be4",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "37859006",
+              "display": "Pulmonary ventilation perfusion study (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:86b801d4-2254-4776-8eeb-7bea199c271c"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1ccfc52d-ab38-4a25-97e1-88a303cb6a74",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "1ccfc52d-ab38-4a25-97e1-88a303cb6a74",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "4261000179100",
+              "display": "Computed tomography imaging report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:2a162aad-6d00-432c-a288-a16e3a73f733"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6e84b14a-6995-4d33-bbb8-fc254846f864",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "6e84b14a-6995-4d33-bbb8-fc254846f864",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "4231000179109",
+              "display": "Mammography report (record artifact)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:240520db-54c3-4ff2-af16-9036bd3d2364"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7beacfd4-f39d-4fcd-9440-33e9048a797b",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "7beacfd4-f39d-4fcd-9440-33e9048a797b",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "4261000179100",
+              "display": "Computed tomography imaging report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:8c3075d8-dc80-445c-b666-2a35762346cb"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:396bb1b9-0fe3-48da-ad15-536d019f97f5",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "396bb1b9-0fe3-48da-ad15-536d019f97f5",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org/",
+              "code": "36813-4",
+              "display": "CT Abdomen and Pelvis W contrast IV"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:76e7fc59-4e42-402e-aca3-2209549c8f23"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:98b218b0-42d4-46fe-8d94-bc083a9ec12e",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "98b218b0-42d4-46fe-8d94-bc083a9ec12e",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org/",
+              "code": "72246-2",
+              "display": "MR Abdomen and Pelvis W contrast PO and WO and W contrast IV"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:c0bf8910-dead-46b6-b954-1af1c42d303b"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e33bd1e7-6b2e-4ff7-8c8f-7d2afa4ef246",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "e33bd1e7-6b2e-4ff7-8c8f-7d2afa4ef246",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org/",
+              "code": "33721-2",
+              "display": "Bone marrow Pathology biopsy report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+          }
+        ],
+        "media": [
+          {
+            "comment": "Image of Chest X-ray",
+            "link": {
+              "contentType": "image/jpeg",
+              "url": "http://example.org/fhir/DiagnosticReport/example-imaging-report/xray.jpeg",
+              "title": "Chest X-ray"
+            }
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:7758565d-01e3-4ad9-9076-bd6333a37697"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "9b0dd568-eef2-4da2-809c-9586b9422b58",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "MR",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Medical record number"
+                }
+              ],
+              "text": "Medical record number"
+            },
+            "system": "urn:health:information:provider:system",
+            "value": "Health-Information-Provider-Example-Id"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHAAddress",
+                  "system": "https://healthid.abdm.gov.in",
+                  "display": "ABHAAddress"
+                }
+              ],
+              "text": "ABHAAddress"
+            },
+            "system": "urn:health:information:provider:system",
+            "value": "patientxyz@abdm"
+          }
+        ],
+        "name": [
+          {
+            "text": "Testing ABDM NCG",
+            "family": "NCG",
+            "given": [
+              "Testing ABDM"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "9898989898"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1999-08-14",
+        "address": [
+          {
+            "type": "both",
+            "text": "123, Bangalore, Bangalore, Karnataka, India, Pincode:560103",
+            "city": "Bangalore",
+            "district": "Bangalore",
+            "state": "Karnataka",
+            "postalCode": "560103",
+            "country": "India"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f7f025c5-71be-470d-a8bc-c59f52ea7627",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "f7f025c5-71be-470d-a8bc-c59f52ea7627",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.069+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "PRN",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Provider number"
+                }
+              ],
+              "text": "Provider number"
+            },
+            "system": "https://facility.ndhm.gov.in",
+            "value": "[FACILITY-ID-FROM-REGISTRY]"
+          }
+        ],
+        "name": "XYZ Lab Pvt.Ltd.",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "9898989898"
+          },
+          {
+            "system": "email",
+            "value": "xyz@facility.org"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3a09b3bd-ebb7-4914-b6b2-0f8ff658b1e5",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "3a09b3bd-ebb7-4914-b6b2-0f8ff658b1e5",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d3439bb8-36ba-45fb-90dc-b50ebfdaab35",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "d3439bb8-36ba-45fb-90dc-b50ebfdaab35",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "789-8",
+              "display": "Erythrocytes [#/volume] in Blood by Automated count"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b5b9f0a3-a8d2-4322-b57a-be52340f9f07",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b5b9f0a3-a8d2-4322-b57a-be52340f9f07",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24331-1",
+              "display": "Lipid 1996 panel - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b4b9f0a3-a8d2-4322-b57a-be52340f9f07",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b5b9f0a3-a8d2-4322-b57a-be52340f9f07",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bob9f0a3-a8d2-4322-b57a-be52340f9f07",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b5b9f0a3-a8d2-4322-b57a-be52340f9f07",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24362-6",
+              "display": "Renal function 2000 panel - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bpb9f0a3-a8d2-4322-b57a-be52340f9f07",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b5b9f0a3-a8d2-4322-b57a-be52340f9f07",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "252416005",
+              "display": "Histopathology test (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:blb9f0a3-a8d2-4322-b57a-be52340f9f07",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b5b9f0a3-a8d2-4322-b57a-be52340f9f07",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66121-5",
+              "display": "Tissue Pathology biopsy report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f1eb1921-070a-475c-9815-82d8bd10427d",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "f1eb1921-070a-475c-9815-82d8bd10427d",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18744-3",
+              "display": "Bronchoscopy study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:668f7522-a958-4d3d-8145-0c454a748d37",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "668f7522-a958-4d3d-8145-0c454a748d37",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58477-1",
+              "display": "Pulmonary function study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d32649cc-1a5f-4cae-bbda-7b3fd0c5fb79",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "d32649cc-1a5f-4cae-bbda-7b3fd0c5fb79",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "64098-7",
+              "display": "Six minute walk test"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ed4bb153-cfba-4ec3-a590-d9847234a08a",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "ed4bb153-cfba-4ec3-a590-d9847234a08a",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "53043-6",
+              "display": "DNA marker analysis test coverage panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7e6adcc5-c7a9-48e3-81cc-6be2f71f1c4a",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "7e6adcc5-c7a9-48e3-81cc-6be2f71f1c4a",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "87179-8",
+              "display": "Guidance for fine needle aspiration"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:acd6cab5-095d-41a6-9d9a-7388a4dc1f2a",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "acd6cab5-095d-41a6-9d9a-7388a4dc1f2a",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "fa5857d2-bd03-429e-b5b8-8ad074b8b0b2",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "f69332d8-3aea-4a82-978b-05c799e72ee6",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:cb52b936-7656-43e2-a909-554cbf1c17a7",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "cb52b936-7656-43e2-a909-554cbf1c17a7",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "200b6b1a-4517-4924-a09d-218b6460d287",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "b465d134-46eb-42cb-bb90-82bcd0fa5af2",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:fb023c95-3e31-4891-89c7-1f3ce3c5b553",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "fb023c95-3e31-4891-89c7-1f3ce3c5b553",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "f9ae8e57-11b3-4816-9fa4-fd0e9bced758",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "e0171f09-03bf-42b0-897f-100e1fdd914b",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bd7bdc71-daa6-4f55-aaaa-20066c1d0792",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "bd7bdc71-daa6-4f55-aaaa-20066c1d0792",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "0927c62f-4191-4f02-8f8a-a84a402b2155",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "4249a697-e9fa-4da1-a434-c4d05a36311d",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:456cd87b-f089-4ee6-bf4b-780655b9e8fe",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "456cd87b-f089-4ee6-bf4b-780655b9e8fe",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "f5763e61-94ac-4897-8cfe-1e8ca8a1c20d",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "fd218be1-6096-42de-b2e9-89bf47dea6ef",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ab220eb1-baba-409e-b8d6-5a20edb2c9ea",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "ab220eb1-baba-409e-b8d6-5a20edb2c9ea",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "dd11c9d3-cd0d-45b8-be1d-0719ac26c534",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "b21daaa0-6770-4506-8dce-3ec023481d9a",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c49a8b49-e155-4bc2-a785-e305f1011119",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "c49a8b49-e155-4bc2-a785-e305f1011119",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "5979e409-7b16-4eed-beec-033c1ad7860b",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "b9188e1d-3bb0-4a36-b602-f19a5a91705d",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ac88278e-39d8-4d12-8dd5-c88ee88b943c",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "ac88278e-39d8-4d12-8dd5-c88ee88b943c",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "efbcdca6-2deb-41fd-82d1-21e9314ab999",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "ae2be6eb-cd4f-41e5-a517-ef7c390e397a",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e953b553-d7eb-47df-9d88-d6e8456b4ce7",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "e953b553-d7eb-47df-9d88-d6e8456b4ce7",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "26f387c1-8bb9-40ff-b3a1-d303a3c98f8a",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "54492b97-77d9-4e51-9085-a9a920efa704",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:236bd1fe-cee4-4994-b17d-4939a47af136",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "236bd1fe-cee4-4994-b17d-4939a47af136",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "8bcef423-7b35-4683-be93-047144c5b56b",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "2c593cb2-0448-473b-9de3-29c8c5dae0a2",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e38d37ae-486b-46ed-b5bd-8546007caacf",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "e38d37ae-486b-46ed-b5bd-8546007caacf",
+        "status": "available",
+        "subject": {
+          "reference": "urn:uuid:9b0dd568-eef2-4da2-809c-9586b9422b58"
+        },
+        "started": "2024-08-28T10:00:00Z",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CT",
+            "display": "Computed Tomography (CT)"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "series": [
+          {
+            "uid": "5c99f017-3125-4d34-a540-5691480361a0",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CT",
+              "display": "Computed Tomography (CT)"
+            },
+            "numberOfInstances": 1,
+            "instance": [
+              {
+                "uid": "5cb3bd4d-3288-4809-a775-f1862d7f074b",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.2",
+                  "display": "Secondary Capture Image Storage"
+                },
+                "number": 1,
+                "title": "CT Image"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
