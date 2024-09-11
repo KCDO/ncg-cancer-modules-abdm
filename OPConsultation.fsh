@@ -10,6 +10,7 @@ Alias: $allergyintolerance-verification = http://terminology.hl7.org/CodeSystem/
 Alias: $condition-ver-status = http://terminology.hl7.org/CodeSystem/condition-ver-status
 Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
 Alias: $adverse-event-category = http://terminology.hl7.org/CodeSystem/adverse-event-category
+Alias: $adverse-event-severity = http://terminology.hl7.org/CodeSystem/adverse-event-severity
 Alias: $adverse-event-outcome = http://terminology.hl7.org/CodeSystem/adverse-event-outcome
 
 Instance: 52ef0e5a-147f-45a8-ac2f-56caf1234144
@@ -770,8 +771,8 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
-* clinicalStatus = $allergyintolerance-clinical#active "Active"
-* clinicalStatus.text = "Active"
+* clinicalStatus = $allergyintolerance-clinical#unconfirmed "Unconfirmed"
+* clinicalStatus.text = "unconfirmed"
 * verificationStatus = $allergyintolerance-verification#confirmed "Confirmed"
 * verificationStatus.text = "Confirmed"
 * type = #allergy
@@ -791,8 +792,6 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#resolved "Resolved"
-* clinicalStatus.text = "resolved"
 * verificationStatus = $condition-ver-status#confirmed "Confirmed"
 * category = $condition-category#problem-list-item "Problem List Item"
 * category.text = "Problem List Item"
@@ -808,8 +807,8 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#resolved "Resolved"
-* clinicalStatus.text = "resolved"
+* clinicalStatus = $condition-clinical#unconfirmed "Unconfirmed"
+* clinicalStatus.text = "unconfirmed"
 * verificationStatus = $condition-ver-status#confirmed "Confirmed"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
 * category.text = "Encounter Diagnosis"
@@ -826,8 +825,8 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.173+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #completed
-* code = $sct#38341003 "High blood pressure"
-* code.text = "hypertension"
+* code = $sct#699282002 "Hypertension diet assessment (procedure)"
+* code.text = "Hypertension diet assessment (procedure)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * performedDateTime = "2020-01-01T10:30:00+05:30"
@@ -840,12 +839,12 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.173+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #completed
-* code = $sct#53741008 "Coronary artery disease"
-* code.text = "Coronary Artery Disease"
+* code = $sct#232717009 "Coronary artery bypass grafting (procedure)"
+* code.text = "Coronary artery bypass grafting (procedure)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * performedDateTime = "2022-12-01T10:30:00+05:30"
-* note.text = "This patient is suffering from severe coronary artery disease. This is a critical condition!"
+* note.text = "This patient is suffering from coronary artery disease. This is a  procedure!"
 
 Instance: 819c3ea1-b69d-4bdb-9a33-a003040f385d
 InstanceOf: AdverseEvent
@@ -869,10 +868,10 @@ Usage: #inline
 * outcome.text = "Resolved"
 * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 * recorder.type = "Practitioner"
-* event.coding[0].system = "http://snomed.info/sct"
-* event.coding[0].code = "304386008"
-* event.coding[0].display = "O/E - itchy rash"
-* event.text = "This was a mild rash on the left forearm"
+* event = $sct#422587007 "Adverse reaction caused by drug"
+* severity = $adverse-event-severity#severe "Severe"
+* suspectEntity.instance = Reference(Medication/6789)
+* outcome = $adverse-event-outcome#recovered "Recovered"
 
 Instance: 73d1bf22-f201-48db-9aeb-7e004e1fae23
 InstanceOf: DocumentReference
@@ -953,7 +952,7 @@ Usage: #inline
 * code.text = "Chest CT"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
 * subject.type = "Patient"
-* occurrenceDateTime = "2013-05-08T09:33:27+07:00"
+* occurrenceDateTime = "2024-11-08T09:33:27+07:00"
 * requester = Reference(urn:uuid:Practitioner/example1)
 
 Instance: fc980123-6830-45ca-85e7-36ba272e53b0
@@ -964,7 +963,7 @@ Usage: #inline
 * code.text = "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
-* occurrenceDateTime = "2015-09-27T09:33:27+07:00"
+* occurrenceDateTime = "2024-12-27T09:33:27+07:00"
 * requester = Reference(urn:uuid:Practitioner/example2)
 
 Instance: af32435a-040f-435b-995e-81d9a7d36823
@@ -1022,8 +1021,8 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
 * status = #active
 * intent = #plan
-* medicationCodeableConcept = $sct#785686003 "Amoxicillin anhydrous"
-* medicationCodeableConcept.text = "Amoxicillin anhydrous"
+* medicationCodeableConcept = $sct#372540003 "Anthracycline (substance)"
+* medicationCodeableConcept.text = "Anthracycline (substance)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * authoredOn = "2024-08-06T12:18:11+05:30"
@@ -1040,8 +1039,8 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
 * status = #active
 * intent = #plan
-* medicationCodeableConcept = $sct#785686003 "Amoxicillin anhydrous"
-* medicationCodeableConcept.text = "Amoxicillin anhydrous"
+* medicationCodeableConcept = $sct#320030001 "Atorvastatin 20 mg oral tablet"
+* medicationCodeableConcept.text = "Atorvastatin 20 mg oral tablet"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * authoredOn = "2024-08-06T12:18:11+05:30"
@@ -1058,8 +1057,8 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
 * status = #active
 * intent = #plan
-* medicationCodeableConcept = $sct#785686003 "Amoxicillin anhydrous"
-* medicationCodeableConcept.text = "Amoxicillin anhydrous"
+* medicationCodeableConcept = $sct#1290603008 "Product containing cytarabine and daunorubicin (medicinal product)"
+* medicationCodeableConcept.text = "Product containing cytarabine and daunorubicin (medicinal product)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * authoredOn = "2024-08-06T12:18:11+05:30"
@@ -1076,8 +1075,8 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
 * status = #active
 * intent = #plan
-* medicationCodeableConcept = $sct#367336001 "Chemotherapy"
-* medicationCodeableConcept.text = "Chemotherapy"
+* medicationCodeableConcept = $sct#387511003 "Cytarabine (substance)"
+* medicationCodeableConcept.text = "Cytarabine (substance)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * authoredOn = "2024-08-06T12:18:11+05:30"
@@ -1094,8 +1093,8 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationRequest"
 * status = #active
 * intent = #plan
-* medicationCodeableConcept = $sct#385388004 "Lymphoma stage"
-* medicationCodeableConcept.text = "Stage"
+* medicationCodeableConcept = $sct#1230172000 "Amlodipine (as amlodipine besylate) 5 mg and lisinopril 5 mg oral tablet"
+* medicationCodeableConcept.text = "Amlodipine 5 mg and lisinopril 5 mg oral tablet"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * authoredOn = "2024-08-06T12:18:11+05:30"
