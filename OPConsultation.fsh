@@ -771,8 +771,8 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
-* clinicalStatus = $allergyintolerance-clinical#active "Active"
-* clinicalStatus.text = "Active"
+* clinicalStatus = $allergyintolerance-clinical#unconfirmed "Unconfirmed"
+* clinicalStatus.text = "unconfirmed"
 * verificationStatus = $allergyintolerance-verification#confirmed "Confirmed"
 * verificationStatus.text = "Confirmed"
 * type = #allergy
@@ -792,8 +792,6 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#resolved "Resolved"
-* clinicalStatus.text = "resolved"
 * verificationStatus = $condition-ver-status#confirmed "Confirmed"
 * category = $condition-category#problem-list-item "Problem List Item"
 * category.text = "Problem List Item"
@@ -809,8 +807,8 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#resolved "Resolved"
-* clinicalStatus.text = "resolved"
+* clinicalStatus = $condition-clinical#unconfirmed "Unconfirmed"
+* clinicalStatus.text = "unconfirmed"
 * verificationStatus = $condition-ver-status#confirmed "Confirmed"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
 * category.text = "Encounter Diagnosis"
@@ -827,8 +825,8 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.173+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #completed
-* code = $sct#38341003 "High blood pressure"
-* code.text = "hypertension"
+* code = $sct#699282002 "Hypertension diet assessment (procedure)"
+* code.text = "Hypertension diet assessment (procedure)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * performedDateTime = "2020-01-01T10:30:00+05:30"
@@ -841,12 +839,12 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.173+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #completed
-* code = $sct#53741008 "Coronary artery disease"
-* code.text = "Coronary Artery Disease"
+* code = $sct#232717009 "Coronary artery bypass grafting (procedure)"
+* code.text = "Coronary artery bypass grafting (procedure)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * performedDateTime = "2022-12-01T10:30:00+05:30"
-* note.text = "This patient is suffering from severe coronary artery disease. This is a critical condition!"
+* note.text = "This patient is suffering from coronary artery disease. This is a  procedure!"
 
 Instance: 819c3ea1-b69d-4bdb-9a33-a003040f385d
 InstanceOf: AdverseEvent

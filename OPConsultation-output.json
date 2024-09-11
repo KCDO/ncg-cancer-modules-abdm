@@ -1640,12 +1640,12 @@
         "clinicalStatus": {
           "coding": [
             {
-              "code": "active",
+              "code": "unconfirmed",
               "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-              "display": "Active"
+              "display": "Unconfirmed"
             }
           ],
-          "text": "Active"
+          "text": "unconfirmed"
         },
         "verificationStatus": {
           "coding": [
@@ -1699,16 +1699,6 @@
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
           ]
-        },
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "resolved",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Resolved"
-            }
-          ],
-          "text": "resolved"
         },
         "verificationStatus": {
           "coding": [
@@ -1764,12 +1754,12 @@
         "clinicalStatus": {
           "coding": [
             {
-              "code": "resolved",
+              "code": "unconfirmed",
               "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Resolved"
+              "display": "Unconfirmed"
             }
           ],
-          "text": "resolved"
+          "text": "unconfirmed"
         },
         "verificationStatus": {
           "coding": [
@@ -1826,12 +1816,12 @@
         "code": {
           "coding": [
             {
-              "code": "38341003",
+              "code": "699282002",
               "system": "http://snomed.info/sct",
-              "display": "High blood pressure"
+              "display": "Hypertension diet assessment (procedure)"
             }
           ],
-          "text": "hypertension"
+          "text": "Hypertension diet assessment (procedure)"
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
@@ -1861,12 +1851,12 @@
         "code": {
           "coding": [
             {
-              "code": "53741008",
+              "code": "232717009",
               "system": "http://snomed.info/sct",
-              "display": "Coronary artery disease"
+              "display": "Coronary artery bypass grafting (procedure)"
             }
           ],
-          "text": "Coronary Artery Disease"
+          "text": "Coronary artery bypass grafting (procedure)"
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
@@ -1875,7 +1865,7 @@
         "performedDateTime": "2022-12-01T10:30:00+05:30",
         "note": [
           {
-            "text": "This patient is suffering from severe coronary artery disease. This is a critical condition!"
+            "text": "This patient is suffering from coronary artery disease. This is a  procedure!"
           }
         ]
       }
