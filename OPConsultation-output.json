@@ -175,14 +175,6 @@
                 "type": "Observation"
               },
               {
-                "reference": "urn:uuid:910e1ca3-c2e6-4e54-b76a-a12c719aa8a3",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:320b2b02-1872-484b-907f-f7d0d873fac0",
-                "type": "Observation"
-              },
-              {
                 "reference": "urn:uuid:85b68907-0219-4689-8f3d-2d59823a7f01",
                 "type": "Observation"
               }
@@ -323,6 +315,10 @@
                 "type": "Condition"
               },
               {
+                "reference": "urn:uuid:534640d1-84da-4c93-97fc-6760a2d8ee8c",
+                "type": "Condition"
+              },
+              {
                 "reference": "urn:uuid:86d01ed0-b2bd-4b93-8458-28b443e6ceab",
                 "type": "Procedure"
               },
@@ -382,6 +378,78 @@
       }
     },
     {
+      "fullUrl": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "c4d052b5-2d9f-4ebf-b617-764efffa08de",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "MR",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Medical record number"
+                }
+              ],
+              "text": "Medical record number"
+            },
+            "system": "urn:health:information:provider:system",
+            "value": "Health-Information-Provider-Example-Id"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHAAddress",
+                  "system": "https://healthid.abdm.gov.in",
+                  "display": "ABHAAddress"
+                }
+              ],
+              "text": "ABHAAddress"
+            },
+            "system": "urn:health:information:provider:system",
+            "value": "johndoe@abdm"
+          }
+        ],
+        "name": [
+          {
+            "text": "Johndoe ABDM NCG",
+            "family": "NCG",
+            "given": [
+              "Johndoe ABDM"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "9898989898"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1999-08-14",
+        "address": [
+          {
+            "type": "both",
+            "text": "123, Bangalore Urban, Karnataka, India, Pincode:560103",
+            "city": "Bangalore Urban",
+            "district": "Bangalore Urban",
+            "state": "Karnataka",
+            "postalCode": "560103",
+            "country": "India"
+          }
+        ]
+      }
+    },
+    {
       "fullUrl": "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e474",
       "resource": {
         "resourceType": "Observation",
@@ -406,7 +474,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -443,7 +511,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -531,15 +599,15 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+      "fullUrl": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
       "resource": {
-        "resourceType": "Patient",
-        "id": "c4d052b5-2d9f-4ebf-b617-764efffa08de",
+        "resourceType": "Practitioner",
+        "id": "41295111-04f9-4b83-b186-ef2975db1c7e",
         "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-08-06T12:18:11.063+05:30",
+          "versionId": "1",
+          "lastUpdated": "2020-07-09T15:32:26.605+05:30",
           "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
           ]
         },
         "identifier": [
@@ -547,57 +615,19 @@
             "type": {
               "coding": [
                 {
-                  "code": "MR",
+                  "code": "MD",
                   "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                  "display": "Medical record number"
+                  "display": "Medical License number"
                 }
-              ],
-              "text": "Medical record number"
+              ]
             },
-            "system": "urn:health:information:provider:system",
-            "value": "Health-Information-Provider-Example-Id"
-          },
-          {
-            "type": {
-              "coding": [
-                {
-                  "code": "ABHAAddress",
-                  "system": "https://healthid.abdm.gov.in",
-                  "display": "ABHAAddress"
-                }
-              ],
-              "text": "ABHAAddress"
-            },
-            "system": "urn:health:information:provider:system",
-            "value": "johndoe@abdm"
+            "system": "https://doctor.ndhm.gov.in",
+            "value": "21-1521-3828-3227"
           }
         ],
         "name": [
           {
-            "text": "Johndoe ABDM NCG",
-            "family": "NCG",
-            "given": [
-              "Johndoe ABDM"
-            ]
-          }
-        ],
-        "telecom": [
-          {
-            "system": "phone",
-            "value": "9898989898"
-          }
-        ],
-        "gender": "male",
-        "birthDate": "1999-08-14",
-        "address": [
-          {
-            "type": "both",
-            "text": "123, Bangalore Urban, Karnataka, India, Pincode:560103",
-            "city": "Bangalore Urban",
-            "district": "Bangalore Urban",
-            "state": "Karnataka",
-            "postalCode": "560103",
-            "country": "India"
+            "text": "DEF"
           }
         ]
       }
@@ -746,7 +776,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "report": [
@@ -782,7 +812,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -821,7 +851,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "report": [
@@ -930,7 +960,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -1042,7 +1072,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -1088,7 +1118,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         }
       }
@@ -1118,7 +1148,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -1152,7 +1182,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -1186,7 +1216,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -1260,7 +1290,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -1299,7 +1329,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -1333,7 +1363,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -1513,7 +1543,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "report": [
@@ -1610,7 +1640,7 @@
         },
         "patient": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "recordedDate": "2024-08-06T12:18:11+05:30",
@@ -1673,7 +1703,7 @@
         },
         "patient": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "recordedDate": "2024-08-06T12:18:11+05:30",
@@ -1703,9 +1733,9 @@
         "verificationStatus": {
           "coding": [
             {
-              "code": "confirmed",
+              "code": "unconfirmed",
               "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-              "display": "Confirmed"
+              "display": "Unconfirmed"
             }
           ]
         },
@@ -1733,7 +1763,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "recordedDate": "2024-08-06T12:18:11+05:30"
@@ -1751,22 +1781,12 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
           ]
         },
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "unconfirmed",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Unconfirmed"
-            }
-          ],
-          "text": "unconfirmed"
-        },
         "verificationStatus": {
           "coding": [
             {
-              "code": "confirmed",
+              "code": "unconfirmed",
               "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-              "display": "Confirmed"
+              "display": "Unconfirmed"
             }
           ]
         },
@@ -1794,7 +1814,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "recordedDate": "2024-08-06T12:18:11+05:30"
@@ -2020,7 +2040,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2059,7 +2079,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2074,67 +2094,6 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:910e1ca3-c2e6-4e54-b76a-a12c719aa8a3",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "910e1ca3-c2e6-4e54-b76a-a12c719aa8a3",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "719303004",
-              "system": "http://snomed.info/sct",
-              "display": "Assessment of pregnancy status prior to imaging"
-            }
-          ],
-          "text": "Assessment of pregnancy status prior to imaging"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2024-08-06T12:18:11+05:30",
-        "performer": [
-          {
-            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
-            "type": "Practitioner"
-          }
-        ],
-        "valueString": "Not pregnant"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:320b2b02-1872-484b-907f-f7d0d873fac0",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "320b2b02-1872-484b-907f-f7d0d873fac0",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "80182007",
-              "system": "http://snomed.info/sct",
-              "display": "Irregular periods"
-            }
-          ],
-          "text": "Irregular periods"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2024-08-06T12:18:11+05:30",
-        "performer": [
-          {
-            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
-            "type": "Practitioner"
-          }
-        ],
-        "valueString": "Irregular periods"
-      }
-    },
-    {
       "fullUrl": "urn:uuid:1af9fa5c-28cb-4c45-8d0a-24002faddeb8",
       "resource": {
         "resourceType": "ServiceRequest",
@@ -2146,12 +2105,13 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "occurrenceDateTime": "2024-11-08T09:33:27+07:00",
         "requester": {
-          "reference": "urn:uuid:Practitioner/example1"
+          "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+          "type": "Practitioner"
         }
       }
     },
@@ -2171,7 +2131,8 @@
         },
         "occurrenceDateTime": "2024-12-27T09:33:27+07:00",
         "requester": {
-          "reference": "urn:uuid:Practitioner/example2"
+          "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+          "type": "Practitioner"
         }
       }
     },
@@ -2617,7 +2578,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2656,7 +2617,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2695,7 +2656,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2734,7 +2695,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2773,7 +2734,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2812,7 +2773,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2851,7 +2812,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -2890,7 +2851,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
