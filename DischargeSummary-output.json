@@ -113,11 +113,11 @@
                 "type": "Condition"
               },
               {
-                "reference": "urn:uuid:deff8b4e-15e1-4a20-a3e7-d4eb544f90ce",
+                "reference": "urn:uuid:93927a08-b808-4716-8f0b-765a9620259b",
                 "type": "Condition"
               },
               {
-                "reference": "urn:uuid:27f52517-f14c-4af9-af3b-01fa0fdd275b",
+                "reference": "urn:uuid:f8c8b222-7099-4f96-90cc-4efc8adc520a",
                 "type": "Condition"
               },
               {
@@ -165,29 +165,6 @@
               {
                 "reference": "urn:uuid:fdf34b46-f242-40a9-92c4-03ddcb6ccf33",
                 "type": "DocumentReference"
-              }
-            ]
-          },
-          {
-            "title": "OtherObservations",
-            "code": {
-              "coding": [
-                {
-                  "code": "404684003",
-                  "system": "http://snomed.info/sct",
-                  "display": "Clinical finding"
-                }
-              ],
-              "text": "Clinical finding"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:65c11a3f-aa58-467e-bda0-560f59061fb6",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:1959d0c8-40b9-4445-b499-b02a524a69f3",
-                "type": "Observation"
               }
             ]
           },
@@ -358,15 +335,15 @@
               "text": "ABHAAddress"
             },
             "system": "urn:health:information:provider:system",
-            "value": "patientxyz@abdm"
+            "value": "johndoe@abdm"
           }
         ],
         "name": [
           {
-            "text": "Testing ABDM NCG",
+            "text": "Johndoe ABDM NCG",
             "family": "NCG",
             "given": [
-              "Testing ABDM"
+              "Johndoe ABDM"
             ]
           }
         ],
@@ -381,9 +358,9 @@
         "address": [
           {
             "type": "both",
-            "text": "123, Bangalore, Bangalore, Karnataka, India, Pincode:560103",
-            "city": "Bangalore",
-            "district": "Bangalore",
+            "text": "123, Bangalore Urban, Karnataka, India, Pincode:560103",
+            "city": "Bangalore Urban",
+            "district": "Bangalore Urban",
             "state": "Karnataka",
             "postalCode": "560103",
             "country": "India"
@@ -404,18 +381,6 @@
           ]
         },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "vital-signs",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Vital Signs"
-              }
-            ],
-            "text": "Vital Signs"
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -428,7 +393,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -453,18 +418,6 @@
           ]
         },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "vital-signs",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Vital Signs"
-              }
-            ],
-            "text": "Vital Signs"
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -477,7 +430,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -502,18 +455,6 @@
           ]
         },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "vital-signs",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Vital Signs"
-              }
-            ],
-            "text": "Vital Signs"
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -550,18 +491,6 @@
           ]
         },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "vital-signs",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Vital Signs"
-              }
-            ],
-            "text": "Vital Signs"
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -681,7 +610,7 @@
         },
         "patient": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "recordedDate": "2024-08-06T12:18:11+05:30",
@@ -744,7 +673,7 @@
         },
         "patient": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "recordedDate": "2024-08-06T12:18:11+05:30",
@@ -771,22 +700,12 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
           ]
         },
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "resolved",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Resolved"
-            }
-          ],
-          "text": "resolved"
-        },
         "verificationStatus": {
           "coding": [
             {
-              "code": "confirmed",
+              "code": "unconfirmed",
               "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-              "display": "Confirmed"
+              "display": "Unconfirmed"
             }
           ]
         },
@@ -814,7 +733,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "recordedDate": "2024-08-06T12:18:11+05:30"
@@ -832,22 +751,12 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
           ]
         },
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "resolved",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Resolved"
-            }
-          ],
-          "text": "resolved"
-        },
         "verificationStatus": {
           "coding": [
             {
-              "code": "confirmed",
+              "code": "unconfirmed",
               "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-              "display": "Confirmed"
+              "display": "Unconfirmed"
             }
           ]
         },
@@ -875,7 +784,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "recordedDate": "2024-08-06T12:18:11+05:30"
@@ -902,12 +811,12 @@
           {
             "coding": [
               {
-                "code": "medication-mishap",
+                "code": "product-use-error",
                 "system": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
-                "display": "Medication Mishap"
+                "display": "Product Use Error"
               }
             ],
-            "text": "Medication Mishap"
+            "text": "Product Use Error"
           }
         ],
         "subject": {
@@ -930,9 +839,9 @@
         "outcome": {
           "coding": [
             {
-              "code": "resolved",
+              "code": "recovered",
               "system": "http://terminology.hl7.org/CodeSystem/adverse-event-outcome",
-              "display": "Resolved"
+              "display": "Recovered"
             }
           ],
           "text": "Resolved"
@@ -940,103 +849,32 @@
         "recorder": {
           "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
           "type": "Practitioner"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:deff8b4e-15e1-4a20-a3e7-d4eb544f90ce",
-      "resource": {
-        "resourceType": "Condition",
-        "id": "deff8b4e-15e1-4a20-a3e7-d4eb544f90ce",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-08-06T12:18:11.170+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-          ]
         },
-        "clinicalStatus": {
+        "event": {
           "coding": [
             {
-              "code": "resolved",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Resolved"
-            }
-          ],
-          "text": "resolved"
-        },
-        "verificationStatus": {
-          "coding": [
-            {
-              "code": "confirmed",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-              "display": "Confirmed"
-            }
-          ]
-        },
-        "code": {
-          "coding": [
-            {
-              "code": "38341003",
+              "code": "422587007",
               "system": "http://snomed.info/sct",
-              "display": "High blood pressure"
-            }
-          ],
-          "text": "Hypertension"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "recordedDate": "2024-08-06T12:18:11+05:30"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:27f52517-f14c-4af9-af3b-01fa0fdd275b",
-      "resource": {
-        "resourceType": "Condition",
-        "id": "27f52517-f14c-4af9-af3b-01fa0fdd275b",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-08-06T12:18:11.170+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-          ]
-        },
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "resolved",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Resolved"
-            }
-          ],
-          "text": "resolved"
-        },
-        "verificationStatus": {
-          "coding": [
-            {
-              "code": "confirmed",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-              "display": "Confirmed"
+              "display": "Adverse reaction caused by drug"
             }
           ]
         },
-        "code": {
+        "severity": {
           "coding": [
             {
-              "code": "53741008",
-              "system": "http://snomed.info/sct",
-              "display": "Coronary artery disease"
+              "code": "severe",
+              "system": "http://terminology.hl7.org/CodeSystem/adverse-event-severity",
+              "display": "Severe"
             }
-          ],
-          "text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
+          ]
         },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "recordedDate": "2024-08-06T12:18:11+05:30"
+        "suspectEntity": [
+          {
+            "instance": {
+              "reference": "Medication/6789"
+            }
+          }
+        ]
       }
     },
     {
@@ -1055,12 +893,12 @@
         "code": {
           "coding": [
             {
-              "code": "38341003",
+              "code": "699282002",
               "system": "http://snomed.info/sct",
-              "display": "High blood pressure"
+              "display": "Hypertension diet assessment (procedure)"
             }
           ],
-          "text": "hypertension"
+          "text": "Hypertension diet assessment (procedure)"
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
@@ -1090,12 +928,12 @@
         "code": {
           "coding": [
             {
-              "code": "53741008",
+              "code": "232717009",
               "system": "http://snomed.info/sct",
-              "display": "Coronary artery disease"
+              "display": "Coronary artery bypass grafting (procedure)"
             }
           ],
-          "text": "Coronary Artery Disease"
+          "text": "Coronary artery bypass grafting (procedure)"
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
@@ -1110,67 +948,6 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:65c11a3f-aa58-467e-bda0-560f59061fb6",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "65c11a3f-aa58-467e-bda0-560f59061fb6",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "719303004",
-              "system": "http://snomed.info/sct",
-              "display": "Assessment of pregnancy status prior to imaging"
-            }
-          ],
-          "text": "Assessment of pregnancy status prior to imaging"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2024-08-06T12:18:11+05:30",
-        "performer": [
-          {
-            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
-            "type": "Practitioner"
-          }
-        ],
-        "valueString": "Not pregnant"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:1959d0c8-40b9-4445-b499-b02a524a69f3",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "1959d0c8-40b9-4445-b499-b02a524a69f3",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "80182007",
-              "system": "http://snomed.info/sct",
-              "display": "Irregular periods"
-            }
-          ],
-          "text": "Irregular periods"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2024-08-06T12:18:11+05:30",
-        "performer": [
-          {
-            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
-            "type": "Practitioner"
-          }
-        ],
-        "valueString": "Irregular periods"
-      }
-    },
-    {
       "fullUrl": "urn:uuid:cbd93548-26e5-4e10-b2b5-485f662be731",
       "resource": {
         "resourceType": "ServiceRequest",
@@ -1182,12 +959,13 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
-        "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
+        "occurrenceDateTime": "2024-11-08T09:33:27+07:00",
         "requester": {
-          "reference": "urn:uuid:Practitioner/example1"
+          "reference": "urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17",
+          "type": "Practitioner"
         }
       }
     },
@@ -1205,9 +983,10 @@
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
           "type": "Patient"
         },
-        "occurrenceDateTime": "2015-08-27T09:33:27+07:00",
+        "occurrenceDateTime": "2024-12-27T09:33:27+07:00",
         "requester": {
-          "reference": "urn:uuid:Practitioner/example2"
+          "reference": "urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17",
+          "type": "Practitioner"
         }
       }
     },
@@ -1223,7 +1002,7 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
           ]
         },
-        "status": "preparation",
+        "status": "completed",
         "code": {
           "coding": [
             {
@@ -1277,7 +1056,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -1316,7 +1095,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -1402,7 +1181,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         }
       }
@@ -1432,7 +1211,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -1458,7 +1237,7 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
           ]
         },
-        "status": "preparation",
+        "status": "completed",
         "code": {
           "coding": [
             {
@@ -1506,7 +1285,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
@@ -1532,7 +1311,7 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
           ]
         },
-        "status": "preparation",
+        "status": "completed",
         "code": {
           "coding": [
             {
@@ -1580,7 +1359,7 @@
         },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Testing ABDM NCG",
+          "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
         "content": [
