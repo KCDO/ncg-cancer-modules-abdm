@@ -162,15 +162,15 @@
               "text": "ABHAAddress"
             },
             "system": "urn:health:information:provider:system",
-            "value": "patientxyz@abdm"
+            "value": "johndoe@abdm"
           }
         ],
         "name": [
           {
-            "text": "Testing ABDM NCG",
+            "text": "Johndoe ABDM NCG",
             "family": "NCG",
             "given": [
-              "Testing ABDM"
+              "Johndoe ABDM"
             ]
           }
         ],
@@ -185,9 +185,9 @@
         "address": [
           {
             "type": "both",
-            "text": "123, Bangalore, Bangalore, Karnataka, India, Pincode:560103",
-            "city": "Bangalore",
-            "district": "Bangalore",
+            "text": "123, Bangalore Urban, Karnataka, India, Pincode:560103",
+            "city": "Bangalore Urban",
+            "district": "Bangalore Urban",
             "state": "Karnataka",
             "postalCode": "560103",
             "country": "India"
