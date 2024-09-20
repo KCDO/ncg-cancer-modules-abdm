@@ -387,6 +387,8 @@ Usage: #inline
 * status = #final
 * code = $loinc#8302-2 "Body height"
 * code.text = "Body height"
+* category = $observation-category#vital-signs "Vital Signs"
+* category.text = "Vital Signs"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
@@ -401,6 +403,8 @@ Usage: #inline
 * status = #final
 * code = $loinc#29463-7 "weight"
 * code.text = "weight"
+* category = $observation-category#vital-signs "Vital Signs"
+* category.text = "Vital Signs"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
@@ -415,6 +419,8 @@ Usage: #inline
 * status = #final
 * code = $loinc#39156-5 "Body mass index (BMI) [Ratio]"
 * code.text = "Body mass index (BMI) [Ratio]"
+* category = $observation-category#vital-signs "Vital Signs"
+* category.text = "Vital Signs"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
@@ -429,6 +435,8 @@ Usage: #inline
 * status = #final
 * code = $loinc#882-1 "ABO and Rh group [Type] in Blood"
 * code.text = "ABO and Rh group [Type] in Blood"
+* category = $observation-category#vital-signs "Vital Signs"
+* category.text = "Vital Signs"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * valueCodeableConcept = $sct#365637002 "Finding of ABO blood group"
