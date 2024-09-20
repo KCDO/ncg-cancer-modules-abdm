@@ -1,5 +1,6 @@
 Alias: $sct = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
+Alias: $icd-10 = http://hl7.org/fhir/sid/icd-10
 Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
 Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203
 Alias: $healthid = https://healthid.abdm.gov.in
@@ -12,6 +13,7 @@ Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-cat
 Alias: $adverse-event-category = http://terminology.hl7.org/CodeSystem/adverse-event-category
 Alias: $adverse-event-severity = http://terminology.hl7.org/CodeSystem/adverse-event-severity
 Alias: $adverse-event-outcome = http://terminology.hl7.org/CodeSystem/adverse-event-outcome
+Alias: $rxnorm = http://www.nlm.nih.gov/research/umls/rxnorm
 
 Instance: 52ef0e5a-147f-45a8-ac2f-56caf1234144
 InstanceOf: Bundle
@@ -86,12 +88,21 @@ Usage: #example
 //entry for Observation resource: B Symptoms(Night sweats (finding)): Adult Hematolymphoid: OtherObservations section
 * entry[+].fullUrl = "urn:uuid:3056218d-1e84-4129-a3e5-bdc43c279c51"
 * entry[=].resource = 3056218d-1e84-4129-a3e5-bdc43c279c51
+//entry for Observation resource: B Symptoms(Weight loss): Adult Hematolymphoid: OtherObservations section
+* entry[+].fullUrl = "urn:uuid:19fc85ce-a078-41a0-9ad5-99194d26cde4"
+* entry[=].resource = 19fc85ce-a078-41a0-9ad5-99194d26cde4
 //entry for Observation resource: ECOG performance status finding: Adult Hematolymphoid: OtherObservations section
 * entry[+].fullUrl = "urn:uuid:30d36833-fea4-47f9-a27b-3b9526fdcc1f"
 * entry[=].resource = 30d36833-fea4-47f9-a27b-3b9526fdcc1f
 //entry for DocumentReference resource: Joint clinic notes report: Adult Hematolymphoid: DocumentReference section
 * entry[+].fullUrl = "urn:uuid:a78a9019-6594-4f39-9922-b5b8752db8a2"
 * entry[=].resource = a78a9019-6594-4f39-9922-b5b8752db8a2
+//entry for MedicationAdministration resource: Chemotherapy - Treatment Cycle details: Adult Hematolymphoid: Chemotherapy Treatment Cycle section
+* entry[+].fullUrl = "urn:uuid:e9f13f95-d791-4fca-85d1-6659499ceca6"
+* entry[=].resource = e9f13f95-d791-4fca-85d1-6659499ceca6
+//entry for AdverseEvent resource: Chemotherapy - Type and dates, toxicity details: Adult Hematolymphoid: AdverseEvent section
+* entry[+].fullUrl = "urn:uuid:61b91860-0b54-4c4a-857b-2bcf48794316"
+* entry[=].resource = 61b91860-0b54-4c4a-857b-2bcf48794316
 //entry for Procedure resource: Radiotherapy: Adult Hematolymphoid: Procedure section
 * entry[+].fullUrl = "urn:uuid:fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf"
 * entry[=].resource = fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf
@@ -132,10 +143,14 @@ Usage: #example
 // entry for clinicalInformation Co-morbidities and pastMedicalHistory: Coronary Artery Disease
 * entry[+].fullUrl = "urn:uuid:534640d1-84da-4c93-97fc-6760a2d8ee8c"
 * entry[=].resource = 534640d1-84da-4c93-97fc-6760a2d8ee8c
+// entry for  Adult Hematolymphoid: MedicalHistory: DLBCL Stage IV
+* entry[+].fullUrl = "urn:uuid:775487d5-02df-41b8-9bb1-c6d41b6349c8"
+* entry[=].resource = 775487d5-02df-41b8-9bb1-c6d41b6349c8
 * entry[+].fullUrl = "urn:uuid:86d01ed0-b2bd-4b93-8458-28b443e6ceab"
 * entry[=].resource = 86d01ed0-b2bd-4b93-8458-28b443e6ceab
 * entry[+].fullUrl = "urn:uuid:4e966b5a-f19a-44b8-943c-00f021198710"
 * entry[=].resource = 4e966b5a-f19a-44b8-943c-00f021198710
+// section entry for Adverse Events: Product Use Error
 * entry[+].fullUrl = "urn:uuid:819c3ea1-b69d-4bdb-9a33-a003040f385d"
 * entry[=].resource = 819c3ea1-b69d-4bdb-9a33-a003040f385d
 * entry[+].fullUrl = "urn:uuid:73d1bf22-f201-48db-9aeb-7e004e1fae23"
@@ -193,19 +208,25 @@ Usage: #inline
 * status = #final
 * type = $sct#371530004 "Clinical consultation report"
 * type.text = "Clinical consultation report"
+// set Patient as subject
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
+// set Encounter as Encounter
 * encounter = Reference(urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13)
 * encounter.type = "Encounter"
 * date = "2024-08-06T12:18:10+05:30"
+// set Organization as author
 * author = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "XYZ Lab Pvt.Ltd."
 * author.type = "Organization"
 * title = "Consultation Report"
 * attester.mode = #legal
 * attester.time = "2024-08-06T12:18:11+05:30"
 * attester.party = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2)
+// set Organization as custodian
 * custodian = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "XYZ Lab Pvt.Ltd."
 * custodian.type = "Organization"
+
+// section for ChiefComplaints
 * section[0].title = "ChiefComplaints"
 * section[=].code = $sct#422843007 "Chief complaint section"
 * section[=].code.text = "Chief complaint section"
@@ -213,6 +234,8 @@ Usage: #inline
 * section[=].entry[=].type = "Condition"
 * section[=].entry[+] = Reference(urn:uuid:2d927688-e932-4062-83cb-f376e6b40189)
 * section[=].entry[=].type = "Condition"
+
+// section for Procedure
 * section[+].title = "Procedure"
 * section[=].code = $sct#371525003 "Clinical procedure report"
 * section[=].code.text = "Clinical procedure report"
@@ -232,12 +255,18 @@ Usage: #inline
 * section[=].entry[=].type = "Procedure"
 * section[=].entry[+] = Reference(urn:uuid:b51e3a44-86e6-453c-b73d-af0167502fc4)
 * section[=].entry[=].type = "Procedure"
+
+// section for OtherObservations
 * section[+].title = "OtherObservations"
 * section[=].code = $sct#404684003 "Clinical finding"
 * section[=].code.text = "Clinical finding"
 * section[=].entry[0] = Reference(urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a275)
 * section[=].entry[=].type = "Observation"
+//section entry for Observation resource: B Symptoms(Night sweats (finding)): Adult Hematolymphoid: OtherObservations section
 * section[=].entry[+] = Reference(urn:uuid:3056218d-1e84-4129-a3e5-bdc43c279c51)
+* section[=].entry[=].type = "Observation"
+//section entry for Observation resource: B Symptoms(Weight loss): Adult Hematolymphoid: OtherObservations section
+* section[=].entry[+] = Reference(urn:uuid:19fc85ce-a078-41a0-9ad5-99194d26cde4)
 * section[=].entry[=].type = "Observation"
 * section[=].entry[+] = Reference(urn:uuid:30d36833-fea4-47f9-a27b-3b9526fdcc1f)
 * section[=].entry[=].type = "Observation"
@@ -245,6 +274,8 @@ Usage: #inline
 * section[=].entry[=].type = "Observation"
 * section[=].entry[+] = Reference(urn:uuid:85b68907-0219-4689-8f3d-2d59823a7f01)
 * section[=].entry[=].type = "Observation"
+
+// section for Medications
 * section[+].title = "Medications"
 * section[=].code = $sct#721912009 "Medication summary document"
 * section[=].code.text = "Medication summary document"
@@ -254,6 +285,8 @@ Usage: #inline
 * section[=].entry[=].type = "MedicationRequest"
 * section[=].entry[+] = Reference(urn:uuid:a8ba176c-ce49-4517-a65f-432b724259b6)
 * section[=].entry[=].type = "MedicationRequest"
+
+// section for DocumentReference
 * section[+].title = "DocumentReference"
 * section[=].code = $sct#371530004 "Clinical consultation report"
 * section[=].code.text = "Clinical consultation report"
@@ -283,11 +316,19 @@ Usage: #inline
 * section[=].entry[=].type = "DocumentReference"
 * section[=].entry[+] = Reference(urn:uuid:3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2)
 * section[=].entry[=].type = "DocumentReference"
+
+// section for Adverse Events
 * section[+].title = "Adverse Events"
 * section[=].code = $sct#418019003 "Accidental event"
 * section[=].code.text = "Adverse Events"
+// section entry for Adverse Events: Product Use Error
 * section[=].entry = Reference(urn:uuid:819c3ea1-b69d-4bdb-9a33-a003040f385d)
 * section[=].entry.type = "AdverseEvent"
+// section entry for Chemotherapy: Toxicity: Adult Hematolymphoid Cancer Type
+* section[=].entry = Reference(urn:uuid:61b91860-0b54-4c4a-857b-2bcf48794316)
+* section[=].entry.type = "AdverseEvent"
+
+// section for MedicalHistory
 * section[+].title = "MedicalHistory"
 * section[=].code = $sct#371529009 "History and physical report"
 * section[=].code.text = "History and physical report"
@@ -303,10 +344,15 @@ Usage: #inline
 //section entry for  clinicalInformation: pastMedicalHistory: hypertension
 * section[=].entry[+] = Reference(urn:uuid:534640d1-84da-4c93-97fc-6760a2d8ee8c)
 * section[=].entry[=].type = "Condition"
+//section entry for  Adult Hematolymphoid: MedicalHistory: DLBCL Stage IV
+* section[=].entry[+] = Reference(urn:uuid:775487d5-02df-41b8-9bb1-c6d41b6349c8)
+* section[=].entry[=].type = "Condition"
 * section[=].entry[+] = Reference(urn:uuid:86d01ed0-b2bd-4b93-8458-28b443e6ceab)
 * section[=].entry[=].type = "Procedure"
 * section[=].entry[+] = Reference(urn:uuid:4e966b5a-f19a-44b8-943c-00f021198710)
 * section[=].entry[=].type = "Procedure"
+
+// section for InvestigationAdvice
 * section[+].title = "InvestigationAdvice"
 * section[=].code = $sct#721963009 "Order document"
 * section[=].code.text = "Investigation Advice"
@@ -314,6 +360,8 @@ Usage: #inline
 * section[=].entry[=].type = "ServiceRequest"
 * section[=].entry[+] = Reference(urn:uuid:fc980123-6830-45ca-85e7-36ba272e53b0)
 * section[=].entry[=].type = "ServiceRequest"
+
+// section for Allergies
 * section[+].title = "Allergies"
 * section[=].code = $sct#722446000 "Allergy record"
 * section[=].code.text = "Allergies"
@@ -321,6 +369,14 @@ Usage: #inline
 * section[=].entry[=].type = "AllergyIntolerance"
 * section[=].entry[+] = Reference(urn:uuid:20d5c147-3768-4763-85d3-ef81ad4cfa5f)
 * section[=].entry[=].type = "AllergyIntolerance"
+
+//section for Chemotherapy Treatment Cycle
+* section[+].title = "Chemotherapy Treatment Cycle"
+* section[=].code = $sct#18629005 "Administration of drug or medicament" // SNOMED CT code for "Administration of drug or medicament"
+* section[=].code.text = "Chemotherapy Treatment Cycle"
+//entry for MedicationAdministration resource: Chemotherapy - Treatment Cycle: Adult Hematolymphoid: Chemotherapy Treatment Cycle section
+* section[=].entry[0] = Reference(urn:uuid:e9f13f95-d791-4fca-85d1-6659499ceca6)
+* section[=].entry[=].type = "MedicationAdministration"
 
 Instance: ed93fd8b-5a42-4522-b1bc-88b22294e474
 InstanceOf: Observation
@@ -606,6 +662,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 
+//Observation resource: B Symptoms(Night sweats (finding)): Adult Hematolymphoid: OtherObservations section
 Instance: 3056218d-1e84-4129-a3e5-bdc43c279c51
 InstanceOf: Observation
 Usage: #inline
@@ -614,12 +671,26 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $sct#42984000 "Night sweats (finding)"
-* code.text = "B Symptoms"
+* code.text = "B Symptoms-Night sweats"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
-* valueQuantity.value = 12
 
+//Observation resource: B Symptoms(Weight loss): Adult Hematolymphoid: OtherObservations section
+Instance: 19fc85ce-a078-41a0-9ad5-99194d26cde4
+InstanceOf: Observation
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.145+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+* status = #final
+* code = $sct#448765001 "Unintentional weight loss (finding)"
+* code.text = "B Symptoms-Weight loss"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject.type = "Patient"
+* effectiveDateTime = "2024-08-06T12:18:11+05:30"
+
+//Observation resource: PS (ECOG): Adult Hematolymphoid: OtherObservations section
 Instance: 30d36833-fea4-47f9-a27b-3b9526fdcc1f
 InstanceOf: Observation
 Usage: #inline
@@ -627,12 +698,27 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.145+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* code = $sct#424122007 "ECOG performance status finding"
-* code.text = "ECOG performance status finding"
+* code = $loinc#89247-4 "ECOG performance status"
+* code.text = "ECOG-1"
+* valueInteger = 1  // ECOG-1: Restricted in physically strenuous activity but able to do light work
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
-* valueQuantity.value = 12
+
+//Condition resource: Stage: Diffuse large B-cell lymphoma (DLBCL): Adult Hematolymphoid: MedicalHistory section
+Instance: 775487d5-02df-41b8-9bb1-c6d41b6349c8
+InstanceOf: Condition
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+* code = $icd-10#C83.3 "Diffuse large B-cell lymphoma"
+* code.text = "Diffuse large B-cell lymphoma"
+* stage[0].summary = $sct#258219007 "Stage IV"
+* stage[0].summary.text = "Stage IV"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject.type = "Patient"
+* recordedDate = "2024-08-06T12:18:11+05:30"
 
 Instance: a78a9019-6594-4f39-9922-b5b8752db8a2
 InstanceOf: DocumentReference
@@ -648,6 +734,41 @@ Usage: #inline
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bmtuaw=="
 * content.attachment.title = "Joint clinic notes"
+
+//MedicationAdministration resource: Chemotherapy - Treatment Cycle: Adult Hematolymphoid: Chemotherapy Treatment Cycle section
+Instance: e9f13f95-d791-4fca-85d1-6659499ceca6
+InstanceOf: MedicationAdministration
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.185+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationAdministration"
+* status = #scheduled  // Status indicating that Cycle 3 is scheduled
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject.type = "Patient" // Reference to the patient
+* effectiveDateTime = "2024-09-24T09:00:00Z"  // Due date for Cycle 3
+* category = $sct#18629005 "Administration of drug or medicament" // SNOMED CT code for "Administration of drug or medicament"
+* category.text = "Administration of drug or medicament"
+* medicationCodeableConcept = $rxnorm#582620 "R-CHOP Chemotherapy"  // Example code for R-CHOP chemotherapy
+* dosage.text = "Administer Cycle 3 of R-CHOP chemotherapy"
+
+//AdverseEvent resource: Chemotherapy - Toxicity: Adult Hematolymphoid: AdverseEvent section
+Instance: 61b91860-0b54-4c4a-857b-2bcf48794316
+InstanceOf: AdverseEvent
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.185+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent"
+* identifier.system = "http://example.com/adverseEvent"
+* identifier.value = "61b91860-0b54-4c4a-857b-2bcf48794316"
+* actuality = #actual
+* event = $sct#304540007 "Adverse reaction to chemotherapy" // SNOMED CT code for "Adverse reaction to chemotherapy"
+* category = $sct#304540007 "Chemotherapy-related toxicity" // Category is also chemotherapy-related toxicity
+* category.text = "Patient experienced mild paresthesia following chemotherapy." // Updated from description
+* seriousness = $sct#274350006 "Paresthesia" // SNOMED CT code for "Paresthesia"
+* severity = $loinc#80323-8 "Grade 1 CTCAE toxicity" // LOINC code for CTCAE Grade 1 toxicity
+* date = "2024-09-17T09:00:00Z"  // Date when the toxicity event occurred
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject.type = "Patient" // Reference to the patient experiencing the adverse event
 
 Instance: fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf
 InstanceOf: Procedure
