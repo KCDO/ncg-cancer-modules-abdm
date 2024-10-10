@@ -32,7 +32,7 @@ Usage: #example
 //entry for body weight observation
 * entry[+].fullUrl = "urn:uuid:1e2fff4e-4ea6-4222-98f3-8b72cb9d3d63"
 * entry[=].resource = 1e2fff4e-4ea6-4222-98f3-8b72cb9d3d63
-//entry for body weight observation
+//entry for body height observation
 * entry[+].fullUrl = "urn:uuid:97a1272a-f164-43c4-8292-ef2adc8e8c76"
 * entry[=].resource = 97a1272a-f164-43c4-8292-ef2adc8e8c76
 //entry for BMI observation
@@ -50,33 +50,21 @@ Usage: #example
 // entry for clinicalInformation AllergyIntolerance: Allergy to penicillin
 * entry[+].fullUrl = "urn:uuid:d4755f91-e834-4cd3-aa49-1bd87093283e"
 * entry[=].resource = d4755f91-e834-4cd3-aa49-1bd87093283e
-// entry for clinicalInformation Co-morbidities: hypertension
+// entry for clinicalInformation Co-morbidities and pastMedicalHistory: hypertension
 * entry[+].fullUrl = "urn:uuid:93927a08-b808-4716-8f0b-765a9620259b"
 * entry[=].resource = 93927a08-b808-4716-8f0b-765a9620259b
-// entry for clinicalInformation Co-morbidities: Coronary Artery Disease
+// entry for clinicalInformation Co-morbidities and pastMedicalHistory: Coronary Artery Disease
 * entry[+].fullUrl = "urn:uuid:f8c8b222-7099-4f96-90cc-4efc8adc520a"
 * entry[=].resource = f8c8b222-7099-4f96-90cc-4efc8adc520a
-// entry for clinicalInformation AdverseEvent: Medication Mishap
+// entry for clinicalInformation AdverseEvent: Product Use Error
 * entry[+].fullUrl = "urn:uuid:ae41cf33-112d-4082-adc9-ce4c8bf7c304"
 * entry[=].resource = ae41cf33-112d-4082-adc9-ce4c8bf7c304
-// entry for clinicalInformation pastMedicalHistory: hypertension
-* entry[+].fullUrl = "urn:uuid:deff8b4e-15e1-4a20-a3e7-d4eb544f90ce"
-* entry[=].resource = deff8b4e-15e1-4a20-a3e7-d4eb544f90ce
-// entry for clinicalInformation pastMedicalHistory: Coronary Artery Disease
-* entry[+].fullUrl = "urn:uuid:27f52517-f14c-4af9-af3b-01fa0fdd275b"
-* entry[=].resource = 27f52517-f14c-4af9-af3b-01fa0fdd275b
 // entry for clinicalInformation pastSurgicalHistory: hypertension
 * entry[+].fullUrl = "urn:uuid:2388c966-2604-48c1-b1de-f810f0d6eb11"
 * entry[=].resource = 2388c966-2604-48c1-b1de-f810f0d6eb11
 // entry for clinicalInformation pastSurgicalHistory: Coronary Artery Disease
 * entry[+].fullUrl = "urn:uuid:60ccb1f6-6a42-4384-8c12-5d04f8f76e36"
 * entry[=].resource = 60ccb1f6-6a42-4384-8c12-5d04f8f76e36
-// entry for clinicalInformation menstruationHistory: Assessment of pregnancy status prior to imaging
-* entry[+].fullUrl = "urn:uuid:65c11a3f-aa58-467e-bda0-560f59061fb6"
-* entry[=].resource = 65c11a3f-aa58-467e-bda0-560f59061fb6
-// entry for clinicalInformation menstruationHistory: Irregular periods
-* entry[+].fullUrl = "urn:uuid:1959d0c8-40b9-4445-b499-b02a524a69f3"
-* entry[=].resource = 1959d0c8-40b9-4445-b499-b02a524a69f3
 // entry for clinicalInformation examinationDetails: Chest CT
 * entry[+].fullUrl = "urn:uuid:cbd93548-26e5-4e10-b2b5-485f662be731"
 * entry[=].resource = cbd93548-26e5-4e10-b2b5-485f662be731
@@ -164,10 +152,10 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:f8c8b222-7099-4f96-90cc-4efc8adc520a)
 * section[=].entry[=].type = "Condition"
 //section entry for  clinicalInformation: pastMedicalHistory: hypertension
-* section[=].entry[+] = Reference(urn:uuid:deff8b4e-15e1-4a20-a3e7-d4eb544f90ce)
+* section[=].entry[+] = Reference(urn:uuid:93927a08-b808-4716-8f0b-765a9620259b)
 * section[=].entry[=].type = "Condition"
 //section entry for  clinicalInformation: pastMedicalHistory: Coronary Artery Disease
-* section[=].entry[+] = Reference(urn:uuid:27f52517-f14c-4af9-af3b-01fa0fdd275b)
+* section[=].entry[+] = Reference(urn:uuid:f8c8b222-7099-4f96-90cc-4efc8adc520a)
 * section[=].entry[=].type = "Condition"
 //section entry for  clinicalInformation: pastSurgicalHistory: hypertension
 * section[=].entry[+] = Reference(urn:uuid:2388c966-2604-48c1-b1de-f810f0d6eb11)
@@ -194,17 +182,6 @@ Usage: #inline
 //section entry for  clinicalInformation: Adult Hematolymphoid: Joint clinic notes
 * section[=].entry[0] = Reference(urn:uuid:fdf34b46-f242-40a9-92c4-03ddcb6ccf33)
 * section[=].entry[=].type = "DocumentReference"
-
-// section for OtherObservations
-* section[+].title = "OtherObservations"
-* section[=].code = $sct#404684003 "Clinical finding"
-* section[=].code.text = "Clinical finding"
-//section entry for clinicalInformation: menstruationHistory: Assessment of pregnancy status prior to imaging
-* section[=].entry[+] = Reference(urn:uuid:65c11a3f-aa58-467e-bda0-560f59061fb6)
-* section[=].entry[=].type = "Observation"
-//section entry for  clinicalInformation: menstruationHistory: Irregular periods
-* section[=].entry[+] = Reference(urn:uuid:1959d0c8-40b9-4445-b499-b02a524a69f3)
-* section[=].entry[=].type = "Observation"
 
 // section for InvestigationAdvice
 * section[+].title = "InvestigationAdvice"
@@ -285,18 +262,18 @@ Usage: #inline
 * identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
 * identifier[=].type.text = "ABHAAddress"
 * identifier[=].system = "urn:health:information:provider:system"
-* identifier[=].value = "patientxyz@abdm"
-* name.text = "Testing ABDM NCG"
+* identifier[=].value = "johndoe@abdm"
+* name.text = "Johndoe ABDM NCG"
 * name.family = "NCG"
-* name.given = "Testing ABDM"
+* name.given = "Johndoe ABDM"
 * telecom.system = #phone
 * telecom.value = "9898989898"
 * gender = #male
 * birthDate = "1999-08-14"
 * address.type = #both
-* address.text = "123, Bangalore, Bangalore, Karnataka, India, Pincode:560103"
-* address.city = "Bangalore"
-* address.district = "Bangalore"
+* address.text = "123, Bangalore Urban, Karnataka, India, Pincode:560103"
+* address.city = "Bangalore Urban"
+* address.district = "Bangalore Urban"
 * address.state = "Karnataka"
 * address.postalCode = "560103"
 * address.country = "India"
@@ -309,11 +286,9 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.053+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
 * code = $loinc#8302-2 "Body height"
 * code.text = "Body height"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
 * valueQuantity = 160 'cm' "cm"
@@ -326,11 +301,9 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.054+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
 * code = $loinc#29463-7 "weight"
 * code.text = "weight"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
 * valueQuantity = 62 'kg' "kg"
@@ -343,8 +316,6 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.054+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
 * code = $loinc#39156-5 "Body mass index (BMI) [Ratio]"
 * code.text = "Body mass index (BMI) [Ratio]"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
@@ -360,8 +331,6 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
 * code = $loinc#882-1 "ABO and Rh group [Type] in Blood"
 * code.text = "ABO and Rh group [Type] in Blood"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
@@ -400,7 +369,7 @@ Usage: #inline
 * category = #food
 * code = $sct#91935009 "Allergy to peanut"
 * code.text = "Groundnut (peanut) allergy"
-* patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * patient.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
 * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
@@ -422,7 +391,7 @@ Usage: #inline
 * category = #medication
 * code = $sct#91936005 "Allergy to penicillin"
 * code.text = "Allergy to penicillin"
-* patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * patient.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
 * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
@@ -436,32 +405,28 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#resolved "Resolved"
-* clinicalStatus.text = "resolved"
-* verificationStatus = $condition-ver-status#confirmed "Confirmed"
+* verificationStatus = $condition-ver-status#unconfirmed "Unconfirmed"
 * category = $condition-category#problem-list-item "Problem List Item"
 * category.text = "Problem List Item"
 * code = $sct#38341003 "High blood pressure"
 * code.text = "Hypertension"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
 
-//clinicalInformation Co-morbidities condition resource for Coronary artery disease
+//clinicalInformation condition resource for Coronary artery disease
 Instance: f8c8b222-7099-4f96-90cc-4efc8adc520a
 InstanceOf: Condition
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#resolved "Resolved"
-* clinicalStatus.text = "resolved"
-* verificationStatus = $condition-ver-status#confirmed "Confirmed"
+* verificationStatus = $condition-ver-status#unconfirmed "Unconfirmed"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
 * category.text = "Encounter Diagnosis"
 * code = $sct#53741008 "Coronary artery disease"
 * code.text = "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
 
@@ -475,8 +440,8 @@ Usage: #inline
 * identifier.system = "http://example.com/adverseEvent"
 * identifier.value = "ae41cf33-112d-4082-adc9-ce4c8bf7c304"
 * actuality = #actual
-* category = $adverse-event-category#medication-mishap "Medication Mishap"
-* category.text = "Medication Mishap"
+* category = $adverse-event-category#product-use-error "Product Use Error"
+* category.text = "Product Use Error"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * date = "2024-08-06T12:18:11+05:30"
@@ -488,38 +453,10 @@ Usage: #inline
 * outcome.text = "Resolved"
 * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 * recorder.type = "Practitioner"
-
-// clinicalInformation Condition resource for pastMedicalHistory: hypertension
-Instance: deff8b4e-15e1-4a20-a3e7-d4eb544f90ce
-InstanceOf: Condition
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#resolved "Resolved"
-* clinicalStatus.text = "resolved"
-* verificationStatus = $condition-ver-status#confirmed "Confirmed"
-* code = $sct#38341003 "High blood pressure"
-* code.text = "Hypertension"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* recordedDate = "2024-08-06T12:18:11+05:30"
-
-// clinicalInformation Condition resource for pastMedicalHistory: Coronary Artery Disease
-Instance: 27f52517-f14c-4af9-af3b-01fa0fdd275b
-InstanceOf: Condition
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#resolved "Resolved"
-* clinicalStatus.text = "resolved"
-* verificationStatus = $condition-ver-status#confirmed "Confirmed"
-* code = $sct#53741008 "Coronary artery disease"
-* code.text = "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* recordedDate = "2024-08-06T12:18:11+05:30"
+* event = $sct#422587007 "Adverse reaction caused by drug"
+* severity = $adverse-event-severity#severe "Severe"
+* suspectEntity.instance = Reference(Medication/6789)
+* outcome = $adverse-event-outcome#recovered "Recovered"
 
 // clinicalInformation Procedure resource for pastSurgicalHistory: hypertension
 Instance: 2388c966-2604-48c1-b1de-f810f0d6eb11
@@ -529,8 +466,8 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.173+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #preparation
-* code = $sct#38341003 "High blood pressure"
-* code.text = "hypertension"
+* code = $sct#699282002 "Hypertension diet assessment (procedure)"
+* code.text = "Hypertension diet assessment (procedure)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * performedDateTime = "2020-01-01T10:30:00+05:30"
@@ -544,40 +481,12 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:11.173+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #preparation
-* code = $sct#53741008 "Coronary artery disease"
-* code.text = "Coronary Artery Disease"
+* code = $sct#232717009 "Coronary artery bypass grafting (procedure)"
+* code.text = "Coronary artery bypass grafting (procedure)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * performedDateTime = "2022-12-01T10:30:00+05:30"
 * note.text = "This patient is suffering from severe coronary artery disease. This is a critical condition!"
-
-// clinicalInformation Observation resource for menstruationHistory: Assessment of pregnancy status prior to imaging
-Instance: 65c11a3f-aa58-467e-bda0-560f59061fb6
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $sct#719303004 "Assessment of pregnancy status prior to imaging"
-* code.text = "Assessment of pregnancy status prior to imaging"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
-* subject.type = "Patient"
-* effectiveDateTime = "2024-08-06T12:18:11+05:30"
-* performer = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
-* performer.type = "Practitioner"
-* valueString = "Not pregnant"
-
-// clinicalInformation Observation resource for menstruationHistory: Irregular periods
-Instance: 1959d0c8-40b9-4445-b499-b02a524a69f3
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $sct#80182007 "Irregular periods"
-* code.text = "Irregular periods"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
-* subject.type = "Patient"
-* effectiveDateTime = "2024-08-06T12:18:11+05:30"
-* performer = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
-* performer.type = "Practitioner"
-* valueString = "Irregular periods"
 
 // clinicalInformation ServiceRequest resource for examinationDetails: Chest CT
 Instance: cbd93548-26e5-4e10-b2b5-485f662be731
@@ -586,10 +495,11 @@ Usage: #inline
 * status = #active
 * intent = #order
 * code.text = "Chest CT"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
-* occurrenceDateTime = "2013-05-08T09:33:27+07:00"
-* requester = Reference(urn:uuid:Practitioner/example1)
+* occurrenceDateTime = "2024-11-08T09:33:27+07:00"
+* requester = Reference(urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17)
+* requester.type = "Practitioner"
 
 // clinicalInformation ServiceRequest resource for examinationDetails: Thyroxine (T4) free [Mass/​volume] in Serum or Plasma
 Instance: 1a78f6f9-23b3-4d93-8948-1b7b056db92a
@@ -600,8 +510,9 @@ Usage: #inline
 * code.text = "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
-* occurrenceDateTime = "2015-08-27T09:33:27+07:00"
-* requester = Reference(urn:uuid:Practitioner/example2)
+* occurrenceDateTime = "2024-12-27T09:33:27+07:00"
+* requester = Reference(urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17)
+* requester.type = "Practitioner"
 
 // clinicalInformation Procedure resource for Surgical summary with post Op Course
 Instance: b89d75ac-e95d-43f3-8ddd-cb9395d03a58
@@ -610,7 +521,7 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.173+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-* status = #preparation
+* status = #completed
 * code = $sct#448826009 "Brief operative note"
 * code.text = "Surgical summary with post Op Course"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
@@ -630,7 +541,7 @@ Usage: #inline
 * status = #current
 * type = $sct#448826009 "Brief operative note"
 * type.text = "Bone marrow or peripheral blood Surgical summary with post Op Course report"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "Qm9uZSBtYXJyb3c="
@@ -646,7 +557,7 @@ Usage: #inline
 * status = #current
 * type = $loinc#34751-8 "Anesthesiology Preoperative evaluation and management note"
 * type.text = "Anesthesiology Preoperative evaluation and management note"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bHVuZzZtb3d0"
@@ -677,7 +588,7 @@ Usage: #inline
 * clinicalStatus.text = "Active"
 * code = $sct#269475001 "Malignant tumor of lymphoid hemopoietic and related tissue"
 * code.text = "Malignant tumor of lymphoid hemopoietic and related tissue"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 
 // CancerType DocumentReference resource for Adult Hematolymphoid: Joint clinic notes
@@ -690,7 +601,7 @@ Usage: #inline
 * status = #current
 * type = $sct#12345 "Joint clinic notes"
 * type.text = "Joint clinic notes report"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bmtuaw=="
@@ -703,7 +614,7 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.158+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-* status = #preparation
+* status = #completed
 * code = $sct#108290001 "Radiotherapy"
 * code.text = "Radiotherapy"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
@@ -721,7 +632,7 @@ Usage: #inline
 * status = #current
 * type = $sct#108290001 "Radiotherapy"
 * type.text = "Radiotherapy report"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bmprbmtqbmpr"
@@ -734,7 +645,7 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.158+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-* status = #preparation
+* status = #completed
 * code = $sct#84755001 "Radiation therapy treatment management"
 * code.text = "Response - interim and end of therapy"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
@@ -752,7 +663,7 @@ Usage: #inline
 * status = #current
 * type = $sct#84755001 "Radiation therapy treatment management"
 * type.text = "Response - interim and end of therapy report"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Testing ABDM NCG"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bmprbmtqbmpr"
