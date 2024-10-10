@@ -489,8 +489,8 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:123e4567-e89b-12d3-a456-426614174003)
 * section[=].entry[=].type = "Observation"
 * section[+].title = "Follow-Up"
-* section[=].code = $sct#410620009 "Follow-up care"
-* section[=].code.text = "Follow-up care"
+* section[=].code = $loinc#18842-5 "Discharge summary"
+* section[=].code.text = "Discharge summary"
 * section[=].entry = Reference(urn:uuid:fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf)
 * section[=].entry.type = "Appointment"
 
@@ -1206,8 +1206,6 @@ Usage: #inline
 * status = #completed
 * code = $sct#13751005 "Poisoning due to bite of Heloderma horridum (disorder)"
 * code.text = "ISRT to 45 Gy in 25 fractions"
-* bodySite[0].coding.code = #EntireBody
-* bodySite[+].coding.code = #MesentericLN
 * performedPeriod.start = "2021-12-28T00:00:00+05:30"
 * performedPeriod.end = "2022-02-03T00:00:00+05:30"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
@@ -1422,8 +1420,8 @@ Usage: #inline
 * identifier.system = "http://example.com/adverseEvent"
 * identifier.value = "819c3ea1-b69d-4bdb-9a33-a003040f385d"
 * actuality = #actual
-* category = $adverse-event-category#product-use-error "Product Use Error"
-* category.text = "Product Use Error"
+* category = $adverse-event-category#medication-mishap "Medication Mishap"
+* category.text = "Medication Mishap"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * date = "2024-08-06T12:18:11+05:30"
@@ -1779,7 +1777,7 @@ Instance: ce490d3d-3f41-496a-be2d-7acd40326806
 InstanceOf: Observation
 Usage: #inline
 * category = $observation-category#vital-signs "Vital Signs"
-* code = $loinc#8893-0 "Heart rate"
+* code = $loinc#8867-4 "Heart rate"
 * effectiveDateTime = "2024-09-30T12:00:00Z"
 * valueQuantity = 94 '/min' "/min"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
@@ -1803,16 +1801,16 @@ Usage: #inline
 * code = $loinc#85354-9 "Blood pressure panel with all children optional"
 * effectiveDateTime = "2024-09-30T12:00:00Z"
 * component[0].code = $loinc#8480-6 "Systolic blood pressure"
-* component[=].valueQuantity = 100 'mm[Hg]'
+* component[=].valueQuantity = 100 'mm[Hg]' "mmHg"
 * component[+].code = $loinc#8462-4 "Diastolic blood pressure"
-* component[=].valueQuantity = 75 'mm[Hg]'
+* component[=].valueQuantity = 75 'mm[Hg]' "mmHg"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
 
 Instance: bf4669ff-07fc-4ce2-a7f6-1eed70622d8a
 InstanceOf: Observation
 Usage: #inline
 * category = $observation-category#vital-signs "Vital Signs"
-* code = $loinc#59408-5 "Oxygen saturation in Arterial blood by Pulse oximetry"
+* code = $loinc#2708-6 "Oxygen saturation in Arterial blood"
 * effectiveDateTime = "2024-09-30T12:00:00Z"
 * valueQuantity = 99 '%' "%"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
@@ -2005,10 +2003,9 @@ Usage: #inline
 * series.number = 1
 * series.modality = $DCM#PT "Positron Emission Tomography"
 * series.description = "PET Scan"
-* series.instance.uid = "1.2.840.10008.5.1.4.1.1.128.1"
+* series.instance.uid = "2.16.124.113543.6003.189642796.63084.16748.2599092903"
+* series.instance.sopClass = urn:ietf:rfc:3986#urn:oid:1.2.840.10008.5.1.4.1.1.2
 * series.instance.number = 1
-* series.instance.title = "PET Scan Instance 1"
-* series.instance.sopClass = $DCM#1.2.840.10008.5.1.4.1.1.128 "Positron Emission Tomography Image Storage"
 * note.time = "2024-10-03T09:00:00Z"
 * note.text = "Deauville Score: 1 indicating complete metabolic response."
 
