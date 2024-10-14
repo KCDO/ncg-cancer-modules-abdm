@@ -599,12 +599,12 @@
             "code": {
               "coding": [
                 {
-                  "code": "410620009",
-                  "system": "http://snomed.info/sct",
-                  "display": "Follow-up care"
+                  "system": "http://loinc.org",
+                  "code": "18842-5",
+                  "display": "Discharge summary"
                 }
               ],
-              "text": "Follow-up care"
+              "text": "Discharge summary"
             },
             "entry": [
               {
@@ -2476,22 +2476,6 @@
           ],
           "text": "ISRT to 45 Gy in 25 fractions"
         },
-        "bodySite": [
-          {
-            "coding": [
-              {
-                "code": "EntireBody"
-              }
-            ]
-          },
-          {
-            "coding": [
-              {
-                "code": "MesentericLN"
-              }
-            ]
-          }
-        ],
         "performedPeriod": {
           "start": "2021-12-28T00:00:00+05:30",
           "end": "2022-02-03T00:00:00+05:30"
@@ -3088,12 +3072,12 @@
           {
             "coding": [
               {
-                "code": "product-use-error",
+                "code": "medication-mishap",
                 "system": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
-                "display": "Product Use Error"
+                "display": "Medication Mishap"
               }
             ],
-            "text": "Product Use Error"
+            "text": "Medication Mishap"
           }
         ],
         "subject": {
@@ -4100,7 +4084,7 @@
         "code": {
           "coding": [
             {
-              "code": "8893-0",
+              "code": "8867-4",
               "system": "http://loinc.org",
               "display": "Heart rate"
             }
@@ -4200,7 +4184,8 @@
             "valueQuantity": {
               "value": 100,
               "code": "mm[Hg]",
-              "system": "http://unitsofmeasure.org"
+              "system": "http://unitsofmeasure.org",
+              "unit": "mmHg"
             }
           },
           {
@@ -4216,7 +4201,8 @@
             "valueQuantity": {
               "value": 75,
               "code": "mm[Hg]",
-              "system": "http://unitsofmeasure.org"
+              "system": "http://unitsofmeasure.org",
+              "unit": "mmHg"
             }
           }
         ],
@@ -4245,9 +4231,9 @@
         "code": {
           "coding": [
             {
-              "code": "59408-5",
+              "code": "2708-6",
               "system": "http://loinc.org",
-              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+              "display": "Oxygen saturation in Arterial blood"
             }
           ]
         },
@@ -4976,14 +4962,12 @@
             "description": "PET Scan",
             "instance": [
               {
-                "uid": "1.2.840.10008.5.1.4.1.1.128.1",
-                "number": 1,
-                "title": "PET Scan Instance 1",
-                "sopClass": {
-                  "code": "1.2.840.10008.5.1.4.1.1.128",
-                  "system": "http://dicom.nema.org/resources/ontology/DCM",
-                  "display": "Positron Emission Tomography Image Storage"
-                }
+                "uid" : "2.16.124.113543.6003.189642796.63084.16748.2599092903",
+                "sopClass" : {
+                  "system" : "urn:ietf:rfc:3986",
+                  "code" : "urn:oid:1.2.840.10008.5.1.4.1.1.2"
+                },
+                "number" : 1
               }
             ]
           }
@@ -4995,7 +4979,7 @@
           }
         ]
       }
-    },
+    },    
     {
       "fullUrl": "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19",
       "resource": {
