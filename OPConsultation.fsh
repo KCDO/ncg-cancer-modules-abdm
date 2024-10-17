@@ -14,7 +14,6 @@ Alias: $icd-10 = http://hl7.org/fhir/sid/icd-10
 Alias: $adverse-event-category = http://terminology.hl7.org/CodeSystem/adverse-event-category
 Alias: $adverse-event-outcome = http://terminology.hl7.org/CodeSystem/adverse-event-outcome
 Alias: $adverse-event-severity = http://terminology.hl7.org/CodeSystem/adverse-event-severity
-Alias: $DCM = http://dicom.nema.org/resources/ontology/DCM
 Alias: $v3-ObservationInterpretation = http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
 
 Instance: 52ef0e5a-147f-45a8-ac2f-56caf1234144
@@ -241,8 +240,6 @@ Usage: #example
 * entry[=].resource = 84017e72-e1f5-4b9f-b1db-e7d7bdf3ed19
 * entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19"
 * entry[=].resource = 84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19
-* entry[+].fullUrl = "urn:uuid:98d2d6e3-7b64-4d6a-80e9-d053d303fc51"
-* entry[=].resource = 98d2d6e3-7b64-4d6a-80e9-d053d303fc51
 * entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19"
 * entry[=].resource = 84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19
 * entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b1f-b1db-b7d7bdf3ed19"
@@ -1989,25 +1986,6 @@ Usage: #inline
 * code.text = "Urine Pregnancy Test"
 * valueCodeableConcept = $sct#260385009 "Negative"
 * status = #final
-
-Instance: 98d2d6e3-7b64-4d6a-80e9-d053d303fc51
-InstanceOf: ImagingStudy
-Usage: #inline
-* status = #available
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
-* started = "2024-10-03T08:00:00Z"
-* modality = $DCM#PT "Positron Emission Tomography"
-* endpoint = Reference(http://example.com/images/pet-scan) "Link to the PET Scan Images"
-* numberOfSeries = 1
-* series.uid = "1.2.840.10008.5.1.4.1.1.128"
-* series.number = 1
-* series.modality = $DCM#PT "Positron Emission Tomography"
-* series.description = "PET Scan"
-* series.instance.uid = "2.16.124.113543.6003.189642796.63084.16748.2599092903"
-* series.instance.sopClass = urn:ietf:rfc:3986#urn:oid:1.2.840.10008.5.1.4.1.1.2
-* series.instance.number = 1
-* note.time = "2024-10-03T09:00:00Z"
-* note.text = "Deauville Score: 1 indicating complete metabolic response."
 
 Instance: 84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19
 InstanceOf: Condition

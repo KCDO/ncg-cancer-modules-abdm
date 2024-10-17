@@ -4926,61 +4926,6 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:98d2d6e3-7b64-4d6a-80e9-d053d303fc51",
-      "resource": {
-        "resourceType": "ImagingStudy",
-        "id": "98d2d6e3-7b64-4d6a-80e9-d053d303fc51",
-        "status": "available",
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Janedoe ABDM NCG"
-        },
-        "started": "2024-10-03T08:00:00Z",
-        "modality": [
-          {
-            "code": "PT",
-            "system": "http://dicom.nema.org/resources/ontology/DCM",
-            "display": "Positron Emission Tomography"
-          }
-        ],
-        "endpoint": [
-          {
-            "reference": "http://example.com/images/pet-scan",
-            "display": "Link to the PET Scan Images"
-          }
-        ],
-        "numberOfSeries": 1,
-        "series": [
-          {
-            "uid": "1.2.840.10008.5.1.4.1.1.128",
-            "number": 1,
-            "modality": {
-              "code": "PT",
-              "system": "http://dicom.nema.org/resources/ontology/DCM",
-              "display": "Positron Emission Tomography"
-            },
-            "description": "PET Scan",
-            "instance": [
-              {
-                "uid" : "2.16.124.113543.6003.189642796.63084.16748.2599092903",
-                "sopClass" : {
-                  "system" : "urn:ietf:rfc:3986",
-                  "code" : "urn:oid:1.2.840.10008.5.1.4.1.1.2"
-                },
-                "number" : 1
-              }
-            ]
-          }
-        ],
-        "note": [
-          {
-            "time": "2024-10-03T09:00:00Z",
-            "text": "Deauville Score: 1 indicating complete metabolic response."
-          }
-        ]
-      }
-    },    
-    {
       "fullUrl": "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19",
       "resource": {
         "resourceType": "Condition",
