@@ -294,6 +294,7 @@ Usage: #inline
 * section[+].title = "DocumentReference"
 * section[=].code = $sct#371530004 "Clinical consultation report"
 * section[=].code.text = "Clinical consultation report"
+//entry for DocumentReference resource: Joint clinic notes report: Adult Hematolymphoid: DocumentReference section
 * section[=].entry[0] = Reference(urn:uuid:a78a9019-6594-4f39-9922-b5b8752db8a2)
 * section[=].entry[=].type = "DocumentReference"
 * section[=].entry[+] = Reference(urn:uuid:73d1bf22-f201-48db-9aeb-7e004e1fae23)
