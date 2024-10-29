@@ -101,6 +101,21 @@ Usage: #example
 // entry for CancerType Adult Hematolymphoid: Response - interim and end of therapy: DocumentReference
 * entry[+].fullUrl = "urn:uuid:251804aa-e972-47a7-9fa1-e895f8c75b8d"
 * entry[=].resource = 251804aa-e972-47a7-9fa1-e895f8c75b8d
+//entry for DocumentReference resource: Joint clinic notes report: Adult Hematolymphoid: DocumentReference section
+* entry[+].fullUrl = "urn:uuid:1d02a89a-4cc4-4005-9a1e-1363a4bfd088"
+* entry[=].resource = 1d02a89a-4cc4-4005-9a1e-1363a4bfd088
+//entry for MedicationAdministration resource: Chemotherapy - Treatment Cycle details: Adult Hematolymphoid: Chemotherapy Treatment Cycle section
+* entry[+].fullUrl = "urn:uuid:46dffb8e-4c7c-480d-aacd-e4284d813801"
+* entry[=].resource = 46dffb8e-4c7c-480d-aacd-e4284d813801
+//entry for AdverseEvent resource: Chemotherapy - Type and dates, toxicity details: Adult Hematolymphoid: AdverseEvent section
+* entry[+].fullUrl = "urn:uuid:5239ed75-4135-4a3e-8511-bdef1a1632e6"
+* entry[=].resource = 5239ed75-4135-4a3e-8511-bdef1a1632e6
+//entry for Appointment resource: Radiation-RadiotherapyAppointment: Adult Hematolymphoid: OtherObservation section
+* entry[+].fullUrl = "urn:uuid:a3ccf575-da29-4f59-bb9f-8cc08fde8e33"
+* entry[=].resource = a3ccf575-da29-4f59-bb9f-8cc08fde8e33
+//entry for ServiceRequest resource: Radiation-RadiotherapyTreatment: Adult Hematolymphoid: OtherObservation section
+* entry[+].fullUrl = "urn:uuid:a52acb45-c6a7-4650-968f-b7f34de0db25"
+* entry[=].resource = a52acb45-c6a7-4650-968f-b7f34de0db25
 
 * signature.type = urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.1 "Author's Signature"
 * signature.when = "2020-07-09T07:42:33+10:00"
@@ -171,6 +186,9 @@ Usage: #inline
 //section entry for clinicalInformation: AdverseEvent: Medication Mishap
 * section[=].entry = Reference(urn:uuid:ae41cf33-112d-4082-adc9-ce4c8bf7c304)
 * section[=].entry.type = "AdverseEvent"
+// section entry for Chemotherapy: Toxicity: Adult Hematolymphoid Cancer Type
+* section[=].entry = Reference(urn:uuid:5239ed75-4135-4a3e-8511-bdef1a1632e6)
+* section[=].entry.type = "AdverseEvent"
 
 // section for DocumentReference
 * section[+].title = "DocumentReference"
@@ -181,6 +199,9 @@ Usage: #inline
 * section[=].entry[=].type = "DocumentReference"
 //section entry for  clinicalInformation: Adult Hematolymphoid: Joint clinic notes
 * section[=].entry[0] = Reference(urn:uuid:fdf34b46-f242-40a9-92c4-03ddcb6ccf33)
+* section[=].entry[=].type = "DocumentReference"
+//entry for DocumentReference resource: Joint clinic notes report: Adult Hematolymphoid: DocumentReference section
+* section[=].entry[0] = Reference(urn:uuid:1d02a89a-4cc4-4005-9a1e-1363a4bfd088)
 * section[=].entry[=].type = "DocumentReference"
 
 // section for InvestigationAdvice
@@ -218,6 +239,14 @@ Usage: #inline
 //section entry for Adult Hematolymphoid
 * section[=].entry[+] = Reference(urn:uuid:a3b919b1-a69e-4e3b-8e24-39dd0897a9bf)
 * section[=].entry[=].type = "Condition"
+
+//section for Chemotherapy Treatment Cycle
+* section[+].title = "Chemotherapy Treatment Cycle"
+* section[=].code = $sct#18629005 "Administration of drug or medicament" // SNOMED CT code for "Administration of drug or medicament"
+* section[=].code.text = "Chemotherapy Treatment Cycle"
+//entry for MedicationAdministration resource: Chemotherapy - Treatment Cycle: Adult Hematolymphoid: Chemotherapy Treatment Cycle section
+* section[=].entry[0] = Reference(urn:uuid:46dffb8e-4c7c-480d-aacd-e4284d813801)
+* section[=].entry[=].type = "MedicationAdministration"
 
 // Practitioner resource
 Instance: dc36f7c9-7ea5-4984-a02e-7102c215db17
@@ -288,7 +317,7 @@ Usage: #inline
 * status = #final
 * code = $loinc#8302-2 "Body height"
 * code.text = "Body height"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
 * valueQuantity = 160 'cm' "cm"
@@ -303,7 +332,7 @@ Usage: #inline
 * status = #final
 * code = $loinc#29463-7 "weight"
 * code.text = "weight"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
 * valueQuantity = 62 'kg' "kg"
@@ -318,7 +347,7 @@ Usage: #inline
 * status = #final
 * code = $loinc#39156-5 "Body mass index (BMI) [Ratio]"
 * code.text = "Body mass index (BMI) [Ratio]"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * effectiveDateTime = "2024-08-06T12:18:11+05:30"
 * valueQuantity = 62 'kg/m2' "kg/m2"
@@ -333,7 +362,7 @@ Usage: #inline
 * status = #final
 * code = $loinc#882-1 "ABO and Rh group [Type] in Blood"
 * code.text = "ABO and Rh group [Type] in Blood"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * valueCodeableConcept = $sct#365637002 "Finding of ABO blood group"
 * valueCodeableConcept.text = "A+"
@@ -354,6 +383,16 @@ Usage: #inline
 * hospitalization.dischargeDisposition = $discharge-disposition#home "Home"
 * hospitalization.dischargeDisposition.text = "Discharged to Home Care"
 
+// Location resource
+Instance: 083c2832-0571-406c-8db8-917fe54dc90d
+InstanceOf: Location
+Usage: #inline
+* name = "HBB-Basement RT Console"
+* description = "Radiotherapy Console at Basement"
+* identifier.system = "http://example.com/locations"
+* identifier.value = "HBB-RT-Basement-Console"
+* status = #active  // Status of the location
+
 // clinicalInformation AllergyIntolerance resource for drugAllergy: Allergy to peanut
 Instance: e5e2db69-f591-4a8d-a4f2-ae2912e09601
 InstanceOf: AllergyIntolerance
@@ -369,7 +408,7 @@ Usage: #inline
 * category = #food
 * code = $sct#91935009 "Allergy to peanut"
 * code.text = "Groundnut (peanut) allergy"
-* patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* patient = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * patient.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
 * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
@@ -391,7 +430,7 @@ Usage: #inline
 * category = #medication
 * code = $sct#91936005 "Allergy to penicillin"
 * code.text = "Allergy to penicillin"
-* patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* patient = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * patient.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
 * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
@@ -410,7 +449,7 @@ Usage: #inline
 * category.text = "Problem List Item"
 * code = $sct#38341003 "High blood pressure"
 * code.text = "Hypertension"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
 
@@ -426,7 +465,7 @@ Usage: #inline
 * category.text = "Encounter Diagnosis"
 * code = $sct#53741008 "Coronary artery disease"
 * code.text = "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
 
@@ -442,7 +481,7 @@ Usage: #inline
 * actuality = #actual
 * category = $adverse-event-category#product-use-error "Product Use Error"
 * category.text = "Product Use Error"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * date = "2024-08-06T12:18:11+05:30"
 * detected = "2024-08-06T12:18:11+05:30"
@@ -468,7 +507,7 @@ Usage: #inline
 * status = #preparation
 * code = $sct#699282002 "Hypertension diet assessment (procedure)"
 * code.text = "Hypertension diet assessment (procedure)"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * performedDateTime = "2020-01-01T10:30:00+05:30"
 * note.text = "This patient is suffering from Stage 2 Hypertension."
@@ -483,7 +522,7 @@ Usage: #inline
 * status = #preparation
 * code = $sct#232717009 "Coronary artery bypass grafting (procedure)"
 * code.text = "Coronary artery bypass grafting (procedure)"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * performedDateTime = "2022-12-01T10:30:00+05:30"
 * note.text = "This patient is suffering from severe coronary artery disease. This is a critical condition!"
@@ -495,7 +534,7 @@ Usage: #inline
 * status = #active
 * intent = #order
 * code.text = "Chest CT"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * occurrenceDateTime = "2024-11-08T09:33:27+07:00"
 * requester = Reference(urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17)
@@ -508,7 +547,7 @@ Usage: #inline
 * status = #active
 * intent = #order
 * code.text = "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * occurrenceDateTime = "2024-12-27T09:33:27+07:00"
 * requester = Reference(urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17)
@@ -524,7 +563,7 @@ Usage: #inline
 * status = #completed
 * code = $sct#448826009 "Brief operative note"
 * code.text = "Surgical summary with post Op Course"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * performedDateTime = "2022-12-01T10:30:00+05:30"
 * note.text = "Surgical summary with post Op Course"
@@ -541,7 +580,7 @@ Usage: #inline
 * status = #current
 * type = $sct#448826009 "Brief operative note"
 * type.text = "Bone marrow or peripheral blood Surgical summary with post Op Course report"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "Qm9uZSBtYXJyb3c="
@@ -557,7 +596,7 @@ Usage: #inline
 * status = #current
 * type = $loinc#34751-8 "Anesthesiology Preoperative evaluation and management note"
 * type.text = "Anesthesiology Preoperative evaluation and management note"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bHVuZzZtb3d0"
@@ -574,7 +613,7 @@ Usage: #inline
 * clinicalStatus.text = "Active"
 * code = $sct#91861009 "Acute Myeloid leukemia"
 * code.text = "Acute Myeloid leukemia"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 
 // CancerType Condition resource for Adult Hematolymphoid
@@ -588,7 +627,7 @@ Usage: #inline
 * clinicalStatus.text = "Active"
 * code = $sct#269475001 "Malignant tumor of lymphoid hemopoietic and related tissue"
 * code.text = "Malignant tumor of lymphoid hemopoietic and related tissue"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 
 // CancerType DocumentReference resource for Adult Hematolymphoid: Joint clinic notes
@@ -601,7 +640,7 @@ Usage: #inline
 * status = #current
 * type = $sct#12345 "Joint clinic notes"
 * type.text = "Joint clinic notes report"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bmtuaw=="
@@ -617,7 +656,7 @@ Usage: #inline
 * status = #completed
 * code = $sct#108290001 "Radiotherapy"
 * code.text = "Radiotherapy"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * report = Reference(urn:uuid:4849a8dd-4d03-4924-b841-c1cacceed856)
 * report.type = "DocumentReference"
@@ -632,7 +671,7 @@ Usage: #inline
 * status = #current
 * type = $sct#108290001 "Radiotherapy"
 * type.text = "Radiotherapy report"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bmprbmtqbmpr"
@@ -648,7 +687,7 @@ Usage: #inline
 * status = #completed
 * code = $sct#84755001 "Radiation therapy treatment management"
 * code.text = "Response - interim and end of therapy"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41)
 * subject.type = "Patient"
 * report = Reference(urn:uuid:251804aa-e972-47a7-9fa1-e895f8c75b8d)
 * report.type = "DocumentReference"
@@ -663,8 +702,86 @@ Usage: #inline
 * status = #current
 * type = $sct#84755001 "Radiation therapy treatment management"
 * type.text = "Response - interim and end of therapy report"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Johndoe ABDM NCG"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Johndoe ABDM NCG"
 * subject.type = "Patient"
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "bmprbmtqbmpr"
 * content.attachment.title = "Response - interim and end of therapy"
+
+//DocumentReference resource: Adult Hematolymphoid: Joint clinic notes
+Instance: 1d02a89a-4cc4-4005-9a1e-1363a4bfd088
+InstanceOf: DocumentReference
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.158+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+* status = #current
+* type = $sct#818981001 "Cross-sectional abdomen"
+* type.text = "Joint clinic notes report"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Janedoe ABDM NCG"
+* subject.type = "Patient"
+* content.attachment.contentType = #application/pdf
+* content.attachment.data = "bmtuaw=="
+* content.attachment.title = "Joint clinic notes"
+
+//MedicationAdministration resource: Chemotherapy - Treatment Cycle: Adult Hematolymphoid: Chemotherapy Treatment Cycle section
+Instance: 46dffb8e-4c7c-480d-aacd-e4284d813801
+InstanceOf: MedicationAdministration
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.185+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationAdministration"
+* status = #completed  // Status indicating that Cycle 3 is completed
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Janedoe ABDM NCG"
+* subject.type = "Patient" // Reference to the patient
+* effectiveDateTime = "2024-09-24T09:00:00Z"  // Due date for Cycle 3
+* category = $sct#18629005 "Administration of drug or medicament" // SNOMED CT code for "Administration of drug or medicament"
+* category.text = "Administration of drug or medicament"
+* medicationCodeableConcept = $rxnorm#582620 "R-CHOP Chemotherapy"  // Example code for R-CHOP chemotherapy
+* dosage.text = "Administer Cycle 3 of R-CHOP chemotherapy"
+
+//AdverseEvent resource: Chemotherapy - Toxicity: Adult Hematolymphoid: AdverseEvent section
+Instance: 5239ed75-4135-4a3e-8511-bdef1a1632e6
+InstanceOf: AdverseEvent
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-08-06T12:18:11.185+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent"
+* identifier.system = "http://example.com/adverseEvent"
+* identifier.value = "5239ed75-4135-4a3e-8511-bdef1a1632e6"
+* actuality = #actual
+* event = $sct#304540007 "Adverse reaction to chemotherapy" // SNOMED CT code for "Adverse reaction to chemotherapy"
+* category = $sct#304540007 "Chemotherapy-related toxicity" // Category is also chemotherapy-related toxicity
+* category.text = "Patient experienced mild paresthesia following chemotherapy." // Updated from description
+* seriousness = $sct#274350006 "Paresthesia" // SNOMED CT code for "Paresthesia"
+* severity = $loinc#80323-8 "Grade 1 CTCAE toxicity" // LOINC code for CTCAE Grade 1 toxicity
+* date = "2024-09-17T09:00:00Z"  // Date when the toxicity event occurred
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Janedoe ABDM NCG"
+* subject.type = "Patient" // Reference to the patient experiencing the adverse event
+
+//Appointment resource: Radiation - RadiotherapyAppointment: Adult Hematolymphoid: otherObservations section
+Instance: a3ccf575-da29-4f59-bb9f-8cc08fde8e33
+InstanceOf: Appointment
+Usage: #inline
+* status = #booked  // Status of the appointment
+* appointmentType = $sct#258245002 "Radiotherapy treatment simulation"  // SNOMED CT code for "Radiotherapy treatment simulation"
+* start = "2021-12-09T13:30:00Z"  // Provisional Simulation Date and Time
+* description = "Provisional RT Starting date 2021-12-24 on TRUEBEAM, RAPID ARC"
+* participant[0].actor = Reference(urn:uuid:083c2832-0571-406c-8db8-917fe54dc90d) "HBB-Basement RT Console"  // Reference to the location
+* participant[0].actor.type = "Location"
+* participant[0].status = #accepted
+
+//ServiceRequest resource: Radiation - RadiotherapyTreatment: Adult Hematolymphoid: otherObservations section
+Instance: a52acb45-c6a7-4650-968f-b7f34de0db25
+InstanceOf: ServiceRequest
+Usage: #inline
+* status = #active  // Status of the request
+* intent = #order  // Intent of the request
+* category = $sct#103693007 "Therapeutic procedure"  // SNOMED CT code for therapeutic procedure
+* code = $sct#136873007 "Radiotherapy treatment"  // SNOMED CT code for "Radiotherapy treatment"
+* code.text = "Radiotherapy treatment"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "John Doe"  // Replace with the actual patient reference
+* subject.type = "Patient"
+* occurrenceDateTime = "2021-12-24T00:00:00Z"  // Provisional Start Date
+* requester = Reference(urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17) "Dr. Smith"  // Replace with the actual requester reference
+* requester.type = "Practitioner"
