@@ -88,83 +88,171 @@
               {
                 "reference": "urn:uuid:a3b919b1-a69e-4e3b-8e24-39dd0897a9bf",
                 "type": "Condition"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19",
+                "type": "Condition"
+              },
+              {
+                "reference": "urn:uuid:123e4567-e89b-12d3-a456-426614174000",
+                "type": "Condition"
               }
             ]
           },
           {
-            "title": "MedicalHistory",
+            "title": "PhysicalExamination",
             "code": {
               "coding": [
                 {
-                  "code": "1003642006",
-                  "system": "http://snomed.info/sct",
-                  "display": "Past medical history section"
+                  "code": "29545-1",
+                  "system": "http://loinc.org",
+                  "display": "Physical findings Narrative"
                 }
               ],
-              "text": "Past medical history section"
+              "text": "Physical Examination Section"
             },
             "entry": [
               {
-                "reference": "urn:uuid:93927a08-b808-4716-8f0b-765a9620259b",
-                "type": "Condition"
+                "reference": "urn:uuid:b1bf7889-9c56-4707-aa1e-3b21a5a359d0",
+                "type": "Observation"
               },
               {
-                "reference": "urn:uuid:f8c8b222-7099-4f96-90cc-4efc8adc520a",
-                "type": "Condition"
+                "reference": "urn:uuid:ce490d3d-3f41-496a-be2d-7acd40326806",
+                "type": "Observation"
               },
               {
-                "reference": "urn:uuid:93927a08-b808-4716-8f0b-765a9620259b",
-                "type": "Condition"
+                "reference": "urn:uuid:7be9b46e-9711-43c5-8f82-37bc50112434",
+                "type": "Observation"
               },
               {
-                "reference": "urn:uuid:f8c8b222-7099-4f96-90cc-4efc8adc520a",
-                "type": "Condition"
+                "reference": "urn:uuid:1a1fc8ff-9d82-4d90-9de2-94e48a7369ff",
+                "type": "Observation"
               },
               {
-                "reference": "urn:uuid:2388c966-2604-48c1-b1de-f810f0d6eb11",
-                "type": "Procedure"
+                "reference": "urn:uuid:bf4669ff-07fc-4ce2-a7f6-1eed70622d8a",
+                "type": "Observation"
               },
               {
-                "reference": "urn:uuid:60ccb1f6-6a42-4384-8c12-5d04f8f76e36",
-                "type": "Procedure"
+                "reference": "urn:uuid:b0bbe38b-d0bf-4ec9-a211-e84daf347fed",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:f1fadb91-cd4a-422d-bf04-955fd5eefb3a",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:e2da4251-3030-4d3d-a263-8d10afe424ee",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:aaec0211-c8dc-45ef-8241-2239c85f42cd",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:2b14cd33-6e47-46e6-8849-b53573449a35",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:605f4666-7121-4b9d-b0f5-663b7b16a9d0",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:d854598c-50fe-47e9-a705-e51c79d5faa9",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b1f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b2f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b3f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b4f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b5f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b6f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b7f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b8f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b9f-b1db-e7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4b1f-b1db-b7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:84017e72-a1f5-4b1f-b1db-c7d7bdf3ed19",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:123e4567-e89b-12d3-a456-426614174002",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:123e4567-e89b-12d3-a456-426614174003",
+                "type": "Observation"
               }
             ]
           },
           {
-            "title": "Adverse Events",
+            "title": "Medications",
             "code": {
               "coding": [
                 {
-                  "code": "418019003",
+                  "code": "721912009",
                   "system": "http://snomed.info/sct",
-                  "display": "Accidental event"
+                  "display": "Medication summary document (record artifact)"
                 }
               ],
-              "text": "Adverse Events"
+              "text": "Medication summary document (record artifact)"
             },
             "entry": [
               {
-                "reference": "urn:uuid:ae41cf33-112d-4082-adc9-ce4c8bf7c304",
-                "type": "AdverseEvent"
+                "reference": "urn:uuid:123e4567-e89b-12d3-a456-426614174001",
+                "type": "MedicationStatement"
               }
             ]
           },
           {
-            "title": "DocumentReference",
+            "title": "Chemotherapy Treatment Cycle",
             "code": {
               "coding": [
                 {
-                  "code": "373942005",
+                  "code": "18629005",
                   "system": "http://snomed.info/sct",
-                  "display": "Discharge summary"
+                  "display": "Administration of drug or medicament"
                 }
               ],
-              "text": "Discharge summary"
+              "text": "Chemotherapy Treatment Cycle"
             },
             "entry": [
               {
-                "reference": "urn:uuid:fdf34b46-f242-40a9-92c4-03ddcb6ccf33",
-                "type": "DocumentReference"
+                "reference": "urn:uuid:46dffb8e-4c7c-480d-aacd-e4284d813801",
+                "type": "MedicationAdministration"
               }
             ]
           },
@@ -182,7 +270,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:cbd93548-26e5-4e10-b2b5-485f662be731",
+                "reference": "urn:uuid:216861b1-ca70-41bc-be26-d5b0994a7019",
                 "type": "ServiceRequest"
               },
               {
@@ -392,7 +480,7 @@
           "text": "Body height"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -429,7 +517,7 @@
           "text": "weight"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -466,7 +554,7 @@
           "text": "Body mass index (BMI) [Ratio]"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "effectiveDateTime": "2024-08-06T12:18:11+05:30",
@@ -502,7 +590,7 @@
           "text": "ABO and Rh group [Type] in Blood"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "valueCodeableConcept": {
@@ -609,7 +697,7 @@
           "text": "Groundnut (peanut) allergy"
         },
         "patient": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -672,7 +760,7 @@
           "text": "Allergy to penicillin"
         },
         "patient": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -732,7 +820,7 @@
           "text": "Hypertension"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -783,7 +871,7 @@
           "text": "This code represents the diagnosis of coronary artery disease, a condition characterized by the narrowing or blockage of the coronary arteries due to atherosclerosis, which can lead to chest pain, heart attacks, and other complications."
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -820,7 +908,7 @@
           }
         ],
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "date": "2024-08-06T12:18:11+05:30",
@@ -901,7 +989,7 @@
           "text": "Hypertension diet assessment (procedure)"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "performedDateTime": "2020-01-01T10:30:00+05:30",
@@ -936,7 +1024,7 @@
           "text": "Coronary artery bypass grafting (procedure)"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "performedDateTime": "2022-12-01T10:30:00+05:30",
@@ -958,7 +1046,7 @@
           "text": "Chest CT"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -980,7 +1068,7 @@
           "text": "Thyroxine (T4) free [Mass/​volume] in Serum or Plasma"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "occurrenceDateTime": "2024-12-27T09:33:27+07:00",
@@ -1014,7 +1102,7 @@
           "text": "Surgical summary with post Op Course"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "performedDateTime": "2022-12-01T10:30:00+05:30",
@@ -1055,7 +1143,7 @@
           "text": "Bone marrow or peripheral blood Surgical summary with post Op Course report"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -1094,7 +1182,7 @@
           "text": "Anesthesiology Preoperative evaluation and management note"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -1142,7 +1230,7 @@
           "text": "Acute Myeloid leukemia"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         }
       }
@@ -1180,7 +1268,7 @@
           "text": "Malignant tumor of lymphoid hemopoietic and related tissue"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         }
@@ -1210,7 +1298,7 @@
           "text": "Joint clinic notes report"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -1249,7 +1337,7 @@
           "text": "Radiotherapy"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "report": [
@@ -1284,7 +1372,7 @@
           "text": "Radiotherapy report"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -1323,7 +1411,7 @@
           "text": "Response - interim and end of therapy"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "type": "Patient"
         },
         "report": [
@@ -1358,7 +1446,7 @@
           "text": "Response - interim and end of therapy report"
         },
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
           "display": "Johndoe ABDM NCG",
           "type": "Patient"
         },
@@ -1371,6 +1459,1665 @@
             }
           }
         ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1d02a89a-4cc4-4005-9a1e-1363a4bfd088",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "1d02a89a-4cc4-4005-9a1e-1363a4bfd088",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.158+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentReference"
+          ]
+        },
+        "status": "current",
+        "type": {
+          "coding": [
+            {
+              "code": "818981001",
+              "system": "http://snomed.info/sct",
+              "display": "Cross-sectional abdomen"
+            }
+          ],
+          "text": "Joint clinic notes report"
+        },
+        "subject": {
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
+          "display": "Janedoe ABDM NCG",
+          "type": "Patient"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "application/pdf",
+              "data": "bmtuaw==",
+              "title": "Joint clinic notes"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:46dffb8e-4c7c-480d-aacd-e4284d813801",
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "46dffb8e-4c7c-480d-aacd-e4284d813801",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.185+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationAdministration"
+          ]
+        },
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
+          "display": "Janedoe ABDM NCG",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2024-09-24T09:00:00Z",
+        "category": {
+          "coding": [
+            {
+              "code": "18629005",
+              "system": "http://snomed.info/sct",
+              "display": "Administration of drug or medicament"
+            }
+          ],
+          "text": "Administration of drug or medicament"
+        },
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "code": "582620",
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "display": "R-CHOP Chemotherapy"
+            }
+          ]
+        },
+        "dosage": {
+          "text": "Administer Cycle 3 of R-CHOP chemotherapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5239ed75-4135-4a3e-8511-bdef1a1632e6",
+      "resource": {
+        "resourceType": "AdverseEvent",
+        "id": "5239ed75-4135-4a3e-8511-bdef1a1632e6",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.185+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AdverseEvent"
+          ]
+        },
+        "identifier": {
+          "system": "http://example.com/adverseEvent",
+          "value": "5239ed75-4135-4a3e-8511-bdef1a1632e6"
+        },
+        "actuality": "actual",
+        "event": {
+          "coding": [
+            {
+              "code": "304540007",
+              "system": "http://snomed.info/sct",
+              "display": "Adverse reaction to chemotherapy"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "304540007",
+                "system": "http://snomed.info/sct",
+                "display": "Chemotherapy-related toxicity"
+              }
+            ],
+            "text": "Patient experienced mild paresthesia following chemotherapy."
+          }
+        ],
+        "seriousness": {
+          "coding": [
+            {
+              "code": "274350006",
+              "system": "http://snomed.info/sct",
+              "display": "Paresthesia"
+            }
+          ]
+        },
+        "severity": {
+          "coding": [
+            {
+              "code": "80323-8",
+              "system": "http://loinc.org",
+              "display": "Grade 1 CTCAE toxicity"
+            }
+          ]
+        },
+        "date": "2024-09-17T09:00:00Z",
+        "subject": {
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
+          "display": "Janedoe ABDM NCG",
+          "type": "Patient"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a3ccf575-da29-4f59-bb9f-8cc08fde8e33",
+      "resource": {
+        "resourceType": "Appointment",
+        "id": "a3ccf575-da29-4f59-bb9f-8cc08fde8e33",
+        "status": "booked",
+        "appointmentType": {
+          "coding": [
+            {
+              "code": "258245002",
+              "system": "http://snomed.info/sct",
+              "display": "Radiotherapy treatment simulation"
+            }
+          ]
+        },
+        "start": "2021-12-09T13:30:00Z",
+        "description": "Provisional RT Starting date 2021-12-24 on TRUEBEAM, RAPID ARC",
+        "participant": [
+          {
+            "actor": {
+              "reference": "urn:uuid:083c2832-0571-406c-8db8-917fe54dc90d",
+              "display": "HBB-Basement RT Console",
+              "type": "Location"
+            },
+            "status": "accepted"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a52acb45-c6a7-4650-968f-b7f34de0db25",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "a52acb45-c6a7-4650-968f-b7f34de0db25",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "103693007",
+                "system": "http://snomed.info/sct",
+                "display": "Therapeutic procedure"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "136873007",
+              "system": "http://snomed.info/sct",
+              "display": "Radiotherapy treatment"
+            }
+          ],
+          "text": "Radiotherapy treatment"
+        },
+        "subject": {
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
+          "display": "John Doe",
+          "type": "Patient"
+        },
+        "occurrenceDateTime": "2021-12-24T00:00:00Z",
+        "requester": {
+          "reference": "urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17",
+          "display": "Dr. Smith",
+          "type": "Practitioner"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b1bf7889-9c56-4707-aa1e-3b21a5a359d0",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b1bf7889-9c56-4707-aa1e-3b21a5a359d0",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "8310-5",
+              "system": "http://loinc.org",
+              "display": "Body Temperature"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 98,
+          "code": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "unit": "°F"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ce490d3d-3f41-496a-be2d-7acd40326806",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "ce490d3d-3f41-496a-be2d-7acd40326806",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "8867-4",
+              "system": "http://loinc.org",
+              "display": "Heart rate"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 94,
+          "code": "/min",
+          "system": "http://unitsofmeasure.org",
+          "unit": "/min"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7be9b46e-9711-43c5-8f82-37bc50112434",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "7be9b46e-9711-43c5-8f82-37bc50112434",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "9279-1",
+              "system": "http://loinc.org",
+              "display": "Respiratory Rate"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 22,
+          "code": "/min",
+          "system": "http://unitsofmeasure.org",
+          "unit": "/min"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1a1fc8ff-9d82-4d90-9de2-94e48a7369ff",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "1a1fc8ff-9d82-4d90-9de2-94e48a7369ff",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "85354-9",
+              "system": "http://loinc.org",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8480-6",
+                  "system": "http://loinc.org",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 100,
+              "code": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8462-4",
+                  "system": "http://loinc.org",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 75,
+              "code": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "unit": "mmHg"
+            }
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bf4669ff-07fc-4ce2-a7f6-1eed70622d8a",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "bf4669ff-07fc-4ce2-a7f6-1eed70622d8a",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "2708-6",
+              "system": "http://loinc.org",
+              "display": "Oxygen saturation in Arterial blood"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 99,
+          "code": "%",
+          "system": "http://unitsofmeasure.org",
+          "unit": "%"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b0bbe38b-d0bf-4ec9-a211-e84daf347fed",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b0bbe38b-d0bf-4ec9-a211-e84daf347fed",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "38208-5",
+              "system": "http://loinc.org",
+              "display": "Pain severity - Reported"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 1,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "/10"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f1fadb91-cd4a-422d-bf04-955fd5eefb3a",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "f1fadb91-cd4a-422d-bf04-955fd5eefb3a",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "29463-7",
+              "system": "http://loinc.org",
+              "display": "Weight"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 43.9,
+          "code": "kg",
+          "system": "http://unitsofmeasure.org",
+          "unit": "kg"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e2da4251-3030-4d3d-a263-8d10afe424ee",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "e2da4251-3030-4d3d-a263-8d10afe424ee",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "89247-1",
+              "system": "http://loinc.org",
+              "display": "ECOG Performance Status score"
+            }
+          ]
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "code": "89247-1",
+              "system": "http://loinc.org",
+              "display": "ECOG Performance Status score"
+            },
+            {
+              "code": "425389002",
+              "system": "http://snomed.info/sct",
+              "display": "Eastern Cooperative Oncology Group performance status - grade 0 (finding)"
+            }
+          ],
+          "text": "ECOG 0"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:aaec0211-c8dc-45ef-8241-2239c85f42cd",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "aaec0211-c8dc-45ef-8241-2239c85f42cd",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "718-7",
+              "system": "http://loinc.org",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 10.7,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "g/dL"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:2b14cd33-6e47-46e6-8849-b53573449a35",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "2b14cd33-6e47-46e6-8849-b53573449a35",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "26515-7",
+              "system": "http://loinc.org",
+              "display": "Platelets [#/volume] in Blood"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 204,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "x10^9/L"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:605f4666-7121-4b9d-b0f5-663b7b16a9d0",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "605f4666-7121-4b9d-b0f5-663b7b16a9d0",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "6690-2",
+              "system": "http://loinc.org",
+              "display": "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 3.31,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "x10^9/L"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d854598c-50fe-47e9-a705-e51c79d5faa9",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "d854598c-50fe-47e9-a705-e51c79d5faa9",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "26499-4",
+              "system": "http://loinc.org",
+              "display": "Neutrophils [#/volume] in Blood"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 2.22,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "x10^9/L"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b1f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b1f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "1558-6",
+              "system": "http://loinc.org",
+              "display": "Fasting glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Fasting Blood Glucose"
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 85,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b2f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b2f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "3084-1",
+              "system": "http://loinc.org",
+              "display": "Urate [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Uric Acid"
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.52,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b3f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b3f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "2160-0",
+              "system": "http://loinc.org",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Serum Creatinine"
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 0.35,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b4f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b4f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "1751-7",
+              "system": "http://loinc.org",
+              "display": "Albumin [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Serum Albumin"
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.18,
+          "code": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "g/dL"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b5f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b5f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "1975-2",
+              "system": "http://loinc.org",
+              "display": "Bilirubin.total [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Total Bilirubin"
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "valueQuantity": {
+          "value": 0.42,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b6f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b6f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "1920-8",
+              "system": "http://loinc.org",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            },
+            {
+              "code": "1742-6",
+              "system": "http://loinc.org",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST/ALT"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "1920-8",
+                  "system": "http://loinc.org",
+                  "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 63,
+              "code": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "unit": "U/L"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "1742-6",
+                  "system": "http://loinc.org",
+                  "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 58,
+              "code": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "unit": "U/L"
+            }
+          }
+        ],
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b7f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b7f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "2532-0",
+              "system": "http://loinc.org",
+              "display": "Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "LDH"
+        },
+        "valueQuantity": {
+          "value": 298,
+          "code": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "unit": "U/L"
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b8f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b8f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "17861-6",
+              "system": "http://loinc.org",
+              "display": "Calcium [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Calcium [Mass/volume] in Serum or Plasma"
+        },
+        "valueQuantity": {
+          "value": 9.44,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b9f-b1db-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b9f-b1db-e7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "14879-1",
+              "system": "http://loinc.org",
+              "display": "Phosphate [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Phosphate"
+        },
+        "valueQuantity": {
+          "value": 4.21,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        },
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "2106-3",
+              "system": "http://loinc.org",
+              "display": "Choriogonadotropin (pregnancy test) [Presence] in Urine"
+            }
+          ],
+          "text": "Urine Pregnancy Test"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "code": "260385009",
+              "system": "http://snomed.info/sct",
+              "display": "Negative"
+            }
+          ]
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "encounter-diagnosis",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Encounter Diagnosis"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41",
+          "display": "Patient"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "C83.3",
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "display": "Diffuse large B-cell lymphoma"
+            }
+          ],
+          "text": "Relapsed high-grade B-cell lymphoma"
+        },
+        "note": [
+          {
+            "text": "Treatment completed: 8 cycles of R-GemOx"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4b1f-b1db-b7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-e1f5-4b1f-b1db-b7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "82159-5",
+              "system": "http://loinc.org",
+              "display": "Respiratory pathogens DNA and RNA panel - Nasopharynx by NAA with non-probe detection"
+            }
+          ],
+          "text": "Itching (Pruritus)"
+        },
+        "bodySite": {
+          "coding": [
+            {
+              "code": "368208006",
+              "system": "http://snomed.info/sct",
+              "display": "Left upper arm"
+            }
+          ]
+        },
+        "note": [
+          {
+            "text": "With macular lesions"
+          }
+        ],
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-e1f5-4c1f-b1da-e7d7bdf3ed19",
+      "resource": {
+        "resourceType": "AdverseEvent",
+        "id": "84017e72-e1f5-4c1f-b1da-e7d7bdf3ed19",
+        "actuality": "actual",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "medication-mishap",
+                "system": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
+                "display": "Medication Mishap"
+              }
+            ],
+            "text": "Medication Mishap"
+          }
+        ],
+        "event": {
+          "coding": [
+            {
+              "code": "18846006",
+              "system": "http://snomed.info/sct",
+              "display": "Chemotherapy-induced nausea and vomiting (disorder)"
+            }
+          ],
+          "text": "Chemotherapy-induced nausea and vomiting (CINV)"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:84017e72-a1f5-4b1f-b1db-c7d7bdf3ed19",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "84017e72-a1f5-4b1f-b1db-c7d7bdf3ed19",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "72049000",
+              "system": "http://snomed.info/sct",
+              "display": "General condition"
+            }
+          ],
+          "text": "Physical Examination"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "72049000",
+                  "system": "http://snomed.info/sct",
+                  "display": "General condition"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "Head"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "Eyes"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "ENT"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "Cardiovascular"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "Dermatologic"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "263654008",
+                  "system": "http://snomed.info/sct",
+                  "display": "Abnormal (qualifier value)"
+                }
+              ],
+              "text": "Macular lesions on bilateral forearm and legs"
+            }
+          },
+          {
+            "code": {
+              "text": "Musculoskeletal"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "Respiratory"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "Gastrointestinal"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "Genitourinary"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "text": "Neurologic"
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "17621005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Normal (qualifier value)"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:216861b1-ca70-41bc-be26-d5b0994a7019",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "216861b1-ca70-41bc-be26-d5b0994a7019",
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "58410-2",
+              "system": "http://loinc.org",
+              "display": "CBC panel - Blood by Automated count"
+            },
+            {
+              "code": "306146008",
+              "system": "http://snomed.info/sct",
+              "display": "Referral to chemical pathology service (procedure)"
+            },
+            {
+              "code": "24326-1",
+              "system": "http://loinc.org",
+              "display": "Electrolytes 1998 panel - Serum or Plasma"
+            },
+            {
+              "code": "2532-0",
+              "system": "http://loinc.org",
+              "display": "Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma"
+            },
+            {
+              "code": "17861-6",
+              "system": "http://loinc.org",
+              "display": "Calcium [Mass/volume] in Serum or Plasma"
+            },
+            {
+              "code": "14879-1",
+              "system": "http://loinc.org",
+              "display": "Phosphate [Moles/volume] in Serum or Plasma"
+            },
+            {
+              "code": "2106-3",
+              "system": "http://loinc.org",
+              "display": "Choriogonadotropin (pregnancy test) [Presence] in Urine"
+            },
+            {
+              "code": "24865-8",
+              "system": "http://loinc.org",
+              "display": "CT Pelvis"
+            }
+          ]
+        },
+        "occurrenceDateTime": "2024-11-24T00:00:00Z",
+        "note": [
+          {
+            "text": "Next visit in 2 months"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:123e4567-e89b-12d3-a456-426614174000",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "code": {
+          "coding": [
+            {
+              "code": "C83.3",
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "display": "Diffuse large B-cell lymphoma"
+            }
+          ],
+          "text": "Relapsed DLBCL"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Active"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:123e4567-e89b-12d3-a456-426614174001",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "123e4567-e89b-12d3-a456-426614174001",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
+          ]
+        },
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "code": "57858007",
+              "system": "http://snomed.info/sct",
+              "display": "Guanosine diphosphate (substance)"
+            }
+          ]
+        },
+        "dateAsserted": "2020-02-02T14:58:58.181+05:30",
+        "effectiveDateTime": "2024-10-15T00:00:00Z",
+        "note": [
+          {
+            "text": "Cycle 3 of Chemotherapy (R-CHOP or GDP)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:123e4567-e89b-12d3-a456-426614174002",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "123e4567-e89b-12d3-a456-426614174002",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "15628003",
+              "system": "http://snomed.info/sct",
+              "display": "Gonorrhea (disorder)"
+            }
+          ],
+          "text": "Amenorrhea"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "code": "263654008",
+              "system": "http://snomed.info/sct",
+              "display": "Abnormal"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-09-20",
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:123e4567-e89b-12d3-a456-426614174003",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "123e4567-e89b-12d3-a456-426614174003",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "19080-1",
+              "system": "http://loinc.org",
+              "display": "Choriogonadotropin [Units/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Elevated HCG"
+        },
+        "valueQuantity": {
+          "value": 1500,
+          "code": "mg/m2",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/m²"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "code": "POS",
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "display": "Positive"
+              }
+            ]
+          }
+        ],
+        "effectiveDateTime": "2024-09-30T12:00:00Z",
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Janedoe ABDM NCG"
+        },
+        "status": "final"
       }
     }
   ],
