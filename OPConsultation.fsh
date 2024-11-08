@@ -12,9 +12,9 @@ Alias: $condition-ver-status = http://terminology.hl7.org/CodeSystem/condition-v
 Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
 Alias: $adverse-event-category = http://terminology.hl7.org/CodeSystem/adverse-event-category
 Alias: $adverse-event-severity = http://terminology.hl7.org/CodeSystem/adverse-event-severity
-Alias: $adverse-event-outcome = http://terminology.hl7.org/CodeSystem/adverse-event-outcome
 Alias: $rxnorm = http://www.nlm.nih.gov/research/umls/rxnorm
 Alias: $ucum = http://unitsofmeasure.org
+Alias: $v3-ObservationInterpretation = http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
 
 Instance: 52ef0e5a-147f-45a8-ac2f-56caf1234144
 InstanceOf: Bundle
@@ -104,7 +104,7 @@ Usage: #example
 //entry for AdverseEvent resource: Chemotherapy - Type and dates, toxicity details: Adult Hematolymphoid: AdverseEvent section
 * entry[+].fullUrl = "urn:uuid:61b91860-0b54-4c4a-857b-2bcf48794316"
 * entry[=].resource = 61b91860-0b54-4c4a-857b-2bcf48794316
-//entry for Appointment resource: Radiation-RadiotherapyAppointment: Adult Hematolymphoid: OtherObservation section
+//entry for Appointment resource: Radiation-RadiotherapyAppointment: Adult Hematolymphoid: FollowUp section
 * entry[+].fullUrl = "urn:uuid:fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf"
 * entry[=].resource = fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf
 //entry for ServiceRequest resource: Radiation-RadiotherapyTreatment: Adult Hematolymphoid: OtherObservation section
@@ -200,6 +200,68 @@ Usage: #example
 * entry[=].resource = 2f9d3f4b-cb2e-4c7a-90f9-4a07b9a2e5f1
 * entry[+].fullUrl = "urn:uuid:3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2"
 * entry[=].resource = 3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2
+* entry[+].fullUrl = "urn:uuid:b1bf7889-9c56-4707-aa1e-3b21a5a359d0"
+* entry[=].resource = b1bf7889-9c56-4707-aa1e-3b21a5a359d0
+* entry[+].fullUrl = "urn:uuid:ce490d3d-3f41-496a-be2d-7acd40326806"
+* entry[=].resource = ce490d3d-3f41-496a-be2d-7acd40326806
+* entry[+].fullUrl = "urn:uuid:7be9b46e-9711-43c5-8f82-37bc50112434"
+* entry[=].resource = 7be9b46e-9711-43c5-8f82-37bc50112434
+* entry[+].fullUrl = "urn:uuid:1a1fc8ff-9d82-4d90-9de2-94e48a7369ff"
+* entry[=].resource = 1a1fc8ff-9d82-4d90-9de2-94e48a7369ff
+* entry[+].fullUrl = "urn:uuid:bf4669ff-07fc-4ce2-a7f6-1eed70622d8a"
+* entry[=].resource = bf4669ff-07fc-4ce2-a7f6-1eed70622d8a
+* entry[+].fullUrl = "urn:uuid:b0bbe38b-d0bf-4ec9-a211-e84daf347fed"
+* entry[=].resource = b0bbe38b-d0bf-4ec9-a211-e84daf347fed
+* entry[+].fullUrl = "urn:uuid:f1fadb91-cd4a-422d-bf04-955fd5eefb3a"
+* entry[=].resource = f1fadb91-cd4a-422d-bf04-955fd5eefb3a
+* entry[+].fullUrl = "urn:uuid:e2da4251-3030-4d3d-a263-8d10afe424ee"
+* entry[=].resource = e2da4251-3030-4d3d-a263-8d10afe424ee
+* entry[+].fullUrl = "urn:uuid:aaec0211-c8dc-45ef-8241-2239c85f42cd"
+* entry[=].resource = aaec0211-c8dc-45ef-8241-2239c85f42cd
+* entry[+].fullUrl = "urn:uuid:2b14cd33-6e47-46e6-8849-b53573449a35"
+* entry[=].resource = 2b14cd33-6e47-46e6-8849-b53573449a35
+* entry[+].fullUrl = "urn:uuid:605f4666-7121-4b9d-b0f5-663b7b16a9d0"
+* entry[=].resource = 605f4666-7121-4b9d-b0f5-663b7b16a9d0
+* entry[+].fullUrl = "urn:uuid:d854598c-50fe-47e9-a705-e51c79d5faa9"
+* entry[=].resource = d854598c-50fe-47e9-a705-e51c79d5faa9
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b1f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b1f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b2f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b2f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b3f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b3f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b4f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b4f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b5f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b5f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b6f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b6f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b7f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b7f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b8f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b8f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b9f-b1db-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b9f-b1db-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4b1f-b1db-b7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4b1f-b1db-b7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-e1f5-4c1f-b1da-e7d7bdf3ed19"
+* entry[=].resource = 84017e72-e1f5-4c1f-b1da-e7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:84017e72-a1f5-4b1f-b1db-c7d7bdf3ed19"
+* entry[=].resource = 84017e72-a1f5-4b1f-b1db-c7d7bdf3ed19
+* entry[+].fullUrl = "urn:uuid:216861b1-ca70-41bc-be26-d5b0994a7019"
+* entry[=].resource = 216861b1-ca70-41bc-be26-d5b0994a7019
+* entry[+].fullUrl = "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+* entry[=].resource = 123e4567-e89b-12d3-a456-426614174000
+* entry[+].fullUrl = "urn:uuid:123e4567-e89b-12d3-a456-426614174001"
+* entry[=].resource = 123e4567-e89b-12d3-a456-426614174001
+* entry[+].fullUrl = "urn:uuid:123e4567-e89b-12d3-a456-426614174002"
+* entry[=].resource = 123e4567-e89b-12d3-a456-426614174002
+* entry[+].fullUrl = "urn:uuid:123e4567-e89b-12d3-a456-426614174003"
+* entry[=].resource = 123e4567-e89b-12d3-a456-426614174003
 
 Instance: 7230e12b-d0f7-499c-925d-9a3046d10877
 InstanceOf: Composition
@@ -239,6 +301,10 @@ Usage: #inline
 * section[=].entry[=].type = "Condition"
 * section[=].entry[+] = Reference(urn:uuid:2d927688-e932-4062-83cb-f376e6b40189)
 * section[=].entry[=].type = "Condition"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19)
+* section[=].entry[=].type = "Condition"
+* section[=].entry[+] = Reference(urn:uuid:123e4567-e89b-12d3-a456-426614174000)
+* section[=].entry[=].type = "Condition"
 
 // section for Procedure
 * section[+].title = "Procedure"
@@ -271,12 +337,63 @@ Usage: #inline
 //section entry for Observation resource: B Symptoms(Weight loss): Adult Hematolymphoid: OtherObservations section
 * section[=].entry[+] = Reference(urn:uuid:19fc85ce-a078-41a0-9ad5-99194d26cde4)
 * section[=].entry[=].type = "Observation"
-
 * section[=].entry[+] = Reference(urn:uuid:30d36833-fea4-47f9-a27b-3b9526fdcc1f)
 * section[=].entry[=].type = "Observation"
 * section[=].entry[+] = Reference(urn:uuid:216861b1-ca70-41bc-be26-d5b0994a700b)
 * section[=].entry[=].type = "Observation"
 * section[=].entry[+] = Reference(urn:uuid:85b68907-0219-4689-8f3d-2d59823a7f01)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:b1bf7889-9c56-4707-aa1e-3b21a5a359d0)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:ce490d3d-3f41-496a-be2d-7acd40326806)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:7be9b46e-9711-43c5-8f82-37bc50112434)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:1a1fc8ff-9d82-4d90-9de2-94e48a7369ff)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:bf4669ff-07fc-4ce2-a7f6-1eed70622d8a)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:b0bbe38b-d0bf-4ec9-a211-e84daf347fed)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:f1fadb91-cd4a-422d-bf04-955fd5eefb3a)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:e2da4251-3030-4d3d-a263-8d10afe424ee)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:aaec0211-c8dc-45ef-8241-2239c85f42cd)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:2b14cd33-6e47-46e6-8849-b53573449a35)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:605f4666-7121-4b9d-b0f5-663b7b16a9d0)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:d854598c-50fe-47e9-a705-e51c79d5faa9)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b1f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b2f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b3f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b4f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b5f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b6f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b7f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b8f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b9f-b1db-e7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b1f-b1db-b7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-a1f5-4b1f-b1db-c7d7bdf3ed19)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:123e4567-e89b-12d3-a456-426614174002)
+* section[=].entry[=].type = "Observation"
+* section[=].entry[+] = Reference(urn:uuid:123e4567-e89b-12d3-a456-426614174003)
 * section[=].entry[=].type = "Observation"
 
 // section for Medications
@@ -289,6 +406,8 @@ Usage: #inline
 * section[=].entry[=].type = "MedicationRequest"
 * section[=].entry[+] = Reference(urn:uuid:a8ba176c-ce49-4517-a65f-432b724259b6)
 * section[=].entry[=].type = "MedicationRequest"
+* section[=].entry[+] = Reference(urn:uuid:123e4567-e89b-12d3-a456-426614174001)
+* section[=].entry[=].type = "MedicationStatement"
 
 // section for DocumentReference
 * section[+].title = "DocumentReference"
@@ -330,8 +449,10 @@ Usage: #inline
 * section[=].entry = Reference(urn:uuid:819c3ea1-b69d-4bdb-9a33-a003040f385d)
 * section[=].entry.type = "AdverseEvent"
 // section entry for Chemotherapy: Toxicity: Adult Hematolymphoid Cancer Type
-* section[=].entry = Reference(urn:uuid:61b91860-0b54-4c4a-857b-2bcf48794316)
-* section[=].entry.type = "AdverseEvent"
+* section[=].entry[+] = Reference(urn:uuid:61b91860-0b54-4c4a-857b-2bcf48794316)
+* section[=].entry[=].type = "AdverseEvent"
+* section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4c1f-b1da-e7d7bdf3ed19)
+* section[=].entry[=].type = "AdverseEvent"
 
 // section for MedicalHistory
 * section[+].title = "MedicalHistory"
@@ -358,11 +479,6 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:4e966b5a-f19a-44b8-943c-00f021198710)
 * section[=].entry[=].type = "Procedure"
 
-// section for FamilyHistory
-* section[+].title = "FamilyHistory"
-* section[=].code = $sct#422432008 "Family history section"
-* section[=].code.text = "Family history section"
-
 // section for InvestigationAdvice
 * section[+].title = "InvestigationAdvice"
 * section[=].code = $sct#721963009 "Order document"
@@ -370,6 +486,8 @@ Usage: #inline
 * section[=].entry[0] = Reference(urn:uuid:1af9fa5c-28cb-4c45-8d0a-24002faddeb8)
 * section[=].entry[=].type = "ServiceRequest"
 * section[=].entry[+] = Reference(urn:uuid:fc980123-6830-45ca-85e7-36ba272e53b0)
+* section[=].entry[=].type = "ServiceRequest"
+* section[=].entry[+] = Reference(urn:uuid:216861b1-ca70-41bc-be26-d5b0994a7019)
 * section[=].entry[=].type = "ServiceRequest"
 
 // section for Allergies
@@ -391,10 +509,13 @@ Usage: #inline
 * section[=].entry[0] = Reference(urn:uuid:e9f13f95-d791-4fca-85d1-6659499ceca6)
 * section[=].entry[=].type = "MedicationAdministration"
 
-// Section for CarePlan
-* section[+].title = "Care Plan"
-* section[=].code = $loinc#18776-5 "Care Plan" 
-* section[=].code.text = "Care Plan: KEM OBG consultation and GDP chemotherapy post-MRI"
+// Section for FollowUp
+* section[+].title = "FollowUp"
+* section[=].code = $loinc#21979-0 "Planned/next follow-up" 
+* section[=].code.text = "FollowUp Section"
+//Appointment resource: Radiation-RadiotherapyAppointment: Adult Hematolymphoid: FollowUp section
+* section[=].entry[0] = Reference(urn:uuid:fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf)
+* section[=].entry[=].type = "Appointment"
 
 Instance: ed93fd8b-5a42-4522-b1bc-88b22294e474
 InstanceOf: Observation
@@ -754,8 +875,8 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
 * code = $icd-10#C83.3 "Diffuse large B-cell lymphoma"
 * code.text = "Diffuse large B-cell lymphoma"
-* stage[0].summary = $sct#258219007 "Stage IV"
-* stage[0].summary.text = "Stage IV"
+* stage[0].summary = $sct#258228008 "Stage 4"
+* stage[0].summary.text = "Stage 4"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
 * subject.type = "Patient"
 * recordedDate = "2024-08-06T12:18:11+05:30"
@@ -789,8 +910,7 @@ Usage: #inline
 * effectiveDateTime = "2024-09-24T09:00:00Z"  // Due date for Cycle 3
 * category = $sct#18629005 "Administration of drug or medicament" // SNOMED CT code for "Administration of drug or medicament"
 * category.text = "Administration of drug or medicament"
-* medicationCodeableConcept = $rxnorm#582620 "R-CHOP Chemotherapy"  // Example code for R-CHOP chemotherapy
-* dosage.text = "Administer Cycle 3 of R-CHOP chemotherapy"
+* medicationCodeableConcept = $rxnorm#582620 "Axid 15 MG/ML Oral Solution"  // Example code for R-CHOP chemotherapy
 
 //AdverseEvent resource: Chemotherapy - Toxicity: Adult Hematolymphoid: AdverseEvent section
 Instance: 61b91860-0b54-4c4a-857b-2bcf48794316
@@ -802,22 +922,20 @@ Usage: #inline
 * identifier.system = "http://example.com/adverseEvent"
 * identifier.value = "61b91860-0b54-4c4a-857b-2bcf48794316"
 * actuality = #actual
-* event = $sct#304540007 "Adverse reaction to chemotherapy" // SNOMED CT code for "Adverse reaction to chemotherapy"
-* category = $sct#304540007 "Chemotherapy-related toxicity" // Category is also chemotherapy-related toxicity
+* event = $sct#304540007 "Advice to stop taking medication" // SNOMED CT code for "Adverse reaction to chemotherapy"
+* category = $sct#304540007 "Advice to stop taking medication" // Category is also chemotherapy-related toxicity
 * category.text = "Patient experienced mild paresthesia following chemotherapy." // Updated from description
 * seriousness = $sct#274350006 "Paresthesia" // SNOMED CT code for "Paresthesia"
-* severity = $loinc#80323-8 "Grade 1 CTCAE toxicity" // LOINC code for CTCAE Grade 1 toxicity
 * date = "2024-09-17T09:00:00Z"  // Date when the toxicity event occurred
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
 * subject.type = "Patient" // Reference to the patient experiencing the adverse event
 
-//Appointment resource: Radiation - RadiotherapyAppointment: Adult Hematolymphoid: otherObservations section
+//Appointment resource: Radiation - RadiotherapyAppointment: Adult Hematolymphoid: FollowUp section
 Instance: fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf
 InstanceOf: Appointment
 Usage: #inline
-* status = #booked  // Status of the appointment
+* status = #proposed  // Status of the appointment
 * appointmentType = $sct#258245002 "Radiotherapy treatment simulation"  // SNOMED CT code for "Radiotherapy treatment simulation"
-* start = "2021-12-09T13:30:00Z"  // Provisional Simulation Date and Time
 * description = "Provisional RT Starting date 2021-12-24 on TRUEBEAM, RAPID ARC"
 * participant[0].actor = Reference(urn:uuid:55d4ae1d-d702-4268-8049-50dcc43e67dd) "HBB-Basement RT Console"  // Reference to the location
 * participant[0].actor.type = "Location"
@@ -829,13 +947,13 @@ InstanceOf: ServiceRequest
 Usage: #inline
 * status = #active  // Status of the request
 * intent = #order  // Intent of the request
-* category = $sct#103693007 "Therapeutic procedure"  // SNOMED CT code for therapeutic procedure
-* code = $sct#136873007 "Radiotherapy treatment"  // SNOMED CT code for "Radiotherapy treatment"
+* category = $sct#277132007 "Therapeutic procedure (procedure)"  // SNOMED CT code for therapeutic procedure
+* code = $sct#1287742003 "Radiotherapy (procedure)"  // SNOMED CT code for "Radiotherapy treatment"
 * code.text = "Radiotherapy treatment"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "John Doe"  // Replace with the actual patient reference
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "John Doe" 
 * subject.type = "Patient"
 * occurrenceDateTime = "2021-12-24T00:00:00Z"  // Provisional Start Date
-* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Smith"  // Replace with the actual requester reference
+* requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Smith"
 * requester.type = "Practitioner"
 
 Instance: 216861b1-ca70-41bc-be26-d5b0994a700b
@@ -982,8 +1100,8 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.170+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
-* clinicalStatus = $allergyintolerance-clinical#unconfirmed "Unconfirmed"
-* clinicalStatus.text = "unconfirmed"
+* clinicalStatus = $allergyintolerance-clinical#active "Active"
+* clinicalStatus.text = "Active"
 * verificationStatus = $allergyintolerance-verification#confirmed "Confirmed"
 * verificationStatus.text = "Confirmed"
 * type = #allergy
@@ -1066,8 +1184,8 @@ Usage: #inline
 * identifier.system = "http://example.com/adverseEvent"
 * identifier.value = "819c3ea1-b69d-4bdb-9a33-a003040f385d"
 * actuality = #actual
-* category = $adverse-event-category#product-use-error "Product Use Error"
-* category.text = "Product Use Error"
+* category = $adverse-event-category#medication-mishap "Medication Mishap"
+* category.text = "Medication Mishap"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * date = "2024-08-06T12:18:11+05:30"
@@ -1075,14 +1193,12 @@ Usage: #inline
 * recordedDate = "2024-08-06T12:18:11+05:30"
 * seriousness = $sct#24484000 "Severe"
 * seriousness.text = "Serious"
-* outcome = $adverse-event-outcome#resolved "Resolved"
-* outcome.text = "Resolved"
 * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 * recorder.type = "Practitioner"
-* event = $sct#422587007 "Adverse reaction caused by drug"
+* event = $sct#422587007 "Nausea"
 * severity = $adverse-event-severity#severe "Severe"
 * suspectEntity.instance = Reference(Medication/6789)
-* outcome = $adverse-event-outcome#recovered "Recovered"
+* outcome = $sct#397882007 "Transient abnormality unnoticed by the patient (finding)"
 
 Instance: 73d1bf22-f201-48db-9aeb-7e004e1fae23
 InstanceOf: DocumentReference
@@ -1409,3 +1525,351 @@ Usage: #inline
 * content.attachment.contentType = #application/pdf
 * content.attachment.data = "Y2hlbW90aGVyYXB5U3VtbWFyeQ=="
 * content.attachment.title = "Chemotherapy Summary"
+
+Instance: b1bf7889-9c56-4707-aa1e-3b21a5a359d0
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#8310-5 "Body Temperature"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 98 '[degF]' "°F"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
+
+Instance: ce490d3d-3f41-496a-be2d-7acd40326806
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#8867-4 "Heart rate"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 94 '/min' "/min"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
+
+Instance: 7be9b46e-9711-43c5-8f82-37bc50112434
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#9279-1 "Respiratory Rate"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 22 '/min' "/min"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
+
+Instance: 1a1fc8ff-9d82-4d90-9de2-94e48a7369ff
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* status = #final
+* code = $loinc#85354-9 "Blood pressure panel with all children optional"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* component[0].code = $loinc#8480-6 "Systolic blood pressure"
+* component[=].valueQuantity = 100 'mm[Hg]' "mmHg"
+* component[+].code = $loinc#8462-4 "Diastolic blood pressure"
+* component[=].valueQuantity = 75 'mm[Hg]' "mmHg"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+
+Instance: bf4669ff-07fc-4ce2-a7f6-1eed70622d8a
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#2708-6 "Oxygen saturation in Arterial blood"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 99 '%' "%"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
+
+Instance: b0bbe38b-d0bf-4ec9-a211-e84daf347fed
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#38208-5 "Pain severity - Reported"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 1 'mg/dL' "/10"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
+
+Instance: f1fadb91-cd4a-422d-bf04-955fd5eefb3a
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#29463-7 "Weight"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 43.9 'kg' "kg"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
+
+Instance: e2da4251-3030-4d3d-a263-8d10afe424ee
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#89247-1 "ECOG Performance Status score"
+* valueCodeableConcept.coding[0] = $loinc#89247-1 "ECOG Performance Status score"
+* valueCodeableConcept.coding[+] = $sct#425389002 "Eastern Cooperative Oncology Group performance status - grade 0 (finding)"
+* valueCodeableConcept.text = "ECOG 0"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
+
+Instance: aaec0211-c8dc-45ef-8241-2239c85f42cd
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#718-7 "Hemoglobin [Mass/volume] in Blood"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 10.7 'mg/dL' "g/dL"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* status = #final
+
+Instance: 2b14cd33-6e47-46e6-8849-b53573449a35
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#26515-7 "Platelets [#/volume] in Blood"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 204 'mg/dL' "x10^9/L"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* status = #final
+
+Instance: 605f4666-7121-4b9d-b0f5-663b7b16a9d0
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#6690-2 "Leukocytes [#/volume] in Blood by Automated count"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 3.31 'mg/dL' "x10^9/L"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* status = #final
+
+Instance: d854598c-50fe-47e9-a705-e51c79d5faa9
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#26499-4 "Neutrophils [#/volume] in Blood"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 2.22 'mg/dL' "x10^9/L"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
+* status = #final
+
+Instance: 84017e72-e1f5-4b1f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#1558-6 "Fasting glucose [Mass/volume] in Serum or Plasma"
+* code.text = "Fasting Blood Glucose"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 85 'mg/dL' "mg/dL"
+* status = #final
+
+Instance: 84017e72-e1f5-4b2f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#3084-1 "Urate [Mass/volume] in Serum or Plasma"
+* code.text = "Uric Acid"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 4.52 'mg/dL' "mg/dL"
+* status = #final
+
+Instance: 84017e72-e1f5-4b3f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#2160-0 "Creatinine [Mass/volume] in Serum or Plasma"
+* code.text = "Serum Creatinine"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 0.35 'mg/dL' "mg/dL"
+* status = #final
+
+Instance: 84017e72-e1f5-4b4f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#1751-7 "Albumin [Mass/volume] in Serum or Plasma"
+* code.text = "Serum Albumin"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 4.18 'g/dL' "g/dL"
+* status = #final
+
+Instance: 84017e72-e1f5-4b5f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#1975-2 "Bilirubin.total [Mass/volume] in Serum or Plasma"
+* code.text = "Total Bilirubin"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* valueQuantity = 0.42 'mg/dL' "mg/dL"
+* status = #final
+
+Instance: 84017e72-e1f5-4b6f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code.coding[0] = $loinc#1920-8 "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+* code.coding[+] = $loinc#1742-6 "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+* code.text = "AST/ALT"
+* component[0].code = $loinc#1920-8 "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+* component[=].valueQuantity = 63 'U/L' "U/L"
+* component[+].code = $loinc#1742-6 "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+* component[=].valueQuantity = 58 'U/L' "U/L"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* status = #final
+
+Instance: 84017e72-e1f5-4b7f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#2532-0 "Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma"
+* code.text = "LDH"
+* valueQuantity = 298 'U/L' "U/L"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* status = #final
+
+Instance: 84017e72-e1f5-4b8f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#17861-6 "Calcium [Mass/volume] in Serum or Plasma"
+* code.text = "Calcium [Mass/volume] in Serum or Plasma"
+* valueQuantity = 9.44 'mg/dL' "mg/dL"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* status = #final
+
+Instance: 84017e72-e1f5-4b9f-b1db-e7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#14879-1 "Phosphate [Moles/volume] in Serum or Plasma"
+* code.text = "Phosphate"
+* valueQuantity = 4.21 'mg/dL' "mg/dL"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* status = #final
+
+Instance: 84017e72-e1f5-4b1f-b1db-a7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#2106-3 "Choriogonadotropin (pregnancy test) [Presence] in Urine"
+* code.text = "Urine Pregnancy Test"
+* valueCodeableConcept = $sct#260385009 "Negative"
+* status = #final
+
+Instance: 84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19
+InstanceOf: Condition
+Usage: #inline
+* clinicalStatus = $condition-clinical#active "Active"
+* verificationStatus = $condition-ver-status#confirmed "Confirmed"
+* category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
+* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Patient"
+* code = $icd-10#C83.3 "Diffuse large B-cell lymphoma"
+* code.text = "Relapsed high-grade B-cell lymphoma"
+* note.text = "Treatment completed: 8 cycles of R-GemOx"
+
+Instance: 84017e72-e1f5-4b1f-b1db-b7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#82159-5 "Respiratory pathogens DNA and RNA panel - Nasopharynx by NAA with non-probe detection"
+* code.text = "Itching (Pruritus)"
+* bodySite = $sct#368208006 "Left upper arm"
+* note.text = "With macular lesions"
+* status = #final
+
+Instance: 84017e72-e1f5-4c1f-b1da-e7d7bdf3ed19
+InstanceOf: AdverseEvent
+Usage: #inline
+* actuality = #actual
+* category = $adverse-event-category#medication-mishap "Medication Mishap"
+* category.text = "Medication Mishap"
+* event = $sct#18846006 "Chemotherapy-induced nausea and vomiting (disorder)"
+* event.text = "Chemotherapy-induced nausea and vomiting (CINV)"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+
+Instance: 84017e72-a1f5-4b1f-b1db-c7d7bdf3ed19
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $sct#72049000 "General condition"
+* code.text = "Physical Examination"
+* component[0].code = $sct#72049000 "General condition"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "Head"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "Eyes"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "ENT"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "Cardiovascular"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "Dermatologic"
+* component[=].valueCodeableConcept = $sct#263654008 "Abnormal (qualifier value)"
+* component[=].valueCodeableConcept.text = "Macular lesions on bilateral forearm and legs"
+* component[+].code.text = "Musculoskeletal"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "Respiratory"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "Gastrointestinal"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "Genitourinary"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* component[+].code.text = "Neurologic"
+* component[=].valueCodeableConcept = $sct#17621005 "Normal (qualifier value)"
+* status = #final
+
+Instance: 216861b1-ca70-41bc-be26-d5b0994a7019
+InstanceOf: ServiceRequest
+Usage: #inline
+* status = #active
+* intent = #order
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* code.coding[0] = $loinc#58410-2 "CBC panel - Blood by Automated count"
+* code.coding[+] = $sct#306146008 "Referral to chemical pathology service (procedure)"
+* code.coding[+] = $loinc#24326-1 "Electrolytes 1998 panel - Serum or Plasma"
+* code.coding[+] = $loinc#2532-0 "Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma"
+* code.coding[+] = $loinc#17861-6 "Calcium [Mass/volume] in Serum or Plasma"
+* code.coding[+] = $loinc#14879-1 "Phosphate [Moles/volume] in Serum or Plasma"
+* code.coding[+] = $loinc#2106-3 "Choriogonadotropin (pregnancy test) [Presence] in Urine"
+* code.coding[+] = $loinc#24865-8 "CT Pelvis"
+* occurrenceDateTime = "2024-11-24T00:00:00Z"
+* note.text = "Next visit in 2 months"
+
+Instance: 123e4567-e89b-12d3-a456-426614174000
+InstanceOf: Condition
+Usage: #inline
+* code = $icd-10#C83.3 "Diffuse large B-cell lymphoma"
+* code.text = "Relapsed DLBCL"
+* clinicalStatus = $condition-clinical#active "Active"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+
+Instance: 123e4567-e89b-12d3-a456-426614174001
+InstanceOf: MedicationStatement
+Usage: #inline
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
+* status = #completed
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* medicationCodeableConcept = $sct#57858007 "Guanosine diphosphate (substance)"
+* dateAsserted = "2020-02-02T14:58:58.181+05:30"
+* effectiveDateTime = "2024-10-15T00:00:00Z"
+* note.text = "Cycle 3 of Chemotherapy (R-CHOP or GDP)"
+
+Instance: 123e4567-e89b-12d3-a456-426614174002
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $sct#15628003 "Gonorrhea (disorder)"
+* code.text = "Amenorrhea"
+* valueCodeableConcept = $sct#263654008 "Abnormal"
+* effectiveDateTime = "2024-09-20"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
+
+Instance: 123e4567-e89b-12d3-a456-426614174003
+InstanceOf: Observation
+Usage: #inline
+* category = $observation-category#vital-signs "Vital Signs"
+* code = $loinc#19080-1 "Choriogonadotropin [Units/volume] in Serum or Plasma"
+* code.text = "Elevated HCG"
+* valueQuantity = 1500 'mg/m2' "mg/m²"
+* interpretation = $v3-ObservationInterpretation#POS "Positive"
+* effectiveDateTime = "2024-09-30T12:00:00Z"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Janedoe ABDM NCG"
+* status = #final
