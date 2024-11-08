@@ -301,12 +301,6 @@ Usage: #inline
 * section[=].entry[=].type = "Condition"
 * section[=].entry[+] = Reference(urn:uuid:2d927688-e932-4062-83cb-f376e6b40189)
 * section[=].entry[=].type = "Condition"
-//entry for Condition resource: History of disorder (situation): Joint clinic notes:  Adult Hematolymphoid: chief complaint section
-* section[=].entry[+] = Reference(urn:uuid:9a69d8b4-0477-43c7-b573-c8df167f6a90)
-* section[=].entry[=].type = "Condition"
-// Condition for new breast lump: Adult Hematolymphoid: Joint clinic notes: Condition section
-* section[=].entry[+] = Reference(urn:uuid:9bc543d2-a3f5-42d6-91bb-fbc123a7fd1e)
-* section[=].entry[=].type = "Condition"
 * section[=].entry[+] = Reference(urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19)
 * section[=].entry[=].type = "Condition"
 * section[=].entry[+] = Reference(urn:uuid:123e4567-e89b-12d3-a456-426614174000)
@@ -329,21 +323,6 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:1f824da9-0209-40f6-a3e9-37dd4db75486)
 * section[=].entry[=].type = "Procedure"
 * section[=].entry[+] = Reference(urn:uuid:b51e3a44-86e6-453c-b73d-af0167502fc4)
-* section[=].entry[=].type = "Procedure"
-//entry for Procedure resource: Laparoscopy: Adult Hematolymphoid: Joint clinic notes: procedure section
-* section[=].entry[+] = Reference(urn:uuid:d8d22b87-95c3-4a80-a863-8acab64ef536)
-* section[=].entry[=].type = "Procedure"
-//entry for Procedure resource: Biopsy of mesenteric lymph node: Adult Hematolymphoid: Joint clinic notes: procedure section
-* section[=].entry[+] = Reference(urn:uuid:520650af-ceb1-4376-8e20-6654eb8508cd)
-* section[=].entry[=].type = "Procedure"
-//entry for Procedure resource: Bone Marrow Biopsy: Adult Hematolymphoid: Joint clinic notes: procedure section
-* section[=].entry[+] = Reference(urn:uuid:2b9d2135-4b3a-47d3-912e-5fbf6d4e621d)
-* section[=].entry[=].type = "Procedure"
-// Procedure for ISRT to 45 Gy in 25 Fractions: Adult Hematolymphoid: Joint clinic notes: Procedure section
-* section[=].entry[0] = Reference(urn:uuid:9b7d124f-3b1d-4895-870d-1df5e6a9b6e9)
-* section[=].entry[=].type = "Procedure"
-// Procedure for New Breast Lump: Adult Hematolymphoid: Joint clinic notes: Procedure section
-* section[=].entry[0] = Reference(urn:uuid:f2a71238-7c21-414a-b5c7-f5bf782f3db7)
 * section[=].entry[=].type = "Procedure"
 
 // section for OtherObservations
@@ -508,9 +487,6 @@ Usage: #inline
 * section[=].entry[=].type = "ServiceRequest"
 * section[=].entry[+] = Reference(urn:uuid:fc980123-6830-45ca-85e7-36ba272e53b0)
 * section[=].entry[=].type = "ServiceRequest"
-// ServiceRequest for Plan: whole-body MRI: Adult Hematolymphoid: Joint clinic notes: InvestigationAdvice section
-* section[=].entry[+] = Reference(urn:uuid:08bfa121-dbc4-445a-95f9-6f9f5bc5d4a4)
-* section[=].entry[=].type = "ServiceRequest"
 * section[=].entry[+] = Reference(urn:uuid:216861b1-ca70-41bc-be26-d5b0994a7019)
 * section[=].entry[=].type = "ServiceRequest"
 
@@ -532,17 +508,6 @@ Usage: #inline
 //entry for MedicationAdministration resource: Chemotherapy - Treatment Cycle: Adult Hematolymphoid: Chemotherapy Treatment Cycle section
 * section[=].entry[0] = Reference(urn:uuid:e9f13f95-d791-4fca-85d1-6659499ceca6)
 * section[=].entry[=].type = "MedicationAdministration"
-// Medication Administration for R-CHOP: Adult Hematolymphoid: Joint clinic notes: MedicationAdministration section
-* section[=].entry[+] = Reference(urn:uuid:3e7a2561-5f4b-4d2c-957d-9c4e20d9b798)
-* section[=].entry[=].type = "MedicationAdministration"
-
-// Section for CarePlan
-* section[+].title = "Care Plan"
-* section[=].code = $loinc#18776-5 "Plan of care note" 
-* section[=].code.text = "Care Plan: KEM OBG consultation and GDP chemotherapy post-MRI"
-// CarePlan for Plan: OBG consultation and chemotherapy: Adult Hematolymphoid: Joint clinic notes: Procedure section
-* section[=].entry[0] = Reference(urn:uuid:a6d0f7e3-25c3-43e6-a506-8e6c5f9fa964)
-* section[=].entry[=].type = "CarePlan"
 
 // Section for FollowUp
 * section[+].title = "FollowUp"

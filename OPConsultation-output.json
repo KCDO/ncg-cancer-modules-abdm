@@ -97,14 +97,6 @@
                 "type": "Condition"
               },
               {
-                "reference": "urn:uuid:9a69d8b4-0477-43c7-b573-c8df167f6a90",
-                "type": "Condition"
-              },
-              {
-                "reference": "urn:uuid:9bc543d2-a3f5-42d6-91bb-fbc123a7fd1e",
-                "type": "Condition"
-              },
-              {
                 "reference": "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19",
                 "type": "Condition"
               },
@@ -128,7 +120,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:f2a71238-7c21-414a-b5c7-f5bf782f3db7",
+                "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86fd",
                 "type": "Procedure"
               },
               {
@@ -153,18 +145,6 @@
               },
               {
                 "reference": "urn:uuid:b51e3a44-86e6-453c-b73d-af0167502fc4",
-                "type": "Procedure"
-              },
-              {
-                "reference": "urn:uuid:d8d22b87-95c3-4a80-a863-8acab64ef536",
-                "type": "Procedure"
-              },
-              {
-                "reference": "urn:uuid:520650af-ceb1-4376-8e20-6654eb8508cd",
-                "type": "Procedure"
-              },
-              {
-                "reference": "urn:uuid:2b9d2135-4b3a-47d3-912e-5fbf6d4e621d",
                 "type": "Procedure"
               }
             ]
@@ -498,10 +478,6 @@
                 "type": "ServiceRequest"
               },
               {
-                "reference": "urn:uuid:08bfa121-dbc4-445a-95f9-6f9f5bc5d4a4",
-                "type": "ServiceRequest"
-              },
-              {
                 "reference": "urn:uuid:216861b1-ca70-41bc-be26-d5b0994a7019",
                 "type": "ServiceRequest"
               }
@@ -546,29 +522,6 @@
               {
                 "reference": "urn:uuid:e9f13f95-d791-4fca-85d1-6659499ceca6",
                 "type": "MedicationAdministration"
-              },
-              {
-                "reference": "urn:uuid:3e7a2561-5f4b-4d2c-957d-9c4e20d9b798",
-                "type": "MedicationAdministration"
-              }
-            ]
-          },
-          {
-            "title": "Care Plan",
-            "code": {
-              "coding": [
-                {
-                  "code": "18776-5",
-                  "system": "http://loinc.org",
-                  "display": "Plan of care note"
-                }
-              ],
-              "text": "Care Plan: KEM OBG consultation and GDP chemotherapy post-MRI"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:a6d0f7e3-25c3-43e6-a506-8e6c5f9fa964",
-                "type": "CarePlan"
               }
             ]
           },
