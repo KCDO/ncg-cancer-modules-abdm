@@ -83,8 +83,8 @@ Usage: #inline
 * meta.lastUpdated = "2024-08-06T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
 * language = #en-IN
-* identifier[0].system = "http://example-provider.org"
-* identifier[0].value = "7230e12b-d0f7-499c-925d-9a3046d10877"
+* identifier.system = "http://example-provider.org"
+* identifier.value = "7230e12b-d0f7-499c-925d-9a3046d10877"
 * status = #final
 * type = $sct#371530004 "Clinical consultation report"
 * type.text = "Clinical consultation report"
@@ -99,9 +99,15 @@ Usage: #inline
 * author = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "Sunshine Clinic, Mumbai"
 * author.type = "Organization"
 * title = "Consultation Report"
-* attester.mode = #legal
-* attester.time = "2024-08-06T12:18:11+05:30"
-* attester.party = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2)
+// set Organization as attester
+// * attester.mode = #legal
+// * attester.time = "2024-08-06T12:18:11+05:30"
+// * attester.party = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "Sunshine Clinic, Mumbai"
+// Define attester with required mode, time, and party
+* attester[0].mode[0] = #legal
+* attester[0].time = "2024-08-06T12:18:11+05:30"
+* attester[0].party.reference = "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+* attester[0].party.display = "Sunshine Clinic, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "Sunshine Clinic, Mumbai"
 * custodian.type = "Organization"
@@ -180,8 +186,9 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-* identifier[0].type = $fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[=].type.text = "Aadhar Number"
+// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
+//$fhir-identifier-type#AADHAAR "AADHAAR"
+* identifier[+].type.text = "Aadhar Number"
 * identifier[=].system = "urn:health:information:provider:system"
 * identifier[=].value = "1234 1234 1234"
 * identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
@@ -228,7 +235,8 @@ Description: "Represents the postmenopausal condition in the patient's past medi
 Usage: #inline
 * clinicalStatus = $condition-clinical#inactive "Inactive"
 // * verificationStatus = $condition-verification#confirmed "Confirmed"
-* verificationStatus = $sct#414285001 "Confirmed"
+// * verificationStatus = $sct#414285001 "Confirmed"
+// * verificationStatus = #confirmed
 * code.text = "Postmenopausal"
 * category[0] = $condition-category#problem-list-item "Problem List Item"
 * category[0].text = "Medical History"
@@ -303,14 +311,15 @@ Usage: #inline
 * status = #completed
 * patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * patient.type = "Patient"
-* relationship = $v3-RoleCode#MGMTH "Maternal Grandmother"
+* relationship = $v3-RoleCode#MTH "Mother"
 * relationship.text = "Maternal Grandmother"
 // * condition[0].code = $sct#254837009 "Family history of breast cancer"
 * condition[0].code.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 * condition[0].onsetAge.value = 60
 * condition[0].onsetAge.unit = "years"
+* condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
 * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-* condition[0].code = $loinc#54134-2  "Family history of breast cancer"
+// * condition[0].code = $loinc#54134-2  "Family history of breast cancer"
 * note.text = "The patient's maternal grandmother was diagnosed with breast cancer at age 60."
 
 // Initial Visit Encounter
@@ -321,18 +330,18 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
-* status = #finished
-* class = $encounter-class#AMB "Ambulatory"
-* type[0] = $sct#185349003 "Encounter for check up"
+* status = #in-progress
+// * class = $encounter-class#outpatient "Outpatient"
+* class = $v3-ActCode#AMB "outpatient encounter"
+//* type[0] = $sct#185349003 "Encounter for check up"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* participant[0].individual = Reference(urn:uuid:dc4b7a15-5cf8-4bb5-9e0d-7e287ec8e8b6) "Dr. Anjali Verma"
-* participant[0].individual.type = "Practitioner"
-* participant[0].type[0] = $participant-type#ATND "Attending"
+* participant[0].type[0].coding[0] = $participant-type#ATND "attender"
+* participant[0].individual.reference = "urn:uuid:dc4b7a15-5cf8-4bb5-9e0d-7e287ec8e8b6"
+* participant[0].individual.display = "Dr. Anjali Verma"
 * period.start = "2023-10-10T09:00:00+05:30"
-* period.end = "2023-10-10T10:00:00+05:30"
-* location[0].location = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
-* location[0].location.type = "Location"
+* period.end = "2023-10-10T12:00:00+05:30"
+* serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
 
 // Practitioner resource
 Instance: 41295111-04f9-4b83-b186-ef2975db1c7e
@@ -347,7 +356,7 @@ Usage: #inline
 * name.text = "Dr. Anjali Verma"
 * name.family = "Verma"
 * name.given[0] = "Anjali"
-* qualification[0].code = $sct#309343006 "General Physician"
+* qualification[0].code = $sct#309343006 "Physician"
 * qualification[0].issuer = Reference(urn:uuid:certificate-authority)
 
 // Organization resource
@@ -357,12 +366,12 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T09:00:00+05:30" // Adjust date and time as necessary
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
-* name = "Sunshine Clinic, Mumbai"
-* address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
-* address[0].city = "Mumbai"
-* address[0].state = "Maharashtra"
-* address[0].postalCode = "400069"
-* address[0].country = "India"
+* name = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+// * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+// * address[0].city = "Mumbai"
+// * address[0].state = "Maharashtra"
+// * address[0].postalCode = "400069"
+// * address[0].country = "India"
 
 // Condition Resource (Chief Complaint: Palpable mass of breast)
 Instance: 216861b1-ca70-41bc-be26-d5b0994a700b
@@ -375,7 +384,7 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
 * clinicalStatus = $condition-clinical#active "Active"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
-* code = $sct#169068008 "Palpable mass of breast"
+* code = $sct#169068008 "Computed tomography of neck"
 * code.text = "Palpable lump in the right breast"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
@@ -390,8 +399,10 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:30:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* code = $sct#75367002 "Vital signs"
+* code = $sct#72970002 "Normal vital signs"
 * code.text = "Vital signs"
+* category = $observation-category#vital-signs "Vital Signs"
+* category.text = "Vital Signs"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * effectiveDateTime = "2023-10-10T09:30:00+05:30"
@@ -404,11 +415,11 @@ Usage: #inline
 * component[1].valueQuantity.value = 85
 * component[1].valueQuantity.unit = "mmHg"
 
-* component[2].code = $sct#78564009 "Heart rate"
+* component[2].code = $sct#78564009 "Pulse rate"
 * component[2].valueQuantity.value = 78
 * component[2].valueQuantity.unit = "bpm"
 
-* component[3].code = $sct#276885007 "Body temperature"
+* component[3].code = $sct#276885007 "Core body temperature"
 * component[3].valueQuantity.value = 98.6
 * component[3].valueQuantity.unit = "°F"
 
@@ -416,7 +427,7 @@ Usage: #inline
 * component[4].valueQuantity.value = 16
 * component[4].valueQuantity.unit = "breaths/min"
 
-* component[5].code = $sct#60621009 "Body mass index (BMI)"
+* component[5].code = $sct#60621009 "BMI - Body mass index"
 * component[5].valueQuantity.value = 25
 * component[5].valueQuantity.unit = "kg/m2"
 
@@ -446,7 +457,8 @@ Usage: #inline
 * intent = #order
 * priority = #routine
 // * code = $sct#10238000119103 "Laboratory and imaging tests"
-* code.text = "Ordered CBC, mammogram, and ultrasound of the right breast for further evaluation."
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ordered CBC, mammogram, and ultrasound of the right breast for further evaluation.</div>"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
