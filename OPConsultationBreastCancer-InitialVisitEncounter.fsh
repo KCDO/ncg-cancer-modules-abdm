@@ -198,17 +198,17 @@ Usage: #inline
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
-* telecom.system = #email
-* telecom.value = "Meera.sharma@abha.in"
+// * telecom.system = #email
+// * telecom.value = "Meera.sharma@abha.in"
 * gender = #female
 * birthDate = "1971-01-01"
-* address.type = #both
-* address.text = "123, Bangalore Urban, Karnataka, India, Pincode:560103"
-* address.city = "Bangalore Urban"
-* address.district = "Bangalore Urban"
-* address.state = "Karnataka"
-* address.postalCode = "560103"
-* address.country = "India"
+// * address.type = #both
+// * address.text = "123, Bangalore Urban, Karnataka, India, Pincode:560103"
+// * address.city = "Bangalore Urban"
+// * address.district = "Bangalore Urban"
+// * address.state = "Karnataka"
+// * address.postalCode = "560103"
+// * address.country = "India"
 
 // Observation Resource (Blood Group)
 Instance: efcb7189-b97e-482f-a0f9-ba5c89056ff1
@@ -233,7 +233,7 @@ InstanceOf: Condition
 Title: "Past Medical History - Postmenopausal"
 Description: "Represents the postmenopausal condition in the patient's past medical history."
 Usage: #inline
-* clinicalStatus = $condition-clinical#inactive "Inactive"
+* clinicalStatus = $condition-clinical#active "Active"
 // * verificationStatus = $condition-verification#confirmed "Confirmed"
 // * verificationStatus = $sct#414285001 "Confirmed"
 // * verificationStatus = #confirmed
@@ -294,10 +294,10 @@ Usage: #inline
 * status = #final
 * code = $sct#289908002 "Pregnancy"
 * code.text = "The patient is postmenopausal"
+* valueString = "The patient is confirmed as postmenopausal."
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-11-07T12:18:11+05:30"
-* note.text = "The patient is confirmed as postmenopausal."
 
 // FamilyMemberHistory Resource (Family History)
 Instance: 6fec2b43-ed26-47cc-83f9-57f77d028117
@@ -443,7 +443,7 @@ Usage: #inline
 * code.text = "Firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* valueString = "Firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
+* note.text = "Firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
 
 // Plan of Care (Recommended Tests and Follow-up)
 // ServiceRequest Resource (Plan: Investigation Advice)
