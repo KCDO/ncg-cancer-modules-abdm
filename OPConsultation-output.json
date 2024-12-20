@@ -97,15 +97,11 @@
                 "type": "Condition"
               },
               {
-                "reference": "urn:uuid:9a69d8b4-0477-43c7-b573-c8df167f6a90",
-                "type": "Condition"
-              },
-              {
-                "reference": "urn:uuid:9bc543d2-a3f5-42d6-91bb-fbc123a7fd1e",
-                "type": "Condition"
-              },
-              {
                 "reference": "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19",
+                "type": "Condition"
+              },
+              {
+                "reference": "urn:uuid:123e4567-e89b-12d3-a456-426614174000",
                 "type": "Condition"
               }
             ]
@@ -124,7 +120,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:f2a71238-7c21-414a-b5c7-f5bf782f3db7",
+                "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86fd",
                 "type": "Procedure"
               },
               {
@@ -150,18 +146,6 @@
               {
                 "reference": "urn:uuid:b51e3a44-86e6-453c-b73d-af0167502fc4",
                 "type": "Procedure"
-              },
-              {
-                "reference": "urn:uuid:d8d22b87-95c3-4a80-a863-8acab64ef536",
-                "type": "Procedure"
-              },
-              {
-                "reference": "urn:uuid:520650af-ceb1-4376-8e20-6654eb8508cd",
-                "type": "Procedure"
-              },
-              {
-                "reference": "urn:uuid:2b9d2135-4b3a-47d3-912e-5fbf6d4e621d",
-                "type": "Procedure"
               }
             ]
           },
@@ -179,7 +163,15 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:b2c3d458-4a62-4d92-9439-ff6a30c89b3d",
+                "reference": "urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a275",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:3056218d-1e84-4129-a3e5-bdc43c279c51",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:19fc85ce-a078-41a0-9ad5-99194d26cde4",
                 "type": "Observation"
               },
               {
@@ -194,300 +186,6 @@
                 "reference": "urn:uuid:85b68907-0219-4689-8f3d-2d59823a7f01",
                 "type": "Observation"
               },
-              {
-                "reference": "urn:uuid:2688542a-379a-41ec-ad04-ca18eef4148b",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:e9b6026c-d44b-4046-92fc-4b9b6d69ceb6",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:1a9f7d45-7b4a-4cb5-a896-1b3e7f8a652c",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:3c7f4d12-5e7c-4db4-a873-1d2f6d7e641f",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:5e9f1d67-4b2a-4db9-b789-0b2e5d6a654b",
-                "type": "Observation"
-              }
-            ]
-          },
-          {
-            "title": "Medications",
-            "code": {
-              "coding": [
-                {
-                  "code": "721912009",
-                  "system": "http://snomed.info/sct",
-                  "display": "Medication summary document"
-                }
-              ],
-              "text": "Medication summary document"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:123e4567-e89b-12d3-a456-426614174001",
-                "type": "MedicationStatement"
-              },
-              {
-                "reference": "urn:uuid:009ea831-93fe-438e-b876-e677d425b653",
-                "type": "MedicationRequest"
-              },
-              {
-                "reference": "urn:uuid:a8ba176c-ce49-4517-a65f-432b724259b6",
-                "type": "MedicationRequest"
-              }
-            ]
-          },
-          {
-            "title": "DocumentReference",
-            "code": {
-              "coding": [
-                {
-                  "code": "371530004",
-                  "system": "http://snomed.info/sct",
-                  "display": "Clinical consultation report"
-                }
-              ],
-              "text": "Clinical consultation report"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:a78a9019-6594-4f39-9922-b5b8752db8a2",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:73d1bf22-f201-48db-9aeb-7e004e1fae23",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:cbcb74ea-7e44-4396-a36f-ae3ab32e22bb",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:90dcea2e-6ba8-4340-899c-644cdd2e0463",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:caa38f9b-2e1c-49f6-950a-4b930b667e73",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:c1e7f3a9-b1b6-4f28-8d36-4f1d8f20f4b2",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:7b291840-e4cb-4530-9e0d-7b35d1b3b0c7",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:58f21d5b-9240-4e85-bdc2-7fbc23f1f6e2",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:d4a20b17-e2c1-4ebd-8b12-3488b2f07f15",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:0a7c2f5e-b3d3-4e27-8c9e-4e69b8b8a6f5",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:1b6f8c29-456e-4a7a-8f34-4b33ab1c8f0e",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:2f9d3f4b-cb2e-4c7a-90f9-4a07b9a2e5f1",
-                "type": "DocumentReference"
-              },
-              {
-                "reference": "urn:uuid:3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2",
-                "type": "DocumentReference"
-              }
-            ]
-          },
-          {
-            "title": "Adverse Events",
-            "code": {
-              "coding": [
-                {
-                  "code": "418019003",
-                  "system": "http://snomed.info/sct",
-                  "display": "Accidental event"
-                }
-              ],
-              "text": "Adverse Events"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:84017e72-e1f5-4c1f-b1da-e7d7bdf3ed19",
-                "type": "AdverseEvent"
-              }
-            ]
-          },
-          {
-            "title": "MedicalHistory",
-            "code": {
-              "coding": [
-                {
-                  "code": "371529009",
-                  "system": "http://snomed.info/sct",
-                  "display": "History and physical report"
-                }
-              ],
-              "text": "History and physical report"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:b2d215d0-a13c-44c0-a03b-b8a2894c10cd",
-                "type": "Condition"
-              },
-              {
-                "reference": "urn:uuid:534640d1-84da-4c93-97fc-6760a2d8ee8c",
-                "type": "Condition"
-              },
-              {
-                "reference": "urn:uuid:534640d1-84da-4c93-97fc-6760a2d8ee8c",
-                "type": "Condition"
-              },
-              {
-                "reference": "urn:uuid:775487d5-02df-41b8-9bb1-c6d41b6349c8",
-                "type": "Condition"
-              },
-              {
-                "reference": "urn:uuid:86d01ed0-b2bd-4b93-8458-28b443e6ceab",
-                "type": "Procedure"
-              },
-              {
-                "reference": "urn:uuid:4e966b5a-f19a-44b8-943c-00f021198710",
-                "type": "Procedure"
-              }
-            ]
-          },
-          {
-            "title": "FamilyHistory",
-            "code": {
-              "coding": [
-                {
-                  "code": "422432008",
-                  "system": "http://snomed.info/sct",
-                  "display": "Family history section"
-                }
-              ],
-              "text": "Family history section"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:cf17e8ab-9835-4cba-b5c1-10c4a6e6b94a",
-                "type": "FamilyMemberHistory"
-              }
-            ]
-          },
-          {
-            "title": "InvestigationAdvice",
-            "code": {
-              "coding": [
-                {
-                  "code": "721963009",
-                  "system": "http://snomed.info/sct",
-                  "display": "Order document"
-                }
-              ],
-              "text": "Investigation Advice"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:216861b1-ca70-41bc-be26-d5b0994a7019",
-                "type": "ServiceRequest"
-              },
-              {
-                "reference": "urn:uuid:fc980123-6830-45ca-85e7-36ba272e53b0",
-                "type": "ServiceRequest"
-              },
-              {
-                "reference": "urn:uuid:08bfa121-dbc4-445a-95f9-6f9f5bc5d4a4",
-                "type": "ServiceRequest"
-              }
-            ]
-          },
-          {
-            "title": "Allergies",
-            "code": {
-              "coding": [
-                {
-                  "code": "722446000",
-                  "system": "http://snomed.info/sct",
-                  "display": "Allergy record"
-                }
-              ],
-              "text": "Allergies"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76186",
-                "type": "AllergyIntolerance"
-              },
-              {
-                "reference": "urn:uuid:20d5c147-3768-4763-85d3-ef81ad4cfa5f",
-                "type": "AllergyIntolerance"
-              }
-            ]
-          },
-          {
-            "title": "Chemotherapy Treatment Cycle",
-            "code": {
-              "coding": [
-                {
-                  "code": "18629005",
-                  "system": "http://snomed.info/sct",
-                  "display": "Administration of drug or medicament"
-                }
-              ],
-              "text": "Chemotherapy Treatment Cycle"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:3e7a2561-5f4b-4d2c-957d-9c4e20d9b798",
-                "type": "MedicationAdministration"
-              }
-            ]
-          },
-          {
-            "title": "Care Plan",
-            "code": {
-              "coding": [
-                {
-                  "code": "18776-5",
-                  "system": "http://loinc.org",
-                  "display": "Plan of care note"
-                }
-              ],
-              "text": "Care Plan: KEM OBG consultation and GDP chemotherapy post-MRI"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:a6d0f7e3-25c3-43e6-a506-8e6c5f9fa964",
-                "type": "CarePlan"
-              }
-            ]
-          },
-          {
-            "title": "PhysicalExamination",
-            "code": {
-              "coding": [
-                {
-                  "code": "29544-4",
-                  "system": "http://loinc.org",
-                  "display": "Physical findings"
-                }
-              ],
-              "text": "Physical findings"
-            },
-            "entry": [
               {
                 "reference": "urn:uuid:b1bf7889-9c56-4707-aa1e-3b21a5a359d0",
                 "type": "Observation"
@@ -595,16 +293,249 @@
             ]
           },
           {
-            "title": "Follow-Up",
+            "title": "Medications",
             "code": {
               "coding": [
                 {
-                  "code": "410620009",
+                  "code": "721912009",
                   "system": "http://snomed.info/sct",
-                  "display": "Follow-up care"
+                  "display": "Medication summary document"
                 }
               ],
-              "text": "Follow-up care"
+              "text": "Medication summary document"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:af32435a-040f-435b-995e-81d9a7d36823",
+                "type": "MedicationStatement"
+              },
+              {
+                "reference": "urn:uuid:009ea831-93fe-438e-b876-e677d425b653",
+                "type": "MedicationRequest"
+              },
+              {
+                "reference": "urn:uuid:a8ba176c-ce49-4517-a65f-432b724259b6",
+                "type": "MedicationRequest"
+              },
+              {
+                "reference": "urn:uuid:123e4567-e89b-12d3-a456-426614174001",
+                "type": "MedicationStatement"
+              }
+            ]
+          },
+          {
+            "title": "DocumentReference",
+            "code": {
+              "coding": [
+                {
+                  "code": "371530004",
+                  "system": "http://snomed.info/sct",
+                  "display": "Clinical consultation report"
+                }
+              ],
+              "text": "Clinical consultation report"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:a78a9019-6594-4f39-9922-b5b8752db8a2",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:73d1bf22-f201-48db-9aeb-7e004e1fae23",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:cbcb74ea-7e44-4396-a36f-ae3ab32e22bb",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:90dcea2e-6ba8-4340-899c-644cdd2e0463",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:caa38f9b-2e1c-49f6-950a-4b930b667e73",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:c1e7f3a9-b1b6-4f28-8d36-4f1d8f20f4b2",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:7b291840-e4cb-4530-9e0d-7b35d1b3b0c7",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:58f21d5b-9240-4e85-bdc2-7fbc23f1f6e2",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:d4a20b17-e2c1-4ebd-8b12-3488b2f07f15",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:0a7c2f5e-b3d3-4e27-8c9e-4e69b8b8a6f5",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:1b6f8c29-456e-4a7a-8f34-4b33ab1c8f0e",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:2f9d3f4b-cb2e-4c7a-90f9-4a07b9a2e5f1",
+                "type": "DocumentReference"
+              },
+              {
+                "reference": "urn:uuid:3a5e1b7e-f3f8-4a97-937b-4b90a8f0e3e2",
+                "type": "DocumentReference"
+              }
+            ]
+          },
+          {
+            "title": "Adverse Events",
+            "code": {
+              "coding": [
+                {
+                  "code": "418019003",
+                  "system": "http://snomed.info/sct",
+                  "display": "Accidental event"
+                }
+              ],
+              "text": "Adverse Events"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:819c3ea1-b69d-4bdb-9a33-a003040f385d",
+                "type": "AdverseEvent"
+              },
+              {
+                "reference": "urn:uuid:61b91860-0b54-4c4a-857b-2bcf48794316",
+                "type": "AdverseEvent"
+              },
+              {
+                "reference": "urn:uuid:84017e72-e1f5-4c1f-b1da-e7d7bdf3ed19",
+                "type": "AdverseEvent"
+              }
+            ]
+          },
+          {
+            "title": "MedicalHistory",
+            "code": {
+              "coding": [
+                {
+                  "code": "371529009",
+                  "system": "http://snomed.info/sct",
+                  "display": "History and physical report"
+                }
+              ],
+              "text": "History and physical report"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:b2d215d0-a13c-44c0-a03b-b8a2894c10cd",
+                "type": "Condition"
+              },
+              {
+                "reference": "urn:uuid:534640d1-84da-4c93-97fc-6760a2d8ee8c",
+                "type": "Condition"
+              },
+              {
+                "reference": "urn:uuid:534640d1-84da-4c93-97fc-6760a2d8ee8c",
+                "type": "Condition"
+              },
+              {
+                "reference": "urn:uuid:775487d5-02df-41b8-9bb1-c6d41b6349c8",
+                "type": "Condition"
+              },
+              {
+                "reference": "urn:uuid:86d01ed0-b2bd-4b93-8458-28b443e6ceab",
+                "type": "Procedure"
+              },
+              {
+                "reference": "urn:uuid:4e966b5a-f19a-44b8-943c-00f021198710",
+                "type": "Procedure"
+              }
+            ]
+          },
+          {
+            "title": "InvestigationAdvice",
+            "code": {
+              "coding": [
+                {
+                  "code": "721963009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Order document"
+                }
+              ],
+              "text": "Investigation Advice"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:1af9fa5c-28cb-4c45-8d0a-24002faddeb8",
+                "type": "ServiceRequest"
+              },
+              {
+                "reference": "urn:uuid:fc980123-6830-45ca-85e7-36ba272e53b0",
+                "type": "ServiceRequest"
+              },
+              {
+                "reference": "urn:uuid:216861b1-ca70-41bc-be26-d5b0994a7019",
+                "type": "ServiceRequest"
+              }
+            ]
+          },
+          {
+            "title": "Allergies",
+            "code": {
+              "coding": [
+                {
+                  "code": "722446000",
+                  "system": "http://snomed.info/sct",
+                  "display": "Allergy record"
+                }
+              ],
+              "text": "Allergies"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76186",
+                "type": "AllergyIntolerance"
+              },
+              {
+                "reference": "urn:uuid:20d5c147-3768-4763-85d3-ef81ad4cfa5f",
+                "type": "AllergyIntolerance"
+              }
+            ]
+          },
+          {
+            "title": "Chemotherapy Treatment Cycle",
+            "code": {
+              "coding": [
+                {
+                  "code": "18629005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Administration of drug or medicament"
+                }
+              ],
+              "text": "Chemotherapy Treatment Cycle"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:e9f13f95-d791-4fca-85d1-6659499ceca6",
+                "type": "MedicationAdministration"
+              }
+            ]
+          },
+          {
+            "title": "FollowUp",
+            "code": {
+              "coding": [
+                {
+                  "code": "21979-0",
+                  "system": "http://loinc.org",
+                  "display": "Planned/next follow-up"
+                }
+              ],
+              "text": "FollowUp Section"
             },
             "entry": [
               {
@@ -1580,14 +1511,6 @@
               "display": "Axid 15 MG/ML Oral Solution"
             }
           ]
-        },
-        "dosage": {
-          "text": "Administer Cycle 3 of R-CHOP chemotherapy",
-          "dose": {
-            "value": 500,
-            "unit": "mg/m2",
-            "system": "http://unitsofmeasure.org"
-          }
         }
       }
     },
@@ -1629,6 +1552,15 @@
             "text": "Patient experienced mild paresthesia following chemotherapy."
           }
         ],
+        "seriousness": {
+          "coding": [
+            {
+              "code": "274350006",
+              "system": "http://snomed.info/sct",
+              "display": "Paresthesia"
+            }
+          ]
+        },
         "date": "2024-09-17T09:00:00Z",
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
@@ -1642,7 +1574,7 @@
       "resource": {
         "resourceType": "Appointment",
         "id": "fb1a7a22-ef40-4f4c-9b8d-e00c98761cbf",
-        "status": "booked",
+        "status": "proposed",
         "appointmentType": {
           "coding": [
             {
@@ -1652,8 +1584,6 @@
             }
           ]
         },
-        "start": "2021-12-09T13:30:00Z",
-        "end": "2021-12-09T14:30:00Z",
         "description": "Provisional RT Starting date 2021-12-24 on TRUEBEAM, RAPID ARC",
         "participant": [
           {
@@ -1674,12 +1604,23 @@
         "id": "aebfa3de-8810-4db9-955a-761b6b25b813",
         "status": "active",
         "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "277132007",
+                "system": "http://snomed.info/sct",
+                "display": "Therapeutic procedure (procedure)"
+              }
+            ]
+          }
+        ],
         "code": {
           "coding": [
             {
-              "code": "136873007",
+              "code": "1287742003",
               "system": "http://snomed.info/sct",
-              "display": "Radio &/or telegraph operators"
+              "display": "Radiotherapy (procedure)"
             }
           ],
           "text": "Radiotherapy treatment"
@@ -1986,746 +1927,6 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:ef027dac-7e3e-49b1-a792-f3f4ecb1c285",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "ef027dac-7e3e-49b1-a792-f3f4ecb1c285",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-08-06T12:18:11.145+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "160245001",
-              "system": "http://snomed.info/sct",
-              "display": "No current problems or disability (situation)"
-            }
-          ],
-          "text": "No current problems or disability (situation)"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Janedoe ABDM NCG",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2024-08-06T12:18:11+05:30",
-        "valueBoolean": false
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:cf17e8ab-9835-4cba-b5c1-10c4a6e6b94a",
-      "resource": {
-        "resourceType": "FamilyMemberHistory",
-        "id": "cf17e8ab-9835-4cba-b5c1-10c4a6e6b94a",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-08-06T12:18:11.170+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
-          ]
-        },
-        "status": "completed",
-        "patient": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "relationship": {
-          "coding": [
-            {
-              "code": "72705000",
-              "system": "http://snomed.info/sct",
-              "display": "Mother"
-            }
-          ],
-          "text": "Family member"
-        },
-        "date": "2024-08-06T12:18:11+05:30",
-        "condition": [
-          {
-            "code": {
-              "coding": [
-                {
-                  "code": "312850006",
-                  "system": "http://snomed.info/sct",
-                  "display": "History of disorder (situation)"
-                }
-              ],
-              "text": "No family history of malignancy"
-            },
-            "note": [
-              {
-                "text": "No known family history of cancer or malignancy."
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:9a69d8b4-0477-43c7-b573-c8df167f6a90",
-      "resource": {
-        "resourceType": "Condition",
-        "id": "9a69d8b4-0477-43c7-b573-c8df167f6a90",
-        "meta": {
-          "versionId": "1",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-          ]
-        },
-        "code": {
-          "coding": [
-            {
-              "code": "21522001",
-              "system": "http://snomed.info/sct",
-              "display": "Abdominal pain (finding)"
-            }
-          ],
-          "text": "Abdominal pain"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Janedoe ABDM NCG",
-          "type": "Patient"
-        },
-        "onsetDateTime": "2023-10-03T12:00:00+05:30",
-        "recordedDate": "2024-10-03T12:00:00+05:30"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:d8d22b87-95c3-4a80-a863-8acab64ef536",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "d8d22b87-95c3-4a80-a863-8acab64ef536",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-          ]
-        },
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "code": "174041007",
-              "system": "http://snomed.info/sct",
-              "display": "Laparoscopic emergency appendectomy (procedure)"
-            }
-          ],
-          "text": "Laparoscopy"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "performedDateTime": "2021-04-17",
-        "report": [
-          {
-            "reference": "urn:uuid:027e1531-5334-499a-a03e-55a8c30eef90",
-            "type": "DocumentReference"
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:520650af-ceb1-4376-8e20-6654eb8508cd",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "520650af-ceb1-4376-8e20-6654eb8508cd",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-          ]
-        },
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "code": "22654006",
-              "system": "http://snomed.info/sct",
-              "display": "Biopsy of mesenteric lymph node"
-            }
-          ],
-          "text": "Biopsy of mesenteric lymph node"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "performedDateTime": "2021-04-17"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:2688542a-379a-41ec-ad04-ca18eef4148b",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "2688542a-379a-41ec-ad04-ca18eef4148b",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "252416005",
-              "system": "http://snomed.info/sct",
-              "display": "Histopathology test (procedure)"
-            }
-          ],
-          "text": "Histopathology Report"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2021-04-17T12:00:00+05:30",
-        "issued": "2021-04-18T12:00:00+05:30"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:e9b6026c-d44b-4046-92fc-4b9b6d69ceb6",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "e9b6026c-d44b-4046-92fc-4b9b6d69ceb6",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "258220003",
-              "system": "http://snomed.info/sct",
-              "display": "CD20 Positive"
-            }
-          ],
-          "text": "CD20 Positive"
-        },
-        "valueCodeableConcept": {
-          "coding": [
-            {
-              "code": "258220003",
-              "system": "http://snomed.info/sct",
-              "display": "Positive"
-            }
-          ],
-          "text": "Positive"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:1a9f7d45-7b4a-4cb5-a896-1b3e7f8a652c",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "1a9f7d45-7b4a-4cb5-a896-1b3e7f8a652c",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "258278003",
-              "system": "http://snomed.info/sct",
-              "display": "Ki-67"
-            }
-          ],
-          "text": "Ki-67"
-        },
-        "valueQuantity": {
-          "value": 65,
-          "unit": "%"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:3c7f4d12-5e7c-4db4-a873-1d2f6d7e641f",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "3c7f4d12-5e7c-4db4-a873-1d2f6d7e641f",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "37714001",
-              "system": "http://snomed.info/sct",
-              "display": "BCL2 Negative"
-            }
-          ],
-          "text": "BCL2 Negative"
-        },
-        "valueCodeableConcept": {
-          "coding": [
-            {
-              "code": "37714001",
-              "system": "http://snomed.info/sct",
-              "display": "Negative"
-            }
-          ],
-          "text": "Negative"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:5e9f1d67-4b2a-4db9-b789-0b2e5d6a654b",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "5e9f1d67-4b2a-4db9-b789-0b2e5d6a654b",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "424243009",
-              "system": "http://snomed.info/sct",
-              "display": "CD10 Negative"
-            }
-          ],
-          "text": "CD10 Negative"
-        },
-        "valueCodeableConcept": {
-          "coding": [
-            {
-              "code": "424243009",
-              "system": "http://snomed.info/sct",
-              "display": "Negative"
-            }
-          ],
-          "text": "Negative"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:2b9d2135-4b3a-47d3-912e-5fbf6d4e621d",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "2b9d2135-4b3a-47d3-912e-5fbf6d4e621d",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-          ]
-        },
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "code": "274681009",
-              "system": "http://snomed.info/sct",
-              "display": "Bone marrow biopsy"
-            }
-          ],
-          "text": "Bone marrow biopsy"
-        },
-        "performedDateTime": "2021-05-28T00:00:00+05:30",
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "outcome": {
-          "coding": [
-            {
-              "code": "17621005",
-              "system": "http://snomed.info/sct",
-              "display": "Normal"
-            }
-          ],
-          "text": "No involvement"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:3e7a2561-5f4b-4d2c-957d-9c4e20d9b798",
-      "resource": {
-        "resourceType": "MedicationAdministration",
-        "id": "3e7a2561-5f4b-4d2c-957d-9c4e20d9b798",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationAdministration"
-          ]
-        },
-        "status": "completed",
-        "medicationCodeableConcept": {
-          "coding": [
-            {
-              "code": "87076007",
-              "system": "http://snomed.info/sct",
-              "display": "R-CHOP"
-            }
-          ],
-          "text": "R-CHOP"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2021-07-13T00:00:00+05:30"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:5c8f4572-7e4b-421a-87bc-7fa4dcd05f6a",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "5c8f4572-7e4b-421a-87bc-7fa4dcd05f6a",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "430173000",
-              "system": "http://snomed.info/sct",
-              "display": "Ascitic fluid cytology"
-            }
-          ],
-          "text": "Ascitic fluid cytology"
-        },
-        "valueCodeableConcept": {
-          "coding": [
-            {
-              "code": "252465000",
-              "system": "http://snomed.info/sct",
-              "display": "Pulse oximetry"
-            }
-          ],
-          "text": "Atypical cells, suspected NHL involvement"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:9b7d124f-3b1d-4895-870d-1df5e6a9b6e9",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "9b7d124f-3b1d-4895-870d-1df5e6a9b6e9",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-          ]
-        },
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "code": "13751005",
-              "system": "http://snomed.info/sct",
-              "display": "Poisoning due to bite of Heloderma horridum (disorder)"
-            }
-          ],
-          "text": "ISRT to 45 Gy in 25 fractions"
-        },
-        "bodySite": [
-          {
-            "coding": [
-              {
-                "code": "EntireBody"
-              }
-            ]
-          },
-          {
-            "coding": [
-              {
-                "code": "MesentericLN"
-              }
-            ]
-          }
-        ],
-        "performedPeriod": {
-          "start": "2021-12-28T00:00:00+05:30",
-          "end": "2022-02-03T00:00:00+05:30"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:3a4d9e57-4b9f-47b7-9c6e-3a9f58a5671d",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "3a4d9e57-4b9f-47b7-9c6e-3a9f58a5671d",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "43477006",
-              "system": "http://snomed.info/sct",
-              "display": "Xeroderma pigmentosum group A"
-            }
-          ],
-          "text": "PET-CT"
-        },
-        "effectiveDateTime": "2021-10-09T00:00:00+05:30",
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:9bc543d2-a3f5-42d6-91bb-fbc123a7fd1e",
-      "resource": {
-        "resourceType": "Condition",
-        "id": "9bc543d2-a3f5-42d6-91bb-fbc123a7fd1e",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-          ]
-        },
-        "code": {
-          "coding": [
-            {
-              "code": "441919009",
-              "system": "http://snomed.info/sct",
-              "display": "Skin structure (body structure)"
-            }
-          ],
-          "text": "New breast lump, left upper outer quadrant"
-        },
-        "bodySite": [
-          {
-            "coding": [
-              {
-                "code": "39937001",
-                "system": "http://snomed.info/sct",
-                "display": "Upper outer quadrant of breast"
-              }
-            ],
-            "text": "Left upper outer quadrant of breast"
-          }
-        ],
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:f2a71238-7c21-414a-b5c7-f5bf782f3db7",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "f2a71238-7c21-414a-b5c7-f5bf782f3db7",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-          ]
-        },
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "code": "61765001",
-              "system": "http://snomed.info/sct",
-              "display": "Breast biopsy"
-            }
-          ],
-          "text": "Breast biopsy"
-        },
-        "performedDateTime": "2024-10-03T00:00:00+05:30",
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        },
-        "outcome": {
-          "text": "High-grade non-Hodgkin lymphoma with large cell morphology"
-        },
-        "bodySite": [
-          {
-            "coding": [
-              {
-                "code": "441919009",
-                "system": "http://snomed.info/sct",
-                "display": "Left upper outer quadrant"
-              }
-            ],
-            "text": "Left upper outer quadrant"
-          }
-        ],
-        "note": [
-          {
-            "text": "Finding: CD20 Positive"
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:b2c3d458-4a62-4d92-9439-ff6a30c89b3d",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "b2c3d458-4a62-4d92-9439-ff6a30c89b3d",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "77386006",
-              "system": "http://snomed.info/sct",
-              "display": "Pregnancy"
-            }
-          ],
-          "text": "Pregnancy"
-        },
-        "valueQuantity": {
-          "value": 28,
-          "unit": "weeks",
-          "system": "http://unitsofmeasure.org",
-          "code": "wk"
-        },
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:08bfa121-dbc4-445a-95f9-6f9f5bc5d4a4",
-      "resource": {
-        "resourceType": "ServiceRequest",
-        "id": "08bfa121-dbc4-445a-95f9-6f9f5bc5d4a4",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ServiceRequest"
-          ]
-        },
-        "status": "active",
-        "intent": "plan",
-        "code": {
-          "coding": [
-            {
-              "code": "241600008",
-              "system": "http://snomed.info/sct",
-              "display": "Whole-body MRI for staging"
-            }
-          ],
-          "text": "Whole-body MRI for staging"
-        },
-        "requester": {
-          "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
-          "type": "Practitioner"
-        },
-        "occurrenceDateTime": "2022-06-16T00:00:00+05:30",
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:a6d0f7e3-25c3-43e6-a506-8e6c5f9fa964",
-      "resource": {
-        "resourceType": "CarePlan",
-        "id": "a6d0f7e3-25c3-43e6-a506-8e6c5f9fa964",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-10-03T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/CarePlan"
-          ]
-        },
-        "status": "active",
-        "intent": "plan",
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "386053000",
-                "system": "http://snomed.info/sct",
-                "display": "Investigations"
-              }
-            ],
-            "text": "KEM OBG consultation for comprehensive care"
-          }
-        ],
-        "description": "Start GDP chemotherapy post-MRI",
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "type": "Patient"
-        }
-      }
-    },
-    {
       "fullUrl": "urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76186",
       "resource": {
         "resourceType": "AllergyIntolerance",
@@ -2808,7 +2009,7 @@
               "display": "Active"
             }
           ],
-          "text": "unconfirmed"
+          "text": "Active"
         },
         "verificationStatus": {
           "coding": [
@@ -3088,12 +2289,12 @@
           {
             "coding": [
               {
-                "code": "product-use-error",
+                "code": "medication-mishap",
                 "system": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
-                "display": "Product Use Error"
+                "display": "Medication Mishap"
               }
             ],
-            "text": "Product Use Error"
+            "text": "Medication Mishap"
           }
         ],
         "subject": {
@@ -3113,16 +2314,6 @@
           ],
           "text": "Serious"
         },
-        "outcome": {
-          "coding": [
-            {
-              "code": "resolved",
-              "system": "http://terminology.hl7.org/CodeSystem/adverse-event-outcome",
-              "display": "Resolved"
-            }
-          ],
-          "text": "Resolved"
-        },
         "recorder": {
           "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
           "type": "Practitioner"
@@ -3132,7 +2323,7 @@
             {
               "code": "422587007",
               "system": "http://snomed.info/sct",
-              "display": "Nausea (finding)"
+              "display": "Nausea"
             }
           ]
         },
@@ -3151,7 +2342,16 @@
               "reference": "Medication/6789"
             }
           }
-        ]
+        ],
+        "outcome": {
+          "coding": [
+            {
+              "code": "397882007",
+              "system": "http://snomed.info/sct",
+              "display": "Transient abnormality unnoticed by the patient (finding)"
+            }
+          ]
+        }
       }
     },
     {
@@ -4100,7 +3300,7 @@
         "code": {
           "coding": [
             {
-              "code": "8893-0",
+              "code": "8867-4",
               "system": "http://loinc.org",
               "display": "Heart rate"
             }
@@ -4200,7 +3400,8 @@
             "valueQuantity": {
               "value": 100,
               "code": "mm[Hg]",
-              "system": "http://unitsofmeasure.org"
+              "system": "http://unitsofmeasure.org",
+              "unit": "mmHg"
             }
           },
           {
@@ -4216,7 +3417,8 @@
             "valueQuantity": {
               "value": 75,
               "code": "mm[Hg]",
-              "system": "http://unitsofmeasure.org"
+              "system": "http://unitsofmeasure.org",
+              "unit": "mmHg"
             }
           }
         ],
@@ -4245,9 +3447,9 @@
         "code": {
           "coding": [
             {
-              "code": "59408-5",
+              "code": "2708-6",
               "system": "http://loinc.org",
-              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+              "display": "Oxygen saturation in Arterial blood"
             }
           ]
         },
@@ -4940,63 +4142,6 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:98d2d6e3-7b64-4d6a-80e9-d053d303fc51",
-      "resource": {
-        "resourceType": "ImagingStudy",
-        "id": "98d2d6e3-7b64-4d6a-80e9-d053d303fc51",
-        "status": "available",
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Janedoe ABDM NCG"
-        },
-        "started": "2024-10-03T08:00:00Z",
-        "modality": [
-          {
-            "code": "PT",
-            "system": "http://dicom.nema.org/resources/ontology/DCM",
-            "display": "Positron Emission Tomography"
-          }
-        ],
-        "endpoint": [
-          {
-            "reference": "http://example.com/images/pet-scan",
-            "display": "Link to the PET Scan Images"
-          }
-        ],
-        "numberOfSeries": 1,
-        "series": [
-          {
-            "uid": "1.2.840.10008.5.1.4.1.1.128",
-            "number": 1,
-            "modality": {
-              "code": "PT",
-              "system": "http://dicom.nema.org/resources/ontology/DCM",
-              "display": "Positron Emission Tomography"
-            },
-            "description": "PET Scan",
-            "instance": [
-              {
-                "uid": "1.2.840.10008.5.1.4.1.1.128.1",
-                "number": 1,
-                "title": "PET Scan Instance 1",
-                "sopClass": {
-                  "code": "1.2.840.10008.5.1.4.1.1.128",
-                  "system": "http://dicom.nema.org/resources/ontology/DCM",
-                  "display": "Positron Emission Tomography Image Storage"
-                }
-              }
-            ]
-          }
-        ],
-        "note": [
-          {
-            "time": "2024-10-03T09:00:00Z",
-            "text": "Deauville Score: 1 indicating complete metabolic response."
-          }
-        ]
-      }
-    },
-    {
       "fullUrl": "urn:uuid:84017e72-e1f5-4b1f-b1ab-e7d7bdf3ed19",
       "resource": {
         "resourceType": "Condition",
@@ -5422,10 +4567,6 @@
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
           ]
-        },
-        "text": {
-          "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Medication : Guanosine diphosphate (substance)</div>"
         },
         "status": "completed",
         "subject": {
