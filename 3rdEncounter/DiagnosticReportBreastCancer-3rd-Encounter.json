@@ -1,0 +1,954 @@
+{
+  "resourceType": "Bundle",
+  "id": "52ef0e5a-147f-459a-ac2f-56caf1234144",
+  "meta": {
+    "versionId": "0",
+    "lastUpdated": "2023-10-20T12:18:10.984+05:30",
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ]
+  },
+  "identifier": {
+    "system": "http://example-provider.org",
+    "value": "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
+  },
+  "type": "document",
+  "timestamp": "2023-10-20T12:18:10.984+05:30",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:9bf7226d-221f-4802-9fa2-27a330b22b34",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "9bf7226d-221f-4802-9fa2-27a330b22b34",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "code": "60591-5",
+              "system": "http://loinc.org",
+              "display": "Patient summary Document"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "date": "2024-08-28T14:30:00Z",
+        "author": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0",
+            "display": "Sunshine Surgical Center, Mumbai",
+            "type": "Organization"
+          }
+        ],
+        "encounter": {
+          "reference": "urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13",
+          "type": "Encounter"
+        },
+        "attester": [
+          {
+            "mode": "legal",
+            "time": "2023-10-20T12:18:11+05:30",
+            "party": {
+              "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+            }
+          }
+        ],
+        "custodian": {
+          "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0",
+          "display": "Sunshine Surgical Center, Mumbai",
+          "type": "Organization"
+        },
+        "title": "Complete Diagnostic Report",
+        "section": [
+          {
+            "title": "Diagnostic Reports",
+            "code": {
+              "coding": [
+                {
+                  "code": "11506-3",
+                  "system": "http://loinc.org",
+                  "display": "Progress note"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "ee47d72b-3209-4c2c-8385-53cebe4dc9a3",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "LAB",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "57021-8",
+              "system": "http://loinc.org",
+              "display": "CBC W Auto Differential panel - Blood"
+            }
+          ],
+          "text": "CBC W Auto Differential panel - Blood"
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2024-12-10T08:00:00Z",
+        "issued": "2024-12-10T09:00:00Z",
+        "result": [
+          {
+            "reference": "urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59"
+          },
+          {
+            "reference": "urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6"
+          },
+          {
+            "reference": "urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db"
+          },
+          {
+            "reference": "urn:uuid:114cbe71-8a5f-497c-8902-879b5cfbaf5a"
+          },
+          {
+            "reference": "urn:uuid:4c2a432c-172d-4e77-89dc-d2e47c2dfe79"
+          },
+          {
+            "reference": "urn:uuid:9d7e90f3-5c7b-4e95-9400-81a24e70b1a6"
+          },
+          {
+            "reference": "urn:uuid:1af6c85e-3d89-4a0f-8aa3-10a7d3bcb86f"
+          },
+          {
+            "reference": "urn:uuid:75e8d2b9-9a0d-4893-a05e-88b5b237b0b6"
+          },
+          {
+            "reference": "urn:uuid:8f7e4713-f7b1-4e3e-9514-729f6e8f9dfc"
+          },
+          {
+            "reference": "urn:uuid:66314f16-23a4-4c39-b688-d7eb1e2f2d34"
+          },
+          {
+            "reference": "urn:uuid:41cf6f4c-d41e-4bfa-8007-7c1978822b7e"
+          },
+          {
+            "reference": "urn:uuid:169a94f5-9a5b-4f63-98b8-98358ef93827"
+          },
+          {
+            "reference": "urn:uuid:382d7809-0ae7-4808-90df-6d92e9e1e92d"
+          },
+          {
+            "reference": "urn:uuid:f6532e2b-dc01-403c-8375-2121fabe9d09"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "2d5cb6d7-ec9c-4207-9366-9874b3bfbf59",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "789-8",
+              "system": "http://loinc.org",
+              "display": "Erythrocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Red Blood Cell (RBC) Count"
+        },
+        "valueQuantity": {
+          "value": 4.5,
+          "code": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "million cells/mcL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4.2,
+              "unit": "million cells/mcL"
+            },
+            "high": {
+              "value": 5.4,
+              "unit": "million cells/mcL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "6690-2",
+              "system": "http://loinc.org",
+              "display": "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "White Blood Cell (WBC) Count"
+        },
+        "valueQuantity": {
+          "value": 7500,
+          "code": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cells/mcL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4000,
+              "unit": "cells/mcL"
+            },
+            "high": {
+              "value": 11000,
+              "unit": "cells/mcL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "3fda073d-9244-46c8-835e-5d85e50f14db",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "770-8",
+              "system": "http://loinc.org",
+              "display": "Neutrophils/100 leukocytes in Blood by Automated count"
+            }
+          ],
+          "text": "Neutrophil Count"
+        },
+        "valueQuantity": {
+          "value": 4500,
+          "code": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cells/µL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 2500,
+              "unit": "cells/µL"
+            },
+            "high": {
+              "value": 7000,
+              "unit": "cells/µL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:114cbe71-8a5f-497c-8902-879b5cfbaf5a",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "114cbe71-8a5f-497c-8902-879b5cfbaf5a",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "731-0",
+              "system": "http://loinc.org",
+              "display": "Lymphocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Lymphocyte Count"
+        },
+        "valueQuantity": {
+          "value": 2000,
+          "code": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cells/µL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 1000,
+              "unit": "cells/µL"
+            },
+            "high": {
+              "value": 4000,
+              "unit": "cells/µL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4c2a432c-172d-4e77-89dc-d2e47c2dfe79",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "4c2a432c-172d-4e77-89dc-d2e47c2dfe79",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "5905-5",
+              "system": "http://loinc.org",
+              "display": "Monocytes/100 leukocytes in Blood by Automated count"
+            }
+          ],
+          "text": "Monocyte Count"
+        },
+        "valueQuantity": {
+          "value": 500,
+          "code": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cells/µL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 200,
+              "unit": "cells/µL"
+            },
+            "high": {
+              "value": 800,
+              "unit": "cells/µL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9d7e90f3-5c7b-4e95-9400-81a24e70b1a6",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "9d7e90f3-5c7b-4e95-9400-81a24e70b1a6",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "713-8",
+              "system": "http://loinc.org",
+              "display": "Eosinophils/100 leukocytes in Blood by Automated count"
+            }
+          ],
+          "text": "Eosinophil Count"
+        },
+        "valueQuantity": {
+          "value": 300,
+          "code": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cells/µL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 50,
+              "unit": "cells/µL"
+            },
+            "high": {
+              "value": 500,
+              "unit": "cells/µL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1af6c85e-3d89-4a0f-8aa3-10a7d3bcb86f",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "1af6c85e-3d89-4a0f-8aa3-10a7d3bcb86f",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "704-7",
+              "system": "http://loinc.org",
+              "display": "Basophils [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Basophil Count"
+        },
+        "valueQuantity": {
+          "value": 100,
+          "code": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cells/µL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 25,
+              "unit": "cells/µL"
+            },
+            "high": {
+              "value": 100,
+              "unit": "cells/µL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:75e8d2b9-9a0d-4893-a05e-88b5b237b0b6",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "75e8d2b9-9a0d-4893-a05e-88b5b237b0b6",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "718-7",
+              "system": "http://loinc.org",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin (Hgb)"
+        },
+        "valueQuantity": {
+          "value": 13.5,
+          "code": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12,
+              "unit": "g/dL"
+            },
+            "high": {
+              "value": 15.5,
+              "unit": "g/dL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f7e4713-f7b1-4e3e-9514-729f6e8f9dfc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "8f7e4713-f7b1-4e3e-9514-729f6e8f9dfc",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "4544-3",
+              "system": "http://loinc.org",
+              "display": "Hematocrit [Volume Fraction] of Blood by Automated count"
+            }
+          ],
+          "text": "Hematocrit (Hct)"
+        },
+        "valueQuantity": {
+          "value": 40,
+          "code": "%",
+          "system": "http://unitsofmeasure.org",
+          "unit": "%"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 36,
+              "unit": "%"
+            },
+            "high": {
+              "value": 46,
+              "unit": "%"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:66314f16-23a4-4c39-b688-d7eb1e2f2d34",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "66314f16-23a4-4c39-b688-d7eb1e2f2d34",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "777-3",
+              "system": "http://loinc.org",
+              "display": "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Platelet Count"
+        },
+        "valueQuantity": {
+          "value": 250000,
+          "code": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cells/mcL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 150000,
+              "unit": "cells/mcL"
+            },
+            "high": {
+              "value": 450000,
+              "unit": "cells/mcL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:41cf6f4c-d41e-4bfa-8007-7c1978822b7e",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "41cf6f4c-d41e-4bfa-8007-7c1978822b7e",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "787-2",
+              "system": "http://loinc.org",
+              "display": "MCV [Entitic volume] by Automated count"
+            }
+          ],
+          "text": "Mean Corpuscular Volume (MCV)"
+        },
+        "valueQuantity": {
+          "value": 88,
+          "code": "fL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "fL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 80,
+              "unit": "fL"
+            },
+            "high": {
+              "value": 100,
+              "unit": "fL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:169a94f5-9a5b-4f63-98b8-98358ef93827",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "169a94f5-9a5b-4f63-98b8-98358ef93827",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "785-6",
+              "system": "http://loinc.org",
+              "display": "MCH [Entitic mass] by Automated count"
+            }
+          ],
+          "text": "Mean Corpuscular Hemoglobin (MCH)"
+        },
+        "valueQuantity": {
+          "value": 30,
+          "code": "pg",
+          "system": "http://unitsofmeasure.org",
+          "unit": "pg"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 27,
+              "unit": "pg"
+            },
+            "high": {
+              "value": 33,
+              "unit": "pg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:382d7809-0ae7-4808-90df-6d92e9e1e92d",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "382d7809-0ae7-4808-90df-6d92e9e1e92d",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "786-4",
+              "system": "http://loinc.org",
+              "display": "MCHC [Mass/volume] by Automated count"
+            }
+          ],
+          "text": "Mean Corpuscular Hemoglobin Concentration (MCHC)"
+        },
+        "valueQuantity": {
+          "value": 34,
+          "code": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 32,
+              "unit": "g/dL"
+            },
+            "high": {
+              "value": 36,
+              "unit": "g/dL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f6532e2b-dc01-403c-8375-2121fabe9d09",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "f6532e2b-dc01-403c-8375-2121fabe9d09",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "788-0",
+              "system": "http://loinc.org",
+              "display": "Erythrocyte distribution width [Ratio] by Automated count"
+            }
+          ],
+          "text": "Red Cell Distribution Width (RDW)"
+        },
+        "valueQuantity": {
+          "value": 12.5,
+          "code": "%",
+          "system": "http://unitsofmeasure.org",
+          "unit": "%"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 11.5,
+              "unit": "%"
+            },
+            "high": {
+              "value": 14.5,
+              "unit": "%"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:89a6e237-5f83-4e77-a8d8-c3b1428ecff3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "89a6e237-5f83-4e77-a8d8-c3b1428ecff3",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "46335-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast - bilateral Single view"
+            }
+          ],
+          "text": "Ultrasound-guided core needle biopsy report"
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2024-12-10T10:00:00Z",
+        "issued": "2024-12-10T11:00:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:ddf09595-0fdf-4372-a716-d1f6661065b5"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ddf09595-0fdf-4372-a716-d1f6661065b5",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "ddf09595-0fdf-4372-a716-d1f6661065b5",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "274025005",
+              "system": "http://snomed.info/sct",
+              "display": "Colonic polypectomy (procedure)"
+            }
+          ],
+          "text": "Core needle biopsy of the right breast mass"
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2024-12-10T10:15:00Z",
+        "valueString": "Histopathological analysis shows invasive ductal carcinoma, grade 2. Tumor measures approximately 2.1 cm."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-20T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "identifier": [
+          {
+            "type": {
+              "text": "Aadhar Number"
+            },
+            "system": "urn:health:information:provider:system",
+            "value": "1234 1234 1234"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHAAddress",
+                  "system": "https://healthid.abdm.gov.in",
+                  "display": "ABHAAddress"
+                }
+              ],
+              "text": "ABHA Address"
+            },
+            "system": "urn:health:information:provider:system",
+            "value": "Meera.sharma@abha.in"
+          }
+        ],
+        "name": [
+          {
+            "text": "Meera Sharma",
+            "family": "Sharma",
+            "given": [
+              "Meera"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "email",
+            "value": "Meera.sharma@abha.in"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1971-01-01",
+        "address": [
+          {
+            "type": "both",
+            "text": "123, Bangalore Urban, Karnataka, India, Pincode:560103",
+            "city": "Bangalore Urban",
+            "district": "Bangalore Urban",
+            "state": "Karnataka",
+            "postalCode": "560103",
+            "country": "India"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "1c521af9-92c9-41e9-92f5-58a411bf56d0",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-20T09:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "name": "Sunshine Surgical Center, Mumbai",
+        "address": [
+          {
+            "text": "Sunshine Surgical Center, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069",
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postalCode": "400069",
+            "country": "India"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "41295111-04f9-4b83-b186-ef2975db1c7e",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-20T09:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
+          ]
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "MD",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Medical License number"
+                }
+              ]
+            },
+            "system": "https://doctor.ndhm.gov.in",
+            "value": "56-1234-5678-9012"
+          }
+        ],
+        "name": [
+          {
+            "text": "Dr. Priya Singh",
+            "family": "Singh",
+            "given": [
+              "Priya"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "304292004",
+                  "system": "http://snomed.info/sct",
+                  "display": "Surgeon (occupation)"
+                }
+              ]
+            },
+            "issuer": {
+              "reference": "urn:uuid:certificate-authority"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "1b2942c5-9a2e-4546-9a9e-0307e5c2fc13",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-20T09:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "code": "AMB",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "code": "185349003",
+                "system": "http://snomed.info/sct",
+                "display": "Encounter for check up (procedure)"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+              "display": "Dr. Priya Singh",
+              "type": "Practitioner"
+            },
+            "type": [
+              {
+                "coding": [
+                  {
+                    "code": "ATND",
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "display": "attender"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "period": {
+          "start": "2023-10-20T09:00:00+05:30",
+          "end": "2023-10-20T10:00:00+05:30"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920",
+              "display": "Sunshine Surgical Center, Mumbai",
+              "type": "Location"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
