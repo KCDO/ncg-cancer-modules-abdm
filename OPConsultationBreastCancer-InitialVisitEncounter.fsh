@@ -337,7 +337,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
-* participant[0].individual.reference = "urn:uuid:dc4b7a15-5cf8-4bb5-9e0d-7e287ec8e8b6"
+* participant[0].individual.reference = "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e"
 * participant[0].individual.display = "Dr. Anjali Verma"
 * period.start = "2023-10-10T09:00:00+05:30"
 * period.end = "2023-10-10T12:00:00+05:30"
