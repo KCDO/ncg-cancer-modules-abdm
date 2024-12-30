@@ -174,6 +174,11 @@ Usage: #inline
 * address.state = "Maharashtra"
 * address.postalCode = "400069"
 * address.country = "India"
+* identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[0].type.coding[0].code = #PRN
+* identifier[0].type.coding[0].display = "Provider number"
+* identifier[0].system = "https://facility.ndhm.gov.in"
+* identifier[0].value = "1c521af9-92c9-41e9-92f5-58a411bf56d0"
 
 // Practitioner resource
 Instance: 41295111-04f9-4b83-b186-ef2975db1c7e
