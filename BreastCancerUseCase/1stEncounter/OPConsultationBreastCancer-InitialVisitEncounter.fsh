@@ -26,8 +26,8 @@ Usage: #example
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
-* identifier.system = "http://example-provider.org"
-* identifier.value = "OpConsultRecord/52ef0e5a-147f-45a8-ac2f-56caf1234144"
+* identifier.system = "http://hip.in"
+* identifier.value = "52ef0e5a-147f-45a8-ac2f-56caf1234144"
 * type = #document
 * timestamp = "2023-10-10T12:18:10.984+05:30"
 //entry for Composition
@@ -367,6 +367,11 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:00:00+05:30" // Adjust date and time as necessary
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
 * name = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+* identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[0].type.coding[0].code = #PRN
+* identifier[0].type.coding[0].display = "Provider number"
+* identifier[0].system = "https://facility.ndhm.gov.in"
+* identifier[0].value = "df9cc473-6f17-429c-8d13-8db5f8f923a2"
 // * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
 // * address[0].state = "Maharashtra"

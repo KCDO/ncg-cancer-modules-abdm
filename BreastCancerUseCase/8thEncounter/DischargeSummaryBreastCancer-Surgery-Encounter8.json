@@ -9,8 +9,8 @@
     ]
   },
   "identifier": {
-    "system": "http://example-provider.org",
-    "value": "OpConsultRecord/335bb719-3eb8-4fea-a6ba-f5dcff5ae7c9"
+    "system": "http://hip.in",
+    "value": "335bb719-3eb8-4fea-a6ba-f5dcff5ae7c9"
   },
   "type": "document",
   "timestamp": "2023-10-10T12:18:10.984+05:30",
@@ -540,7 +540,22 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
           ]
         },
-        "name": "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+        "name": "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069",
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PRN",
+                  "display": "Provider number"
+                }
+              ]
+            },
+            "system": "https://facility.ndhm.gov.in",
+            "value": "a102f1a9-d5e2-4692-938a-605370d6acf1"
+          }
+        ]
       }
     },
     {
