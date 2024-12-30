@@ -326,6 +326,21 @@
             "postalCode": "400069",
             "country": "India"
           }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PRN",
+                  "display": "Provider number"
+                }
+              ]
+            },
+            "system": "https://facility.ndhm.gov.in",
+            "value": "1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
         ]
       }
     },
