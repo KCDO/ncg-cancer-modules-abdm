@@ -549,7 +549,7 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
           ]
         },
-        "status": "in-progress",
+        "status": "finished",
         "class": {
           "code": "AMB",
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",

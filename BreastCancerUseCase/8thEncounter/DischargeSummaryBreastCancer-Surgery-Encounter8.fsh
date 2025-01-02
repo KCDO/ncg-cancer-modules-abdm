@@ -295,9 +295,9 @@ Instance: 1f377bad-7909-43d2-b2a5-27f2d1950866
 InstanceOf: Encounter
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-10T09:00:00+05:30"
+* meta.lastUpdated = "2023-11-12T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
-* status = #in-progress
+* status = #finished
 // * class = $encounter-class#outpatient "Outpatient"
 * class = $v3-ActCode#AMB "outpatient encounter"
 //* type[0] = $sct#185349003 "Encounter for check up"
@@ -306,8 +306,8 @@ Usage: #inline
 * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
 * participant[0].individual.reference = "urn:uuid:1b266629-c338-4468-9519-52e1d84538d5"
 * participant[0].individual.display = "Dr. Priya Singh"
-* period.start = "2023-10-10T09:00:00+05:30"
-* period.end = "2023-10-10T12:00:00+05:30"
+* period.start = "2023-11-12T09:00:00+05:30"
+* period.end = "2023-11-12T12:00:00+05:30"
 * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
 
 // Practitioner resource
