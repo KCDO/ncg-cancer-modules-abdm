@@ -96,25 +96,6 @@
             ]
           },
           {
-            "title": "MedicalHistory",
-            "code": {
-              "coding": [
-                {
-                  "code": "371529009",
-                  "system": "http://snomed.info/sct",
-                  "display": "History and physical report"
-                }
-              ],
-              "text": "History and physical report"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff",
-                "type": "Condition"
-              }
-            ]
-          },
-          {
             "title": "Procedure",
             "code": {
               "coding": [
@@ -147,7 +128,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a275",
+                "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff",
                 "type": "Observation"
               },
               {
@@ -286,27 +267,34 @@
     {
       "fullUrl": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff",
       "resource": {
-        "resourceType": "Condition",
+        "resourceType": "Observation",
         "id": "01eeb933-3210-4eee-975c-103720fd86ff",
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "active",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Active"
-            }
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
           ]
         },
+        "status": "final",
         "code": {
+          "coding": [
+            {
+              "code": "76498008",
+              "system": "http://snomed.info/sct",
+              "display": "Postmenopausal"
+            }
+          ],
           "text": "Postmenopausal"
         },
+        "valueString": "Postmenopausal",
         "category": [
           {
             "coding": [
               {
-                "code": "problem-list-item",
-                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-                "display": "Problem List Item"
+                "code": "social-history",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Social History"
               }
             ],
             "text": "Medical History"
@@ -314,9 +302,10 @@
         ],
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Meera Sharma"
+          "display": "Meera Sharma",
+          "type": "Patient"
         },
-        "recordedDate": "2023-10-10T12:18:11+05:30"
+        "effectiveDateTime": "2023-10-10T12:18:11+05:30"
       }
     },
     {

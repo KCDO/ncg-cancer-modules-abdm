@@ -77,25 +77,6 @@
         },
         "section": [
           {
-            "title": "MedicalHistory",
-            "code": {
-              "coding": [
-                {
-                  "code": "371529009",
-                  "system": "http://snomed.info/sct",
-                  "display": "History and physical report"
-                }
-              ],
-              "text": "History and physical report"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:e1cc9bd5-c6d6-4115-a36c-bd27dc71a217",
-                "type": "Condition"
-              }
-            ]
-          },
-          {
             "title": "Procedure",
             "code": {
               "coding": [
@@ -128,7 +109,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:d937d3da-5e27-4c66-9856-2951cdf62bba",
+                "reference": "urn:uuid:e1cc9bd5-c6d6-4115-a36c-bd27dc71a217",
                 "type": "Observation"
               }
             ]
@@ -225,37 +206,45 @@
     {
       "fullUrl": "urn:uuid:e1cc9bd5-c6d6-4115-a36c-bd27dc71a217",
       "resource": {
-        "resourceType": "Condition",
+        "resourceType": "Observation",
         "id": "e1cc9bd5-c6d6-4115-a36c-bd27dc71a217",
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "active",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Active"
-            }
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
           ]
         },
+        "status": "final",
         "code": {
+          "coding": [
+            {
+              "code": "76498008",
+              "system": "http://snomed.info/sct",
+              "display": "Postmenopausal"
+            }
+          ],
           "text": "Postmenopausal"
         },
+        "valueString": "Postmenopausal",
         "category": [
           {
             "coding": [
               {
-                "code": "problem-list-item",
-                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-                "display": "Problem List Item"
+                "code": "social-history",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Social History"
               }
             ],
             "text": "Medical History"
           }
         ],
         "subject": {
-          "reference": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
-          "display": "Meera Sharma"
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
         },
-        "recordedDate": "2023-10-10T12:18:11+05:30"
+        "effectiveDateTime": "2023-10-10T12:18:11+05:30"
       }
     },
     {
@@ -285,7 +274,13 @@
           "reference": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
           "display": "Meera Sharma",
           "type": "Patient"
-        }
+        },
+        "performedString": "10 years ago",
+        "note": [
+          {
+            "text": "The patient underwent a hysterectomy 10 years ago."
+          }
+        ]
       }
     },
     {
@@ -398,9 +393,9 @@
         "relationship": {
           "coding": [
             {
-              "code": "MTH",
+              "code": "MGRMTH",
               "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-              "display": "Mother"
+              "display": "Maternal Grandmother"
             }
           ],
           "text": "Maternal Grandmother"
@@ -408,7 +403,14 @@
         "condition": [
           {
             "code": {
-              "text": "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
+              "coding": [
+                {
+                  "code": "254837009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Breast Cancer"
+                }
+              ],
+              "text": "Breast Cancer"
             },
             "onsetAge": {
               "value": 60,
@@ -420,7 +422,7 @@
         ],
         "note": [
           {
-            "text": "The patient's maternal grandmother was diagnosed with breast cancer at age 60."
+            "text": "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)."
           }
         ]
       }

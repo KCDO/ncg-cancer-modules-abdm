@@ -36,7 +36,7 @@ Usage: #example
 //entry for Patient resource
 * entry[+].fullUrl = "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de"
 * entry[=].resource = c4d052b5-2d9f-4ebf-b617-764efffa08de
-//entry for Condition Resource (Past Medical History - Postmenopausal)
+//entry for Observation Resource (Past Medical History - Postmenopausal)
 * entry[+].fullUrl = "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff"
 * entry[=].resource = 01eeb933-3210-4eee-975c-103720fd86ff
 //entry for Procedure Resource (Past Surgical History: Hysterectomy)
@@ -126,13 +126,13 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:216861b1-ca70-41bc-be26-d5b0994a700b)
 * section[=].entry[=].type = "Condition"
 
-// section for MedicalHistory
-* section[+].title = "MedicalHistory"
-* section[=].code = $sct#371529009 "History and physical report"
-* section[=].code.text = "History and physical report"
-// section entry for Condition Resource (Past Medical History - Postmenopausal)
-* section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
-* section[=].entry[=].type = "Condition"
+// // section for MedicalHistory
+// * section[+].title = "MedicalHistory"
+// * section[=].code = $sct#371529009 "History and physical report"
+// * section[=].code.text = "History and physical report"
+// // section entry for Observation Resource (Past Medical History - Postmenopausal)
+// * section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
+// * section[=].entry[=].type = "Observation"
 
 // section for Procedure
 * section[+].title = "Procedure"
@@ -151,6 +151,9 @@ Usage: #inline
 * section[=].entry[=].type = "Observation"
 //section entry for Observation resource(Examination Notes)
 * section[=].entry[+] = Reference(urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6d6)
+* section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Past Medical History - Postmenopausal)
+* section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
 * section[=].entry[=].type = "Observation"
 
 // section for FamilyHistory
@@ -239,21 +242,25 @@ Usage: #inline
 * valueCodeableConcept = $sct#365637002 "Finding of ABO blood group"
 * valueCodeableConcept.text = "B+"
 
-// Condition Resource (Past Medical History - Postmenopausal)
+// Observation Resource (Past Medical History - Postmenopausal)
+// Observation Resource (Postmenopausal)
 Instance: 01eeb933-3210-4eee-975c-103720fd86ff
-InstanceOf: Condition
-Title: "Past Medical History - Postmenopausal"
-Description: "Represents the postmenopausal condition in the patient's past medical history."
+InstanceOf: Observation
+Title: "Postmenopausal Status"
+Description: "Represents the postmenopausal status of the patient."
 Usage: #inline
-* clinicalStatus = $condition-clinical#active "Active"
-// * verificationStatus = $condition-verification#confirmed "Confirmed"
-// * verificationStatus = $sct#414285001 "Confirmed"
-// * verificationStatus = #confirmed
+* meta.versionId = "0"
+* meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+* status = #final
+* code = $sct#76498008 "Postmenopausal"
 * code.text = "Postmenopausal"
-* category[0] = $condition-category#problem-list-item "Problem List Item"
+* valueString = "Postmenopausal"
+* category[0] = $observation-category#social-history "Social History"
 * category[0].text = "Medical History"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
-* recordedDate = "2023-10-10T12:18:11+05:30"
+* subject.type = "Patient"
+* effectiveDateTime = "2023-10-10T12:18:11+05:30"
 
 // Procedure Resource (Past Surgical History: Hysterectomy)
 Instance: 01eeb933-3210-4eee-975c-103720fd86fd
