@@ -80,16 +80,16 @@ Usage: #inline
 * type = $sct#373942005 "Discharge summary"
 * type.text = "Discharge Summary"
 // set Patient as subject
-* subject = Reference(urn:uuid:f8d9e19e-5598-428c-ae03-b1cd44968b41) "Patient"
+* subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Patient"
 // set Encounter as Encounter
-* encounter = Reference(urn:uuid:1d87ab20-8b86-4b41-a30d-984b2208d945) "Encounter"
+* encounter = Reference(urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13) "Encounter"
 * date = "2020-07-09T15:32:26.605+05:30"
 // set Practitioner as author
-* author = Reference(urn:uuid:dc36f7c9-7ea5-4984-a02e-7102c215db17) "Practitioner"
+* author = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Practitioner"
 * title = "Discharge Summary"
 * confidentiality = #N
 // set Organization as custodian
-* custodian = Reference(urn:uuid:f7941403-b480-48b3-985a-ec4b6b04c1c2) "Organization"
+* custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Organization"
 
 // section for Procedures
 * section[0].title = "Procedures"
@@ -129,15 +129,15 @@ Usage: #inline
 * section[=].code = $sct#371529009 "History and physical report"
 * section[=].code.text = "FollowUp section"
 // section entry for Appointment of Follow-up module for assess overall response to chemotherapy and plan further treatment
-* section[=].entry = Reference(urn:uuid:1af6c85e-3d89-4a0f-8aa3-10a7d3bcb86f)
+* section[=].entry = Reference(urn:uuid:75e8d2b9-9a0d-4893-a05e-88b5b237b0b6)
 * section[=].entry.type = "Appointment"
 
 // section for CarePlan
 * section[+].title = "CarePlan"
-* section[=].code = $sct#722446000 "CarePlan"
+* section[=].code = $sct#734163000 "Care plan"
 * section[=].code.text = "CarePlan"
 //section entry for CarePlan of Advice module
-* section[=].entry = Reference(urn:uuid:75e8d2b9-9a0d-4893-a05e-88b5b237b0b6)
+* section[=].entry = Reference(urn:uuid:1af6c85e-3d89-4a0f-8aa3-10a7d3bcb86f)
 * section[=].entry.type = "CarePlan"
 
 // Observation of Observation and Examination module for Vital signs stable
@@ -146,18 +146,23 @@ InstanceOf: Observation
 Title: "Vital Signs Observation"
 Description: "Observation for vital signs."
 * status = #final
+* category = $observation-category#vital-signs // Vital Signs category
 * code = $loinc#85354-9 // Vital signs, panel
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
 * effectiveDateTime = "2025-01-15"
 * component[0].code = $loinc#8480-6 // Systolic blood pressure
 * component[0].valueQuantity = 115 'mm[Hg]'
+* component[0].valueQuantity.unit = "mm[Hg]" // Add unit for Systolic BP
 * component[1].code = $loinc#8462-4 // Diastolic blood pressure
 * component[1].valueQuantity = 75 'mm[Hg]'
+* component[1].valueQuantity.unit = "mm[Hg]" // Add unit for Diastolic BP
 * component[2].code = $loinc#8867-4 // Heart rate
 * component[2].valueQuantity = 69 '/min'
+* component[2].valueQuantity.unit = "/min" // Add unit for Heart Rate
 * component[3].code = $loinc#8310-5 // Body temperature
-* component[3].valueQuantity = 98.3 '°F'
+* component[3].valueQuantity = 98.3 '[degF]' // Corrected unit to 'degF'
+* component[3].valueQuantity.unit = "[degF]"
 
 // Observation of Observation and Examination module for Physical examination
 Instance: 79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6
@@ -165,6 +170,7 @@ InstanceOf: Observation
 Title: "Physical Examination Observation"
 Description: "Observation for physical examination findings."
 * status = #final
+* category = $observation-category#exam // General examination category
 * code = $loinc#29545-1 // Physical findings of general status
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
@@ -177,41 +183,46 @@ InstanceOf: Observation
 Title: "Blood Work Observation"
 Description: "Observation for blood work results."
 * status = #final
+* category = $observation-category#laboratory // Laboratory category
 * code = $loinc#24357-6 // Hematology panel
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
 * effectiveDateTime = "2025-01-15"
 * component[0].code = $loinc#6690-2 // White blood cell count
-* component[0].valueQuantity = 4600 '/mcL'
+* component[0].valueQuantity = 4600 '/uL' // Corrected unit to '/uL'
+* component[0].valueQuantity.unit = "/uL"
 * component[1].code = $loinc#789-8 // Red blood cell count
-* component[1].valueQuantity = 4.0 '10*6/uL'
+* component[1].valueQuantity = 4.0 '10*6/uL' // Adjusted valid unit format
+* component[1].valueQuantity.unit = "10*6/uL"
 * component[2].code = $loinc#777-3 // Platelet count
-* component[2].valueQuantity = 220000 '/mcL'
+* component[2].valueQuantity = 220000 '/uL' // Corrected unit to '/uL'
+* component[2].valueQuantity.unit = "/uL"
 
 // Procedure of Chemotherapy regimen module for AC-T
 Instance: 114cbe71-8a5f-497c-8902-879b5cfbaf5a
 InstanceOf: Procedure
 Title: "Chemotherapy Regimen: AC-T"
 Description: "Procedure for administering chemotherapy regimen AC-T (Adriamycin, Cyclophosphamide followed by Taxol)."
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #in-progress
 * category = $sct#367336001 "Chemotherapy"
 * category.text = "Chemotherapy"
-* code = $sct#18388001 "Administration of antineoplastic chemotherapy"
+* code = $sct#1255904006 "Administration of palliative antineoplastic agent (procedure)"
 * code.text = "Chemotherapy Regimen AC-T"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
 * performedPeriod.start = "2025-01-15" // Adjust start date as needed
 * performedPeriod.end = "2025-03-15" // Adjust end date as needed
-* performer[0].actor = Reference(Practitioner/Oncologist123) // Replace with actual Practitioner ID
+* performer[0].actor = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 * reasonCode[0].coding.system = $sct
 * reasonCode[0].coding.code = #394593009
 * reasonCode[0].coding.display = "Medical oncology"
 * reasonCode[0].text = "Chemotherapy for cancer treatment"
 * note[0].text = "Administer Adriamycin (Doxorubicin) and Cyclophosphamide initially, followed by Taxol (Paclitaxel)."
 * focalDevice[0].action.coding[0].system = $sct
-* focalDevice[0].action.coding[0].code = #440598005
-* focalDevice[0].action.coding[0].display = "Infusion"
-* focalDevice[0].manipulated = Reference(Device/InfusionPump123) // Replace with actual Device ID
+* focalDevice[0].action.coding[0].code = #430033006
+* focalDevice[0].action.coding[0].display = "Infusion pump (physical object)"
+* focalDevice[0].manipulated = Reference(urn:uuid:InfusionPump123) 
 
 // MedicationRequest of Medications Administered module for Taxol (Paclitaxel)
 Instance: 4c2a432c-172d-4e77-89dc-d2e47c2dfe79
@@ -220,7 +231,7 @@ Title: "Taxol (Paclitaxel) Medication Request"
 Description: "MedicationRequest for Taxol (Paclitaxel) administration."
 * status = #active
 * intent = #order
-* medicationCodeableConcept = $rxnorm#58262 "Paclitaxel"
+* medicationCodeableConcept = $sct#387374002 "Paclitaxel (substance)"
 * medicationCodeableConcept.text = "Taxol (Paclitaxel)"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
@@ -236,7 +247,7 @@ Title: "Zofran (Ondansetron) Medication Request"
 Description: "MedicationRequest for Zofran (Ondansetron) as an antiemetic."
 * status = #active
 * intent = #order
-* medicationCodeableConcept = $rxnorm#5640 "Ondansetron"
+* medicationCodeableConcept = $sct#372487007 "Ondansetron (substance)"
 * medicationCodeableConcept.text = "Zofran (Ondansetron)"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
@@ -250,13 +261,14 @@ Instance: 1af6c85e-3d89-4a0f-8aa3-10a7d3bcb86f
 InstanceOf: CarePlan
 Title: "Care Plan for Patient Advice"
 Description: "Care plan including advice for symptom monitoring, hydration, and rest."
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/CarePlan"
 * status = #active
 * intent = #plan
 * title = "Patient Advice Plan"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
 * period.start = "2025-01-15" // Adjust date as appropriate
-* activity[0].detail.kind = #communication
+* activity[0].detail.kind = #CommunicationRequest 
 * activity[0].detail.status = #in-progress
 * activity[0].detail.description = "Continue monitoring for any new symptoms."
 
@@ -266,12 +278,12 @@ InstanceOf: Appointment
 Title: "Follow-Up Appointment with Dr. Vikram Patel"
 Description: "Follow-up appointment to assess overall response to chemotherapy and plan further treatment."
 * status = #proposed
-* participant[0].actor = Reference(Practitioner/41295111-04f9-4b83-b186-ef2975db1c7e)
+* participant[0].actor = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 * serviceCategory.coding[0].system = "http://terminology.hl7.org/CodeSystem/service-category"
 * serviceCategory.coding[0].code = #27
 * serviceCategory.coding[0].display = "Specialist Medical"
 * serviceType.text = "Chemotherapy Follow-Up"
-* specialty = $sct#363346000 "Medical oncology"
+* specialty = $sct#394593009 "Medical oncology (qualifier value)"
 * specialty.text = "Medical Oncology"
 * appointmentType.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0276"
 * appointmentType.coding[0].code = #FOLLOWUP
@@ -279,13 +291,13 @@ Description: "Follow-up appointment to assess overall response to chemotherapy a
 * appointmentType.text = "A follow up visit from a previous appointment"
 * start = "2024-03-10T10:00:00Z" // Date and time of the appointment
 * end = "2024-03-10T11:00:00Z" // Duration of 1 hour
-* participant[0].actor = Reference(Practitioner/41295111-04f9-4b83-b186-ef2975db1c7e)
+* participant[0].actor = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 * participant[0].status = #accepted
-* participant[1].actor = Reference(Patient/27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) 
+* participant[1].actor = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) 
 * participant[1].status = #accepted
-* reasonCode[0].coding[0].system = "$sct"
-* reasonCode[0].coding[0].code = #709137006
-* reasonCode[0].coding[0].display = "Assessment of chemotherapy response"
+* reasonCode[0].coding[0].system = $sct
+* reasonCode[0].coding[0].code = #262502001
+* reasonCode[0].coding[0].display = "Post-chemotherapy (qualifier value)"
 * reasonCode[0].text = "Assess overall response to chemotherapy and plan further treatment"
 
 // Patient resource
