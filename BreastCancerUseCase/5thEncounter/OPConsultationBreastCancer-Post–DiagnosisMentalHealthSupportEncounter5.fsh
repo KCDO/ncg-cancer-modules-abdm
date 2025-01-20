@@ -36,7 +36,7 @@ Usage: #example
 //entry for Patient resource
 * entry[+].fullUrl = "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255"
 * entry[=].resource = 8861a044-24e6-4ca4-83ac-09a5e7b2f255
-//entry for Condition Resource (Past Medical History - Postmenopausal)
+//entry for Observation Resource (Past Medical History - Postmenopausal)
 * entry[+].fullUrl = "urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f"
 * entry[=].resource = cfc19550-3520-4788-b622-f90c8a69cd8f
 //entry for Procedure Resource (Past Surgical History: Hysterectomy)
@@ -109,13 +109,13 @@ Usage: #inline
 * custodian = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa) "Sunshine Clinic, Mumbai"
 * custodian.type = "Organization"
 
-// section for MedicalHistory
-* section[+].title = "MedicalHistory"
-* section[=].code = $sct#371529009 "History and physical report"
-* section[=].code.text = "History and physical report"
-// section entry for Condition Resource (Past Medical History - Postmenopausal)
-* section[=].entry[0] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
-* section[=].entry[=].type = "Condition"
+// // section for MedicalHistory
+// * section[+].title = "MedicalHistory"
+// * section[=].code = $sct#371529009 "History and physical report"
+// * section[=].code.text = "History and physical report"
+// // section entry for Condition Resource (Past Medical History - Postmenopausal)
+// * section[=].entry[0] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
+// * section[=].entry[=].type = "Condition"
 
 // section for Procedure
 * section[+].title = "Procedure"
@@ -140,6 +140,9 @@ Usage: #inline
 * section[=].entry[=].type = "Observation"
 //section entry for (Plan - Observation resource for Mental Health Plan)
 * section[=].entry[+] = Reference(urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6df)
+* section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Past Medical History - Postmenopausal)
+* section[=].entry[0] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
 * section[=].entry[=].type = "Observation"
 
 // section for FamilyHistory
@@ -206,21 +209,25 @@ Usage: #inline
 * valueCodeableConcept = $sct#365637002 "Finding of ABO blood group"
 * valueCodeableConcept.text = "B+"
 
-// Condition Resource (Past Medical History - Postmenopausal)
+// Observation Resource (Past Medical History - Postmenopausal)
+// Observation Resource (Postmenopausal)
 Instance: cfc19550-3520-4788-b622-f90c8a69cd8f
-InstanceOf: Condition
-Title: "Past Medical History - Postmenopausal"
-Description: "Represents the postmenopausal condition in the patient's past medical history."
+InstanceOf: Observation
+Title: "Postmenopausal Status"
+Description: "Represents the postmenopausal status of the patient."
 Usage: #inline
-* clinicalStatus = $condition-clinical#inactive "Inactive"
-// * verificationStatus = $condition-verification#confirmed "Confirmed"
-// * verificationStatus = $sct#414285001 "Confirmed"
-// * verificationStatus = #confirmed
+* meta.versionId = "0"
+* meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+* status = #final
+* code = $sct#76498008 "Postmenopausal"
 * code.text = "Postmenopausal"
-* category[0] = $condition-category#problem-list-item "Problem List Item"
+* valueString = "Postmenopausal"
+* category[0] = $observation-category#social-history "Social History"
 * category[0].text = "Medical History"
-* subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
-* recordedDate = "2023-10-10T12:18:11+05:30"
+* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
+* subject.type = "Patient"
+* effectiveDateTime = "2023-10-10T12:18:11+05:30"
 
 // Procedure Resource (Past Surgical History: Hysterectomy)
 Instance: 01eeb933-3210-4eee-975c-103720fd86f0
@@ -234,12 +241,10 @@ Usage: #inline
 * status = #completed
 * code = $sct#236886002 "Hysterectomy"
 * code.text = "The patient underwent a hysterectomy 10 years ago"
-// * category.text = "Medical History"
 * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
 * subject.type = "Patient"
-// * performed = "2013-01-01" // 10 years ago
-// * report = Reference(urn:uuid:67316637-1ed2-4258-abfa-9ddcba8522c1)
-// * report.type = "DocumentReference"
+* performedString = "10 years ago"
+* note.text = "The patient underwent a hysterectomy 10 years ago."
 
 // AllergyIntolerance Resource (Drug Allergy)
 Instance: 406d28cd-9b01-46b6-b3e2-496187f76180
@@ -290,15 +295,14 @@ Usage: #inline
 * status = #completed
 * patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
 * patient.type = "Patient"
-* relationship = $v3-RoleCode#MTH "Mother"
+* relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
 * relationship.text = "Maternal Grandmother"
-// * condition[0].code = $sct#254837009 "Family history of breast cancer"
-* condition[0].code.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
+* condition[0].code = $sct#254837009 "Breast Cancer"
+* condition[0].code.text = "Breast Cancer"
 * condition[0].onsetAge.value = 60
 * condition[0].onsetAge.unit = "years"
 * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
 * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-// * condition[0].code = $loinc#54134-2  "Family history of breast cancer"
 * note.text = "The patient's maternal grandmother was diagnosed with breast cancer at age 60."
 
 // Post – Diagnosis Mental Health Support Encounter

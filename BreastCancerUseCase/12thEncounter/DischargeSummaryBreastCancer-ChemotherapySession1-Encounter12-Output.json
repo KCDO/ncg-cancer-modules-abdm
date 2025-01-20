@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "52ef0e5a-147f-45a8-ac2f-56caf1234145",
+  "id": "9f87919c-65ee-424a-8ab8-bc9cbd394555",
   "meta": {
     "versionId": "0",
     "lastUpdated": "2023-10-10T12:18:10.984+05:30",
@@ -10,16 +10,16 @@
   },
   "identifier": {
     "system": "http://hip.in",
-    "value": "52ef0e5a-147f-45a8-ac2f-56caf1234145"
+    "value": "9f87919c-65ee-424a-8ab8-bc9cbd394555"
   },
   "type": "document",
   "timestamp": "2023-10-10T12:18:10.984+05:30",
   "entry": [
     {
-      "fullUrl": "urn:uuid:7230e12b-d0f7-499c-925d-9a3046d10870",
+      "fullUrl": "urn:uuid:d5c1fb49-17e8-41a4-8a4e-7c0f93e48134",
       "resource": {
         "resourceType": "Composition",
-        "id": "7230e12b-d0f7-499c-925d-9a3046d10870",
+        "id": "d5c1fb49-17e8-41a4-8a4e-7c0f93e48134",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:10.984+05:30",
@@ -28,10 +28,6 @@
           ]
         },
         "language": "en-IN",
-        "identifier": {
-          "system": "http://example-provider.org",
-          "value": "7230e12b-d0f7-499c-925d-9a3046d10870"
-        },
         "status": "final",
         "type": {
           "coding": [
@@ -43,20 +39,24 @@
           ],
           "text": "Clinical consultation report"
         },
+        "identifier": {
+          "system": "http://example-provider.org",
+          "value": "d5c1fb49-17e8-41a4-8a4e-7c0f93e48134"
+        },
         "subject": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "type": "Patient"
         },
         "encounter": {
-          "reference": "urn:uuid:367fdcb5-b694-40f0-9f26-a17b57f6d638",
+          "reference": "urn:uuid:f00f1a30-839c-4ff5-bd05-5651d7a7a5a5",
           "type": "Encounter"
         },
         "date": "2023-10-10T12:18:10+05:30",
         "author": [
           {
-            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa",
-            "display": "Sunshine Clinic, Mumbai",
-            "type": "Organization"
+            "reference": "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb",
+            "display": "Dr. Vikram Patel",
+            "type": "Practitioner"
           }
         ],
         "title": "Consultation Report",
@@ -65,17 +65,36 @@
             "mode": "legal",
             "time": "2023-10-10T12:18:11+05:30",
             "party": {
-              "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa",
-              "display": "Sunshine Clinic, Mumbai"
+              "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
+              "display": "Sunshine Oncology Clinic, Mumbai"
             }
           }
         ],
         "custodian": {
-          "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa",
-          "display": "Sunshine Clinic, Mumbai",
+          "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
+          "display": "Sunshine Oncology Clinic, Mumbai",
           "type": "Organization"
         },
         "section": [
+          {
+            "title": "MedicalHistory",
+            "code": {
+              "coding": [
+                {
+                  "code": "371529009",
+                  "system": "http://snomed.info/sct",
+                  "display": "History and physical report"
+                }
+              ],
+              "text": "History and physical report"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
+                "type": "Condition"
+              }
+            ]
+          },
           {
             "title": "Procedure",
             "code": {
@@ -90,7 +109,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86f0",
+                "reference": "urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2",
                 "type": "Procedure"
               }
             ]
@@ -109,15 +128,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6de",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6df",
+                "reference": "urn:uuid:6314292f-9177-4279-9cd0-74aa1427af50",
                 "type": "Observation"
               }
             ]
@@ -136,7 +147,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111",
+                "reference": "urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c",
                 "type": "FamilyMemberHistory"
               }
             ]
@@ -155,8 +166,27 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76180",
+                "reference": "urn:uuid:b890c5f7-0be9-4fab-9282-78601899cadb",
                 "type": "AllergyIntolerance"
+              }
+            ]
+          },
+          {
+            "title": "PhysicalExamination",
+            "code": {
+              "coding": [
+                {
+                  "code": "425044008",
+                  "system": "http://snomed.info/sct",
+                  "display": "Physical exam section"
+                }
+              ],
+              "text": "Physical exam section"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e477",
+                "type": "Observation"
               }
             ]
           }
@@ -164,10 +194,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+      "fullUrl": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
       "resource": {
         "resourceType": "Patient",
-        "id": "8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+        "id": "944e725c-c23e-4413-adee-492408bbd74d",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:11.063+05:30",
@@ -212,54 +242,46 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f",
+      "fullUrl": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
       "resource": {
-        "resourceType": "Observation",
-        "id": "cfc19550-3520-4788-b622-f90c8a69cd8f",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2023-10-10T12:18:11+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
+        "resourceType": "Condition",
+        "id": "a8e8ebce-2f78-49a0-8b69-a4835b12d842",
+        "clinicalStatus": {
           "coding": [
             {
-              "code": "76498008",
-              "system": "http://snomed.info/sct",
-              "display": "Postmenopausal"
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Active"
             }
-          ],
+          ]
+        },
+        "code": {
           "text": "Postmenopausal"
         },
-        "valueString": "Postmenopausal",
         "category": [
           {
             "coding": [
               {
-                "code": "social-history",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Social History"
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
               }
             ],
             "text": "Medical History"
           }
         ],
         "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Meera Sharma",
-          "type": "Patient"
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
+          "display": "Meera Sharma"
         },
-        "effectiveDateTime": "2023-10-10T12:18:11+05:30"
+        "recordedDate": "2023-10-10T12:18:11+05:30"
       }
     },
     {
-      "fullUrl": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86f0",
+      "fullUrl": "urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2",
       "resource": {
         "resourceType": "Procedure",
-        "id": "01eeb933-3210-4eee-975c-103720fd86f0",
+        "id": "b2f87d8f-49d7-4f45-b2c6-781623c09bb2",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:11.125+05:30",
@@ -279,23 +301,17 @@
           "text": "The patient underwent a hysterectomy 10 years ago"
         },
         "subject": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma",
           "type": "Patient"
-        },
-        "performedString": "10 years ago",
-        "note": [
-          {
-            "text": "The patient underwent a hysterectomy 10 years ago."
-          }
-        ]
+        }
       }
     },
     {
-      "fullUrl": "urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76180",
+      "fullUrl": "urn:uuid:b890c5f7-0be9-4fab-9282-78601899cadb",
       "resource": {
         "resourceType": "AllergyIntolerance",
-        "id": "406d28cd-9b01-46b6-b3e2-496187f76180",
+        "id": "b890c5f7-0be9-4fab-9282-78601899cadb",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2024-11-07T12:18:11.170+05:30",
@@ -337,7 +353,7 @@
           "text": "The patient has a documented allergy to penicillin"
         },
         "patient": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma",
           "type": "Patient"
         },
@@ -349,10 +365,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a270",
+      "fullUrl": "urn:uuid:6314292f-9177-4279-9cd0-74aa1427af50",
       "resource": {
         "resourceType": "Observation",
-        "id": "260fbadb-3305-4e5a-b30c-f2a43602a270",
+        "id": "6314292f-9177-4279-9cd0-74aa1427af50",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2024-11-07T12:18:11.143+05:30",
@@ -371,24 +387,20 @@
           ],
           "text": "The patient is postmenopausal"
         },
+        "valueString": "The patient is confirmed as postmenopausal.",
         "subject": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "effectiveDateTime": "2024-11-07T12:18:11+05:30",
-        "note": [
-          {
-            "text": "The patient is confirmed as postmenopausal."
-          }
-        ]
+        "effectiveDateTime": "2024-11-07T12:18:11+05:30"
       }
     },
     {
-      "fullUrl": "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111",
+      "fullUrl": "urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c",
       "resource": {
         "resourceType": "FamilyMemberHistory",
-        "id": "6fec2b43-ed26-47cc-83f9-57f77d028111",
+        "id": "5bc7d505-7465-4f94-baa0-e5a086810a5c",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2024-11-07T12:18:11.143+05:30",
@@ -398,16 +410,16 @@
         },
         "status": "completed",
         "patient": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma",
           "type": "Patient"
         },
         "relationship": {
           "coding": [
             {
-              "code": "MGRMTH",
+              "code": "MTH",
               "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-              "display": "Maternal Grandmother"
+              "display": "Mother"
             }
           ],
           "text": "Maternal Grandmother"
@@ -415,14 +427,7 @@
         "condition": [
           {
             "code": {
-              "coding": [
-                {
-                  "code": "254837009",
-                  "system": "http://snomed.info/sct",
-                  "display": "Breast Cancer"
-                }
-              ],
-              "text": "Breast Cancer"
+              "text": "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
             },
             "onsetAge": {
               "value": 60,
@@ -440,10 +445,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056fff",
+      "fullUrl": "urn:uuid:936b9b09-57c0-4f57-bd64-0337641ef756",
       "resource": {
         "resourceType": "Observation",
-        "id": "efcb7189-b97e-482f-a0f9-ba5c89056fff",
+        "id": "936b9b09-57c0-4f57-bd64-0337641ef756",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:11.063+05:30",
@@ -475,7 +480,7 @@
           }
         ],
         "subject": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "type": "Patient"
         },
         "valueCodeableConcept": {
@@ -491,13 +496,13 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:367fdcb5-b694-40f0-9f26-a17b57f6d638",
+      "fullUrl": "urn:uuid:f00f1a30-839c-4ff5-bd05-5651d7a7a5a5",
       "resource": {
         "resourceType": "Encounter",
-        "id": "367fdcb5-b694-40f0-9f26-a17b57f6d638",
+        "id": "f00f1a30-839c-4ff5-bd05-5651d7a7a5a5",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2023-10-26T09:00:00+05:30",
+          "lastUpdated": "2023-12-10T09:00:00+05:30",
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
           ]
@@ -509,7 +514,7 @@
           "display": "outpatient encounter"
         },
         "subject": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma",
           "type": "Patient"
         },
@@ -527,26 +532,26 @@
               }
             ],
             "individual": {
-              "reference": "urn:uuid:7bd714ba-4eee-487e-bc10-179504212d0d",
-              "display": "Dr. Priya Mehta"
+              "reference": "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb",
+              "display": "Dr. Vikram Patel"
             }
           }
         ],
         "period": {
-          "start": "2023-10-26T09:00:00+05:30",
-          "end": "2023-10-26T10:00:00+05:30"
+          "start": "2023-10-10T09:00:00+05:30",
+          "end": "2023-10-10T12:00:00+05:30"
         },
         "serviceProvider": {
           "reference": "urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920",
-          "display": "Sunshine Clinic, Mumbai"
+          "display": "Sunshine Oncology Clinic, Mumbai"
         }
       }
     },
     {
-      "fullUrl": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa",
+      "fullUrl": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
       "resource": {
         "resourceType": "Organization",
-        "id": "df9cc473-6f17-429c-8d13-8db5f8f923aa",
+        "id": "274ba0e5-e6ed-400b-a573-9adf110b0162",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T09:00:00+05:30",
@@ -554,7 +559,7 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
           ]
         },
-        "name": "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069",
+        "name": "Sunshine Oncology Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069",
         "identifier": [
           {
             "type": {
@@ -567,16 +572,16 @@
               ]
             },
             "system": "https://facility.ndhm.gov.in",
-            "value": "df9cc473-6f17-429c-8d13-8db5f8f923aa"
+            "value": "274ba0e5-e6ed-400b-a573-9adf110b0162"
           }
         ]
       }
     },
     {
-      "fullUrl": "urn:uuid:7bd714ba-4eee-487e-bc10-179504212d0d",
+      "fullUrl": "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb",
       "resource": {
         "resourceType": "Practitioner",
-        "id": "7bd714ba-4eee-487e-bc10-179504212d0d",
+        "id": "83f7c31b-ac12-4ce6-a235-f409b5c151eb",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T09:00:00+05:30",
@@ -601,10 +606,10 @@
         ],
         "name": [
           {
-            "text": "Dr. Priya Mehta",
-            "family": "Mehta",
+            "text": "Dr. Vikram Patel",
+            "family": "Patel",
             "given": [
-              "Priya"
+              "Vikram"
             ]
           }
         ],
@@ -613,37 +618,9 @@
             "code": {
               "coding": [
                 {
-                  "code": "309343006",
+                  "code": "1287641002",
                   "system": "http://snomed.info/sct",
-                  "display": "Physician"
-                }
-              ]
-            },
-            "issuer": {
-              "reference": "urn:uuid:certificate-authority"
-            }
-          },
-          {
-            "code": {
-              "coding": [
-                {
-                  "code": "59944000",
-                  "system": "http://snomed.info/sct",
-                  "display": "Psychologist"
-                }
-              ]
-            },
-            "issuer": {
-              "reference": "urn:uuid:certificate-authority"
-            }
-          },
-          {
-            "code": {
-              "coding": [
-                {
-                  "code": "310190000",
-                  "system": "http://snomed.info/sct",
-                  "display": "Mental health counselor"
+                  "display": "Oncologist"
                 }
               ]
             },
@@ -655,140 +632,165 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e47b",
+      "fullUrl": "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e477",
       "resource": {
         "resourceType": "Observation",
-        "id": "ed93fd8b-5a42-4522-b1bc-88b22294e47b",
+        "id": "ed93fd8b-5a42-4522-b1bc-88b22294e477",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2023-10-10T09:00:00+05:30",
+          "lastUpdated": "2023-10-10T09:30:00+05:30",
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
           ]
         },
         "status": "final",
         "code": {
-          "text": "Emotional Support and Psychological Aspects of Coping with Cancer Diagnosis"
+          "text": "Vital signs, physical examination, and blood work"
         },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          },
+          {
+            "coding": [
+              {
+                "code": "exam",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Exam"
+              }
+            ],
+            "text": "Examination and Test Results"
+          }
+        ],
         "subject": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "effectiveDateTime": "2023-10-10T09:30:00+05:30",
         "component": [
           {
             "code": {
-              "text": "Normalize Emotional Reactions"
+              "coding": [
+                {
+                  "code": "271649006",
+                  "system": "http://snomed.info/sct",
+                  "display": "Systolic blood pressure"
+                }
+              ]
             },
-            "valueString": "Validate emotions like fear and uncertainty, reducing isolation."
+            "valueQuantity": {
+              "value": 120,
+              "unit": "mmHg"
+            }
           },
           {
             "code": {
-              "text": "Promote Coping Skills"
+              "coding": [
+                {
+                  "code": "271650006",
+                  "system": "http://snomed.info/sct",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
             },
-            "valueString": "Introduce stress management (breathing, mindfulness) and resilience-building practices."
+            "valueQuantity": {
+              "value": 80,
+              "unit": "mmHg"
+            }
           },
           {
             "code": {
-              "text": "Address Body Image Concerns"
+              "coding": [
+                {
+                  "code": "78564009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Pulse rate"
+                }
+              ]
             },
-            "valueString": "Provide resources to manage physical changes and self-esteem."
+            "valueQuantity": {
+              "value": 72,
+              "unit": "bpm"
+            }
           },
           {
             "code": {
-              "text": "Encourage Support Networks"
+              "coding": [
+                {
+                  "code": "276885007",
+                  "system": "http://snomed.info/sct",
+                  "display": "Core body temperature"
+                }
+              ]
             },
-            "valueString": "Guide patient toward family, friends, and peer support groups."
+            "valueQuantity": {
+              "value": 98.6,
+              "unit": "°F"
+            }
           },
           {
             "code": {
-              "text": "Clarify Treatment Phases"
+              "coding": [
+                {
+                  "code": "5880005",
+                  "system": "http://snomed.info/sct",
+                  "display": "Physical examination procedure"
+                }
+              ]
             },
-            "valueString": "Outline treatment steps to reduce anxiety and promote patient engagement."
+            "valueString": "No signs of infection or complications from surgery."
           },
           {
             "code": {
-              "text": "Symptom Escalation"
+              "coding": [
+                {
+                  "code": "767002",
+                  "system": "http://snomed.info/sct",
+                  "display": "White blood cell count"
+                }
+              ]
             },
-            "valueString": "If anxiety or distress worsens, the patient is advised to seek further support."
+            "valueQuantity": {
+              "value": 6000,
+              "unit": "mcL"
+            }
           },
           {
             "code": {
-              "text": "Referral to Dr. Varsha Pilgaonkar"
+              "coding": [
+                {
+                  "code": "14089001",
+                  "system": "http://snomed.info/sct",
+                  "display": "Red blood cell count"
+                }
+              ]
             },
-            "valueString": "Referral to Dr. Varsha Pilgaonkar: The psychologist introduces Dr. Pilgaonkar, a Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if needed."
+            "valueQuantity": {
+              "value": 4.5,
+              "unit": "million/mcL"
+            }
           },
           {
             "code": {
-              "text": "Comprehensive Support"
+              "coding": [
+                {
+                  "code": "61928009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Platelet count"
+                }
+              ]
             },
-            "valueString": "Emphasize that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring well-rounded mental health care."
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6de",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "b7a6f298-21ac-4835-9c38-d4bfd38ef6de",
-        "meta": {
-          "versionId": "1",
-          "lastUpdated": "2024-12-20T09:00:00+05:30",
-          "profile": [
-            "https://example.com/fhir/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "text": "Initial mental health evaluation"
-        },
-        "subject": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2024-12-20T09:00:00+05:30",
-        "valueString": "Patient expresses anxiety and stress, requiring further support through ongoing sessions.",
-        "interpretation": [
-          {
-            "text": "Ongoing mental health support required"
-          }
-        ],
-        "note": [
-          {
-            "text": "Initial mental health evaluation completed."
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6df",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "b7a6f298-21ac-4835-9c38-d4bfd38ef6df",
-        "meta": {
-          "versionId": "1",
-          "lastUpdated": "2024-12-20T09:00:00+05:30",
-          "profile": [
-            "https://example.com/fhir/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "text": "Follow-up mental health visits plan"
-        },
-        "subject": {
-          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2024-12-20T09:00:00+05:30",
-        "valueString": "Scheduled follow-up mental health visits at Post Chemotherapy. Patient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education.",
-        "note": [
-          {
-            "text": "Provided with Location and contact information of ICS:\nLocation: Mumbai, Delhi, Bengaluru, and Kolkata\nContact Information: Phone: +912224139445 (Mumbai Headquarter)\nWebsite: www.indiancancersociety.org"
+            "valueQuantity": {
+              "value": 250000,
+              "unit": "mcL"
+            }
           }
         ]
       }
