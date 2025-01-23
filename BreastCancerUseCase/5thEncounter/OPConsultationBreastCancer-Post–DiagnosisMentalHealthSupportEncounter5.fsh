@@ -39,18 +39,18 @@ Usage: #example
 //entry for Observation Resource (Past Medical History - Postmenopausal)
 * entry[+].fullUrl = "urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f"
 * entry[=].resource = cfc19550-3520-4788-b622-f90c8a69cd8f
-//entry for Procedure Resource (Past Surgical History: Hysterectomy)
-* entry[+].fullUrl = "urn:uuid:01eeb933-3210-4eee-975c-103720fd86f0"
-* entry[=].resource = 01eeb933-3210-4eee-975c-103720fd86f0
-//entry for AllergyIntolerance Resource (Drug Allergy: Penicillin allergy)
-* entry[+].fullUrl = "urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76180"
-* entry[=].resource = 406d28cd-9b01-46b6-b3e2-496187f76180
-//entry for Observation Resource (Menstruation History)
-* entry[+].fullUrl = "urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a270"
-* entry[=].resource = 260fbadb-3305-4e5a-b30c-f2a43602a270
-//entry for FamilyMemberHistory Resource (Family History)
-* entry[+].fullUrl = "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111"
-* entry[=].resource = 6fec2b43-ed26-47cc-83f9-57f77d028111
+// //entry for Procedure Resource (Past Surgical History: Hysterectomy)
+// * entry[+].fullUrl = "urn:uuid:01eeb933-3210-4eee-975c-103720fd86f0"
+// * entry[=].resource = 01eeb933-3210-4eee-975c-103720fd86f0
+// //entry for AllergyIntolerance Resource (Drug Allergy: Penicillin allergy)
+// * entry[+].fullUrl = "urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76180"
+// * entry[=].resource = 406d28cd-9b01-46b6-b3e2-496187f76180
+// //entry for Observation Resource (Menstruation History)
+// * entry[+].fullUrl = "urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a270"
+// * entry[=].resource = 260fbadb-3305-4e5a-b30c-f2a43602a270
+// //entry for FamilyMemberHistory Resource (Family History)
+// * entry[+].fullUrl = "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111"
+// * entry[=].resource = 6fec2b43-ed26-47cc-83f9-57f77d028111
 //entry for blood group observation
 * entry[+].fullUrl = "urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056fff"
 * entry[=].resource = efcb7189-b97e-482f-a0f9-ba5c89056fff
@@ -117,21 +117,21 @@ Usage: #inline
 // * section[=].entry[0] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
 // * section[=].entry[=].type = "Condition"
 
-// section for Procedure
-* section[+].title = "Procedure"
-* section[=].code = $sct#371525003 "Clinical procedure report"
-* section[=].code.text = "Clinical procedure report"
-// Procedure Resource (Past Surgical History: Hysterectomy)
-* section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86f0)
-* section[=].entry[=].type = "Procedure"
+// // section for Procedure
+// * section[+].title = "Procedure"
+// * section[=].code = $sct#371525003 "Clinical procedure report"
+// * section[=].code.text = "Clinical procedure report"
+// // Procedure Resource (Past Surgical History: Hysterectomy)
+// * section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86f0)
+// * section[=].entry[=].type = "Procedure"
 
 // section for OtherObservations
 * section[+].title = "OtherObservations"
 * section[=].code = $sct#404684003 "Clinical finding"
 * section[=].code.text = "Clinical finding"
-// section entry for Observation Resource (Menstruation History)
-* section[=].entry[0] = Reference(urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a270)
-* section[=].entry[=].type = "Observation"
+// // section entry for Observation Resource (Menstruation History)
+// * section[=].entry[0] = Reference(urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a270)
+// * section[=].entry[=].type = "Observation"
 //entry for (Discussion - Observation resource for emotional support and psychological aspects of cancer diagnosis)
 * section[=].entry[0] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e47b)
 * section[=].entry[=].type = "Observation"
@@ -145,21 +145,21 @@ Usage: #inline
 * section[=].entry[0] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
 * section[=].entry[=].type = "Observation"
 
-// section for FamilyHistory
-* section[+].title = "FamilyHistory"
-* section[=].code = $sct#422432008 "Family history section"
-* section[=].code.text = "Family history section"
-// section entry for FamilyMemberHistory Resource (Family History)
-* section[=].entry[0] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111)
-* section[=].entry[=].type = "FamilyMemberHistory"
+// // section for FamilyHistory
+// * section[+].title = "FamilyHistory"
+// * section[=].code = $sct#422432008 "Family history section"
+// * section[=].code.text = "Family history section"
+// // section entry for FamilyMemberHistory Resource (Family History)
+// * section[=].entry[0] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111)
+// * section[=].entry[=].type = "FamilyMemberHistory"
 
-// section for Allergies
-* section[+].title = "Allergies"
-* section[=].code = $sct#722446000 "Allergy record"
-* section[=].code.text = "Allergies"
-//entry for AllergyIntolerance Resource (Drug Allergy: Penicillin allergy)
-* section[=].entry[0] = Reference(urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76180)
-* section[=].entry[=].type = "AllergyIntolerance"
+// // section for Allergies
+// * section[+].title = "Allergies"
+// * section[=].code = $sct#722446000 "Allergy record"
+// * section[=].code.text = "Allergies"
+// //entry for AllergyIntolerance Resource (Drug Allergy: Penicillin allergy)
+// * section[=].entry[0] = Reference(urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76180)
+// * section[=].entry[=].type = "AllergyIntolerance"
 
 // Patient Resource
 Instance: 8861a044-24e6-4ca4-83ac-09a5e7b2f255
@@ -223,87 +223,87 @@ Usage: #inline
 * code = $sct#76498008 "Postmenopausal"
 * code.text = "Postmenopausal"
 * valueString = "Postmenopausal"
-* category[0] = $observation-category#social-history "Social History"
-* category[0].text = "Medical History"
+* category[0] = $condition-category#problem-list-item "Problem List Item"
+* category[0].text = "Past medical history"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * effectiveDateTime = "2023-10-10T12:18:11+05:30"
 
-// Procedure Resource (Past Surgical History: Hysterectomy)
-Instance: 01eeb933-3210-4eee-975c-103720fd86f0
-InstanceOf: Procedure
-Title: "Past Surgical History - Hysterectomy"
-Description: "The patient underwent a hysterectomy 10 years ago."
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2023-10-10T12:18:11.125+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-* status = #completed
-* code = $sct#236886002 "Hysterectomy"
-* code.text = "The patient underwent a hysterectomy 10 years ago"
-* subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
-* subject.type = "Patient"
-* performedString = "10 years ago"
-* note.text = "The patient underwent a hysterectomy 10 years ago."
+// // Procedure Resource (Past Surgical History: Hysterectomy)
+// Instance: 01eeb933-3210-4eee-975c-103720fd86f0
+// InstanceOf: Procedure
+// Title: "Past Surgical History - Hysterectomy"
+// Description: "The patient underwent a hysterectomy 10 years ago."
+// Usage: #inline
+// * meta.versionId = "0"
+// * meta.lastUpdated = "2023-10-10T12:18:11.125+05:30"
+// * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+// * status = #completed
+// * code = $sct#236886002 "Hysterectomy"
+// * code.text = "Hysterectomy"
+// * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+// * subject.type = "Patient"
+// * performedString = "10 years ago"
+// * note.text = "The patient underwent a hysterectomy 10 years ago."
 
-// AllergyIntolerance Resource (Drug Allergy)
-Instance: 406d28cd-9b01-46b6-b3e2-496187f76180
-InstanceOf: AllergyIntolerance
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-11-07T12:18:11.170+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
-* clinicalStatus = $allergyintolerance-clinical#active "Active"
-* clinicalStatus.text = "Active"
-* verificationStatus = $allergyintolerance-verification#confirmed "Confirmed"
-* verificationStatus.text = "Confirmed"
-// * type = #allergy
-* category = #medication
-* code = $sct#91936005 "Penicillin allergy"
-* code.text = "The patient has a documented allergy to penicillin"
-* patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
-* patient.type = "Patient"
-// * recordedDate = "2024-11-07T12:18:11+05:30"
-// * recorder = Reference(urn:uuid:7bd714ba-4eee-487e-bc10-179504212d0d)
-// * recorder.type = "Practitioner"
-* note.text = "The patient has a documented allergy to penicillin, categorized as a medication allergy."
+// // AllergyIntolerance Resource (Drug Allergy)
+// Instance: 406d28cd-9b01-46b6-b3e2-496187f76180
+// InstanceOf: AllergyIntolerance
+// Usage: #inline
+// * meta.versionId = "0"
+// * meta.lastUpdated = "2024-11-07T12:18:11.170+05:30"
+// * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
+// * clinicalStatus = $allergyintolerance-clinical#active "Active"
+// * clinicalStatus.text = "Active"
+// * verificationStatus = $allergyintolerance-verification#confirmed "Confirmed"
+// * verificationStatus.text = "Confirmed"
+// // * type = #allergy
+// * category = #medication
+// * code = $sct#91936005 "Penicillin allergy"
+// * code.text = "The patient has a documented allergy to penicillin"
+// * patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+// * patient.type = "Patient"
+// // * recordedDate = "2024-11-07T12:18:11+05:30"
+// // * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
+// // * recorder.type = "Practitioner"
+// * note.text = "The patient has a documented allergy to penicillin, categorized as a medication allergy."
 
-// Observation Resource (Menstruation History)
-Instance: 260fbadb-3305-4e5a-b30c-f2a43602a270
-InstanceOf: Observation
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-* status = #final
-* code = $sct#289908002 "Pregnancy"
-* code.text = "The patient is postmenopausal"
-* subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
-* subject.type = "Patient"
-* effectiveDateTime = "2024-11-07T12:18:11+05:30"
-* note.text = "The patient is confirmed as postmenopausal."
+// // Observation Resource (Menstruation History)
+// Instance: 260fbadb-3305-4e5a-b30c-f2a43602a270
+// InstanceOf: Observation
+// Usage: #inline
+// * meta.versionId = "0"
+// * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
+// * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+// * status = #final
+// * code = $sct#289908002 "Pregnancy"
+// * code.text = "The patient is postmenopausal"
+// * valueString = "The patient is confirmed as postmenopausal."
+// * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+// * subject.type = "Patient"
+// * effectiveDateTime = "2024-11-07T12:18:11+05:30"
 
-// FamilyMemberHistory Resource (Family History)
-Instance: 6fec2b43-ed26-47cc-83f9-57f77d028111
-InstanceOf: FamilyMemberHistory
-Title: "Family History of Breast Cancer"
-Description: "Family history of breast cancer (Maternal Grandmother diagnosed at age 60)"
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
-* status = #completed
-* patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
-* patient.type = "Patient"
-* relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
-* relationship.text = "Maternal Grandmother"
-* condition[0].code = $sct#254837009 "Breast Cancer"
-* condition[0].code.text = "Breast Cancer"
-* condition[0].onsetAge.value = 60
-* condition[0].onsetAge.unit = "years"
-* condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
-* condition[0].onsetAge.system = "http://unitsofmeasure.org"
-* note.text = "The patient's maternal grandmother was diagnosed with breast cancer at age 60."
+// // FamilyMemberHistory Resource (Family History)
+// Instance: 6fec2b43-ed26-47cc-83f9-57f77d028111
+// InstanceOf: FamilyMemberHistory
+// Title: "Family History of Breast Cancer"
+// Description: "Family history of breast cancer (Maternal Grandmother diagnosed at age 60)"
+// Usage: #inline
+// * meta.versionId = "0"
+// * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
+// * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+// * status = #completed
+// * patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+// * patient.type = "Patient"
+// * relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
+// * relationship.text = "Maternal Grandmother"
+// * condition[0].code = $sct#254837009 "Breast cancer"
+// * condition[0].code.text = "Breast Cancer"
+// * condition[0].onsetAge.value = 60
+// * condition[0].onsetAge.unit = "years"
+// * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
+// * condition[0].onsetAge.system = "http://unitsofmeasure.org"
+// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)."
 
 // Post – Diagnosis Mental Health Support Encounter
 // Encounter Resource (Post – Diagnosis Mental Health Support)

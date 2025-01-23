@@ -24,7 +24,7 @@
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:10.984+05:30",
           "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DischargeSummaryRecord"
           ]
         },
         "language": "en-IN",
@@ -32,12 +32,12 @@
         "type": {
           "coding": [
             {
-              "code": "371530004",
+              "code": "373942005",
               "system": "http://snomed.info/sct",
-              "display": "Clinical consultation report"
+              "display": "Discharge summary"
             }
           ],
-          "text": "Clinical consultation report"
+          "text": "Discharge Summary"
         },
         "identifier": {
           "system": "http://example-provider.org",
@@ -77,44 +77,6 @@
         },
         "section": [
           {
-            "title": "MedicalHistory",
-            "code": {
-              "coding": [
-                {
-                  "code": "371529009",
-                  "system": "http://snomed.info/sct",
-                  "display": "History and physical report"
-                }
-              ],
-              "text": "History and physical report"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
-                "type": "Condition"
-              }
-            ]
-          },
-          {
-            "title": "Procedure",
-            "code": {
-              "coding": [
-                {
-                  "code": "371525003",
-                  "system": "http://snomed.info/sct",
-                  "display": "Clinical procedure report"
-                }
-              ],
-              "text": "Clinical procedure report"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2",
-                "type": "Procedure"
-              }
-            ]
-          },
-          {
             "title": "OtherObservations",
             "code": {
               "coding": [
@@ -128,46 +90,12 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:6314292f-9177-4279-9cd0-74aa1427af50",
+                "reference": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
                 "type": "Observation"
-              }
-            ]
-          },
-          {
-            "title": "FamilyHistory",
-            "code": {
-              "coding": [
-                {
-                  "code": "422432008",
-                  "system": "http://snomed.info/sct",
-                  "display": "Family history section"
-                }
-              ],
-              "text": "Family history section"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c",
-                "type": "FamilyMemberHistory"
-              }
-            ]
-          },
-          {
-            "title": "Allergies",
-            "code": {
-              "coding": [
-                {
-                  "code": "722446000",
-                  "system": "http://snomed.info/sct",
-                  "display": "Allergy record"
-                }
-              ],
-              "text": "Allergies"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:b890c5f7-0be9-4fab-9282-78601899cadb",
-                "type": "AllergyIntolerance"
+              },
+	      {
+                "reference": "urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5",
+                "type": "Observation"
               }
             ]
           },
@@ -187,6 +115,44 @@
               {
                 "reference": "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e477",
                 "type": "Observation"
+              }
+            ]
+          },
+          {
+            "title": "Medications",
+            "code": {
+              "coding": [
+                {
+                  "code": "721912009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Medication summary document"
+                }
+              ],
+              "text": "Medication summary document"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:9a34c79b-deae-478c-8d14-c6a72d2a9853",
+                "type": "MedicationStatement"
+              }
+            ]
+          },
+          {
+            "title": "FollowUp",
+            "code": {
+              "coding": [
+                {
+                  "code": "390906007",
+                  "system": "http://snomed.info/sct",
+                  "display": "Follow-up encounter"
+                }
+              ],
+              "text": "Follow-up encounter"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d",
+                "type": "Appointment"
               }
             ]
           }
@@ -244,20 +210,27 @@
     {
       "fullUrl": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
       "resource": {
-        "resourceType": "Condition",
+        "resourceType": "Observation",
         "id": "a8e8ebce-2f78-49a0-8b69-a4835b12d842",
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "active",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "display": "Active"
-            }
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
           ]
         },
+        "status": "final",
         "code": {
+          "coding": [
+            {
+              "code": "76498008",
+              "system": "http://snomed.info/sct",
+              "display": "Postmenopausal"
+            }
+          ],
           "text": "Postmenopausal"
         },
+        "valueString": "Postmenopausal",
         "category": [
           {
             "coding": [
@@ -267,181 +240,14 @@
                 "display": "Problem List Item"
               }
             ],
-            "text": "Medical History"
+            "text": "Past medical history"
           }
         ],
         "subject": {
           "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma"
         },
-        "recordedDate": "2023-10-10T12:18:11+05:30"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "b2f87d8f-49d7-4f45-b2c6-781623c09bb2",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2023-10-10T12:18:11.125+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
-          ]
-        },
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "code": "236886002",
-              "system": "http://snomed.info/sct",
-              "display": "Hysterectomy"
-            }
-          ],
-          "text": "The patient underwent a hysterectomy 10 years ago"
-        },
-        "subject": {
-          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:b890c5f7-0be9-4fab-9282-78601899cadb",
-      "resource": {
-        "resourceType": "AllergyIntolerance",
-        "id": "b890c5f7-0be9-4fab-9282-78601899cadb",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-11-07T12:18:11.170+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/AllergyIntolerance"
-          ]
-        },
-        "clinicalStatus": {
-          "coding": [
-            {
-              "code": "active",
-              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-              "display": "Active"
-            }
-          ],
-          "text": "Active"
-        },
-        "verificationStatus": {
-          "coding": [
-            {
-              "code": "confirmed",
-              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-              "display": "Confirmed"
-            }
-          ],
-          "text": "Confirmed"
-        },
-        "category": [
-          "medication"
-        ],
-        "code": {
-          "coding": [
-            {
-              "code": "91936005",
-              "system": "http://snomed.info/sct",
-              "display": "Penicillin allergy"
-            }
-          ],
-          "text": "The patient has a documented allergy to penicillin"
-        },
-        "patient": {
-          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "note": [
-          {
-            "text": "The patient has a documented allergy to penicillin, categorized as a medication allergy."
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:6314292f-9177-4279-9cd0-74aa1427af50",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "6314292f-9177-4279-9cd0-74aa1427af50",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-11-07T12:18:11.143+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "289908002",
-              "system": "http://snomed.info/sct",
-              "display": "Pregnancy"
-            }
-          ],
-          "text": "The patient is postmenopausal"
-        },
-        "valueString": "The patient is confirmed as postmenopausal.",
-        "subject": {
-          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "effectiveDateTime": "2024-11-07T12:18:11+05:30"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c",
-      "resource": {
-        "resourceType": "FamilyMemberHistory",
-        "id": "5bc7d505-7465-4f94-baa0-e5a086810a5c",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-11-07T12:18:11.143+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
-          ]
-        },
-        "status": "completed",
-        "patient": {
-          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "relationship": {
-          "coding": [
-            {
-              "code": "MTH",
-              "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-              "display": "Mother"
-            }
-          ],
-          "text": "Maternal Grandmother"
-        },
-        "condition": [
-          {
-            "code": {
-              "text": "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
-            },
-            "onsetAge": {
-              "value": 60,
-              "unit": "years",
-              "code": "a",
-              "system": "http://unitsofmeasure.org"
-            }
-          }
-        ],
-        "note": [
-          {
-            "text": "The patient's maternal grandmother was diagnosed with breast cancer at age 60."
-          }
-        ]
+        "effectiveDateTime": "2023-10-10T12:18:11+05:30"
       }
     },
     {
@@ -791,6 +597,199 @@
               "value": 250000,
               "unit": "mcL"
             }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:744b8640-9317-4488-aa2d-765650476bbf",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "744b8640-9317-4488-aa2d-765650476bbf",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.205+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
+          ]
+        },
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "dosage": [
+          {
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 60,
+                  "unit": "mg/m²"
+                }
+              }
+            ],
+            "text": "60 mg/m² IV"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "code": "372817009",
+              "system": "http://snomed.info/sct",
+              "display": "Doxorubicin"
+            }
+          ],
+          "text": "Adriamycin (Doxorubicin): 60 mg/m² IV"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:37fe6dab-ffd0-4f71-a252-017b1e5d90f1",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "37fe6dab-ffd0-4f71-a252-017b1e5d90f1",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.205+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
+          ]
+        },
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "dosage": [
+          {
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 600,
+                  "unit": "mg/m²"
+                }
+              }
+            ],
+            "text": "600 mg/m² IV"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "code": "387420009",
+              "system": "http://snomed.info/sct",
+              "display": "Cyclophosphamide"
+            }
+          ],
+          "text": "Cyclophosphamide: 600 mg/m² IV"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9a34c79b-deae-478c-8d14-c6a72d2a9853",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "9a34c79b-deae-478c-8d14-c6a72d2a9853",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.205+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
+          ]
+        },
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "dosage": [
+          {
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 8,
+                  "unit": "mg"
+                }
+              }
+            ],
+            "text": "8 mg IV"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "code": "372487007",
+              "system": "http://snomed.info/sct",
+              "display": "Ondansetron"
+            }
+          ],
+          "text": "Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "10c5adb3-99f0-4112-a005-bb80b302d8a5",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2025-01-06T12:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "text": "Care Instructions"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "performer": [
+          {
+            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+            "display": "Dr. Anjali Verma",
+            "type": "Practitioner"
+          }
+        ],
+        "valueString": "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d",
+      "resource": {
+        "resourceType": "Appointment",
+        "id": "5dd308b9-dc4c-4953-bcb1-d9c403a42d4d",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2025-01-06T12:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Appointment"
+          ]
+        },
+        "status": "booked",
+        "priority": 1,
+        "description": "Next session scheduled for December 24, 2023.",
+        "start": "2023-12-24T10:00:00+05:30",
+        "end": "2023-12-24T11:00:00+05:30",
+        "participant": [
+          {
+            "actor": {
+              "reference": "Patient/c4d052b5-2d9f-4ebf-b617-764efffa08de"
+            },
+            "status": "accepted"
+          },
+          {
+            "actor": {
+              "reference": "Practitioner/41295111-04f9-4b83-b186-ef2975db1c7e"
+            },
+            "status": "accepted"
           }
         ]
       }
