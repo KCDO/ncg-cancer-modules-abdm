@@ -185,28 +185,18 @@
               "system": "http://snomed.info/sct",
               "display": "Postmenopausal"
             }
-          ],
-          "text": "Postmenopausal"
+          ]
         },
-        "valueString": "Postmenopausal",
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "problem-list-item",
-                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-                "display": "Problem List Item"
-              }
-            ],
-            "text": "Past medical history"
-          }
-        ],
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "effectiveDateTime": "2023-10-10T12:18:11+05:30"
+        "note": [
+          {
+            "text": "Postmenopausal"
+          }
+        ]
       }
     },
     {
@@ -229,21 +219,8 @@
               "system": "http://loinc.org",
               "display": "ABO and Rh group [Type] in Blood"
             }
-          ],
-          "text": "ABO and Rh group [Type] in Blood"
+          ]
         },
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "vital-signs",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Vital Signs"
-              }
-            ],
-            "text": "Vital Signs"
-          }
-        ],
         "subject": {
           "reference": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
           "type": "Patient"
@@ -277,38 +254,6 @@
           "code": "AMB",
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
           "display": "outpatient encounter"
-        },
-        "subject": {
-          "reference": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "participant": [
-          {
-            "type": [
-              {
-                "coding": [
-                  {
-                    "code": "ATND",
-                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
-                    "display": "attender"
-                  }
-                ]
-              }
-            ],
-            "individual": {
-              "reference": "urn:uuid:1b266629-c338-4468-9519-52e1d84538d5",
-              "display": "Dr. Priya Singh"
-            }
-          }
-        ],
-        "period": {
-          "start": "2023-11-12T09:00:00+05:30",
-          "end": "2023-11-12T12:00:00+05:30"
-        },
-        "serviceProvider": {
-          "reference": "urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920",
-          "display": "Sunshine Clinic, Mumbai"
         }
       }
     },
@@ -388,9 +333,6 @@
                   "display": "Surgeon"
                 }
               ]
-            },
-            "issuer": {
-              "reference": "urn:uuid:certificate-authority"
             }
           }
         ]
@@ -416,14 +358,18 @@
               "system": "http://snomed.info/sct",
               "display": "Surgical procedure"
             }
-          ],
-          "text": "The patient underwent a lumpectomy with sentinel lymph node biopsy"
+          ]
         },
         "subject": {
           "reference": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
           "display": "Meera Sharma",
           "type": "Patient"
-        }
+        },
+        "note": [
+          {
+            "text": "Lumpectomy with sentinel lymph node biopsy"
+          }
+        ]
       }
     }
   ]

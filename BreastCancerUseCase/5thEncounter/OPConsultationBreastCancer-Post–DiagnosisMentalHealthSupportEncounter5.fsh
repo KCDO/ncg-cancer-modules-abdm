@@ -201,9 +201,9 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $loinc#882-1 "ABO and Rh group [Type] in Blood"
-* code.text = "ABO and Rh group [Type] in Blood"
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
+// * code.text = "ABO and Rh group [Type] in Blood"
+// * category = $observation-category#vital-signs "Vital Signs"
+// * category.text = "Vital Signs"
 * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255)
 * subject.type = "Patient"
 * valueCodeableConcept = $sct#365637002 "Finding of ABO blood group"
@@ -213,27 +213,24 @@ Usage: #inline
 // Observation Resource (Postmenopausal)
 Instance: cfc19550-3520-4788-b622-f90c8a69cd8f
 InstanceOf: Observation
-Title: "Postmenopausal Status"
-Description: "Represents the postmenopausal status of the patient."
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $sct#76498008 "Postmenopausal"
-* code.text = "Postmenopausal"
-* valueString = "Postmenopausal"
-* category[0] = $condition-category#problem-list-item "Problem List Item"
-* category[0].text = "Past medical history"
+// * code.text = "Postmenopausal"
+// * valueString = "Postmenopausal"
+// * category[0] = $condition-category#problem-list-item "Problem List Item"
+// * category[0].text = "Past medical history"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2023-10-10T12:18:11+05:30"
+// * effectiveDateTime = "2023-10-10T12:18:11+05:30"
+* note.text = "Postmenopausal"
 
 // // Procedure Resource (Past Surgical History: Hysterectomy)
 // Instance: 01eeb933-3210-4eee-975c-103720fd86f0
 // InstanceOf: Procedure
-// Title: "Past Surgical History - Hysterectomy"
-// Description: "The patient underwent a hysterectomy 10 years ago."
 // Usage: #inline
 // * meta.versionId = "0"
 // * meta.lastUpdated = "2023-10-10T12:18:11.125+05:30"
@@ -266,7 +263,7 @@ Usage: #inline
 // // * recordedDate = "2024-11-07T12:18:11+05:30"
 // // * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 // // * recorder.type = "Practitioner"
-// * note.text = "The patient has a documented allergy to penicillin, categorized as a medication allergy."
+// * note.text = "The patient has a documented allergy to penicillin."
 
 // // Observation Resource (Menstruation History)
 // Instance: 260fbadb-3305-4e5a-b30c-f2a43602a270
@@ -282,12 +279,11 @@ Usage: #inline
 // * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
 // * subject.type = "Patient"
 // * effectiveDateTime = "2024-11-07T12:18:11+05:30"
+// * note.text = "The patient is confirmed as postmenopausal."
 
 // // FamilyMemberHistory Resource (Family History)
 // Instance: 6fec2b43-ed26-47cc-83f9-57f77d028111
 // InstanceOf: FamilyMemberHistory
-// Title: "Family History of Breast Cancer"
-// Description: "Family history of breast cancer (Maternal Grandmother diagnosed at age 60)"
 // Usage: #inline
 // * meta.versionId = "0"
 // * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
@@ -303,7 +299,7 @@ Usage: #inline
 // * condition[0].onsetAge.unit = "years"
 // * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
 // * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)."
+// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Post – Diagnosis Mental Health Support Encounter
 // Encounter Resource (Post – Diagnosis Mental Health Support)
@@ -314,17 +310,16 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-26T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
 * status = #finished
-// * class = $encounter-class#outpatient "Outpatient"
 * class = $v3-ActCode#AMB "outpatient encounter"
 //* type[0] = $sct#185349003 "Encounter for check up"
-* subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
-* subject.type = "Patient"
+// * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+// * subject.type = "Patient"
 * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
 * participant[0].individual.reference = "urn:uuid:7bd714ba-4eee-487e-bc10-179504212d0d"
 * participant[0].individual.display = "Dr. Priya Mehta"
-* period.start = "2023-10-26T09:00:00+05:30"
-* period.end = "2023-10-26T10:00:00+05:30"
-* serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
+// * period.start = "2023-10-26T09:00:00+05:30"
+// * period.end = "2023-10-26T10:00:00+05:30"
+// * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
 
 // Practitioner resource
 Instance: 7bd714ba-4eee-487e-bc10-179504212d0d
@@ -339,12 +334,12 @@ Usage: #inline
 * name.text = "Dr. Priya Mehta"
 * name.family = "Mehta"
 * name.given[0] = "Priya"
-* qualification[0].code = $sct#309343006 "Physician"
-* qualification[0].issuer = Reference(urn:uuid:certificate-authority)
-* qualification[1].code = $sct#59944000 "Psychologist"
-* qualification[1].issuer = Reference(urn:uuid:certificate-authority)
-* qualification[2].code = $sct#310190000 "Mental health counselor"
-* qualification[2].issuer = Reference(urn:uuid:certificate-authority)
+// * qualification[0].code = $sct#309343006 "Physician"
+// * qualification[0].issuer = Reference(urn:uuid:certificate-authority)
+* qualification[0].code = $sct#59944000 "Psychologist"
+// * qualification[1].issuer = Reference(urn:uuid:certificate-authority)
+* qualification[1].code = $sct#310190000 "Mental health counselor"
+// * qualification[2].issuer = Reference(urn:uuid:certificate-authority)
 
 // Organization resource
 Instance: df9cc473-6f17-429c-8d13-8db5f8f923aa
@@ -374,26 +369,38 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 // * code.text = ""Emotional Support and Psychological Aspects of Coping with Cancer Diagnosis"
-* code.text = "Emotional Support and Psychological Aspects of Coping with Cancer Diagnosis"
+// * code.text = "Emotional Support and Psychological Aspects of Coping with Cancer Diagnosis"
 * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2023-10-10T09:30:00+05:30"
-* component[0].code.text = "Normalize Emotional Reactions"
-* component[0].valueString = "Validate emotions like fear and uncertainty, reducing isolation."
-* component[1].code.text = "Promote Coping Skills"
-* component[1].valueString = "Introduce stress management (breathing, mindfulness) and resilience-building practices."
-* component[2].code.text = "Address Body Image Concerns"
-* component[2].valueString = "Provide resources to manage physical changes and self-esteem."
-* component[3].code.text = "Encourage Support Networks"
-* component[3].valueString = "Guide patient toward family, friends, and peer support groups."
-* component[4].code.text = "Clarify Treatment Phases"
-* component[4].valueString = "Outline treatment steps to reduce anxiety and promote patient engagement."
-* component[5].code.text = "Symptom Escalation"
-* component[5].valueString = "If anxiety or distress worsens, the patient is advised to seek further support."
-* component[6].code.text = "Referral to Dr. Varsha Pilgaonkar"
-* component[6].valueString = "Referral to Dr. Varsha Pilgaonkar: The psychologist introduces Dr. Pilgaonkar, a Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if needed."
-* component[7].code.text = "Comprehensive Support"
-* component[7].valueString = "Emphasize that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring well-rounded mental health care."
+// * effectiveDateTime = "2023-10-10T09:30:00+05:30"
+* code = $sct#404684003 "Clinical finding"
+* note.text = """
+This observation provides detailed recommendations for psychological support:
+1. Normalize Emotional Reactions: Validate emotions like fear and uncertainty, reducing isolation.
+2. Promote Coping Skills: Introduce stress management techniques (e.g., breathing exercises, mindfulness) and resilience-building practices.
+3. Address Body Image Concerns: Provide resources to manage physical changes and maintain self-esteem.
+4. Encourage Support Networks: Guide the patient toward family, friends, and peer support groups.
+5. Clarify Treatment Phases: Outline treatment steps to reduce anxiety and encourage patient engagement.
+6. Symptom Escalation: Advise the patient to seek further support if anxiety or distress worsens.
+7. Referral to Dr. Varsha Pilgaonkar: Introduce Dr. Pilgaonkar, Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if required.
+8. Comprehensive Support: Highlight that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring holistic mental health care.
+"""
+// * component[0].code.text = "Normalize Emotional Reactions"
+// * component[0].valueString = "Validate emotions like fear and uncertainty, reducing isolation."
+// * component[1].code.text = "Promote Coping Skills"
+// * component[1].valueString = "Introduce stress management (breathing, mindfulness) and resilience-building practices."
+// * component[2].code.text = "Address Body Image Concerns"
+// * component[2].valueString = "Provide resources to manage physical changes and self-esteem."
+// * component[3].code.text = "Encourage Support Networks"
+// * component[3].valueString = "Guide patient toward family, friends, and peer support groups."
+// * component[4].code.text = "Clarify Treatment Phases"
+// * component[4].valueString = "Outline treatment steps to reduce anxiety and promote patient engagement."
+// * component[5].code.text = "Symptom Escalation"
+// * component[5].valueString = "If anxiety or distress worsens, the patient is advised to seek further support."
+// * component[6].code.text = "Referral to Dr. Varsha Pilgaonkar"
+// * component[6].valueString = "Referral to Dr. Varsha Pilgaonkar: The psychologist introduces Dr. Pilgaonkar, a Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if needed."
+// * component[7].code.text = "Comprehensive Support"
+// * component[7].valueString = "Emphasize that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring well-rounded mental health care."
 
 // (Assessment - Observation resource for Mental Health Evaluation)
 Instance: b7a6f298-21ac-4835-9c38-d4bfd38ef6de
@@ -404,13 +411,14 @@ Usage: #inline
 * meta.profile = "https://example.com/fhir/StructureDefinition/Observation"
 * status = #final
 //* code = $sct#40915003 "Mental Health Evaluation"
-* code.text = "Initial mental health evaluation"
+// * code.text = "Initial mental health evaluation"
 * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2024-12-20T09:00:00+05:30"
-* valueString = "Patient expresses anxiety and stress, requiring further support through ongoing sessions."
-* interpretation.text = "Ongoing mental health support required"
-* note.text = "Initial mental health evaluation completed."
+// * effectiveDateTime = "2024-12-20T09:00:00+05:30"
+// * valueString = "Patient expresses anxiety and stress, requiring further support through ongoing sessions."
+// * interpretation.text = "Ongoing mental health support required"
+* code = $sct#404684003 "Clinical finding"
+* note.text = "Initial mental health evaluation completed: Patient expresses anxiety and stress, requiring further support through ongoing sessions."
 
 // (Plan - Observation resource for Mental Health Plan)
 Instance: b7a6f298-21ac-4835-9c38-d4bfd38ef6df
@@ -421,12 +429,15 @@ Usage: #inline
 * meta.profile = "https://example.com/fhir/StructureDefinition/Observation"
 * status = #final
 // * code = $sct#185349003 "Follow-up mental health visit plan"
-* code.text = "Follow-up mental health visits plan"
+// * code.text = "Follow-up mental health visits plan"
 * subject = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2024-12-20T09:00:00+05:30"
-* valueString = "Scheduled follow-up mental health visits at Post Chemotherapy. Patient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education."
+// * effectiveDateTime = "2024-12-20T09:00:00+05:30"
+// * valueString = "Scheduled follow-up mental health visits at Post Chemotherapy. Patient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education."
+* code = $sct#404684003 "Clinical finding"
 * note.text = """
+   Scheduled follow-up mental health visits at Post Chemotherapy
+   Patient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education.
    Provided with Location and contact information of ICS:
    Location: Mumbai, Delhi, Bengaluru, and Kolkata
    Contact Information: Phone: +912224139445 (Mumbai Headquarter)
