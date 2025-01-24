@@ -93,7 +93,7 @@
                 "reference": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
                 "type": "Observation"
               },
-	      {
+              {
                 "reference": "urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5",
                 "type": "Observation"
               }
@@ -227,27 +227,17 @@
               "system": "http://snomed.info/sct",
               "display": "Postmenopausal"
             }
-          ],
-          "text": "Postmenopausal"
+          ]
         },
-        "valueString": "Postmenopausal",
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "problem-list-item",
-                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-                "display": "Problem List Item"
-              }
-            ],
-            "text": "Past medical history"
-          }
-        ],
         "subject": {
           "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma"
         },
-        "effectiveDateTime": "2023-10-10T12:18:11+05:30"
+        "note": [
+          {
+            "text": "Postmenopausal"
+          }
+        ]
       }
     },
     {
@@ -270,21 +260,8 @@
               "system": "http://loinc.org",
               "display": "ABO and Rh group [Type] in Blood"
             }
-          ],
-          "text": "ABO and Rh group [Type] in Blood"
+          ]
         },
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "vital-signs",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Vital Signs"
-              }
-            ],
-            "text": "Vital Signs"
-          }
-        ],
         "subject": {
           "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "type": "Patient"
@@ -318,38 +295,6 @@
           "code": "AMB",
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
           "display": "outpatient encounter"
-        },
-        "subject": {
-          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "participant": [
-          {
-            "type": [
-              {
-                "coding": [
-                  {
-                    "code": "ATND",
-                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
-                    "display": "attender"
-                  }
-                ]
-              }
-            ],
-            "individual": {
-              "reference": "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb",
-              "display": "Dr. Vikram Patel"
-            }
-          }
-        ],
-        "period": {
-          "start": "2023-10-10T09:00:00+05:30",
-          "end": "2023-10-10T12:00:00+05:30"
-        },
-        "serviceProvider": {
-          "reference": "urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920",
-          "display": "Sunshine Oncology Clinic, Mumbai"
         }
       }
     },
@@ -429,9 +374,6 @@
                   "display": "Oncologist"
                 }
               ]
-            },
-            "issuer": {
-              "reference": "urn:uuid:certificate-authority"
             }
           }
         ]
@@ -451,30 +393,14 @@
         },
         "status": "final",
         "code": {
-          "text": "Vital signs, physical examination, and blood work"
+          "coding": [
+            {
+              "code": "363788007",
+              "system": "http://snomed.info/sct",
+              "display": "Clinical history/examination observable"
+            }
+          ]
         },
-        "category": [
-          {
-            "coding": [
-              {
-                "code": "vital-signs",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Vital Signs"
-              }
-            ],
-            "text": "Vital Signs"
-          },
-          {
-            "coding": [
-              {
-                "code": "exam",
-                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                "display": "Exam"
-              }
-            ],
-            "text": "Examination and Test Results"
-          }
-        ],
         "subject": {
           "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma",
@@ -619,29 +545,20 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "dosage": [
-          {
-            "doseAndRate": [
-              {
-                "doseQuantity": {
-                  "value": 60,
-                  "unit": "mg/m²"
-                }
-              }
-            ],
-            "text": "60 mg/m² IV"
-          }
-        ],
         "medicationCodeableConcept": {
           "coding": [
             {
-              "code": "372817009",
+              "code": "18629005",
               "system": "http://snomed.info/sct",
-              "display": "Doxorubicin"
+              "display": "Administration of drug or medicament (procedure)"
             }
-          ],
-          "text": "Adriamycin (Doxorubicin): 60 mg/m² IV"
-        }
+          ]
+        },
+        "note": [
+          {
+            "text": "Adriamycin (Doxorubicin): 60 mg/m² IV"
+          }
+        ]
       }
     },
     {
@@ -662,25 +579,12 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "dosage": [
-          {
-            "doseAndRate": [
-              {
-                "doseQuantity": {
-                  "value": 600,
-                  "unit": "mg/m²"
-                }
-              }
-            ],
-            "text": "600 mg/m² IV"
-          }
-        ],
         "medicationCodeableConcept": {
           "coding": [
             {
-              "code": "387420009",
+              "code": "18629005",
               "system": "http://snomed.info/sct",
-              "display": "Cyclophosphamide"
+              "display": "Administration of drug or medicament (procedure)"
             }
           ],
           "text": "Cyclophosphamide: 600 mg/m² IV"
@@ -705,25 +609,12 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "dosage": [
-          {
-            "doseAndRate": [
-              {
-                "doseQuantity": {
-                  "value": 8,
-                  "unit": "mg"
-                }
-              }
-            ],
-            "text": "8 mg IV"
-          }
-        ],
         "medicationCodeableConcept": {
           "coding": [
             {
-              "code": "372487007",
+              "code": "18629005",
               "system": "http://snomed.info/sct",
-              "display": "Ondansetron"
+              "display": "Administration of drug or medicament (procedure)"
             }
           ],
           "text": "Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
@@ -743,22 +634,25 @@
           ]
         },
         "status": "final",
-        "code": {
-          "text": "Care Instructions"
-        },
         "subject": {
           "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "performer": [
+        "code": {
+          "coding": [
+            {
+              "code": "404684003",
+              "system": "http://snomed.info/sct",
+              "display": "Clinical finding"
+            }
+          ]
+        },
+        "note": [
           {
-            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
-            "display": "Dr. Anjali Verma",
-            "type": "Practitioner"
+            "text": "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
           }
-        ],
-        "valueString": "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
+        ]
       }
     },
     {
@@ -774,8 +668,6 @@
           ]
         },
         "status": "booked",
-        "priority": 1,
-        "description": "Next session scheduled for December 24, 2023.",
         "start": "2023-12-24T10:00:00+05:30",
         "end": "2023-12-24T11:00:00+05:30",
         "participant": [
@@ -791,7 +683,11 @@
             },
             "status": "accepted"
           }
-        ]
+        ],
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Next session scheduled for December 24, 2023.</p></div>"
+        }
       }
     }
   ]

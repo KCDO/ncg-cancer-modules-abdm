@@ -570,13 +570,9 @@
         "period": {
           "start": "2025-01-15"
         },
-        "activity": [
+        "note": [
           {
-            "detail": {
-              "kind": "CommunicationRequest",
-              "status": "in-progress",
-              "description": "Continue monitoring for any new symptoms."
-            }
+            "text": "Continue monitoring for any new symptoms.\nMaintain hydration and balanced diet.\nRest as needed to manage fatigue."
           }
         ]
       }

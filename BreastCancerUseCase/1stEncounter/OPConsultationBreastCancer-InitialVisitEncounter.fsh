@@ -234,9 +234,9 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $loinc#882-1 "ABO and Rh group [Type] in Blood"
-* code.text = "ABO and Rh group [Type] in Blood"
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
+// * code.text = "ABO and Rh group [Type] in Blood"
+// * category = $observation-category#vital-signs "Vital Signs"
+// * category.text = "Vital Signs"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de)
 * subject.type = "Patient"
 * valueCodeableConcept = $sct#365637002 "Finding of ABO blood group"
@@ -245,27 +245,23 @@ Usage: #inline
 // Observation Resource (Past Medical History - Postmenopausal)
 Instance: 01eeb933-3210-4eee-975c-103720fd86ff
 InstanceOf: Observation
-Title: "Postmenopausal Status"
-Description: "Represents the postmenopausal status of the patient."
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $sct#76498008 "Postmenopausal"
-* code.text = "Postmenopausal"
-* valueString = "Postmenopausal"
-* category[0] = $condition-category#problem-list-item "Problem List Item"
-* category[0].text = "Past medical history"
+// * code.text = "Postmenopausal"
+// * category[0] = $condition-category#problem-list-item "Problem List Item"
+// * category[0].text = "Past medical history"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2023-10-10T12:18:11+05:30"
+// * effectiveDateTime = "2023-10-10T12:18:11+05:30"
+* note.text = "Postmenopausal"
 
 // Procedure Resource (Past Surgical History: Hysterectomy)
 // Instance: 01eeb933-3210-4eee-975c-103720fd86fd
 // InstanceOf: Procedure
-// Title: "Past Surgical History - Hysterectomy"
-// Description: "The patient underwent a hysterectomy 10 years ago."
 // Usage: #inline
 // * meta.versionId = "0"
 // * meta.lastUpdated = "2023-10-10T12:18:11.125+05:30"
@@ -298,7 +294,7 @@ Usage: #inline
 // // * recordedDate = "2024-11-07T12:18:11+05:30"
 // // * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 // // * recorder.type = "Practitioner"
-// * note.text = "The patient has a documented allergy to penicillin, categorized as a medication allergy."
+// * note.text = "The patient has a documented allergy to penicillin."
 
 // Observation Resource (Menstruation History)
 // Instance: 260fbadb-3305-4e5a-b30c-f2a43602a275
@@ -310,16 +306,14 @@ Usage: #inline
 // * status = #final
 // * code = $sct#289908002 "Pregnancy"
 // * code.text = "The patient is postmenopausal"
-// * valueString = "The patient is confirmed as postmenopausal."
 // * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 // * subject.type = "Patient"
 // * effectiveDateTime = "2024-11-07T12:18:11+05:30"
+// * note.text = "The patient is confirmed as postmenopausal."
 
 // FamilyMemberHistory Resource (Family History)
 // Instance: 6fec2b43-ed26-47cc-83f9-57f77d028117
 // InstanceOf: FamilyMemberHistory
-// Title: "Family History of Breast Cancer"
-// Description: "Family history of breast cancer (Maternal Grandmother diagnosed at age 60)"
 // Usage: #inline
 // * meta.versionId = "0"
 // * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
@@ -335,7 +329,7 @@ Usage: #inline
 // * condition[0].onsetAge.unit = "years"
 // * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
 // * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)."
+// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Initial Visit Encounter
 // Encounter Resource (Visit Details)
@@ -346,17 +340,16 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
 * status = #finished
-// * class = $encounter-class#outpatient "Outpatient"
 * class = $v3-ActCode#AMB "outpatient encounter"
 //* type[0] = $sct#185349003 "Encounter for check up"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
-* subject.type = "Patient"
-* participant[0].type[0].coding[0] = $participant-type#ATND "attender"
-* participant[0].individual.reference = "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e"
-* participant[0].individual.display = "Dr. Anjali Verma"
-* period.start = "2023-10-10T09:00:00+05:30"
-* period.end = "2023-10-10T12:00:00+05:30"
-* serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
+// * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
+// * subject.type = "Patient"
+// * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
+// * participant[0].individual.reference = "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e"
+// * participant[0].individual.display = "Dr. Anjali Verma"
+// * period.start = "2023-10-10T09:00:00+05:30"
+// * period.end = "2023-10-10T12:00:00+05:30"
+// * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
 
 // Practitioner resource
 Instance: 41295111-04f9-4b83-b186-ef2975db1c7e
@@ -372,7 +365,7 @@ Usage: #inline
 * name.family = "Verma"
 * name.given[0] = "Anjali"
 * qualification[0].code = $sct#309343006 "Physician"
-* qualification[0].issuer = Reference(urn:uuid:certificate-authority)
+// * qualification[0].issuer = Reference(urn:uuid:certificate-authority)
 
 // Organization resource
 Instance: df9cc473-6f17-429c-8d13-8db5f8f923a2
@@ -387,29 +380,27 @@ Usage: #inline
 * identifier[0].type.coding[0].display = "Provider number"
 * identifier[0].system = "https://facility.ndhm.gov.in"
 * identifier[0].value = "df9cc473-6f17-429c-8d13-8db5f8f923a2"
-* address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
-* address[0].city = "Mumbai"
-* address[0].state = "Maharashtra"
-* address[0].postalCode = "400069"
-* address[0].country = "India"
+// * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+// * address[0].city = "Mumbai"
+// * address[0].state = "Maharashtra"
+// * address[0].postalCode = "400069"
+// * address[0].country = "India"
 
 // Condition Resource (Chief Complaint: Palpable mass of breast)
 Instance: 216861b1-ca70-41bc-be26-d5b0994a700b
 InstanceOf: Condition
-Title: "Chief Complaint: Palpable Lump in Right Breast"
-Description: "Palpable lump in the right breast, noticed 2 weeks ago"
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
-* clinicalStatus = $condition-clinical#active "Active"
-* category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
-// * code = $sct#169068008 "Computed tomography of neck"
-* code.text = "Palpable lump in the right breast"
+// * clinicalStatus = $condition-clinical#active "Active"
+// * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
+* code = $sct#404684003 "Clinical finding"
+// * code.text = "Clinical finding"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* onsetString = "Noticed 2 weeks ago"
-* note.text = "The patient reports noticing a palpable lump in the right breast 2 weeks ago."
+// * onsetString = "Noticed 2 weeks ago"
+* note.text = "Palpable lump in the right breast, noticed 2 weeks ago"
 
 // Observation Resource (Vitals)
 Instance: ed93fd8b-5a42-4522-b1bc-88b22294e474
@@ -419,13 +410,13 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:30:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* code = $sct#72970002 "Normal vital signs"
-* code.text = "Vital signs"
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
+* code = $sct#363788007 "Clinical history/examination observable"
+// * code.text = "Vital signs"
+// * category = $observation-category#vital-signs "Vital Signs"
+// * category.text = "Vital Signs"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2023-10-10T09:30:00+05:30"
+// * effectiveDateTime = "2023-10-10T09:30:00+05:30"
 
 * component[0].code = $sct#271649006 "Systolic blood pressure"
 * component[0].valueQuantity.value = 130
@@ -459,11 +450,12 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:45:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-// * code = $sct#404684003 "Clinical finding"
-* code.text = "Firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
+* code = $sct#404684003 "Clinical finding"
+// * code.text = "Clinical finding"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* note.text = "Firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
+* note.text = "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed.
+ Axillary lymph nodes not palpable."
 
 // Plan of Care (Recommended Tests and Follow-up)
 // ServiceRequest Resource (Plan: Investigation Advice: Complete Blood Count (CBC))
@@ -475,15 +467,15 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ServiceRequest"
 * status = #active
 * intent = #order
-* priority = #routine
-* text.status = #generated
-* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ordered Complete Blood Count (CBC) test for further evaluation.</div>"
+// * priority = #routine
+// * text.status = #generated
+// * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ordered Complete Blood Count (CBC) test for further evaluation.</div>"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
 * requester.type = "Practitioner"
-* occurrenceDateTime = "2023-10-10T10:00:00+05:30"
-* note[0].text = "Ordered Complete Blood Count (CBC) test for further evaluation."
+// * occurrenceDateTime = "2023-10-10T10:00:00+05:30"
+* note[0].text = "Ordered Complete Blood Count (CBC)"
 
 // Plan of Care (Recommended Tests and Follow-up)
 // ServiceRequest Resource (Plan: Investigation Advice: mammogram)
@@ -495,15 +487,15 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ServiceRequest"
 * status = #active
 * intent = #order
-* priority = #routine
-* text.status = #generated
-* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ordered mammogram for further evaluation of breast mass.</div>"
+// * priority = #routine
+// * text.status = #generated
+// * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ordered mammogram for further evaluation of breast mass.</div>"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
 * requester.type = "Practitioner"
-* occurrenceDateTime = "2023-10-10T10:00:00+05:30"
-* note[0].text = "Ordered mammogram for further evaluation of breast mass."
+// * occurrenceDateTime = "2023-10-10T10:00:00+05:30"
+* note[0].text = "mammogram"
 
 // Plan of Care (Recommended Tests and Follow-up)
 // ServiceRequest Resource (Plan: Investigation Advice: ultrasound of the right breast)
@@ -515,12 +507,12 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ServiceRequest"
 * status = #active
 * intent = #order
-* priority = #routine
-* text.status = #generated
-* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ordered ultrasound of the right breast for further evaluation of breast mass.</div>"
+// * priority = #routine
+// * text.status = #generated
+// * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ordered ultrasound of the right breast for further evaluation of breast mass.</div>"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
 * requester.type = "Practitioner"
-* occurrenceDateTime = "2023-10-10T10:00:00+05:30"
-* note[0].text = "Ordered ultrasound of the right breast for further evaluation of breast mass."
+// * occurrenceDateTime = "2023-10-10T10:00:00+05:30"
+* note[0].text = "ultrasound of the right breast"

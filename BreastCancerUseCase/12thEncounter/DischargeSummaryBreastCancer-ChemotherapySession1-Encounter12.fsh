@@ -234,9 +234,9 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $loinc#882-1 "ABO and Rh group [Type] in Blood"
-* code.text = "ABO and Rh group [Type] in Blood"
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
+// * code.text = "ABO and Rh group [Type] in Blood"
+// * category = $observation-category#vital-signs "Vital Signs"
+// * category.text = "Vital Signs"
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d)
 * subject.type = "Patient"
 * valueCodeableConcept = $sct#365637002 "Finding of ABO blood group"
@@ -245,26 +245,23 @@ Usage: #inline
 // Observation Resource (Past Medical History - Postmenopausal)
 Instance: a8e8ebce-2f78-49a0-8b69-a4835b12d842
 InstanceOf: Observation
-Title: "Postmenopausal Status"
-Description: "Represents the postmenopausal status of the patient."
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $sct#76498008 "Postmenopausal"
-* code.text = "Postmenopausal"
-* valueString = "Postmenopausal"
-* category[0] = $condition-category#problem-list-item "Problem List Item"
-* category[0].text = "Past medical history"
+// * code.text = "Postmenopausal"
+// * valueString = "Postmenopausal"
+// * category[0] = $condition-category#problem-list-item "Problem List Item"
+// * category[0].text = "Past medical history"
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
-* effectiveDateTime = "2023-10-10T12:18:11+05:30"
+// * effectiveDateTime = "2023-10-10T12:18:11+05:30"
+* note.text = "Postmenopausal"
 
 // // Procedure Resource (Past Surgical History: Hysterectomy)
 // Instance: b2f87d8f-49d7-4f45-b2c6-781623c09bb2
 // InstanceOf: Procedure
-// Title: "Past Surgical History - Hysterectomy"
-// Description: "The patient underwent a hysterectomy 10 years ago."
 // Usage: #inline
 // * meta.versionId = "0"
 // * meta.lastUpdated = "2023-10-10T12:18:11.125+05:30"
@@ -297,7 +294,7 @@ Usage: #inline
 // // * recordedDate = "2024-11-07T12:18:11+05:30"
 // // * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 // // * recorder.type = "Practitioner"
-// * note.text = "The patient has a documented allergy to penicillin, categorized as a medication allergy."
+// * note.text = "The patient has a documented allergy to penicillin."
 
 // // Observation Resource (Menstruation History)
 // Instance: 6314292f-9177-4279-9cd0-74aa1427af50
@@ -313,12 +310,11 @@ Usage: #inline
 // * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 // * subject.type = "Patient"
 // * effectiveDateTime = "2024-11-07T12:18:11+05:30"
+// * note.text = "The patient is confirmed as postmenopausal."
 
 // // FamilyMemberHistory Resource (Family History)
 // Instance: 5bc7d505-7465-4f94-baa0-e5a086810a5c
 // InstanceOf: FamilyMemberHistory
-// Title: "Family History of Breast Cancer"
-// Description: "Family history of breast cancer (Maternal Grandmother diagnosed at age 60)"
 // Usage: #inline
 // * meta.versionId = "0"
 // * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
@@ -334,7 +330,7 @@ Usage: #inline
 // * condition[0].onsetAge.unit = "years"
 // * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
 // * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)."
+// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Chemotherapy Session1 Encounter
 // Encounter Resource (Chemotherapy Session1)
@@ -345,17 +341,16 @@ Usage: #inline
 * meta.lastUpdated = "2023-12-10T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
 * status = #finished
-// * class = $encounter-class#outpatient "Outpatient"
 * class = $v3-ActCode#AMB "outpatient encounter"
 //* type[0] = $sct#185349003 "Encounter for check up"
-* subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
-* subject.type = "Patient"
-* participant[0].type[0].coding[0] = $participant-type#ATND "attender"
-* participant[0].individual.reference = "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb"
-* participant[0].individual.display = "Dr. Vikram Patel"
-* period.start = "2023-10-10T09:00:00+05:30"
-* period.end = "2023-10-10T12:00:00+05:30"
-* serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Oncology Clinic, Mumbai"
+// * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
+// * subject.type = "Patient"
+// * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
+// * participant[0].individual.reference = "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb"
+// * participant[0].individual.display = "Dr. Vikram Patel"
+// * period.start = "2023-10-10T09:00:00+05:30"
+// * period.end = "2023-10-10T12:00:00+05:30"
+// * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Oncology Clinic, Mumbai"
 
 // Practitioner resource
 Instance: 83f7c31b-ac12-4ce6-a235-f409b5c151eb
@@ -371,7 +366,7 @@ Usage: #inline
 * name.family = "Patel"
 * name.given[0] = "Vikram"
 * qualification[0].code = $sct#1287641002 "Oncologist"
-* qualification[0].issuer = Reference(urn:uuid:certificate-authority)
+// * qualification[0].issuer = Reference(urn:uuid:certificate-authority)
 
 // Organization resource
 Instance: 274ba0e5-e6ed-400b-a573-9adf110b0162
@@ -400,12 +395,12 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:30:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-// * code = $sct#72970002 "Normal vital signs"
-* code.text = "Vital signs, physical examination, and blood work"
-* category[0] = $observation-category#vital-signs "Vital Signs"
-* category[0].text = "Vital Signs"
-* category[1] = $observation-category#exam "Exam"
-* category[1].text = "Examination and Test Results"
+* code = $sct#363788007 "Clinical history/examination observable"
+// * code.text = "Vital signs, physical examination, and blood work"
+// * category[0] = $observation-category#vital-signs "Vital Signs"
+// * category[0].text = "Vital Signs"
+// * category[1] = $observation-category#exam "Exam"
+// * category[1].text = "Examination and Test Results"
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 * subject.type = "Patient"
 // * effectiveDateTime = "2023-10-10T09:30:00+05:30"
@@ -447,8 +442,6 @@ Usage: #inline
 // MedicationStatement instances
 Instance: 744b8640-9317-4488-aa2d-765650476bbf
 InstanceOf: MedicationStatement
-Title: "Adriamycin Medication Statement"
-Description: "Statement of Adriamycin (Doxorubicin) 60 mg/m² IV administration."
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.205+05:30"
@@ -456,16 +449,15 @@ Usage: #inline
 * status = #completed
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 * subject.type = "Patient"
-* dosage[0].doseAndRate[0].doseQuantity.value = 60
-* dosage[0].doseAndRate[0].doseQuantity.unit = "mg/m²"
-* dosage[0].text = "60 mg/m² IV"
-* medicationCodeableConcept = $sct#372817009 "Doxorubicin"
-* medicationCodeableConcept.text = "Adriamycin (Doxorubicin): 60 mg/m² IV"
+// * dosage[0].doseAndRate[0].doseQuantity.value = 60
+// * dosage[0].doseAndRate[0].doseQuantity.unit = "mg/m²"
+// * dosage[0].text = "60 mg/m² IV"
+* medicationCodeableConcept = $sct#18629005 "Administration of drug or medicament (procedure)"
+// * medicationCodeableConcept.text = "Adriamycin (Doxorubicin): 60 mg/m² IV"
+* note.text = "Adriamycin (Doxorubicin): 60 mg/m² IV"
 
 Instance: 37fe6dab-ffd0-4f71-a252-017b1e5d90f1
 InstanceOf: MedicationStatement
-Title: "Cyclophosphamide Medication Statement"
-Description: "Statement of Cyclophosphamide 600 mg/m² IV administration."
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.205+05:30"
@@ -473,16 +465,15 @@ Usage: #inline
 * status = #completed
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 * subject.type = "Patient"
-* dosage[0].doseAndRate[0].doseQuantity.value = 600
-* dosage[0].doseAndRate[0].doseQuantity.unit = "mg/m²"
-* dosage[0].text = "600 mg/m² IV"
-* medicationCodeableConcept = $sct#387420009 "Cyclophosphamide"
+// * dosage[0].doseAndRate[0].doseQuantity.value = 600
+// * dosage[0].doseAndRate[0].doseQuantity.unit = "mg/m²"
+// * dosage[0].text = "600 mg/m² IV"
+* medicationCodeableConcept = $sct#18629005 "Administration of drug or medicament (procedure)"
+// * medicationCodeableConcept.text = "Cyclophosphamide: 600 mg/m² IV"
 * medicationCodeableConcept.text = "Cyclophosphamide: 600 mg/m² IV"
 
 Instance: 9a34c79b-deae-478c-8d14-c6a72d2a9853
 InstanceOf: MedicationStatement
-Title: "Zofran Medication Statement"
-Description: "Statement of Zofran (Ondansetron) 8 mg IV administration before chemotherapy."
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-08-06T12:18:11.205+05:30"
@@ -490,17 +481,16 @@ Usage: #inline
 * status = #completed
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 * subject.type = "Patient"
-* dosage[0].doseAndRate[0].doseQuantity.value = 8
-* dosage[0].doseAndRate[0].doseQuantity.unit = "mg"
-* dosage[0].text = "8 mg IV"
-* medicationCodeableConcept = $sct#372487007 "Ondansetron"
+// * dosage[0].doseAndRate[0].doseQuantity.value = 8
+// * dosage[0].doseAndRate[0].doseQuantity.unit = "mg"
+// * dosage[0].text = "8 mg IV"
+* medicationCodeableConcept = $sct#18629005 "Administration of drug or medicament (procedure)"
+// * medicationCodeableConcept.text = "Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
 * medicationCodeableConcept.text = "Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
 
 // Advice
 Instance: 10c5adb3-99f0-4112-a005-bb80b302d8a5
 InstanceOf: Observation
-Title: "Care Instructions Observation"
-Description: "Care instructions provided to the patient for hydration, monitoring for signs of infection, and use of anti-nausea medications."
 Usage: #inline
 * meta.versionId = "1"
 * meta.lastUpdated = "2025-01-06T12:00:00+05:30"
@@ -509,18 +499,17 @@ Usage: #inline
 // * category[0] = $observation-category#social-history "Social History"
 // * category[0].text = "Care Instructions"
 // * code = $loinc#61145-9 "Patient care instructions"
-* code.text = "Care Instructions"
+// * code.text = "Care Instructions"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* performer[0] = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
-* performer[0].type = "Practitioner"
-* valueString = "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
+// * performer[0] = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
+// * performer[0].type = "Practitioner"
+* code = $sct#404684003 "Clinical finding"
+* note.text = "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
 
 // Follow-Up
 Instance: 5dd308b9-dc4c-4953-bcb1-d9c403a42d4d
 InstanceOf: Appointment
-Title: "Follow-Up Appointment"
-Description: "The follow-up session is scheduled for December 24, 2023."
 Usage: #inline
 * meta.versionId = "1"
 * meta.lastUpdated = "2025-01-06T12:00:00+05:30"
@@ -533,8 +522,8 @@ Usage: #inline
 // * specialty[0] = $specialty#general-medicine "General Medicine"
 // * specialty[0].text = "General Medicine"
 // * appointmentType = $appointment-type#follow-up "Follow-Up"
-* priority = 1
-* description = "Next session scheduled for December 24, 2023."
+// * priority = 1
+// * description = "Next session scheduled for December 24, 2023."
 * start = "2023-12-24T10:00:00+05:30" 
 * end = "2023-12-24T11:00:00+05:30" 
 * participant[0].actor.reference = "Patient/c4d052b5-2d9f-4ebf-b617-764efffa08de"
@@ -545,3 +534,9 @@ Usage: #inline
 // * participant[1].type[0] = $v3-RoleCode "PROV" "Practitioner"
 * participant[1].actor.reference = "Practitioner/41295111-04f9-4b83-b186-ef2975db1c7e"
 * participant[1].status = #accepted
+* text.status = #generated
+* text.div = """
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <p>Next session scheduled for December 24, 2023.</p>
+  </div>
+"""

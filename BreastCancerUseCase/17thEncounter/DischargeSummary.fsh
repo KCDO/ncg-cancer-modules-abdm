@@ -26,13 +26,13 @@ Usage: #example
 //entry for Composition
 * entry[0].fullUrl = "urn:uuid:f1ab8bba-a0ed-476a-a902-a1e08517020b"
 * entry[=].resource = f1ab8bba-a0ed-476a-a902-a1e08517020b
-// entry for Observation of Observation and Examination module for Vital signs stable
+// entry for Observation of Examination module for Vital signs stable
 * entry[+].fullUrl = "urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59"
 * entry[=].resource = 2d5cb6d7-ec9c-4207-9366-9874b3bfbf59
-// entry for Observation of Observation and Examination module for Physical examination
+// entry for Observation of Examination module for Physical examination
 * entry[+].fullUrl = "urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6"
 * entry[=].resource = 79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6
-// entry for Observation of Observation and Examination module for Blood work
+// entry for Observation of Examination module for Blood work
 * entry[+].fullUrl = "urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db"
 * entry[=].resource = 3fda073d-9244-46c8-835e-5d85e50f14db
 // entry for Procedure of Chemotherapy regimen module for AC-T
@@ -103,13 +103,13 @@ Usage: #inline
 * section[+].title = "PhysicalExamination"
 * section[=].code = $loinc#29545-1 "Physical findings Narrative"
 * section[=].code.text = "Physical Examination Section"
-//section entry for Observation of Observation and Examination module for Vital signs stable
+//section entry for Observation of Examination module for Vital signs stable
 * section[=].entry[0] = Reference(urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59)
 * section[=].entry[=].type = "Observation"
-//section entry for Observation of Observation and Examination module for Physical examination
+//section entry for Observation of Examination module for Physical examination
 * section[=].entry[+] = Reference(urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6)
 * section[=].entry[=].type = "Observation"
-//section entry for Observation of Observation and Examination module for Blood work
+//section entry for Observation of Examination module for Blood work
 * section[=].entry[+] = Reference(urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db)
 * section[=].entry[=].type = "Observation"
 
@@ -140,11 +140,9 @@ Usage: #inline
 * section[=].entry = Reference(urn:uuid:1af6c85e-3d89-4a0f-8aa3-10a7d3bcb86f)
 * section[=].entry.type = "CarePlan"
 
-// Observation of Observation and Examination module for Vital signs stable
+// Observation of Examination module for Vital signs stable
 Instance: 2d5cb6d7-ec9c-4207-9366-9874b3bfbf59
 InstanceOf: Observation
-Title: "Vital Signs Observation"
-Description: "Observation for vital signs."
 * status = #final
 * category = $observation-category#vital-signs // Vital Signs category
 * code = $loinc#85354-9 // Vital signs, panel
@@ -164,11 +162,9 @@ Description: "Observation for vital signs."
 * component[3].valueQuantity = 98.3 '[degF]' // Corrected unit to 'degF'
 * component[3].valueQuantity.unit = "[degF]"
 
-// Observation of Observation and Examination module for Physical examination
+// Observation of Examination module for Physical examination
 Instance: 79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6
 InstanceOf: Observation
-Title: "Physical Examination Observation"
-Description: "Observation for physical examination findings."
 * status = #final
 * category = $observation-category#exam // General examination category
 * code = $loinc#29545-1 // Physical findings of general status
@@ -177,11 +173,9 @@ Description: "Observation for physical examination findings."
 * effectiveDateTime = "2025-01-15"
 * valueString = "Fatigue and neuropathy stable, no new symptoms."
 
-// Observation of Observation and Examination module for Blood work
+// Observation of Examination module for Blood work
 Instance: 3fda073d-9244-46c8-835e-5d85e50f14db
 InstanceOf: Observation
-Title: "Blood Work Observation"
-Description: "Observation for blood work results."
 * status = #final
 * category = $observation-category#laboratory // Laboratory category
 * code = $loinc#24357-6 // Hematology panel
@@ -201,8 +195,6 @@ Description: "Observation for blood work results."
 // Procedure of Chemotherapy regimen module for AC-T
 Instance: 114cbe71-8a5f-497c-8902-879b5cfbaf5a
 InstanceOf: Procedure
-Title: "Chemotherapy Regimen: AC-T"
-Description: "Procedure for administering chemotherapy regimen AC-T (Adriamycin, Cyclophosphamide followed by Taxol)."
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #in-progress
 * category = $sct#367336001 "Chemotherapy"
@@ -227,8 +219,6 @@ Description: "Procedure for administering chemotherapy regimen AC-T (Adriamycin,
 // MedicationRequest of Medications Administered module for Taxol (Paclitaxel)
 Instance: 4c2a432c-172d-4e77-89dc-d2e47c2dfe79
 InstanceOf: MedicationRequest
-Title: "Taxol (Paclitaxel) Medication Request"
-Description: "MedicationRequest for Taxol (Paclitaxel) administration."
 * status = #active
 * intent = #order
 * medicationCodeableConcept = $sct#387374002 "Paclitaxel (substance)"
@@ -243,8 +233,6 @@ Description: "MedicationRequest for Taxol (Paclitaxel) administration."
 // MedicationRequest of Medications Administered module for Zofran (Ondansetron)
 Instance: 9d7e90f3-5c7b-4e95-9400-81a24e70b1a6
 InstanceOf: MedicationRequest
-Title: "Zofran (Ondansetron) Medication Request"
-Description: "MedicationRequest for Zofran (Ondansetron) as an antiemetic."
 * status = #active
 * intent = #order
 * medicationCodeableConcept = $sct#372487007 "Ondansetron (substance)"
@@ -259,24 +247,22 @@ Description: "MedicationRequest for Zofran (Ondansetron) as an antiemetic."
 // CarePlan of Advice module
 Instance: 1af6c85e-3d89-4a0f-8aa3-10a7d3bcb86f
 InstanceOf: CarePlan
-Title: "Care Plan for Patient Advice"
-Description: "Care plan including advice for symptom monitoring, hydration, and rest."
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/CarePlan"
 * status = #active
 * intent = #plan
 * title = "Patient Advice Plan"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
-* period.start = "2025-01-15" // Adjust date as appropriate
-* activity[0].detail.kind = #CommunicationRequest 
-* activity[0].detail.status = #in-progress
-* activity[0].detail.description = "Continue monitoring for any new symptoms."
+* period.start = "2025-01-15" 
+* note.text = """
+Continue monitoring for any new symptoms.
+Maintain hydration and balanced diet.
+Rest as needed to manage fatigue.
+"""
 
 // Appointment of Follow-up module for assess overall response to chemotherapy and plan further treatment
 Instance: 75e8d2b9-9a0d-4893-a05e-88b5b237b0b6
 InstanceOf: Appointment
-Title: "Follow-Up Appointment with Dr. Vikram Patel"
-Description: "Follow-up appointment to assess overall response to chemotherapy and plan further treatment."
 * status = #proposed
 * participant[0].actor = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 * serviceCategory.coding[0].system = "http://terminology.hl7.org/CodeSystem/service-category"
