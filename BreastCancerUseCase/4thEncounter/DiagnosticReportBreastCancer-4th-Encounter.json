@@ -103,12 +103,12 @@
         "code": {
           "coding": [
             {
-              "code": "22637-3",
-              "system": "http://loinc.org",
-              "display": "Pathology report final diagnosis Narrative"
+              "code": "371528001",
+              "system": "http://snomed.info/sct",
+              "display": "Pathology report (record artifact)"
             }
           ],
-          "text": "Pathology Report"
+          "text": "Pathology report"
         },
         "subject": {
           "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
@@ -117,127 +117,12 @@
         },
         "effectiveDateTime": "2024-12-10T08:00:00Z",
         "issued": "2024-12-10T09:00:00Z",
-        "result": [
+        "conclusion": "Diagnosis: Invasive ductal carcinoma, grade 3.\nER/PR status: Positive.\nHER2 status: Negative.\nKi-67: 30%.\nReferred to oncology for further management.",
+        "performer": [
           {
-            "reference": "urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59"
-          },
-          {
-            "reference": "urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6"
-          },
-          {
-            "reference": "urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db"
-          },
-          {
-            "reference": "urn:uuid:114cbe71-8a5f-497c-8902-879b5cfbaf5a"
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
           }
-        ],
-        "text": {
-          "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Referred to oncology for further management.</div>"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "2d5cb6d7-ec9c-4207-9366-9874b3bfbf59",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "254837009",
-              "system": "http://snomed.info/sct",
-              "display": "Malignant neoplasm of breast (disorder)"
-            }
-          ],
-          "text": "Malignant neoplasm of breast (disorder)"
-        },
-        "valueCodeableConcept": {
-          "coding": [
-            {
-              "code": "254837009",
-              "system": "http://snomed.info/sct",
-              "display": "Malignant neoplasm of breast (disorder)"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "10480-2",
-              "system": "http://loinc.org",
-              "display": "Estrogen+Progesterone receptor Ag [Presence] in Tissue by Immune stain"
-            }
-          ],
-          "text": "ER-PR-Status"
-        },
-        "valueCodeableConcept": {
-          "coding": [
-            {
-              "code": "10828004",
-              "system": "http://snomed.info/sct",
-              "display": "Positive"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "3fda073d-9244-46c8-835e-5d85e50f14db",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "48676-1",
-              "system": "http://loinc.org",
-              "display": "HER2 [Interpretation] in Tissue"
-            }
-          ],
-          "text": "HER2-Status"
-        },
-        "valueCodeableConcept": {
-          "coding": [
-            {
-              "code": "260385009",
-              "system": "http://snomed.info/sct",
-              "display": "Negative"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:114cbe71-8a5f-497c-8902-879b5cfbaf5a",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "114cbe71-8a5f-497c-8902-879b5cfbaf5a",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "33055-5",
-              "system": "http://loinc.org",
-              "display": "Ki-67 nuclear Ag [Presence] in Tissue by Immune stain"
-            }
-          ],
-          "text": "Ki-67"
-        },
-        "valueQuantity": {
-          "value": 30,
-          "unit": "%"
-        }
+        ]
       }
     },
     {

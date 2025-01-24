@@ -120,40 +120,12 @@
         },
         "effectiveDateTime": "2024-12-10T10:00:00Z",
         "issued": "2024-12-10T10:30:00Z",
+        "conclusion": "Right breast: Suspicious mass in the upper outer quadrant, BI-RADS category 4.",
         "performer": [
           {
             "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
           }
-        ],
-        "result": [
-          {
-            "reference": "urn:uuid:cc83e070-c141-4555-9559-aa4ac8f44f8d"
-          }
         ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:cc83e070-c141-4555-9559-aa4ac8f44f8d",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "cc83e070-c141-4555-9559-aa4ac8f44f8d",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "36319-2",
-              "system": "http://loinc.org",
-              "display": "MG Breast 4 Views"
-            }
-          ],
-          "text": "MG Breast 4 Views"
-        },
-        "subject": {
-          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "valueString": "Suspicious mass in the upper outer quadrant of the right breast, BI-RADS category 4"
       }
     },
     {
@@ -190,67 +162,12 @@
         },
         "effectiveDateTime": "2024-12-10T11:00:00Z",
         "issued": "2024-12-10T11:30:00Z",
+        "conclusion": "Right breast: Hypoechoic mass with irregular margins, measuring 2.1 cm x 1.8 cm. No significant axillary lymphadenopathy.",
         "performer": [
           {
             "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
           }
-        ],
-        "result": [
-          {
-            "reference": "urn:uuid:f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2"
-          },
-          {
-            "reference": "urn:uuid:f12d6b34-ac8b-4d8a-9e35-ab12cb67a3f1"
-          }
         ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "24605-8",
-              "system": "http://loinc.org",
-              "display": "MG Breast Diagnostic"
-            }
-          ],
-          "text": "MG Breast Diagnostic"
-        },
-        "subject": {
-          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "valueString": "Hypoechoic mass with irregular margins in the right breast, measuring 2.1 cm x 1.8 cm. No significant axillary lymphadenopathy."
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:f12d6b34-ac8b-4d8a-9e35-ab12cb67a3f1",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "f12d6b34-ac8b-4d8a-9e35-ab12cb67a3f1",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "code": "31208-2",
-              "system": "http://loinc.org",
-              "display": "Specimen source identified"
-            }
-          ],
-          "text": "Specimen source identified"
-        },
-        "subject": {
-          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "valueString": "Core needle biopsy of the hypoechoic mass in the right breast is recommended."
       }
     },
     {
