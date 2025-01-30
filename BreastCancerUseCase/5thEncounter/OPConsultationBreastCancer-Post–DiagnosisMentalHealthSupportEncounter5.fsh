@@ -218,7 +218,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* code = $sct#76498008 "Postmenopausal"
+* code = $sct#404684003 "Clinical finding"
 // * code.text = "Postmenopausal"
 // * valueString = "Postmenopausal"
 // * category[0] = $condition-category#problem-list-item "Problem List Item"
@@ -317,8 +317,8 @@ Usage: #inline
 * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
 * participant[0].individual.reference = "urn:uuid:7bd714ba-4eee-487e-bc10-179504212d0d"
 * participant[0].individual.display = "Dr. Priya Mehta"
-// * period.start = "2023-10-26T09:00:00+05:30"
-// * period.end = "2023-10-26T10:00:00+05:30"
+* period.start = "2023-10-26T09:00:00+05:30"
+* period.end = "2023-10-26T10:00:00+05:30"
 // * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
 
 // Practitioner resource
@@ -329,8 +329,8 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:00:00+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
 * identifier.type = $v2-0203#MD "Medical License number"
-* identifier.system = "https://doctor.ndhm.gov.in"
-* identifier.value = "23-4536-7890-1245" 
+* identifier.system = "https://nhpr.abdm.gov.in"
+* identifier.value = "23-4536-7890-1245"  
 * name.text = "Dr. Priya Mehta"
 * name.family = "Mehta"
 * name.given[0] = "Priya"
@@ -352,8 +352,8 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://facility.ndhm.gov.in"
-* identifier[0].value = "df9cc473-6f17-429c-8d13-8db5f8f923aa"
+* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
 // * address[0].state = "Maharashtra"

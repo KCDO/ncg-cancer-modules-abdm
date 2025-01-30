@@ -77,6 +77,25 @@
         },
         "section": [
           {
+            "title": "Procedure",
+            "code": {
+              "coding": [
+                {
+                  "code": "371525003",
+                  "system": "http://snomed.info/sct",
+                  "display": "Clinical procedure report"
+                }
+              ],
+              "text": "Clinical procedure report"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:176522d8-5403-4adc-b793-23fd10b26d3f",
+                "type": "Procedure"
+              }
+            ]
+          },
+          {
             "title": "OtherObservations",
             "code": {
               "coding": [
@@ -91,10 +110,6 @@
             "entry": [
               {
                 "reference": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
-                "type": "Observation"
-              },
-              {
-                "reference": "urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5",
                 "type": "Observation"
               }
             ]
@@ -132,7 +147,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:9a34c79b-deae-478c-8d14-c6a72d2a9853",
+                "reference": "urn:uuid:744b8640-9317-4488-aa2d-765650476bbf",
                 "type": "MedicationStatement"
               }
             ]
@@ -153,6 +168,25 @@
               {
                 "reference": "urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d",
                 "type": "Appointment"
+              }
+            ]
+          },
+          {
+            "title": "Investigations",
+            "code": {
+              "coding": [
+                {
+                  "code": "721981007",
+                  "system": "http://snomed.info/sct",
+                  "display": "Diagnostic studies report"
+                }
+              ],
+              "text": "Diagnostic studies report"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:eabcf9b7-8b37-43dc-9a4f-7e067267fe64",
+                "type": "DiagnosticReport"
               }
             ]
           }
@@ -223,9 +257,9 @@
         "code": {
           "coding": [
             {
-              "code": "76498008",
+              "code": "404684003",
               "system": "http://snomed.info/sct",
-              "display": "Postmenopausal"
+              "display": "Clinical finding"
             }
           ]
         },
@@ -295,6 +329,14 @@
           "code": "AMB",
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
           "display": "outpatient encounter"
+        },
+        "period": {
+          "start": "2023-12-10T09:00:00+05:30",
+          "end": "2023-12-10T12:00:00+05:30"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed.</p></div>"
         }
       }
     },
@@ -322,8 +364,8 @@
                 }
               ]
             },
-            "system": "https://facility.ndhm.gov.in",
-            "value": "274ba0e5-e6ed-400b-a573-9adf110b0162"
+            "system": "https://hfr.addm.gov.in",
+            "value": "IN2910086528"
           }
         ]
       }
@@ -351,7 +393,7 @@
                 }
               ]
             },
-            "system": "https://doctor.ndhm.gov.in",
+            "system": "https://nhpr.abdm.gov.in",
             "value": "23-4536-7890-1245"
           }
         ],
@@ -478,7 +520,74 @@
               ]
             },
             "valueString": "No signs of infection or complications from surgery."
-          },
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:eabcf9b7-8b37-43dc-9a4f-7e067267fe64",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "eabcf9b7-8b37-43dc-9a4f-7e067267fe64",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-01-28T10:30:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DiagnosticReportLab"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "57021-8",
+              "system": "http://loinc.org",
+              "display": "CBC W Auto Differential panel - Blood"
+            }
+          ]
+        },
+        "result": [
+          {
+            "reference": "urn:uuid:a043fd53-2613-4f69-8cb2-38e200f7176e"
+          }
+        ],
+        "resultsInterpreter": [
+          {
+            "reference": "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb",
+            "display": "Dr. Vikram Patel"
+          }
+        ],
+        "conclusion": "Blood work: WBC 6,000/mcL, RBC 4.5 million/mcL, Platelets 250,000/mcL"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a043fd53-2613-4f69-8cb2-38e200f7176e",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "a043fd53-2613-4f69-8cb2-38e200f7176e",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T09:30:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "26604007",
+              "system": "http://snomed.info/sct",
+              "display": "Complete blood count"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "component": [
           {
             "code": {
               "coding": [
@@ -489,10 +598,7 @@
                 }
               ]
             },
-            "valueQuantity": {
-              "value": 6000,
-              "unit": "mcL"
-            }
+            "valueString": "WBC 6,000/mcL"
           },
           {
             "code": {
@@ -504,10 +610,7 @@
                 }
               ]
             },
-            "valueQuantity": {
-              "value": 4.5,
-              "unit": "million/mcL"
-            }
+            "valueString": "RBC 4.5 million/mc"
           },
           {
             "code": {
@@ -519,10 +622,41 @@
                 }
               ]
             },
-            "valueQuantity": {
-              "value": 250000,
-              "unit": "mcL"
+            "valueString": "Platelets 250,000/mcL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:176522d8-5403-4adc-b793-23fd10b26d3f",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "176522d8-5403-4adc-b793-23fd10b26d3f",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-01-28T10:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "367336001",
+              "system": "http://snomed.info/sct",
+              "display": "Chemotherapy (procedure)"
             }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "note": [
+          {
+            "text": "AC-T (Adriamycin, Cyclophosphamide followed by Taxol)."
           }
         ]
       }
@@ -556,101 +690,7 @@
         },
         "note": [
           {
-            "text": "Adriamycin (Doxorubicin): 60 mg/m² IV"
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:37fe6dab-ffd0-4f71-a252-017b1e5d90f1",
-      "resource": {
-        "resourceType": "MedicationStatement",
-        "id": "37fe6dab-ffd0-4f71-a252-017b1e5d90f1",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-08-06T12:18:11.205+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
-          ]
-        },
-        "status": "completed",
-        "subject": {
-          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "medicationCodeableConcept": {
-          "coding": [
-            {
-              "code": "18629005",
-              "system": "http://snomed.info/sct",
-              "display": "Administration of drug or medicament (procedure)"
-            }
-          ],
-          "text": "Cyclophosphamide: 600 mg/m² IV"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:9a34c79b-deae-478c-8d14-c6a72d2a9853",
-      "resource": {
-        "resourceType": "MedicationStatement",
-        "id": "9a34c79b-deae-478c-8d14-c6a72d2a9853",
-        "meta": {
-          "versionId": "0",
-          "lastUpdated": "2024-08-06T12:18:11.205+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
-          ]
-        },
-        "status": "completed",
-        "subject": {
-          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "medicationCodeableConcept": {
-          "coding": [
-            {
-              "code": "18629005",
-              "system": "http://snomed.info/sct",
-              "display": "Administration of drug or medicament (procedure)"
-            }
-          ],
-          "text": "Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "10c5adb3-99f0-4112-a005-bb80b302d8a5",
-        "meta": {
-          "versionId": "1",
-          "lastUpdated": "2025-01-06T12:00:00+05:30",
-          "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-          ]
-        },
-        "status": "final",
-        "subject": {
-          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
-          "display": "Meera Sharma",
-          "type": "Patient"
-        },
-        "code": {
-          "coding": [
-            {
-              "code": "404684003",
-              "system": "http://snomed.info/sct",
-              "display": "Clinical finding"
-            }
-          ]
-        },
-        "note": [
-          {
-            "text": "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
+            "text": "Adriamycin (Doxorubicin): 60 mg/m² IV\nCyclophosphamide: 600 mg/m² IV\nAntiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
           }
         ]
       }

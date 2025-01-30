@@ -181,9 +181,9 @@
         "code": {
           "coding": [
             {
-              "code": "76498008",
+              "code": "404684003",
               "system": "http://snomed.info/sct",
-              "display": "Postmenopausal"
+              "display": "Clinical finding"
             }
           ]
         },
@@ -254,6 +254,10 @@
           "code": "AMB",
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
           "display": "outpatient encounter"
+        },
+        "period": {
+          "start": "2023-11-12T09:00:00+05:30",
+          "end": "2023-11-12T12:00:00+05:30"
         }
       }
     },
@@ -281,8 +285,8 @@
                 }
               ]
             },
-            "system": "https://facility.ndhm.gov.in",
-            "value": "a102f1a9-d5e2-4692-938a-605370d6acf1"
+            "system": "https://hfr.addm.gov.in",
+            "value": "IN2910086528"
           }
         ]
       }
@@ -310,7 +314,7 @@
                 }
               ]
             },
-            "system": "https://doctor.ndhm.gov.in",
+            "system": "https://nhpr.abdm.gov.in",
             "value": "23-4536-7890-1245"
           }
         ],
@@ -354,9 +358,9 @@
         "code": {
           "coding": [
             {
-              "code": "387713003",
+              "code": "392021009",
               "system": "http://snomed.info/sct",
-              "display": "Surgical procedure"
+              "display": "Lumpectomy of breast (procedure)"
             }
           ]
         },

@@ -219,9 +219,9 @@
         "code": {
           "coding": [
             {
-              "code": "76498008",
+              "code": "404684003",
               "system": "http://snomed.info/sct",
-              "display": "Postmenopausal"
+              "display": "Clinical finding"
             }
           ]
         },
@@ -292,6 +292,10 @@
           "code": "AMB",
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
           "display": "outpatient encounter"
+        },
+        "period": {
+          "start": "2023-10-10T09:00:00+05:30",
+          "end": "2023-10-10T12:00:00+05:30"
         }
       }
     },
@@ -319,8 +323,8 @@
                 }
               ]
             },
-            "system": "https://facility.ndhm.gov.in",
-            "value": "df9cc473-6f17-429c-8d13-8db5f8f923a2"
+            "system": "https://hfr.addm.gov.in",
+            "value": "IN2910086528"
           }
         ]
       }
@@ -348,7 +352,7 @@
                 }
               ]
             },
-            "system": "https://doctor.ndhm.gov.in",
+            "system": "https://nhpr.abdm.gov.in",
             "value": "23-4536-7890-1245"
           }
         ],
@@ -590,7 +594,7 @@
         },
         "note": [
           {
-            "text": "Ordered Complete Blood Count (CBC)"
+            "text": "Complete Blood Count (CBC)"
           }
         ]
       }

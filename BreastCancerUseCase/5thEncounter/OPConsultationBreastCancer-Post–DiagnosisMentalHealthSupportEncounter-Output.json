@@ -170,9 +170,9 @@
         "code": {
           "coding": [
             {
-              "code": "76498008",
+              "code": "404684003",
               "system": "http://snomed.info/sct",
-              "display": "Postmenopausal"
+              "display": "Clinical finding"
             }
           ]
         },
@@ -262,7 +262,11 @@
               "display": "Dr. Priya Mehta"
             }
           }
-        ]
+        ],
+        "period": {
+          "start": "2023-10-26T09:00:00+05:30",
+          "end": "2023-10-26T10:00:00+05:30"
+        }
       }
     },
     {
@@ -289,8 +293,8 @@
                 }
               ]
             },
-            "system": "https://facility.ndhm.gov.in",
-            "value": "df9cc473-6f17-429c-8d13-8db5f8f923aa"
+            "system": "https://hfr.addm.gov.in",
+            "value": "IN2910086528"
           }
         ]
       }
@@ -318,7 +322,7 @@
                 }
               ]
             },
-            "system": "https://doctor.ndhm.gov.in",
+            "system": "https://nhpr.abdm.gov.in",
             "value": "23-4536-7890-1245"
           }
         ],

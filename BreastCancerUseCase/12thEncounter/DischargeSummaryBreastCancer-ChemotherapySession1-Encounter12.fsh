@@ -63,21 +63,24 @@ Usage: #example
 //entry for Practitioner
 * entry[+].fullUrl = "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb"
 * entry[=].resource = 83f7c31b-ac12-4ce6-a235-f409b5c151eb
-//entry for Observation resource: Vital signs, examination, and blood work
+//entry for Observation resource: Vital signs, examination
 * entry[+].fullUrl = "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e477"
 * entry[=].resource = ed93fd8b-5a42-4522-b1bc-88b22294e477
-//entry for MedicationStatement resource: Adriamycin 
+// entry for DiagnosticReportLab resource: Blood work 
+* entry[+].fullUrl = "urn:uuid:eabcf9b7-8b37-43dc-9a4f-7e067267fe64"
+* entry[=].resource = eabcf9b7-8b37-43dc-9a4f-7e067267fe64
+// entry for Observation Resource: WBC, RBC, Platelet Count Observation
+* entry[+].fullUrl = "urn:uuid:a043fd53-2613-4f69-8cb2-38e200f7176e"
+* entry[=].resource = a043fd53-2613-4f69-8cb2-38e200f7176e
+//entry for Procedure resource: Chemotherapy regimen
+* entry[+].fullUrl = "urn:uuid:176522d8-5403-4adc-b793-23fd10b26d3f"
+* entry[=].resource = 176522d8-5403-4adc-b793-23fd10b26d3f
+//entry for MedicationStatement resource: Adriamycin, Cyclophosphamide, Antiemetics 
 * entry[+].fullUrl = "urn:uuid:744b8640-9317-4488-aa2d-765650476bbf"
 * entry[=].resource = 744b8640-9317-4488-aa2d-765650476bbf
-//entry for MedicationStatement resource: Cyclophosphamide
-* entry[+].fullUrl = "urn:uuid:37fe6dab-ffd0-4f71-a252-017b1e5d90f1"
-* entry[=].resource = 37fe6dab-ffd0-4f71-a252-017b1e5d90f1
-//entry for MedicationStatement resource: Antiemetics
-* entry[+].fullUrl = "urn:uuid:9a34c79b-deae-478c-8d14-c6a72d2a9853"
-* entry[=].resource = 9a34c79b-deae-478c-8d14-c6a72d2a9853
-//entry for Observation resource: Advice
-* entry[+].fullUrl = "urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5"
-* entry[=].resource = 10c5adb3-99f0-4112-a005-bb80b302d8a5
+// //entry for Observation resource: Advice
+// * entry[+].fullUrl = "urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5"
+// * entry[=].resource = 10c5adb3-99f0-4112-a005-bb80b302d8a5
 //entry for Appointment resource: follow-up
 * entry[+].fullUrl = "urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d"
 * entry[=].resource = 5dd308b9-dc4c-4953-bcb1-d9c403a42d4d
@@ -126,13 +129,16 @@ Usage: #inline
 // * section[=].entry[0] = Reference(urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842)
 // * section[=].entry[=].type = "Observation"
 
-// // section for Procedure
-// * section[+].title = "Procedure"
-// * section[=].code = $sct#371525003 "Clinical procedure report"
-// * section[=].code.text = "Clinical procedure report"
+// section for Procedure
+* section[+].title = "Procedure"
+* section[=].code = $sct#371525003 "Clinical procedure report"
+* section[=].code.text = "Clinical procedure report"
 // // Procedure Resource (Past Surgical History: Hysterectomy)
 // * section[=].entry[0] = Reference(urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2)
 // * section[=].entry[=].type = "Procedure"
+// Procedure Resource (Chemotherapy regimen)
+* section[=].entry[0] = Reference(urn:uuid:176522d8-5403-4adc-b793-23fd10b26d3f)
+* section[=].entry[=].type = "Procedure"
 
 // section for OtherObservations
 * section[+].title = "OtherObservations"
@@ -141,9 +147,9 @@ Usage: #inline
 // // section entry for Observation Resource (Menstruation History)
 // * section[=].entry[0] = Reference(urn:uuid:6314292f-9177-4279-9cd0-74aa1427af50)
 // * section[=].entry[=].type = "Observation"
-//section entry for Observation resource: Advice
-* section[=].entry[0] = Reference(urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5)
-* section[=].entry[=].type = "Observation"
+// //section entry for Observation resource: Advice
+// * section[=].entry[0] = Reference(urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5)
+// * section[=].entry[=].type = "Observation"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
 * section[=].entry[0] = Reference(urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842)
 * section[=].entry[=].type = "Observation"
@@ -168,7 +174,7 @@ Usage: #inline
 * section[+].title = "PhysicalExamination"
 * section[=].code = $sct#425044008 "Physical exam section" 
 * section[=].code.text = "Physical exam section"
-//entry for Observation resource: Vital signs, examination, and blood work
+//entry for Observation resource: Vital signs, examination
 * section[=].entry[0] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e477)
 * section[=].entry[=].type = "Observation"
 
@@ -176,14 +182,8 @@ Usage: #inline
 * section[+].title = "Medications"
 * section[=].code = $sct#721912009 "Medication summary document" 
 * section[=].code.text = "Medication summary document"
-//entry for Medication Statement resource: Adriamycin 
+//entry for Medication Statement resource: Adriamycin, Cyclophosphamide, Antiemetics
 * section[=].entry[0] = Reference(urn:uuid:744b8640-9317-4488-aa2d-765650476bbf)
-* section[=].entry[=].type = "MedicationStatement"
-//entry for Medication Statement resource: Cyclophosphamide 
-* section[=].entry[0] = Reference(urn:uuid:37fe6dab-ffd0-4f71-a252-017b1e5d90f1)
-* section[=].entry[=].type = "MedicationStatement"
-//entry for Medication Statement resource: Antiemetics 
-* section[=].entry[0] = Reference(urn:uuid:9a34c79b-deae-478c-8d14-c6a72d2a9853)
 * section[=].entry[=].type = "MedicationStatement"
 
 //section for FollowUp
@@ -193,6 +193,14 @@ Usage: #inline
 //entry for Appointment resource: FollowUp 
 * section[=].entry[0] = Reference(urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d)
 * section[=].entry[=].type = "Appointment"
+
+//section for Investigations
+* section[+].title = "Investigations"
+* section[=].code = $sct#721981007 "Diagnostic studies report" 
+* section[=].code.text = "Diagnostic studies report"
+//entry for DiagnosticReportLab resource: Blood work 
+* section[=].entry[0] = Reference(urn:uuid:eabcf9b7-8b37-43dc-9a4f-7e067267fe64)
+* section[=].entry[=].type = "DiagnosticReport"
 
 // Patient Resource
 Instance: 944e725c-c23e-4413-adee-492408bbd74d
@@ -250,7 +258,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* code = $sct#76498008 "Postmenopausal"
+* code = $sct#404684003 "Clinical finding"
 // * code.text = "Postmenopausal"
 // * valueString = "Postmenopausal"
 // * category[0] = $condition-category#problem-list-item "Problem List Item"
@@ -348,9 +356,17 @@ Usage: #inline
 // * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
 // * participant[0].individual.reference = "urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb"
 // * participant[0].individual.display = "Dr. Vikram Patel"
-// * period.start = "2023-10-10T09:00:00+05:30"
-// * period.end = "2023-10-10T12:00:00+05:30"
+* period.start = "2023-12-10T09:00:00+05:30"
+* period.end = "2023-12-10T12:00:00+05:30"
 // * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Oncology Clinic, Mumbai"
+// Advice-Encounter Note
+// * note[0].text = "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
+* text.status = #generated
+* text.div = """
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <p> Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed.</p>
+  </div>
+"""
 
 // Practitioner resource
 Instance: 83f7c31b-ac12-4ce6-a235-f409b5c151eb
@@ -360,7 +376,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:00:00+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
 * identifier.type = $v2-0203#MD "Medical License number"
-* identifier.system = "https://doctor.ndhm.gov.in"
+* identifier.system = "https://nhpr.abdm.gov.in"
 * identifier.value = "23-4536-7890-1245" 
 * name.text = "Dr. Vikram Patel"
 * name.family = "Patel"
@@ -379,15 +395,15 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://facility.ndhm.gov.in"
-* identifier[0].value = "274ba0e5-e6ed-400b-a573-9adf110b0162"
+* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Oncology Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
 // * address[0].state = "Maharashtra"
 // * address[0].postalCode = "400069"
 // * address[0].country = "India"
 
-// Observation Resource (Vital signs, examination, and blood work)
+// Observation Resource (Vital signs, examination)
 Instance: ed93fd8b-5a42-4522-b1bc-88b22294e477
 InstanceOf: Observation
 Usage: #inline
@@ -396,7 +412,7 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $sct#363788007 "Clinical history/examination observable"
-// * code.text = "Vital signs, physical examination, and blood work"
+// * code.text = "Vital signs, physical examination"
 // * category[0] = $observation-category#vital-signs "Vital Signs"
 // * category[0].text = "Vital Signs"
 // * category[1] = $observation-category#exam "Exam"
@@ -426,20 +442,54 @@ Usage: #inline
 * component[4].code = $sct#5880005 "Physical examination procedure"
 * component[4].valueString = "No signs of infection or complications from surgery."
 
-// Blood work components
-* component[5].code = $sct#767002 "White blood cell count"
-* component[5].valueQuantity.value = 6000
-* component[5].valueQuantity.unit = "mcL"
+// Blood work components // Investigation advice section-DiagnosticReportLab
+Instance: eabcf9b7-8b37-43dc-9a4f-7e067267fe64
+InstanceOf: DiagnosticReport
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-01-28T10:30:00+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DiagnosticReportLab"
+* status = #final
+* code = $loinc#57021-8 "CBC W Auto Differential panel - Blood"
+// Link to Observations
+* result[0] = Reference(urn:uuid:a043fd53-2613-4f69-8cb2-38e200f7176e)
+* resultsInterpreter = Reference(urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb) "Dr. Vikram Patel"
+* conclusion = "Blood work: WBC 6,000/mcL, RBC 4.5 million/mcL, Platelets 250,000/mcL"
 
-* component[6].code = $sct#14089001 "Red blood cell count"
-* component[6].valueQuantity.value = 4.5
-* component[6].valueQuantity.unit = "million/mcL"
+// Blood Work Components: Observation
+Instance: a043fd53-2613-4f69-8cb2-38e200f7176e
+InstanceOf: Observation
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2023-10-10T09:30:00+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+* status = #final
+* code = $sct#26604007 "Complete blood count"
+* subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
+* subject.type = "Patient"
+// * valueQuantity.value = 6000
+// * valueQuantity.unit = "mcL"
+* component[0].code = $sct#767002 "White blood cell count"
+* component[0].valueString = "WBC 6,000/mcL"
+* component[1].code = $sct#14089001 "Red blood cell count"
+* component[1].valueString = "RBC 4.5 million/mc"
+* component[2].code = $sct#61928009 "Platelet count"
+* component[2].valueString = "Platelets 250,000/mcL"
 
-* component[7].code = $sct#61928009 "Platelet count"
-* component[7].valueQuantity.value = 250000
-* component[7].valueQuantity.unit = "mcL"
+// Chemotherapy regimen: Procedure
+Instance: 176522d8-5403-4adc-b793-23fd10b26d3f
+InstanceOf: Procedure
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-01-28T10:00:00+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+* status = #completed
+* code = $sct#367336001 "Chemotherapy (procedure)"
+* subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
+* subject.type = "Patient"
+* note.text = "AC-T (Adriamycin, Cyclophosphamide followed by Taxol)."
 
-// MedicationStatement instances
+// Medications Administered: MedicationStatement instances
 Instance: 744b8640-9317-4488-aa2d-765650476bbf
 InstanceOf: MedicationStatement
 Usage: #inline
@@ -449,63 +499,31 @@ Usage: #inline
 * status = #completed
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 * subject.type = "Patient"
-// * dosage[0].doseAndRate[0].doseQuantity.value = 60
-// * dosage[0].doseAndRate[0].doseQuantity.unit = "mg/m²"
-// * dosage[0].text = "60 mg/m² IV"
 * medicationCodeableConcept = $sct#18629005 "Administration of drug or medicament (procedure)"
-// * medicationCodeableConcept.text = "Adriamycin (Doxorubicin): 60 mg/m² IV"
-* note.text = "Adriamycin (Doxorubicin): 60 mg/m² IV"
+* note.text = """
+   Adriamycin (Doxorubicin): 60 mg/m² IV
+   Cyclophosphamide: 600 mg/m² IV
+   Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy
+"""
 
-Instance: 37fe6dab-ffd0-4f71-a252-017b1e5d90f1
-InstanceOf: MedicationStatement
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.205+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
-* status = #completed
-* subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
-* subject.type = "Patient"
-// * dosage[0].doseAndRate[0].doseQuantity.value = 600
-// * dosage[0].doseAndRate[0].doseQuantity.unit = "mg/m²"
-// * dosage[0].text = "600 mg/m² IV"
-* medicationCodeableConcept = $sct#18629005 "Administration of drug or medicament (procedure)"
-// * medicationCodeableConcept.text = "Cyclophosphamide: 600 mg/m² IV"
-* medicationCodeableConcept.text = "Cyclophosphamide: 600 mg/m² IV"
-
-Instance: 9a34c79b-deae-478c-8d14-c6a72d2a9853
-InstanceOf: MedicationStatement
-Usage: #inline
-* meta.versionId = "0"
-* meta.lastUpdated = "2024-08-06T12:18:11.205+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/MedicationStatement"
-* status = #completed
-* subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
-* subject.type = "Patient"
-// * dosage[0].doseAndRate[0].doseQuantity.value = 8
-// * dosage[0].doseAndRate[0].doseQuantity.unit = "mg"
-// * dosage[0].text = "8 mg IV"
-* medicationCodeableConcept = $sct#18629005 "Administration of drug or medicament (procedure)"
-// * medicationCodeableConcept.text = "Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
-* medicationCodeableConcept.text = "Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
-
-// Advice
-Instance: 10c5adb3-99f0-4112-a005-bb80b302d8a5
-InstanceOf: Observation
-Usage: #inline
-* meta.versionId = "1"
-* meta.lastUpdated = "2025-01-06T12:00:00+05:30"
-* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
-* status = #final
-// * category[0] = $observation-category#social-history "Social History"
-// * category[0].text = "Care Instructions"
-// * code = $loinc#61145-9 "Patient care instructions"
-// * code.text = "Care Instructions"
-* subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
-* subject.type = "Patient"
-// * performer[0] = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
-// * performer[0].type = "Practitioner"
-* code = $sct#404684003 "Clinical finding"
-* note.text = "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
+// // Advice-encounter note 
+// Instance: 10c5adb3-99f0-4112-a005-bb80b302d8a5
+// InstanceOf: Observation
+// Usage: #inline
+// * meta.versionId = "1"
+// * meta.lastUpdated = "2025-01-06T12:00:00+05:30"
+// * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+// * status = #final
+// // * category[0] = $observation-category#social-history "Social History"
+// // * category[0].text = "Care Instructions"
+// // * code = $loinc#61145-9 "Patient care instructions"
+// // * code.text = "Care Instructions"
+// * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
+// * subject.type = "Patient"
+// // * performer[0] = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
+// // * performer[0].type = "Practitioner"
+// * code = $sct#404684003 "Clinical finding"
+// * note.text = "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
 
 // Follow-Up
 Instance: 5dd308b9-dc4c-4953-bcb1-d9c403a42d4d
@@ -515,28 +533,15 @@ Usage: #inline
 * meta.lastUpdated = "2025-01-06T12:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Appointment"
 * status = #booked
-// * serviceCategory[0] = $appointment-service-category#follow-up "Follow-Up"
-// * serviceCategory[0].text = "Follow-Up Session"
-// * serviceType[0] = $appointment-service-type#consultation "Consultation"
-// * serviceType[0].text = "Consultation for follow-up"
-// * specialty[0] = $specialty#general-medicine "General Medicine"
-// * specialty[0].text = "General Medicine"
-// * appointmentType = $appointment-type#follow-up "Follow-Up"
-// * priority = 1
-// * description = "Next session scheduled for December 24, 2023."
 * start = "2023-12-24T10:00:00+05:30" 
 * end = "2023-12-24T11:00:00+05:30" 
 * participant[0].actor.reference = "Patient/c4d052b5-2d9f-4ebf-b617-764efffa08de"
-// * participant[0].actor = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
-// * participant[0].type[0] = $v3-RoleCode "PAT" "Patient"
 * participant[0].status = #accepted
-// * participant[1].actor = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
-// * participant[1].type[0] = $v3-RoleCode "PROV" "Practitioner"
 * participant[1].actor.reference = "Practitioner/41295111-04f9-4b83-b186-ef2975db1c7e"
 * participant[1].status = #accepted
 * text.status = #generated
 * text.div = """
   <div xmlns="http://www.w3.org/1999/xhtml">
-    <p>Next session scheduled for December 24, 2023.</p>
+    <p> Next session scheduled for December 24, 2023.</p>
   </div>
 """
