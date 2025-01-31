@@ -23,18 +23,6 @@ Usage: #example
 // entry for DiagnosticReport Resource (Pathology Report)
 * entry[+].fullUrl = "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3"
 * entry[=].resource = ee47d72b-3209-4c2c-8385-53cebe4dc9a3
-// entry for Observation Resource (Diagnosis-Observation in Pathology Report)
-* entry[+].fullUrl = "urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59"
-* entry[=].resource = 2d5cb6d7-ec9c-4207-9366-9874b3bfbf59
-// entry for Observation Resource (ER-PR-Status in Pathology Report)
-* entry[+].fullUrl = "urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6"
-* entry[=].resource = 79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6
-// entry for Observation Resource (HER2-Status in Pathology Report)
-* entry[+].fullUrl = "urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db"
-* entry[=].resource = 3fda073d-9244-46c8-835e-5d85e50f14db
-// entry for Observation Resource (Ki-67 in Pathology Report)
-* entry[+].fullUrl = "urn:uuid:114cbe71-8a5f-497c-8902-879b5cfbaf5a"
-* entry[=].resource = 114cbe71-8a5f-497c-8902-879b5cfbaf5a
 // entry for Patient resource
 * entry[+].fullUrl = "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
 * entry[=].resource = 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44
@@ -75,60 +63,23 @@ Usage: #inline
 // DiagnosticReport Resource (DiagnosticReport Section: Pathology Report)
 Instance: ee47d72b-3209-4c2c-8385-53cebe4dc9a3
 InstanceOf: DiagnosticReport
-Title: "Pathology Report for Breast Cancer"
-Description: "Diagnostic report of invasive ductal carcinoma with associated biomarker status"
 Usage: #inline
 * status = #final
 * category = $v2-0074#LAB "Laboratory"
-* code = $loinc#22637-3  "Pathology report final diagnosis Narrative"
-* code.text = "Pathology Report"
+* code = $sct#371528001 "Pathology report (record artifact)"
+* code.text = "Pathology report"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-12-10T08:00:00Z"
 * issued = "2024-12-10T09:00:00Z"
-* result[0] = Reference(urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59)
-* result[+] = Reference(urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6)
-* result[+] = Reference(urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db)
-* result[+] = Reference(urn:uuid:114cbe71-8a5f-497c-8902-879b5cfbaf5a)
-* text.status = #generated
-* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Referred to oncology for further management.</div>"
-
-// Observation Resource of Pathology Report for Diagnosis-Malignant neoplasm of breast
-Instance: 2d5cb6d7-ec9c-4207-9366-9874b3bfbf59
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $sct#254837009 "Malignant neoplasm of breast (disorder)"
-* code.text = "Malignant neoplasm of breast (disorder)"
-* valueCodeableConcept = $sct#254837009 "Malignant neoplasm of breast (disorder)"
-
-// Observation Resource of Pathology Report for ER-PR-Status
-Instance: 79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $loinc#10480-2 "Estrogen+Progesterone receptor Ag [Presence] in Tissue by Immune stain"
-* code.text = "ER-PR-Status"
-* valueCodeableConcept = $sct#10828004 "Positive"
-
-// Observation Resource of Pathology Report for HER2-Status
-Instance: 3fda073d-9244-46c8-835e-5d85e50f14db
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $loinc#48676-1 "HER2 [Interpretation] in Tissue"
-* code.text = "HER2-Status"
-* valueCodeableConcept = $sct#260385009 "Negative"
-
-// Observation Resource of Pathology Report for Ki-67
-Instance: 114cbe71-8a5f-497c-8902-879b5cfbaf5a
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $loinc#33055-5	 "Ki-67 nuclear Ag [Presence] in Tissue by Immune stain"
-* code.text = "Ki-67"
-* valueQuantity.value = 30
-* valueQuantity.unit = "%"
+* conclusion = """
+Diagnosis: Invasive ductal carcinoma, grade 3.
+ER/PR status: Positive.
+HER2 status: Negative.
+Ki-67: 30%.
+Referred to oncology for further management.
+"""
+* performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
 
 // Patient resource
 Instance: 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44

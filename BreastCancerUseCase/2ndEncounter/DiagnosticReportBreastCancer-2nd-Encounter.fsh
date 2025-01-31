@@ -23,18 +23,9 @@ Usage: #example
 // entry for DiagnosticReport Resource (Mammogram Report)
 * entry[+].fullUrl = "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3"
 * entry[=].resource = ee47d72b-3209-4c2c-8385-53cebe4dc9a3
-// entry for Observation Resource (Mammogram Report)
-* entry[+].fullUrl = "urn:uuid:cc83e070-c141-4555-9559-aa4ac8f44f8d"
-* entry[=].resource = cc83e070-c141-4555-9559-aa4ac8f44f8d
 // entry for DiagnosticReport Resource (Ultrasound Report)
 * entry[+].fullUrl = "urn:uuid:6ac7cc90-7d88-458e-8c93-d6fb9130be55"
 * entry[=].resource = 6ac7cc90-7d88-458e-8c93-d6fb9130be55
-// entry for Observation Resource (Ultrasound Report for Right breast: Hypoechoic mass)
-* entry[+].fullUrl = "urn:uuid:f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2"
-* entry[=].resource = f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2
-// entry for Observation Resource (Ultrasound Report for core needle biopsy)
-* entry[+].fullUrl = "urn:uuid:f12d6b34-ac8b-4d8a-9e35-ab12cb67a3f1"
-* entry[=].resource = f12d6b34-ac8b-4d8a-9e35-ab12cb67a3f1
 // entry for Patient resource
 * entry[+].fullUrl = "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
 * entry[=].resource = 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44
@@ -85,19 +76,8 @@ Usage: #inline
 * subject.type = "Patient"
 * effectiveDateTime = "2024-12-10T10:00:00Z"
 * issued = "2024-12-10T10:30:00Z"
+* conclusion = "Right breast: Suspicious mass in the upper outer quadrant, BI-RADS category 4."
 * performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
-* result = Reference(urn:uuid:cc83e070-c141-4555-9559-aa4ac8f44f8d)
-
-// Observation Resource of Mammogram Report
-Instance: cc83e070-c141-4555-9559-aa4ac8f44f8d
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $loinc#36319-2 "MG Breast 4 Views"
-* code.text = "MG Breast 4 Views"
-* subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
-* subject.type = "Patient"
-* valueString = "Suspicious mass in the upper outer quadrant of the right breast, BI-RADS category 4"
 
 // DiagnosticReport Resource (DiagnosticReport Section: Ultrasound Report)
 Instance: 6ac7cc90-7d88-458e-8c93-d6fb9130be55
@@ -111,31 +91,8 @@ Usage: #inline
 * subject.type = "Patient"
 * effectiveDateTime = "2024-12-10T11:00:00Z"
 * issued = "2024-12-10T11:30:00Z"
+* conclusion = "Right breast: Hypoechoic mass with irregular margins, measuring 2.1 cm x 1.8 cm. No significant axillary lymphadenopathy."
 * performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
-* result[0] = Reference(urn:uuid:f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2)
-* result[1] = Reference(urn:uuid:f12d6b34-ac8b-4d8a-9e35-ab12cb67a3f1)
-
-// Observation Resource of Ultrasound Report for Right breast: Hypoechoic mass
-Instance: f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $loinc#24605-8 "MG Breast Diagnostic"
-* code.text = "MG Breast Diagnostic"
-* subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
-* subject.type = "Patient"
-* valueString = "Hypoechoic mass with irregular margins in the right breast, measuring 2.1 cm x 1.8 cm. No significant axillary lymphadenopathy."
-
-// Observation Resource of Ultrasound Report for core needle biopsy
-Instance: f12d6b34-ac8b-4d8a-9e35-ab12cb67a3f1
-InstanceOf: Observation
-Usage: #inline
-* status = #final
-* code = $loinc#31208-2 "Specimen source identified"
-* code.text = "Specimen source identified"
-* subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
-* subject.type = "Patient"
-* valueString = "Core needle biopsy of the hypoechoic mass in the right breast is recommended."
 
 // Patient resource
 Instance: 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44

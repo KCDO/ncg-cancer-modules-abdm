@@ -189,9 +189,9 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $loinc#882-1 "ABO and Rh group [Type] in Blood"
-* code.text = "ABO and Rh group [Type] in Blood"
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
+// * code.text = "ABO and Rh group [Type] in Blood"
+// * category = $observation-category#vital-signs "Vital Signs"
+// * category.text = "Vital Signs"
 * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31)
 * subject.type = "Patient"
 * valueCodeableConcept = $sct#365637002 "Finding of ABO blood group"
@@ -200,27 +200,24 @@ Usage: #inline
 // Observation Resource (Past Medical History - Postmenopausal)
 Instance: e1cc9bd5-c6d6-4115-a36c-bd27dc71a217
 InstanceOf: Observation
-Title: "Postmenopausal Status"
-Description: "Represents the postmenopausal status of the patient."
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * code = $sct#76498008 "Postmenopausal"
-* code.text = "Postmenopausal"
-* valueString = "Postmenopausal"
-* category[0] = $condition-category#problem-list-item "Problem List Item"
-* category[0].text = "Past medical history"
+// * code.text = "Postmenopausal"
+// * valueString = "Postmenopausal"
+// * category[0] = $condition-category#problem-list-item "Problem List Item"
+// * category[0].text = "Past medical history"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2023-10-10T12:18:11+05:30"
+// * effectiveDateTime = "2023-10-10T12:18:11+05:30"
+* note.text = "Postmenopausal"
 
 // // Procedure Resource (Past Surgical History: Hysterectomy)
 // Instance: bd497629-1d79-4fcc-8f1a-99a9d6d926e0
 // InstanceOf: Procedure
-// Title: "Past Surgical History - Hysterectomy"
-// Description: "The patient underwent a hysterectomy 10 years ago."
 // Usage: #inline
 // * meta.versionId = "0"
 // * meta.lastUpdated = "2023-10-10T12:18:11.125+05:30"
@@ -253,7 +250,7 @@ Usage: #inline
 // // * recordedDate = "2024-11-07T12:18:11+05:30"
 // // * recorder = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e)
 // // * recorder.type = "Practitioner"
-// * note.text = "The patient has a documented allergy to penicillin, categorized as a medication allergy."
+// * note.text = "The patient has a documented allergy to penicillin."
 
 // // Observation Resource (Menstruation History)
 // Instance: d937d3da-5e27-4c66-9856-2951cdf62bba
@@ -269,12 +266,11 @@ Usage: #inline
 // * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31) "Meera Sharma"
 // * subject.type = "Patient"
 // * effectiveDateTime = "2024-11-07T12:18:11+05:30"
+// * note.text = "The patient is confirmed as postmenopausal."
 
 // // FamilyMemberHistory Resource (Family History)
 // Instance: fa879e75-1278-4ec5-90e3-c20a390300c6
 // InstanceOf: FamilyMemberHistory
-// Title: "Family History of Breast Cancer"
-// Description: "Family history of breast cancer (Maternal Grandmother diagnosed at age 60)"
 // Usage: #inline
 // * meta.versionId = "0"
 // * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
@@ -290,7 +286,7 @@ Usage: #inline
 // * condition[0].onsetAge.unit = "years"
 // * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
 // * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)."
+// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Surgery Encounter
 // Encounter Resource (Surgery)
@@ -301,17 +297,16 @@ Usage: #inline
 * meta.lastUpdated = "2023-11-12T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
 * status = #finished
-// * class = $encounter-class#outpatient "Outpatient"
 * class = $v3-ActCode#AMB "outpatient encounter"
 //* type[0] = $sct#185349003 "Encounter for check up"
-* subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31) "Meera Sharma"
-* subject.type = "Patient"
-* participant[0].type[0].coding[0] = $participant-type#ATND "attender"
-* participant[0].individual.reference = "urn:uuid:1b266629-c338-4468-9519-52e1d84538d5"
-* participant[0].individual.display = "Dr. Priya Singh"
-* period.start = "2023-11-12T09:00:00+05:30"
-* period.end = "2023-11-12T12:00:00+05:30"
-* serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
+// * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31) "Meera Sharma"
+// * subject.type = "Patient"
+// * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
+// * participant[0].individual.reference = "urn:uuid:1b266629-c338-4468-9519-52e1d84538d5"
+// * participant[0].individual.display = "Dr. Priya Singh"
+// * period.start = "2023-11-12T09:00:00+05:30"
+// * period.end = "2023-11-12T12:00:00+05:30"
+// * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
 
 // Practitioner resource
 Instance: 1b266629-c338-4468-9519-52e1d84538d5
@@ -327,14 +322,14 @@ Usage: #inline
 * name.family = "Singh"
 * name.given[0] = "Priya"
 * qualification[0].code = $sct#304292004 "Surgeon"
-* qualification[0].issuer = Reference(urn:uuid:certificate-authority)
+// * qualification[0].issuer = Reference(urn:uuid:certificate-authority)
 
 // Organization resource
 Instance: a102f1a9-d5e2-4692-938a-605370d6acf1
 InstanceOf: Organization
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-10T09:00:00+05:30" // Adjust date and time as necessary
+* meta.lastUpdated = "2023-10-10T09:00:00+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
 * name = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -352,15 +347,14 @@ Usage: #inline
 // Procedure Resource (Lumpectomy with Sentinel Lymph Node Biopsy)
 Instance: b9340a43-8e72-4542-a614-75056d8a4c3b
 InstanceOf: Procedure
-Title: "Lumpectomy with Sentinel Lymph Node Biopsy"
-Description: "The patient underwent a lumpectomy with sentinel lymph node biopsy."
 Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2024-12-27T10:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #completed
 * code = $sct#387713003 "Surgical procedure"
-* code.text = "The patient underwent a lumpectomy with sentinel lymph node biopsy"
+// * code.text = "The patient underwent a lumpectomy with sentinel lymph node biopsy"
 // * category.text = "Surgical Procedure"
 * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31) "Meera Sharma"
 * subject.type = "Patient"
+* note.text = "Lumpectomy with sentinel lymph node biopsy"
