@@ -93,14 +93,14 @@ Usage: #inline
 // set Organization as attester
 // * attester.mode = #legal
 // * attester.time = "2023-10-10T12:18:11+05:30"
-// * attester.party = Reference(urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1) "Sunshine Clinic, Mumbai"
+// * attester.party = Reference(urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1) "Sunshine Surgical Clinic, Mumbai"
 // Define attester with required mode, time, and party
 * attester[0].mode[0] = #legal
 * attester[0].time = "2023-10-10T12:18:11+05:30"
 * attester[0].party.reference = "urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1"
-* attester[0].party.display = "Sunshine Clinic, Mumbai"
+* attester[0].party.display = "Sunshine Surgical Clinic, Mumbai"
 // set Organization as custodian
-* custodian = Reference(urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1) "Sunshine Clinic, Mumbai"
+* custodian = Reference(urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1) "Sunshine Surgical Clinic, Mumbai"
 * custodian.type = "Organization"
 
 // // section for MedicalHistory
@@ -306,14 +306,14 @@ Usage: #inline
 // * participant[0].individual.display = "Dr. Priya Singh"
 * period.start = "2023-11-12T09:00:00+05:30"
 * period.end = "2023-11-12T12:00:00+05:30"
-// * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
+// * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Surgical Clinic, Mumbai"
 
 // Practitioner resource
 Instance: 1b266629-c338-4468-9519-52e1d84538d5
 InstanceOf: Practitioner
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-10T09:00:00+05:30" 
+* meta.lastUpdated = "2023-11-12T09:00:00+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
 * identifier.type = $v2-0203#MD "Medical License number"
 * identifier.system = "https://nhpr.abdm.gov.in"
@@ -329,15 +329,15 @@ Instance: a102f1a9-d5e2-4692-938a-605370d6acf1
 InstanceOf: Organization
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-10T09:00:00+05:30" 
+* meta.lastUpdated = "2023-11-12T09:00:00+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
-* name = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+* name = "Sunshine Surgical Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
 * identifier[0].system = "https://hfr.addm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
-// * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+// * address[0].text = "Sunshine Surgical Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
 // * address[0].state = "Maharashtra"
 // * address[0].postalCode = "400069"
@@ -349,7 +349,7 @@ Instance: b9340a43-8e72-4542-a614-75056d8a4c3b
 InstanceOf: Procedure
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2024-12-27T10:00:00+05:30"
+* meta.lastUpdated = "2023-11-12T10:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #completed
 * code = $sct#392021009  "Lumpectomy of breast (procedure)"

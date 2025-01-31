@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "335bb719-3eb8-4fea-a6ba-f5dcff5ae7c9",
+  "id": "398391b3-7d9b-4679-ba49-fbe1c792d483",
   "meta": {
     "versionId": "0",
     "lastUpdated": "2023-10-10T12:18:10.984+05:30",
@@ -10,91 +10,72 @@
   },
   "identifier": {
     "system": "http://hip.in",
-    "value": "335bb719-3eb8-4fea-a6ba-f5dcff5ae7c9"
+    "value": "398391b3-7d9b-4679-ba49-fbe1c792d483"
   },
   "type": "document",
   "timestamp": "2023-10-10T12:18:10.984+05:30",
   "entry": [
     {
-      "fullUrl": "urn:uuid:971270ff-a6b5-4169-ba99-0e92ee3b56bc",
+      "fullUrl": "urn:uuid:c672f93d-3e2b-4ced-8910-63f0f1588f9c",
       "resource": {
         "resourceType": "Composition",
-        "id": "971270ff-a6b5-4169-ba99-0e92ee3b56bc",
+        "id": "c672f93d-3e2b-4ced-8910-63f0f1588f9c",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:10.984+05:30",
           "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DischargeSummaryRecord"
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
           ]
         },
         "language": "en-IN",
+        "identifier": {
+          "system": "http://example-provider.org",
+          "value": "c672f93d-3e2b-4ced-8910-63f0f1588f9c"
+        },
         "status": "final",
         "type": {
           "coding": [
             {
-              "code": "373942005",
+              "code": "371530004",
               "system": "http://snomed.info/sct",
-              "display": "Discharge summary"
+              "display": "Clinical consultation report"
             }
           ],
-          "text": "Discharge Summary"
-        },
-        "identifier": {
-          "system": "http://example-provider.org",
-          "value": "971270ff-a6b5-4169-ba99-0e92ee3b56bc"
+          "text": "Clinical consultation report"
         },
         "subject": {
-          "reference": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
+          "reference": "urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181",
           "type": "Patient"
         },
         "encounter": {
-          "reference": "urn:uuid:1f377bad-7909-43d2-b2a5-27f2d1950866",
+          "reference": "urn:uuid:9e730cbc-9647-42ab-995d-0f058d9a4211",
           "type": "Encounter"
         },
         "date": "2023-10-10T12:18:10+05:30",
         "author": [
           {
-            "reference": "urn:uuid:1b266629-c338-4468-9519-52e1d84538d5",
-            "display": "Dr. Priya Singh",
-            "type": "Practitioner"
+            "reference": "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd",
+            "display": "Sunshine Oncology Clinic, Mumbai",
+            "type": "Organization"
           }
         ],
-        "title": "Discharge Summary",
+        "title": "Consultation Report",
         "attester": [
           {
             "mode": "legal",
             "time": "2023-10-10T12:18:11+05:30",
             "party": {
-              "reference": "urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1",
-              "display": "Sunshine Surgical Clinic, Mumbai"
+              "reference": "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd",
+              "display": "Sunshine Oncology Clinic, Mumbai"
             }
           }
         ],
         "custodian": {
-          "reference": "urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1",
-          "display": "Sunshine Surgical Clinic, Mumbai",
+          "reference": "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd",
+          "display": "Sunshine Oncology Clinic, Mumbai",
           "type": "Organization"
         },
         "section": [
-          {
-            "title": "Procedure",
-            "code": {
-              "coding": [
-                {
-                  "code": "371525003",
-                  "system": "http://snomed.info/sct",
-                  "display": "Clinical procedure report"
-                }
-              ],
-              "text": "Clinical procedure report"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:b9340a43-8e72-4542-a614-75056d8a4c3b",
-                "type": "Procedure"
-              }
-            ]
-          },
           {
             "title": "OtherObservations",
             "code": {
@@ -109,7 +90,11 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:e1cc9bd5-c6d6-4115-a36c-bd27dc71a217",
+                "reference": "urn:uuid:755a6178-bb42-4100-a412-062ea87134a8",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:a44135b2-9203-4c8a-9968-0d16410b2c6c",
                 "type": "Observation"
               }
             ]
@@ -118,10 +103,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
+      "fullUrl": "urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181",
       "resource": {
         "resourceType": "Patient",
-        "id": "042f61e2-3797-4507-9132-edfb90604f31",
+        "id": "0959dee7-13d4-4a63-81ec-109d37162181",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:11.063+05:30",
@@ -166,10 +151,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:e1cc9bd5-c6d6-4115-a36c-bd27dc71a217",
+      "fullUrl": "urn:uuid:755a6178-bb42-4100-a412-062ea87134a8",
       "resource": {
         "resourceType": "Observation",
-        "id": "e1cc9bd5-c6d6-4115-a36c-bd27dc71a217",
+        "id": "755a6178-bb42-4100-a412-062ea87134a8",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:11+05:30",
@@ -200,10 +185,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:f34cf498-2b7e-488b-af1d-ac6ebdcb0e53",
+      "fullUrl": "urn:uuid:71f13c88-727e-4a15-9320-de2de1464277",
       "resource": {
         "resourceType": "Observation",
-        "id": "f34cf498-2b7e-488b-af1d-ac6ebdcb0e53",
+        "id": "71f13c88-727e-4a15-9320-de2de1464277",
         "meta": {
           "versionId": "0",
           "lastUpdated": "2023-10-10T12:18:11.063+05:30",
@@ -222,7 +207,7 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
+          "reference": "urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181",
           "type": "Patient"
         },
         "valueCodeableConcept": {
@@ -238,13 +223,13 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:1f377bad-7909-43d2-b2a5-27f2d1950866",
+      "fullUrl": "urn:uuid:9e730cbc-9647-42ab-995d-0f058d9a4211",
       "resource": {
         "resourceType": "Encounter",
-        "id": "1f377bad-7909-43d2-b2a5-27f2d1950866",
+        "id": "9e730cbc-9647-42ab-995d-0f058d9a4211",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2023-11-12T09:00:00+05:30",
+          "lastUpdated": "2023-11-01T09:00:00+05:30",
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
           ]
@@ -255,25 +240,84 @@
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
           "display": "outpatient encounter"
         },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "code": "ATND",
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "display": "attender"
+                  }
+                ]
+              }
+            ],
+            "individual": {
+              "reference": "urn:uuid:a5506752-a851-4e22-9978-50ba58ed33c7",
+              "display": "Dr. Vikram Patel"
+            }
+          }
+        ],
         "period": {
-          "start": "2023-11-12T09:00:00+05:30",
-          "end": "2023-11-12T12:00:00+05:30"
-        }
+          "start": "2023-11-01T09:00:00+05:30",
+          "end": "2023-11-01T10:00:00+05:30"
+        },
+        "diagnosis": [
+          {
+            "condition": {
+              "reference": "urn:uuid:5eb4fd71-5e09-45dd-ae4b-aee40fe057a9"
+            }
+          }
+        ]
       }
     },
     {
-      "fullUrl": "urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1",
+      "fullUrl": "urn:uuid:5eb4fd71-5e09-45dd-ae4b-aee40fe057a9",
       "resource": {
-        "resourceType": "Organization",
-        "id": "a102f1a9-d5e2-4692-938a-605370d6acf1",
+        "resourceType": "Condition",
+        "id": "5eb4fd71-5e09-45dd-ae4b-aee40fe057a9",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2023-11-12T09:00:00+05:30",
+          "lastUpdated": "2023-11-01T12:18:11.143+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "408643008",
+              "system": "http://snomed.info/sct",
+              "display": "Infiltrating duct carcinoma of breast"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "note": [
+          {
+            "text": "Infiltrating duct carcinoma of breast"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-11-01T09:00:00+05:30",
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
           ]
         },
-        "name": "Sunshine Surgical Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069",
+        "name": "Sunshine Oncology Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069",
         "identifier": [
           {
             "type": {
@@ -292,13 +336,13 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:1b266629-c338-4468-9519-52e1d84538d5",
+      "fullUrl": "urn:uuid:a5506752-a851-4e22-9978-50ba58ed33c7",
       "resource": {
         "resourceType": "Practitioner",
-        "id": "1b266629-c338-4468-9519-52e1d84538d5",
+        "id": "a5506752-a851-4e22-9978-50ba58ed33c7",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2023-11-12T09:00:00+05:30",
+          "lastUpdated": "2023-11-01T09:00:00+05:30",
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
           ]
@@ -320,10 +364,10 @@
         ],
         "name": [
           {
-            "text": "Dr. Priya Singh",
-            "family": "Singh",
+            "text": "Dr. Vikram Patel",
+            "family": "Patel",
             "given": [
-              "Priya"
+              "Vikram"
             ]
           }
         ],
@@ -332,9 +376,9 @@
             "code": {
               "coding": [
                 {
-                  "code": "304292004",
+                  "code": "1287641002",
                   "system": "http://snomed.info/sct",
-                  "display": "Surgeon"
+                  "display": "Oncologist"
                 }
               ]
             }
@@ -343,35 +387,69 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:b9340a43-8e72-4542-a614-75056d8a4c3b",
+      "fullUrl": "urn:uuid:2a125931-4c94-49ad-b1c8-6c4c977cd2c5",
       "resource": {
-        "resourceType": "Procedure",
-        "id": "b9340a43-8e72-4542-a614-75056d8a4c3b",
+        "resourceType": "Observation",
+        "id": "2a125931-4c94-49ad-b1c8-6c4c977cd2c5",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2023-11-12T10:00:00+05:30",
+          "lastUpdated": "2023-11-01T09:00:00+05:30",
           "profile": [
-            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
           ]
         },
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "code": "392021009",
-              "system": "http://snomed.info/sct",
-              "display": "Lumpectomy of breast (procedure)"
-            }
-          ]
-        },
+        "status": "final",
         "subject": {
-          "reference": "urn:uuid:042f61e2-3797-4507-9132-edfb90604f31",
+          "reference": "urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181",
           "display": "Meera Sharma",
           "type": "Patient"
         },
+        "code": {
+          "coding": [
+            {
+              "code": "404684003",
+              "system": "http://snomed.info/sct",
+              "display": "Clinical finding"
+            }
+          ]
+        },
         "note": [
           {
-            "text": "Lumpectomy with sentinel lymph node biopsy"
+            "text": "Reviewed pathology results and discussed treatment options.\nRecommended treatment plan: Surgery followed by radiation therapy and systemic therapy (chemotherapy and hormonal therapy)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a44135b2-9203-4c8a-9968-0d16410b2c6c",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "a44135b2-9203-4c8a-9968-0d16410b2c6c",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2023-11-01T09:00:00+05:30",
+          "profile": [
+            "https://example.com/fhir/StructureDefinition/Observation"
+          ]
+        },
+        "status": "final",
+        "subject": {
+          "reference": "urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "404684003",
+              "system": "http://snomed.info/sct",
+              "display": "Clinical finding"
+            }
+          ]
+        },
+        "note": [
+          {
+            "text": "Scheduled for surgical consultation."
           }
         ]
       }
