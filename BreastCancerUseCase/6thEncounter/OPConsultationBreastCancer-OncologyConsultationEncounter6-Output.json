@@ -90,11 +90,15 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:755a6178-bb42-4100-a412-062ea87134a8",
+                "reference": "urn:uuid:2a125931-4c94-49ad-b1c8-6c4c977cd2c5",
                 "type": "Observation"
               },
               {
                 "reference": "urn:uuid:a44135b2-9203-4c8a-9968-0d16410b2c6c",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:755a6178-bb42-4100-a412-062ea87134a8",
                 "type": "Observation"
               }
             ]

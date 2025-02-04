@@ -98,13 +98,13 @@ Usage: #inline
 * section[=].code = $sct#404684003 "Clinical finding"
 * section[=].code.text = "Clinical finding"
 //entry for (Discussion - Observation resource for Discussion)
-* section[=].entry[0] = Reference(urn:uuid:2a125931-4c94-49ad-b1c8-6c4c977cd2c5)
+* section[=].entry[+] = Reference(urn:uuid:2a125931-4c94-49ad-b1c8-6c4c977cd2c5)
 * section[=].entry[=].type = "Observation"
 //section entry for (Plan - Observation resource for Plan)
 * section[=].entry[+] = Reference(urn:uuid:a44135b2-9203-4c8a-9968-0d16410b2c6c)
 * section[=].entry[=].type = "Observation"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
-* section[=].entry[0] = Reference(urn:uuid:755a6178-bb42-4100-a412-062ea87134a8)
+* section[=].entry[+] = Reference(urn:uuid:755a6178-bb42-4100-a412-062ea87134a8)
 * section[=].entry[=].type = "Observation"
 
 // Patient Resource

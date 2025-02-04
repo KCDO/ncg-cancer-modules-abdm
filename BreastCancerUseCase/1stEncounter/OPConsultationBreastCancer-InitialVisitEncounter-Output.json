@@ -109,6 +109,10 @@
             },
             "entry": [
               {
+                "reference": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6d6",
+                "type": "Observation"
+              },
+              {
                 "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff",
                 "type": "Observation"
               }
@@ -127,6 +131,14 @@
               "text": "Investigation Advice"
             },
             "entry": [
+              {
+                "reference": "urn:uuid:8b7be252-a62a-478a-9dce-cb18125fdf08",
+                "type": "ServiceRequest"
+              },
+              {
+                "reference": "urn:uuid:6406eabc-a77b-4063-be1a-778817b53e70",
+                "type": "ServiceRequest"
+              },
               {
                 "reference": "urn:uuid:55a49e52-4873-4b73-8ddf-9ba2c4c15fdd",
                 "type": "ServiceRequest"

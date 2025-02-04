@@ -114,7 +114,7 @@ Usage: #inline
 // * section[=].code = $sct#371529009 "History and physical report"
 // * section[=].code.text = "History and physical report"
 // // section entry for Condition Resource (Past Medical History - Postmenopausal)
-// * section[=].entry[0] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
+// * section[=].entry[+] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
 // * section[=].entry[=].type = "Condition"
 
 // // section for Procedure
@@ -122,7 +122,7 @@ Usage: #inline
 // * section[=].code = $sct#371525003 "Clinical procedure report"
 // * section[=].code.text = "Clinical procedure report"
 // // Procedure Resource (Past Surgical History: Hysterectomy)
-// * section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86f0)
+// * section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86f0)
 // * section[=].entry[=].type = "Procedure"
 
 // section for OtherObservations
@@ -133,7 +133,7 @@ Usage: #inline
 // * section[=].entry[0] = Reference(urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a270)
 // * section[=].entry[=].type = "Observation"
 //entry for (Discussion - Observation resource for emotional support and psychological aspects of cancer diagnosis)
-* section[=].entry[0] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e47b)
+* section[=].entry[+] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e47b)
 * section[=].entry[=].type = "Observation"
 //section entry for (Assessment - Observation resource for Mental Health Evaluation)
 * section[=].entry[+] = Reference(urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6de)
@@ -142,7 +142,7 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6df)
 * section[=].entry[=].type = "Observation"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
-* section[=].entry[0] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
+* section[=].entry[+] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
 * section[=].entry[=].type = "Observation"
 
 // // section for FamilyHistory
@@ -150,7 +150,7 @@ Usage: #inline
 // * section[=].code = $sct#422432008 "Family history section"
 // * section[=].code.text = "Family history section"
 // // section entry for FamilyMemberHistory Resource (Family History)
-// * section[=].entry[0] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111)
+// * section[=].entry[+] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111)
 // * section[=].entry[=].type = "FamilyMemberHistory"
 
 // // section for Allergies
@@ -158,7 +158,7 @@ Usage: #inline
 // * section[=].code = $sct#722446000 "Allergy record"
 // * section[=].code.text = "Allergies"
 // //entry for AllergyIntolerance Resource (Drug Allergy: Penicillin allergy)
-// * section[=].entry[0] = Reference(urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76180)
+// * section[=].entry[+] = Reference(urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76180)
 // * section[=].entry[=].type = "AllergyIntolerance"
 
 // Patient Resource
@@ -385,22 +385,6 @@ This observation provides detailed recommendations for psychological support:
 7. Referral to Dr. Varsha Pilgaonkar: Introduce Dr. Pilgaonkar, Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if required.
 8. Comprehensive Support: Highlight that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring holistic mental health care.
 """
-// * component[0].code.text = "Normalize Emotional Reactions"
-// * component[0].valueString = "Validate emotions like fear and uncertainty, reducing isolation."
-// * component[1].code.text = "Promote Coping Skills"
-// * component[1].valueString = "Introduce stress management (breathing, mindfulness) and resilience-building practices."
-// * component[2].code.text = "Address Body Image Concerns"
-// * component[2].valueString = "Provide resources to manage physical changes and self-esteem."
-// * component[3].code.text = "Encourage Support Networks"
-// * component[3].valueString = "Guide patient toward family, friends, and peer support groups."
-// * component[4].code.text = "Clarify Treatment Phases"
-// * component[4].valueString = "Outline treatment steps to reduce anxiety and promote patient engagement."
-// * component[5].code.text = "Symptom Escalation"
-// * component[5].valueString = "If anxiety or distress worsens, the patient is advised to seek further support."
-// * component[6].code.text = "Referral to Dr. Varsha Pilgaonkar"
-// * component[6].valueString = "Referral to Dr. Varsha Pilgaonkar: The psychologist introduces Dr. Pilgaonkar, a Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if needed."
-// * component[7].code.text = "Comprehensive Support"
-// * component[7].valueString = "Emphasize that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring well-rounded mental health care."
 
 // (Assessment - Observation resource for Mental Health Evaluation)
 Instance: b7a6f298-21ac-4835-9c38-d4bfd38ef6de

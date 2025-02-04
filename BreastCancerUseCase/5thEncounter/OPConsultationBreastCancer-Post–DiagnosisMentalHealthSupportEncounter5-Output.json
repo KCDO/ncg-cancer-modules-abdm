@@ -90,7 +90,7 @@
             },
             "entry": [
               {
-                "reference": "urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f",
+                "reference": "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e47b",
                 "type": "Observation"
               },
               {
@@ -99,6 +99,10 @@
               },
               {
                 "reference": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6df",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f",
                 "type": "Observation"
               }
             ]

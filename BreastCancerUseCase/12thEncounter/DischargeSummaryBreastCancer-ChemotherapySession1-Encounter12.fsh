@@ -121,23 +121,15 @@ Usage: #inline
 * custodian = Reference(urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162) "Sunshine Oncology Clinic, Mumbai"
 * custodian.type = "Organization"
 
-// // section for MedicalHistory
-// * section[+].title = "MedicalHistory"
-// * section[=].code = $sct#371529009 "History and physical report"
-// * section[=].code.text = "History and physical report"
-// // section entry for Observation Resource (Past Medical History - Postmenopausal)
-// * section[=].entry[0] = Reference(urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842)
-// * section[=].entry[=].type = "Observation"
-
 // section for Procedure
 * section[+].title = "Procedure"
 * section[=].code = $sct#371525003 "Clinical procedure report"
 * section[=].code.text = "Clinical procedure report"
 // // Procedure Resource (Past Surgical History: Hysterectomy)
-// * section[=].entry[0] = Reference(urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2)
+// * section[=].entry[+] = Reference(urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2)
 // * section[=].entry[=].type = "Procedure"
 // Procedure Resource (Chemotherapy regimen)
-* section[=].entry[0] = Reference(urn:uuid:176522d8-5403-4adc-b793-23fd10b26d3f)
+* section[=].entry[+] = Reference(urn:uuid:176522d8-5403-4adc-b793-23fd10b26d3f)
 * section[=].entry[=].type = "Procedure"
 
 // section for OtherObservations
@@ -145,13 +137,13 @@ Usage: #inline
 * section[=].code = $sct#404684003 "Clinical finding"
 * section[=].code.text = "Clinical finding"
 // // section entry for Observation Resource (Menstruation History)
-// * section[=].entry[0] = Reference(urn:uuid:6314292f-9177-4279-9cd0-74aa1427af50)
+// * section[=].entry[+] = Reference(urn:uuid:6314292f-9177-4279-9cd0-74aa1427af50)
 // * section[=].entry[=].type = "Observation"
 // //section entry for Observation resource: Advice
-// * section[=].entry[0] = Reference(urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5)
+// * section[=].entry[+] = Reference(urn:uuid:10c5adb3-99f0-4112-a005-bb80b302d8a5)
 // * section[=].entry[=].type = "Observation"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
-* section[=].entry[0] = Reference(urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842)
+* section[=].entry[+] = Reference(urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842)
 * section[=].entry[=].type = "Observation"
 
 // // section for FamilyHistory
@@ -159,7 +151,7 @@ Usage: #inline
 // * section[=].code = $sct#422432008 "Family history section"
 // * section[=].code.text = "Family history section"
 // // section entry for FamilyMemberHistory Resource (Family History)
-// * section[=].entry[0] = Reference(urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c)
+// * section[=].entry[+] = Reference(urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c)
 // * section[=].entry[=].type = "FamilyMemberHistory"
 
 // // section for Allergies
@@ -167,7 +159,7 @@ Usage: #inline
 // * section[=].code = $sct#722446000 "Allergy record"
 // * section[=].code.text = "Allergies"
 // //entry for AllergyIntolerance Resource (Drug Allergy: Penicillin allergy)
-// * section[=].entry[0] = Reference(urn:uuid:b890c5f7-0be9-4fab-9282-78601899cadb)
+// * section[=].entry[+] = Reference(urn:uuid:b890c5f7-0be9-4fab-9282-78601899cadb)
 // * section[=].entry[=].type = "AllergyIntolerance"
 
 //section for PhysicalExamination
@@ -175,7 +167,7 @@ Usage: #inline
 * section[=].code = $sct#425044008 "Physical exam section" 
 * section[=].code.text = "Physical exam section"
 //entry for Observation resource: Vital signs, examination
-* section[=].entry[0] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e477)
+* section[=].entry[+] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e477)
 * section[=].entry[=].type = "Observation"
 
 //section for Medications
@@ -183,7 +175,7 @@ Usage: #inline
 * section[=].code = $sct#721912009 "Medication summary document" 
 * section[=].code.text = "Medication summary document"
 //entry for Medication Statement resource: Adriamycin, Cyclophosphamide, Antiemetics
-* section[=].entry[0] = Reference(urn:uuid:744b8640-9317-4488-aa2d-765650476bbf)
+* section[=].entry[+] = Reference(urn:uuid:744b8640-9317-4488-aa2d-765650476bbf)
 * section[=].entry[=].type = "MedicationStatement"
 
 //section for FollowUp
@@ -191,7 +183,7 @@ Usage: #inline
 * section[=].code = $sct#390906007 "Follow-up encounter" 
 * section[=].code.text = "Follow-up encounter"
 //entry for Appointment resource: FollowUp 
-* section[=].entry[0] = Reference(urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d)
+* section[=].entry[+] = Reference(urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d)
 * section[=].entry[=].type = "Appointment"
 
 //section for Investigations
@@ -199,7 +191,7 @@ Usage: #inline
 * section[=].code = $sct#721981007 "Diagnostic studies report" 
 * section[=].code.text = "Diagnostic studies report"
 //entry for DiagnosticReportLab resource: Blood work 
-* section[=].entry[0] = Reference(urn:uuid:eabcf9b7-8b37-43dc-9a4f-7e067267fe64)
+* section[=].entry[+] = Reference(urn:uuid:eabcf9b7-8b37-43dc-9a4f-7e067267fe64)
 * section[=].entry[=].type = "DiagnosticReport"
 
 // Patient Resource

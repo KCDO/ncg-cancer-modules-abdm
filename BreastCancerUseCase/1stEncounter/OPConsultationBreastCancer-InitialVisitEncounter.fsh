@@ -131,7 +131,7 @@ Usage: #inline
 // * section[=].code = $sct#371529009 "History and physical report"
 // * section[=].code.text = "History and physical report"
 // // section entry for Observation Resource (Past Medical History - Postmenopausal)
-// * section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
+// * section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
 // * section[=].entry[=].type = "Observation"
 
 // section for Procedure
@@ -139,7 +139,7 @@ Usage: #inline
 // * section[=].code = $sct#371525003 "Clinical procedure report"
 // * section[=].code.text = "Clinical procedure report"
 // // Procedure Resource (Past Surgical History: Hysterectomy)
-// * section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86fd)
+// * section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86fd)
 // * section[=].entry[=].type = "Procedure"
 
 // section for OtherObservations
@@ -147,13 +147,13 @@ Usage: #inline
 * section[=].code = $sct#404684003 "Clinical finding"
 * section[=].code.text = "Clinical finding"
 // // section entry for Observation Resource (Menstruation History)
-// * section[=].entry[0] = Reference(urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a275)
+// * section[=].entry[+] = Reference(urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a275)
 // * section[=].entry[=].type = "Observation"
 //section entry for Observation resource(Examination Notes)
 * section[=].entry[+] = Reference(urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6d6)
 * section[=].entry[=].type = "Observation"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
-* section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
+* section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
 * section[=].entry[=].type = "Observation"
 
 // // section for FamilyHistory
@@ -161,7 +161,7 @@ Usage: #inline
 // * section[=].code = $sct#422432008 "Family history section"
 // * section[=].code.text = "Family history section"
 // // section entry for FamilyMemberHistory Resource (Family History)
-// * section[=].entry[0] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117)
+// * section[=].entry[+] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117)
 // * section[=].entry[=].type = "FamilyMemberHistory"
 
 // section for InvestigationAdvice
@@ -169,13 +169,13 @@ Usage: #inline
 * section[=].code = $sct#721963009 "Order document"
 * section[=].code.text = "Investigation Advice"
 //section entry for ServiceRequest Resource (Plan: Investigation Advice: Complete Blood Count (CBC))
-* section[=].entry[0] = Reference(urn:uuid:8b7be252-a62a-478a-9dce-cb18125fdf08)
+* section[=].entry[+] = Reference(urn:uuid:8b7be252-a62a-478a-9dce-cb18125fdf08)
 * section[=].entry[=].type = "ServiceRequest"
 //section entry for ServiceRequest Resource (Plan: Investigation Advice: mammogram)
-* section[=].entry[0] = Reference(urn:uuid:6406eabc-a77b-4063-be1a-778817b53e70)
+* section[=].entry[+] = Reference(urn:uuid:6406eabc-a77b-4063-be1a-778817b53e70)
 * section[=].entry[=].type = "ServiceRequest"
 //section entry for ServiceRequest Resource (Plan: Investigation Advice: ultrasound of the right breast)
-* section[=].entry[0] = Reference(urn:uuid:55a49e52-4873-4b73-8ddf-9ba2c4c15fdd)
+* section[=].entry[+] = Reference(urn:uuid:55a49e52-4873-4b73-8ddf-9ba2c4c15fdd)
 * section[=].entry[=].type = "ServiceRequest"
 
 // // section for Allergies
@@ -183,7 +183,7 @@ Usage: #inline
 // * section[=].code = $sct#722446000 "Allergy record"
 // * section[=].code.text = "Allergies"
 // //entry for AllergyIntolerance Resource (Drug Allergy: Penicillin allergy)
-// * section[=].entry[0] = Reference(urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76186)
+// * section[=].entry[+] = Reference(urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76186)
 // * section[=].entry[=].type = "AllergyIntolerance"
 
 //section for PhysicalExamination
@@ -191,7 +191,7 @@ Usage: #inline
 * section[=].code = $sct#425044008 "Physical exam section" 
 * section[=].code.text = "Physical exam section"
 //entry for Observation resource: vitals
-* section[=].entry[0] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e474)
+* section[=].entry[+] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e474)
 * section[=].entry[=].type = "Observation"
 
 // Patient Resource
