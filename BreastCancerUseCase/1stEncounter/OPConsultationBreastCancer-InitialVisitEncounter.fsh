@@ -131,7 +131,7 @@ Usage: #inline
 // * section[=].code = $sct#371529009 "History and physical report"
 // * section[=].code.text = "History and physical report"
 // // section entry for Observation Resource (Past Medical History - Postmenopausal)
-// * section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
+// * section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
 // * section[=].entry[=].type = "Observation"
 
 // section for Procedure
@@ -139,7 +139,7 @@ Usage: #inline
 // * section[=].code = $sct#371525003 "Clinical procedure report"
 // * section[=].code.text = "Clinical procedure report"
 // // Procedure Resource (Past Surgical History: Hysterectomy)
-// * section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86fd)
+// * section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86fd)
 // * section[=].entry[=].type = "Procedure"
 
 // section for OtherObservations
@@ -147,13 +147,13 @@ Usage: #inline
 * section[=].code = $sct#404684003 "Clinical finding"
 * section[=].code.text = "Clinical finding"
 // // section entry for Observation Resource (Menstruation History)
-// * section[=].entry[0] = Reference(urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a275)
+// * section[=].entry[+] = Reference(urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a275)
 // * section[=].entry[=].type = "Observation"
 //section entry for Observation resource(Examination Notes)
 * section[=].entry[+] = Reference(urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6d6)
 * section[=].entry[=].type = "Observation"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
-* section[=].entry[0] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
+* section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
 * section[=].entry[=].type = "Observation"
 
 // // section for FamilyHistory
@@ -161,7 +161,7 @@ Usage: #inline
 // * section[=].code = $sct#422432008 "Family history section"
 // * section[=].code.text = "Family history section"
 // // section entry for FamilyMemberHistory Resource (Family History)
-// * section[=].entry[0] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117)
+// * section[=].entry[+] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117)
 // * section[=].entry[=].type = "FamilyMemberHistory"
 
 // section for InvestigationAdvice
@@ -169,13 +169,13 @@ Usage: #inline
 * section[=].code = $sct#721963009 "Order document"
 * section[=].code.text = "Investigation Advice"
 //section entry for ServiceRequest Resource (Plan: Investigation Advice: Complete Blood Count (CBC))
-* section[=].entry[0] = Reference(urn:uuid:8b7be252-a62a-478a-9dce-cb18125fdf08)
+* section[=].entry[+] = Reference(urn:uuid:8b7be252-a62a-478a-9dce-cb18125fdf08)
 * section[=].entry[=].type = "ServiceRequest"
 //section entry for ServiceRequest Resource (Plan: Investigation Advice: mammogram)
-* section[=].entry[0] = Reference(urn:uuid:6406eabc-a77b-4063-be1a-778817b53e70)
+* section[=].entry[+] = Reference(urn:uuid:6406eabc-a77b-4063-be1a-778817b53e70)
 * section[=].entry[=].type = "ServiceRequest"
 //section entry for ServiceRequest Resource (Plan: Investigation Advice: ultrasound of the right breast)
-* section[=].entry[0] = Reference(urn:uuid:55a49e52-4873-4b73-8ddf-9ba2c4c15fdd)
+* section[=].entry[+] = Reference(urn:uuid:55a49e52-4873-4b73-8ddf-9ba2c4c15fdd)
 * section[=].entry[=].type = "ServiceRequest"
 
 // // section for Allergies
@@ -183,7 +183,7 @@ Usage: #inline
 // * section[=].code = $sct#722446000 "Allergy record"
 // * section[=].code.text = "Allergies"
 // //entry for AllergyIntolerance Resource (Drug Allergy: Penicillin allergy)
-// * section[=].entry[0] = Reference(urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76186)
+// * section[=].entry[+] = Reference(urn:uuid:406d28cd-9b01-46b6-b3e2-496187f76186)
 // * section[=].entry[=].type = "AllergyIntolerance"
 
 //section for PhysicalExamination
@@ -191,7 +191,7 @@ Usage: #inline
 * section[=].code = $sct#425044008 "Physical exam section" 
 * section[=].code.text = "Physical exam section"
 //entry for Observation resource: vitals
-* section[=].entry[0] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e474)
+* section[=].entry[+] = Reference(urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e474)
 * section[=].entry[=].type = "Observation"
 
 // Patient Resource
@@ -250,7 +250,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T12:18:11+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
-* code = $sct#76498008 "Postmenopausal"
+* code = $sct#404684003 "Clinical finding"
 // * code.text = "Postmenopausal"
 // * category[0] = $condition-category#problem-list-item "Problem List Item"
 // * category[0].text = "Past medical history"
@@ -347,8 +347,8 @@ Usage: #inline
 // * participant[0].type[0].coding[0] = $participant-type#ATND "attender"
 // * participant[0].individual.reference = "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e"
 // * participant[0].individual.display = "Dr. Anjali Verma"
-// * period.start = "2023-10-10T09:00:00+05:30"
-// * period.end = "2023-10-10T12:00:00+05:30"
+* period.start = "2023-10-10T09:00:00+05:30"
+* period.end = "2023-10-10T12:00:00+05:30"
 // * serviceProvider = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Clinic, Mumbai"
 
 // Practitioner resource
@@ -359,7 +359,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T09:00:00+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
 * identifier.type = $v2-0203#MD "Medical License number"
-* identifier.system = "https://doctor.ndhm.gov.in"
+* identifier.system = "https://nhpr.abdm.gov.in"
 * identifier.value = "23-4536-7890-1245" 
 * name.text = "Dr. Anjali Verma"
 * name.family = "Verma"
@@ -378,8 +378,8 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://facility.ndhm.gov.in"
-* identifier[0].value = "df9cc473-6f17-429c-8d13-8db5f8f923a2"
+* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
 // * address[0].state = "Maharashtra"
@@ -475,7 +475,7 @@ Usage: #inline
 * requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
 * requester.type = "Practitioner"
 // * occurrenceDateTime = "2023-10-10T10:00:00+05:30"
-* note[0].text = "Ordered Complete Blood Count (CBC)"
+* note[0].text = "Complete Blood Count (CBC)"
 
 // Plan of Care (Recommended Tests and Follow-up)
 // ServiceRequest Resource (Plan: Investigation Advice: mammogram)
