@@ -11,21 +11,18 @@ Instance: 52ef0e5a-147f-459a-ac2f-56caf1234144
 InstanceOf: Bundle
 Usage: #example
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-20T12:18:10.984+05:30"
+* meta.lastUpdated = "2023-10-15T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
 * identifier.system = "http://example-provider.org"
 * identifier.value = "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
 * type = #document
-* timestamp = "2023-10-20T12:18:10.984+05:30"
+* timestamp = "2023-10-15T12:18:10.984+05:30"
 // entry for Composition resource
 * entry[0].fullUrl = "urn:uuid:9bf7226d-221f-4802-9fa2-27a330b22b34"
 * entry[=].resource = 9bf7226d-221f-4802-9fa2-27a330b22b34
-// entry for DiagnosticReport Resource (Complete Blood Count (CBC) Report)
-* entry[+].fullUrl = "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3"
-* entry[=].resource = ee47d72b-3209-4c2c-8385-53cebe4dc9a3
-// entry for DiagnosticReport Resource (Ultrasound-guided biopsy Report)
-* entry[+].fullUrl = "urn:uuid:89a6e237-5f83-4e77-a8d8-c3b1428ecff3"
-* entry[=].resource = 89a6e237-5f83-4e77-a8d8-c3b1428ecff3
+// entry for DiagnosticReport Resource (Ultrasound Report)
+* entry[+].fullUrl = "urn:uuid:6ac7cc90-7d88-458e-8c93-d6fb9130be55"
+* entry[=].resource = 6ac7cc90-7d88-458e-8c93-d6fb9130be55
 // entry for Patient resource
 * entry[+].fullUrl = "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
 * entry[=].resource = 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44
@@ -47,66 +44,35 @@ Usage: #inline
 * type = $loinc#60591-5 "Patient summary Document"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
-* date = "2024-08-28T14:30:00Z"
-* author = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Surgical Center, Mumbai"
+* date = "2023-10-15T14:30:00Z"
+* author = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Radiology Center, Mumbai"
 * author.type = "Organization"
 * encounter = Reference(urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13)
 * encounter.type = "Encounter"
 * attester.mode = #legal
-* attester.time = "2023-10-20T12:18:11+05:30"
+* attester.time = "2023-10-15T12:18:11+05:30"
 * attester.party = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
-* custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Surgical Center, Mumbai"
+* custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Radiology Center, Mumbai"
 * custodian.type = "Organization"
 * title = "Complete Diagnostic Report"
 // DiagnosticReport section with entries
 * section.title = "Diagnostic Reports"
 * section.code = $loinc#11506-3 "Progress note"
-* section.entry = Reference(urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3)
+* section.entry[0] = Reference(urn:uuid:6ac7cc90-7d88-458e-8c93-d6fb9130be55)
 
-// DiagnosticReport Resource (DiagnosticReport Section: Complete Blood Count (CBC) Report)
-Instance: ee47d72b-3209-4c2c-8385-53cebe4dc9a3
+// DiagnosticReport Resource (DiagnosticReport Section: Ultrasound Report)
+Instance: 6ac7cc90-7d88-458e-8c93-d6fb9130be55
 InstanceOf: DiagnosticReport
 Usage: #inline
 * status = #final
-* category = $v2-0074#LAB "Laboratory"
-* code = $sct#371528001 "Pathology report (record artifact)"
-* code.text = "Pathology report"
+* category = $v2-0074#RAD "Radiology"
+* code = $loinc#86359-7 "Diagnostic mammogram and ultrasound panel Breast - right Document"
+* code.text = "Diagnostic mammogram and ultrasound panel Breast - right Document"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2024-12-10T08:00:00Z"
-* issued = "2024-12-10T09:00:00Z"
-* conclusion = """
-Complete Blood Count (CBC) Report:
-Red Blood Cell (RBC) Count: 4.5 million cells/mcL (Normal range: 4.2-5.4 million cells/mcL)
-White Blood Cell (WBC) Count: 7,500 cells/mcL (Normal range: 4,000-11,000 cells/mcL)
-1. Neutrophils - Count: 4,500 cells/µL (Normal range: 2,500-7,000 cells/µL)
-2. Lymphocytes - Count: 2,000 cells/µL (Normal range: 1,000-4,000 cells/µL)
-3. Monocytes - Count: 600 cells/µL (Normal range: 100-700 cells/µL)
-4. Eosinophils - Count: 300 cells/µL (Normal range: 50-500 cells/µL)
-5. Basophils - Count: 100 cells/µL (Normal range: 25-100 cells/µL)
-Hemoglobin (Hgb): 13.5 g/dL (Normal range: 12.0-15.5 g/dL)
-Hematocrit (Hct): 40% (Normal range: 36-46%)
-Platelet Count: 250,000 cells/mcL (Normal range: 150,000-450,000 cells/mcL)
-Mean Corpuscular Volume (MCV): 88 fL (Normal range: 80-100 fL)
-Mean Corpuscular Hemoglobin (MCH): 30 pg (Normal range: 27-33 pg)
-Mean Corpuscular Hemoglobin Concentration (MCHC): 34 g/dL (Normal range: 32-36 g/dL)
-Red Cell Distribution Width (RDW): 12.5% (Normal range: 11.5-14.5%)
-"""
-* performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
-
-// DiagnosticReport Resource (DiagnosticReport Section: Ultrasound-guided biopsy Report)
-Instance: 89a6e237-5f83-4e77-a8d8-c3b1428ecff3
-InstanceOf: DiagnosticReport
-Usage: #inline
-* status = #final
-* category = $v2-0074#LAB "Laboratory"
-* code = $sct#371528001 "Pathology report (record artifact)"
-* code.text = "Pathology report"
-* subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
-* subject.type = "Patient"
-* effectiveDateTime = "2024-12-10T10:00:00Z"
-* issued = "2024-12-10T11:00:00Z"
-* conclusion = "Ultrasound-guided core needle biopsy of the right breast mass. Follow up on October 25, 2023 for report discussion"
+* effectiveDateTime = "2023-10-15T11:00:00Z"
+* issued = "2023-10-15T11:30:00Z"
+* conclusion = "Right breast: Hypoechoic mass with irregular margins, measuring 2.1 cm x 1.8 cm. No significant axillary lymphadenopathy."
 * performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
 
 // Patient resource
@@ -114,7 +80,7 @@ Instance: 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44
 InstanceOf: Patient
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-20T12:18:11.063+05:30"
+* meta.lastUpdated = "2023-10-15T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
 // * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
 //$fhir-identifier-type#AADHAAR "AADHAAR"
@@ -145,10 +111,10 @@ Instance: 1c521af9-92c9-41e9-92f5-58a411bf56d0
 InstanceOf: Organization
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-20T09:00:00+05:30"
+* meta.lastUpdated = "2023-10-10T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
-* name = "Sunshine Surgical Center, Mumbai"
-* address.text = "Sunshine Surgical Center, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+* name = "Sunshine Radiology Center, Mumbai"
+* address.text = "Sunshine Radiology Center, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 * address.city = "Mumbai"
 * address.state = "Maharashtra"
 * address.postalCode = "400069"
@@ -164,15 +130,15 @@ Instance: 41295111-04f9-4b83-b186-ef2975db1c7e
 InstanceOf: Practitioner
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-20T09:00:00+05:30"
+* meta.lastUpdated = "2023-10-15T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
 * identifier.type = $v2-0203#MD "Medical License number"
 * identifier.system = "https://doctor.ndhm.gov.in"
-* identifier.value = "56-1234-5678-9012"
-* name.text = "Dr. Priya Singh"
-* name.family = "Singh"
-* name.given = "Priya"
-* qualification.code = $sct#304292004 "Surgeon (occupation)"
+* identifier.value = "45-7896-1234-5678"
+* name.text = "Dr. Rajesh Kumar"
+* name.family = "Kumar"
+* name.given = "Rajesh"
+* qualification.code = $sct#66862007 "Radiologist (occupation)"
 * qualification.issuer = Reference(urn:uuid:certificate-authority)
 
 // Encounter resource
@@ -180,17 +146,17 @@ Instance: 1b2942c5-9a2e-4546-9a9e-0307e5c2fc13
 InstanceOf: Encounter
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-20T09:00:00+05:30"
+* meta.lastUpdated = "2023-10-10T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
 * status = #finished
 * class = $v3-ActCode#AMB "Ambulatory"
-* type = $sct#185349003 "Encounter for check up (procedure)"
+* type = $sct#185349003 "Encounter for check up"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* participant.individual = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Priya Singh"
+* participant.individual = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Rajesh Kumar"
 * participant.individual.type = "Practitioner"
 * participant.type = $v3-ParticipationType#ATND "attender"
-* period.start = "2023-10-20T09:00:00+05:30"
-* period.end = "2023-10-20T10:00:00+05:30"
-* location.location = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Surgical Center, Mumbai"
+* period.start = "2023-10-15T09:00:00+05:30"
+* period.end = "2023-10-15T10:00:00+05:30"
+* location.location = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Radiology Center, Mumbai"
 * location.location.type = "Location"
