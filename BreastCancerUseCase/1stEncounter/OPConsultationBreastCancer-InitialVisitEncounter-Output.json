@@ -109,6 +109,10 @@
             },
             "entry": [
               {
+                "reference": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6d6",
+                "type": "Observation"
+              },
+              {
                 "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff",
                 "type": "Observation"
               }
@@ -127,6 +131,14 @@
               "text": "Investigation Advice"
             },
             "entry": [
+              {
+                "reference": "urn:uuid:8b7be252-a62a-478a-9dce-cb18125fdf08",
+                "type": "ServiceRequest"
+              },
+              {
+                "reference": "urn:uuid:6406eabc-a77b-4063-be1a-778817b53e70",
+                "type": "ServiceRequest"
+              },
               {
                 "reference": "urn:uuid:55a49e52-4873-4b73-8ddf-9ba2c4c15fdd",
                 "type": "ServiceRequest"
@@ -219,9 +231,9 @@
         "code": {
           "coding": [
             {
-              "code": "76498008",
+              "code": "404684003",
               "system": "http://snomed.info/sct",
-              "display": "Postmenopausal"
+              "display": "Clinical finding"
             }
           ]
         },
@@ -292,6 +304,10 @@
           "code": "AMB",
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
           "display": "outpatient encounter"
+        },
+        "period": {
+          "start": "2023-10-10T09:00:00+05:30",
+          "end": "2023-10-10T12:00:00+05:30"
         }
       }
     },
@@ -319,8 +335,8 @@
                 }
               ]
             },
-            "system": "https://facility.ndhm.gov.in",
-            "value": "df9cc473-6f17-429c-8d13-8db5f8f923a2"
+            "system": "https://hfr.addm.gov.in",
+            "value": "IN2910086528"
           }
         ]
       }
@@ -348,7 +364,7 @@
                 }
               ]
             },
-            "system": "https://doctor.ndhm.gov.in",
+            "system": "https://nhpr.abdm.gov.in",
             "value": "23-4536-7890-1245"
           }
         ],
@@ -590,7 +606,7 @@
         },
         "note": [
           {
-            "text": "Ordered Complete Blood Count (CBC)"
+            "text": "Complete Blood Count (CBC)"
           }
         ]
       }
