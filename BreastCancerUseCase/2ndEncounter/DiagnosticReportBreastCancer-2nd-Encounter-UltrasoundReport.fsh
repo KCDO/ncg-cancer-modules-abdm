@@ -41,7 +41,7 @@ Instance: 9bf7226d-221f-4802-9fa2-27a330b22b34
 InstanceOf: Composition
 Usage: #inline
 * status = #final
-* type = $loinc#60591-5 "Patient summary Document"
+* type = $sct#721981007 "Diagnostic studies report"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
 * date = "2023-10-15T14:30:00Z"

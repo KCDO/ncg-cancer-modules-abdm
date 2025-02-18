@@ -24,9 +24,9 @@
         "type": {
           "coding": [
             {
-              "code": "60591-5",
-              "system": "http://loinc.org",
-              "display": "Patient summary Document"
+              "code": "721981007",
+              "system": "http://snomed.info/sct",
+              "display": "Diagnostic studies report"
             }
           ]
         },
