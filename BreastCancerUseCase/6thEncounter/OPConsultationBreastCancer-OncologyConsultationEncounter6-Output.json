@@ -29,7 +29,7 @@
         },
         "language": "en-IN",
         "identifier": {
-          "system": "http://example-provider.org",
+          "system": "https://ndhm.in/phr",
           "value": "c672f93d-3e2b-4ced-8910-63f0f1588f9c"
         },
         "status": "final",
@@ -100,6 +100,10 @@
               {
                 "reference": "urn:uuid:755a6178-bb42-4100-a412-062ea87134a8",
                 "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:71f13c88-727e-4a15-9320-de2de1464277",
+                "type": "Observation"
               }
             ]
           }
@@ -120,24 +124,29 @@
         },
         "identifier": [
           {
-            "type": {
-              "text": "Aadhar Number"
-            },
-            "system": "urn:health:information:provider:system",
-            "value": "1234 1234 1234"
-          },
-          {
+            "system": "https://ndhm.gov.in/id",
             "type": {
               "coding": [
                 {
-                  "code": "ABHAAddress",
-                  "system": "https://healthid.abdm.gov.in",
-                  "display": "ABHAAddress"
+                  "code": "ADN",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Adhaar number"
                 }
-              ],
-              "text": "ABHA Address"
+              ]
             },
-            "system": "urn:health:information:provider:system",
+            "value": "1234 1234 1234"
+          },
+          {
+            "system": "https://ndhm.gov.in/id",
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHA",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Ayushman Bharat Health Account (ABHA) ID"
+                }
+              ]
+            },
             "value": "Meera.sharma@abha.in"
           }
         ],
@@ -185,7 +194,8 @@
           {
             "text": "Postmenopausal"
           }
-        ]
+        ],
+        "valueString": "Postmenopausal"
       }
     },
     {
@@ -288,6 +298,17 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
           ]
         },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
         "code": {
           "coding": [
             {

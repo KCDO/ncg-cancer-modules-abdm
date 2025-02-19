@@ -68,7 +68,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
 * language = #en-IN
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "c672f93d-3e2b-4ced-8910-63f0f1588f9c"
 * status = #final
 * type = $sct#371530004 "Clinical consultation report"
@@ -106,6 +106,9 @@ Usage: #inline
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
 * section[=].entry[+] = Reference(urn:uuid:755a6178-bb42-4100-a412-062ea87134a8)
 * section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Blood Group)
+* section[=].entry[+] = Reference(urn:uuid:71f13c88-727e-4a15-9320-de2de1464277)
+* section[=].entry[=].type = "Observation"
 
 // Patient Resource
 Instance: 0959dee7-13d4-4a63-81ec-109d37162181
@@ -114,12 +117,13 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
@@ -154,6 +158,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * note.text = "Postmenopausal"
+* valueString = "Postmenopausal"
 
 // Post – Diagnosis Mental Health Support Encounter
 // Encounter Resource (Post – Diagnosis Mental Health Support)
@@ -181,7 +186,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-11-01T12:18:11.143+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
 // * clinicalStatus = $condition-clinical#active "Active"
-// * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
+* category = $condition-category#problem-list-item "Problem List Item"
 * code = $sct#408643008 "Infiltrating duct carcinoma of breast"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"

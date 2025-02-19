@@ -40,7 +40,7 @@
           "text": "Discharge Summary"
         },
         "identifier": {
-          "system": "http://example-provider.org",
+          "system": "https://ndhm.in/phr",
           "value": "d5c1fb49-17e8-41a4-8a4e-7c0f93e48134"
         },
         "subject": {
@@ -110,6 +110,10 @@
             "entry": [
               {
                 "reference": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:936b9b09-57c0-4f57-bd64-0337641ef756",
                 "type": "Observation"
               }
             ]
@@ -207,24 +211,29 @@
         },
         "identifier": [
           {
-            "type": {
-              "text": "Aadhar Number"
-            },
-            "system": "urn:health:information:provider:system",
-            "value": "1234 1234 1234"
-          },
-          {
+            "system": "https://ndhm.gov.in/id",
             "type": {
               "coding": [
                 {
-                  "code": "ABHAAddress",
-                  "system": "https://healthid.abdm.gov.in",
-                  "display": "ABHAAddress"
+                  "code": "ADN",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Adhaar number"
                 }
-              ],
-              "text": "ABHA Address"
+              ]
             },
-            "system": "urn:health:information:provider:system",
+            "value": "1234 1234 1234"
+          },
+          {
+            "system": "https://ndhm.gov.in/id",
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHA",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Ayushman Bharat Health Account (ABHA) ID"
+                }
+              ]
+            },
             "value": "Meera.sharma@abha.in"
           }
         ],
@@ -271,7 +280,8 @@
           {
             "text": "Postmenopausal"
           }
-        ]
+        ],
+        "valueString": "Postmenopausal"
       }
     },
     {

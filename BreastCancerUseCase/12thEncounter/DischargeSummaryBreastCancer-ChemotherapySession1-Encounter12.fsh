@@ -95,7 +95,7 @@ Usage: #inline
 * status = #final
 * type = $sct#373942005 "Discharge summary"
 * type.text = "Discharge Summary"
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "d5c1fb49-17e8-41a4-8a4e-7c0f93e48134"
 // set Patient as subject
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d)
@@ -144,6 +144,9 @@ Usage: #inline
 // * section[=].entry[=].type = "Observation"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
 * section[=].entry[+] = Reference(urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842)
+* section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Blood Group)
+* section[=].entry[+] = Reference(urn:uuid:936b9b09-57c0-4f57-bd64-0337641ef756)
 * section[=].entry[=].type = "Observation"
 
 // // section for FamilyHistory
@@ -201,14 +204,13 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
-//$fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
@@ -258,6 +260,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 // * effectiveDateTime = "2023-10-10T12:18:11+05:30"
 * note.text = "Postmenopausal"
+* valueString = "Postmenopausal"
 
 // // Procedure Resource (Past Surgical History: Hysterectomy)
 // Instance: b2f87d8f-49d7-4f45-b2c6-781623c09bb2

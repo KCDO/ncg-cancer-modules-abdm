@@ -80,7 +80,7 @@ Usage: #inline
 * status = #final
 * type = $sct#373942005 "Discharge summary"
 * type.text = "Discharge Summary"
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "971270ff-a6b5-4169-ba99-0e92ee3b56bc"
 // set Patient as subject
 * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31)
@@ -120,6 +120,9 @@ Usage: #inline
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
 * section[=].entry[+] = Reference(urn:uuid:e1cc9bd5-c6d6-4115-a36c-bd27dc71a217)
 * section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Blood Group)
+* section[=].entry[+] = Reference(urn:uuid:f34cf498-2b7e-488b-af1d-ac6ebdcb0e53)
+* section[=].entry[=].type = "Observation"
 
 // section for Medications
 * section[+].title = "Medications"
@@ -144,14 +147,13 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
-//$fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
@@ -202,6 +204,7 @@ Usage: #inline
 * subject.type = "Patient"
 // * effectiveDateTime = "2023-10-10T12:18:11+05:30"
 * note.text = "Postmenopausal"
+* valueString = "Postmenopausal"
 
 // Surgery Encounter
 // Encounter Resource (Surgery)
@@ -242,7 +245,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-11-01T12:18:11.143+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
 // * clinicalStatus = $condition-clinical#active "Active"
-// * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
+* category = $condition-category#problem-list-item "Problem List Item"
 * code = $sct#408643008 "Infiltrating duct carcinoma of breast"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
