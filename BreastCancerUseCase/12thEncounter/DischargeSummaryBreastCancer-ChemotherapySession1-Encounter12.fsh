@@ -109,14 +109,10 @@ Usage: #inline
 * author.type = "Practitioner"
 * title = "Consultation Report"
 // set Organization as attester
-// * attester.mode = #legal
-// * attester.time = "2023-10-10T12:18:11+05:30"
-// * attester.party = Reference(urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162) "Sunshine Oncology Clinic, Mumbai"
-// Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162"
-* attester[0].party.display = "Sunshine Oncology Clinic, Mumbai"
+// * attester[0].mode[0] = #legal
+// * attester[0].time = "2023-10-10T12:18:11+05:30"
+// * attester[0].party.reference = "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162"
+// * attester[0].party.display = "Sunshine Oncology Clinic, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162) "Sunshine Oncology Clinic, Mumbai"
 * custodian.type = "Organization"
@@ -259,7 +255,6 @@ Usage: #inline
 // * category[0].text = "Past medical history"
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 // * effectiveDateTime = "2023-10-10T12:18:11+05:30"
-* note.text = "Postmenopausal"
 * valueString = "Postmenopausal"
 
 // // Procedure Resource (Past Surgical History: Hysterectomy)
@@ -357,11 +352,9 @@ Usage: #inline
 // Advice-Encounter Note
 // * note[0].text = "Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed."
 * text.status = #generated
-* text.div = """
-  <div xmlns="http://www.w3.org/1999/xhtml">
+* text.div = """<div xmlns="http://www.w3.org/1999/xhtml">
     <p> Maintain hydration and a balanced diet. Monitor for any signs of infection or adverse reactions. Use prescribed anti-nausea medications as needed.</p>
-  </div>
-"""
+  </div>"""
 
 // Practitioner resource
 Instance: 83f7c31b-ac12-4ce6-a235-f409b5c151eb
@@ -390,7 +383,7 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].system = "https://hfr.abdm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Oncology Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
@@ -495,11 +488,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 * subject.type = "Patient"
 * medicationCodeableConcept = $sct#18629005 "Administration of drug or medicament (procedure)"
-* note.text = """
-   Adriamycin (Doxorubicin): 60 mg/m² IV
-   Cyclophosphamide: 600 mg/m² IV
-   Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy
-"""
+* note.text = "Adriamycin (Doxorubicin): 60 mg/m² IV. Cyclophosphamide: 600 mg/m² IV. Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
 
 // // Advice-encounter note 
 // Instance: 10c5adb3-99f0-4112-a005-bb80b302d8a5
@@ -535,8 +524,6 @@ Usage: #inline
 * participant[1].actor.reference = "Practitioner/41295111-04f9-4b83-b186-ef2975db1c7e"
 * participant[1].status = #accepted
 * text.status = #generated
-* text.div = """
-  <div xmlns="http://www.w3.org/1999/xhtml">
+* text.div = """<div xmlns="http://www.w3.org/1999/xhtml">
     <p> Next session scheduled for December 24, 2023.</p>
-  </div>
-"""
+  </div>"""

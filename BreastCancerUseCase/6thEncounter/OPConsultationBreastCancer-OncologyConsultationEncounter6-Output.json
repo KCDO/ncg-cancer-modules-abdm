@@ -60,16 +60,6 @@
           }
         ],
         "title": "Consultation Report",
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-10T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd",
-              "display": "Sunshine Oncology Clinic, Mumbai"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd",
           "display": "Sunshine Oncology Clinic, Mumbai",
@@ -190,11 +180,6 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "note": [
-          {
-            "text": "Postmenopausal"
-          }
-        ],
         "valueString": "Postmenopausal"
       }
     },
@@ -354,7 +339,7 @@
                 }
               ]
             },
-            "system": "https://hfr.addm.gov.in",
+            "system": "https://hfr.abdm.gov.in",
             "value": "IN2910086528"
           }
         ]
@@ -438,11 +423,7 @@
             }
           ]
         },
-        "note": [
-          {
-            "text": "Reviewed pathology results and discussed treatment options.\nRecommended treatment plan: Surgery followed by radiation therapy and systemic therapy (chemotherapy and hormonal therapy)"
-          }
-        ]
+        "valueString": "Reviewed pathology results and discussed treatment options. Recommended treatment plan: Surgery followed by radiation therapy and systemic therapy (chemotherapy and hormonal therapy)"
       }
     },
     {
@@ -472,11 +453,7 @@
             }
           ]
         },
-        "note": [
-          {
-            "text": "Scheduled for surgical consultation."
-          }
-        ]
+        "valueString": "Scheduled for surgical consultation."
       }
     }
   ]

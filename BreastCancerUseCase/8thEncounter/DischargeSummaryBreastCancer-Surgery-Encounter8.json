@@ -60,16 +60,6 @@
           }
         ],
         "title": "Discharge Summary",
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-10T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1",
-              "display": "Sunshine Surgical Clinic, Mumbai"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1",
           "display": "Sunshine Surgical Clinic, Mumbai",
@@ -243,11 +233,6 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "note": [
-          {
-            "text": "Postmenopausal"
-          }
-        ],
         "valueString": "Postmenopausal"
       }
     },
@@ -404,7 +389,7 @@
                 }
               ]
             },
-            "system": "https://hfr.addm.gov.in",
+            "system": "https://hfr.abdm.gov.in",
             "value": "IN2910086528"
           }
         ]
@@ -564,7 +549,7 @@
         },
         "dosageInstruction": [
           {
-            "text": "Pain Management: \n - Tylenol (Acetaminophen) 500 mg, every 6 hours as needed for pain.\n - Percocet (Oxycodone/Acetaminophen) 5/325 mg, every 6 hours as needed for severe pain.\nAntibiotics: \n - Keflex (Cephalexin) 500 mg, every 6 hours for 7 days to prevent infection.\nOther Medications: \n - Colace (Docusate Sodium) 100 mg, twice daily to prevent constipation."
+            "text": "Pain Management: Tylenol (Acetaminophen) 500 mg, every 6 hours as needed for pain. Percocet (Oxycodone/Acetaminophen) 5/325 mg, every 6 hours as needed for severe pain.\n    Antibiotics: Keflex (Cephalexin) 500 mg, every 6 hours for 7 days to prevent infection.\n    Other Medications: Colace (Docusate Sodium) 100 mg, twice daily to prevent constipation."
           }
         ]
       }
@@ -592,25 +577,25 @@
           {
             "detail": {
               "status": "not-started",
-              "description": " Discharge Instructions:\n\nWound Care:\n  - Keep the surgical site clean and dry.\n  - Change dressings as instructed.\n  - Watch for signs of infection (redness, swelling, increased pain, or discharge) and report any concerns immediately.\n\nActivity:\n  - Avoid heavy lifting or strenuous activities for at least 2 weeks.\n  - Gentle arm exercises can be performed to prevent stiffness.\n\nPain Management:\n  - Take prescribed pain medications as needed.\n  - Use ice packs to reduce swelling and discomfort.\n\nDiet:\n  - Resume a normal diet as tolerated.\n  - Stay hydrated and eat a balanced diet to promote healing."
+              "description": "Discharge Instructions: \n   Wound Care: Keep the surgical site clean and dry. Change dressings as instructed. Watch for signs of infection (redness, swelling, increased pain, or discharge) and report any concerns immediately.\n   Activity: Avoid heavy lifting or strenuous activities for at least 2 weeks. Gentle arm exercises can be performed to prevent stiffness.\n   Pain Management: Take prescribed pain medications as needed. Use ice packs to reduce swelling and discomfort.\n   Diet: Resume a normal diet as tolerated. Stay hydrated and eat a balanced diet to promote healing."
             }
           },
           {
             "detail": {
               "status": "not-started",
-              "description": "Follow-Up Appointments:\n\nSurgical Follow-Up: November 20, 2023, with Dr. Priya Singh to assess wound healing and discuss pathology results.\nOncology Consultation: December 1, 2023, with Dr. Vikram Patel to discuss further treatment options, including radiation therapy and systemic therapy."
+              "description": "Follow-Up Appointments: Surgical Follow-Up: November 20, 2023, with Dr. Priya Singh to assess wound healing and discuss pathology results. Oncology Consultation: December 1, 2023, with Dr. Vikram Patel to discuss further treatment options, including radiation therapy and systemic therapy."
             }
           },
           {
             "detail": {
               "status": "not-started",
-              "description": "Additional Recommendations:\n\nSupport Services: Consider joining a breast cancer support group for emotional and psychological support.\nPhysical Therapy: Referral to physical therapy for postoperative rehabilitation and to maintain range of motion in the affected arm."
+              "description": "Additional Recommendations:\n   Support Services: Consider joining a breast cancer support group for emotional and psychological support.\n   Physical Therapy: Referral to physical therapy for postoperative rehabilitation and to maintain range of motion in the affected arm."
             }
           },
           {
             "detail": {
               "status": "not-started",
-              "description": "Emergency Contact Information:\n\nIf you experience any severe pain, fever, or signs of infection, please contact Dr. P. Singh’s office at (555) 123-4567 or go to the nearest emergency room."
+              "description": "Emergency Contact Information: If you experience any severe pain, fever, or signs of infection, please contact Dr. P. Singh’s office at (555) 123-4567 or go to the nearest emergency room."
             }
           }
         ]

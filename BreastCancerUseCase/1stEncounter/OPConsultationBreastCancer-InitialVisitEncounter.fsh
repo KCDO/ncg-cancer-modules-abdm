@@ -106,14 +106,10 @@ Usage: #inline
 * author.type = "Organization"
 * title = "Consultation Report"
 // set Organization as attester
-// * attester.mode = #legal
-// * attester.time = "2023-10-10T12:18:11+05:30"
-// * attester.party = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "Sunshine Clinic, Mumbai"
-// Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
-* attester[0].party.display = "Sunshine Clinic, Mumbai"
+// * attester[0].mode[0] = #legal
+// * attester[0].time = "2023-10-10T12:18:11+05:30"
+// * attester[0].party.reference = "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+// * attester[0].party.display = "Sunshine Clinic, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "Sunshine Clinic, Mumbai"
 * custodian.type = "Organization"
@@ -259,7 +255,6 @@ Usage: #inline
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 // * effectiveDateTime = "2023-10-10T12:18:11+05:30"
-* note.text = "Postmenopausal"
 * valueString = "Postmenopausal"
 
 // Procedure Resource (Past Surgical History: Hysterectomy)
@@ -381,7 +376,7 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].system = "https://hfr.abdm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
@@ -457,9 +452,8 @@ Usage: #inline
 // * code.text = "Clinical finding"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* note.text = "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed.
- Axillary lymph nodes not palpable."
-
+* valueString = "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
+ 
 // Plan of Care (Recommended Tests and Follow-up)
 // ServiceRequest Resource (Plan: Investigation Advice: Complete Blood Count (CBC))
 Instance: 8b7be252-a62a-478a-9dce-cb18125fdf08

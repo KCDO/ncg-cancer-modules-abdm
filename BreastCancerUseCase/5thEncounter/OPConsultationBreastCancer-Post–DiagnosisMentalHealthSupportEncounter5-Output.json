@@ -60,16 +60,6 @@
           }
         ],
         "title": "Consultation Report",
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-10T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa",
-              "display": "Sunshine Clinic, Mumbai"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa",
           "display": "Sunshine Clinic, Mumbai",
@@ -194,11 +184,6 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "note": [
-          {
-            "text": "Postmenopausal"
-          }
-        ],
         "valueString": "Postmenopausal"
       }
     },
@@ -307,7 +292,7 @@
                 }
               ]
             },
-            "system": "https://hfr.addm.gov.in",
+            "system": "https://hfr.abdm.gov.in",
             "value": "IN2910086528"
           }
         ]
@@ -404,9 +389,10 @@
         },
         "note": [
           {
-            "text": "This observation provides detailed recommendations for psychological support:\n1. Normalize Emotional Reactions: Validate emotions like fear and uncertainty, reducing isolation.\n2. Promote Coping Skills: Introduce stress management techniques (e.g., breathing exercises, mindfulness) and resilience-building practices.\n3. Address Body Image Concerns: Provide resources to manage physical changes and maintain self-esteem.\n4. Encourage Support Networks: Guide the patient toward family, friends, and peer support groups.\n5. Clarify Treatment Phases: Outline treatment steps to reduce anxiety and encourage patient engagement.\n6. Symptom Escalation: Advise the patient to seek further support if anxiety or distress worsens.\n7. Referral to Dr. Varsha Pilgaonkar: Introduce Dr. Pilgaonkar, Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if required.\n8. Comprehensive Support: Highlight that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring holistic mental health care."
+            "text": "Provided emotional support and information to the patient regarding psychological aspects of coping with a cancer diagnosis. Addressed initial reactions, such as fear, uncertainty, and anxiety. Educated the patient on stress management techniques and the importance of mental resilience during treatment."
           }
-        ]
+        ],
+        "valueString": "1. Normalize Emotional Reactions: Validate emotions like fear and uncertainty, reducing isolation. 2. Promote Coping Skills: Introduce stress management techniques (e.g., breathing exercises, mindfulness) and resilience-building practices. 3. Address Body Image Concerns: Provide resources to manage physical changes and maintain self-esteem. 4. Encourage Support Networks: Guide the patient toward family, friends, and peer support groups. 5. Clarify Treatment Phases: Outline treatment steps to reduce anxiety and encourage patient engagement. 6. Symptom Escalation: Advise the patient to seek further support if anxiety or distress worsens. 7. Referral to Dr. Varsha Pilgaonkar: Introduce Dr. Pilgaonkar, Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if required. 8. Comprehensive Support: Highlight that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring holistic mental health care."
       }
     },
     {
@@ -436,11 +422,7 @@
             }
           ]
         },
-        "note": [
-          {
-            "text": "Initial mental health evaluation completed: Patient expresses anxiety and stress, requiring further support through ongoing sessions."
-          }
-        ]
+        "valueString": "Initial mental health evaluation completed: Patient expresses anxiety and stress, requiring further support through ongoing sessions."
       }
     },
     {
@@ -470,11 +452,7 @@
             }
           ]
         },
-        "note": [
-          {
-            "text": "Scheduled follow-up mental health visits at Post Chemotherapy\nPatient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education.\nProvided with Location and contact information of ICS:\nLocation: Mumbai, Delhi, Bengaluru, and Kolkata\nContact Information: Phone: +912224139445 (Mumbai Headquarter)\nWebsite: www.indiancancersociety.org"
-          }
-        ]
+        "valueString": "Scheduled follow-up mental health visits at Post Chemotherapy. Patient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education. Provided with Location and contact information of ICS: Location: Mumbai, Delhi, Bengaluru, and Kolkata. Contact Information: Phone: +912224139445 (Mumbai Headquarter). Website: www.indiancancersociety.org"
       }
     }
   ]
