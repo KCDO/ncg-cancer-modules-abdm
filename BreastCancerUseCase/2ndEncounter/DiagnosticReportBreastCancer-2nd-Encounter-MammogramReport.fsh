@@ -49,9 +49,6 @@ Usage: #inline
 * author.type = "Organization"
 * encounter = Reference(urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13)
 * encounter.type = "Encounter"
-* attester.mode = #legal
-* attester.time = "2023-10-15T12:18:11+05:30"
-* attester.party = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
 * custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Radiology Center, Mumbai"
 * custodian.type = "Organization"
 * title = "Complete Diagnostic Report"
@@ -93,8 +90,6 @@ Usage: #inline
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
-* telecom.system = #email
-* telecom.value = "Meera.sharma@abha.in"
 * gender = #female
 * birthDate = "1971-01-01"
 * address.type = #both
