@@ -85,10 +85,10 @@ Usage: #inline
 * author.type = "Organization"
 * title = "Consultation Report"
 // Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd"
-* attester[0].party.display = "Sunshine Oncology Clinic, Mumbai"
+// * attester[0].mode[0] = #legal
+// * attester[0].time = "2023-10-10T12:18:11+05:30"
+// * attester[0].party.reference = "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd"
+// * attester[0].party.display = "Sunshine Oncology Clinic, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd) "Sunshine Oncology Clinic, Mumbai"
 * custodian.type = "Organization"
@@ -157,7 +157,6 @@ Usage: #inline
 * code = $sct#404684003 "Clinical finding"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* note.text = "Postmenopausal"
 * valueString = "Postmenopausal"
 
 // Post – Diagnosis Mental Health Support Encounter
@@ -220,7 +219,7 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].system = "https://hfr.abdm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 
 // (Discussion - Observation resource for Discussion)
@@ -234,10 +233,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181) "Meera Sharma"
 * subject.type = "Patient"
 * code = $sct#404684003 "Clinical finding"
-* note.text = """
-   Reviewed pathology results and discussed treatment options.
-   Recommended treatment plan: Surgery followed by radiation therapy and systemic therapy (chemotherapy and hormonal therapy)
-"""
+* valueString = "Reviewed pathology results and discussed treatment options. Recommended treatment plan: Surgery followed by radiation therapy and systemic therapy (chemotherapy and hormonal therapy)"
 
 // (Plan - Observation resource for Plan)
 Instance: a44135b2-9203-4c8a-9968-0d16410b2c6c
@@ -250,4 +246,4 @@ Usage: #inline
 * subject = Reference(urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181) "Meera Sharma"
 * subject.type = "Patient"
 * code = $sct#404684003 "Clinical finding"
-* note.text = "Scheduled for surgical consultation."
+* valueString =  "Scheduled for surgical consultation."

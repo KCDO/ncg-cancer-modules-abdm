@@ -60,16 +60,6 @@
           }
         ],
         "title": "Consultation Report",
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-10T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
-              "display": "Sunshine Oncology Clinic, Mumbai"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
           "display": "Sunshine Oncology Clinic, Mumbai",
@@ -276,11 +266,6 @@
           "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma"
         },
-        "note": [
-          {
-            "text": "Postmenopausal"
-          }
-        ],
         "valueString": "Postmenopausal"
       }
     },
@@ -374,7 +359,7 @@
                 }
               ]
             },
-            "system": "https://hfr.addm.gov.in",
+            "system": "https://hfr.abdm.gov.in",
             "value": "IN2910086528"
           }
         ]
@@ -700,7 +685,7 @@
         },
         "note": [
           {
-            "text": "Adriamycin (Doxorubicin): 60 mg/m² IV\nCyclophosphamide: 600 mg/m² IV\nAntiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
+            "text": "Adriamycin (Doxorubicin): 60 mg/m² IV. Cyclophosphamide: 600 mg/m² IV. Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
           }
         ]
       }

@@ -60,16 +60,6 @@
           }
         ],
         "title": "Consultation Report",
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-10T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2",
-              "display": "Sunshine Clinic, Mumbai"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2",
           "display": "Sunshine Clinic, Mumbai",
@@ -251,11 +241,6 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "note": [
-          {
-            "text": "Postmenopausal"
-          }
-        ],
         "valueString": "Postmenopausal"
       }
     },
@@ -345,7 +330,7 @@
                 }
               ]
             },
-            "system": "https://hfr.addm.gov.in",
+            "system": "https://hfr.abdm.gov.in",
             "value": "IN2910086528"
           }
         ]
@@ -594,11 +579,7 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "note": [
-          {
-            "text": "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed.\n Axillary lymph nodes not palpable."
-          }
-        ]
+        "valueString": "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
       }
     },
     {
