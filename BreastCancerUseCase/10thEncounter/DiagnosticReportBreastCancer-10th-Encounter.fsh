@@ -13,7 +13,7 @@ Usage: #example
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-12-01T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
 * type = #document
 * timestamp = "2023-12-01T12:18:10.984+05:30"
@@ -55,9 +55,6 @@ Usage: #inline
 * author.type = "Organization"
 * encounter = Reference(urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13)
 * encounter.type = "Encounter"
-* attester.mode = #legal
-* attester.time = "2023-12-01T12:18:11+05:30"
-* attester.party = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
 * custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Oncology Clinic, Mumbai"
 * custodian.type = "Organization"
 * title = "Complete Diagnostic Report"
@@ -115,20 +112,17 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-12-01T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
-//$fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
-* telecom.system = #email
-* telecom.value = "Meera.sharma@abha.in"
 * gender = #female
 * birthDate = "1971-01-01"
 * address.type = #both

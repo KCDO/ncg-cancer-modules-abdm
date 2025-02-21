@@ -89,7 +89,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
 * language = #en-IN
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "7230e12b-d0f7-499c-925d-9a3046d10877"
 * status = #final
 * type = $sct#371530004 "Clinical consultation report"
@@ -106,14 +106,10 @@ Usage: #inline
 * author.type = "Organization"
 * title = "Consultation Report"
 // set Organization as attester
-// * attester.mode = #legal
-// * attester.time = "2023-10-10T12:18:11+05:30"
-// * attester.party = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "Sunshine Clinic, Mumbai"
-// Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
-* attester[0].party.display = "Sunshine Clinic, Mumbai"
+// * attester[0].mode[0] = #legal
+// * attester[0].time = "2023-10-10T12:18:11+05:30"
+// * attester[0].party.reference = "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2"
+// * attester[0].party.display = "Sunshine Clinic, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2) "Sunshine Clinic, Mumbai"
 * custodian.type = "Organization"
@@ -154,6 +150,9 @@ Usage: #inline
 * section[=].entry[=].type = "Observation"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
 * section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff)
+* section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Blood Group)
+* section[=].entry[+] = Reference(urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056ff1)
 * section[=].entry[=].type = "Observation"
 
 // // section for FamilyHistory
@@ -201,14 +200,13 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
-//$fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
@@ -257,7 +255,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 // * effectiveDateTime = "2023-10-10T12:18:11+05:30"
-* note.text = "Postmenopausal"
+* valueString = "Postmenopausal"
 
 // Procedure Resource (Past Surgical History: Hysterectomy)
 // Instance: 01eeb933-3210-4eee-975c-103720fd86fd
@@ -378,7 +376,7 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].system = "https://hfr.abdm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
@@ -394,8 +392,8 @@ Usage: #inline
 * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
 // * clinicalStatus = $condition-clinical#active "Active"
-// * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
-* code = $sct#404684003 "Clinical finding"
+* category = $condition-category#problem-list-item "Problem List Item"
+* code = $sct#89164003 "Breast lump"
 // * code.text = "Clinical finding"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
@@ -454,9 +452,8 @@ Usage: #inline
 // * code.text = "Clinical finding"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* note.text = "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed.
- Axillary lymph nodes not palpable."
-
+* valueString = "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
+ 
 // Plan of Care (Recommended Tests and Follow-up)
 // ServiceRequest Resource (Plan: Investigation Advice: Complete Blood Count (CBC))
 Instance: 8b7be252-a62a-478a-9dce-cb18125fdf08
@@ -475,6 +472,7 @@ Usage: #inline
 * requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
 * requester.type = "Practitioner"
 // * occurrenceDateTime = "2023-10-10T10:00:00+05:30"
+* code = $sct#26604007 "Complete blood count"
 * note[0].text = "Complete Blood Count (CBC)"
 
 // Plan of Care (Recommended Tests and Follow-up)
@@ -495,6 +493,7 @@ Usage: #inline
 * requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
 * requester.type = "Practitioner"
 // * occurrenceDateTime = "2023-10-10T10:00:00+05:30"
+* code = $sct#71651007 "Mammogram"
 * note[0].text = "mammogram"
 
 // Plan of Care (Recommended Tests and Follow-up)
@@ -515,4 +514,5 @@ Usage: #inline
 * requester = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Anjali Verma"
 * requester.type = "Practitioner"
 // * occurrenceDateTime = "2023-10-10T10:00:00+05:30"
+* code = $sct#961000087109 "Ultrasound of right breast"
 * note[0].text = "ultrasound of the right breast"

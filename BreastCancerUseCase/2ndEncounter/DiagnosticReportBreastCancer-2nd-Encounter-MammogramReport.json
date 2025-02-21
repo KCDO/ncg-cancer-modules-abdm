@@ -9,7 +9,7 @@
     ]
   },
   "identifier": {
-    "system": "http://example-provider.org",
+    "system": "https://ndhm.in/phr",
     "value": "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
   },
   "type": "document",
@@ -24,9 +24,9 @@
         "type": {
           "coding": [
             {
-              "code": "60591-5",
-              "system": "http://loinc.org",
-              "display": "Patient summary Document"
+              "code": "721981007",
+              "system": "http://snomed.info/sct",
+              "display": "Diagnostic studies report"
             }
           ]
         },
@@ -47,15 +47,6 @@
           "reference": "urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13",
           "type": "Encounter"
         },
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-15T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0",
           "display": "Sunshine Radiology Center, Mumbai",
@@ -139,24 +130,29 @@
         },
         "identifier": [
           {
-            "type": {
-              "text": "Aadhar Number"
-            },
-            "system": "urn:health:information:provider:system",
-            "value": "1234 1234 1234"
-          },
-          {
+            "system": "https://ndhm.gov.in/id",
             "type": {
               "coding": [
                 {
-                  "code": "ABHAAddress",
-                  "system": "https://healthid.abdm.gov.in",
-                  "display": "ABHAAddress"
+                  "code": "ADN",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Adhaar number"
                 }
-              ],
-              "text": "ABHA Address"
+              ]
             },
-            "system": "urn:health:information:provider:system",
+            "value": "1234 1234 1234"
+          },
+          {
+            "system": "https://ndhm.gov.in/id",
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHA",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Ayushman Bharat Health Account (ABHA) ID"
+                }
+              ]
+            },
             "value": "Meera.sharma@abha.in"
           }
         ],
@@ -167,12 +163,6 @@
             "given": [
               "Meera"
             ]
-          }
-        ],
-        "telecom": [
-          {
-            "system": "email",
-            "value": "Meera.sharma@abha.in"
           }
         ],
         "gender": "female",

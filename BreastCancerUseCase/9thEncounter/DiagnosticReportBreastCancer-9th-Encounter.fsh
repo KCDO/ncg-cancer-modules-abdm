@@ -13,7 +13,7 @@ Usage: #example
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-20T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
 * type = #document
 * timestamp = "2023-10-20T12:18:10.984+05:30"
@@ -58,9 +58,6 @@ Usage: #inline
 * author.type = "Organization"
 * encounter = Reference(urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13)
 * encounter.type = "Encounter"
-* attester.mode = #legal
-* attester.time = "2023-10-20T12:18:11+05:30"
-* attester.party = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
 * custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Surgical Center, Mumbai"
 * custodian.type = "Organization"
 * title = "Complete Diagnostic Report"
@@ -95,8 +92,12 @@ Description: "Observation resource for tumor size."
 * id = "2d5cb6d7-ec9c-4207-9366-9874b3bfbf59"
 * status = #final
 * code = http://loinc.org#21899-9 // Tumor size
-* subject = Reference(Patient/example)
-* valueQuantity = { value: 2.2, unit: "cm", system: "http://unitsofmeasure.org", code: "cm" }
+* subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
+* subject.type = "Patient"
+* valueQuantity.value = 2.2
+* valueQuantity.unit = "cm"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code = #cm
 
 // Observation Resource of Surgical Pathology Report for Margins
 Instance: 79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6
@@ -109,7 +110,9 @@ Description: "Observation resource for surgical margins."
 * code = http://snomed.info/sct#723780002 // Surgical margins
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
-* valueCodeableConcept = { coding: [{ system: "http://snomed.info/sct", code: "108290001", display: "Clear surgical margins" }] }
+* valueCodeableConcept.coding[0].system = "http://snomed.info/sct"
+* valueCodeableConcept.coding[0].code = #108290001
+* valueCodeableConcept.coding[0].display = "Clear surgical margins"
 
 // Observation Resource of Surgical Pathology Report for Sentinel lymph nodes
 Instance: 3fda073d-9244-46c8-835e-5d85e50f14db
@@ -131,20 +134,17 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-20T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
-//$fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
-* telecom.system = #email
-* telecom.value = "Meera.sharma@abha.in"
 * gender = #female
 * birthDate = "1971-01-01"
 * address.type = #both

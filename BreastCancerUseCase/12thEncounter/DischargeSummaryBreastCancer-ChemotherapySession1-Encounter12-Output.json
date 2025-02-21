@@ -40,7 +40,7 @@
           "text": "Discharge Summary"
         },
         "identifier": {
-          "system": "http://example-provider.org",
+          "system": "https://ndhm.in/phr",
           "value": "d5c1fb49-17e8-41a4-8a4e-7c0f93e48134"
         },
         "subject": {
@@ -60,16 +60,6 @@
           }
         ],
         "title": "Consultation Report",
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-10T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
-              "display": "Sunshine Oncology Clinic, Mumbai"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
           "display": "Sunshine Oncology Clinic, Mumbai",
@@ -110,6 +100,10 @@
             "entry": [
               {
                 "reference": "urn:uuid:a8e8ebce-2f78-49a0-8b69-a4835b12d842",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:936b9b09-57c0-4f57-bd64-0337641ef756",
                 "type": "Observation"
               }
             ]
@@ -207,24 +201,29 @@
         },
         "identifier": [
           {
-            "type": {
-              "text": "Aadhar Number"
-            },
-            "system": "urn:health:information:provider:system",
-            "value": "1234 1234 1234"
-          },
-          {
+            "system": "https://ndhm.gov.in/id",
             "type": {
               "coding": [
                 {
-                  "code": "ABHAAddress",
-                  "system": "https://healthid.abdm.gov.in",
-                  "display": "ABHAAddress"
+                  "code": "ADN",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Adhaar number"
                 }
-              ],
-              "text": "ABHA Address"
+              ]
             },
-            "system": "urn:health:information:provider:system",
+            "value": "1234 1234 1234"
+          },
+          {
+            "system": "https://ndhm.gov.in/id",
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHA",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Ayushman Bharat Health Account (ABHA) ID"
+                }
+              ]
+            },
             "value": "Meera.sharma@abha.in"
           }
         ],
@@ -267,11 +266,7 @@
           "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "display": "Meera Sharma"
         },
-        "note": [
-          {
-            "text": "Postmenopausal"
-          }
-        ]
+        "valueString": "Postmenopausal"
       }
     },
     {
@@ -364,7 +359,7 @@
                 }
               ]
             },
-            "system": "https://hfr.addm.gov.in",
+            "system": "https://hfr.abdm.gov.in",
             "value": "IN2910086528"
           }
         ]
@@ -690,7 +685,7 @@
         },
         "note": [
           {
-            "text": "Adriamycin (Doxorubicin): 60 mg/m² IV\nCyclophosphamide: 600 mg/m² IV\nAntiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
+            "text": "Adriamycin (Doxorubicin): 60 mg/m² IV. Cyclophosphamide: 600 mg/m² IV. Antiemetics: Zofran (Ondansetron) 8 mg IV before chemotherapy"
           }
         ]
       }

@@ -29,7 +29,7 @@
         },
         "language": "en-IN",
         "identifier": {
-          "system": "http://example-provider.org",
+          "system": "https://ndhm.in/phr",
           "value": "7230e12b-d0f7-499c-925d-9a3046d10877"
         },
         "status": "final",
@@ -60,16 +60,6 @@
           }
         ],
         "title": "Consultation Report",
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-10T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2",
-              "display": "Sunshine Clinic, Mumbai"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2",
           "display": "Sunshine Clinic, Mumbai",
@@ -114,6 +104,10 @@
               },
               {
                 "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056ff1",
                 "type": "Observation"
               }
             ]
@@ -181,24 +175,29 @@
         },
         "identifier": [
           {
-            "type": {
-              "text": "Aadhar Number"
-            },
-            "system": "urn:health:information:provider:system",
-            "value": "1234 1234 1234"
-          },
-          {
+            "system": "https://ndhm.gov.in/id",
             "type": {
               "coding": [
                 {
-                  "code": "ABHAAddress",
-                  "system": "https://healthid.abdm.gov.in",
-                  "display": "ABHAAddress"
+                  "code": "ADN",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Adhaar number"
                 }
-              ],
-              "text": "ABHA Address"
+              ]
             },
-            "system": "urn:health:information:provider:system",
+            "value": "1234 1234 1234"
+          },
+          {
+            "system": "https://ndhm.gov.in/id",
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHA",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Ayushman Bharat Health Account (ABHA) ID"
+                }
+              ]
+            },
             "value": "Meera.sharma@abha.in"
           }
         ],
@@ -242,11 +241,7 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "note": [
-          {
-            "text": "Postmenopausal"
-          }
-        ]
+        "valueString": "Postmenopausal"
       }
     },
     {
@@ -335,7 +330,7 @@
                 }
               ]
             },
-            "system": "https://hfr.addm.gov.in",
+            "system": "https://hfr.abdm.gov.in",
             "value": "IN2910086528"
           }
         ]
@@ -404,12 +399,23 @@
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
           ]
         },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
         "code": {
           "coding": [
             {
-              "code": "404684003",
+              "code": "89164003",
               "system": "http://snomed.info/sct",
-              "display": "Clinical finding"
+              "display": "Breast lump"
             }
           ]
         },
@@ -573,11 +579,7 @@
           "display": "Meera Sharma",
           "type": "Patient"
         },
-        "note": [
-          {
-            "text": "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed.\n Axillary lymph nodes not palpable."
-          }
-        ]
+        "valueString": "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
       }
     },
     {
@@ -603,6 +605,15 @@
           "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
           "display": "Dr. Anjali Verma",
           "type": "Practitioner"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "26604007",
+              "system": "http://snomed.info/sct",
+              "display": "Complete blood count"
+            }
+          ]
         },
         "note": [
           {
@@ -635,6 +646,15 @@
           "display": "Dr. Anjali Verma",
           "type": "Practitioner"
         },
+        "code": {
+          "coding": [
+            {
+              "code": "71651007",
+              "system": "http://snomed.info/sct",
+              "display": "Mammogram"
+            }
+          ]
+        },
         "note": [
           {
             "text": "mammogram"
@@ -665,6 +685,15 @@
           "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
           "display": "Dr. Anjali Verma",
           "type": "Practitioner"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "961000087109",
+              "system": "http://snomed.info/sct",
+              "display": "Ultrasound of right breast"
+            }
+          ]
         },
         "note": [
           {

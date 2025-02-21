@@ -68,7 +68,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
 * language = #en-IN
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "c672f93d-3e2b-4ced-8910-63f0f1588f9c"
 * status = #final
 * type = $sct#371530004 "Clinical consultation report"
@@ -85,10 +85,10 @@ Usage: #inline
 * author.type = "Organization"
 * title = "Consultation Report"
 // Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd"
-* attester[0].party.display = "Sunshine Oncology Clinic, Mumbai"
+// * attester[0].mode[0] = #legal
+// * attester[0].time = "2023-10-10T12:18:11+05:30"
+// * attester[0].party.reference = "urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd"
+// * attester[0].party.display = "Sunshine Oncology Clinic, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:a4c16b73-a7e3-4cd1-81e8-83bd783eb0bd) "Sunshine Oncology Clinic, Mumbai"
 * custodian.type = "Organization"
@@ -106,6 +106,9 @@ Usage: #inline
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
 * section[=].entry[+] = Reference(urn:uuid:755a6178-bb42-4100-a412-062ea87134a8)
 * section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Blood Group)
+* section[=].entry[+] = Reference(urn:uuid:71f13c88-727e-4a15-9320-de2de1464277)
+* section[=].entry[=].type = "Observation"
 
 // Patient Resource
 Instance: 0959dee7-13d4-4a63-81ec-109d37162181
@@ -114,12 +117,13 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
@@ -153,7 +157,7 @@ Usage: #inline
 * code = $sct#404684003 "Clinical finding"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* note.text = "Postmenopausal"
+* valueString = "Postmenopausal"
 
 // Post – Diagnosis Mental Health Support Encounter
 // Encounter Resource (Post – Diagnosis Mental Health Support)
@@ -181,7 +185,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-11-01T12:18:11.143+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
 // * clinicalStatus = $condition-clinical#active "Active"
-// * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
+* category = $condition-category#problem-list-item "Problem List Item"
 * code = $sct#408643008 "Infiltrating duct carcinoma of breast"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
@@ -215,7 +219,7 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].system = "https://hfr.abdm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 
 // (Discussion - Observation resource for Discussion)
@@ -229,10 +233,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181) "Meera Sharma"
 * subject.type = "Patient"
 * code = $sct#404684003 "Clinical finding"
-* note.text = """
-   Reviewed pathology results and discussed treatment options.
-   Recommended treatment plan: Surgery followed by radiation therapy and systemic therapy (chemotherapy and hormonal therapy)
-"""
+* valueString = "Reviewed pathology results and discussed treatment options. Recommended treatment plan: Surgery followed by radiation therapy and systemic therapy (chemotherapy and hormonal therapy)"
 
 // (Plan - Observation resource for Plan)
 Instance: a44135b2-9203-4c8a-9968-0d16410b2c6c
@@ -245,4 +246,4 @@ Usage: #inline
 * subject = Reference(urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181) "Meera Sharma"
 * subject.type = "Patient"
 * code = $sct#404684003 "Clinical finding"
-* note.text = "Scheduled for surgical consultation."
+* valueString =  "Scheduled for surgical consultation."

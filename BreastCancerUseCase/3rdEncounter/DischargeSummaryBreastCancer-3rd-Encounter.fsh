@@ -56,7 +56,7 @@ Usage: #inline
 * status = #final
 * type = $sct#373942005 "Discharge summary"
 * type.text = "Discharge Summary"
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "d5c1fb49-17e8-41a4-8a4e-7c0f93e48134"
 // set Patient as subject
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d)
@@ -69,15 +69,6 @@ Usage: #inline
 * author = Reference(urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb) "Dr. Priya Singh"
 * author.type = "Practitioner"
 * title = "Consultation Report"
-// set Organization as attester
-// * attester.mode = #legal
-// * attester.time = "2023-10-10T12:18:11+05:30"
-// * attester.party = Reference(urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162) "Sunshine Surgical Center, Mumbai"
-// Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162"
-* attester[0].party.display = "Sunshine Surgical Center, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162) "Sunshine Surgical Center, Mumbai"
 * custodian.type = "Organization"
@@ -189,29 +180,26 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
-//$fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
-// * telecom.system = #email
-// * telecom.value = "Meera.sharma@abha.in"
 * gender = #female
 * birthDate = "1971-01-01"
-// * address.type = #both
-// * address.text = "123, Bangalore Urban, Karnataka, India, Pincode:560103"
-// * address.city = "Bangalore Urban"
-// * address.district = "Bangalore Urban"
-// * address.state = "Karnataka"
-// * address.postalCode = "560103"
-// * address.country = "India"
+* address.type = #both
+* address.text = "123, Bangalore Urban, Karnataka, India, Pincode:560103"
+* address.city = "Bangalore Urban"
+* address.district = "Bangalore Urban"
+* address.state = "Karnataka"
+* address.postalCode = "560103"
+* address.country = "India"
 
 // Encounter Resource 
 Instance: f00f1a30-839c-4ff5-bd05-5651d7a7a5a5

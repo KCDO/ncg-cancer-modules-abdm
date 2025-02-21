@@ -80,7 +80,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
 * language = #en-IN
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "7230e12b-d0f7-499c-925d-9a3046d10870"
 * status = #final
 * type = $sct#371530004 "Clinical consultation report"
@@ -97,14 +97,10 @@ Usage: #inline
 * author.type = "Organization"
 * title = "Consultation Report"
 // set Organization as attester
-// * attester.mode = #legal
-// * attester.time = "2023-10-10T12:18:11+05:30"
-// * attester.party = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa) "Sunshine Clinic, Mumbai"
-// Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa"
-* attester[0].party.display = "Sunshine Clinic, Mumbai"
+// * attester[0].mode[0] = #legal
+// * attester[0].time = "2023-10-10T12:18:11+05:30"
+// * attester[0].party.reference = "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa"
+// * attester[0].party.display = "Sunshine Clinic, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923aa) "Sunshine Clinic, Mumbai"
 * custodian.type = "Organization"
@@ -144,6 +140,9 @@ Usage: #inline
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
 * section[=].entry[+] = Reference(urn:uuid:cfc19550-3520-4788-b622-f90c8a69cd8f)
 * section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Blood Group)
+* section[=].entry[+] = Reference(urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056fff)
+* section[=].entry[=].type = "Observation"
 
 // // section for FamilyHistory
 // * section[+].title = "FamilyHistory"
@@ -168,14 +167,13 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
-//$fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
@@ -226,7 +224,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 // * effectiveDateTime = "2023-10-10T12:18:11+05:30"
-* note.text = "Postmenopausal"
+* valueString = "Postmenopausal"
 
 // // Procedure Resource (Past Surgical History: Hysterectomy)
 // Instance: 01eeb933-3210-4eee-975c-103720fd86f0
@@ -352,7 +350,7 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].system = "https://hfr.abdm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
@@ -374,17 +372,8 @@ Usage: #inline
 * subject.type = "Patient"
 // * effectiveDateTime = "2023-10-10T09:30:00+05:30"
 * code = $sct#404684003 "Clinical finding"
-* note.text = """
-This observation provides detailed recommendations for psychological support:
-1. Normalize Emotional Reactions: Validate emotions like fear and uncertainty, reducing isolation.
-2. Promote Coping Skills: Introduce stress management techniques (e.g., breathing exercises, mindfulness) and resilience-building practices.
-3. Address Body Image Concerns: Provide resources to manage physical changes and maintain self-esteem.
-4. Encourage Support Networks: Guide the patient toward family, friends, and peer support groups.
-5. Clarify Treatment Phases: Outline treatment steps to reduce anxiety and encourage patient engagement.
-6. Symptom Escalation: Advise the patient to seek further support if anxiety or distress worsens.
-7. Referral to Dr. Varsha Pilgaonkar: Introduce Dr. Pilgaonkar, Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if required.
-8. Comprehensive Support: Highlight that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring holistic mental health care.
-"""
+* note.text = "Provided emotional support and information to the patient regarding psychological aspects of coping with a cancer diagnosis. Addressed initial reactions, such as fear, uncertainty, and anxiety. Educated the patient on stress management techniques and the importance of mental resilience during treatment."
+* valueString =  "1. Normalize Emotional Reactions: Validate emotions like fear and uncertainty, reducing isolation. 2. Promote Coping Skills: Introduce stress management techniques (e.g., breathing exercises, mindfulness) and resilience-building practices. 3. Address Body Image Concerns: Provide resources to manage physical changes and maintain self-esteem. 4. Encourage Support Networks: Guide the patient toward family, friends, and peer support groups. 5. Clarify Treatment Phases: Outline treatment steps to reduce anxiety and encourage patient engagement. 6. Symptom Escalation: Advise the patient to seek further support if anxiety or distress worsens. 7. Referral to Dr. Varsha Pilgaonkar: Introduce Dr. Pilgaonkar, Consultant Psychiatrist at Heal and Hearty Clinic, Chembur, Mumbai, for additional care if required. 8. Comprehensive Support: Highlight that consulting Dr. Pilgaonkar will provide medical support alongside counselling, ensuring holistic mental health care."
 
 // (Assessment - Observation resource for Mental Health Evaluation)
 Instance: b7a6f298-21ac-4835-9c38-d4bfd38ef6de
@@ -402,7 +391,8 @@ Usage: #inline
 // * valueString = "Patient expresses anxiety and stress, requiring further support through ongoing sessions."
 // * interpretation.text = "Ongoing mental health support required"
 * code = $sct#404684003 "Clinical finding"
-* note.text = "Initial mental health evaluation completed: Patient expresses anxiety and stress, requiring further support through ongoing sessions."
+// * note.text = "Initial mental health evaluation completed: Patient expresses anxiety and stress, requiring further support through ongoing sessions."
+* valueString = "Initial mental health evaluation completed: Patient expresses anxiety and stress, requiring further support through ongoing sessions."
 
 // (Plan - Observation resource for Mental Health Plan)
 Instance: b7a6f298-21ac-4835-9c38-d4bfd38ef6df
@@ -419,11 +409,4 @@ Usage: #inline
 // * effectiveDateTime = "2023-10-26T09:00:00+05:30"
 // * valueString = "Scheduled follow-up mental health visits at Post Chemotherapy. Patient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education."
 * code = $sct#404684003 "Clinical finding"
-* note.text = """
-   Scheduled follow-up mental health visits at Post Chemotherapy
-   Patient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education.
-   Provided with Location and contact information of ICS:
-   Location: Mumbai, Delhi, Bengaluru, and Kolkata
-   Contact Information: Phone: +912224139445 (Mumbai Headquarter)
-   Website: www.indiancancersociety.org
-"""
+* valueString =  "Scheduled follow-up mental health visits at Post Chemotherapy. Patient encouraged to join a support group: Indian Cancer Society (ICS)- Breast Cancer Support for additional counselling, peer counselling, awareness, and education. Provided with Location and contact information of ICS: Location: Mumbai, Delhi, Bengaluru, and Kolkata. Contact Information: Phone: +912224139445 (Mumbai Headquarter). Website: www.indiancancersociety.org"

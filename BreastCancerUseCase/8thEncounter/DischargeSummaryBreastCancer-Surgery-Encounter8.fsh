@@ -80,7 +80,7 @@ Usage: #inline
 * status = #final
 * type = $sct#373942005 "Discharge summary"
 * type.text = "Discharge Summary"
-* identifier.system = "http://example-provider.org"
+* identifier.system = "https://ndhm.in/phr"
 * identifier.value = "971270ff-a6b5-4169-ba99-0e92ee3b56bc"
 // set Patient as subject
 * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31)
@@ -94,10 +94,10 @@ Usage: #inline
 * author.type = "Practitioner"
 * title = "Discharge Summary"
 // Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1"
-* attester[0].party.display = "Sunshine Surgical Clinic, Mumbai"
+// * attester[0].mode[0] = #legal
+// * attester[0].time = "2023-10-10T12:18:11+05:30"
+// * attester[0].party.reference = "urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1"
+// * attester[0].party.display = "Sunshine Surgical Clinic, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:a102f1a9-d5e2-4692-938a-605370d6acf1) "Sunshine Surgical Clinic, Mumbai"
 * custodian.type = "Organization"
@@ -119,6 +119,9 @@ Usage: #inline
 * section[=].code.text = "Clinical finding"
 // section entry for Observation Resource (Past Medical History - Postmenopausal)
 * section[=].entry[+] = Reference(urn:uuid:e1cc9bd5-c6d6-4115-a36c-bd27dc71a217)
+* section[=].entry[=].type = "Observation"
+// section entry for Observation Resource (Blood Group)
+* section[=].entry[+] = Reference(urn:uuid:f34cf498-2b7e-488b-af1d-ac6ebdcb0e53)
 * section[=].entry[=].type = "Observation"
 
 // section for Medications
@@ -144,14 +147,13 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// * identifier[0].type = $v2-0203#AADHAAR "AADHAAR"
-//$fhir-identifier-type#AADHAAR "AADHAAR"
-* identifier[+].type.text = "Aadhar Number"
-* identifier[=].system = "urn:health:information:provider:system"
+// Aadhaar Number (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
 * identifier[=].value = "1234 1234 1234"
-* identifier[+].type = $healthid#ABHAAddress "ABHAAddress"
-* identifier[=].type.text = "ABHA Address"
-* identifier[=].system = "urn:health:information:provider:system"
+// ABHA Address (NDHM Standard)
+* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
 * identifier[=].value = "Meera.sharma@abha.in"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
@@ -201,7 +203,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 // * effectiveDateTime = "2023-10-10T12:18:11+05:30"
-* note.text = "Postmenopausal"
+* valueString = "Postmenopausal"
 
 // Surgery Encounter
 // Encounter Resource (Surgery)
@@ -227,11 +229,9 @@ Usage: #inline
 // Postoperative Course
 * hospitalization.dischargeDisposition = $sct#306689006 "Discharge to home"
 * text.status = #generated
-* text.div = """
-  <div xmlns="http://www.w3.org/1999/xhtml">
-    <p> Meera Singh's postoperative recovery was uneventful. She was monitored for any signs of infection, bleeding, or other complications. Pain was managed effectively with medications. She was able to ambulate and perform basic activities of daily living before discharge.</p>
-  </div>
-"""
+* text.div = """<div xmlns="http://www.w3.org/1999/xhtml">
+<p> Meera Singh's postoperative recovery was uneventful. She was monitored for any signs of infection, bleeding, or other complications. Pain was managed effectively with medications. She was able to ambulate and perform basic activities of daily living before discharge.</p>
+</div>"""
 // * note.text = "Meera Singh's postoperative recovery was uneventful. She was monitored for any signs of infection, bleeding, or other complications. Pain was managed effectively with medications. She was able to ambulate and perform basic activities of daily living before discharge."
 
 // Condition Resource (Diagnosis: Invasive Ductal Carcinoma, Grade 3, Right Breast)
@@ -242,7 +242,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-11-01T12:18:11.143+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
 // * clinicalStatus = $condition-clinical#active "Active"
-// * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
+* category = $condition-category#problem-list-item "Problem List Item"
 * code = $sct#408643008 "Infiltrating duct carcinoma of breast"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
@@ -275,7 +275,7 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://hfr.addm.gov.in"
+* identifier[0].system = "https://hfr.abdm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Surgical Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"
@@ -327,14 +327,9 @@ Usage: #inline
 * requester = Reference(urn:uuid:1b266629-c338-4468-9519-52e1d84538d5) "Dr. Priya Singh" // Reference to the healthcare provider (e.g., Dr. Priya Singh)
 // * medicationCodeableConcept.text = "Post-Surgery Medication Plan"
 * medicationCodeableConcept = $sct#18629005 "Administration of drug or medicament (procedure)"
-* dosageInstruction[0].text = """
-    Pain Management: 
-     - Tylenol (Acetaminophen) 500 mg, every 6 hours as needed for pain.
-     - Percocet (Oxycodone/Acetaminophen) 5/325 mg, every 6 hours as needed for severe pain.
-    Antibiotics: 
-     - Keflex (Cephalexin) 500 mg, every 6 hours for 7 days to prevent infection.
-    Other Medications: 
-     - Colace (Docusate Sodium) 100 mg, twice daily to prevent constipation.
+* dosageInstruction[0].text = """Pain Management: Tylenol (Acetaminophen) 500 mg, every 6 hours as needed for pain. Percocet (Oxycodone/Acetaminophen) 5/325 mg, every 6 hours as needed for severe pain.
+    Antibiotics: Keflex (Cephalexin) 500 mg, every 6 hours for 7 days to prevent infection.
+    Other Medications: Colace (Docusate Sodium) 100 mg, twice daily to prevent constipation.
 """
 
 // CarePlan Resource (Discharge Instructions)
@@ -349,46 +344,21 @@ Usage: #inline
 * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31) "Meera Sharma"
 * subject.type = "Patient"
 * activity[0].detail.status = #not-started
-* activity[0].detail.description  = """
-    Discharge Instructions:
-
-   Wound Care:
-     - Keep the surgical site clean and dry.
-     - Change dressings as instructed.
-     - Watch for signs of infection (redness, swelling, increased pain, or discharge) and report any concerns immediately.
-
-   Activity:
-     - Avoid heavy lifting or strenuous activities for at least 2 weeks.
-     - Gentle arm exercises can be performed to prevent stiffness.
-
-   Pain Management:
-     - Take prescribed pain medications as needed.
-     - Use ice packs to reduce swelling and discomfort.
-
-   Diet:
-     - Resume a normal diet as tolerated.
-     - Stay hydrated and eat a balanced diet to promote healing.
+* activity[0].detail.description  = """Discharge Instructions: 
+   Wound Care: Keep the surgical site clean and dry. Change dressings as instructed. Watch for signs of infection (redness, swelling, increased pain, or discharge) and report any concerns immediately.
+   Activity: Avoid heavy lifting or strenuous activities for at least 2 weeks. Gentle arm exercises can be performed to prevent stiffness.
+   Pain Management: Take prescribed pain medications as needed. Use ice packs to reduce swelling and discomfort.
+   Diet: Resume a normal diet as tolerated. Stay hydrated and eat a balanced diet to promote healing.
 """
 * activity[1].detail.status = #not-started
-* activity[1].detail.description  = """
-   Follow-Up Appointments:
-   
-   Surgical Follow-Up: November 20, 2023, with Dr. Priya Singh to assess wound healing and discuss pathology results.
-   Oncology Consultation: December 1, 2023, with Dr. Vikram Patel to discuss further treatment options, including radiation therapy and systemic therapy.
-"""
+* activity[1].detail.description  = "Follow-Up Appointments: Surgical Follow-Up: November 20, 2023, with Dr. Priya Singh to assess wound healing and discuss pathology results. Oncology Consultation: December 1, 2023, with Dr. Vikram Patel to discuss further treatment options, including radiation therapy and systemic therapy."
 * activity[2].detail.status = #not-started
-* activity[2].detail.description  = """
-   Additional Recommendations:
-   
+* activity[2].detail.description  = """Additional Recommendations:
    Support Services: Consider joining a breast cancer support group for emotional and psychological support.
    Physical Therapy: Referral to physical therapy for postoperative rehabilitation and to maintain range of motion in the affected arm.
 """
 * activity[3].detail.status = #not-started
-* activity[3].detail.description  = """
-   Emergency Contact Information:
-   
-   If you experience any severe pain, fever, or signs of infection, please contact Dr. P. Singh’s office at (555) 123-4567 or go to the nearest emergency room.
-"""
+* activity[3].detail.description  = "Emergency Contact Information: If you experience any severe pain, fever, or signs of infection, please contact Dr. P. Singh’s office at (555) 123-4567 or go to the nearest emergency room."
 // * activity[1].detail.reference = Reference(Appointment/c29da99a-c270-4672-92ad-c717966714c9)  // Reference to the appointment
 // * activity[2].detail.reference = Reference(Appointment/OncologyConsultationAppointment)  // Reference to the appointment
 
