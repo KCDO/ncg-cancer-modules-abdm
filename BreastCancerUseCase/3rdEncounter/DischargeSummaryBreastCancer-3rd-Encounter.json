@@ -60,16 +60,6 @@
           }
         ],
         "title": "Consultation Report",
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-10T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
-              "display": "Sunshine Surgical Center, Mumbai"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
           "display": "Sunshine Surgical Center, Mumbai",
@@ -183,12 +173,6 @@
             "given": [
               "Meera"
             ]
-          }
-        ],
-        "telecom": [
-          {
-            "system": "email",
-            "value": "Meera.sharma@abha.in"
           }
         ],
         "gender": "female",

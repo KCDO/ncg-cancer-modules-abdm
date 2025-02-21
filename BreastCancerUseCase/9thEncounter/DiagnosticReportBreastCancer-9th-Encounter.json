@@ -47,15 +47,6 @@
           "reference": "urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13",
           "type": "Encounter"
         },
-        "attester": [
-          {
-            "mode": "legal",
-            "time": "2023-10-20T12:18:11+05:30",
-            "party": {
-              "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
-            }
-          }
-        ],
         "custodian": {
           "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0",
           "display": "Sunshine Surgical Center, Mumbai",
@@ -252,12 +243,6 @@
             "given": [
               "Meera"
             ]
-          }
-        ],
-        "telecom": [
-          {
-            "system": "email",
-            "value": "Meera.sharma@abha.in"
           }
         ],
         "gender": "female",

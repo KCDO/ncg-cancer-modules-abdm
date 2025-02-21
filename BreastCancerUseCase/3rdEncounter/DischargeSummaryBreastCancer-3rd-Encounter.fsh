@@ -69,15 +69,6 @@ Usage: #inline
 * author = Reference(urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb) "Dr. Priya Singh"
 * author.type = "Practitioner"
 * title = "Consultation Report"
-// set Organization as attester
-// * attester.mode = #legal
-// * attester.time = "2023-10-10T12:18:11+05:30"
-// * attester.party = Reference(urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162) "Sunshine Surgical Center, Mumbai"
-// Define attester with required mode, time, and party
-* attester[0].mode[0] = #legal
-* attester[0].time = "2023-10-10T12:18:11+05:30"
-* attester[0].party.reference = "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162"
-* attester[0].party.display = "Sunshine Surgical Center, Mumbai"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162) "Sunshine Surgical Center, Mumbai"
 * custodian.type = "Organization"
@@ -200,8 +191,6 @@ Usage: #inline
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
-* telecom.system = #email
-* telecom.value = "Meera.sharma@abha.in"
 * gender = #female
 * birthDate = "1971-01-01"
 * address.type = #both
