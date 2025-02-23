@@ -5,6 +5,8 @@ Alias: $healthid = https://healthid.abdm.gov.in
 Alias: $sct = http://snomed.info/sct
 Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $v3-ParticipationType = http://terminology.hl7.org/CodeSystem/v3-ParticipationType
+Alias: $ndhm-identifier-type-code = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code
+Alias: $qualification-code = http://terminology.hl7.org/CodeSystem/v2-0360/2.7
 
 // DiagnosticReport Bundle
 Instance: 52ef0e5a-147f-459a-ac2f-56caf1234144
@@ -13,8 +15,8 @@ Usage: #example
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-20T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
-* identifier.system = "https://ndhm.in/phr"
-* identifier.value = "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
+* identifier.system = "http://sunshine-clinic.in"
+* identifier.value = "52ef0e5a-147f-459a-ac2f-56caf1234144"
 * type = #document
 * timestamp = "2023-10-25T12:18:10.984+05:30"
 // entry for Composition resource
@@ -54,10 +56,10 @@ Usage: #inline
 * encounter.type = "Encounter"
 * custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Surgical Center, Mumbai"
 * custodian.type = "Organization"
-* title = "Complete Diagnostic Report"
+* title = "Biopsy Report"
 // DiagnosticReport section with entries
 * section.title = "Diagnostic Reports"
-* section.code = $loinc#11506-3 "Progress note"
+* section.code = $sct#726566009 "Pathology biopsy report"
 * section.entry = Reference(urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3)
 
 // DiagnosticReport Resource (DiagnosticReport Section: Pathology Report)
@@ -88,14 +90,14 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-20T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// Aadhaar Number (NDHM Standard)
-* identifier[+].system = "https://ndhm.gov.in/id"
-* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
-* identifier[=].value = "1234 1234 1234"
+// Medical record number
+* identifier[+].system = "http://sunshine-clinic.in/patient"
+* identifier[=].type.coding[0] = http://terminology.hl7.org/CodeSystem/v2-0203#MR "Medical record number"
+* identifier[=].value = "UHID:123456789012"
 // ABHA Address (NDHM Standard)
-* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[+].system = "https://healthid.abdm.gov.in"
 * identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
-* identifier[=].value = "Meera.sharma@abha.in"
+* identifier[=].value = "meera.sharma@abdm"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
@@ -125,8 +127,8 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://facility.ndhm.gov.in"
-* identifier[0].value = "1c521af9-92c9-41e9-92f5-58a411bf56d0"
+* identifier[0].system = "https://facility.abdm.gov.in"
+* identifier[0].value = "IN2910086555"
 
 // Practitioner resource
 Instance: 41295111-04f9-4b83-b186-ef2975db1c7e
@@ -135,9 +137,12 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-20T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
-* identifier.type = $v2-0203#MD "Medical License number"
-* identifier.system = "https://doctor.ndhm.gov.in"
-* identifier.value = "56-1234-5678-9012"
+* identifier[0].type = $v2-0203#MD "Medical License number"
+* identifier[=].system = "https://www.nmc.org.in"
+* identifier[=].value = "2015073222"
+* identifier[+].type = $ndhm-identifier-type-code#HPIN "Health Practitioner ID issued by NDHM"
+* identifier[=].system = "https://nhpr.abdm.gov.in/practitioner"
+* identifier[=].value = "56-1234-5678-9012"
 * name.text = "Dr. Priya Singh"
 * name.family = "Singh"
 * name.given = "Priya"
@@ -175,5 +180,5 @@ Usage: #inline
 * period.end = "2023-10-20T10:00:00+05:30"
 * location.location = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Surgical Center, Mumbai"
 * location.location.type = "Location"
-* diagnosis[0].condition.reference = "Condition/condition-infiltrating-duct-carcinoma"
-* diagnosis[0].use = http://terminology.hl7.org/CodeSystem/diagnosis-role#AD "Admission diagnosis"
+* diagnosis[0].condition.reference = "urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d"
+// diagnosis[0].use = http://terminology.hl7.org/CodeSystem/diagnosis-role#AD "Admission diagnosis"

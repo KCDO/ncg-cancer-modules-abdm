@@ -367,7 +367,7 @@
               ],
               "text": "Provider number"
             },
-            "system": "https://facility.ndhm.gov.in",
+            "system": "https://facility.abdm.gov.in",
             "value": "[FACILITY-ID-FROM-REGISTRY]"
           }
         ],

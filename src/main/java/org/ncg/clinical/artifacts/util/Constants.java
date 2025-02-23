@@ -121,7 +121,7 @@ public class Constants {
 	public static final String OP_CONSULT_RECORD_CANCER_TYPE = "OPConsultRecord-CancerType";
 	public static final String EMAIL = "email";
 	public static final String PHONE = "phone";
-	public static final String HTTPS_FACILITY_NDHM_GOV_IN = "https://facility.ndhm.gov.in";
+	public static final String HTTPS_FACILITY_NDHM_GOV_IN = "https://facility.abdm.gov.in";
 	public static final String FACILITY_ID_FROM_REGISTRY = "[FACILITY-ID-FROM-REGISTRY]";
 	public static final String DIAGNOSTIC_REPORT_SECTION = "Diagnostic Report Section";
 	public static final String PRACTITIONER = "Practitioner";

@@ -199,7 +199,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-11-01T09:00:00+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
 * identifier.type = $v2-0203#MD "Medical License number"
-* identifier.system = "https://nhpr.abdm.gov.in"
+* identifier.system = "https://nhpr.abdm.gov.in/practitioner"
 * identifier.value = "23-4536-7890-1245"  
 * name.text = "Dr. Vikram Patel"
 * name.family = "Patel"

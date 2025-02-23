@@ -5,6 +5,8 @@ Alias: $healthid = https://healthid.abdm.gov.in
 Alias: $sct = http://snomed.info/sct
 Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $v3-ParticipationType = http://terminology.hl7.org/CodeSystem/v3-ParticipationType
+Alias: $ndhm-identifier-type-code = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code
+Alias: $qualification-code = http://terminology.hl7.org/CodeSystem/v2-0360/2.7
 
 // DiagnosticReport Bundle
 Instance: 52ef0e5a-147f-459a-ac2f-56caf1234144
@@ -13,8 +15,8 @@ Usage: #example
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-15T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
-* identifier.system = "https://ndhm.in/phr"
-* identifier.value = "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
+* identifier.system = "http://sunshine-clinic.in"
+* identifier.value = "52ef0e5a-147f-459a-ac2f-56caf1234144"
 * type = #document
 * timestamp = "2023-10-15T12:18:10.984+05:30"
 // entry for Composition resource
@@ -51,11 +53,12 @@ Usage: #inline
 * encounter.type = "Encounter"
 * custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Radiology Center, Mumbai"
 * custodian.type = "Organization"
-* title = "Complete Diagnostic Report"
+* title = "Diagnostic Report"
 // DiagnosticReport section with entries
 * section.title = "Diagnostic Reports"
-* section.code = $loinc#11506-3 "Progress note"
+* section.code = $sct#371527006 "Radiology report"
 * section.entry[0] = Reference(urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3)
+* section.entry[0].type = "DiagnosticReport"
 
 // DiagnosticReport Resource (DiagnosticReport Section: Mammogram Report)
 Instance: ee47d72b-3209-4c2c-8385-53cebe4dc9a3
@@ -79,14 +82,14 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-15T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// Aadhaar Number (NDHM Standard)
-* identifier[+].system = "https://ndhm.gov.in/id"
-* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
-* identifier[=].value = "1234 1234 1234"
+// Medical record number
+* identifier[+].system = "http://sunshine-clinic.in/patient"
+* identifier[=].type.coding[0] = http://terminology.hl7.org/CodeSystem/v2-0203#MR "Medical record number"
+* identifier[=].value = "UHID:123456789012"
 // ABHA Address (NDHM Standard)
-* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[+].system = "https://healthid.abdm.gov.in"
 * identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
-* identifier[=].value = "Meera.sharma@abha.in"
+* identifier[=].value = "meera.sharma@abdm"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
@@ -116,8 +119,8 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://facility.ndhm.gov.in"
-* identifier[0].value = "1c521af9-92c9-41e9-92f5-58a411bf56d0"
+* identifier[0].system = "https://facility.abdm.gov.in"
+* identifier[0].value = "IN2910086555" // HFR ID IN2910086528
 
 // Practitioner resource
 Instance: 41295111-04f9-4b83-b186-ef2975db1c7e
@@ -127,8 +130,8 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-15T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
 * identifier.type = $v2-0203#MD "Medical License number"
-* identifier.system = "https://doctor.ndhm.gov.in"
-* identifier.value = "45-7896-1234-5678"
+* identifier.system = "https://www.nmc.org.in"
+* identifier.value = "2015073877"
 * name.text = "Dr. Rajesh Kumar"
 * name.family = "Kumar"
 * name.given = "Rajesh"
