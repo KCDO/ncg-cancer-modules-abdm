@@ -89,9 +89,9 @@ Usage: #inline
 * section[=].entry[=].type = "Procedure"
 
 //section for FollowUp
-* section[+].title = "Care plan"
+* section[+].title = "Follow-up"
 * section[=].code = $sct#734163000 "Care plan" 
-* section[=].code.text = "Follow-up encounter"
+* section[=].code.text = "Care plan"
 //entry for Appointment resource: FollowUp 
 * section[=].entry[0] = Reference(urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d)
 * section[=].entry[=].type = "Appointment"

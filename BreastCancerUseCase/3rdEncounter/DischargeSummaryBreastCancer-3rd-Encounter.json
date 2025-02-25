@@ -101,7 +101,7 @@
             ]
           },
           {
-            "title": "Care plan",
+            "title": "Follow-up",
             "code": {
               "coding": [
                 {
@@ -110,7 +110,7 @@
                   "display": "Care plan"
                 }
               ],
-              "text": "Follow-up encounter"
+              "text": "Care plan"
             },
             "entry": [
               {
