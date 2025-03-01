@@ -126,7 +126,7 @@ Usage: #inline
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
 * identifier.type = $v2-0203#PRN "Provider number"
 * identifier.type.text = "Provider number"
-* identifier.system = "https://facility.ndhm.gov.in"
+* identifier.system = "https://facility.abdm.gov.in"
 * identifier.value = "[FACILITY-ID-FROM-REGISTRY]"
 * name = "XYZ Lab Pvt.Ltd."
 * telecom[0].system = #phone

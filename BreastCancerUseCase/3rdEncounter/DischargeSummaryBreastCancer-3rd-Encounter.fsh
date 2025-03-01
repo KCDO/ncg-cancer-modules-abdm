@@ -10,6 +10,7 @@ Alias: $v3-RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 Alias: $encounter-class = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $participant-type = http://terminology.hl7.org/CodeSystem/v3-ParticipationType
 Alias: $v2-0074 = http://terminology.hl7.org/CodeSystem/v2-0074
+Alias: $ndhm-identifier-type-code = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code
 
 Instance: 9f87919c-65ee-424a-8ab8-bc9cbd394555
 InstanceOf: Bundle
@@ -17,7 +18,7 @@ Usage: #example
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
-* identifier.system = "http://hip.in"
+* identifier.system = "http://sunshine-clinic.in"
 * identifier.value = "9f87919c-65ee-424a-8ab8-bc9cbd394555"
 * type = #document
 * timestamp = "2023-10-10T12:18:10.984+05:30"
@@ -56,8 +57,6 @@ Usage: #inline
 * status = #final
 * type = $sct#373942005 "Discharge summary"
 * type.text = "Discharge Summary"
-* identifier.system = "https://ndhm.in/phr"
-* identifier.value = "d5c1fb49-17e8-41a4-8a4e-7c0f93e48134"
 // set Patient as subject
 * subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d)
 * subject.type = "Patient"
@@ -68,7 +67,7 @@ Usage: #inline
 // set Practitioner as author
 * author = Reference(urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb) "Dr. Priya Singh"
 * author.type = "Practitioner"
-* title = "Consultation Report"
+* title = "Discharge Summary"
 // set Organization as custodian
 * custodian = Reference(urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162) "Sunshine Surgical Center, Mumbai"
 * custodian.type = "Organization"
@@ -83,16 +82,16 @@ Usage: #inline
 
 // section for Procedure
 * section[+].title = "Procedure"
-* section[=].code = $sct#371525003 "Clinical procedure report"
+* section[=].code = $sct#1003640003 "History of past procedure section"
 * section[=].code.text = "Clinical procedure report"
 // Procedure Resource (Past Surgical History: Hysterectomy)
 * section[=].entry[0] = Reference(urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2)
 * section[=].entry[=].type = "Procedure"
 
 //section for FollowUp
-* section[+].title = "FollowUp"
-* section[=].code = $sct#390906007 "Follow-up encounter" 
-* section[=].code.text = "Follow-up encounter"
+* section[+].title = "Follow-up"
+* section[=].code = $sct#734163000 "Care plan" 
+* section[=].code.text = "Care plan"
 //entry for Appointment resource: FollowUp 
 * section[=].entry[0] = Reference(urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d)
 * section[=].entry[=].type = "Appointment"
@@ -180,14 +179,14 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// Aadhaar Number (NDHM Standard)
-* identifier[+].system = "https://ndhm.gov.in/id"
-* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
-* identifier[=].value = "1234 1234 1234"
+// Medical record number
+* identifier[+].system = "http://sunshine-clinic.in/patient"
+* identifier[=].type.coding[0] = http://terminology.hl7.org/CodeSystem/v2-0203#MR "Medical record number"
+* identifier[=].value = "UHID:123456789012"
 // ABHA Address (NDHM Standard)
-* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[+].system = "https://healthid.abdm.gov.in"
 * identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
-* identifier[=].value = "Meera.sharma@abha.in"
+* identifier[=].value = "meera.sharma@abdm"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
@@ -209,14 +208,14 @@ Usage: #inline
 * meta.lastUpdated = "2023-12-10T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
 * status = #finished
-* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "Outpatient encounter"
+* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#IMP "inpatient encounter"
 * text.status = #generated
 * text.div = """
   <div xmlns="http://www.w3.org/1999/xhtml">
     <p>Follow up on October 25, 2023 for report discussion.</p>
   </div>
 """
-* type[0] = http://snomed.info/sct#185349003 "Encounter for check up"
+* type[0] = http://snomed.info/sct#86273004 "Biopsy"
 * subject.reference = "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d"
 * subject.display = "Meera Sharma"
 // * participant[0].type[0].coding[0] = http://terminology.hl7.org/CodeSystem/participant-type#PPRF "Primary Performer"
@@ -234,14 +233,15 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-20T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
-* identifier.type = $v2-0203#MD "Medical License number"
-* identifier.system = "https://doctor.ndhm.gov.in"
-* identifier.value = "56-1234-5678-9012"
+* identifier[0].type = $v2-0203#MD "Medical License number"
+* identifier[=].system = "https://www.nmc.org.in"
+* identifier[=].value = "2015073222"
+* identifier[+].type = $ndhm-identifier-type-code#HPIN "Health Practitioner ID issued by NDHM"
+* identifier[=].system = "https://nhpr.abdm.gov.in/practitioner"
+* identifier[=].value = "56-1234-5678-9012" 
 * name.text = "Dr. Priya Singh"
 * name.family = "Singh"
 * name.given = "Priya"
-* qualification.code = $sct#304292004 "Surgeon (occupation)"
-* qualification.issuer = Reference(urn:uuid:certificate-authority)
 
 // Organization resource
 Instance: 274ba0e5-e6ed-400b-a573-9adf110b0162
@@ -259,5 +259,5 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://facility.ndhm.gov.in"
-* identifier[0].value = "1c521af9-92c9-41e9-92f5-58a411bf56d0"
+* identifier[0].system = "https://facility.abdm.gov.in"
+* identifier[0].value = "IN2910086529" // HFR ID IN2910086529

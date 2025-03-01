@@ -19,6 +19,8 @@ Alias: $ucum = http://unitsofmeasure.org
 Alias: $v3-RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 Alias: $encounter-class = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $participant-type = http://terminology.hl7.org/CodeSystem/v3-ParticipationType
+Alias: $ndhm-identifier-type-code = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code
+Alias: $qualification-code = http://terminology.hl7.org/CodeSystem/v2-0360/2.7
 
 Instance: 52ef0e5a-147f-45a8-ac2f-56caf1234144
 InstanceOf: Bundle
@@ -26,7 +28,7 @@ Usage: #example
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
-* identifier.system = "http://hip.in"
+* identifier.system = "http://sunshine-clinic.in"
 * identifier.value = "52ef0e5a-147f-45a8-ac2f-56caf1234144"
 * type = #document
 * timestamp = "2023-10-10T12:18:10.984+05:30"
@@ -89,8 +91,6 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-10T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
 * language = #en-IN
-* identifier.system = "https://ndhm.in/phr"
-* identifier.value = "7230e12b-d0f7-499c-925d-9a3046d10877"
 * status = #final
 * type = $sct#371530004 "Clinical consultation report"
 * type.text = "Clinical consultation report"
@@ -131,8 +131,8 @@ Usage: #inline
 // * section[=].entry[=].type = "Observation"
 
 // section for Procedure
-// * section[+].title = "Procedure"
-// * section[=].code = $sct#371525003 "Clinical procedure report"
+// * section[+].title = "Procedure" 
+// * section[=].code = $sct#1003640003 "History of past procedure section"
 // * section[=].code.text = "Clinical procedure report"
 // // Procedure Resource (Past Surgical History: Hysterectomy)
 // * section[=].entry[+] = Reference(urn:uuid:01eeb933-3210-4eee-975c-103720fd86fd)
@@ -200,19 +200,19 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
-// Aadhaar Number (NDHM Standard)
-* identifier[+].system = "https://ndhm.gov.in/id"
-* identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ADN "Adhaar number"
-* identifier[=].value = "1234 1234 1234"
+// Medical record number
+* identifier[+].system = "http://sunshine-clinic.in/patient"
+* identifier[=].type.coding[0] = http://terminology.hl7.org/CodeSystem/v2-0203#MR "Medical record number"
+* identifier[=].value = "UHID:123456789012"
 // ABHA Address (NDHM Standard)
-* identifier[+].system = "https://ndhm.gov.in/id"
+* identifier[+].system = "https://healthid.abdm.gov.in"
 * identifier[=].type.coding[0] = https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code#ABHA "Ayushman Bharat Health Account (ABHA) ID"
-* identifier[=].value = "Meera.sharma@abha.in"
+* identifier[=].value = "meera.sharma@abdm"
 * name.text = "Meera Sharma"
 * name.family = "Sharma"
 * name.given = "Meera"
 // * telecom.system = #email
-// * telecom.value = "Meera.sharma@abha.in"
+// * telecom.value = "Meera.sharma@gmail.com"
 * gender = #female
 * birthDate = "1971-01-01"
 // * address.type = #both
@@ -356,14 +356,17 @@ Usage: #inline
 * meta.versionId = "0"
 * meta.lastUpdated = "2023-10-10T09:00:00+05:30" 
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
-* identifier.type = $v2-0203#MD "Medical License number"
-* identifier.system = "https://nhpr.abdm.gov.in"
-* identifier.value = "23-4536-7890-1245" 
+* identifier[0].type = $v2-0203#MD "Medical License number"
+* identifier[=].system = "https://www.nmc.org.in"
+* identifier[=].value = "2015073907"
+* identifier[+].type = $ndhm-identifier-type-code#HPIN "Health Practitioner ID issued by NDHM"
+* identifier[=].system = "https://nhpr.abdm.gov.in/practitioner"
+* identifier[=].value = "23-4536-7890-1245" 
 * name.text = "Dr. Anjali Verma"
 * name.family = "Verma"
 * name.given[0] = "Anjali"
-* qualification[0].code = $sct#309343006 "Physician"
-// * qualification[0].issuer = Reference(urn:uuid:certificate-authority)
+* qualification.code = $qualification-code#MD "Doctor of Medicine"
+* qualification.code.text = "Doctor of Medicine"
 
 // Organization resource
 Instance: df9cc473-6f17-429c-8d13-8db5f8f923a2
@@ -376,7 +379,7 @@ Usage: #inline
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PRN
 * identifier[0].type.coding[0].display = "Provider number"
-* identifier[0].system = "https://hfr.abdm.gov.in"
+* identifier[0].system = "https://facility.abdm.gov.in"
 * identifier[0].value = "IN2910086528" // HFR ID IN2910086528
 // * address[0].text = "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 // * address[0].city = "Mumbai"

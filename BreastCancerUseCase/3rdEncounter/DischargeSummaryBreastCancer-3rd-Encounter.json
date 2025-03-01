@@ -9,7 +9,7 @@
     ]
   },
   "identifier": {
-    "system": "http://hip.in",
+    "system": "http://sunshine-clinic.in",
     "value": "9f87919c-65ee-424a-8ab8-bc9cbd394555"
   },
   "type": "document",
@@ -39,10 +39,6 @@
           ],
           "text": "Discharge Summary"
         },
-        "identifier": {
-          "system": "https://ndhm.in/phr",
-          "value": "d5c1fb49-17e8-41a4-8a4e-7c0f93e48134"
-        },
         "subject": {
           "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
           "type": "Patient"
@@ -59,7 +55,7 @@
             "type": "Practitioner"
           }
         ],
-        "title": "Consultation Report",
+        "title": "Discharge Summary",
         "custodian": {
           "reference": "urn:uuid:274ba0e5-e6ed-400b-a573-9adf110b0162",
           "display": "Sunshine Surgical Center, Mumbai",
@@ -90,9 +86,9 @@
             "code": {
               "coding": [
                 {
-                  "code": "371525003",
+                  "code": "1003640003",
                   "system": "http://snomed.info/sct",
-                  "display": "Clinical procedure report"
+                  "display": "History of past procedure section"
                 }
               ],
               "text": "Clinical procedure report"
@@ -105,16 +101,16 @@
             ]
           },
           {
-            "title": "FollowUp",
+            "title": "Follow-up",
             "code": {
               "coding": [
                 {
-                  "code": "390906007",
+                  "code": "734163000",
                   "system": "http://snomed.info/sct",
-                  "display": "Follow-up encounter"
+                  "display": "Care plan"
                 }
               ],
-              "text": "Follow-up encounter"
+              "text": "Care plan"
             },
             "entry": [
               {
@@ -140,20 +136,20 @@
         },
         "identifier": [
           {
-            "system": "https://ndhm.gov.in/id",
+            "system": "http://sunshine-clinic.in/patient",
             "type": {
               "coding": [
                 {
-                  "code": "ADN",
-                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
-                  "display": "Adhaar number"
+                  "code": "MR",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Medical record number"
                 }
               ]
             },
-            "value": "1234 1234 1234"
+            "value": "UHID:123456789012"
           },
           {
-            "system": "https://ndhm.gov.in/id",
+            "system": "https://healthid.abdm.gov.in",
             "type": {
               "coding": [
                 {
@@ -163,7 +159,7 @@
                 }
               ]
             },
-            "value": "Meera.sharma@abha.in"
+            "value": "meera.sharma@abdm"
           }
         ],
         "name": [
@@ -282,9 +278,9 @@
         },
         "status": "finished",
         "class": {
-          "code": "AMB",
+          "code": "IMP",
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-          "display": "Outpatient encounter"
+          "display": "inpatient encounter"
         },
         "text": {
           "status": "generated",
@@ -294,9 +290,9 @@
           {
             "coding": [
               {
-                "code": "185349003",
+                "code": "86273004",
                 "system": "http://snomed.info/sct",
-                "display": "Encounter for check up"
+                "display": "Biopsy"
               }
             ]
           }
@@ -356,8 +352,8 @@
                 }
               ]
             },
-            "system": "https://facility.ndhm.gov.in",
-            "value": "1c521af9-92c9-41e9-92f5-58a411bf56d0"
+            "system": "https://facility.abdm.gov.in",
+            "value": "IN2910086529"
           }
         ]
       }
@@ -385,7 +381,20 @@
                 }
               ]
             },
-            "system": "https://doctor.ndhm.gov.in",
+            "system": "https://www.nmc.org.in",
+            "value": "2015073222"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "HPIN",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Health Practitioner ID issued by NDHM"
+                }
+              ]
+            },
+            "system": "https://nhpr.abdm.gov.in/practitioner",
             "value": "56-1234-5678-9012"
           }
         ],
@@ -396,22 +405,6 @@
             "given": [
               "Priya"
             ]
-          }
-        ],
-        "qualification": [
-          {
-            "code": {
-              "coding": [
-                {
-                  "code": "304292004",
-                  "system": "http://snomed.info/sct",
-                  "display": "Surgeon (occupation)"
-                }
-              ]
-            },
-            "issuer": {
-              "reference": "urn:uuid:certificate-authority"
-            }
           }
         ]
       }
