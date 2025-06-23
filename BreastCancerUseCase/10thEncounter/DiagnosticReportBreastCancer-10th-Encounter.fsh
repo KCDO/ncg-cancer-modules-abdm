@@ -78,6 +78,7 @@ Usage: #inline
 * effectiveDateTime = "2024-12-30T08:00:00Z"
 * result[0] = Reference(urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59)
 * result[+] = Reference(urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6)
+* resultsInterpreter = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Vikram Patel"
 
 // Observation Resource of Post-Surgery Oncology Follow-Up Report for Discussion
 Instance: 2d5cb6d7-ec9c-4207-9366-9874b3bfbf59

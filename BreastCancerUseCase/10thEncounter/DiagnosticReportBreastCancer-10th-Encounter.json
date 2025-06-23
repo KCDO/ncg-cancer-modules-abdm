@@ -111,6 +111,12 @@
           {
             "reference": "urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6"
           }
+        ],
+        "resultsInterpreter": [
+          {
+            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+            "display": "Dr. Vikram Patel"
+          }
         ]
       }
     },

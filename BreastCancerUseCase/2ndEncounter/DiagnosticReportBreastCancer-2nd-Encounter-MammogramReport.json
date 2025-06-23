@@ -113,6 +113,12 @@
           {
             "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
           }
+        ],
+        "resultsInterpreter": [
+          {
+            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+            "display": "Dr. Rajesh Kumar"
+          }
         ]
       }
     },
