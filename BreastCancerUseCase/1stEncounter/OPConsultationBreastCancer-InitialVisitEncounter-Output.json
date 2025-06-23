@@ -463,8 +463,8 @@
             "code": {
               "coding": [
                 {
-                  "code": "271649006",
-                  "system": "http://snomed.info/sct",
+                  "code": "8480-6",
+                  "system": "http://loinc.org",
                   "display": "Systolic blood pressure"
                 }
               ]
@@ -478,8 +478,8 @@
             "code": {
               "coding": [
                 {
-                  "code": "271650006",
-                  "system": "http://snomed.info/sct",
+                  "code": "8462-4",
+                  "system": "http://loinc.org",
                   "display": "Diastolic blood pressure"
                 }
               ]
@@ -493,9 +493,9 @@
             "code": {
               "coding": [
                 {
-                  "code": "78564009",
-                  "system": "http://snomed.info/sct",
-                  "display": "Pulse rate"
+                  "code": "8867-4",
+                  "system": "http://loinc.org",
+                  "display": "Heart rate"
                 }
               ]
             },
@@ -508,8 +508,8 @@
             "code": {
               "coding": [
                 {
-                  "code": "386725007",
-                  "system": "http://snomed.info/sct",
+                  "code": "8310-5",
+                  "system": "http://loinc.org",
                   "display": "Body temperature"
                 }
               ]
@@ -523,8 +523,8 @@
             "code": {
               "coding": [
                 {
-                  "code": "86290005",
-                  "system": "http://snomed.info/sct",
+                  "code": "9279-1",
+                  "system": "http://loinc.org",
                   "display": "Respiratory rate"
                 }
               ]
@@ -538,9 +538,9 @@
             "code": {
               "coding": [
                 {
-                  "code": "60621009",
-                  "system": "http://snomed.info/sct",
-                  "display": "BMI - Body mass index"
+                  "code": "39156-5",
+                  "system": "http://loinc.org",
+                  "display": "Body mass index (BMI) [Ratio]"
                 }
               ]
             },

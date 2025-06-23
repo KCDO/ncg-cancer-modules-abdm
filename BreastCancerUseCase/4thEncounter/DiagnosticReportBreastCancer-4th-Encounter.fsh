@@ -80,6 +80,7 @@ Ki-67: 30%.
 Referred to oncology for further management.
 """
 * performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
+* resultsInterpreter = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Priya Singh"
 
 // Patient resource
 Instance: 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44

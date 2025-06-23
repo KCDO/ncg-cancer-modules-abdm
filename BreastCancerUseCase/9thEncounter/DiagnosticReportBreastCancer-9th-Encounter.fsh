@@ -82,6 +82,7 @@ Usage: #inline
 * result[0] = Reference(urn:uuid:2d5cb6d7-ec9c-4207-9366-9874b3bfbf59)
 * result[+] = Reference(urn:uuid:79d9c8de-c54a-4cbb-9a58-1b1a4c3b95f6)
 * result[+] = Reference(urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db)
+* resultsInterpreter = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Priya Singh"
 
 // Observation Resource of Surgical Pathology Report for Tumor Size
 Instance: 2d5cb6d7-ec9c-4207-9366-9874b3bfbf59

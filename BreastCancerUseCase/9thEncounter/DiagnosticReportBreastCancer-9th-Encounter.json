@@ -114,6 +114,12 @@
           {
             "reference": "urn:uuid:3fda073d-9244-46c8-835e-5d85e50f14db"
           }
+        ],
+        "resultsInterpreter": [
+          {
+            "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+            "display": "Dr. Priya Singh"
+          }
         ]
       }
     },

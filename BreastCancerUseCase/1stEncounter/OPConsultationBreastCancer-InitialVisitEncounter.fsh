@@ -416,27 +416,27 @@ Usage: #inline
 * subject.type = "Patient"
 // * effectiveDateTime = "2023-10-10T09:30:00+05:30"
 
-* component[0].code = $sct#271649006 "Systolic blood pressure"
+* component[0].code = $loinc#8480-6 "Systolic blood pressure"
 * component[0].valueQuantity.value = 130
 * component[0].valueQuantity.unit = "mmHg"
 
-* component[1].code = $sct#271650006 "Diastolic blood pressure"
+* component[1].code = $loinc#8462-4 "Diastolic blood pressure"
 * component[1].valueQuantity.value = 85
 * component[1].valueQuantity.unit = "mmHg"
 
-* component[2].code = $sct#78564009 "Pulse rate"
+* component[2].code = $loinc#8867-4 "Heart rate"
 * component[2].valueQuantity.value = 78
 * component[2].valueQuantity.unit = "bpm"
 
-* component[3].code = $sct#386725007 "Body temperature"
+* component[3].code = $loinc#8310-5 "Body temperature"
 * component[3].valueQuantity.value = 98.6
 * component[3].valueQuantity.unit = "°F"
 
-* component[4].code = $sct#86290005 "Respiratory rate"
+* component[4].code = $loinc#9279-1 "Respiratory rate"
 * component[4].valueQuantity.value = 16
 * component[4].valueQuantity.unit = "breaths/min"
 
-* component[5].code = $sct#60621009 "BMI - Body mass index"
+* component[5].code = $loinc#39156-5 "Body mass index (BMI) [Ratio]"
 * component[5].valueQuantity.value = 25
 * component[5].valueQuantity.unit = "kg/m2"
 
