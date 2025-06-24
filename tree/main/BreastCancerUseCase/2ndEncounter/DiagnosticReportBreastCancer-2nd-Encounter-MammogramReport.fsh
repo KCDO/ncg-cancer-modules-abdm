@@ -20,9 +20,9 @@ Usage: #example
 // entry for Composition resource
 * entry[0].fullUrl = "urn:uuid:9bf7226d-221f-4802-9fa2-27a330b22b34"
 * entry[=].resource = 9bf7226d-221f-4802-9fa2-27a330b22b34
-// entry for DiagnosticReport Resource (Ultrasound Report)
-* entry[+].fullUrl = "urn:uuid:6ac7cc90-7d88-458e-8c93-d6fb9130be55"
-* entry[=].resource = 6ac7cc90-7d88-458e-8c93-d6fb9130be55
+// entry for DiagnosticReport Resource (Mammogram Report)
+* entry[+].fullUrl = "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3"
+* entry[=].resource = ee47d72b-3209-4c2c-8385-53cebe4dc9a3
 // entry for Patient resource
 * entry[+].fullUrl = "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
 * entry[=].resource = 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44
@@ -55,10 +55,10 @@ Usage: #inline
 // DiagnosticReport section with entries
 * section.title = "Diagnostic Reports"
 * section.code = $loinc#11506-3 "Progress note"
-* section.entry[0] = Reference(urn:uuid:6ac7cc90-7d88-458e-8c93-d6fb9130be55)
+* section.entry[0] = Reference(urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3)
 
-// DiagnosticReport Resource (DiagnosticReport Section: Ultrasound Report)
-Instance: 6ac7cc90-7d88-458e-8c93-d6fb9130be55
+// DiagnosticReport Resource (DiagnosticReport Section: Mammogram Report)
+Instance: ee47d72b-3209-4c2c-8385-53cebe4dc9a3
 InstanceOf: DiagnosticReport
 Usage: #inline
 * status = #final
@@ -67,10 +67,11 @@ Usage: #inline
 * code.text = "Diagnostic mammogram and ultrasound panel Breast - right Document"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2023-10-15T11:00:00Z"
-* issued = "2023-10-15T11:30:00Z"
-* conclusion = "Right breast: Hypoechoic mass with irregular margins, measuring 2.1 cm x 1.8 cm. No significant axillary lymphadenopathy."
+* effectiveDateTime = "2023-10-15T10:00:00Z"
+* issued = "2023-10-15T10:30:00Z"
+* conclusion = "Right breast: Suspicious mass in the upper outer quadrant, BI-RADS category 4. Recommended core needle biopsy of the mass."
 * performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
+* resultsInterpreter = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Rajesh Kumar"
 
 // Patient resource
 Instance: 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44

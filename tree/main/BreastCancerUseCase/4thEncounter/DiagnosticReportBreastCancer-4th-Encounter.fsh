@@ -11,16 +11,16 @@ Instance: 52ef0e5a-147f-459a-ac2f-56caf1234144
 InstanceOf: Bundle
 Usage: #example
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-15T12:18:10.984+05:30"
+* meta.lastUpdated = "2023-10-20T12:18:10.984+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
 * identifier.system = "https://ndhm.in/phr"
 * identifier.value = "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
 * type = #document
-* timestamp = "2023-10-15T12:18:10.984+05:30"
+* timestamp = "2023-10-25T12:18:10.984+05:30"
 // entry for Composition resource
 * entry[0].fullUrl = "urn:uuid:9bf7226d-221f-4802-9fa2-27a330b22b34"
 * entry[=].resource = 9bf7226d-221f-4802-9fa2-27a330b22b34
-// entry for DiagnosticReport Resource (Mammogram Report)
+// entry for DiagnosticReport Resource (Pathology Report)
 * entry[+].fullUrl = "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3"
 * entry[=].resource = ee47d72b-3209-4c2c-8385-53cebe4dc9a3
 // entry for Patient resource
@@ -32,6 +32,9 @@ Usage: #example
 // entry for Practitioner resource
 * entry[+].fullUrl = "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e"
 * entry[=].resource = 41295111-04f9-4b83-b186-ef2975db1c7e
+// entry for Condition resource for encounter.diagnosis
+* entry[+].fullUrl = "urn:uuid:5dd308b9-dc4c-4953-bcb1-d9c403a42d4d"
+* entry[=].resource = 5dd308b9-dc4c-4953-bcb1-d9c403a42d4d
 // entry for Encounter resource
 * entry[+].fullUrl = "urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13"
 * entry[=].resource = 1b2942c5-9a2e-4546-9a9e-0307e5c2fc13
@@ -44,40 +47,47 @@ Usage: #inline
 * type = $sct#721981007 "Diagnostic studies report"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
-* date = "2023-10-15T14:30:00Z"
-* author = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Radiology Center, Mumbai"
+* date = "2023-10-25T14:30:00Z"
+* author = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Surgical Center, Mumbai"
 * author.type = "Organization"
 * encounter = Reference(urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13)
 * encounter.type = "Encounter"
-* custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Radiology Center, Mumbai"
+* custodian = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Surgical Center, Mumbai"
 * custodian.type = "Organization"
 * title = "Complete Diagnostic Report"
 // DiagnosticReport section with entries
 * section.title = "Diagnostic Reports"
 * section.code = $loinc#11506-3 "Progress note"
-* section.entry[0] = Reference(urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3)
+* section.entry = Reference(urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3)
 
-// DiagnosticReport Resource (DiagnosticReport Section: Mammogram Report)
+// DiagnosticReport Resource (DiagnosticReport Section: Pathology Report)
 Instance: ee47d72b-3209-4c2c-8385-53cebe4dc9a3
 InstanceOf: DiagnosticReport
 Usage: #inline
 * status = #final
-* category = $v2-0074#RAD "Radiology"
-* code = $loinc#86359-7 "Diagnostic mammogram and ultrasound panel Breast - right Document"
-* code.text = "Diagnostic mammogram and ultrasound panel Breast - right Document"
+* category = $v2-0074#LAB "Laboratory"
+* code = $loinc#66110-8 "Breast Pathology biopsy report"
+* code.text = "Breast Pathology biopsy report"
 * subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
 * subject.type = "Patient"
-* effectiveDateTime = "2023-10-15T10:00:00Z"
-* issued = "2023-10-15T10:30:00Z"
-* conclusion = "Right breast: Suspicious mass in the upper outer quadrant, BI-RADS category 4. Recommended core needle biopsy of the mass."
+* effectiveDateTime = "2023-10-25T08:00:00Z"
+* issued = "2023-10-25T09:00:00Z"
+* conclusion = """
+Diagnosis: Invasive ductal carcinoma, grade 3.
+ER/PR status: Positive.
+HER2 status: Negative.
+Ki-67: 30%.
+Referred to oncology for further management.
+"""
 * performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
+* resultsInterpreter = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Priya Singh"
 
 // Patient resource
 Instance: 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44
 InstanceOf: Patient
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-15T12:18:11.063+05:30"
+* meta.lastUpdated = "2023-10-20T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
 // Aadhaar Number (NDHM Standard)
 * identifier[+].system = "https://ndhm.gov.in/id"
@@ -105,10 +115,10 @@ Instance: 1c521af9-92c9-41e9-92f5-58a411bf56d0
 InstanceOf: Organization
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-10T09:00:00+05:30"
+* meta.lastUpdated = "2023-10-20T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
-* name = "Sunshine Radiology Center, Mumbai"
-* address.text = "Sunshine Radiology Center, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
+* name = "Sunshine Surgical Center, Mumbai"
+* address.text = "Sunshine Surgical Center, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069"
 * address.city = "Mumbai"
 * address.state = "Maharashtra"
 * address.postalCode = "400069"
@@ -124,33 +134,47 @@ Instance: 41295111-04f9-4b83-b186-ef2975db1c7e
 InstanceOf: Practitioner
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-15T09:00:00+05:30"
+* meta.lastUpdated = "2023-10-20T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
 * identifier.type = $v2-0203#MD "Medical License number"
 * identifier.system = "https://doctor.ndhm.gov.in"
-* identifier.value = "45-7896-1234-5678"
-* name.text = "Dr. Rajesh Kumar"
-* name.family = "Kumar"
-* name.given = "Rajesh"
-* qualification.code = $sct#66862007 "Radiologist (occupation)"
+* identifier.value = "56-1234-5678-9012"
+* name.text = "Dr. Priya Singh"
+* name.family = "Singh"
+* name.given = "Priya"
+* qualification.code = $sct#304292004 "Surgeon (occupation)"
 * qualification.issuer = Reference(urn:uuid:certificate-authority)
+
+//Condition resource for encounter.diagnosis
+Instance: 5dd308b9-dc4c-4953-bcb1-d9c403a42d4d
+InstanceOf: Condition
+Usage: #inline
+* meta.versionId = "1"
+* meta.lastUpdated = "2023-10-25T09:00:00+05:30"
+* code.coding[0].system = $sct
+* code.coding[0].code = #408643008
+* code.coding[0].display = "Infiltrating duct carcinoma of breast (disorder)"
+* subject.reference = "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+* subject.display = "Meera Sharma"
 
 // Encounter resource
 Instance: 1b2942c5-9a2e-4546-9a9e-0307e5c2fc13
 InstanceOf: Encounter
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2023-10-10T09:00:00+05:30"
+* meta.lastUpdated = "2023-10-20T09:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
 * status = #finished
 * class = $v3-ActCode#AMB "Ambulatory"
-* type = $sct#185349003 "Encounter for check up"
+* type = $sct#185349003 "Encounter for check up (procedure)"
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
-* participant.individual = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Rajesh Kumar"
+* participant.individual = Reference(urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e) "Dr. Priya Singh"
 * participant.individual.type = "Practitioner"
 * participant.type = $v3-ParticipationType#ATND "attender"
-* period.start = "2023-10-15T09:00:00+05:30"
-* period.end = "2023-10-15T10:00:00+05:30"
-* location.location = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Radiology Center, Mumbai"
+* period.start = "2023-10-20T09:00:00+05:30"
+* period.end = "2023-10-20T10:00:00+05:30"
+* location.location = Reference(urn:uuid:98d75802-3a61-45a9-98f2-cb0983d82920) "Sunshine Surgical Center, Mumbai"
 * location.location.type = "Location"
+* diagnosis[0].condition.reference = "Condition/condition-infiltrating-duct-carcinoma"
+* diagnosis[0].use = http://terminology.hl7.org/CodeSystem/diagnosis-role#AD "Admission diagnosis"
