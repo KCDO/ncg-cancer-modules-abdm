@@ -48,9 +48,9 @@ Usage: #example
 // //entry for Observation Resource (Menstruation History)
 // * entry[+].fullUrl = "urn:uuid:6314292f-9177-4279-9cd0-74aa1427af50"
 // * entry[=].resource = 6314292f-9177-4279-9cd0-74aa1427af50
-// //entry for FamilyMemberHistory Resource (Family History)
-// * entry[+].fullUrl = "urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c"
-// * entry[=].resource = 5bc7d505-7465-4f94-baa0-e5a086810a5c
+//entry for FamilyMemberHistory Resource (Family History)
+* entry[+].fullUrl = "urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c"
+* entry[=].resource = 5bc7d505-7465-4f94-baa0-e5a086810a5c
 //entry for blood group observation
 * entry[+].fullUrl = "urn:uuid:936b9b09-57c0-4f57-bd64-0337641ef756"
 * entry[=].resource = 936b9b09-57c0-4f57-bd64-0337641ef756
@@ -145,13 +145,13 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:936b9b09-57c0-4f57-bd64-0337641ef756)
 * section[=].entry[=].type = "Observation"
 
-// // section for FamilyHistory
-// * section[+].title = "FamilyHistory"
-// * section[=].code = $sct#422432008 "Family history section"
-// * section[=].code.text = "Family history section"
-// // section entry for FamilyMemberHistory Resource (Family History)
-// * section[=].entry[+] = Reference(urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c)
-// * section[=].entry[=].type = "FamilyMemberHistory"
+// section for FamilyHistory
+* section[+].title = "FamilyHistory"
+* section[=].code = $sct#422432008 "Family history section"
+* section[=].code.text = "Family history section"
+// section entry for FamilyMemberHistory Resource (Family History)
+* section[=].entry[+] = Reference(urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c)
+* section[=].entry[=].type = "FamilyMemberHistory"
 
 // // section for Allergies
 // * section[+].title = "Allergies"
@@ -310,25 +310,25 @@ Usage: #inline
 // * effectiveDateTime = "2024-11-07T12:18:11+05:30"
 // * note.text = "The patient is confirmed as postmenopausal."
 
-// // FamilyMemberHistory Resource (Family History)
-// Instance: 5bc7d505-7465-4f94-baa0-e5a086810a5c
-// InstanceOf: FamilyMemberHistory
-// Usage: #inline
-// * meta.versionId = "0"
-// * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
-// * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
-// * status = #completed
-// * patient = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
-// * patient.type = "Patient"
-// * relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
-// * relationship.text = "Maternal Grandmother"
-// * condition[0].code = $sct#254837009 "Breast cancer"
-// * condition[0].code.text = "Breast Cancer"
-// * condition[0].onsetAge.value = 60
-// * condition[0].onsetAge.unit = "years"
-// * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
-// * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
+// FamilyMemberHistory Resource (Family History)
+Instance: 5bc7d505-7465-4f94-baa0-e5a086810a5c
+InstanceOf: FamilyMemberHistory
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+* status = #completed
+* patient = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
+* patient.type = "Patient"
+* relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
+* relationship.text = "Maternal Grandmother"
+* condition[0].code = $sct#254837009 "Breast cancer"
+* condition[0].code.text = "Breast Cancer"
+* condition[0].onsetAge.value = 60
+* condition[0].onsetAge.unit = "years"
+* condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
+* condition[0].onsetAge.system = "http://unitsofmeasure.org"
+* note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Chemotherapy Session1 Encounter
 // Encounter Resource (Chemotherapy Session1)

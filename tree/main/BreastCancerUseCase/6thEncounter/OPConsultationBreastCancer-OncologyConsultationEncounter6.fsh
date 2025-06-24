@@ -39,6 +39,9 @@ Usage: #example
 //entry for Observation Resource (Past Medical History - Postmenopausal)
 * entry[+].fullUrl = "urn:uuid:755a6178-bb42-4100-a412-062ea87134a8"
 * entry[=].resource = 755a6178-bb42-4100-a412-062ea87134a8
+//entry for FamilyMemberHistory Resource (Family History)
+* entry[+].fullUrl = "urn:uuid:6825b7bc-be13-4918-ba0a-47e2aa0f90e5"
+* entry[=].resource = 6825b7bc-be13-4918-ba0a-47e2aa0f90e5
 //entry for blood group observation
 * entry[+].fullUrl = "urn:uuid:71f13c88-727e-4a15-9320-de2de1464277"
 * entry[=].resource = 71f13c88-727e-4a15-9320-de2de1464277
@@ -110,6 +113,14 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:71f13c88-727e-4a15-9320-de2de1464277)
 * section[=].entry[=].type = "Observation"
 
+// section for FamilyHistory
+* section[+].title = "FamilyHistory"
+* section[=].code = $sct#422432008 "Family history section"
+* section[=].code.text = "Family history section"
+// section entry for FamilyMemberHistory Resource (Family History)
+* section[=].entry[+] = Reference(urn:uuid:6825b7bc-be13-4918-ba0a-47e2aa0f90e5)
+* section[=].entry[=].type = "FamilyMemberHistory"
+
 // Patient Resource
 Instance: 0959dee7-13d4-4a63-81ec-109d37162181
 InstanceOf: Patient
@@ -158,6 +169,26 @@ Usage: #inline
 * subject = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
 * subject.type = "Patient"
 * valueString = "Postmenopausal"
+
+// FamilyMemberHistory Resource (Family History)
+Instance: 6825b7bc-be13-4918-ba0a-47e2aa0f90e5
+InstanceOf: FamilyMemberHistory
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+* status = #completed
+* patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+* patient.type = "Patient"
+* relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
+* relationship.text = "Maternal Grandmother"
+* condition[0].code = $sct#254837009 "Breast cancer"
+* condition[0].code.text = "Breast Cancer"
+* condition[0].onsetAge.value = 60
+* condition[0].onsetAge.unit = "years"
+* condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
+* condition[0].onsetAge.system = "http://unitsofmeasure.org"
+* note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Post – Diagnosis Mental Health Support Encounter
 // Encounter Resource (Post – Diagnosis Mental Health Support)
@@ -241,7 +272,7 @@ InstanceOf: Observation
 Usage: #inline
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-11-01T09:00:00+05:30"
-* meta.profile = "https://example.com/fhir/StructureDefinition/Observation"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 * subject = Reference(urn:uuid:0959dee7-13d4-4a63-81ec-109d37162181) "Meera Sharma"
 * subject.type = "Patient"
