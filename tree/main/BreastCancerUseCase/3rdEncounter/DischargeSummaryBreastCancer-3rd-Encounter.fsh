@@ -30,9 +30,15 @@ Usage: #example
 //entry for DiagnosticReport Resource 
 * entry[+].fullUrl = "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3"
 * entry[=].resource = ee47d72b-3209-4c2c-8385-53cebe4dc9a3
+// entry for CBC Observation
+* entry[+].fullUrl = "urn:uuid:5f91d02a-6dc4-4e1b-908f-c7f1c77d5991"
+* entry[=].resource = 5f91d02a-6dc4-4e1b-908f-c7f1c77d5991
 //entry for Procedure Resource 
 * entry[+].fullUrl = "urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2"
 * entry[=].resource = b2f87d8f-49d7-4f45-b2c6-781623c09bb2
+//entry for FamilyMemberHistory Resource (Family History)
+* entry[+].fullUrl = "urn:uuid:1837fe37-0c45-4ae5-830d-29c30c56739d"
+* entry[=].resource = 1837fe37-0c45-4ae5-830d-29c30c56739d
 //entry for Encounter Resource 
 * entry[+].fullUrl = "urn:uuid:f00f1a30-839c-4ff5-bd05-5651d7a7a5a5"
 * entry[=].resource = f00f1a30-839c-4ff5-bd05-5651d7a7a5a5
@@ -89,6 +95,14 @@ Usage: #inline
 * section[=].entry[0] = Reference(urn:uuid:b2f87d8f-49d7-4f45-b2c6-781623c09bb2)
 * section[=].entry[=].type = "Procedure"
 
+// section for FamilyHistory
+* section[+].title = "FamilyHistory"
+* section[=].code = $sct#422432008 "Family history section"
+* section[=].code.text = "Family history section"
+// section entry for FamilyMemberHistory Resource (Family History)
+* section[=].entry[+] = Reference(urn:uuid:1837fe37-0c45-4ae5-830d-29c30c56739d)
+* section[=].entry[=].type = "FamilyMemberHistory"
+
 //section for FollowUp
 * section[+].title = "FollowUp"
 * section[=].code = $sct#390906007 "Follow-up encounter" 
@@ -101,32 +115,59 @@ Usage: #inline
 Instance: ee47d72b-3209-4c2c-8385-53cebe4dc9a3
 InstanceOf: DiagnosticReport
 Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2023-10-10T12:18:11.125+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DiagnosticReportLab"
 * status = #final
-* category = $v2-0074#LAB "Laboratory"
-* code = $sct#371528001 "Pathology report (record artifact)"
+* category = $sct#408454008 "Clinical microbiology"
+* code = $loinc#58410-2 "CBC panel - Blood by Automated count"
 * code.text = "Pathology report"
-* subject = Reference(urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44) "Meera Sharma"
+* subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
 * subject.type = "Patient"
 * effectiveDateTime = "2024-12-10T08:00:00Z"
 * issued = "2024-12-10T09:00:00Z"
-* conclusion = """
-Complete Blood Count (CBC) Report:
-Red Blood Cell (RBC) Count: 4.5 million cells/mcL (Normal range: 4.2-5.4 million cells/mcL)
-White Blood Cell (WBC) Count: 7,500 cells/mcL (Normal range: 4,000-11,000 cells/mcL)
-1. Neutrophils - Count: 4,500 cells/µL (Normal range: 2,500-7,000 cells/µL)
-2. Lymphocytes - Count: 2,000 cells/µL (Normal range: 1,000-4,000 cells/µL)
-3. Monocytes - Count: 600 cells/µL (Normal range: 100-700 cells/µL)
-4. Eosinophils - Count: 300 cells/µL (Normal range: 50-500 cells/µL)
-5. Basophils - Count: 100 cells/µL (Normal range: 25-100 cells/µL)
-Hemoglobin (Hgb): 13.5 g/dL (Normal range: 12.0-15.5 g/dL)
-Hematocrit (Hct): 40% (Normal range: 36-46%)
-Platelet Count: 250,000 cells/mcL (Normal range: 150,000-450,000 cells/mcL)
-Mean Corpuscular Volume (MCV): 88 fL (Normal range: 80-100 fL)
-Mean Corpuscular Hemoglobin (MCH): 30 pg (Normal range: 27-33 pg)
-Mean Corpuscular Hemoglobin Concentration (MCHC): 34 g/dL (Normal range: 32-36 g/dL)
-Red Cell Distribution Width (RDW): 12.5% (Normal range: 11.5-14.5%)
-"""
 * performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0)
+* result[0] = Reference(urn:uuid:5f91d02a-6dc4-4e1b-908f-c7f1c77d5991)
+* resultsInterpreter = Reference(urn:uuid:83f7c31b-ac12-4ce6-a235-f409b5c151eb) "Dr. Priya Singh"
+* conclusion = "CBC Report is within normal limits."
+
+// Observation for CBC
+Instance: 5f91d02a-6dc4-4e1b-908f-c7f1c77d5991
+InstanceOf: Observation
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2024-12-10T08:30:00Z"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+* status = #final
+* category[0] = $observation-category#laboratory "Laboratory"
+* code = $loinc#58410-2 "CBC panel - Blood by Automated count"
+* code.text = "CBC panel - Blood by Automated count"
+* subject = Reference(urn:uuid:944e725c-c23e-4413-adee-492408bbd74d) "Meera Sharma"
+* subject.type = "Patient"
+* effectiveDateTime = "2024-12-10T08:00:00Z"
+* performer = Reference(urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0) "Sunshine Surgical Center, Mumbai"
+* text.status = #generated
+* text.div = """
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <p>Complete Blood Count (CBC) Report:</p>
+    <ul>
+      <li>Red Blood Cell (RBC) Count: 4.5 million cells/mcL (Normal range: 4.2-5.4 million cells/mcL)</li>
+      <li>White Blood Cell (WBC) Count: 7,500 cells/mcL (Normal range: 4,000-11,000 cells/mcL)</li>
+      <li>Neutrophils: 4,500 cells/µL (Normal range: 2,500-7,000 cells/µL)</li>
+      <li>Lymphocytes: 2,000 cells/µL (Normal range: 1,000-4,000 cells/µL)</li>
+      <li>Monocytes: 600 cells/µL (Normal range: 100-700 cells/µL)</li>
+      <li>Eosinophils: 300 cells/µL (Normal range: 50-500 cells/µL)</li>
+      <li>Basophils: 100 cells/µL (Normal range: 25-100 cells/µL)</li>
+      <li>Hemoglobin (Hgb): 13.5 g/dL (Normal range: 12.0-15.5 g/dL)</li>
+      <li>Hematocrit (Hct): 40% (Normal range: 36-46%)</li>
+      <li>Platelet Count: 250,000 cells/mcL (Normal range: 150,000-450,000 cells/mcL)</li>
+      <li>Mean Corpuscular Volume (MCV): 88 fL (Normal range: 80-100 fL)</li>
+      <li>Mean Corpuscular Hemoglobin (MCH): 30 pg (Normal range: 27-33 pg)</li>
+      <li>Mean Corpuscular Hemoglobin Concentration (MCHC): 34 g/dL (Normal range: 32-36 g/dL)</li>
+      <li>Red Cell Distribution Width (RDW): 12.5% (Normal range: 11.5-14.5%)</li>
+    </ul>
+  </div>
+"""
 
 // Procedure Resource 
 Instance: b2f87d8f-49d7-4f45-b2c6-781623c09bb2
@@ -151,9 +192,11 @@ Usage: #inline
 * meta.lastUpdated = "2023-10-20T12:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Appointment"
 * status = #booked
-* specialty[0] = http://terminology.hl7.org/CodeSystem/practitioner-specialty#general-medicine "General Medicine"
-* specialty[0].text = "General Medicine"
-* appointmentType = http://terminology.hl7.org/CodeSystem/appointment-type#follow-up "Follow-Up"
+* specialty[0] = $sct#408443003 "General medical practice"
+* specialty[0].text = "General medical practice"
+* appointmentType.coding[0].system = $sct
+* appointmentType.coding[0].code = #185389009
+* appointmentType.coding[0].display = "Follow-up visit"
 * priority = 1
 * description = "Follow up on October 25, 2023 for report discussion."
 * start = "2023-10-20T10:00:00+05:30" 
@@ -172,6 +215,26 @@ Usage: #inline
     <p>Follow up on October 25, 2023 for report discussion.</p>
   </div>
 """
+
+// FamilyMemberHistory Resource (Family History)
+Instance: 1837fe37-0c45-4ae5-830d-29c30c56739d
+InstanceOf: FamilyMemberHistory
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2023-10-10T12:18:11.143+05:30" 
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+* status = #completed
+* patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+* patient.type = "Patient"
+* relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
+* relationship.text = "Maternal Grandmother"
+* condition[0].code = $sct#254837009 "Breast cancer"
+* condition[0].code.text = "Breast Cancer"
+* condition[0].onsetAge.value = 60
+* condition[0].onsetAge.unit = "years"
+* condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
+* condition[0].onsetAge.system = "http://unitsofmeasure.org"
+* note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Patient Resource
 Instance: 944e725c-c23e-4413-adee-492408bbd74d
