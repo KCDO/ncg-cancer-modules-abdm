@@ -1,0 +1,1384 @@
+{
+  "resourceType": "Bundle",
+  "id": "52ef0e5a-147f-459a-ac2f-56caf1234144",
+  "meta": {
+    "versionId": "0",
+    "lastUpdated": "2024-08-06T12:18:10.984+05:30",
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ]
+  },
+  "identifier": {
+    "system": "http://example-provider.org",
+    "value": "DiagnosticReport/52ef0e5a-147f-459a-ac2f-56caf1234144"
+  },
+  "type": "document",
+  "timestamp": "2024-09-19T12:18:10.984+05:30",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:9bf7226d-221f-4802-9fa2-27a330b22b34",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "9bf7226d-221f-4802-9fa2-27a330b22b34",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "code": "60591-5",
+              "system": "http://loinc.org",
+              "display": "Patient summary Document"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "date": "2024-08-28T14:30:00Z",
+        "author": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "title": "Complete Diagnostic Report",
+        "section": [
+          {
+            "title": "Diagnostic Reports",
+            "code": {
+              "coding": [
+                {
+                  "code": "11506-3",
+                  "system": "http://loinc.org",
+                  "display": "Progress note"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3"
+              },
+              {
+                "reference": "urn:uuid:6ac7cc90-7d88-458e-8c93-d6fb9130be55"
+              },
+              {
+                "reference": "urn:uuid:1a837870-14ff-4795-ba4a-c06117d30fb3"
+              },
+              {
+                "reference": "urn:uuid:d7198df8-8c6c-480b-b207-3f8469b828ea"
+              },
+              {
+                "reference": "urn:uuid:162b505b-75da-414e-b496-5a4910271cb3"
+              },
+              {
+                "reference": "urn:uuid:a331e58a-09d1-4856-a1d6-c2d8c9711dac"
+              },
+              {
+                "reference": "urn:uuid:7d9ef3df-d1fa-4ed8-a230-1ae5bdb9aa7c"
+              },
+              {
+                "reference": "urn:uuid:a962e148-6ada-49fa-9de9-a06f3d7331a3"
+              },
+              {
+                "reference": "urn:uuid:f22fa0b0-b953-4e06-9776-c2ca36921a85"
+              },
+              {
+                "reference": "urn:uuid:04664036-287b-40fb-942a-24b99793177a"
+              },
+              {
+                "reference": "urn:uuid:ffb44e52-7db1-433d-ba4c-a5e44c67663e"
+              },
+              {
+                "reference": "urn:uuid:363aec9e-db66-4a3f-8f01-5aa6979ff488"
+              },
+              {
+                "reference": "urn:uuid:5f1f961b-43c2-4ab6-80f7-212d33d5b1ad"
+              },
+              {
+                "reference": "urn:uuid:4e5915a8-bcf4-4b81-8071-b7020d80c336"
+              },
+              {
+                "reference": "urn:uuid:3079d89c-5e9e-434f-81b3-fa53e9b148dc"
+              },
+              {
+                "reference": "urn:uuid:4b11a8a6-003a-43da-949b-e2f62c33ea73"
+              },
+              {
+                "reference": "urn:uuid:a8a4fcdd-3d2d-4e97-b026-b8a0d06cb72c"
+              },
+              {
+                "reference": "urn:uuid:e62c9d8b-7647-4537-a5be-6cdc4392debb"
+              },
+              {
+                "reference": "urn:uuid:c93c68ad-dff3-444d-9fef-f3905505a8ce"
+              },
+              {
+                "reference": "urn:uuid:8de516e2-ae88-4e82-a272-d0c20e253dcd"
+              },
+              {
+                "reference": "urn:uuid:8487209f-a577-4c2f-ba82-8b6860e83e23"
+              },
+              {
+                "reference": "urn:uuid:f262628f-c556-4401-96dc-7f85545112bd"
+              },
+              {
+                "reference": "urn:uuid:5e46f2ea-fc25-4236-b1f3-8bec25937c17"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ee47d72b-3209-4c2c-8385-53cebe4dc9a3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "ee47d72b-3209-4c2c-8385-53cebe4dc9a3",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "4321000179101",
+                "system": "http://snomed.info/sct",
+                "display": "Hematology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "58410-2",
+              "system": "http://loinc.org",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "issued": "2024-08-28T12:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:3a09b3bd-ebb7-4914-b6b2-0f8ff658b1e5"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6ac7cc90-7d88-458e-8c93-d6fb9130be55",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "6ac7cc90-7d88-458e-8c93-d6fb9130be55",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "4321000179101",
+                "system": "http://snomed.info/sct",
+                "display": "Hematology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "57023-4",
+              "system": "http://loinc.org",
+              "display": "Auto Differential panel - Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:d3439bb8-36ba-45fb-90dc-b50ebfdaab35"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1a837870-14ff-4795-ba4a-c06117d30fb3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "1a837870-14ff-4795-ba4a-c06117d30fb3",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "4241000179101",
+                "system": "http://snomed.info/sct",
+                "display": "Laboratory report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "24331-1",
+              "system": "http://loinc.org",
+              "display": "Lipid 1996 panel - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:b5b9f0a3-a8d2-4322-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d7198df8-8c6c-480b-b207-3f8469b828ea",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "d7198df8-8c6c-480b-b207-3f8469b828ea",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "4241000179101",
+                "system": "http://snomed.info/sct",
+                "display": "Laboratory report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "57698-3",
+              "system": "http://loinc.org",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:b4b9f0a3-a8d2-4322-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:162b505b-75da-414e-b496-5a4910271cb3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "162b505b-75da-414e-b496-5a4910271cb3",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "4241000179101",
+                "system": "http://snomed.info/sct",
+                "display": "Laboratory report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "24362-6",
+              "system": "http://loinc.org",
+              "display": "Renal function 2000 panel - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:bab9f0a3-a8d2-4a22-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a331e58a-09d1-4856-a1d6-c2d8c9711dac",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "a331e58a-09d1-4856-a1d6-c2d8c9711dac",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "4311000179106",
+                "system": "http://snomed.info/sct",
+                "display": "Chemical pathology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "252416005",
+              "system": "http://snomed.info/sct",
+              "display": "Histopathology test (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:b6b9f0a3-a8d2-4c22-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7d9ef3df-d1fa-4ed8-a230-1ae5bdb9aa7c",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "7d9ef3df-d1fa-4ed8-a230-1ae5bdb9aa7c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "4311000179106",
+                "system": "http://snomed.info/sct",
+                "display": "Chemical pathology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "66121-5",
+              "system": "http://loinc.org",
+              "display": "Tissue Pathology biopsy report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:b2b9f0a3-a8d2-4d22-b57a-be52340f9f07"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a962e148-6ada-49fa-9de9-a06f3d7331a3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "a962e148-6ada-49fa-9de9-a06f3d7331a3",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "770573007",
+                "system": "http://snomed.info/sct",
+                "display": "Airway endoscopy report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "18744-3",
+              "system": "http://loinc.org",
+              "display": "Bronchoscopy study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "issued": "2024-08-28T12:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:f1eb1921-070a-475c-9815-82d8bd10427d"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f22fa0b0-b953-4e06-9776-c2ca36921a85",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "f22fa0b0-b953-4e06-9776-c2ca36921a85",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "720449003",
+                "system": "http://snomed.info/sct",
+                "display": "Pulmonary function report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "58477-1",
+              "system": "http://loinc.org",
+              "display": "Pulmonary function study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:668f7522-a958-4d3d-8145-0c454a748d37"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:04664036-287b-40fb-942a-24b99793177a",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "04664036-287b-40fb-942a-24b99793177a",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "721981007",
+                "system": "http://snomed.info/sct",
+                "display": "Diagnostic studies report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "64098-7",
+              "system": "http://loinc.org",
+              "display": "Six minute walk test"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:d32649cc-1a5f-4cae-bbda-7b3fd0c5fb79"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ffb44e52-7db1-433d-ba4c-a5e44c67663e",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "ffb44e52-7db1-433d-ba4c-a5e44c67663e",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "721631001",
+                "system": "http://snomed.info/sct",
+                "display": "Bone marrow pathology biopsy report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "53043-6",
+              "system": "http://loinc.org",
+              "display": "DNA marker analysis test coverage panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "issued": "2024-08-28T12:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:ed4bb153-cfba-4ec3-a590-d9847234a08a"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:363aec9e-db66-4a3f-8f01-5aa6979ff488",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "363aec9e-db66-4a3f-8f01-5aa6979ff488",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "371528001",
+                "system": "http://snomed.info/sct",
+                "display": "Pathology report (record artifact)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "87179-8",
+              "system": "http://loinc.org",
+              "display": "Guidance for fine needle aspiration"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T13:00:00Z",
+        "issued": "2024-08-28T13:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "result": [
+          {
+            "reference": "urn:uuid:7e6adcc5-c7a9-48e3-81cc-6be2f71f1c4a"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5f1f961b-43c2-4ab6-80f7-212d33d5b1ad",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "5f1f961b-43c2-4ab6-80f7-212d33d5b1ad",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "399345000",
+              "system": "http://snomed.info/sct",
+              "display": "Adult echocardiography procedure report (record artifact)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:acd6cab5-095d-41a6-9d9a-7388a4dc1f2a"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4e5915a8-bcf4-4b81-8071-b7020d80c336",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "4e5915a8-bcf4-4b81-8071-b7020d80c336",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "443271005",
+              "system": "http://snomed.info/sct",
+              "display": "Positron emission tomography with computed tomography using fluorodeoxyglucose (18-F) (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:cb52b936-7656-43e2-a909-554cbf1c17a7"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3079d89c-5e9e-434f-81b3-fa53e9b148dc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "3079d89c-5e9e-434f-81b3-fa53e9b148dc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "24590-2",
+              "system": "http://loinc.org",
+              "display": "MR Brain"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:fb023c95-3e31-4891-89c7-1f3ce3c5b553"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4b11a8a6-003a-43da-949b-e2f62c33ea73",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "4b11a8a6-003a-43da-949b-e2f62c33ea73",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "100231-0",
+              "system": "http://loinc.org",
+              "display": "Endobronchial ultrasound study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:bd7bdc71-daa6-4f55-aaaa-20066c1d0792"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a8a4fcdd-3d2d-4e97-b026-b8a0d06cb72c",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "a8a4fcdd-3d2d-4e97-b026-b8a0d06cb72c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "37859006",
+              "system": "http://snomed.info/sct",
+              "display": "Pulmonary ventilation perfusion study (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:456cd87b-f089-4ee6-bf4b-780655b9e8fe"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e62c9d8b-7647-4537-a5be-6cdc4392debb",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "e62c9d8b-7647-4537-a5be-6cdc4392debb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "4261000179100",
+              "system": "http://snomed.info/sct",
+              "display": "Computed tomography imaging report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:ab220eb1-baba-409e-b8d6-5a20edb2c9ea"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c93c68ad-dff3-444d-9fef-f3905505a8ce",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "c93c68ad-dff3-444d-9fef-f3905505a8ce",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "4231000179109",
+              "system": "http://snomed.info/sct",
+              "display": "Mammography report (record artifact)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:c49a8b49-e155-4bc2-a785-e305f1011119"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8de516e2-ae88-4e82-a272-d0c20e253dcd",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "8de516e2-ae88-4e82-a272-d0c20e253dcd",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "4261000179100",
+              "system": "http://snomed.info/sct",
+              "display": "Computed tomography imaging report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:ac88278e-39d8-4d12-8dd5-c88ee88b943c"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8487209f-a577-4c2f-ba82-8b6860e83e23",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "8487209f-a577-4c2f-ba82-8b6860e83e23",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "36813-4",
+              "system": "http://loinc.org/",
+              "display": "CT Abdomen and Pelvis W contrast IV"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:e953b553-d7eb-47df-9d88-d6e8456b4ce7"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f262628f-c556-4401-96dc-7f85545112bd",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "f262628f-c556-4401-96dc-7f85545112bd",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "72246-2",
+              "system": "http://loinc.org/",
+              "display": "MR Abdomen and Pelvis W contrast PO and WO and W contrast IV"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T11:00:00Z",
+        "issued": "2024-08-28T11:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:236bd1fe-cee4-4994-b17d-4939a47af136"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5e46f2ea-fc25-4236-b1f3-8bec25937c17",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "5e46f2ea-fc25-4236-b1f3-8bec25937c17",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "RAD",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "33721-2",
+              "system": "http://loinc.org/",
+              "display": "Bone marrow Pathology biopsy report"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T10:00:00Z",
+        "issued": "2024-08-28T10:30:00Z",
+        "performer": [
+          {
+            "reference": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "urn:uuid:e38d37ae-486b-46ed-b5bd-8546007caacf"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "MR",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Medical record number"
+                }
+              ],
+              "text": "Medical record number"
+            },
+            "system": "urn:health:information:provider:system",
+            "value": "Health-Information-Provider-Example-Id"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHAAddress",
+                  "system": "https://healthid.abdm.gov.in",
+                  "display": "ABHAAddress"
+                }
+              ],
+              "text": "ABHAAddress"
+            },
+            "system": "urn:health:information:provider:system",
+            "value": "johndoe@abdm"
+          }
+        ],
+        "name": [
+          {
+            "text": "Johndoe ABDM NCG",
+            "family": "NCG",
+            "given": [
+              "Johndoe ABDM"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "9898989898"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1999-08-14",
+        "address": [
+          {
+            "type": "both",
+            "text": "123, Bangalore Urban, Karnataka, India, Pincode:560103",
+            "city": "Bangalore Urban",
+            "district": "Bangalore Urban",
+            "state": "Karnataka",
+            "postalCode": "560103",
+            "country": "India"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1c521af9-92c9-41e9-92f5-58a411bf56d0",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "1c521af9-92c9-41e9-92f5-58a411bf56d0",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-08-06T12:18:11.069+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "PRN",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Provider number"
+                }
+              ],
+              "text": "Provider number"
+            },
+            "system": "https://facility.ndhm.gov.in",
+            "value": "[FACILITY-ID-FROM-REGISTRY]"
+          }
+        ],
+        "name": "XYZ Lab Pvt.Ltd.",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "9898989898"
+          },
+          {
+            "system": "email",
+            "value": "xyz@facility.org"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:cc83e070-c141-4555-9559-aa4ac8f44f8d",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "cc83e070-c141-4555-9559-aa4ac8f44f8d",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "58410-2",
+              "system": "http://loinc.org",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "code": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "f58d5c51-fa8b-4bfe-99c2-cb76faf0a2e2",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "789-8",
+              "system": "http://loinc.org",
+              "display": "Erythrocytes [#/volume] in Blood by Automated count"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "code": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b9a7850f-c8ec-4163-9b63-58d5a015cc49",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b9a7850f-c8ec-4163-9b63-58d5a015cc49",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "24331-1",
+              "system": "http://loinc.org",
+              "display": "Lipid 1996 panel - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "code": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:85791c1f-3da7-4f83-9f19-219bf9867647",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "85791c1f-3da7-4f83-9f19-219bf9867647",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "57698-3",
+              "system": "http://loinc.org",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "code": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a6020852-f7d0-40f0-ad92-c4b562d1590b",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "a6020852-f7d0-40f0-ad92-c4b562d1590b",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "24362-6",
+              "system": "http://loinc.org",
+              "display": "Renal function 2000 panel - Serum or Plasma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "code": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "10*6/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1029f9b5-f340-44f4-bfc5-e45fdaab1779",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "1029f9b5-f340-44f4-bfc5-e45fdaab1779",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "252416005",
+              "system": "http://snomed.info/sct",
+              "display": "Histopathology test (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
+        },
+        "effectiveDateTime": "2024-08-28T12:00:00Z",
+        "valueQuantity": {
+          "value": 4.12,
+          "code": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "10*6/uL"
+        }
+      }
+    }
+  ]
+}
