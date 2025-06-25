@@ -48,9 +48,9 @@ Usage: #example
 // //entry for Observation Resource (Menstruation History)
 // * entry[+].fullUrl = "urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a270"
 // * entry[=].resource = 260fbadb-3305-4e5a-b30c-f2a43602a270
-// //entry for FamilyMemberHistory Resource (Family History)
-// * entry[+].fullUrl = "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111"
-// * entry[=].resource = 6fec2b43-ed26-47cc-83f9-57f77d028111
+//entry for FamilyMemberHistory Resource (Family History)
+* entry[+].fullUrl = "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111"
+* entry[=].resource = 6fec2b43-ed26-47cc-83f9-57f77d028111
 //entry for blood group observation
 * entry[+].fullUrl = "urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056fff"
 * entry[=].resource = efcb7189-b97e-482f-a0f9-ba5c89056fff
@@ -144,13 +144,13 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056fff)
 * section[=].entry[=].type = "Observation"
 
-// // section for FamilyHistory
-// * section[+].title = "FamilyHistory"
-// * section[=].code = $sct#422432008 "Family history section"
-// * section[=].code.text = "Family history section"
-// // section entry for FamilyMemberHistory Resource (Family History)
-// * section[=].entry[+] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111)
-// * section[=].entry[=].type = "FamilyMemberHistory"
+// section for FamilyHistory
+* section[+].title = "FamilyHistory"
+* section[=].code = $sct#422432008 "Family history section"
+* section[=].code.text = "Family history section"
+// section entry for FamilyMemberHistory Resource (Family History)
+* section[=].entry[+] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028111)
+* section[=].entry[=].type = "FamilyMemberHistory"
 
 // // section for Allergies
 // * section[+].title = "Allergies"
@@ -279,25 +279,25 @@ Usage: #inline
 // * effectiveDateTime = "2024-11-07T12:18:11+05:30"
 // * note.text = "The patient is confirmed as postmenopausal."
 
-// // FamilyMemberHistory Resource (Family History)
-// Instance: 6fec2b43-ed26-47cc-83f9-57f77d028111
-// InstanceOf: FamilyMemberHistory
-// Usage: #inline
-// * meta.versionId = "0"
-// * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
-// * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
-// * status = #completed
-// * patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
-// * patient.type = "Patient"
-// * relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
-// * relationship.text = "Maternal Grandmother"
-// * condition[0].code = $sct#254837009 "Breast cancer"
-// * condition[0].code.text = "Breast Cancer"
-// * condition[0].onsetAge.value = 60
-// * condition[0].onsetAge.unit = "years"
-// * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
-// * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
+// FamilyMemberHistory Resource (Family History)
+Instance: 6fec2b43-ed26-47cc-83f9-57f77d028111
+InstanceOf: FamilyMemberHistory
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+* status = #completed
+* patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+* patient.type = "Patient"
+* relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
+* relationship.text = "Maternal Grandmother"
+* condition[0].code = $sct#254837009 "Breast cancer"
+* condition[0].code.text = "Breast Cancer"
+* condition[0].onsetAge.value = 60
+* condition[0].onsetAge.unit = "years"
+* condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
+* condition[0].onsetAge.system = "http://unitsofmeasure.org"
+* note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Post – Diagnosis Mental Health Support Encounter
 // Encounter Resource (Post – Diagnosis Mental Health Support)
@@ -381,7 +381,7 @@ InstanceOf: Observation
 Usage: #inline
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-10-26T09:00:00+05:30"
-* meta.profile = "https://example.com/fhir/StructureDefinition/Observation"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 //* code = $sct#40915003 "Mental Health Evaluation"
 // * code.text = "Initial mental health evaluation"
@@ -400,7 +400,7 @@ InstanceOf: Observation
 Usage: #inline
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-10-26T09:00:00+05:30"
-* meta.profile = "https://example.com/fhir/StructureDefinition/Observation"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
 * status = #final
 // * code = $sct#185349003 "Follow-up mental health visit plan"
 // * code.text = "Follow-up mental health visits plan"

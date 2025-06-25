@@ -2,6 +2,7 @@ Alias: $sct = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
 Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
 Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203
+Alias: $v3-RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $condition-clinical = http://terminology.hl7.org/CodeSystem/condition-clinical
 Alias: $v3-Confidentiality = http://terminology.hl7.org/CodeSystem/v3-Confidentiality
@@ -50,6 +51,9 @@ Usage: #example
 // entry for Appointment of Follow-up module for assess overall response to chemotherapy and plan further treatment
 * entry[+].fullUrl = "urn:uuid:75e8d2b9-9a0d-4893-a05e-88b5b237b0b6"
 * entry[=].resource = 75e8d2b9-9a0d-4893-a05e-88b5b237b0b6
+//entry for FamilyMemberHistory Resource (Family History)
+* entry[+].fullUrl = "urn:uuid:1837fe37-0c45-4ae5-830d-29c30c56739d"
+* entry[=].resource = 1837fe37-0c45-4ae5-830d-29c30c56739d
 // entry for Patient resource
 * entry[+].fullUrl = "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44"
 * entry[=].resource = 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44
@@ -123,6 +127,14 @@ Usage: #inline
 //section entry for MedicationRequest of Medications Administered module for Zofran (Ondansetron)
 * section[=].entry[+] = Reference(urn:uuid:9d7e90f3-5c7b-4e95-9400-81a24e70b1a6)
 * section[=].entry[=].type = "MedicationRequest"
+
+// section for FamilyHistory
+* section[+].title = "FamilyHistory"
+* section[=].code = $sct#422432008 "Family history section"
+* section[=].code.text = "Family history section"
+// section entry for FamilyMemberHistory Resource (Family History)
+* section[=].entry[+] = Reference(urn:uuid:1837fe37-0c45-4ae5-830d-29c30c56739d)
+* section[=].entry[=].type = "FamilyMemberHistory"
 
 // section for FollowUp
 * section[+].title = "FollowUp"
@@ -285,6 +297,26 @@ InstanceOf: Appointment
 * reasonCode[0].coding[0].code = #262502001
 * reasonCode[0].coding[0].display = "Post-chemotherapy (qualifier value)"
 * reasonCode[0].text = "Assess overall response to chemotherapy and plan further treatment"
+
+// FamilyMemberHistory Resource (Family History)
+Instance: 1837fe37-0c45-4ae5-830d-29c30c56739d
+InstanceOf: FamilyMemberHistory
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2023-10-10T12:18:11.143+05:30" 
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+* status = #completed
+* patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
+* patient.type = "Patient"
+* relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
+* relationship.text = "Maternal Grandmother"
+* condition[0].code = $sct#254837009 "Breast cancer"
+* condition[0].code.text = "Breast Cancer"
+* condition[0].onsetAge.value = 60
+* condition[0].onsetAge.unit = "years"
+* condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
+* condition[0].onsetAge.system = "http://unitsofmeasure.org"
+* note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Patient resource
 Instance: 27cddb8f-d0b6-47ea-8cd7-5f0311f73c44

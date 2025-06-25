@@ -113,6 +113,25 @@
             ]
           },
           {
+            "title": "FamilyHistory",
+            "code": {
+              "coding": [
+                {
+                  "code": "422432008",
+                  "system": "http://snomed.info/sct",
+                  "display": "Family history section"
+                }
+              ],
+              "text": "Family history section"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:1837fe37-0c45-4ae5-830d-29c30c56739d",
+                "type": "FamilyMemberHistory"
+              }
+            ]
+          },
+          {
             "title": "Medications",
             "code": {
               "coding": [
@@ -234,6 +253,61 @@
           "type": "Patient"
         },
         "valueString": "Postmenopausal"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1837fe37-0c45-4ae5-830d-29c30c56739d",
+      "resource": {
+        "resourceType": "FamilyMemberHistory",
+        "id": "1837fe37-0c45-4ae5-830d-29c30c56739d",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+          ]
+        },
+        "status": "completed",
+        "patient": {
+          "reference": "urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "relationship": {
+          "coding": [
+            {
+              "code": "MGRMTH",
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+              "display": "Maternal Grandmother"
+            }
+          ],
+          "text": "Maternal Grandmother"
+        },
+        "condition": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "254837009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Breast cancer"
+                }
+              ],
+              "text": "Breast Cancer"
+            },
+            "onsetAge": {
+              "value": 60,
+              "unit": "years",
+              "code": "a",
+              "system": "http://unitsofmeasure.org"
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
+          }
+        ]
       }
     },
     {
@@ -462,7 +536,7 @@
         "code": {
           "coding": [
             {
-              "code": "263726003",
+              "code": "392021009",
               "system": "http://snomed.info/sct",
               "display": "Lumpectomy of breast (procedure)"
             }
@@ -496,7 +570,7 @@
         "code": {
           "coding": [
             {
-              "code": "263726003",
+              "code": "392021009",
               "system": "http://snomed.info/sct",
               "display": "Lumpectomy of breast (procedure)"
             }

@@ -48,9 +48,9 @@ Usage: #example
 // //entry for Observation Resource (Menstruation History)
 // * entry[+].fullUrl = "urn:uuid:260fbadb-3305-4e5a-b30c-f2a43602a275"
 // * entry[=].resource = 260fbadb-3305-4e5a-b30c-f2a43602a275
-// //entry for FamilyMemberHistory Resource (Family History)
-// * entry[+].fullUrl = "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117"
-// * entry[=].resource = 6fec2b43-ed26-47cc-83f9-57f77d028117
+//entry for FamilyMemberHistory Resource (Family History)
+* entry[+].fullUrl = "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117"
+* entry[=].resource = 6fec2b43-ed26-47cc-83f9-57f77d028117
 //entry for blood group observation
 * entry[+].fullUrl = "urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056ff1"
 * entry[=].resource = efcb7189-b97e-482f-a0f9-ba5c89056ff1
@@ -155,13 +155,13 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056ff1)
 * section[=].entry[=].type = "Observation"
 
-// // section for FamilyHistory
-// * section[+].title = "FamilyHistory"
-// * section[=].code = $sct#422432008 "Family history section"
-// * section[=].code.text = "Family history section"
-// // section entry for FamilyMemberHistory Resource (Family History)
-// * section[=].entry[+] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117)
-// * section[=].entry[=].type = "FamilyMemberHistory"
+// section for FamilyHistory
+* section[+].title = "FamilyHistory"
+* section[=].code = $sct#422432008 "Family history section"
+* section[=].code.text = "Family history section"
+// section entry for FamilyMemberHistory Resource (Family History)
+* section[=].entry[+] = Reference(urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117)
+* section[=].entry[=].type = "FamilyMemberHistory"
 
 // section for InvestigationAdvice
 * section[+].title = "InvestigationAdvice"
@@ -310,24 +310,24 @@ Usage: #inline
 // * note.text = "The patient is confirmed as postmenopausal."
 
 // FamilyMemberHistory Resource (Family History)
-// Instance: 6fec2b43-ed26-47cc-83f9-57f77d028117
-// InstanceOf: FamilyMemberHistory
-// Usage: #inline
-// * meta.versionId = "0"
-// * meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
-// * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
-// * status = #completed
-// * patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
-// * patient.type = "Patient"
-// * relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
-// * relationship.text = "Maternal Grandmother"
-// * condition[0].code = $sct#254837009 "Breast cancer"
-// * condition[0].code.text = "Breast Cancer"
-// * condition[0].onsetAge.value = 60
-// * condition[0].onsetAge.unit = "years"
-// * condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
-// * condition[0].onsetAge.system = "http://unitsofmeasure.org"
-// * note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
+Instance: 6fec2b43-ed26-47cc-83f9-57f77d028117
+InstanceOf: FamilyMemberHistory
+Usage: #inline
+* meta.versionId = "0"
+* meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
+* meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+* status = #completed
+* patient = Reference(urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de) "Meera Sharma"
+* patient.type = "Patient"
+* relationship = $v3-RoleCode#MGRMTH "Maternal Grandmother"
+* relationship.text = "Maternal Grandmother"
+* condition[0].code = $sct#254837009 "Breast cancer"
+* condition[0].code.text = "Breast Cancer"
+* condition[0].onsetAge.value = 60
+* condition[0].onsetAge.unit = "years"
+* condition[0].onsetAge.code = #a // 'a' is the UCUM code for years
+* condition[0].onsetAge.system = "http://unitsofmeasure.org"
+* note.text = "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
 
 // Initial Visit Encounter
 // Encounter Resource (Visit Details)
@@ -400,7 +400,7 @@ Usage: #inline
 // * onsetString = "Noticed 2 weeks ago"
 * note.text = "Palpable lump in the right breast, noticed 2 weeks ago"
 
-// Observation Resource (Vitals)
+// Observation Resource (Vitals-Body measurements)
 Instance: ed93fd8b-5a42-4522-b1bc-88b22294e474
 InstanceOf: Observation
 Usage: #inline

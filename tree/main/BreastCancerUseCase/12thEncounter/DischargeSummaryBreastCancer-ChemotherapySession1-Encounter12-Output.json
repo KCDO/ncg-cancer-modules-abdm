@@ -109,6 +109,25 @@
             ]
           },
           {
+            "title": "FamilyHistory",
+            "code": {
+              "coding": [
+                {
+                  "code": "422432008",
+                  "system": "http://snomed.info/sct",
+                  "display": "Family history section"
+                }
+              ],
+              "text": "Family history section"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c",
+                "type": "FamilyMemberHistory"
+              }
+            ]
+          },
+          {
             "title": "PhysicalExamination",
             "code": {
               "coding": [
@@ -267,6 +286,61 @@
           "display": "Meera Sharma"
         },
         "valueString": "Postmenopausal"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5bc7d505-7465-4f94-baa0-e5a086810a5c",
+      "resource": {
+        "resourceType": "FamilyMemberHistory",
+        "id": "5bc7d505-7465-4f94-baa0-e5a086810a5c",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+          ]
+        },
+        "status": "completed",
+        "patient": {
+          "reference": "urn:uuid:944e725c-c23e-4413-adee-492408bbd74d",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "relationship": {
+          "coding": [
+            {
+              "code": "MGRMTH",
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+              "display": "Maternal Grandmother"
+            }
+          ],
+          "text": "Maternal Grandmother"
+        },
+        "condition": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "254837009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Breast cancer"
+                }
+              ],
+              "text": "Breast Cancer"
+            },
+            "onsetAge": {
+              "value": 60,
+              "unit": "years",
+              "code": "a",
+              "system": "http://unitsofmeasure.org"
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
+          }
+        ]
       }
     },
     {
