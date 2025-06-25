@@ -1,0 +1,788 @@
+{
+  "resourceType": "Bundle",
+  "id": "52ef0e5a-147f-45a8-ac2f-56caf1234144",
+  "meta": {
+    "versionId": "0",
+    "lastUpdated": "2023-10-10T12:18:10.984+05:30",
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ]
+  },
+  "identifier": {
+    "system": "http://sunshine-clinic.in",
+    "value": "52ef0e5a-147f-45a8-ac2f-56caf1234144"
+  },
+  "type": "document",
+  "timestamp": "2023-10-10T12:18:10.984+05:30",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:7230e12b-d0f7-499c-925d-9a3046d10877",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "7230e12b-d0f7-499c-925d-9a3046d10877",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:10.984+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/OPConsultRecord"
+          ]
+        },
+        "language": "en-IN",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "code": "371530004",
+              "system": "http://snomed.info/sct",
+              "display": "Clinical consultation report"
+            }
+          ],
+          "text": "Clinical consultation report"
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "type": "Patient"
+        },
+        "encounter": {
+          "reference": "urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13",
+          "type": "Encounter"
+        },
+        "date": "2023-10-10T12:18:10+05:30",
+        "author": [
+          {
+            "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2",
+            "display": "Sunshine Clinic, Mumbai",
+            "type": "Organization"
+          }
+        ],
+        "title": "Consultation Report",
+        "custodian": {
+          "reference": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2",
+          "display": "Sunshine Clinic, Mumbai",
+          "type": "Organization"
+        },
+        "section": [
+          {
+            "title": "ChiefComplaints",
+            "code": {
+              "coding": [
+                {
+                  "code": "422843007",
+                  "system": "http://snomed.info/sct",
+                  "display": "Chief complaint section"
+                }
+              ],
+              "text": "Chief complaint section"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:216861b1-ca70-41bc-be26-d5b0994a700b",
+                "type": "Condition"
+              }
+            ]
+          },
+          {
+            "title": "OtherObservations",
+            "code": {
+              "coding": [
+                {
+                  "code": "404684003",
+                  "system": "http://snomed.info/sct",
+                  "display": "Clinical finding"
+                }
+              ],
+              "text": "Clinical finding"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6d6",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff",
+                "type": "Observation"
+              },
+              {
+                "reference": "urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056ff1",
+                "type": "Observation"
+              }
+            ]
+          },
+          {
+            "title": "FamilyHistory",
+            "code": {
+              "coding": [
+                {
+                  "code": "422432008",
+                  "system": "http://snomed.info/sct",
+                  "display": "Family history section"
+                }
+              ],
+              "text": "Family history section"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117",
+                "type": "FamilyMemberHistory"
+              }
+            ]
+          },
+          {
+            "title": "InvestigationAdvice",
+            "code": {
+              "coding": [
+                {
+                  "code": "721963009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Order document"
+                }
+              ],
+              "text": "Investigation Advice"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:8b7be252-a62a-478a-9dce-cb18125fdf08",
+                "type": "ServiceRequest"
+              },
+              {
+                "reference": "urn:uuid:6406eabc-a77b-4063-be1a-778817b53e70",
+                "type": "ServiceRequest"
+              },
+              {
+                "reference": "urn:uuid:55a49e52-4873-4b73-8ddf-9ba2c4c15fdd",
+                "type": "ServiceRequest"
+              }
+            ]
+          },
+          {
+            "title": "PhysicalExamination",
+            "code": {
+              "coding": [
+                {
+                  "code": "425044008",
+                  "system": "http://snomed.info/sct",
+                  "display": "Physical exam section"
+                }
+              ],
+              "text": "Physical exam section"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e474",
+                "type": "Observation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "c4d052b5-2d9f-4ebf-b617-764efffa08de",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "http://sunshine-clinic.in/patient",
+            "type": {
+              "coding": [
+                {
+                  "code": "MR",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Medical record number"
+                }
+              ]
+            },
+            "value": "UHID:123456789012"
+          },
+          {
+            "system": "https://healthid.abdm.gov.in",
+            "type": {
+              "coding": [
+                {
+                  "code": "ABHA",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Ayushman Bharat Health Account (ABHA) ID"
+                }
+              ]
+            },
+            "value": "meera.sharma@abdm"
+          }
+        ],
+        "name": [
+          {
+            "text": "Meera Sharma",
+            "family": "Sharma",
+            "given": [
+              "Meera"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1971-01-01"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:01eeb933-3210-4eee-975c-103720fd86ff",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "01eeb933-3210-4eee-975c-103720fd86ff",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "404684003",
+              "system": "http://snomed.info/sct",
+              "display": "Clinical finding"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "valueString": "Postmenopausal"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6fec2b43-ed26-47cc-83f9-57f77d028117",
+      "resource": {
+        "resourceType": "FamilyMemberHistory",
+        "id": "6fec2b43-ed26-47cc-83f9-57f77d028117",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
+          ]
+        },
+        "status": "completed",
+        "patient": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "relationship": {
+          "coding": [
+            {
+              "code": "MGRMTH",
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+              "display": "Maternal Grandmother"
+            }
+          ],
+          "text": "Maternal Grandmother"
+        },
+        "condition": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "254837009",
+                  "system": "http://snomed.info/sct",
+                  "display": "Breast cancer"
+                }
+              ],
+              "text": "Breast Cancer"
+            },
+            "onsetAge": {
+              "value": 60,
+              "unit": "years",
+              "code": "a",
+              "system": "http://unitsofmeasure.org"
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "The patient has a family history of breast cancer. (Maternal Grandmother: Diagnosed with breast cancer at age 60)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:efcb7189-b97e-482f-a0f9-ba5c89056ff1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "efcb7189-b97e-482f-a0f9-ba5c89056ff1",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T12:18:11.063+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "882-1",
+              "system": "http://loinc.org",
+              "display": "ABO and Rh group [Type] in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "type": "Patient"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "code": "365637002",
+              "system": "http://snomed.info/sct",
+              "display": "Finding of ABO blood group"
+            }
+          ],
+          "text": "B+"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1b2942c5-9a2e-4546-9a9e-0307e5c2fc13",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "1b2942c5-9a2e-4546-9a9e-0307e5c2fc13",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T09:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "code": "AMB",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "display": "outpatient encounter"
+        },
+        "period": {
+          "start": "2023-10-10T09:00:00+05:30",
+          "end": "2023-10-10T12:00:00+05:30"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:df9cc473-6f17-429c-8d13-8db5f8f923a2",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "df9cc473-6f17-429c-8d13-8db5f8f923a2",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T09:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "name": "Sunshine Clinic, Andheri East, Mumbai, Maharashtra, India, Pincode: 400069",
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PRN",
+                  "display": "Provider number"
+                }
+              ]
+            },
+            "system": "https://facility.abdm.gov.in",
+            "value": "IN2910086528"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "41295111-04f9-4b83-b186-ef2975db1c7e",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T09:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Practitioner"
+          ]
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "MD",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Medical License number"
+                }
+              ]
+            },
+            "system": "https://www.nmc.org.in",
+            "value": "2015073907"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "HPIN",
+                  "system": "https://nrces.in/ndhm/fhir/r4/CodeSystem/ndhm-identifier-type-code",
+                  "display": "Health Practitioner ID issued by NDHM"
+                }
+              ]
+            },
+            "system": "https://nhpr.abdm.gov.in/practitioner",
+            "value": "23-4536-7890-1245"
+          }
+        ],
+        "name": [
+          {
+            "text": "Dr. Anjali Verma",
+            "family": "Verma",
+            "given": [
+              "Anjali"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code" : {
+              "coding" : [{
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+                "code" : "MD",
+                "display" : "Doctor of Medicine"
+              }],
+              "text" : "Doctor of Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:216861b1-ca70-41bc-be26-d5b0994a700b",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "216861b1-ca70-41bc-be26-d5b0994a700b",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2024-11-07T12:18:11.143+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Condition"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "89164003",
+              "system": "http://snomed.info/sct",
+              "display": "Breast lump"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "note": [
+          {
+            "text": "Palpable lump in the right breast, noticed 2 weeks ago"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ed93fd8b-5a42-4522-b1bc-88b22294e474",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "ed93fd8b-5a42-4522-b1bc-88b22294e474",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T09:30:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "363788007",
+              "system": "http://snomed.info/sct",
+              "display": "Clinical history/examination observable"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8480-6",
+                  "system": "http://loinc.org",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 130,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8462-4",
+                  "system": "http://loinc.org",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 85,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8867-4",
+                  "system": "http://loinc.org",
+                  "display": "Heart rate"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 78,
+              "unit": "bpm"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8310-5",
+                  "system": "http://loinc.org",
+                  "display": "Body temperature"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 98.6,
+              "unit": "°F"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "9279-1",
+                  "system": "http://loinc.org",
+                  "display": "Respiratory rate"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 16,
+              "unit": "breaths/min"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "39156-5",
+                  "system": "http://loinc.org",
+                  "display": "Body mass index (BMI) [Ratio]"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 25,
+              "unit": "kg/m2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b7a6f298-21ac-4835-9c38-d4bfd38ef6d6",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "b7a6f298-21ac-4835-9c38-d4bfd38ef6d6",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T09:45:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "404684003",
+              "system": "http://snomed.info/sct",
+              "display": "Clinical finding"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "valueString": "Physical examination reveals a firm, non-tender mass in the upper outer quadrant of the right breast, approximately 2 cm in diameter. No skin changes or nipple discharge observed. Axillary lymph nodes not palpable."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8b7be252-a62a-478a-9dce-cb18125fdf08",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "8b7be252-a62a-478a-9dce-cb18125fdf08",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T10:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ServiceRequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "requester": {
+          "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+          "display": "Dr. Anjali Verma",
+          "type": "Practitioner"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "26604007",
+              "system": "http://snomed.info/sct",
+              "display": "Complete blood count"
+            }
+          ]
+        },
+        "note": [
+          {
+            "text": "Complete Blood Count (CBC)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6406eabc-a77b-4063-be1a-778817b53e70",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "6406eabc-a77b-4063-be1a-778817b53e70",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T10:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ServiceRequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "requester": {
+          "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+          "display": "Dr. Anjali Verma",
+          "type": "Practitioner"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "71651007",
+              "system": "http://snomed.info/sct",
+              "display": "Mammogram"
+            }
+          ]
+        },
+        "note": [
+          {
+            "text": "mammogram"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:55a49e52-4873-4b73-8ddf-9ba2c4c15fdd",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "55a49e52-4873-4b73-8ddf-9ba2c4c15fdd",
+        "meta": {
+          "versionId": "0",
+          "lastUpdated": "2023-10-10T10:00:00+05:30",
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/ServiceRequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:c4d052b5-2d9f-4ebf-b617-764efffa08de",
+          "display": "Meera Sharma",
+          "type": "Patient"
+        },
+        "requester": {
+          "reference": "urn:uuid:41295111-04f9-4b83-b186-ef2975db1c7e",
+          "display": "Dr. Anjali Verma",
+          "type": "Practitioner"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "961000087109",
+              "system": "http://snomed.info/sct",
+              "display": "Ultrasound of right breast"
+            }
+          ]
+        },
+        "note": [
+          {
+            "text": "ultrasound of the right breast"
+          }
+        ]
+      }
+    }
+  ]
+}

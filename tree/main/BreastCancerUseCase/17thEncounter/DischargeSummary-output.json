@@ -1,0 +1,95 @@
+{
+  "resourceType": "Observation",
+  "id": "2d5cb6d7-ec9c-4207-9366-9874b3bfbf59",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "85354-9",
+        "system": "http://loinc.org"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "urn:uuid:27cddb8f-d0b6-47ea-8cd7-5f0311f73c44",
+    "display": "Meera Sharma",
+    "type": "Patient"
+  },
+  "effectiveDateTime": "2025-01-15",
+  "component": [
+    {
+      "code": {
+        "coding": [
+          {
+            "code": "8480-6",
+            "system": "http://loinc.org"
+          }
+        ]
+      },
+      "valueQuantity": {
+        "value": 115,
+        "code": "mm[Hg]",
+        "system": "http://unitsofmeasure.org",
+        "unit": "mm[Hg]"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "code": "8462-4",
+            "system": "http://loinc.org"
+          }
+        ]
+      },
+      "valueQuantity": {
+        "value": 75,
+        "code": "mm[Hg]",
+        "system": "http://unitsofmeasure.org",
+        "unit": "mm[Hg]"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "code": "8867-4",
+            "system": "http://loinc.org"
+          }
+        ]
+      },
+      "valueQuantity": {
+        "value": 69,
+        "code": "/min",
+        "system": "http://unitsofmeasure.org",
+        "unit": "/min"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "code": "8310-5",
+            "system": "http://loinc.org"
+          }
+        ]
+      },
+      "valueQuantity": {
+        "value": 98.3,
+        "code": "[degF]",
+        "system": "http://unitsofmeasure.org",
+        "unit": "[degF]"
+      }
+    }
+  ]
+}
