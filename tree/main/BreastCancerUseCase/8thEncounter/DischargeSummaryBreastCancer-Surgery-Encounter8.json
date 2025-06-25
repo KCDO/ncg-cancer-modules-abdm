@@ -262,7 +262,7 @@
         "id": "1837fe37-0c45-4ae5-830d-29c30c56739d",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2024-11-07T12:18:11.143+05:30",
+          "lastUpdated": "2023-10-10T12:18:11.063+05:30",
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
           ]
@@ -536,7 +536,7 @@
         "code": {
           "coding": [
             {
-              "code": "263726003",
+              "code": "392021009",
               "system": "http://snomed.info/sct",
               "display": "Lumpectomy of breast (procedure)"
             }
@@ -570,7 +570,7 @@
         "code": {
           "coding": [
             {
-              "code": "263726003",
+              "code": "392021009",
               "system": "http://snomed.info/sct",
               "display": "Lumpectomy of breast (procedure)"
             }

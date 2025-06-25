@@ -221,7 +221,7 @@ Instance: 1837fe37-0c45-4ae5-830d-29c30c56739d
 InstanceOf: FamilyMemberHistory
 Usage: #inline
 * meta.versionId = "0"
-* meta.lastUpdated = "2024-11-07T12:18:11.143+05:30" 
+* meta.lastUpdated = "2023-10-10T12:18:11.063+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
 * status = #completed
 * patient = Reference(urn:uuid:8861a044-24e6-4ca4-83ac-09a5e7b2f255) "Meera Sharma"
@@ -323,7 +323,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-11-12T10:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #completed
-* code = $sct#263726003  "Lumpectomy of breast (procedure)"
+* code = $sct#392021009  "Lumpectomy of breast (procedure)"
 // * code.text = "The patient underwent a lumpectomy with sentinel lymph node biopsy"
 // * category.text = "Surgical Procedure"
 * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31) "Meera Sharma"
@@ -338,7 +338,7 @@ Usage: #inline
 * meta.lastUpdated = "2023-11-12T10:00:00+05:30"
 * meta.profile = "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Procedure"
 * status = #completed
-* code = $sct#263726003  "Lumpectomy of breast (procedure)"
+* code = $sct#392021009  "Lumpectomy of breast (procedure)"
 * subject = Reference(urn:uuid:042f61e2-3797-4507-9132-edfb90604f31) "Meera Sharma"
 * subject.type = "Patient"
 * note.text = "On November 12, 2023, Meera Singh underwent a lumpectomy with sentinel lymph node biopsy. The procedure was performed under general anesthesia. The palpable lump in the right breast was excised along with the sentinel lymph nodes. The surgery was successful, and the patient tolerated the procedure well."

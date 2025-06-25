@@ -209,7 +209,7 @@
         "id": "6825b7bc-be13-4918-ba0a-47e2aa0f90e5",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2024-11-07T12:18:11.143+05:30",
+          "lastUpdated": "2023-10-10T12:18:11.063+05:30",
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
           ]

@@ -295,7 +295,7 @@
         "id": "5bc7d505-7465-4f94-baa0-e5a086810a5c",
         "meta": {
           "versionId": "0",
-          "lastUpdated": "2024-11-07T12:18:11.143+05:30",
+          "lastUpdated": "2023-10-10T12:18:11.063+05:30",
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/FamilyMemberHistory"
           ]
